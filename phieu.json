@@ -3,8 +3,30 @@
     "khoi": "doi-tuyen",
     "mon": "Tin học – Scratch",
     "ten": "Nhóm lệnh Bút vẽ (Pen)",
-    "lop": ["ĐT Tin - K2", "ĐT Tin - K3"],
+    "lop": [
+      "ĐT Tin - K2",
+      "ĐT Tin - K3"
+    ],
     "ngay": "2026-11-10",
     "link": "https://claude.ai/artifact/EeF49meWhyeNRKkXTeNKab"
+  },
+  {
+    "khoi": "khoi-9",
+    "mon": "Tin học 9",
+    "ten": "Công cụ xác thực dữ liệu (Data Validation)",
+    "lop": [
+      "9A1",
+      "9A2",
+      "9A3",
+      "9A4",
+      "9A5",
+      "9A6",
+      "9A7",
+      "9A8",
+      "9A9",
+      "9A10"
+    ],
+    "ngay": "2026-11-10",
+    "link": "https://claude.ai/artifact/V5axKXG7U7iSC3ob1Hxycf"
   }
 ]

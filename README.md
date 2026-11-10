@@ -16,3 +16,4 @@ Danh sách phiếu nằm trong `phieu.json`. Mỗi phiếu là một mục:
 | Khối | Môn | Tên phiếu | Lớp | Ngày | Link |
 |---|---|---|---|---|---|
 | Đội Tuyển | Tin học – Scratch | Nhóm lệnh Bút vẽ (Pen) | ĐT Tin - K2, ĐT Tin - K3 | 10/11/2026 | [Mở phiếu](https://claude.ai/artifact/EeF49meWhyeNRKkXTeNKab) |
+| Khối 9 | Tin học 9 | Công cụ xác thực dữ liệu (Data Validation) | 9A1 – 9A10 | 10/11/2026 | [Mở phiếu](https://claude.ai/artifact/V5axKXG7U7iSC3ob1Hxycf) |
