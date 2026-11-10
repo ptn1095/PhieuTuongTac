@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cô Thùy Tin – Phiếu bài tập tương tác</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+<style>
+*{box-sizing:border-box}
+:root{--cam:#F28C28;--la:#65B843;--bien:#168DCE;--dam:#2457A6;--chu:#222;--kem:#FEF9E7}
+body{margin:0;background:#EEF3F7;font-family:Arial,Helvetica,sans-serif;color:var(--chu)}
+.fit{width:100%;max-width:794px;margin:14px auto 30px;position:relative;overflow:hidden;border-radius:8px;box-shadow:0 4px 18px rgba(0,0,0,.14)}
+.paper{--w:794px;width:var(--w);position:absolute;left:0;top:0;transform-origin:0 0;min-height:1123px;padding:calc(var(--w)*118/794) calc(var(--w)*84/794) calc(var(--w)*210/794);display:flex;flex-direction:column;gap:26px;line-height:1.45;
+  background:url(assets/top.jpg) center top/var(--w) auto no-repeat,url(assets/bot.jpg) center bottom/var(--w) auto no-repeat,url(assets/mid.png) 0 0/var(--w) auto repeat-y}
+.kicker{font-size:14px;font-weight:bold;letter-spacing:.08em;color:var(--cam)}
+h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
+.lead{margin:0;font-size:16px;color:#444}
+.wave{height:10px;background:radial-gradient(circle at 6px 0,transparent 6px,var(--la) 6.5px 8px,transparent 8.5px) 0 0/24px 10px repeat-x;opacity:.8}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tab{--c:var(--bien);position:relative;border:3px solid var(--c);background:#fff;border-radius:18px;padding:14px 8px 12px;cursor:pointer;font-family:inherit;color:var(--c);
+  display:flex;flex-direction:column;align-items:center;gap:4px;transition:transform .15s,box-shadow .15s}
+.tab:hover{transform:translateY(-3px);box-shadow:0 6px 0 var(--c)}
+.tab:focus-visible{outline:4px solid #BFE3F7;outline-offset:2px}
+.tab .so{font-size:40px;font-weight:bold;line-height:1;width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--c) 14%,#fff)}
+.tab .ten{font-size:17px;font-weight:bold}
+.tab .dem{font-size:12.5px;color:#666}
+.tab[aria-selected=true]{background:var(--c);color:#fff;box-shadow:0 6px 0 color-mix(in srgb,var(--c) 70%,#000)}
+.tab[aria-selected=true] .so{background:rgba(255,255,255,.22)}
+.tab[aria-selected=true] .dem{color:rgba(255,255,255,.9)}
+.tab[aria-selected=true]::after{content:"";position:absolute;bottom:-14px;left:50%;margin-left:-9px;border:9px solid transparent;border-top-color:var(--c)}
+.head2{display:flex;align-items:center;gap:12px;margin-top:4px}
+.head2 h2{margin:0;font-size:22px;color:var(--dam);flex:1}
+.tim{font-family:inherit;font-size:15px;padding:8px 12px 8px 34px;border:2px solid #9DB7CC;border-radius:999px;width:230px;
+  background:#fff url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23168DCE' stroke-width='3' stroke-linecap='round'><circle cx='10' cy='10' r='7'/><path d='M21 21l-6-6'/></svg>") 12px center no-repeat}
+.tim:focus{outline:3px solid #BFE3F7;border-color:var(--bien)}
+.list{display:flex;flex-direction:column;gap:14px}
+.card{--c:var(--bien);display:flex;align-items:center;gap:16px;background:#fff;border:2px solid color-mix(in srgb,var(--c) 45%,#fff);border-left:10px solid var(--c);border-radius:16px;padding:14px 16px}
+.card .ic{flex:none;width:52px;height:52px;border-radius:14px;background:color-mix(in srgb,var(--c) 14%,#fff);display:flex;align-items:center;justify-content:center;font-size:28px}
+.card .bd{flex:1;min-width:0}
+.card .mon{font-size:13px;font-weight:bold;color:var(--cam);text-transform:uppercase;letter-spacing:.04em}
+.card .tp{font-size:19px;font-weight:bold;margin:2px 0 6px;color:var(--chu)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{font-size:13px;padding:2px 10px;border-radius:999px;background:#F4FAFE;border:1.5px solid var(--bien);color:var(--dam);font-weight:bold}
+.ngay{font-size:13px;color:#777;margin-left:4px}
+.go{flex:none;text-decoration:none;font-weight:bold;font-size:16px;color:#fff;background:var(--c);padding:11px 18px;border-radius:999px;white-space:nowrap;box-shadow:0 4px 0 color-mix(in srgb,var(--c) 70%,#000);transition:transform .1s}
+.go:hover{transform:translateY(-2px)} .go:active{transform:translateY(2px);box-shadow:0 1px 0 color-mix(in srgb,var(--c) 70%,#000)}
+.go:focus-visible{outline:4px solid #BFE3F7;outline-offset:2px}
+.trong{text-align:center;padding:36px 16px;border:3px dashed #FFD4A8;border-radius:18px;background:#FFFAF4;color:#666}
+.trong b{display:block;font-size:20px;color:var(--cam);margin-bottom:4px}
+.paper.hep{--w:480px;min-height:900px;gap:20px}
+.hep h1{font-size:25px}.hep .tabs{grid-template-columns:repeat(2,1fr)}
+.hep .head2{flex-wrap:wrap}.hep .tim{width:100%}
+.hep .card{flex-wrap:wrap;gap:10px}.hep .card .ic{display:none}.hep .go{width:100%;text-align:center}
+.foot{text-align:center;font-size:13px;color:#777}
+</style>
+</head>
+<body>
+<main style="padding:0 8px"><div class="fit" id="fit"><div class="paper" id="paper">
+  <header>
+    <div class="kicker">KHO PHIẾU BÀI TẬP TƯƠNG TÁC</div>
+    <h1>Chào các em! Cùng làm bài nhé ✏️</h1>
+    <p class="lead">Em chọn khối lớp của mình, bấm <b>Làm bài</b>, làm xong bấm <b>Tính điểm</b> – điểm sẽ tự gửi về cho cô.</p>
+  </header>
+  <div class="wave" aria-hidden="true"></div>
+  <nav class="tabs" role="tablist" aria-label="Chọn khối lớp" id="tabs"></nav>
+  <section aria-live="polite">
+    <div class="head2"><h2 id="tieuDe"></h2><input class="tim" id="tim" type="search" placeholder="Tìm phiếu…" aria-label="Tìm phiếu"></div>
+    <div class="list" id="list" style="margin-top:16px"></div>
+  </section>
+  <div class="foot">© Cô Thùy Tin · Phiếu mới được cập nhật thường xuyên</div>
+</div></div></main>
+<script>
+const KHOI=[
+  {id:'khoi-3',ten:'Khối 3',so:'3',c:'#168DCE',ic:'🎈'},
+  {id:'khoi-5',ten:'Khối 5',so:'5',c:'#F28C28',ic:'🚀'},
+  {id:'khoi-9',ten:'Khối 9',so:'9',c:'#65B843',ic:'🧭'},
+  {id:'doi-tuyen',ten:'Đội Tuyển',so:'🏆',c:'#2457A6',ic:'🏆'}];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const bo=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/gi,'d').toLowerCase();
+let DS=[],cur=KHOI[0].id;
+function fit(){const f=$('fit'),p=$('paper'),hep=f.clientWidth<600,W=hep?480:794;p.classList.toggle('hep',hep);f.style.maxWidth=hep?'none':'794px';const s=Math.min(1,f.clientWidth/W);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';}
+function veTabs(){
+  $('tabs').innerHTML=KHOI.map(k=>{const n=DS.filter(p=>p.khoi===k.id).length;
+    return '<button class="tab" role="tab" style="--c:'+k.c+'" data-id="'+k.id+'" aria-selected="'+(k.id===cur)+'"><span class="so">'+k.so+'</span><span class="ten">'+k.ten+'</span><span class="dem">'+n+' phiếu</span></button>';}).join('');
+  $('tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{location.hash=b.dataset.id;});
+}
+function veList(){
+  const k=KHOI.find(x=>x.id===cur),q=bo($('tim').value.trim());
+  $('tieuDe').textContent='Phiếu bài tập – '+k.ten;
+  const ds=DS.filter(p=>p.khoi===cur&&(!q||bo(p.ten+' '+p.mon+' '+(p.lop||[]).join(' ')).includes(q)))
+    .sort((a,b)=>String(b.ngay).localeCompare(String(a.ngay)));
+  if(!ds.length){$('list').innerHTML='<div class="trong"><b>'+(q?'Không tìm thấy phiếu phù hợp':'Chưa có phiếu nào')+'</b>'+(q?'Em thử gõ từ khác nhé.':'Cô sẽ sớm đưa phiếu bài tập lên đây!')+'</div>';fit();return;}
+  $('list').innerHTML=ds.map(p=>{const d=p.ngay?p.ngay.split('-').reverse().join('/'):'';
+    return '<article class="card" style="--c:'+k.c+'"><div class="ic" aria-hidden="true">'+k.ic+'</div><div class="bd"><div class="mon">'+esc(p.mon||'')+'</div><div class="tp">'+esc(p.ten)+'</div>'+
+    '<div class="chips">'+(p.lop||[]).map(l=>'<span class="chip">'+esc(l)+'</span>').join('')+(d?'<span class="ngay">📅 '+d+'</span>':'')+'</div></div>'+
+    '<a class="go" href="'+esc(p.link)+'" target="_blank" rel="noopener">Làm bài ➜</a></article>';}).join('');
+  fit();
+}
+function route(){const h=location.hash.slice(1);cur=KHOI.some(k=>k.id===h)?h:cur;veTabs();veList();}
+$('tim').addEventListener('input',veList);
+window.addEventListener('hashchange',route);window.addEventListener('resize',fit);window.addEventListener('load',fit);
+fetch('phieu.json?v='+Date.now()).then(r=>r.json()).then(d=>{DS=d;
+  if(!location.hash){const c=KHOI.find(k=>DS.some(p=>p.khoi===k.id));if(c)cur=c.id;}route();})
+  .catch(()=>{route();$('list').innerHTML='<div class="trong"><b>Chưa tải được danh sách phiếu</b>Em tải lại trang thử nhé.</div>';fit();});
+</script>
+</body>
+</html>
