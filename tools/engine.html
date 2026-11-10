@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phiếu bài tập</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✏️</text></svg>">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#EEF3F7;font-family:Arial,Helvetica,sans-serif;color:#222}
+.fit{width:100%;max-width:794px;margin:14px auto 30px;position:relative;overflow:hidden;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,.15)}
+.paper{width:794px;position:absolute;left:0;top:0;transform-origin:0 0;min-height:620px;padding:124px 84px 196px;display:flex;flex-direction:column;gap:30px;font-size:16px;line-height:1.45;
+  background:url(../../assets/top.jpg) center top/794px auto no-repeat,url(../../assets/bot.jpg) center bottom/794px auto no-repeat,url(../../assets/mid.png) 0 0/794px auto repeat-y}
+h1{margin:0;font-size:28px;color:#168DCE;line-height:1.2} h2{margin:0;font-size:24px;color:#168DCE}
+.sub{font-size:15px;color:#F28C28;font-weight:bold;letter-spacing:.03em}
+.bai{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}
+.badge{flex:none;color:#fff;font-weight:bold;font-size:15px;padding:3px 12px;border-radius:999px}
+.yc{font-weight:bold;font-size:16px;padding-top:2px}
+select,input{font-family:inherit;font-size:15px;padding:6px 8px;border:2px solid #9DB7CC;border-radius:8px;background:#fff;color:#222;max-width:100%}
+select:focus,input:focus{outline:3px solid #BFE3F7;border-color:#168DCE}
+select:disabled,input:disabled{opacity:1;color:#222}
+select.ok{border-color:#2E9E4F;background:#E9F7EE} select.no{border-color:#D93025;background:#FDECEC}
+select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px solid #FFD4A8}
+.info{display:flex;gap:12px;padding:12px 14px;background:#F4FAFE;border:2px dashed #168DCE;border-radius:12px}
+.info label{display:flex;flex-direction:column;gap:3px;font-size:14px;font-weight:bold;color:#168DCE}
+.hinhbai{display:flex;gap:16px;align-items:flex-start}
+.hinhbai>.hinh{flex:none;max-width:52%} .hinhbai>.hinh svg,.hinhbai>.hinh img{max-width:100%;height:auto;display:block}
+.hinhbai>.ds-cau{flex:1;min-width:0}
+.hinhkhung{border:2px solid #FFD4A8;background:#FFFAF4;border-radius:12px;padding:10px}
+.c-chon{display:flex;gap:8px;align-items:center;margin:7px 0}
+.c-chon .txt{flex:1}
+.c-chon select{min-width:150px}
+.num{flex:none;min-width:28px;height:28px;padding:0 6px;border-radius:999px;border:2px solid #2457A6;color:#2457A6;font-weight:bold;display:flex;align-items:center;justify-content:center;font-size:15px}
+.c-noi{display:grid;grid-template-columns:minmax(0,230px) 30px minmax(0,1fr);align-items:center;margin:7px 0}
+.chip{background:#FFF3E6;border:2px solid #F28C28;border-radius:10px;padding:6px 10px;font-weight:bold}
+.arrow{text-align:center;color:#F28C28;font-size:18px}
+.c-ds{display:flex;gap:10px;align-items:center;padding:8px 12px;margin:6px 0;background:#F7FBF3;border:1.5px solid #CFE8C1;border-radius:10px}
+.grow{flex:1} .lt{font-weight:bold;color:#65B843;min-width:20px;flex:none}
+.nho{width:90px;flex:none}
+.bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.bank span{background:#F4FAFE;border:1.5px solid #168DCE;border-radius:999px;padding:2px 12px;font-size:14px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{border:2px solid #FFD4A8;background:#FFFAF4;border-radius:12px;padding:12px}
+.card .hinh{min-height:60px;display:flex;align-items:center} .card .hinh svg,.card .hinh img{max-width:100%;height:auto}
+.c-dien{line-height:2.1;margin:6px 0}
+.btn{display:inline-block;font-family:inherit;font-size:21px;font-weight:bold;padding:14px 34px;border-radius:999px;border:none;color:#fff;cursor:pointer;text-decoration:none;text-align:center;background:#168DCE}
+.btn.done{background:#9AA7B2;cursor:default}
+.btn.light{background:#fff;color:#168DCE;border:2px solid #168DCE;font-size:16px;padding:9px 18px}
+.center{text-align:center} .note{font-size:14px;color:#444}
+#thieuMsg{color:#C0392B;font-weight:bold;margin-top:8px}
+.ketqua{border-top:3px dashed #F28C28;padding-top:24px;display:flex;flex-direction:column;gap:14px;align-items:center}
+.sent{border:2px solid #9DB7CC;background:#F4FAFE;color:#2457A6;font-weight:bold;border-radius:12px;padding:10px 14px;text-align:center}
+.sent.ok{background:#E9F7EE;border-color:#2E9E4F;color:#1E7E3A}
+.sent.loi{background:#FFF3E6;border-color:#F28C28;color:#B35A00}
+.sent a{color:#1a5fb4}
+#anh{width:440px;max-width:100%;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.18);display:block}
+.home{font-size:14px;color:#2457A6;font-weight:bold;text-decoration:none}
+.hidden{display:none}
+</style></head><body>
+<main style="padding:0 8px"><div class="fit" id="fit"><div class="paper" id="paper">
+<div><div class="sub" id="mon"></div><h1 id="tieuDe"></h1></div>
+<div class="info"><label style="flex:1">Họ và tên<input id="ten" autocomplete="off" placeholder="Nhập họ và tên"></label>
+<label>Lớp<select id="lop"><option value="">— chọn lớp —</option></select></label></div>
+<div id="noidung" style="display:flex;flex-direction:column;gap:30px"></div>
+<div class="center">
+<button id="check" type="button" class="btn">Tính điểm</button>
+<div class="note" style="margin-top:8px" id="huongDan"></div>
+<div id="thieuMsg" role="alert"></div>
+</div>
+<section id="ketqua" class="ketqua hidden">
+<h2>Kết quả của em</h2>
+<div class="sent" id="sent" role="status">Đang gửi điểm cho cô…</div>
+<img id="anh" alt="Ảnh kết quả bài làm: họ tên, lớp, điểm, nhận xét và đúng sai từng câu">
+<div class="center"><button id="luuPng" type="button" class="btn light">Lưu ảnh kết quả</button> <button id="luuPdf" type="button" class="btn light">Lưu PDF</button>
+<div class="note" style="margin-top:8px">Hoặc nhấn giữ vào ảnh (điện thoại) / bấm chuột phải (máy tính) rồi chọn <b>Lưu ảnh</b>.</div></div>
+</section>
+<div class="center"><a class="home" href="../../">← Về kho phiếu bài tập</a></div>
+</div></div></main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+/*__PHIEU__*/
+</script>
+<script>
+(function(){
+const P=PHIEU, $=id=>document.getElementById(id);
+const MAU=['#168DCE','#F28C28','#65B843'];
+const ANS={}, LAB={};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function sel(k,opts,da,lab,cls){ANS[k]=da;LAB[k]=lab;
+  return '<select data-k="'+k+'" class="'+(cls||'')+'" aria-label="'+esc(lab)+'"><option value="">— chọn —</option>'+opts.map(o=>'<option>'+esc(o)+'</option>').join('')+'</select>';}
+const ABC='abcdefghijklmnopqrstuvwxyz';
+$('mon').textContent=P.mon||'';$('tieuDe').textContent=P.tieuDe||'Phiếu bài tập';document.title=P.tieuDe||'Phiếu bài tập';
+(P.lop||[]).forEach(l=>{const o=document.createElement('option');o.textContent=l;$('lop').appendChild(o);});
+$('huongDan').innerHTML='Làm xong cả '+P.bai.length+' bài, em bấm <b>Tính điểm</b>. Em chỉ được bấm <b>một lần</b>, sau đó không sửa được nữa.';
+let html='';
+P.bai.forEach((b,bi)=>{
+  const n=bi+1, mau=MAU[bi%3]; let h='';
+  const lc=b.lc||[];
+  if(b.bank) h+='<div class="bank">'+b.bank.map(w=>'<span>'+esc(w)+'</span>').join('')+'</div>';
+  if(b.loai==='chon'){b.cau.forEach((c,ci)=>{const nh=c.nhan!=null?c.nhan:(ci+1);
+    h+='<div class="c-chon"><span class="num">'+nh+'</span>'+(c.text?'<span class="txt">'+c.text+'</span>':'')+sel('b'+n+'_'+ci,c.lc||lc,c.da,'B'+n+'.'+nh,c.text?'':'grow')+'</div>';});}
+  else if(b.loai==='noi'){b.cau.forEach((c,ci)=>{h+='<div class="c-noi"><span class="chip">'+c.text+'</span><span class="arrow">➜</span>'+sel('b'+n+'_'+ci,c.lc||lc,c.da,'B'+n+'.'+(ci+1))+'</div>';});}
+  else if(b.loai==='ds'){b.cau.forEach((c,ci)=>{const l=ABC[ci];h+='<div class="c-ds"><span class="lt">'+l+')</span><span class="grow">'+c.text+'</span>'+sel('b'+n+'_'+l,['Đ','S'],c.da,'B'+n+'.'+l,'nho')+'</div>';});}
+  else if(b.loai==='thutu'){const m=b.cau.length,so=Array.from({length:m},(_,i)=>String(i+1));
+    b.cau.forEach((c,ci)=>{h+='<div class="c-ds">'+sel('b'+n+'_'+ci,so,String(c.da),'B'+n+'.'+(ci+1),'nho')+'<span class="grow">'+c.text+'</span></div>';});}
+  else if(b.loai==='dien'){let k=0;const items=b.cau.map((c,ci)=>{let j=0;
+      const t=c.text.replace(/\{\}/g,()=>{const da=c.da[j++];k++;return sel('b'+n+'_'+ci+'_'+j,c.lc||lc,da,'B'+n+'.'+(b.cau.length>1||c.da.length>1?k:1));});
+      return c.hinh?'<div class="card"><div class="hinh">'+c.hinh+'</div><div class="c-dien">'+t+'</div></div>':'<div class="c-dien">'+t+'</div>';});
+    h+=b.cau.some(c=>c.hinh)?'<div class="cards">'+items.join('')+'</div>':items.join('');}
+  else if(b.loai==='traloi'){b.cau.forEach((c,ci)=>{const l=ABC[ci];
+    h+='<div class="c-chon" style="align-items:flex-start"><span class="lt">'+l+')</span><div class="grow">'+c.text.replace('{}',()=>sel('b'+n+'_'+l,c.lc||lc,c.da,'B'+n+'.'+l))+'</div></div>';});}
+  if(b.hinh) h='<div class="hinhbai"><div class="hinh'+(b.khungHinh?' hinhkhung':'')+'">'+b.hinh+'</div><div class="ds-cau">'+h+'</div></div>';
+  html+='<section><div class="bai"><span class="badge" style="background:'+mau+'">Bài '+n+'</span><span class="yc">'+b.yc+'</span></div>'+h+'</section>';
+});
+$('noidung').innerHTML=html;
+const sels=[...document.querySelectorAll('select[data-k]')];
+const BG=new Image();BG.src='../../assets/bg.jpg';
+function fit(){const f=$('fit'),p=$('paper');const s=Math.min(1,f.clientWidth/794);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';}
+window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
+let curCanvas=null,curName='KetQua',done=false;
+function nhanXet(d){
+  if(d>=10)return 'Xuất sắc! Em làm đúng tất cả các câu.';
+  if(d>=8)return 'Giỏi lắm! Em xem lại các câu màu đỏ để nhớ bài hơn nhé.';
+  if(d>=6.5)return 'Khá tốt! Em ôn lại các câu còn sai nhé.';
+  if(d>=5)return 'Đạt yêu cầu. Em đọc lại bài trong sách để nắm chắc hơn.';
+  return 'Em cần cố gắng hơn. Hãy đọc lại bài và hỏi thầy cô khi chưa hiểu nhé.';}
+function tinh(){
+  let thieu=0;sels.forEach(s=>{if(!s.value)thieu++;});
+  const ten=$('ten').value.trim(),lop=$('lop').value;let d=0;const det=[];
+  sels.forEach(s=>{const ok=s.value===ANS[s.dataset.k];if(ok)d++;det.push(LAB[s.dataset.k]+' '+(ok?'Đ':'S'));});
+  const n=sels.length,diem=Math.round(d/n*20)/2,diemTxt=String(diem).replace('.',','),nx=nhanXet(diem);
+  const chiTiet='Đúng '+d+'/'+n+' câu. '+nx+'\nChi tiết: '+det.join('; ');
+  let url='';
+  if(P.guiB){const q=new URLSearchParams({phieu:P.ma||P.tieuDe,ten,lop,diem:diemTxt,dung:d+'/'+n,nhanxet:nx,chitiet:det.join('; ')});url=P.guiB+'?'+q.toString();}
+  else if(P.guiA){const A=P.guiA,q=new URLSearchParams();if(A.phieu)q.set(A.phieu,P.ma||P.tieuDe);q.set(A.ten,ten);q.set(A.lop,lop);q.set(A.diem,diemTxt);
+    q.set(A.chiTiet,(A.phieu?'':'['+(P.ma||P.tieuDe)+'] ')+chiTiet);q.set('submit','Submit');url=A.url+'?'+q.toString();}
+  return {du:!thieu&&!!ten&&!!lop,thieu,ten,lop,d,n,diem,nx,det,url};
+}
+// Gửi điểm ngầm (không mở tab mới). Không đọc được phản hồi từ Google (no-cors),
+// nên chỉ báo lỗi khi mạng hỏng; luôn để sẵn link dự phòng.
+function guiDiem(url){
+  const s=$('sent'),link=' <a href="'+esc(url)+'" target="_blank" rel="noopener">Gửi điểm cho cô</a>';
+  if(!url){s.className='sent';s.textContent='Phiếu này chưa cài nơi nhận điểm. Em chụp ảnh kết quả gửi cô nhé.';return;}
+  fetch(url,{method:'GET',mode:'no-cors',cache:'no-store'})
+    .then(()=>{s.className='sent ok';s.innerHTML='✓ Điểm của em đã được gửi cho cô.<div style="font-weight:normal;font-size:14px;margin-top:4px">Nếu cô nhắc chưa nhận được bài, em bấm vào đây:'+link+'</div>';})
+    .catch(()=>{s.className='sent loi';s.innerHTML='Chưa gửi được điểm (mạng có vấn đề). Em bấm vào đây để gửi:'+link;});
+}
+function wrap(ctx,t,w){const out=[];let line='';for(const word of t.split(' ')){const tt=line?line+' '+word:word;if(ctx.measureText(tt).width>w&&line){out.push(line);line=word;}else line=tt;}if(line)out.push(line);return out;}
+function rr(x,X,Y,w,h,r,fill,stroke,lw){x.beginPath();x.roundRect(X,Y,w,h,r);if(fill){x.fillStyle=fill;x.fill();}if(stroke){x.strokeStyle=stroke;x.lineWidth=lw||2;x.stroke();}}
+function veAnh(r){
+  const W=794,H=1123,L=88,R=706,CW=R-L,F='Arial, Helvetica, sans-serif';
+  const c=document.createElement('canvas'),x=c.getContext('2d');c.width=W*2;c.height=H*2;x.scale(2,2);
+  x.fillStyle='#fff';x.fillRect(0,0,W,H);try{if(BG.complete&&BG.naturalWidth)x.drawImage(BG,0,0,W,H);}catch(e){}
+  let y=150;x.fillStyle='#F28C28';x.font='bold 16px '+F;x.fillText('KẾT QUẢ BÀI TẬP',L,y);
+  x.fillStyle='#168DCE';x.font='bold 25px '+F;wrap(x,P.tieuDe,CW).slice(0,2).forEach((l,i)=>x.fillText(l,L,y+34+i*30));
+  const tl=Math.min(2,wrap(x,P.tieuDe,CW).length);x.fillStyle='#444';x.font='16px '+F;x.fillText(P.mon||'',L,y+34+tl*30);
+  y+=60+tl*30;
+  rr(x,L,y,CW,64,12,'#fff','#168DCE',3);x.fillStyle='#555';x.font='14px '+F;x.fillText('Học sinh',L+14,y+21);
+  x.fillStyle='#222';x.font='bold 22px '+F;x.fillText(r.ten+' – Lớp '+r.lop,L+14,y+50);y+=80;
+  x.font='18px '+F;const lines=wrap(x,'Đúng '+r.d+'/'+r.n+' câu. '+r.nx,CW-200);const bh=Math.max(140,lines.length*26+52);
+  rr(x,L,y,155,bh,12,'#fff','#F28C28',3);x.fillStyle='#555';x.font='14px '+F;x.fillText('Điểm',L+14,y+22);
+  x.fillStyle='#F28C28';x.font='bold 62px '+F;x.textAlign='center';x.fillText(String(r.diem).replace('.',','),L+77,y+bh/2+36);x.textAlign='left';
+  rr(x,L+170,y,CW-170,bh,12,'#fff','#65B843',3);x.fillStyle='#555';x.font='14px '+F;x.fillText('Nhận xét',L+184,y+22);
+  x.fillStyle='#222';x.font='18px '+F;lines.forEach((l,i)=>x.fillText(l,L+184,y+50+i*26));y+=bh+28;
+  x.fillStyle='#222';x.font='bold 17px '+F;x.fillText('Đúng (✓) / sai (✗) từng câu:',L,y);y+=14;
+  const cols=6,cw=(CW-(cols-1)*8)/cols,rowH=r.det.length>36?36:48,chH=rowH-8;
+  r.det.forEach((t,i)=>{const ok=t.endsWith('Đ'),cx=L+(i%cols)*(cw+8),cy=y+Math.floor(i/cols)*rowH;
+    rr(x,cx,cy,cw,chH,9,ok?'#E9F7EE':'#FDECEC',ok?'#1E7E3A':'#C62828',2);x.fillStyle=ok?'#1E7E3A':'#C62828';x.font='bold 14px '+F;x.textAlign='center';
+    x.fillText(t.replace(/ [ĐS]$/,'')+(ok?'  ✓':'  ✗'),cx+cw/2,cy+chH/2+5);x.textAlign='left';});
+  y+=Math.ceil(r.det.length/cols)*rowH+22;
+  const now=new Date(),p2=v=>String(v).padStart(2,'0');
+  x.fillStyle='#444';x.font='15px '+F;x.fillText('Thời gian làm bài: '+p2(now.getHours())+':'+p2(now.getMinutes())+' ngày '+p2(now.getDate())+'/'+p2(now.getMonth()+1)+'/'+now.getFullYear(),L,Math.min(y,935));
+  curCanvas=c;curName=('KetQua_'+r.lop+'_'+r.ten).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d').replace(/Đ/g,'D').replace(/[^A-Za-z0-9_]+/g,'_');
+  try{$('anh').src=c.toDataURL('image/png');}catch(e){}
+  $('luuPdf').classList.toggle('hidden',!window.jspdf);
+}
+$('check').addEventListener('click',()=>{
+  if(done)return;
+  const r=tinh();sels.forEach(s=>s.classList.toggle('thieu',!s.value));
+  $('ten').classList.toggle('thieu',!r.ten);$('lop').classList.toggle('thieu',!r.lop);
+  if(!r.du){const m=[];if(!r.ten)m.push('nhập họ tên');if(!r.lop)m.push('chọn lớp');if(r.thieu)m.push('làm '+r.thieu+' ô còn trống (tô màu cam)');
+    $('thieuMsg').textContent='Em chưa '+m.join(', ')+'. Hãy làm đủ rồi bấm Tính điểm nhé.';(document.querySelector('.thieu')||$('check')).scrollIntoView({behavior:'smooth',block:'center'});return;}
+  $('thieuMsg').textContent='';done=true;
+  sels.forEach(s=>s.classList.add(s.value===ANS[s.dataset.k]?'ok':'no'));
+  document.querySelectorAll('select,input').forEach(e=>e.disabled=true);
+  const a=$('check');a.textContent='Đã tính điểm';a.classList.add('done');a.disabled=true;
+  guiDiem(r.url);
+  veAnh(r);$('ketqua').classList.remove('hidden');fit();
+  setTimeout(()=>$('ketqua').scrollIntoView({behavior:'smooth',block:'start'}),400);
+});
+function taiVe(name,blob){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);}
+$('luuPng').onclick=()=>{if(curCanvas)curCanvas.toBlob(b=>taiVe(curName+'.png',b),'image/png');};
+$('luuPdf').onclick=()=>{if(!curCanvas||!window.jspdf)return;const pdf=new jspdf.jsPDF({orientation:'p',unit:'mm',format:'a4'});
+  pdf.addImage(curCanvas.toDataURL('image/jpeg',0.92),'JPEG',0,0,210,297);taiVe(curName+'.pdf',pdf.output('blob'));};
+window.__PHIEU_TEST__={ANS,sels,tinh};
+})();
+</script>
+</body></html>
