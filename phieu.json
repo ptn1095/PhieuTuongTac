@@ -1,5 +1,53 @@
 [
   {
+    "khoi": "khoi-5",
+    "mon": "Tin học – Scratch",
+    "ten": "Variables – Phần 2: Danh sách (List)",
+    "lop": [
+      "Lớp 5",
+      "ĐT - K2",
+      "ĐT - K3"
+    ],
+    "ngay": "2026-11-10",
+    "link": "phieu/scratch-variables-2-danh-sach/"
+  },
+  {
+    "khoi": "doi-tuyen",
+    "mon": "Tin học – Scratch",
+    "ten": "Variables – Phần 2: Danh sách (List)",
+    "lop": [
+      "Lớp 5",
+      "ĐT - K2",
+      "ĐT - K3"
+    ],
+    "ngay": "2026-11-10",
+    "link": "phieu/scratch-variables-2-danh-sach/"
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học – Scratch",
+    "ten": "Variables – Phần 1: Biến nhớ",
+    "lop": [
+      "Lớp 5",
+      "ĐT - K2",
+      "ĐT - K3"
+    ],
+    "ngay": "2026-11-10",
+    "link": "phieu/scratch-variables-1-bien-nho/"
+  },
+  {
+    "khoi": "doi-tuyen",
+    "mon": "Tin học – Scratch",
+    "ten": "Variables – Phần 1: Biến nhớ",
+    "lop": [
+      "Lớp 5",
+      "ĐT - K2",
+      "ĐT - K3"
+    ],
+    "ngay": "2026-11-10",
+    "link": "phieu/scratch-variables-1-bien-nho/"
+  },
+  {
     "khoi": "doi-tuyen",
     "mon": "Tin học – Scratch",
     "ten": "Nhóm lệnh Bút vẽ (Pen)",

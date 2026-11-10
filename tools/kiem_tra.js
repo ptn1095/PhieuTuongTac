@@ -40,7 +40,7 @@ const server = http.createServer((req, res) => {
     await page.close();
   }
 
-  for (const p of ds.filter(p => p.link.startsWith('phieu/'))) {
+  for (const p of ds.filter((p, i) => p.link.startsWith('phieu/') && ds.findIndex(q => q.link === p.link) === i)) {
     console.log(p.link);
     for (const [ten, vp] of [['may_tinh', { width: 900, height: 1200 }], ['dien_thoai', { width: 390, height: 844 }]]) {
       const page = await browser.newPage({ viewport: vp });

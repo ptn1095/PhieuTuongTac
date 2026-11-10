@@ -28,6 +28,8 @@ tools/NhanDiem.gs     Apps Script nhận điểm (dán vào Google Sheet)
 <!-- DS_PHIEU -->
 | Khối | Môn | Tên phiếu | Lớp | Ngày | Link |
 |---|---|---|---|---|---|
+| Khối 5, Đội Tuyển | Tin học – Scratch | Variables – Phần 2: Danh sách (List) | Lớp 5, ĐT - K2, ĐT - K3 | 10/11/2026 | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-variables-2-danh-sach/) |
+| Khối 5, Đội Tuyển | Tin học – Scratch | Variables – Phần 1: Biến nhớ | Lớp 5, ĐT - K2, ĐT - K3 | 10/11/2026 | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-variables-1-bien-nho/) |
 | Đội Tuyển | Tin học – Scratch | Nhóm lệnh Bút vẽ (Pen) | ĐT Tin - K2, ĐT Tin - K3 | 10/11/2026 | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-but-ve-pen/) |
 | Khối 9 | Tin học 9 | Công cụ xác thực dữ liệu (Data Validation) | 9A1 – 9A10 | 10/11/2026 | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/tin9-xac-thuc-du-lieu/) |
 <!-- /DS_PHIEU -->

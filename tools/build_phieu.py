@@ -28,7 +28,8 @@ def ghi(path, text):
 def kiem_tra(slug, P):
     """Bắt các lỗi hay gặp trước khi đăng."""
     w = P.get("web") or {}
-    assert w.get("khoi") in TEN_KHOI, f"{slug}: web.khoi phải là một trong {list(TEN_KHOI)}"
+    khoi = w.get("khoi") if isinstance(w.get("khoi"), list) else [w.get("khoi")]
+    assert khoi and all(k in TEN_KHOI for k in khoi), f"{slug}: web.khoi phải là một (hoặc danh sách) trong {list(TEN_KHOI)}"
     assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", w.get("ngay", "")), f"{slug}: web.ngay phải dạng YYYY-MM-DD"
     assert P.get("lop"), f"{slug}: thiếu danh sách lớp"
     assert P.get("guiB") or P.get("guiA"), f"{slug}: thiếu nơi nhận điểm (guiB hoặc guiA)"
@@ -60,8 +61,10 @@ def main():
         js = "const PHIEU = " + json.dumps(P, ensure_ascii=False).replace("</", "<\\/") + ";"
         ghi(os.path.join(thu_muc, "index.html"), engine.replace("/*__PHIEU__*/", js))
         w = P["web"]
-        ds.append({"khoi": w["khoi"], "mon": w.get("mon") or P.get("mon", ""), "ten": w.get("ten") or P["tieuDe"],
-                   "lop": P["lop"], "ngay": w["ngay"], "link": f"phieu/{slug}/"})
+        # Một phiếu có thể hiện ở nhiều khối: mỗi khối một dòng trong phieu.json
+        for k in (w["khoi"] if isinstance(w["khoi"], list) else [w["khoi"]]):
+            ds.append({"khoi": k, "mon": w.get("mon") or P.get("mon", ""), "ten": w.get("ten") or P["tieuDe"],
+                       "lop": P["lop"], "ngay": w["ngay"], "link": f"phieu/{slug}/"})
         so_cau = sum(len(b["cau"]) for b in P["bai"])
         print(f"OK  phieu/{slug}/  ({len(P['bai'])} bài, {so_cau} mục)")
 
@@ -75,16 +78,22 @@ def main():
     def lop_txt(lop):
         return f"{lop[0]} – {lop[-1]}" if len(lop) > 3 else ", ".join(lop)
     dong = ["| Khối | Môn | Tên phiếu | Lớp | Ngày | Link |", "|---|---|---|---|---|---|"]
+    gop = {}
     for p in ds:
+        if p["link"] in gop:
+            gop[p["link"]]["khoi_ds"].append(p["khoi"])
+        else:
+            gop[p["link"]] = {**p, "khoi_ds": [p["khoi"]]}
+    for p in gop.values():
         ngay = "/".join(reversed(p["ngay"].split("-")))
         link = p["link"] if p["link"].startswith("http") else "https://ptn1095.github.io/PhieuTuongTac/" + p["link"]
-        dong.append(f"| {TEN_KHOI[p['khoi']]} | {p['mon']} | {p['ten']} | {lop_txt(p['lop'])} | {ngay} | [Mở phiếu]({link}) |")
+        dong.append(f"| {', '.join(TEN_KHOI[k] for k in p['khoi_ds'])} | {p['mon']} | {p['ten']} | {lop_txt(p['lop'])} | {ngay} | [Mở phiếu]({link}) |")
     readme = os.path.join(GOC, "README.md")
     text = open(readme, encoding="utf-8").read()
     bang = "<!-- DS_PHIEU -->\n" + "\n".join(dong) + "\n<!-- /DS_PHIEU -->"
     text = re.sub(r"<!-- DS_PHIEU -->.*?<!-- /DS_PHIEU -->", lambda m: bang, text, flags=re.S)
     ghi(readme, text)
-    print(f"OK  phieu.json + README.md ({len(ds)} phiếu)")
+    print(f"OK  phieu.json + README.md ({len(gop)} phiếu)")
 
 
 if __name__ == "__main__":
