@@ -1,6 +1,25 @@
 [
   {
     "khoi": "khoi-3",
+    "mon": "Công nghệ 3",
+    "ten": "Bài 4: Sử dụng máy thu thanh",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-12",
+    "soCau": 24,
+    "phut": 15,
+    "link": "phieu/cn3-bai4-may-thu-thanh/",
+    "ma": "CN3 - Bài 4 Máy thu thanh",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-3",
     "mon": "Tin học – Scratch lớp 3",
     "ten": "Tiết 9: Dự án 2 Hứng trái cây – Điều khiển nhân vật",
     "lop": [
