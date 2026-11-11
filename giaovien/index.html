@@ -92,7 +92,7 @@ td.d{font-weight:bold}
 .truc2{display:flex;gap:3px;padding:6px 2px 0;font-size:11.5px;color:var(--phu)}
 .truc2 span{flex:1;min-width:0;text-align:center;white-space:nowrap;overflow:visible}
 .tt{display:inline-block;font-size:12.5px;font-weight:bold;border-radius:999px;padding:2px 10px;white-space:nowrap}
-.tt.mo{background:#E9F7EE;color:#1E7E3A;border:1.5px solid #2E9E4F} .tt.chua{background:#FFF8E1;color:#8A5300;border:1.5px solid #F5C04A} .tt.dong{background:#EEF1F4;color:#5A6B7B;border:1.5px solid #B9C7D3}
+.tt.mo{background:#E9F7EE;color:#1E7E3A;border:1.5px solid #2E9E4F} .tt.chua{background:#FFF8E1;color:#8A5300;border:1.5px solid #F5C04A} .tt.chuagiao{background:#F3EEFA;color:#6B4BA1;border:1.5px dashed #8E5BD8} .tt.dong{background:#EEF1F4;color:#5A6B7B;border:1.5px solid #B9C7D3}
 tr.hom-nay td{background:#F4FAFE}
 .nut-csv{font:inherit;font-size:14px;font-weight:bold;color:#1E7E3A;background:#fff;border:2px solid #2E9E4F;border-radius:999px;padding:6px 14px;cursor:pointer;margin-left:auto}
 .dau-bang{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
@@ -290,23 +290,23 @@ const dongCua=p=>p.dong?ngayGioP(p.dong,true):null;
 function ngayGioP(v,cuoi){const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?$/);if(!m)return null;
   return m[4]!=null?new Date(+m[1],m[2]-1,+m[3],+m[4],+m[5]):new Date(+m[1],m[2]-1,+m[3],cuoi?23:0,cuoi?59:0,cuoi?59:0);}
 const motPhieu=()=>{const da=new Set();return DS_PHIEU.filter(p=>p.ma&&!da.has(p.link)&&da.add(p.link));};
-const PHIEU_GIAO=()=>motPhieu().filter(p=>moCua(p)<=new Date()&&ngayTrongTG(isoNgay(moCua(p))));
+const PHIEU_GIAO=()=>motPhieu().filter(p=>!p.chuaGiao&&moCua(p)<=new Date()&&ngayTrongTG(isoNgay(moCua(p))));
 // ===== Lịch giao phiếu =====
 function veLich(){
   const l=$('chonLop').value,bay=new Date(),hn=isoNgay(bay);
-  const ds=motPhieu().filter(p=>!l||p.lop.includes(l)).sort((a,b)=>moCua(a)-moCua(b));
-  const tt=p=>{const m=moCua(p),d=dongCua(p);return bay<m?'chua':d&&bay>d?'dong':'mo';};
-  const dem={mo:0,chua:0,dong:0};ds.forEach(p=>dem[tt(p)]++);
+  const tt=p=>{if(p.chuaGiao)return 'chuagiao';const m=moCua(p),d=dongCua(p);return bay<m?'chua':d&&bay>d?'dong':'mo';};
+  const ds=motPhieu().filter(p=>!l||p.lop.includes(l)).sort((a,b)=>(tt(a)==='chuagiao')-(tt(b)==='chuagiao')||moCua(a)-moCua(b));
+  const dem={mo:0,chua:0,dong:0,chuagiao:0};ds.forEach(p=>dem[tt(p)]++);
   const tiep=ds.find(p=>tt(p)==='chua');
   const o=(nhan,gia,them)=>'<div class="o-so"><div class="nhan">'+nhan+'</div><div class="gia">'+gia+'</div><div class="them">'+(them||'&nbsp;')+'</div></div>';
-  $('lichSo').innerHTML=o('Đang mở',dem.mo,'học sinh đang làm')+o('Sắp mở',dem.chua,'học sinh chưa thấy')+o('Đã đóng',dem.dong,'')+
+  $('lichSo').innerHTML=o('Đang mở',dem.mo,'học sinh đang làm')+o('Sắp mở',dem.chua,'học sinh chưa thấy')+o('Đã đóng',dem.dong,dem.chuagiao?dem.chuagiao+' phiếu chưa giao':'')+
     o('Phiếu mở tiếp theo',tiep?ngayVN(moCua(tiep)).slice(0,5):'–',tiep?esc(tiep.ten):'');
   const gio=d=>d?ngayVN(d)+((d.getHours()||d.getMinutes())&&!(d.getHours()===23&&d.getMinutes()===59)?' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'):''):'–';
-  const nhanTT={mo:'Đang mở',chua:'Sắp mở',dong:'Đã đóng'};
+  const nhanTT={mo:'Đang mở',chua:'Sắp mở',dong:'Đã đóng',chuagiao:'Chưa giao'};
   $('lichBang').innerHTML=ds.length?ds.map(p=>{const t=tt(p),sh=DL.phieu.find(x=>x.ten===tenTrang(p.ma)),n=sh?sh.hang.filter(h=>!l||h[2]===l).length:0;
-    return '<tr class="'+(isoNgay(moCua(p))===hn?'hom-nay':'')+'"><td><b>'+gio(moCua(p))+'</b></td><td>'+gio(dongCua(p))+'</td><td>'+esc(p.ten)+'<div class="ghi-chu">'+esc(p.mon)+'</div></td>'+
+    return '<tr class="'+(t!=='chuagiao'&&isoNgay(moCua(p))===hn?'hom-nay':'')+'"><td><b>'+(t==='chuagiao'?'–':gio(moCua(p)))+'</b></td><td>'+gio(dongCua(p))+'</td><td>'+esc(p.ten)+'<div class="ghi-chu">'+esc(p.mon)+'</div></td>'+
       '<td style="white-space:normal;min-width:140px;font-size:13px">'+esc(p.lop.join(', '))+'</td><td><span class="tt '+t+'">'+nhanTT[t]+'</span></td><td>'+n+'</td>'+
-      '<td><a href="../'+esc(p.link)+'" target="_blank" rel="noopener" style="font-weight:bold;color:var(--bien)">'+(t==='chua'?'Xem trước':'Mở')+' ↗</a></td></tr>';}).join('')
+      '<td><a href="../'+esc(p.link)+'" target="_blank" rel="noopener" style="font-weight:bold;color:var(--bien)">'+(t==='chua'||t==='chuagiao'?'Xem trước':'Mở')+' ↗</a></td></tr>';}).join('')
     :'<tr><td colspan="7" class="trong-rong">Chưa có phiếu nào.</td></tr>';
 }
 function veTH(){

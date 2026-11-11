@@ -78,6 +78,9 @@ Khi cô gửi nhiều file và muốn giao dần (ví dụ "mỗi thứ Hai mở
    Ngày lễ / nghỉ cô nêu thì bỏ qua tuần đó.
 4. Build + kiểm tra + đẩy lên **một lần** cho cả đợt.
 5. Báo cô **bảng lịch**: Phiếu | Mở | Hạn | Lớp | link; nhắc cô xem tab **🗓 Lịch giao phiếu** trên trang tổng hợp và bấm **Xem trước** để làm thử từng phiếu.
+**Chưa giao (chưa có ngày):** cô nói "chưa giao" → thêm `"chuaGiao": true` vào `web`. Phiếu ẩn với học sinh (mở link → "Phiếu chưa được giao"), trang tổng hợp ghi "Chưa giao", cô vẫn xem trước được. Khi cô bảo giao: bỏ `chuaGiao`, đặt `mo`/`dong` (hoặc chỉ bỏ `chuaGiao` để mở ngay).
+**Không cho xem đáp án** sau khi nộp (tránh nhìn bài nhau): `"xemDapAn": false`. **Trộn phương án:** `"tron": true`.
+**Câu gõ công thức** (`go`): thêm `"congThuc": true` để bỏ qua khoảng trắng và dấu = ở đầu (=A5*B5 ≡ a5 * b5).
 Hành vi: phiếu chưa tới ngày mở **ẩn với học sinh** (trang chủ không hiện; mở link trực tiếp thì báo "Phiếu chưa mở"). Muốn học sinh thấy trước với nhãn "SẮP MỞ" thì thêm `"hienTruoc": true` vào `web`.
 Máy cô (đã đăng nhập trang tổng hợp) thấy cả phiếu sắp mở ("chỉ cô thấy") và làm thử được ("Cô đang xem trước" – không gửi điểm, không lưu tên).
 Đổi lịch: sửa `mo`/`dong` → build → push (link giữ nguyên). Thống kê "phiếu được giao" tính theo ngày mở, phiếu chưa mở không tính.

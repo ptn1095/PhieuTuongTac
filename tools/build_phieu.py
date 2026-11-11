@@ -88,7 +88,7 @@ def main():
         for k in (w["khoi"] if isinstance(w["khoi"], list) else [w["khoi"]]):
             ds.append({"khoi": k, "mon": w.get("mon") or P.get("mon", ""), "ten": w.get("ten") or P["tieuDe"],
                        "lop": P["lop"], "ngay": w["ngay"], "soCau": so_o, "phut": phut, "link": f"phieu/{slug}/", "ma": P.get("ma") or P["tieuDe"],
-                       **{k: w[k] for k in ("mo", "dong", "hienTruoc") if w.get(k)}})
+                       **{k: w[k] for k in ("mo", "dong", "hienTruoc", "chuaGiao") if w.get(k)}})
         so_cau = sum(len(b["cau"]) for b in P["bai"])
         print(f"OK  phieu/{slug}/  ({len(P['bai'])} bài, {so_cau} mục)")
 
@@ -112,6 +112,8 @@ def main():
         vn = lambda v: "/".join(reversed(str(v)[:10].split("-"))) + (" " + str(v)[11:] if len(str(v)) > 10 else "")
         ngay = vn(p.get("mo") or p["ngay"])
         han = vn(p["dong"]) if p.get("dong") else "–"
+        if p.get("chuaGiao"):
+            ngay, han = "Chưa giao", "–"
         link = p["link"] if p["link"].startswith("http") else "https://ptn1095.github.io/PhieuTuongTac/" + p["link"]
         dong.append(f"| {', '.join(TEN_KHOI[k] for k in p['khoi_ds'])} | {p['mon']} | {p['ten']} | {lop_txt(p['lop'])} | {ngay} | {han} | [Mở phiếu]({link}) |")
     readme = os.path.join(GOC, "README.md")

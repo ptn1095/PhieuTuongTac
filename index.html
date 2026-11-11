@@ -135,9 +135,10 @@ const dm=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padSt
 // Máy của cô (đã đăng nhập trang tổng hợp) thấy cả phiếu chưa mở để xem trước
 const LA_CO=(()=>{try{return !!localStorage.getItem('coThuyTin_gv');}catch(e){return false;}})();
 // Phiếu chưa tới ngày mở: ẩn với học sinh (trừ khi phiếu đặt "hienTruoc")
-const hien=p=>trangThai(p).t!=='chua'||p.hienTruoc||LA_CO;
+const hien=p=>trangThai(p).t!=='chua'||(p.hienTruoc&&!p.chuaGiao)||LA_CO;
 const ngayMo=p=>p.mo?String(p.mo).slice(0,10):p.ngay;
 function trangThai(p){const bay=new Date(),mo=ngayGio(p.mo,false),dong=ngayGio(p.dong,true);
+  if(p.chuaGiao)return{t:'chua',chuaGiao:true};
   if(mo&&bay<mo)return{t:'chua',mo};if(dong&&bay>dong)return{t:'dong',dong};return{t:'mo',dong};}
 function fit(){const f=$('fit'),p=$('paper'),hep=f.clientWidth<600,W=hep?480:794;p.classList.toggle('hep',hep);f.style.maxWidth=hep?'none':'794px';const s=Math.min(1,f.clientWidth/W);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';}
 function veTabs(){
@@ -175,9 +176,9 @@ function veList(){
   if(!ds.length){$('list').innerHTML='<div class="trong"><b>'+(q?'Không tìm thấy phiếu phù hợp':'Chưa có phiếu nào')+'</b>'+(q?'Em thử gõ từ khác nhé.':LOP!=='*'?'Lớp '+esc(LOP)+' chưa có phiếu nào. Cô sẽ sớm đưa phiếu lên!':'Cô sẽ sớm đưa phiếu bài tập lên đây!')+'</div>';fit();return;}
   $('list').innerHTML=ds.map(p=>{const nm=ngayMo(p),d=nm?nm.split('-').reverse().join('/'):'';
     const moi=nm&&(Date.now()-new Date(nm+'T00:00:00'))<7*864e5,tt=trangThai(p),slug=p.link.split('/').filter(Boolean).pop(),dl=DA_LAM[slug];
-    const nut=tt.t==='chua'?(LA_CO?'<a class="go" href="'+esc(p.link)+'">Cô xem trước ➜</a>':'<span class="go tat">Mở ngày '+dm(tt.mo)+'</span>'):tt.t==='dong'?'<span class="go tat">Đã hết hạn</span>':'<a class="go" href="'+esc(p.link)+'">Làm bài ➜</a>';
+    const nut=tt.t==='chua'?(LA_CO?'<a class="go" href="'+esc(p.link)+'">Cô xem trước ➜</a>':'<span class="go tat">'+(tt.chuaGiao?'Chưa giao':'Mở ngày '+dm(tt.mo))+'</span>'):tt.t==='dong'?'<span class="go tat">Đã hết hạn</span>':'<a class="go" href="'+esc(p.link)+'">Làm bài ➜</a>';
     return '<article class="card'+(tt.t==='dong'?' dong':'')+'" style="--c:'+k.c+'"><div class="ic" aria-hidden="true">'+k.ic+'</div><div class="bd"><div class="mon">'+esc(p.mon||'')+'</div><div class="tp">'+esc(p.ten)+
-      (tt.t==='dong'?'<span class="nhan">ĐÃ ĐÓNG</span>':tt.t==='chua'?'<span class="nhan">SẮP MỞ '+dm(tt.mo)+(LA_CO&&!p.hienTruoc?' · chỉ cô thấy':'')+'</span>':moi?'<span class="moi">MỚI</span>':'')+'</div>'+
+      (tt.t==='dong'?'<span class="nhan">ĐÃ ĐÓNG</span>':tt.t==='chua'?'<span class="nhan">'+(tt.chuaGiao?'CHƯA GIAO':'SẮP MỞ '+dm(tt.mo))+(LA_CO&&!p.hienTruoc?' · chỉ cô thấy':'')+'</span>':moi?'<span class="moi">MỚI</span>':'')+'</div>'+
     '<div class="chips">'+(p.lop||[]).map(l=>'<span class="chip'+(l===LOP?' cua-em':'')+'">'+esc(l)+'</span>').join('')+'</div>'+
     '<div class="meta">'+(p.soCau?'<span>📝 '+p.soCau+' câu</span>':'')+(p.phut?'<span>⏱ khoảng '+p.phut+' phút</span>':'')+(d?'<span>📅 '+d+'</span>':'')+
       (tt.t==='mo'&&tt.dong?'<span class="han">⏳ Hạn nộp: '+dm(tt.dong)+'</span>':'')+'</div>'+

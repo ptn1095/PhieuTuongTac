@@ -1,0 +1,273 @@
+{
+ "web": {
+  "khoi": "khoi-9",
+  "mon": "Tin học 9",
+  "ten": "Bảng tính 6: Ôn tập tổng hợp",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 9 - BT6 Ôn tập tổng hợp",
+ "mon": "TIN HỌC 9 – PHẦN MỀM BẢNG TÍNH",
+ "tieuDe": "Phiếu bài tập 6 – Ôn tập: hàm, công thức và biểu đồ",
+ "lop": [
+  "9A1",
+  "9A2",
+  "9A3",
+  "9A4",
+  "9A5",
+  "9A6",
+  "9A7",
+  "9A8",
+  "9A9",
+  "9A10"
+ ],
+ "tron": true,
+ "xemDapAn": false,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi hàm với công dụng của nó.",
+   "lc": [
+    "Tính trung bình cộng",
+    "Tính tổng các ô thỏa mãn điều kiện",
+    "Tính tổng",
+    "Đếm các ô chứa số",
+    "Trả về giá trị theo điều kiện đúng / sai",
+    "Đếm các ô thỏa mãn điều kiện"
+   ],
+   "cau": [
+    {
+     "text": "SUM",
+     "da": "Tính tổng"
+    },
+    {
+     "text": "AVERAGE",
+     "da": "Tính trung bình cộng"
+    },
+    {
+     "text": "COUNT",
+     "da": "Đếm các ô chứa số"
+    },
+    {
+     "text": "COUNTIF",
+     "da": "Đếm các ô thỏa mãn điều kiện"
+    },
+    {
+     "text": "SUMIF",
+     "da": "Tính tổng các ô thỏa mãn điều kiện"
+    },
+    {
+     "text": "IF",
+     "da": "Trả về giá trị theo điều kiện đúng / sai"
+    }
+   ]
+  },
+  {
+   "loai": "go",
+   "yc": "Bảng bán hàng như hình. Gõ công thức hoặc kết quả.<div style=\"margin-top:8px;font-weight:normal;overflow-x:auto\"><svg viewBox=\"0 0 496 206\" width=\"520\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial\" font-size=\"13\" role=\"img\" aria-label=\"Hình trang tính\"><rect width=\"496\" height=\"206\" fill=\"#fff\"/><rect x=\"1\" y=\"0\" width=\"33\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><rect x=\"34\" y=\"0\" width=\"90\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"79.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">A</text><rect x=\"124\" y=\"0\" width=\"130\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"189.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">B</text><rect x=\"254\" y=\"0\" width=\"80\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"294.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">C</text><rect x=\"334\" y=\"0\" width=\"70\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"369.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">D</text><rect x=\"404\" y=\"0\" width=\"90\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"449.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">E</text><rect x=\"1\" y=\"22\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"39\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">1</text><rect x=\"34\" y=\"22\" width=\"90\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Mặt hàng</text><rect x=\"124\" y=\"22\" width=\"130\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"130\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Loại</text><rect x=\"254\" y=\"22\" width=\"80\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"260\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Số lượng</text><rect x=\"334\" y=\"22\" width=\"70\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"340\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Đơn giá</text><rect x=\"404\" y=\"22\" width=\"90\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"410\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Thành tiền</text><rect x=\"1\" y=\"48\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"65\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">2</text><rect x=\"34\" y=\"48\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"65\" text-anchor=\"start\">Bút bi</text><rect x=\"124\" y=\"48\" width=\"130\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"130\" y=\"65\" text-anchor=\"start\">Văn phòng phẩm</text><rect x=\"254\" y=\"48\" width=\"80\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"328\" y=\"65\" text-anchor=\"end\">20</text><rect x=\"334\" y=\"48\" width=\"70\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"398\" y=\"65\" text-anchor=\"end\">5</text><rect x=\"404\" y=\"48\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"488\" y=\"65\" text-anchor=\"end\">100</text><rect x=\"1\" y=\"74\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"91\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">3</text><rect x=\"34\" y=\"74\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"91\" text-anchor=\"start\">Vở</text><rect x=\"124\" y=\"74\" width=\"130\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"130\" y=\"91\" text-anchor=\"start\">Văn phòng phẩm</text><rect x=\"254\" y=\"74\" width=\"80\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"328\" y=\"91\" text-anchor=\"end\">15</text><rect x=\"334\" y=\"74\" width=\"70\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"398\" y=\"91\" text-anchor=\"end\">12</text><rect x=\"404\" y=\"74\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"488\" y=\"91\" text-anchor=\"end\">180</text><rect x=\"1\" y=\"100\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"117\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">4</text><rect x=\"34\" y=\"100\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"117\" text-anchor=\"start\">Sữa</text><rect x=\"124\" y=\"100\" width=\"130\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"130\" y=\"117\" text-anchor=\"start\">Đồ uống</text><rect x=\"254\" y=\"100\" width=\"80\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"328\" y=\"117\" text-anchor=\"end\">10</text><rect x=\"334\" y=\"100\" width=\"70\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"398\" y=\"117\" text-anchor=\"end\">8</text><rect x=\"404\" y=\"100\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"488\" y=\"117\" text-anchor=\"end\">80</text><rect x=\"1\" y=\"126\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"143\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">5</text><rect x=\"34\" y=\"126\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"143\" text-anchor=\"start\">Nước cam</text><rect x=\"124\" y=\"126\" width=\"130\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"130\" y=\"143\" text-anchor=\"start\">Đồ uống</text><rect x=\"254\" y=\"126\" width=\"80\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"328\" y=\"143\" text-anchor=\"end\">12</text><rect x=\"334\" y=\"126\" width=\"70\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"398\" y=\"143\" text-anchor=\"end\">15</text><rect x=\"404\" y=\"126\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"488\" y=\"143\" text-anchor=\"end\">180</text><rect x=\"1\" y=\"152\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"169\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">6</text><rect x=\"34\" y=\"152\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"169\" text-anchor=\"start\">Bánh mì</text><rect x=\"124\" y=\"152\" width=\"130\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"130\" y=\"169\" text-anchor=\"start\">Đồ ăn</text><rect x=\"254\" y=\"152\" width=\"80\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"328\" y=\"169\" text-anchor=\"end\">9</text><rect x=\"334\" y=\"152\" width=\"70\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"398\" y=\"169\" text-anchor=\"end\">10</text><rect x=\"404\" y=\"152\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"488\" y=\"169\" text-anchor=\"end\">90</text><rect x=\"1\" y=\"178\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"195\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">7</text><rect x=\"34\" y=\"178\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"195\" text-anchor=\"start\">Thước</text><rect x=\"124\" y=\"178\" width=\"130\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"130\" y=\"195\" text-anchor=\"start\">Văn phòng phẩm</text><rect x=\"254\" y=\"178\" width=\"80\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"328\" y=\"195\" text-anchor=\"end\">6</text><rect x=\"334\" y=\"178\" width=\"70\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"398\" y=\"195\" text-anchor=\"end\">6</text><rect x=\"404\" y=\"178\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"488\" y=\"195\" text-anchor=\"end\">36</text></svg></div><div style=\"font-weight:normal;font-size:14px\">(Đơn giá và Thành tiền tính bằng nghìn đồng)</div>",
+   "cau": [
+    {
+     "text": "Công thức ở ô E2 (Thành tiền = Số lượng × Đơn giá): {}",
+     "da": [
+      "=C2*D2",
+      "=D2*C2"
+     ]
+    },
+    {
+     "text": "<b>=SUM(C2:C7)</b> = {}",
+     "da": "72"
+    },
+    {
+     "text": "<b>=AVERAGE(C2:C7)</b> = {}",
+     "da": "12"
+    },
+    {
+     "text": "<b>=COUNT(D2:D7)</b> = {}",
+     "da": "6"
+    },
+    {
+     "text": "<b>=SUM(E2:E7)</b> = {}",
+     "da": "666"
+    }
+   ],
+   "congThuc": true
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn kết quả đúng của mỗi công thức (dựa vào bảng ở Bài 2).",
+   "cau": [
+    {
+     "text": "<b>=COUNTIF(B2:B7,\"Văn phòng phẩm\")</b>",
+     "lc": [
+      "2",
+      "3",
+      "4",
+      "6"
+     ],
+     "da": "3"
+    },
+    {
+     "text": "<b>=SUMIF(B2:B7,\"Đồ uống\",E2:E7)</b>",
+     "lc": [
+      "80",
+      "180",
+      "260",
+      "22"
+     ],
+     "da": "260"
+    },
+    {
+     "text": "<b>=IF(E7&gt;=100,\"Cao\",\"Thấp\")</b>",
+     "lc": [
+      "Cao",
+      "Thấp",
+      "36",
+      "100"
+     ],
+     "da": "Thấp"
+    },
+    {
+     "text": "<b>=AVERAGE(E2:E7)</b>",
+     "lc": [
+      "111",
+      "666",
+      "12",
+      "100"
+     ],
+     "da": "111"
+    },
+    {
+     "text": "<b>=(C2+C3)*2</b>",
+     "lc": [
+      "35",
+      "50",
+      "70",
+      "40"
+     ],
+     "da": "70"
+    },
+    {
+     "text": "<b>=D4/2</b>",
+     "lc": [
+      "4",
+      "16",
+      "5",
+      "40"
+     ],
+     "da": "4"
+    }
+   ],
+   "cot": 4
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn kí hiệu thích hợp điền vào chỗ trống.",
+   "bank": [
+    "*",
+    "/",
+    "x",
+    ":",
+    "=",
+    "^",
+    "+"
+   ],
+   "lc": [
+    "*",
+    "/",
+    "x",
+    ":",
+    "=",
+    "^",
+    "+"
+   ],
+   "cau": [
+    {
+     "text": "1. Mọi công thức trong Excel bắt đầu bằng dấu {} .",
+     "da": [
+      "="
+     ]
+    },
+    {
+     "text": "2. Phép nhân dùng kí hiệu {} , phép chia dùng kí hiệu {} .",
+     "da": [
+      "*",
+      "/"
+     ]
+    },
+    {
+     "text": "3. Phép lũy thừa (ví dụ 2 mũ 3) dùng kí hiệu {} .",
+     "da": [
+      "^"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các bước chèn biểu đồ cột thể hiện <b>Thành tiền</b> theo <b>Mặt hàng</b>.",
+   "cau": [
+    {
+     "text": "Chọn vùng A1:A7, giữ phím Ctrl rồi chọn thêm vùng E1:E7"
+    },
+    {
+     "text": "Chọn dải lệnh Insert"
+    },
+    {
+     "text": "Trong nhóm Charts, chọn biểu đồ cột (Column)"
+    },
+    {
+     "text": "Chọn một kiểu biểu đồ cột cụ thể"
+    },
+    {
+     "text": "Sửa tiêu đề biểu đồ (Chart Title)"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn dạng biểu đồ phù hợp.",
+   "cau": [
+    {
+     "text": "So sánh thành tiền giữa các mặt hàng:",
+     "lc": [
+      "Biểu đồ cột",
+      "Biểu đồ tròn",
+      "Biểu đồ đường"
+     ],
+     "da": "Biểu đồ cột"
+    },
+    {
+     "text": "Thể hiện tỉ lệ phần trăm của từng loại hàng trên tổng doanh thu:",
+     "lc": [
+      "Biểu đồ cột",
+      "Biểu đồ tròn",
+      "Biểu đồ đường"
+     ],
+     "da": "Biểu đồ tròn"
+    },
+    {
+     "text": "Thể hiện doanh thu thay đổi qua 12 tháng:",
+     "lc": [
+      "Biểu đồ cột",
+      "Biểu đồ tròn",
+      "Biểu đồ đường"
+     ],
+     "da": "Biểu đồ đường"
+    },
+    {
+     "text": "Lệnh chèn biểu đồ nằm ở dải lệnh:",
+     "lc": [
+      "Home",
+      "Insert",
+      "Data",
+      "Formulas"
+     ],
+     "da": "Insert"
+    }
+   ],
+   "cot": 4
+  }
+ ]
+}

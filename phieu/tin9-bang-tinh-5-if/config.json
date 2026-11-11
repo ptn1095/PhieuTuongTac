@@ -1,0 +1,232 @@
+{
+ "web": {
+  "khoi": "khoi-9",
+  "mon": "Tin học 9",
+  "ten": "Bảng tính 5: Hàm IF",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 9 - BT5 IF",
+ "mon": "TIN HỌC 9 – PHẦN MỀM BẢNG TÍNH",
+ "tieuDe": "Phiếu bài tập 5 – Hàm IF",
+ "lop": [
+  "9A1",
+  "9A2",
+  "9A3",
+  "9A4",
+  "9A5",
+  "9A6",
+  "9A7",
+  "9A8",
+  "9A9",
+  "9A10"
+ ],
+ "tron": true,
+ "xemDapAn": false,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Kiến thức về hàm IF: chọn đáp án đúng.",
+   "cau": [
+    {
+     "text": "Cú pháp của hàm IF là:",
+     "lc": [
+      "=IF(logical_test, value_if_true, value_if_false)",
+      "=IF(value_if_true, logical_test, value_if_false)",
+      "=IF(logical_test, value_if_false, value_if_true)",
+      "=IF(range, criteria)"
+     ],
+     "da": "=IF(logical_test, value_if_true, value_if_false)"
+    },
+    {
+     "text": "Hàm IF trả về:",
+     "lc": [
+      "value_if_true khi điều kiện đúng, value_if_false khi điều kiện sai",
+      "Luôn trả về value_if_true",
+      "Số ô thỏa mãn điều kiện",
+      "Tổng các ô thỏa mãn điều kiện"
+     ],
+     "da": "value_if_true khi điều kiện đúng, value_if_false khi điều kiện sai"
+    },
+    {
+     "text": "Kết quả dạng văn bản trong hàm IF phải đặt trong:",
+     "lc": [
+      "Dấu ngoặc kép &quot; &quot;",
+      "Dấu ngoặc đơn ( )",
+      "Dấu nháy đơn &#x27; &#x27;",
+      "Không cần dấu gì"
+     ],
+     "da": "Dấu ngoặc kép &quot; &quot;"
+    },
+    {
+     "text": "Phép so sánh <b>khác</b> trong Excel được viết là:",
+     "lc": [
+      "&lt;&gt;",
+      "!=",
+      "&gt;&lt;",
+      "≠"
+     ],
+     "da": "&lt;&gt;"
+    }
+   ],
+   "cot": 1
+  },
+  {
+   "loai": "traloi",
+   "yc": "Ô C2 có công thức <b>=IF(B2&gt;=5,\"Đạt\",\"Chưa đạt\")</b>, được sao chép xuống C7. Chọn kết quả ở mỗi ô.<div style=\"margin-top:8px;font-weight:normal;overflow-x:auto\"><svg viewBox=\"0 0 246 206\" width=\"290\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial\" font-size=\"13\" role=\"img\" aria-label=\"Hình trang tính\"><rect width=\"246\" height=\"206\" fill=\"#fff\"/><rect x=\"1\" y=\"0\" width=\"33\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><rect x=\"34\" y=\"0\" width=\"120\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"94.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">A</text><rect x=\"154\" y=\"0\" width=\"90\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"199.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">B</text><rect x=\"1\" y=\"22\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"39\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">1</text><rect x=\"34\" y=\"22\" width=\"120\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Họ tên</text><rect x=\"154\" y=\"22\" width=\"90\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"160\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Điểm TB</text><rect x=\"1\" y=\"48\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"65\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">2</text><rect x=\"34\" y=\"48\" width=\"120\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"65\" text-anchor=\"start\">An</text><rect x=\"154\" y=\"48\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"238\" y=\"65\" text-anchor=\"end\">8</text><rect x=\"1\" y=\"74\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"91\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">3</text><rect x=\"34\" y=\"74\" width=\"120\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"91\" text-anchor=\"start\">Bình</text><rect x=\"154\" y=\"74\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"238\" y=\"91\" text-anchor=\"end\">4</text><rect x=\"1\" y=\"100\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"117\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">4</text><rect x=\"34\" y=\"100\" width=\"120\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"117\" text-anchor=\"start\">Chi</text><rect x=\"154\" y=\"100\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"238\" y=\"117\" text-anchor=\"end\">7</text><rect x=\"1\" y=\"126\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"143\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">5</text><rect x=\"34\" y=\"126\" width=\"120\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"143\" text-anchor=\"start\">Dũng</text><rect x=\"154\" y=\"126\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"238\" y=\"143\" text-anchor=\"end\">5</text><rect x=\"1\" y=\"152\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"169\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">6</text><rect x=\"34\" y=\"152\" width=\"120\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"169\" text-anchor=\"start\">Hà</text><rect x=\"154\" y=\"152\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"238\" y=\"169\" text-anchor=\"end\">9</text><rect x=\"1\" y=\"178\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"195\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">7</text><rect x=\"34\" y=\"178\" width=\"120\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"195\" text-anchor=\"start\">Khoa</text><rect x=\"154\" y=\"178\" width=\"90\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"238\" y=\"195\" text-anchor=\"end\">3</text></svg></div>",
+   "lc": [
+    "Đạt",
+    "Chưa đạt"
+   ],
+   "cau": [
+    {
+     "text": "C2 (An, 8 điểm): {}",
+     "da": "Đạt"
+    },
+    {
+     "text": "C3 (Bình, 4 điểm): {}",
+     "da": "Chưa đạt"
+    },
+    {
+     "text": "C4 (Chi, 7 điểm): {}",
+     "da": "Đạt"
+    },
+    {
+     "text": "C5 (Dũng, 5 điểm): {}",
+     "da": "Đạt"
+    },
+    {
+     "text": "C6 (Hà, 9 điểm): {}",
+     "da": "Đạt"
+    },
+    {
+     "text": "C7 (Khoa, 3 điểm): {}",
+     "da": "Chưa đạt"
+    }
+   ]
+  },
+  {
+   "loai": "go",
+   "yc": "Gõ kết quả của mỗi công thức (dựa vào bảng ở Bài 2).",
+   "cau": [
+    {
+     "text": "<b>=IF(10&gt;5,1,0)</b> cho kết quả: {}",
+     "da": "1"
+    },
+    {
+     "text": "<b>=IF(B3&gt;=5,B3*2,0)</b> cho kết quả: {}",
+     "da": "0"
+    },
+    {
+     "text": "<b>=IF(B2&gt;8,\"Giỏi\",\"Khá\")</b> cho kết quả: {}",
+     "da": "Khá"
+    },
+    {
+     "text": "<b>=IF(B6&gt;=9,100,50)</b> cho kết quả: {}",
+     "da": "100"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn từ thích hợp để hoàn thành công thức.",
+   "bank": [
+    "B2>=5",
+    "B2>5",
+    "B2<5",
+    "\"Đạt\"",
+    "\"Chưa đạt\"",
+    "\"Thưởng\"",
+    "\"\""
+   ],
+   "lc": [
+    "B2>=5",
+    "B2>5",
+    "B2<5",
+    "\"Đạt\"",
+    "\"Chưa đạt\"",
+    "\"Thưởng\"",
+    "\"\""
+   ],
+   "cau": [
+    {
+     "text": "1. Ghi \"Đạt\" nếu điểm ở B2 từ 5 trở lên, ngược lại ghi \"Chưa đạt\": =IF( {} , {} , {} )",
+     "da": [
+      "B2>=5",
+      "\"Đạt\"",
+      "\"Chưa đạt\""
+     ]
+    },
+    {
+     "text": "2. Ghi \"Thưởng\" nếu điểm ở B2 lớn hơn 8, ngược lại để trống: =IF(B2&gt;8, {} , {} )",
+     "da": [
+      "\"Thưởng\"",
+      "\"\""
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Điều kiện của hàm IF là một phép so sánh cho kết quả đúng hoặc sai.",
+     "da": "Đ"
+    },
+    {
+     "text": "Với B2 = 5, công thức <b>=IF(B2&gt;=5,\"Đạt\",\"Chưa đạt\")</b> cho kết quả \"Chưa đạt\".",
+     "da": "S"
+    },
+    {
+     "text": "Có thể dùng hàm IF lồng nhau để xếp loại nhiều mức.",
+     "da": "Đ"
+    },
+    {
+     "text": "Kết quả của hàm IF chỉ có thể là văn bản.",
+     "da": "S"
+    },
+    {
+     "text": "<b>=IF(B2&gt;=5,\"Đạt\",\"Chưa đạt\")</b> và <b>=IF(B2&lt;5,\"Chưa đạt\",\"Đạt\")</b> luôn cho cùng kết quả.",
+     "da": "Đ"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "IF lồng nhau: ô D2 có công thức <b>=IF(B2&gt;=8,\"Giỏi\",IF(B2&gt;=7,\"Khá\",\"Trung bình\"))</b>, sao chép xuống D7. Chọn kết quả (dựa vào bảng ở Bài 2).",
+   "cau": [
+    {
+     "text": "Kết quả của An (8 điểm):",
+     "lc": [
+      "Giỏi",
+      "Khá",
+      "Trung bình"
+     ],
+     "da": "Giỏi"
+    },
+    {
+     "text": "Kết quả của Chi (7 điểm):",
+     "lc": [
+      "Giỏi",
+      "Khá",
+      "Trung bình"
+     ],
+     "da": "Khá"
+    },
+    {
+     "text": "Kết quả của Dũng (5 điểm):",
+     "lc": [
+      "Giỏi",
+      "Khá",
+      "Trung bình"
+     ],
+     "da": "Trung bình"
+    }
+   ],
+   "cot": 4
+  }
+ ]
+}

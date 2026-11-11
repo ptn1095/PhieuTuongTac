@@ -103,8 +103,8 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 .sx.thieu{outline:3px solid #FFD4A8;outline-offset:4px;border-radius:12px}
 .sx-ok{font:inherit;font-size:14px;font-weight:bold;color:#2457A6;background:#fff;border:1.5px solid #2457A6;border-radius:999px;padding:4px 14px;margin-top:8px;cursor:pointer}
 /* Chế độ chiếu đáp án */
-.khoa.xem-truoc{border-color:#F5C04A;background:#FFF8E1} .khoa.xem-truoc b{color:#8A5300}
-.khoa.chieu{border-color:#2E9E4F;background:#E9F7EE} .khoa.chieu b{color:#1E7E3A}
+.khoa.xem-truoc{border-color:#F5C04A;background:#FFF8E1} .khoa.xem-truoc>b:first-child{color:#8A5300}
+.khoa.chieu{border-color:#2E9E4F;background:#E9F7EE} .khoa.chieu>b:first-child{color:#1E7E3A}
 /* Đúng/Sai bằng nút */
 .c-ds .opts.ds{margin:0;flex:none;grid-template-columns:repeat(2,auto);gap:6px}
 .opts.ds .opt{min-height:38px;padding:5px 12px 5px 6px;font-weight:bold}
@@ -115,7 +115,7 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 .xemlai button{font:inherit;font-weight:bold;color:#B35A00;background:#fff;border:1.5px solid #F28C28;border-radius:999px;padding:4px 14px;margin-top:6px;cursor:pointer}
 /* Phiếu đã đóng / chưa mở */
 .khoa{border:3px solid #9AA7B2;background:#F2F5F8;border-radius:14px;padding:14px 16px;text-align:center;font-size:16px}
-.khoa b{display:block;font-size:20px;color:#5A6B7B;margin-bottom:4px}
+.khoa>b:first-child{display:block;font-size:20px;color:#5A6B7B;margin-bottom:4px}
 #phaoGiay{position:fixed;inset:0;pointer-events:none;z-index:90}
 /* Thanh trên cùng: nút Trở về + tiến độ */
 .topbar{position:sticky;top:0;z-index:50;max-width:794px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(255,255,255,.96);border-radius:0 0 14px 14px;box-shadow:0 2px 10px rgba(0,0,0,.12)}
@@ -224,7 +224,9 @@ P.bai.forEach((b,bi)=>{
   else if(b.loai==='go'){b.cau.forEach((c,ci)=>{const l=ABC[ci],m=(c.text.match(/\{\}/g)||[]).length;let j=0;
     const t=c.text.replace(/\{\}/g,()=>{const nhan=m>1?l+(j+1):l,k='b'+n+'_'+l+(m>1?'_'+(j+1):'');
       const ds=m===1?(Array.isArray(c.da)?c.da:[c.da]):(Array.isArray(c.da[j])?c.da[j]:[c.da[j]]);j++;
-      ANS[k]=String(ds[0]);LAB[k]='B'+n+'.'+nhan;const bd=c.boDau||b.boDau;KT[k]=v=>ds.some(a=>chuan(a,bd)===chuan(v,bd));
+      ANS[k]=String(ds[0]);LAB[k]='B'+n+'.'+nhan;const bd=c.boDau||b.boDau,ct=c.congThuc||b.congThuc;
+      // congThuc: bỏ mọi khoảng trắng và dấu = ở đầu (=A5*B5 = a5 * b5)
+      const ss=x=>ct?chuan(x,bd).replace(/\s+/g,'').replace(/^=/,''):chuan(x,bd);KT[k]=v=>ds.some(a=>ss(a)===ss(v));
       const w=Math.max(90,Math.min(320,Math.max(...ds.map(a=>String(a).length))*11+40));
       return '<input class="go-o" data-k="'+k+'" aria-label="'+esc('Câu '+nhan)+'" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="gõ…" style="width:'+w+'px">';});
     h+='<div class="c-chon" style="align-items:flex-start"><span class="lt">'+l+')</span><div class="grow" style="line-height:2.2">'+t+'</div></div>';});}
@@ -444,13 +446,14 @@ const hienNgay=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1)
 let khoa=false,XEM_TRUOC=false;
 (function(){const w=P.web||{},mo=ngayGio(w.mo,false),dong=ngayGio(w.dong,true),bay=new Date();let msg='';
   const laCo=(()=>{try{return !!localStorage.getItem('coThuyTin_gv');}catch(e){return false;}})();
-  if(mo&&bay<mo)msg='<b>Phiếu chưa mở</b>Cô sẽ mở phiếu này vào ngày '+hienNgay(mo)+'. Em quay lại sau nhé!';
+  if(w.chuaGiao)msg='<b>Phiếu chưa được giao</b>Cô chưa giao phiếu này. Em quay lại sau nhé!';
+  else if(mo&&bay<mo)msg='<b>Phiếu chưa mở</b>Cô sẽ mở phiếu này vào ngày '+hienNgay(mo)+'. Em quay lại sau nhé!';
   else if(dong&&bay>dong)msg='<b>Phiếu đã đóng</b>Hạn làm phiếu này là ngày '+hienNgay(dong)+'. Em không nộp bài được nữa.';
   else if(dong)$('huongDan').innerHTML+='<br>⏳ Hạn nộp: <b>'+hienNgay(dong)+'</b>.';
   if(!msg)return;
   if(laCo&&!/[?&]dapan=1/.test(location.search)){// máy cô: cho làm thử, không gửi điểm
     XEM_TRUOC=true;$('khoa').className='khoa xem-truoc';
-    $('khoa').innerHTML='<b>👀 Cô đang xem trước</b>'+(mo&&bay<mo?'Học sinh sẽ thấy phiếu này từ ngày '+hienNgay(mo)+'.':'Phiếu đã đóng với học sinh (hạn '+hienNgay(dong)+').')+' Bài làm thử <b>không gửi</b> về Google Sheet.';return;}
+    $('khoa').innerHTML='<b>👀 Cô đang xem trước</b>'+(w.chuaGiao?'Phiếu <b>chưa giao</b> – học sinh chưa thấy.':mo&&bay<mo?'Học sinh sẽ thấy phiếu này từ ngày '+hienNgay(mo)+'.':'Phiếu đã đóng với học sinh (hạn '+hienNgay(dong)+').')+' Bài làm thử <b>không gửi</b> về Google Sheet.';return;}
   khoa=true;$('khoa').innerHTML=msg;$('khoa').classList.remove('hidden');
   document.querySelectorAll('select,input,.opt,.it,#check').forEach(e=>e.disabled=true);$('check').classList.add('done');
 })();

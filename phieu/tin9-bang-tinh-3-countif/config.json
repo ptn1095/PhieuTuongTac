@@ -1,0 +1,206 @@
+{
+ "web": {
+  "khoi": "khoi-9",
+  "mon": "Tin học 9",
+  "ten": "Bảng tính 3: Hàm COUNTIF",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 9 - BT3 COUNTIF",
+ "mon": "TIN HỌC 9 – PHẦN MỀM BẢNG TÍNH",
+ "tieuDe": "Phiếu bài tập 3 – Hàm COUNTIF",
+ "lop": [
+  "9A1",
+  "9A2",
+  "9A3",
+  "9A4",
+  "9A5",
+  "9A6",
+  "9A7",
+  "9A8",
+  "9A9",
+  "9A10"
+ ],
+ "tron": true,
+ "xemDapAn": false,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Kiến thức về hàm COUNTIF: chọn đáp án đúng.",
+   "cau": [
+    {
+     "text": "Cú pháp đúng của hàm COUNTIF là:",
+     "lc": [
+      "=COUNTIF(range, criteria)",
+      "=COUNTIF(criteria, range)",
+      "=COUNT(range, criteria)",
+      "=COUNTIF(range)"
+     ],
+     "da": "=COUNTIF(range, criteria)"
+    },
+    {
+     "text": "Hàm COUNTIF dùng để:",
+     "lc": [
+      "Đếm số ô trong vùng thỏa mãn điều kiện",
+      "Tính tổng các ô thỏa mãn điều kiện",
+      "Đếm tất cả các ô có dữ liệu",
+      "Tìm giá trị lớn nhất"
+     ],
+     "da": "Đếm số ô trong vùng thỏa mãn điều kiện"
+    },
+    {
+     "text": "Điều kiện là phép so sánh hoặc văn bản phải đặt trong:",
+     "lc": [
+      "Dấu ngoặc kép &quot; &quot;",
+      "Dấu ngoặc đơn ( )",
+      "Dấu ngoặc vuông [ ]",
+      "Không cần dấu gì"
+     ],
+     "da": "Dấu ngoặc kép &quot; &quot;"
+    },
+    {
+     "text": "Công thức <b>=COUNTIF(C2:C9,\"&gt;=8\")</b> đếm:",
+     "lc": [
+      "Số học sinh có điểm từ 8 trở lên",
+      "Số học sinh có điểm dưới 8",
+      "Tổng điểm từ 8 trở lên",
+      "Số học sinh được đúng 8 điểm"
+     ],
+     "da": "Số học sinh có điểm từ 8 trở lên"
+    }
+   ],
+   "cot": 1
+  },
+  {
+   "loai": "go",
+   "yc": "Quan sát bảng điểm và gõ kết quả của mỗi công thức.<div style=\"margin-top:8px;font-weight:normal;overflow-x:auto\"><svg viewBox=\"0 0 346 258\" width=\"380\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial\" font-size=\"13\" role=\"img\" aria-label=\"Hình trang tính\"><rect width=\"346\" height=\"258\" fill=\"#fff\"/><rect x=\"1\" y=\"0\" width=\"33\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><rect x=\"34\" y=\"0\" width=\"110\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"89.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">A</text><rect x=\"144\" y=\"0\" width=\"100\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"194.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">B</text><rect x=\"244\" y=\"0\" width=\"100\" height=\"22\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"294.0\" y=\"15\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">C</text><rect x=\"1\" y=\"22\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"39\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">1</text><rect x=\"34\" y=\"22\" width=\"110\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Họ tên</text><rect x=\"144\" y=\"22\" width=\"100\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Giới tính</text><rect x=\"244\" y=\"22\" width=\"100\" height=\"26\" fill=\"#FFF3E6\" stroke=\"#d6d6d6\"/><text x=\"250\" y=\"39\" text-anchor=\"start\" font-weight=\"bold\">Điểm Tin</text><rect x=\"1\" y=\"48\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"65\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">2</text><rect x=\"34\" y=\"48\" width=\"110\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"65\" text-anchor=\"start\">An</text><rect x=\"144\" y=\"48\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"65\" text-anchor=\"start\">Nam</text><rect x=\"244\" y=\"48\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"338\" y=\"65\" text-anchor=\"end\">8</text><rect x=\"1\" y=\"74\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"91\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">3</text><rect x=\"34\" y=\"74\" width=\"110\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"91\" text-anchor=\"start\">Bình</text><rect x=\"144\" y=\"74\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"91\" text-anchor=\"start\">Nam</text><rect x=\"244\" y=\"74\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"338\" y=\"91\" text-anchor=\"end\">6</text><rect x=\"1\" y=\"100\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"117\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">4</text><rect x=\"34\" y=\"100\" width=\"110\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"117\" text-anchor=\"start\">Chi</text><rect x=\"144\" y=\"100\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"117\" text-anchor=\"start\">Nữ</text><rect x=\"244\" y=\"100\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"338\" y=\"117\" text-anchor=\"end\">9</text><rect x=\"1\" y=\"126\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"143\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">5</text><rect x=\"34\" y=\"126\" width=\"110\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"143\" text-anchor=\"start\">Dũng</text><rect x=\"144\" y=\"126\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"143\" text-anchor=\"start\">Nam</text><rect x=\"244\" y=\"126\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"338\" y=\"143\" text-anchor=\"end\">4</text><rect x=\"1\" y=\"152\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"169\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">6</text><rect x=\"34\" y=\"152\" width=\"110\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"169\" text-anchor=\"start\">Hà</text><rect x=\"144\" y=\"152\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"169\" text-anchor=\"start\">Nữ</text><rect x=\"244\" y=\"152\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"338\" y=\"169\" text-anchor=\"end\">7</text><rect x=\"1\" y=\"178\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"195\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">7</text><rect x=\"34\" y=\"178\" width=\"110\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"195\" text-anchor=\"start\">Long</text><rect x=\"144\" y=\"178\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"195\" text-anchor=\"start\">Nam</text><rect x=\"244\" y=\"178\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"338\" y=\"195\" text-anchor=\"end\">5</text><rect x=\"1\" y=\"204\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"221\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">8</text><rect x=\"34\" y=\"204\" width=\"110\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"221\" text-anchor=\"start\">Minh</text><rect x=\"144\" y=\"204\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"221\" text-anchor=\"start\">Nam</text><rect x=\"244\" y=\"204\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"338\" y=\"221\" text-anchor=\"end\">10</text><rect x=\"1\" y=\"230\" width=\"33\" height=\"26\" fill=\"#E6E6E6\" stroke=\"#bbb\"/><text x=\"17.0\" y=\"247\" text-anchor=\"middle\" font-weight=\"bold\" fill=\"#444\">9</text><rect x=\"34\" y=\"230\" width=\"110\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"40\" y=\"247\" text-anchor=\"start\">Ngọc</text><rect x=\"144\" y=\"230\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"150\" y=\"247\" text-anchor=\"start\">Nữ</text><rect x=\"244\" y=\"230\" width=\"100\" height=\"26\" fill=\"#fff\" stroke=\"#d6d6d6\"/><text x=\"338\" y=\"247\" text-anchor=\"end\">7</text></svg></div>",
+   "cau": [
+    {
+     "text": "<b>=COUNTIF(B2:B9,\"Nam\")</b> cho kết quả: {}",
+     "da": "5"
+    },
+    {
+     "text": "<b>=COUNTIF(B2:B9,\"Nữ\")</b> cho kết quả: {}",
+     "da": "3"
+    },
+    {
+     "text": "<b>=COUNTIF(C2:C9,\"&gt;=8\")</b> cho kết quả: {}",
+     "da": "3"
+    },
+    {
+     "text": "<b>=COUNTIF(C2:C9,\"&lt;5\")</b> cho kết quả: {}",
+     "da": "1"
+    },
+    {
+     "text": "<b>=COUNTIF(C2:C9,7)</b> cho kết quả: {}",
+     "da": "2"
+    },
+    {
+     "text": "<b>=COUNTIF(C2:C9,\"&lt;&gt;7\")</b> cho kết quả: {}",
+     "da": "6"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn công thức đúng (dựa vào bảng điểm ở Bài 2).",
+   "cau": [
+    {
+     "text": "Đếm số học sinh <b>nữ</b>:",
+     "lc": [
+      "=COUNTIF(B2:B9,&quot;Nữ&quot;)",
+      "=COUNTIF(&quot;Nữ&quot;,B2:B9)",
+      "=COUNT(B2:B9,&quot;Nữ&quot;)",
+      "=COUNTIF(B2:B9,Nữ)"
+     ],
+     "da": "=COUNTIF(B2:B9,&quot;Nữ&quot;)"
+    },
+    {
+     "text": "Đếm số học sinh có điểm <b>dưới 6</b>:",
+     "lc": [
+      "=COUNTIF(C2:C9,&quot;&lt;6&quot;)",
+      "=COUNTIF(C2:C9,&quot;&lt;=6&quot;)",
+      "=COUNTIF(B2:B9,&quot;&lt;6&quot;)",
+      "=SUMIF(C2:C9,&quot;&lt;6&quot;)"
+     ],
+     "da": "=COUNTIF(C2:C9,&quot;&lt;6&quot;)"
+    },
+    {
+     "text": "Đếm số học sinh có điểm <b>từ 5 trở lên</b>:",
+     "lc": [
+      "=COUNTIF(C2:C9,&quot;&gt;5&quot;)",
+      "=COUNTIF(C2:C9,&quot;&gt;=5&quot;)",
+      "=COUNTIF(C2:C9,&quot;=&gt;5&quot;)",
+      "=COUNTIF(C2:C9,5)"
+     ],
+     "da": "=COUNTIF(C2:C9,&quot;&gt;=5&quot;)"
+    }
+   ],
+   "cot": 2
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Hàm COUNTIF có 2 đối số.",
+     "da": "Đ"
+    },
+    {
+     "text": "<b>=COUNTIF(B2:B9,\"nam\")</b> cho kết quả khác <b>=COUNTIF(B2:B9,\"Nam\")</b>.",
+     "da": "S"
+    },
+    {
+     "text": "Hàm COUNT đếm các ô chứa số, còn hàm COUNTIF đếm các ô thỏa mãn điều kiện.",
+     "da": "Đ"
+    },
+    {
+     "text": "Với bảng điểm ở Bài 2, <b>=COUNTIF(C2:C9,\"&gt;=8\")</b> và <b>=COUNTIF(C2:C9,\"&gt;8\")</b> cho cùng kết quả.",
+     "da": "S"
+    },
+    {
+     "text": "Kết quả của hàm COUNTIF luôn là một số đếm.",
+     "da": "Đ"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn từ thích hợp để hoàn thành công thức (dựa vào bảng điểm ở Bài 2).",
+   "bank": [
+    "B2:B9",
+    "C2:C9",
+    "\"Nam\"",
+    "Nam",
+    "\">6\"",
+    "\"<6\""
+   ],
+   "lc": [
+    "B2:B9",
+    "C2:C9",
+    "\"Nam\"",
+    "Nam",
+    "\">6\"",
+    "\"<6\""
+   ],
+   "cau": [
+    {
+     "text": "1. Đếm số học sinh nam: =COUNTIF( {} , {} )",
+     "da": [
+      "B2:B9",
+      "\"Nam\""
+     ]
+    },
+    {
+     "text": "2. Đếm số học sinh có điểm lớn hơn 6: =COUNTIF( {} , {} )",
+     "da": [
+      "C2:C9",
+      "\">6\""
+     ]
+    }
+   ]
+  }
+ ]
+}
