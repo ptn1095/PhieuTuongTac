@@ -198,7 +198,8 @@ const server = http.createServer((req, res) => {
   // Trang tổng hợp điểm của cô (Sheet giả lập)
   {
     console.log('Trang tổng hợp điểm');
-    const ph = ds.find(p => p.link.startsWith('phieu/') && p.ma);
+    // dữ liệu giả dùng nhãn B1.1, B1.2, B2.1 → chọn phiếu có Bài 1 dạng nối (nhãn số)
+    const ph = ds.find(p => p.link.includes('scratch-variables-2')) || ds.find(p => p.link.startsWith('phieu/') && p.ma);
     const L = ph.lop;
     const hang = [['2026-11-11T02:00:00Z', 'An', L[0], 10, '23/23', '', 'B1.1 Đ; B1.2 Đ; B2.1 Đ'],
       ['2026-11-11T02:05:00Z', 'Bình', L[0], 6.5, '15/23', '', 'B1.1 S; B1.2 Đ; B2.1 S'],
