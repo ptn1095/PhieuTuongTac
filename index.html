@@ -70,6 +70,13 @@ h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
 .thanh-lop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:-8px;padding:10px 14px;border-radius:14px;background:color-mix(in srgb,var(--c) 10%,#fff);border:2px solid color-mix(in srgb,var(--c) 45%,#fff)}
 .thanh-lop b{font-size:18px;color:var(--c)} .thanh-lop .grow{flex:1}
 .thanh-lop button{font:inherit;font-size:14px;font-weight:bold;color:var(--c);background:#fff;border:2px solid var(--c);border-radius:999px;padding:5px 14px;cursor:pointer}
+/* Đã chọn khối: chỉ còn khối đó, không bấm được */
+.tabs.da-chon{grid-template-columns:1fr}
+.tabs.da-chon .tab{flex-direction:row;justify-content:center;gap:16px;padding:10px 16px;cursor:default}
+.tabs.da-chon .tab:hover{transform:none}
+.tabs.da-chon .tab .so{width:52px;height:52px;font-size:32px}
+.tabs.da-chon .tab .ten{font-size:22px}
+.chon-lai{font:inherit;font-size:12.5px;color:#9AA3AB;background:none;border:0;text-decoration:underline;cursor:pointer;padding:4px}
 .goi-y-chon{text-align:center;padding:30px 16px;border:3px dashed #BFD7EA;border-radius:18px;background:#F7FBFE;color:#555;font-size:16px}
 .goi-y-chon b{display:block;font-size:22px;color:var(--bien);margin-bottom:4px}
 .chip.cua-em{background:var(--bien);color:#fff}
@@ -100,11 +107,12 @@ h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
   <div class="wave" aria-hidden="true"></div>
   <nav class="tabs" role="tablist" aria-label="Chọn khối lớp" id="tabs"></nav>
   <div id="chonLop" class="hidden"></div>
-  <section aria-live="polite">
+  <section aria-live="polite" id="khuPhieu" class="hidden">
     <div class="head2"><h2 id="tieuDe"></h2><input class="tim" id="tim" type="search" placeholder="Tìm phiếu…" aria-label="Tìm phiếu"></div>
     <div class="list" id="list" style="margin-top:16px"></div>
   </section>
-  <div class="foot">© Cô Thùy Tin · Phiếu mới được cập nhật thường xuyên · <a href="giaovien/" style="color:#777">Dành cho cô</a></div>
+  <div class="foot">© Cô Thùy Tin · Phiếu mới được cập nhật thường xuyên · <a href="giaovien/" style="color:#777">Dành cho cô</a>
+    <div><button type="button" class="chon-lai hidden" id="chonLai">Chọn nhầm khối? Bấm vào đây để chọn lại</button></div></div>
 </div></div></main>
 <div class="qr-nen hidden" id="qrNen" role="dialog" aria-modal="true" aria-labelledby="qrTen" hidden><div class="qr-hop">
   <h3 id="qrTen"></h3><div class="lop" id="qrLop"></div>
@@ -141,13 +149,22 @@ function trangThai(p){const bay=new Date(),mo=ngayGio(p.mo,false),dong=ngayGio(p
   if(p.chuaGiao)return{t:'chua',chuaGiao:true};
   if(mo&&bay<mo)return{t:'chua',mo};if(dong&&bay>dong)return{t:'dong',dong};return{t:'mo',dong};}
 function fit(){const f=$('fit'),p=$('paper'),hep=f.clientWidth<600,W=hep?480:794;p.classList.toggle('hep',hep);f.style.maxWidth=hep?'none':'794px';const s=Math.min(1,f.clientWidth/W);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';}
+// Chưa chọn khối: hiện 4 nút khối. Đã chọn: chỉ còn khối đó (không bấm được), các khối khác ẩn đi.
 function veTabs(){
-  $('tabs').innerHTML=KHOI.map(k=>{const n=DS.filter(p=>p.khoi===k.id&&hien(p)).length;
-    return '<button class="tab" role="tab" style="--c:'+k.c+'" data-id="'+k.id+'" aria-selected="'+(k.id===cur)+'"><span class="so">'+k.so+'</span><span class="ten">'+k.ten+'</span><span class="dem">'+n+' phiếu</span></button>';}).join('');
+  const k0=KHOI.find(k=>k.id===cur),dem=k=>DS.filter(p=>p.khoi===k.id&&hien(p)).length;
+  $('tabs').classList.toggle('da-chon',!!k0);
+  $('chonLai').classList.toggle('hidden',!k0);
+  $('khuPhieu').classList.toggle('hidden',!k0);
+  if(k0){$('tabs').setAttribute('aria-label','Khối của em');
+    $('tabs').innerHTML='<div class="tab" style="--c:'+k0.c+'" aria-selected="true" aria-disabled="true"><span class="so">'+k0.so+'</span><span class="ten">'+k0.ten+'</span><span class="dem">'+dem(k0)+' phiếu</span></div>';return;}
+  $('tabs').setAttribute('aria-label','Chọn khối lớp');
+  $('tabs').innerHTML=KHOI.map(k=>'<button class="tab" style="--c:'+k.c+'" data-id="'+k.id+'"><span class="so">'+k.so+'</span><span class="ten">'+k.ten+'</span><span class="dem">'+dem(k)+' phiếu</span></button>').join('');
   $('tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
-    if(b.dataset.id===cur){MO=!MO;if(!LOP)MO=true;veLop();veList();if(MO)cuonToi();return;}
-    cur=b.dataset.id;LOP='';MO=true;datHash();veTabs();veLop();veList();cuonToi();});
+    cur=b.dataset.id;LOP='';MO=true;luuChon();datHash();veTabs();veLop();veList();cuonToi();});
 }
+// Lựa chọn khối/lớp nhớ trong phiên (tab trình duyệt): về từ phiếu vẫn đúng khối; mở trình duyệt mới thì chọn lại
+function luuChon(){try{cur?sessionStorage.setItem('coThuyTin_chon',JSON.stringify({khoi:cur,lop:LOP})):sessionStorage.removeItem('coThuyTin_chon');}catch(e){}}
+$('chonLai').onclick=()=>{cur='';LOP='';MO=false;luuChon();datHash();veTabs();veLop();veList();window.scrollTo({top:0,behavior:'smooth'});};
 const cuonToi=()=>setTimeout(()=>{const e=$('chonLop').querySelector('.nut-lop');if(e)e.focus({preventScroll:true});},60);
 function datHash(){history.replaceState(null,'',cur?'#'+cur+(LOP?':'+(LOP==='*'?'tatca':encodeURIComponent(LOP)):''):location.pathname);}
 // Bảng chọn lớp xổ xuống dưới nút khối
@@ -159,7 +176,7 @@ function veLop(){
     b.className='chonlop';b.setAttribute('role','group');b.setAttribute('aria-label','Chọn lớp '+k.ten);
     b.innerHTML='<h3>🎒 Em học lớp nào?</h3><div class="luoi-lop">'+ds.map(l=>'<button type="button" class="nut-lop" data-l="'+esc(l)+'">'+esc(l)+'</button>').join('')+
       '<button type="button" class="nut-lop tat-ca" data-l="*">Xem tất cả phiếu '+esc(k.ten)+'</button></div>';
-    b.querySelectorAll('.nut-lop').forEach(x=>x.onclick=()=>{LOP=x.dataset.l;MO=false;ghi('coThuyTin_chon',{khoi:cur,lop:LOP});datHash();veLop();veList();});
+    b.querySelectorAll('.nut-lop').forEach(x=>x.onclick=()=>{LOP=x.dataset.l;MO=false;luuChon();datHash();veLop();veList();});
   }else{
     b.className='thanh-lop';b.removeAttribute('role');
     b.innerHTML='<span class="grow">🎒 '+(LOP==='*'?'Tất cả các lớp – <b>'+esc(k.ten)+'</b>':'Lớp <b>'+esc(LOP)+'</b>')+'</span><button type="button" id="doiLop">Đổi lớp ▾</button>';
@@ -203,7 +220,7 @@ $('qrDong').onclick=dongQR;$('qrNen').addEventListener('click',e=>{if(e.target==
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('qrNen').hidden)dongQR();});
 // Đường dẫn: #khoi-3 (mở bảng chọn lớp), #khoi-3:3A2 (lớp 3A2), #khoi-3:tatca (tất cả lớp)
 function route(){const [h,l]=location.hash.slice(1).split(':');
-  if(KHOI.some(k=>k.id===h)){cur=h;LOP=l?(l==='tatca'?'*':decodeURIComponent(l)):'';MO=!LOP;}
+  if(KHOI.some(k=>k.id===h)){cur=h;LOP=l?(l==='tatca'?'*':decodeURIComponent(l)):'';MO=!LOP;luuChon();}
   veTabs();veLop();veList();}
 $('tim').addEventListener('input',veList);
 window.addEventListener('hashchange',route);window.addEventListener('resize',fit);window.addEventListener('load',fit);
@@ -216,9 +233,8 @@ DA_LAM=doc('coThuyTin_daLam')||{};
 window.addEventListener('pageshow',e=>{if(e.persisted){DA_LAM=doc('coThuyTin_daLam')||{};veList();}});
 Promise.all([fetch('phieu.json?v='+Date.now()).then(r=>r.json()),fetch('lop.json?v='+Date.now()).then(r=>r.json()).catch(()=>({}))]).then(([d,l])=>{DS=d;LOP_KHOI=l;
   if(!location.hash){// lần trước em đã chọn khối + lớp → mở lại đúng chỗ
-    let c=doc('coThuyTin_chon');const cu=doc('coThuyTin_lop');
-    if(!c&&cu){const k=KHOI.find(x=>lopCua(x.id).includes(cu));if(k)c={khoi:k.id,lop:cu};}
-    if(c&&KHOI.some(k=>k.id===c.khoi)&&(c.lop==='*'||lopCua(c.khoi).includes(c.lop))){cur=c.khoi;LOP=c.lop;datHash();}}
+    let c=null;try{c=JSON.parse(sessionStorage.getItem('coThuyTin_chon')||'null');}catch(e){}
+    if(c&&KHOI.some(k=>k.id===c.khoi)&&(!c.lop||c.lop==='*'||lopCua(c.khoi).includes(c.lop))){cur=c.khoi;LOP=c.lop||'';datHash();}}
   route();})
   .catch(()=>{route();$('list').innerHTML='<div class="trong"><b>Chưa tải được danh sách phiếu</b>Em tải lại trang thử nhé.</div>';fit();});
 </script>

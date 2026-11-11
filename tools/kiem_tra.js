@@ -121,26 +121,34 @@ const server = http.createServer((req, res) => {
     bao(await page.locator('.dalam').count() >= 1, 'trang chủ: phiếu vừa nộp có dấu "✓ Đã làm"');
     // Trang chủ: chọn khối → xổ xuống lớp → chọn lớp
     const LOPJ = JSON.parse(fs.readFileSync(path.join(GOC, 'lop.json'), 'utf8'));
-    await page.evaluate(() => localStorage.removeItem('coThuyTin_chon'));
+    await page.evaluate(() => sessionStorage.removeItem('coThuyTin_chon'));
     await page.goto(base); await page.waitForTimeout(500);
-    bao(await page.locator('.goi-y-chon').isVisible() && await page.locator('.card').count() === 0 && await page.locator('#chonLop').isHidden(), 'mở trang lần đầu → chỉ có 4 nút khối + nhắc "Em bấm chọn khối"');
+    bao(await page.locator('#khuPhieu').isHidden() && await page.locator('#chonLop').isHidden() && await page.locator('#chonLai').isHidden() && await page.locator('.tab').count() === 4,
+      'mở trang lần đầu → chỉ có nền, lời chào và 4 nút khối');
+    await page.screenshot({ path: path.join(OUT, '_man_hinh_dau.png') });
     const tenTab = await page.locator('.tab .ten').allTextContents();
     bao(tenTab.join('|') === 'Khối 3|Khối 5|Khối 9|Đội tuyển Tin học', 'nút khối: ' + tenTab.join(', '));
     await page.click('.tab[data-id="khoi-5"]'); await page.waitForTimeout(300);
     const nutLop = await page.locator('#chonLop .nut-lop:not(.tat-ca)').allTextContents();
     bao(nutLop.join(',') === LOPJ['khoi-5'].join(','), 'bấm Khối 5 → xổ xuống lớp: ' + nutLop.join(', '));
+    bao(await page.locator('.tab').count() === 1 && (await page.locator('.tab').textContent()).includes('Khối 5') && await page.locator('button.tab').count() === 0,
+      'đã chọn Khối 5 → các khối khác ẩn, không còn nút khối nào bấm được');
     bao(await page.locator('.card').count() === 0, 'chưa chọn lớp → chưa hiện phiếu');
     await page.screenshot({ path: path.join(OUT, '_chon_lop.png') });
     await page.click('#chonLop .nut-lop[data-l="5A2"]'); await page.waitForTimeout(300);
     const the5 = ds.filter(p => p.khoi === 'khoi-5' && p.lop.includes('5A2')).length;
     bao(await page.locator('.card').count() === the5 && (await page.locator('#chonLop').textContent()).includes('5A2'), `chọn lớp 5A2 → hiện ${the5} phiếu, thanh "Lớp 5A2 · Đổi lớp"`);
     bao((await page.locator('.chip.cua-em').allTextContents()).every(t => t === '5A2') && await page.locator('.chip.cua-em').count() === the5, 'lớp 5A2 được tô đậm trên thẻ phiếu');
+    await page.click('#chonLai'); await page.waitForTimeout(300);
+    bao(await page.locator('button.tab').count() === 4 && await page.locator('#khuPhieu').isHidden(), 'bấm "Chọn nhầm khối?" → về lại màn hình chọn khối');
     await page.click('.tab[data-id="doi-tuyen"]'); await page.waitForTimeout(300);
     const nutDT = await page.locator('#chonLop .nut-lop:not(.tat-ca)').allTextContents();
     bao(nutDT.join(',') === 'ĐT Tin - K2,ĐT Tin - K3', 'bấm Đội tuyển Tin học → xổ xuống: ' + nutDT.join(', '));
-    await page.click('.tab[data-id="khoi-5"]'); await page.click('#chonLop .nut-lop[data-l="5A2"]');
+    await page.click('#chonLai'); await page.click('.tab[data-id="khoi-5"]'); await page.click('#chonLop .nut-lop[data-l="5A2"]');
     await page.goto(base); await page.waitForTimeout(500);
-    bao(page.url().endsWith('#khoi-5:5A2') && await page.locator('.card').count() === the5, 'mở lại trang chủ → tự về đúng Khối 5, lớp 5A2');
+    bao(page.url().endsWith('#khoi-5:5A2') && await page.locator('.card').count() === the5, 'về trang chủ trong cùng phiên → vẫn đúng Khối 5, lớp 5A2');
+    { const tabMoi = await ctx.newPage(); await tabMoi.goto(base); await tabMoi.waitForTimeout(500);
+      bao(await tabMoi.locator('button.tab').count() === 4, 'mở trang ở tab/phiên mới → bắt đầu lại từ màn hình chọn khối'); await tabMoi.close(); }
     await page.click('#doiLop'); await page.waitForTimeout(200);
     bao(await page.locator('#chonLop .nut-lop').count() === LOPJ['khoi-5'].length + 1, 'bấm "Đổi lớp" → xổ lại danh sách lớp');
     await page.screenshot({ path: path.join(OUT, '_trang_chu_lop.png'), fullPage: true });
