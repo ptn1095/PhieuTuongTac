@@ -52,6 +52,36 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 .sent a{color:#1a5fb4}
 #anh{width:440px;max-width:100%;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.18);display:block}
 .home{font-size:14px;color:#2457A6;font-weight:bold;text-decoration:none}
+/* ô chọn ẩn: giữ đáp án cho dạng abcd và noidot */
+.an-box{position:absolute;left:50%;top:0;width:1px;height:1px;overflow:hidden}
+select.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;border:0;opacity:0;pointer-events:none}
+/* Trắc nghiệm A/B/C/D */
+.c-abcd{margin:8px 0 16px}
+.c-abcd .q{display:flex;gap:8px;align-items:flex-start}
+.opts{position:relative;display:grid;grid-template-columns:repeat(var(--cot,2),minmax(0,1fr));gap:8px;margin:8px 0 0 28px;border-radius:14px}
+.opts.thieu{outline:3px solid #FFD4A8;outline-offset:3px;background:#FFF3E6}
+.opt{display:flex;align-items:center;gap:10px;padding:8px 12px;border:2px solid #C9D9E6;border-radius:12px;background:#fff;cursor:pointer;font:inherit;color:#222;text-align:left;min-height:46px}
+.opt:hover{border-color:#168DCE}
+.opt:focus-visible{outline:3px solid #BFE3F7}
+.opt .L{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid #168DCE;color:#168DCE;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.opt.on{border-color:#168DCE;background:#E8F4FC} .opt.on .L{background:#168DCE;color:#fff}
+.opt.ok{border-color:#2E9E4F;background:#E9F7EE} .opt.ok .L{background:#2E9E4F;border-color:#2E9E4F;color:#fff}
+.opt.no{border-color:#D93025;background:#FDECEC} .opt.no .L{background:#D93025;border-color:#D93025;color:#fff}
+.opt.dung{border:2px dashed #2E9E4F}
+.opt:disabled{cursor:default}
+/* Nối chấm tròn */
+.noi2{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 70px minmax(0,1fr);margin-top:4px}
+.noi2 .col{display:flex;flex-direction:column;gap:12px;justify-content:space-around}
+.noi2 .colR{grid-column:3}
+.it{position:relative;display:flex;align-items:center;min-height:46px;padding:6px 14px;border:2px solid #F28C28;border-radius:10px;background:#FFF3E6;cursor:pointer;font:inherit;color:#222;text-align:left;width:100%}
+.it.R{border-color:#168DCE;background:#F4FAFE}
+.it .dot{position:absolute;top:50%;width:22px;height:22px;margin-top:-11px;border-radius:50%;background:#fff;border:3px solid #F28C28;z-index:2}
+.it.R .dot{border-color:#168DCE;left:-12px} .it.L .dot{right:-12px}
+.it.act{outline:3px solid #BFE3F7;outline-offset:1px} .it.act .dot{background:#F28C28}
+.it.L.noi .dot{background:#F28C28} .it.R.noi .dot{background:#168DCE}
+.it.thieu{outline:3px solid #FFD4A8;background:#FFF3E6}
+.it:disabled{cursor:default}
+.noi2 svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
 .hidden{display:none}
 </style></head><body>
 <main style="padding:0 8px"><div class="fit" id="fit"><div class="paper" id="paper">
@@ -84,7 +114,7 @@ const MAU=['#168DCE','#F28C28','#65B843'];
 const ANS={}, LAB={};
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 function sel(k,opts,da,lab,cls){ANS[k]=da;LAB[k]=lab;
-  return '<select data-k="'+k+'" class="'+(cls||'')+'" aria-label="'+esc(lab)+'"><option value="">— chọn —</option>'+opts.map(o=>'<option>'+esc(o)+'</option>').join('')+'</select>';}
+  return '<select data-k="'+k+'" class="'+(cls||'')+'" aria-label="'+esc(lab)+'"'+(cls==='an'?' tabindex="-1" aria-hidden="true"':'')+'><option value="">— chọn —</option>'+opts.map(o=>'<option>'+esc(o)+'</option>').join('')+'</select>';}
 const ABC='abcdefghijklmnopqrstuvwxyz';
 $('mon').textContent=P.mon||'';$('tieuDe').textContent=P.tieuDe||'Phiếu bài tập';document.title=P.tieuDe||'Phiếu bài tập';
 (P.lop||[]).forEach(l=>{const o=document.createElement('option');o.textContent=l;$('lop').appendChild(o);});
@@ -104,6 +134,14 @@ P.bai.forEach((b,bi)=>{
       const t=c.text.replace(/\{\}/g,()=>{const da=c.da[j++];k++;return sel('b'+n+'_'+ci+'_'+j,c.lc||lc,da,'B'+n+'.'+(b.cau.length>1||c.da.length>1?k:1));});
       return c.hinh?'<div class="card"><div class="hinh">'+c.hinh+'</div><div class="c-dien">'+t+'</div></div>':'<div class="c-dien">'+t+'</div>';});
     h+=b.cau.some(c=>c.hinh)?'<div class="cards">'+items.join('')+'</div>':items.join('');}
+  else if(b.loai==='abcd'){b.cau.forEach((c,ci)=>{const l=ABC[ci],o=c.lc||lc,L=o.map((_,i)=>'ABCDEFGH'[i]),k='b'+n+'_'+l;
+    h+='<div class="c-abcd"><div class="q"><span class="lt">'+l+')</span><div class="grow">'+c.text.replace(/\s*\{\}\s*/g,' ').trim()+'</div></div>'+
+      '<div class="opts" data-abcd="'+k+'" style="--cot:'+(c.cot||b.cot||2)+'" role="radiogroup" aria-label="'+esc('Câu '+l)+'">'+sel(k,L,L[o.indexOf(c.da)],'B'+n+'.'+l,'an')+
+      o.map((t,i)=>'<button type="button" class="opt" role="radio" aria-checked="false" data-v="'+L[i]+'"><span class="L">'+L[i]+'</span><span>'+t+'</span></button>').join('')+'</div></div>';});}
+  else if(b.loai==='noidot'){
+    h+='<div class="noi2" data-noi="'+n+'"><svg aria-hidden="true"></svg><div class="an-box">'+b.cau.map((c,ci)=>sel('b'+n+'_'+ci,lc,c.da,'B'+n+'.'+(ci+1),'an')).join('')+'</div><div class="col colL">'+
+      b.cau.map((c,ci)=>'<button type="button" class="it L" data-i="'+ci+'"><span>'+c.text+'</span><span class="dot"></span></button>').join('')+
+      '</div><div class="col colR">'+lc.map((t,j)=>'<button type="button" class="it R" data-j="'+j+'"><span class="dot"></span><span>'+t+'</span></button>').join('')+'</div></div>';}
   else if(b.loai==='traloi'){b.cau.forEach((c,ci)=>{const l=ABC[ci];
     h+='<div class="c-chon" style="align-items:flex-start"><span class="lt">'+l+')</span><div class="grow">'+c.text.replace('{}',()=>sel('b'+n+'_'+l,c.lc||lc,c.da,'B'+n+'.'+l))+'</div></div>';});}
   if(b.hinh) h='<div class="hinhbai"><div class="hinh'+(b.khungHinh?' hinhkhung':'')+'">'+b.hinh+'</div><div class="ds-cau">'+h+'</div></div>';
@@ -112,7 +150,44 @@ P.bai.forEach((b,bi)=>{
 $('noidung').innerHTML=html;
 const sels=[...document.querySelectorAll('select[data-k]')];
 const BG=new Image();BG.src='../../assets/bg.jpg';
-function fit(){const f=$('fit'),p=$('paper');const s=Math.min(1,f.clientWidth/794);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';}
+const chon=(s,v)=>{s.value=v;s.dispatchEvent(new Event('change',{bubbles:true}));};
+// Trắc nghiệm A/B/C/D: bấm ô phương án -> ghi vào ô chọn ẩn
+document.querySelectorAll('[data-abcd]').forEach(g=>{
+  const s=g.querySelector('select'),bs=[...g.querySelectorAll('.opt')];
+  const ve=()=>{const k=s.dataset.k,ket=s.classList.contains('ok')||s.classList.contains('no');
+    g.classList.toggle('thieu',s.classList.contains('thieu')&&!s.value);
+    bs.forEach(b=>{const on=b.dataset.v===s.value;b.setAttribute('aria-checked',on);
+      b.className='opt'+(ket?(on?(b.dataset.v===ANS[k]?' ok':' no'):(b.dataset.v===ANS[k]?' dung':'')):(on?' on':''));});};
+  bs.forEach(b=>b.addEventListener('click',()=>{if(!s.disabled)chon(s,b.dataset.v);}));
+  s.addEventListener('change',ve);s.veLai=ve;ve();
+});
+// Nối chấm tròn: bấm một ô bên trái và một ô bên phải để nối
+const NOI=[];
+document.querySelectorAll('[data-noi]').forEach(g=>{
+  const L=[...g.querySelectorAll('.it.L')],R=[...g.querySelectorAll('.it.R')],svg=g.querySelector('svg');
+  const sL=[...g.querySelectorAll('.an-box select')];
+  const lcs=sL[0]?[...sL[0].options].slice(1).map(o=>o.value):[];
+  let act=null;
+  const tam=(el,g)=>{const a=el.querySelector('.dot').getBoundingClientRect(),c=g.getBoundingClientRect(),s=c.width/g.offsetWidth||1;
+    return [(a.left+a.width/2-c.left)/s,(a.top+a.height/2-c.top)/s];};
+  const ve=()=>{let out='';
+    sL.forEach((s,i)=>{L[i].classList.toggle('noi',!!s.value);L[i].classList.toggle('thieu',s.classList.contains('thieu')&&!s.value);
+      if(!s.value)return;const j=lcs.indexOf(s.value);if(j<0)return;
+      const [x1,y1]=tam(L[i],g),[x2,y2]=tam(R[j],g);
+      const m=s.classList.contains('ok')?'#2E9E4F':s.classList.contains('no')?'#D93025':'#168DCE';
+      out+='<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+m+'" stroke-width="3.5" stroke-linecap="round"/>';});
+    svg.innerHTML=out;
+    R.forEach((r,j)=>r.classList.toggle('noi',sL.some(s=>s.value===lcs[j])));
+    [...L,...R].forEach(x=>x.classList.toggle('act',x===act));};
+  const bam=x=>{if(sL[0]&&sL[0].disabled)return;
+    if(!act||act.classList.contains('L')===x.classList.contains('L')){act=(act===x)?null:x;
+      if(act&&act.classList.contains('L')){const s=sL[L.indexOf(act)];if(s.value){chon(s,'');}}ve();return;}
+    const li=L.indexOf(act.classList.contains('L')?act:x),rj=R.indexOf(act.classList.contains('R')?act:x);
+    act=null;chon(sL[li],lcs[rj]);};
+  [...L,...R].forEach(x=>x.addEventListener('click',()=>bam(x)));
+  sL.forEach(s=>{s.addEventListener('change',ve);s.veLai=ve;});NOI.push(ve);
+});
+function fit(){const f=$('fit'),p=$('paper');const s=Math.min(1,f.clientWidth/794);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';NOI.forEach(v=>v());}
 window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
 let curCanvas=null,curName='KetQua',done=false;
 function nhanXet(d){
@@ -173,13 +248,14 @@ function veAnh(r){
 }
 $('check').addEventListener('click',()=>{
   if(done)return;
-  const r=tinh();sels.forEach(s=>s.classList.toggle('thieu',!s.value));
+  const r=tinh();sels.forEach(s=>{s.classList.toggle('thieu',!s.value);if(s.veLai)s.veLai();});
   $('ten').classList.toggle('thieu',!r.ten);$('lop').classList.toggle('thieu',!r.lop);
   if(!r.du){const m=[];if(!r.ten)m.push('nhập họ tên');if(!r.lop)m.push('chọn lớp');if(r.thieu)m.push('làm '+r.thieu+' ô còn trống (tô màu cam)');
-    $('thieuMsg').textContent='Em chưa '+m.join(', ')+'. Hãy làm đủ rồi bấm Tính điểm nhé.';(document.querySelector('.thieu')||$('check')).scrollIntoView({behavior:'smooth',block:'center'});return;}
+    $('thieuMsg').textContent='Em chưa '+m.join(', ')+'. Hãy làm đủ rồi bấm Tính điểm nhé.';(document.querySelector('.thieu:not(select.an)')||$('check')).scrollIntoView({behavior:'smooth',block:'center'});return;}
   $('thieuMsg').textContent='';done=true;
   sels.forEach(s=>s.classList.add(s.value===ANS[s.dataset.k]?'ok':'no'));
-  document.querySelectorAll('select,input').forEach(e=>e.disabled=true);
+  document.querySelectorAll('select,input,.opt,.it').forEach(e=>e.disabled=true);
+  sels.forEach(s=>{if(s.veLai)s.veLai();});
   const a=$('check');a.textContent='Đã tính điểm';a.classList.add('done');a.disabled=true;
   guiDiem(r.url);
   veAnh(r);$('ketqua').classList.remove('hidden');fit();

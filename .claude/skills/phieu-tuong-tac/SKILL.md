@@ -27,11 +27,13 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
 ## 1. Đầu vào cần có (hỏi nếu thiếu, gom vào MỘT câu hỏi)
 1. **File nội dung phiếu**: .docx hoặc .pdf, có thể có hoặc không có đáp án.
 2. **Danh sách lớp** của phiếu (ví dụ 3A4, 3A5). Không có danh sách mặc định, mỗi lần tạo phiếu đều hỏi.
+   Lớp đội tuyển viết đầy đủ dạng `ĐT Tin - K2`, `ĐT Tin - K3`… Cô ghi tắt ("ĐT - K2", "K2") thì tự đổi sang dạng này.
 3. **Nơi nhận điểm**: mặc định dùng Apps Script của cô (đã cài, đã kiểm tra), không cần hỏi lại:
    `https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec`
    Nếu cô muốn dùng Google Form thì xem mục 7.
 4. **Tên phiếu ngắn** (`ma`): dùng làm tên trang tính trong Sheet, ví dụ `CN3 - Bài 4 Máy thu thanh`. Cô không nêu thì tự đặt theo môn và bài.
 5. **Khối trên web**: `khoi-3`, `khoi-5`, `khoi-9` hoặc `doi-tuyen`. Tự suy từ tên lớp (3A4 → khoi-3, "ĐT …" → doi-tuyen); chỉ hỏi khi không suy được.
+   Phiếu dùng cho nhiều khối thì ghi danh sách, ví dụ `"khoi": ["khoi-5", "doi-tuyen"]`: phiếu hiện ở cả hai mục, chung một link.
 
 ## 2. Quy trình
 1. **Đọc file**:
@@ -41,6 +43,7 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
 2. **Chuyển thành câu hỏi tự chấm** (mục 4). Mọi câu đều chấm bằng ô chọn. Câu tự luận thì đổi sang dạng chọn nếu được; không được thì báo cô và bỏ ra.
 3. **Đáp án**:
    - Lấy đáp án từ file. Câu nào file không có thì tự giải và **đánh dấu "Claude tự giải"**.
+   - Cô có thể gửi riêng **phiếu đáp án** (.docx): đáp án trắc nghiệm thường tô đỏ, đậm, gạch chân. Đọc định dạng trong `word/document.xml` (`<w:color w:val="FF0000"/>`, `<w:u`) để biết phương án được tô, rồi so với đáp án đã soạn.
    - Có câu tự giải hoặc câu phải đổi dạng: gửi cô bảng Bài – câu – đáp án – nguồn, chờ cô duyệt.
    - Mọi đáp án đều có sẵn trong file: làm tiếp luôn.
 4. **Hình**:
@@ -93,8 +96,15 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
 | `thutu` | Sắp xếp thứ tự các bước | `cau:[{text, da: số thứ tự}]`, liệt kê theo thứ tự đã xáo |
 | `dien` | Điền khuyết (chọn từ) | `bank?` (khung từ), `lc`; `cau:[{text có "{}", da:[...], hinh?}]`; có `hinh` thì hiện dạng thẻ 2 cột |
 | `traloi` | Trắc nghiệm a, b, c… (có thể kèm hình chung) | `cau:[{text có "{}" ở chỗ ô chọn, lc, da}]`; `hinh`, `khungHinh:true` |
+| `abcd` | Trắc nghiệm **bấm ô A/B/C/D** (giống khoanh tròn trên giấy) | `cau:[{text, lc:[nội dung các phương án], da: nội dung phương án đúng, cot?}]`; `cot` = số cột ô phương án (1, 2 hoặc 4; mặc định 2, có thể đặt chung ở bài). Phương án được chứa ảnh/SVG |
+| `noidot` | **Nối chấm tròn**: bấm chấm bên trái rồi bấm chấm bên phải, hiện đường nối | Giống `noi`: `lc` = cột phải (theo thứ tự hiện), `cau:[{text: ô trái, da}]`. Bấm lại ô trái đã nối để nối lại |
 
-- Trắc nghiệm A/B/C/D thông thường: dùng `traloi`, trong đó `lc` là nội dung các phương án. Không dùng chữ A/B/C/D làm lựa chọn khi phương án ngắn.
+- Chọn dạng theo cách làm trên giấy của cô:
+  - "Khoanh tròn đáp án A/B/C/D" → `abcd`. Số cột: phương án ngắn (≤ 14 ký tự) thì 4; ≤ 30 ký tự thì 2; dài hơn thì 1.
+  - "Nối (dùng bút vẽ đường nối)" → `noidot`.
+  - Điền chỗ trống, chọn trong câu → `dien` / `traloi` (ô thả xuống).
+- `abcd`: không dùng chữ A/B/C/D làm nội dung phương án; ghi nội dung thật, engine tự gắn nhãn A/B/C/D.
+- Cả hai dạng mới vẫn chấm điểm, tô xanh/đỏ, ghi nhãn B…, gửi Sheet như các dạng khác.
 - Trộn thứ tự các lựa chọn trong `lc` để đáp án không luôn ở cùng một vị trí.
 - Các phương án không được chồng lấn nhau hoặc làm lộ đáp án.
 

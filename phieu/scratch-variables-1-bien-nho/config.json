@@ -13,15 +13,15 @@
  "tieuDe": "Phiếu bài tập – Nhóm lệnh Variables: Biến nhớ",
  "lop": [
   "Lớp 5",
-  "ĐT - K2",
-  "ĐT - K3"
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
  ],
  "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
  "guiA": null,
  "bai": [
   {
-   "loai": "noi",
-   "yc": "Nối khối lệnh với ý nghĩa đúng.",
+   "loai": "noidot",
+   "yc": "Nối khối lệnh với ý nghĩa đúng: bấm chấm tròn bên trái rồi bấm chấm tròn bên phải.",
    "lc": [
     "A. Gán một giá trị cụ thể cho biến m.",
     "B. Hiện giá trị biến m trên sân khấu.",
@@ -165,7 +165,7 @@
    ]
   },
   {
-   "loai": "traloi",
+   "loai": "abcd",
    "yc": "Chọn đáp án đúng.",
    "cau": [
     {
@@ -176,7 +176,8 @@
       "số hoặc chữ",
       "không chứa gì"
      ],
-     "da": "số hoặc chữ"
+     "da": "số hoặc chữ",
+     "cot": 4
     },
     {
      "text": "m = 0. Chạy <b>set m to 5</b> rồi <b>set m to 3</b>. Giá trị m là: {}",
@@ -186,7 +187,8 @@
       "3",
       "0"
      ],
-     "da": "3"
+     "da": "3",
+     "cot": 4
     },
     {
      "text": "m = 0. Chạy <b>change m by 2</b> rồi <b>change m by -1</b>. m là: {}",
@@ -196,7 +198,8 @@
       "1",
       "-1"
      ],
-     "da": "1"
+     "da": "1",
+     "cot": 4
     },
     {
      "text": "Khối lệnh nào BẮT BUỘC nhập số? {}",
@@ -206,7 +209,8 @@
       "show variable m",
       "hide variable m"
      ],
-     "da": "change m by"
+     "da": "change m by",
+     "cot": 2
     },
     {
      "text": "Đầu trò chơi, muốn đưa điểm score về 0 em dùng: {}",
@@ -216,7 +220,8 @@
       "hide variable score",
       "show variable score"
      ],
-     "da": "set score to 0"
+     "da": "set score to 0",
+     "cot": 2
     }
    ]
   },

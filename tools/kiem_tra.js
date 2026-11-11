@@ -50,6 +50,22 @@ const server = http.createServer((req, res) => {
       await page.route(/script\.google\.com|docs\.google\.com/, route => { gui.push(route.request().url()); route.fulfill({ status: 200, body: 'ok' }); });
       await page.goto(base + p.link);
       await page.waitForLoadState('networkidle');
+      if (ten === 'may_tinh') {
+        // Thử bấm thật với 2 dạng mới (A/B/C/D và nối chấm tròn)
+        const g = page.locator('[data-abcd]').first();
+        if (await g.count()) {
+          await g.locator('.opt').nth(1).click();
+          bao(await g.locator('select').inputValue() === 'B', 'bấm phương án B ở câu A/B/C/D → ghi nhận B');
+        }
+        const n = page.locator('[data-noi]').first();
+        if (await n.count()) {
+          await n.locator('.it.L').first().click();
+          await n.locator('.it.R').last().click();
+          const v = await n.locator('.an-box select').first().inputValue();
+          const lines = await n.locator('svg line').count();
+          bao(!!v && lines === 1, `bấm nối chấm tròn → có 1 đường nối ("${v.slice(0, 30)}")`);
+        }
+      }
       const r = await page.evaluate(lop => {
         const T = window.__PHIEU_TEST__;
         T.sels.forEach(s => { s.value = T.ANS[s.dataset.k]; s.dispatchEvent(new Event('change')); });

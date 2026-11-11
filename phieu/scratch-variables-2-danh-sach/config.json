@@ -13,15 +13,15 @@
  "tieuDe": "Phiếu bài tập – Nhóm lệnh Variables: Danh sách (List)",
  "lop": [
   "Lớp 5",
-  "ĐT - K2",
-  "ĐT - K3"
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
  ],
  "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
  "guiA": null,
  "bai": [
   {
-   "loai": "noi",
-   "yc": "Nối khối lệnh với ý nghĩa đúng.",
+   "loai": "noidot",
+   "yc": "Nối khối lệnh với ý nghĩa đúng: bấm chấm tròn bên trái rồi bấm chấm tròn bên phải.",
    "lc": [
     "A. Xóa tất cả phần tử của danh sách A.",
     "B. Thay phần tử thứ 1 bằng giá trị mới.",
@@ -234,7 +234,7 @@
    ]
   },
   {
-   "loai": "traloi",
+   "loai": "abcd",
    "yc": "Chọn đáp án đúng. Cho danh sách A gồm: 1. apple &nbsp;2. orange &nbsp;3. grape",
    "cau": [
     {
@@ -245,7 +245,8 @@
       "5",
       "kiwi"
      ],
-     "da": "4"
+     "da": "4",
+     "cot": 4
     },
     {
      "text": "Chạy <b>insert kiwi at 1 of A</b>. item 1 of A là: {}",
@@ -255,7 +256,8 @@
       "orange",
       "grape"
      ],
-     "da": "kiwi"
+     "da": "kiwi",
+     "cot": 4
     },
     {
      "text": "Chạy <b>replace item 2 of A with kiwi</b>. Danh sách A là: {}",
@@ -265,7 +267,8 @@
       "apple, orange, kiwi",
       "apple, kiwi, orange, grape"
      ],
-     "da": "apple, kiwi, grape"
+     "da": "apple, kiwi, grape",
+     "cot": 2
     },
     {
      "text": "<b>item # of lemon in A</b> (lemon không có trong A) trả về: {}",
@@ -275,7 +278,8 @@
       "1",
       "lemon"
      ],
-     "da": "0"
+     "da": "0",
+     "cot": 4
     },
     {
      "text": "Khối lệnh hình LỤC GIÁC trả lời đúng/sai là: {}",
@@ -285,7 +289,8 @@
       "A contains thing ?",
       "delete all of A"
      ],
-     "da": "A contains thing ?"
+     "da": "A contains thing ?",
+     "cot": 2
     },
     {
      "text": "Chạy <b>delete 1 of A</b>. item 1 of A bây giờ là: {}",
@@ -295,7 +300,8 @@
       "grape",
       "0"
      ],
-     "da": "orange"
+     "da": "orange",
+     "cot": 4
     }
    ]
   }
