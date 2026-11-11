@@ -80,6 +80,10 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
 }
 ```
 - `web` là phần hiện trên trang chủ: khối, dòng môn, tên ngắn, ngày (ngày tạo phiếu).
+- **Hạn làm bài** (tùy chọn, chỉ thêm khi cô nói): `"web": {..., "mo": "YYYY-MM-DD", "dong": "YYYY-MM-DD"}` (có thể thêm giờ: `"2026-11-20 17:00"`).
+  Trước ngày mở: trang chủ hiện "SẮP MỞ", phiếu bị khóa. Sau ngày đóng (hết 23:59 nếu không ghi giờ): "ĐÃ ĐÓNG", không nộp được. Còn hạn: hiện "⏳ Hạn nộp".
+  Lưu ý: khóa này nằm trên trang web (học sinh rành máy vẫn có thể lách); Sheet vẫn ghi giờ nộp để cô đối chiếu.
+- **Xem lại bài** sau khi nộp: mặc định câu sai ghi kèm đáp án đúng (nối chấm: đường đúng nét đứt xanh). Muốn giấu đáp án (ví dụ bài kiểm tra, sợ em nộp trước báo đáp án cho bạn) thì thêm `"xemDapAn": false` – khi đó chỉ tô đỏ câu sai.
 - `mon` và `tieuDe` hiện ở đầu tờ phiếu và trong ảnh kết quả.
 - Có `guiB` thì gửi về Apps Script. Nếu `guiB` rỗng thì dùng `guiA`:
   `{"url": ".../formResponse", "ten": "entry..", "lop": "entry..", "diem": "entry..", "chiTiet": "entry..", "phieu": "entry.." hoặc null}`.
@@ -92,7 +96,7 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
 |---|---|---|
 | `chon` | Gọi tên theo số trên hình, chọn theo danh sách | `lc` chung; `cau:[{nhan?, text?, da, lc?}]`; thêm `hinh` để đặt hình bên trái |
 | `noi` | Nối cột trái với cột phải | `lc` = các vế phải; `cau:[{text: vế trái, da}]` |
-| `ds` | Đúng/Sai | `cau:[{text, da:"Đ"\|"S"}]` |
+| `ds` | Đúng/Sai – **2 nút bấm Đúng / Sai** | `cau:[{text, da:"Đ"\|"S"}]` |
 | `thutu` | Sắp xếp thứ tự các bước | `cau:[{text, da: số thứ tự}]`, liệt kê theo thứ tự đã xáo |
 | `dien` | Điền khuyết (chọn từ) | `bank?` (khung từ), `lc`; `cau:[{text có "{}", da:[...], hinh?}]`; có `hinh` thì hiện dạng thẻ 2 cột |
 | `traloi` | Trắc nghiệm a, b, c… (có thể kèm hình chung) | `cau:[{text có "{}" ở chỗ ô chọn, lc, da}]`; `hinh`, `khungHinh:true` |
@@ -117,11 +121,12 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
   - **gửi điểm ngầm**, không mở tab mới;
   - hiện ảnh kết quả có khung: tên, lớp, điểm thang 10 làm tròn 0,5, nhận xét, ✓/✗ từng câu, giờ làm;
   - hiện nút **Lưu ảnh** và **Lưu PDF**.
-- **Trang chủ:** mỗi thẻ phiếu có nhãn **MỚI** (7 ngày), số câu, thời gian làm ước tính (tự tính khi build) và nút **▦ Mã QR** (hộp QR to để cô chiếu lên bảng, có nút chép link). Thư viện QR đặt sẵn trong `assets/js/qrcode.js`.
+- **Trang chủ:** ô **"Em học lớp"** (máy nhớ lớp đã chọn) chỉ hiện phiếu của lớp đó, tab khối đếm lại theo lớp, lớp của em tô đậm trên thẻ. Mỗi thẻ phiếu có nhãn **MỚI** (7 ngày), số câu, thời gian làm ước tính (tự tính khi build) và nút **▦ Mã QR** (hộp QR to để cô chiếu lên bảng, có nút chép link). Thư viện QR đặt sẵn trong `assets/js/qrcode.js`.
 - **Link dự phòng:** luôn có link "Gửi điểm cho cô" phòng khi gửi ngầm lỗi.
 - Không có nút "Làm lại".
 - **Thanh trên cùng (dính khi cuộn):** nút **← Trở về** + tiến độ "Em đã làm x/y câu" + nút "Câu chưa làm ↓". Cuối phiếu có thêm nút **← Trở về kho phiếu**.
 - **Trở về khi chưa nộp:** chưa làm câu nào → về thẳng trang chủ; đã làm dở → hộp hỏi lại "Em chưa nộp bài!", chọn "Xóa bài và về trang chủ" thì bài bị xóa. Mở lại phiếu (kể cả bằng nút Back) luôn là bài trắng. Đã nộp → về thẳng.
+- **Sau khi nộp:** hộp "Em làm sai N câu" + nút "Xem câu sai đầu tiên"; điểm ≥ 8 có pháo giấy (10 điểm: pháo to); máy lưu "đã làm" để trang chủ hiện "✓ Đã làm · tên – điểm".
 - **Nhớ tên + lớp** trên máy (trong ngày) sau khi nộp; phiếu sau tự điền, kèm nhắc "Máy đang nhớ tên… [Không phải em]" cho máy dùng chung ở phòng tin.
 - **Sửa giao diện hoặc cách chấm:** sửa `tools/engine.html` rồi build lại; thay đổi áp dụng cho mọi phiếu. Chỉ làm khi cô yêu cầu.
 

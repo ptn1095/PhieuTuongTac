@@ -83,6 +83,18 @@ select.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;bord
 .it:disabled{cursor:default}
 .noi2 svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
 .hidden{display:none!important}
+/* Đúng/Sai bằng nút */
+.c-ds .opts.ds{margin:0;flex:none;grid-template-columns:repeat(2,auto);gap:6px}
+.opts.ds .opt{min-height:38px;padding:5px 12px 5px 6px;font-weight:bold}
+.opts.ds .opt .L{width:26px;height:26px;font-size:14px}
+/* Xem lại bài: đáp án đúng cạnh câu sai */
+.dapan{display:inline-block;margin:0 6px;padding:2px 9px;font-size:14px;font-weight:bold;color:#1E7E3A;background:#E9F7EE;border:1.5px dashed #2E9E4F;border-radius:999px;vertical-align:middle}
+.xemlai{width:100%;border:2px solid #F28C28;background:#FFF8EF;border-radius:12px;padding:10px 14px;font-size:15px;text-align:center}
+.xemlai button{font:inherit;font-weight:bold;color:#B35A00;background:#fff;border:1.5px solid #F28C28;border-radius:999px;padding:4px 14px;margin-top:6px;cursor:pointer}
+/* Phiếu đã đóng / chưa mở */
+.khoa{border:3px solid #9AA7B2;background:#F2F5F8;border-radius:14px;padding:14px 16px;text-align:center;font-size:16px}
+.khoa b{display:block;font-size:20px;color:#5A6B7B;margin-bottom:4px}
+#phaoGiay{position:fixed;inset:0;pointer-events:none;z-index:90}
 /* Thanh trên cùng: nút Trở về + tiến độ */
 .topbar{position:sticky;top:0;z-index:50;max-width:794px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(255,255,255,.96);border-radius:0 0 14px 14px;box-shadow:0 2px 10px rgba(0,0,0,.12)}
 .tro-ve{flex:none;font:inherit;font-size:15px;font-weight:bold;color:#2457A6;background:#fff;border:2px solid #2457A6;border-radius:999px;padding:7px 14px;cursor:pointer}
@@ -110,6 +122,7 @@ select.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;bord
 <div class="tiendo" id="tiendo" aria-live="polite"><div class="chu"><span id="tdChu">Em đã làm 0 câu</span><button type="button" id="tdDen" class="hidden">Câu chưa làm ↓</button></div><div class="thanh"><i id="tdThanh"></i></div></div></div>
 <div class="fit" id="fit"><div class="paper" id="paper">
 <div><div class="sub" id="mon"></div><h1 id="tieuDe"></h1></div>
+<div class="khoa hidden" id="khoa" role="alert"></div>
 <div class="info" style="flex-wrap:wrap"><div class="nho hidden" id="nho" style="width:100%"><span id="nhoChu"></span><button type="button" id="khongPhai">Không phải em</button></div><label style="flex:1">Họ và tên<input id="ten" autocomplete="off" placeholder="Nhập họ và tên"></label>
 <label>Lớp<select id="lop"><option value="">— chọn lớp —</option></select></label></div>
 <div id="noidung" style="display:flex;flex-direction:column;gap:30px"></div>
@@ -121,6 +134,7 @@ select.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;bord
 <section id="ketqua" class="ketqua hidden">
 <h2>Kết quả của em</h2>
 <div class="sent" id="sent" role="status">Đang gửi điểm cho cô…</div>
+<div class="xemlai hidden" id="xemLai"></div>
 <img id="anh" alt="Ảnh kết quả bài làm: họ tên, lớp, điểm, nhận xét và đúng sai từng câu">
 <div class="center"><button id="luuPng" type="button" class="btn light">Lưu ảnh kết quả</button> <button id="luuPdf" type="button" class="btn light">Lưu PDF</button>
 <div class="note" style="margin-top:8px">Hoặc nhấn giữ vào ảnh (điện thoại) / bấm chuột phải (máy tính) rồi chọn <b>Lưu ảnh</b>.</div></div>
@@ -156,7 +170,10 @@ P.bai.forEach((b,bi)=>{
   if(b.loai==='chon'){b.cau.forEach((c,ci)=>{const nh=c.nhan!=null?c.nhan:(ci+1);
     h+='<div class="c-chon"><span class="num">'+nh+'</span>'+(c.text?'<span class="txt">'+c.text+'</span>':'')+sel('b'+n+'_'+ci,c.lc||lc,c.da,'B'+n+'.'+nh,c.text?'':'grow')+'</div>';});}
   else if(b.loai==='noi'){b.cau.forEach((c,ci)=>{h+='<div class="c-noi"><span class="chip">'+c.text+'</span><span class="arrow">➜</span>'+sel('b'+n+'_'+ci,c.lc||lc,c.da,'B'+n+'.'+(ci+1))+'</div>';});}
-  else if(b.loai==='ds'){b.cau.forEach((c,ci)=>{const l=ABC[ci];h+='<div class="c-ds"><span class="lt">'+l+')</span><span class="grow">'+c.text+'</span>'+sel('b'+n+'_'+l,['Đ','S'],c.da,'B'+n+'.'+l,'nho')+'</div>';});}
+  else if(b.loai==='ds'){b.cau.forEach((c,ci)=>{const l=ABC[ci],k='b'+n+'_'+l;h+='<div class="c-ds"><span class="lt">'+l+')</span><span class="grow">'+c.text+'</span>'+
+    '<div class="opts ds" data-abcd="'+k+'" role="radiogroup" aria-label="'+esc('Câu '+l+': Đúng hay Sai')+'">'+sel(k,['Đ','S'],c.da,'B'+n+'.'+l,'an')+
+    '<button type="button" class="opt" role="radio" aria-checked="false" data-v="Đ"><span class="L">Đ</span><span>Đúng</span></button>'+
+    '<button type="button" class="opt" role="radio" aria-checked="false" data-v="S"><span class="L">S</span><span>Sai</span></button></div></div>';});}
   else if(b.loai==='thutu'){const m=b.cau.length,so=Array.from({length:m},(_,i)=>String(i+1));
     b.cau.forEach((c,ci)=>{h+='<div class="c-ds">'+sel('b'+n+'_'+ci,so,String(c.da),'B'+n+'.'+(ci+1),'nho')+'<span class="grow">'+c.text+'</span></div>';});}
   else if(b.loai==='dien'){let k=0;const items=b.cau.map((c,ci)=>{let j=0;
@@ -179,6 +196,7 @@ P.bai.forEach((b,bi)=>{
 $('noidung').innerHTML=html;
 const sels=[...document.querySelectorAll('select[data-k]')];
 const BG=new Image();BG.src='../../assets/bg.jpg';
+const XEM_DA=P.xemDapAn!==false;
 const chon=(s,v)=>{s.value=v;s.dispatchEvent(new Event('change',{bubbles:true}));};
 // Trắc nghiệm A/B/C/D: bấm ô phương án -> ghi vào ô chọn ẩn
 document.querySelectorAll('[data-abcd]').forEach(g=>{
@@ -204,7 +222,9 @@ document.querySelectorAll('[data-noi]').forEach(g=>{
       if(!s.value)return;const j=lcs.indexOf(s.value);if(j<0)return;
       const [x1,y1]=tam(L[i],g),[x2,y2]=tam(R[j],g);
       const m=s.classList.contains('ok')?'#2E9E4F':s.classList.contains('no')?'#D93025':'#168DCE';
-      out+='<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+m+'" stroke-width="3.5" stroke-linecap="round"/>';});
+      out+='<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+m+'" stroke-width="3.5" stroke-linecap="round"/>';
+      if(s.classList.contains('no')&&XEM_DA){const jd=lcs.indexOf(ANS[s.dataset.k]);if(jd>=0){const [a2,b2]=tam(R[jd],g);
+        out+='<line x1="'+x1+'" y1="'+y1+'" x2="'+a2+'" y2="'+b2+'" stroke="#2E9E4F" stroke-width="3" stroke-dasharray="7 6" stroke-linecap="round"/>';}}});
     svg.innerHTML=out;
     R.forEach((r,j)=>r.classList.toggle('noi',sL.some(s=>s.value===lcs[j])));
     [...L,...R].forEach(x=>x.classList.toggle('act',x===act));};
@@ -276,7 +296,7 @@ function veAnh(r){
   $('luuPdf').classList.toggle('hidden',!window.jspdf);
 }
 $('check').addEventListener('click',()=>{
-  if(done)return;
+  if(done||khoa)return;
   const r=tinh();sels.forEach(s=>{s.classList.toggle('thieu',!s.value);if(s.veLai)s.veLai();});
   $('ten').classList.toggle('thieu',!r.ten);$('lop').classList.toggle('thieu',!r.lop);
   if(!r.du){const m=[];if(!r.ten)m.push('nhập họ tên');if(!r.lop)m.push('chọn lớp');if(r.thieu)m.push('làm '+r.thieu+' ô còn trống (tô màu cam)');
@@ -286,7 +306,8 @@ $('check').addEventListener('click',()=>{
   document.querySelectorAll('select,input,.opt,.it').forEach(e=>e.disabled=true);
   sels.forEach(s=>{if(s.veLai)s.veLai();});
   const a=$('check');a.textContent='Đã tính điểm';a.classList.add('done');a.disabled=true;
-  guiDiem(r.url);
+  guiDiem(r.url);luuDaLam(r);xemLai(r);
+  if(r.diem>=8)setTimeout(()=>phaoGiay(r.diem>=10?160:60),500);
   veAnh(r);$('ketqua').classList.remove('hidden');fit();
   setTimeout(()=>$('ketqua').scrollIntoView({behavior:'smooth',block:'start'}),400);
 });
@@ -294,12 +315,52 @@ function taiVe(name,blob){const u=URL.createObjectURL(blob),a=document.createEle
 $('luuPng').onclick=()=>{if(curCanvas)curCanvas.toBlob(b=>taiVe(curName+'.png',b),'image/png');};
 $('luuPdf').onclick=()=>{if(!curCanvas||!window.jspdf)return;const pdf=new jspdf.jsPDF({orientation:'p',unit:'mm',format:'a4'});
   pdf.addImage(curCanvas.toDataURL('image/jpeg',0.92),'JPEG',0,0,210,297);taiVe(curName+'.pdf',pdf.output('blob'));};
+// ---- Xem lại bài: câu sai ghi kèm đáp án đúng (cô tắt bằng "xemDapAn": false trong config)
+function xemLai(r){
+  const sai=sels.filter(s=>s.classList.contains('no')),hop=$('xemLai');
+  if(!sai.length){hop.classList.add('hidden');return;}
+  if(XEM_DA)sels.forEach(s=>{if(!s.classList.contains('no')||s.classList.contains('an'))return;
+    const t=document.createElement('span');t.className='dapan';t.textContent='✓ '+ANS[s.dataset.k];s.after(t);});
+  hop.innerHTML='Em làm sai <b>'+sai.length+' câu</b> (tô đỏ). '+(XEM_DA?'Đáp án đúng được ghi <b style="color:#1E7E3A">màu xanh</b> ngay cạnh câu sai.':'Em xem lại các câu đó nhé.')+
+    '<br><button type="button" id="denSai">Xem câu sai đầu tiên ↑</button>';
+  hop.classList.remove('hidden');
+  $('denSai').onclick=()=>{const s=sai[0];(s.classList.contains('an')?(s.closest('.opts')||s.closest('.noi2')):s).scrollIntoView({behavior:'smooth',block:'center'});};
+  NOI.forEach(v=>v());fit();
+}
+// ---- Lưu "em đã làm phiếu này" trên máy để trang chủ hiện dấu ✓
+function luuDaLam(r){try{const k='coThuyTin_daLam',d=JSON.parse(localStorage.getItem(k)||'{}');
+  d[P.slug||P.ma]={ten:r.ten,lop:r.lop,diem:r.diem,luc:Date.now()};localStorage.setItem(k,JSON.stringify(d));}catch(e){}}
+// ---- Pháo giấy khi điểm cao
+function phaoGiay(soHat){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const c=document.createElement('canvas');c.id='phaoGiay';document.body.appendChild(c);
+  const x=c.getContext('2d'),W=c.width=innerWidth,H=c.height=innerHeight,mau=['#F28C28','#65B843','#168DCE','#E5484D','#F5C04A','#8E5BD8'];
+  const hat=Array.from({length:soHat},()=>({x:W/2+(Math.random()-.5)*W*.3,y:H*.35,vx:(Math.random()-.5)*14,vy:-Math.random()*13-4,
+    s:6+Math.random()*7,g:Math.random()*6.28,vg:(Math.random()-.5)*.3,m:mau[Math.random()*mau.length|0]}));
+  const t0=performance.now();
+  (function buoc(t){x.clearRect(0,0,W,H);
+    hat.forEach(h=>{h.vy+=.35;h.vx*=.99;h.x+=h.vx;h.y+=h.vy;h.g+=h.vg;x.save();x.translate(h.x,h.y);x.rotate(h.g);x.fillStyle=h.m;x.fillRect(-h.s/2,-h.s/4,h.s,h.s/2);x.restore();});
+    if(t-t0<3200)requestAnimationFrame(buoc);else c.remove();})(t0);
+}
+// ---- Hạn làm bài: "mo" / "dong" trong web của config (YYYY-MM-DD hoặc YYYY-MM-DD HH:MM)
+function ngayGio(v,cuoiNgay){if(!v)return null;const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?$/);if(!m)return null;
+  return m[4]!=null?new Date(+m[1],m[2]-1,+m[3],+m[4],+m[5]):new Date(+m[1],m[2]-1,+m[3],cuoiNgay?23:0,cuoiNgay?59:0,cuoiNgay?59:0);}
+const hienNgay=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear()+((d.getHours()||d.getMinutes())&&!(d.getHours()===23&&d.getMinutes()===59)?' lúc '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'):'');
+let khoa=false;
+(function(){const w=P.web||{},mo=ngayGio(w.mo,false),dong=ngayGio(w.dong,true),bay=new Date();let msg='';
+  if(mo&&bay<mo)msg='<b>Phiếu chưa mở</b>Cô sẽ mở phiếu này vào ngày '+hienNgay(mo)+'. Em quay lại sau nhé!';
+  else if(dong&&bay>dong)msg='<b>Phiếu đã đóng</b>Hạn làm phiếu này là ngày '+hienNgay(dong)+'. Em không nộp bài được nữa.';
+  else if(dong)$('huongDan').innerHTML+='<br>⏳ Hạn nộp: <b>'+hienNgay(dong)+'</b>.';
+  if(!msg)return;
+  khoa=true;$('khoa').innerHTML=msg;$('khoa').classList.remove('hidden');
+  document.querySelectorAll('select,input,.opt,.it,#check').forEach(e=>e.disabled=true);$('check').classList.add('done');
+})();
 // ---- Tiến độ làm bài
 function tienDo(){
   const n=sels.length,lam=sels.filter(s=>s.value).length,t=$('tiendo');
   $('tdThanh').style.width=(n?lam/n*100:0)+'%';
   t.classList.toggle('du',lam===n);
-  $('tdChu').textContent=done?'Em đã nộp bài':(lam===n?'✓ Em đã làm đủ '+n+' câu – bấm Tính điểm nhé!':'Em đã làm '+lam+'/'+n+' câu');
+  $('tdChu').textContent=khoa?'Phiếu đang khóa':done?'Em đã nộp bài':(lam===n?'✓ Em đã làm đủ '+n+' câu – bấm Tính điểm nhé!':'Em đã làm '+lam+'/'+n+' câu');
   $('tdDen').classList.toggle('hidden',done||lam===n||lam===0);
 }
 document.addEventListener('change',tienDo);

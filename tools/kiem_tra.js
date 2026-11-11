@@ -7,8 +7,24 @@ const OUT = process.argv[2] || path.join(require('os').tmpdir(), 'kiem_tra_phieu
 fs.mkdirSync(OUT, { recursive: true });
 const MIME = { '.html': 'text/html; charset=utf-8', '.json': 'application/json', '.jpg': 'image/jpeg', '.png': 'image/png', '.js': 'text/javascript' };
 
+// Phiếu mẫu chỉ dùng khi thử (không đăng): có Đúng/Sai, A/B/C/D, điền; 3 trạng thái hạn làm bài
+const ENGINE = fs.readFileSync(path.join(GOC, 'tools', 'engine.html'), 'utf8');
+const homNay = new Date(), ng = d => new Date(homNay.getTime() + d * 864e5).toISOString().slice(0, 10);
+const MAU = {
+  __mau_mo__: { dong: ng(3) }, __mau_dong__: { dong: ng(-2) }, __mau_chua__: { mo: ng(2) },
+};
+function phieuMau(slug) {
+  const P = { slug, web: { khoi: 'khoi-3', ngay: ng(0), ...MAU[slug] }, ma: 'Phiếu mẫu', mon: 'MẪU', tieuDe: 'Phiếu mẫu', lop: ['3A1'],
+    guiB: 'https://script.google.com/macros/s/MAU/exec', bai: [
+      { loai: 'ds', yc: 'Đúng hay sai?', cau: [{ text: '1 + 1 = 2', da: 'Đ' }, { text: '2 + 2 = 5', da: 'S' }] },
+      { loai: 'abcd', yc: 'Chọn đáp án.', cau: [{ text: '3 × 3 = ?', lc: ['6', '9', '12', '33'], da: '9' }] },
+      { loai: 'dien', yc: 'Điền.', lc: ['đỏ', 'xanh', 'vàng'], cau: [{ text: 'Lá cây màu {}.', da: ['xanh'] }, { text: 'Mặt trời màu {}.', da: ['đỏ'] }] }] };
+  return ENGINE.replace('/*__PHIEU__*/', 'const PHIEU = ' + JSON.stringify(P) + ';');
+}
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
+  const mm = p.match(/^\/phieu\/(__mau_\w+__)\/$/);
+  if (mm && MAU[mm[1]]) { res.writeHead(200, { 'Content-Type': MIME['.html'] }); return res.end(phieuMau(mm[1])); }
   if (p.endsWith('/')) p += 'index.html';
   const f = path.join(GOC, p);
   if (!f.startsWith(GOC) || !fs.existsSync(f)) { res.writeHead(404); return res.end('404'); }
@@ -94,7 +110,67 @@ const server = http.createServer((req, res) => {
       await page.locator('#khongPhai').click();
       bao(await page.inputValue('#ten') === '', 'bấm "Không phải em" → xóa tên');
     }
+    // Trang chủ: dấu "Đã làm", lọc theo lớp
+    await page.goto(base);
+    await page.waitForTimeout(600);
+    bao(await page.locator('.dalam').count() >= 1, 'trang chủ: phiếu vừa nộp có dấu "✓ Đã làm"');
+    const lop9 = ds.find(p => p.khoi === 'khoi-9');
+    const lopLoc = ds.find(p => p.khoi !== 'khoi-9').lop[0];
+    await page.selectOption('#locLop', lopLoc);
+    await page.waitForTimeout(200);
+    const dem9 = await page.locator('.tab[data-id="khoi-9"] .dem').textContent();
+    bao(!lop9 || dem9.startsWith('0'), `chọn lớp ${lopLoc} → khối 9 còn ${dem9}`);
+    bao(await page.locator('.chip.cua-em').count() >= 1, 'lớp của em được tô đậm trên thẻ phiếu');
+    await page.reload(); await page.waitForTimeout(500);
+    bao(await page.inputValue('#locLop') === lopLoc, 'tải lại trang chủ → vẫn nhớ lớp đã chọn');
+    await page.selectOption('#locLop', '');
     await ctx.close();
+  }
+
+  // Hạn làm bài trên trang chủ (giả lập phieu.json có hạn)
+  {
+    const page = await browser.newPage({ viewport: { width: 900, height: 1200 } });
+    const gia = JSON.parse(JSON.stringify(ds));
+    gia.filter(p => p.khoi === gia[0].khoi).forEach((p, i) => { if (i === 0) p.dong = ng(-1); else if (i === 1) p.mo = ng(3); else p.dong = ng(5); });
+    await page.route(/phieu\.json/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(gia) }));
+    await page.goto(base + '#' + gia[0].khoi); await page.waitForTimeout(600);
+    console.log('Hạn làm bài (trang chủ)');
+    const nhan = await page.locator('.nhan').allTextContents();
+    bao(nhan.includes('ĐÃ ĐÓNG'), 'phiếu quá hạn → nhãn "ĐÃ ĐÓNG", nút "Đã hết hạn"');
+    if (gia.filter(p => p.khoi === gia[0].khoi).length > 1) bao(nhan.includes('SẮP MỞ'), 'phiếu chưa tới ngày mở → nhãn "SẮP MỞ"');
+    await page.screenshot({ path: path.join(OUT, '_trang_chu_han.png'), fullPage: true });
+    await page.close();
+  }
+
+  // Phiếu mẫu: Đúng/Sai bằng nút, xem lại bài, pháo giấy, phiếu đóng/chưa mở
+  {
+    console.log('Phiếu mẫu (Đúng/Sai, xem lại bài, hạn làm bài)');
+    const page = await browser.newPage({ viewport: { width: 900, height: 1100 } });
+    const loiMau = []; page.on('pageerror', e => loiMau.push(e.message));
+    await page.route(/script\.google\.com/, r => r.fulfill({ status: 200, body: 'ok' }));
+    await page.goto(base + 'phieu/__mau_mo__/'); await page.waitForLoadState('networkidle');
+    const ds1 = page.locator('.opts.ds').first();
+    await ds1.locator('.opt[data-v="S"]').click();
+    bao(await ds1.locator('select').inputValue() === 'S', 'Đúng/Sai: bấm nút "Sai" → ghi nhận S');
+    await ds1.locator('.opt[data-v="Đ"]').click();
+    bao(await ds1.locator('select').inputValue() === 'Đ', 'Đúng/Sai: đổi sang "Đúng" → ghi nhận Đ');
+    bao((await page.locator('#huongDan').textContent()).includes('Hạn nộp'), 'phiếu còn hạn → ghi "Hạn nộp" dưới nút Tính điểm');
+    await page.evaluate(() => { const T = window.__PHIEU_TEST__; T.sels.forEach((s, i) => { s.value = i === T.sels.length - 1 ? 'vàng' : T.ANS[s.dataset.k]; s.dispatchEvent(new Event('change', { bubbles: true })); });
+      document.getElementById('ten').value = 'Mẫu'; document.getElementById('lop').value = '3A1'; });
+    await page.locator('#check').click();
+    await page.waitForTimeout(700);
+    bao(await page.locator('#xemLai').isVisible() && (await page.locator('.dapan').allTextContents()).includes('✓ đỏ'), 'xem lại bài: câu sai ghi kèm đáp án đúng "✓ đỏ"');
+    bao(await page.locator('#phaoGiay').count() === 1, 'điểm ≥ 8 → có pháo giấy');
+    await page.screenshot({ path: path.join(OUT, '_mau_xem_lai.png'), fullPage: true });
+    bao(await page.evaluate(() => !!JSON.parse(localStorage.getItem('coThuyTin_daLam') || '{}').__mau_mo__), 'lưu "đã làm" cho trang chủ');
+    for (const [slug, chu] of [['__mau_dong__', 'đã đóng'], ['__mau_chua__', 'chưa mở']]) {
+      await page.goto(base + 'phieu/' + slug + '/'); await page.waitForLoadState('networkidle');
+      const t = (await page.locator('#khoa').textContent()).toLowerCase();
+      bao(t.includes(chu) && await page.locator('#check').isDisabled() && await page.locator('.opt').first().isDisabled(), `phiếu ${chu} → báo "${chu}", khóa nút Tính điểm và các ô`);
+    }
+    await page.screenshot({ path: path.join(OUT, '_mau_khoa.png') });
+    bao(loiMau.length === 0, 'phiếu mẫu không lỗi' + (loiMau.length ? ': ' + loiMau.join('; ') : ''));
+    await page.close();
   }
 
   for (const p of ds.filter((p, i) => p.link.startsWith('phieu/') && ds.findIndex(q => q.link === p.link) === i)) {
@@ -112,7 +188,8 @@ const server = http.createServer((req, res) => {
         const g = page.locator('[data-abcd]').first();
         if (await g.count()) {
           await g.locator('.opt').nth(1).click();
-          bao(await g.locator('select').inputValue() === 'B', 'bấm phương án B ở câu A/B/C/D → ghi nhận B');
+          const v = await g.locator('.opt').nth(1).getAttribute('data-v');
+          bao(await g.locator('select').inputValue() === v, `bấm phương án ${v} ở câu A/B/C/D → ghi nhận ${v}`);
         }
         const n = page.locator('[data-noi]').first();
         if (await n.count()) {

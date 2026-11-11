@@ -31,6 +31,11 @@ def kiem_tra(slug, P):
     khoi = w.get("khoi") if isinstance(w.get("khoi"), list) else [w.get("khoi")]
     assert khoi and all(k in TEN_KHOI for k in khoi), f"{slug}: web.khoi phải là một (hoặc danh sách) trong {list(TEN_KHOI)}"
     assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", w.get("ngay", "")), f"{slug}: web.ngay phải dạng YYYY-MM-DD"
+    for k in ("mo", "dong"):
+        if w.get(k):
+            assert re.fullmatch(r"\d{4}-\d{2}-\d{2}( \d{2}:\d{2})?", w[k]), f"{slug}: web.{k} phải dạng YYYY-MM-DD hoặc YYYY-MM-DD HH:MM"
+    if w.get("mo") and w.get("dong"):
+        assert w["mo"] <= w["dong"], f"{slug}: ngày mở phải trước ngày đóng"
     assert P.get("lop"), f"{slug}: thiếu danh sách lớp"
     assert P.get("guiB") or P.get("guiA"), f"{slug}: thiếu nơi nhận điểm (guiB hoặc guiA)"
     for i, b in enumerate(P["bai"], 1):
@@ -58,7 +63,7 @@ def main():
         slug = os.path.basename(thu_muc)
         P = doc_json(cfg)
         kiem_tra(slug, P)
-        js = "const PHIEU = " + json.dumps(P, ensure_ascii=False).replace("</", "<\\/") + ";"
+        js = "const PHIEU = " + json.dumps({**P, "slug": slug}, ensure_ascii=False).replace("</", "<\\/") + ";"
         ghi(os.path.join(thu_muc, "index.html"), engine.replace("/*__PHIEU__*/", js))
         w = P["web"]
         # Số ô chấm điểm (mỗi chỗ trống của dạng dien là 1 câu) và thời gian làm ước tính
@@ -67,7 +72,8 @@ def main():
         # Một phiếu có thể hiện ở nhiều khối: mỗi khối một dòng trong phieu.json
         for k in (w["khoi"] if isinstance(w["khoi"], list) else [w["khoi"]]):
             ds.append({"khoi": k, "mon": w.get("mon") or P.get("mon", ""), "ten": w.get("ten") or P["tieuDe"],
-                       "lop": P["lop"], "ngay": w["ngay"], "soCau": so_o, "phut": phut, "link": f"phieu/{slug}/"})
+                       "lop": P["lop"], "ngay": w["ngay"], "soCau": so_o, "phut": phut, "link": f"phieu/{slug}/",
+                       **{k: w[k] for k in ("mo", "dong") if w.get(k)}})
         so_cau = sum(len(b["cau"]) for b in P["bai"])
         print(f"OK  phieu/{slug}/  ({len(P['bai'])} bài, {so_cau} mục)")
 
