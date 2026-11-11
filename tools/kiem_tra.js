@@ -42,6 +42,7 @@ const server = http.createServer((req, res) => {
   let loi = 0;
   const homNay0 = new Date();
   const hsThay = p => !p.chuaGiao && !(p.mo && new Date(String(p.mo).replace(' ', 'T')) > homNay0);  // phiếu học sinh đang thấy
+  const choPhieu = pg => pg.waitForFunction(() => window.__PHIEU_TEST__, null, { timeout: 15000 }).catch(() => {});  // phiếu đọc lịch giao xong mới hiện
   const bao = (ok, msg) => { console.log((ok ? '  ✓ ' : '  ✗ ') + msg); if (!ok) loi++; };
 
   // Trang chủ
@@ -81,12 +82,14 @@ const server = http.createServer((req, res) => {
     const page = await ctx.newPage();
     console.log('Nút Trở về + nhớ tên');
     await page.goto(base + cacPhieu[0]);
+    await choPhieu(page);
     await page.waitForLoadState('networkidle');
     const n = await page.evaluate(() => window.__PHIEU_TEST__.sels.length);
     bao((await page.locator('#tdChu').textContent()).includes('0/' + n), 'thanh tiến độ: 0/' + n + ' câu');
     await page.locator('.topbar [data-tro-ve]').click();
     bao(page.url() === base, 'chưa làm câu nào → bấm Trở về về thẳng trang chủ');
     await page.goto(base + cacPhieu[0]);
+    await choPhieu(page);
     await page.evaluate(() => { const s = window.__PHIEU_TEST__.sels[0]; s.value = window.__PHIEU_TEST__.ANS[s.dataset.k]; s.dispatchEvent(new Event('change', { bubbles: true })); });
     bao((await page.locator('#tdChu').textContent()).includes('1/' + n), 'làm 1 câu → tiến độ 1/' + n);
     await page.locator('.topbar [data-tro-ve]').click();
@@ -99,6 +102,7 @@ const server = http.createServer((req, res) => {
     await page.waitForURL(base);
     bao(true, 'nút Trở về cuối phiếu + "Xóa bài và về trang chủ" → về trang chủ');
     await page.goBack();
+    await choPhieu(page);
     await page.waitForLoadState('networkidle');
     bao(await page.evaluate(() => window.__PHIEU_TEST__.sels.every(s => !s.value)), 'mở lại phiếu (nút Back) → bài trắng, làm lại từ đầu');
     // nộp bài để máy nhớ tên, rồi mở phiếu khác
@@ -111,6 +115,7 @@ const server = http.createServer((req, res) => {
     bao(page.url() === base, 'đã nộp → bấm Trở về không hỏi lại');
     if (cacPhieu[1]) {
       await page.goto(base + cacPhieu[1]);
+      await choPhieu(page);
       await page.waitForLoadState('networkidle');
       bao(await page.inputValue('#ten') === 'Bé Nhớ Tên' && await page.locator('#nho').isVisible(), 'phiếu sau tự điền tên đã nhớ, có nhắc "Không phải em"');
       await page.locator('#khongPhai').click();
@@ -290,11 +295,93 @@ const server = http.createServer((req, res) => {
     const dong1 = await page.locator('#lichBang tr', { hasText: 'Sắp mở' }).first().textContent();
     bao(dong1.includes('Sắp mở') && dong1.includes('7:00') && dong1.includes('Xem trước'), 'phiếu sắp mở có giờ mở 7:00 và link "Xem trước"');
     const chuaGiao = mot.filter(p => p.chuaGiao).length;
-    if (chuaGiao) bao((await page.locator('#lichBang .tt.chuagiao').count()) === chuaGiao && (await page.locator('#lichBang tr').last().textContent()).includes('Chưa giao'), `${chuaGiao} phiếu "Chưa giao" xếp cuối bảng lịch`);
+    if (chuaGiao) bao((await page.locator('#bangChuaGiao .chon-giao').count()) === chuaGiao, `${chuaGiao} phiếu nằm ở bảng "Chưa giao"`);
     bao(await page.locator('.tg').isHidden(), 'tab Lịch ẩn thanh chọn thời gian (lịch luôn hiện đủ)');
     await page.screenshot({ path: path.join(OUT, '_lich_giao.png'), fullPage: true });
     bao(loiL.length === 0, 'tab Lịch không lỗi' + (loiL.length ? ': ' + loiL.join('; ') : ''));
     await page.close();
+  }
+
+  // Tab Giao phiếu (trang tổng hợp): giao 1 phiếu, giao hàng loạt, thu hồi
+  {
+    console.log('Giao phiếu (trang tổng hợp)');
+    const mot = [...new Map(ds.map(p => [p.link, p])).values()], chua = mot.filter(p => p.chuaGiao);
+    let giao = [], guiDi = [];
+    const page = await browser.newPage({ viewport: { width: 1150, height: 1300 } });
+    const loiG = []; page.on('pageerror', e => loiG.push(e.message)); page.on('dialog', d => d.accept());
+    await page.route(/action=tonghop/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, phieu: [], danhSach: [], giao, luc: new Date().toISOString() }) }));
+    await page.route(/action=datgiao/, r => { const q = JSON.parse(new URL(r.request().url()).searchParams.get('ds')); guiDi.push(q);
+      q.forEach(g => { const row = [g.slug, g.khoi || '', g.mo || '', g.dong || '', g.thuhoi ? '1' : '', 'x']; const i = giao.findIndex(x => x[0] === g.slug); if (i >= 0) giao[i] = row; else giao.push(row); });
+      r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, giao }) }); });
+    await page.goto(base + 'giaovien/'); await page.fill('#mk', 'x'); await page.click('#nutDN'); await page.waitForTimeout(1200);
+    await page.click('.tab-xem[data-xem="lich"]'); await page.waitForTimeout(300);
+    bao(await page.locator('#bangChuaGiao .chon-giao').count() === chua.length && await page.locator('#chuaCsv').isVisible(),
+      `tab Giao phiếu: ${chua.length} phiếu chưa giao + nhắc "chưa cài link công bố"`);
+    // giao 1 phiếu cho Khối 5, mở ngay, không hạn
+    const p1 = chua[0];
+    await page.click(`[data-giao="${p1.link}"]`); await page.waitForTimeout(200);
+    for (const k of await page.locator('#hgKhoi .chip-khoi[aria-pressed="true"]').evaluateAll(a => a.map(x => x.dataset.k))) await page.click(`#hgKhoi .chip-khoi[data-k="${k}"]`);
+    await page.click('#hgOK'); await page.waitForTimeout(200);
+    bao((await page.textContent('#hgLoi')).includes('ít nhất một khối') && guiDi.length === 0, 'chưa chọn khối → nhắc "chọn ít nhất một khối", không gửi');
+    await page.click('#hgKhoi .chip-khoi[data-k="khoi-5"]');
+    await page.screenshot({ path: path.join(OUT, '_hop_giao.png') });
+    await page.click('#hgOK'); await page.waitForTimeout(500);
+    const g1 = guiDi[0] && guiDi[0][0];
+    bao(g1 && g1.khoi === 'khoi-5' && g1.slug === p1.link.split('/')[1] && /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}$/.test(g1.mo) && g1.dong === '', 'bấm Giao → chọn Khối 5, mở ngay → gửi lệnh giao đúng (' + (g1 && g1.mo) + ')');
+    const hang1 = await page.locator('#lichBang tr', { hasText: p1.ten }).first().textContent();
+    bao(hang1.includes('Khối 5') && hang1.includes('Đang mở') && await page.locator('#hopGiao').isHidden(), 'phiếu chuyển sang "Đã giao": Khối 5, Đang mở');
+    // giao hàng loạt 3 phiếu: mỗi tuần 1 phiếu, hạn sau 6 ngày, đổi thứ tự
+    const ba = chua.slice(1, 4);
+    for (const p of ba) await page.check(`.chon-giao[value="${p.link}"]`);
+    bao((await page.textContent('#nutHangLoat')).includes('3 phiếu'), 'tích 3 phiếu → nút "Giao hàng loạt (3 phiếu)"');
+    await page.click('#nutHangLoat'); await page.waitForTimeout(200);
+    if ((await page.getAttribute('#hgKhoi .chip-khoi[data-k="khoi-9"]', 'aria-pressed')) !== 'true') await page.click('#hgKhoi .chip-khoi[data-k="khoi-9"]');
+    await page.fill('#hlDau', '2026-12-07T07:00'); await page.dispatchEvent('#hlDau', 'input');
+    const xem = await page.locator('#hlXem tr').allTextContents();
+    bao(xem.length === 3 && xem[0].includes('07/12/2026 7:00') && xem[0].includes('13/12/2026') && xem[1].includes('14/12/2026') && xem[2].includes('21/12/2026'),
+      'xem trước lịch: 07/12 → 14/12 → 21/12, hạn sau 6 ngày');
+    await page.click('#hlXem [data-xuong="0"]');
+    await page.screenshot({ path: path.join(OUT, '_giao_hang_loat.png') });
+    await page.click('#hgOK'); await page.waitForTimeout(500);
+    const g2 = guiDi[1] || [];
+    bao(g2.length === 3 && g2.every(g => g.khoi === 'khoi-9') && g2[0].slug === ba[1].link.split('/')[1] && g2[0].mo === '2026-12-07 07:00' && g2[2].mo === '2026-12-21 07:00' && g2[0].dong === '2026-12-13',
+      'giao hàng loạt → 1 lệnh cho 3 phiếu, đúng thứ tự đã đổi, đúng ngày mở/hạn');
+    bao((await page.locator('#lichBang tr', { hasText: 'Sắp mở' }).count()) === 3, '3 phiếu hiện "Sắp mở" trong bảng Đã giao');
+    // sửa lịch: giao cho 2 khối cùng lúc
+    await page.click(`#lichBang [data-giao="${p1.link}"]`); await page.waitForTimeout(200);
+    await page.click('#hgKhoi .chip-khoi[data-k="doi-tuyen"]'); await page.click('#hgOK'); await page.waitForTimeout(500);
+    const g3 = guiDi[2] && guiDi[2][0];
+    bao(g3 && g3.khoi === 'khoi-5|doi-tuyen' && (await page.locator('#lichBang tr', { hasText: p1.ten }).first().textContent()).includes('Khối 5, Đội tuyển Tin học'), 'Sửa → giao thêm Đội tuyển: "Khối 5, Đội tuyển Tin học"');
+    // thu hồi
+    await page.click(`[data-thuhoi="${p1.link}"]`); await page.waitForTimeout(500);
+    bao(guiDi[3] && guiDi[3][0].thuhoi === true && await page.locator(`.chon-giao[value="${p1.link}"]`).count() === 1, 'Thu hồi → phiếu trở lại nhóm "Chưa giao"');
+    await page.screenshot({ path: path.join(OUT, '_tab_giao.png'), fullPage: true });
+    bao(loiG.length === 0, 'tab Giao phiếu không lỗi' + (loiG.length ? ': ' + loiG.join('; ') : ''));
+    await page.close();
+
+    // Phía học sinh: đọc lịch giao từ Sheet công bố (CSV)
+    const CSV = 'https://docs.google.com/spreadsheets/d/e/THU/pub?gid=1&single=true&output=csv';
+    const moi = chua[0], cu = mot.find(p => hsThay(p) && p.khoi === 'khoi-9');
+    const csv = 'slug,khoi,mo,dong,thuhoi,capnhat\n' + moi.link.split('/')[1] + ',khoi-5|doi-tuyen,' + ng(-1) + ' 07:00,,,x\n' + (cu ? cu.link.split('/')[1] + ',,,,1,x\n' : '');
+    const hs = await browser.newPage({ viewport: { width: 900, height: 1200 } });
+    let csvLoi = false;
+    await hs.route(/cauhinh\.json/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ giaoCsv: CSV }) }));
+    await hs.route(/docs\.google\.com\/spreadsheets/, r => csvLoi ? r.fulfill({ status: 500, body: 'loi' }) : r.fulfill({ status: 200, contentType: 'text/csv', body: csv }));
+    await hs.goto(base + '#khoi-5:5A3'); await hs.reload(); await hs.waitForTimeout(800);
+    bao(await hs.locator('.card', { hasText: moi.ten }).count() === 1, `học sinh 5A3: thấy phiếu vừa giao cho Khối 5 ("${moi.ten.slice(0, 30)}…")`);
+    await hs.goto(base + '#doi-tuyen:tatca'); await hs.reload(); await hs.waitForTimeout(800);
+    bao(await hs.locator('.card', { hasText: moi.ten }).count() === 1, 'phiếu giao cho 2 khối → cũng hiện ở Đội tuyển Tin học');
+    await hs.goto(base + moi.link); await choPhieu(hs);
+    bao(await hs.locator('#khoa').isHidden() && !(await hs.locator('#check').isDisabled()) && (await hs.locator('#lop option').allTextContents()).includes('5A3'),
+      'mở phiếu: không còn khóa "chưa giao", ô Lớp là các lớp Khối 5');
+    if (cu) {
+      await hs.goto(base + '#khoi-9:tatca'); await hs.reload(); await hs.waitForTimeout(800);
+      bao(await hs.locator('.card', { hasText: cu.ten }).count() === 0, `phiếu bị thu hồi ("${cu.ten.slice(0, 25)}…") biến mất với học sinh`);
+    }
+    csvLoi = true;
+    await hs.goto(base + '#khoi-5:5A3'); await hs.reload(); await hs.waitForTimeout(800);
+    bao(await hs.locator('.card', { hasText: moi.ten }).count() === 0 && await hs.locator('.card').count() > 0, 'không đọc được Sheet → dùng lại lịch trong config.json (trang vẫn chạy)');
+    await hs.close();
   }
 
   // Phiếu mẫu: Đúng/Sai bằng nút, xem lại bài, pháo giấy, phiếu đóng/chưa mở
@@ -304,6 +391,7 @@ const server = http.createServer((req, res) => {
     const loiMau = []; page.on('pageerror', e => loiMau.push(e.message));
     await page.route(/script\.google\.com/, r => r.fulfill({ status: 200, body: 'ok' }));
     await page.goto(base + 'phieu/__mau_mo__/'); await page.waitForLoadState('networkidle');
+    await choPhieu(page);
     const ds1 = page.locator('.opts.ds').first();
     await ds1.locator('.opt[data-v="S"]').click();
     bao(await ds1.locator('select').inputValue() === 'S', 'Đúng/Sai: bấm nút "Sai" → ghi nhận S');
@@ -346,6 +434,7 @@ const server = http.createServer((req, res) => {
       let lan = 0; const daNhan = [];
       await p2.route(/script\.google\.com/, r => { lan++; if (lan === 1) return r.abort('internetdisconnected'); daNhan.push(r.request().url()); r.fulfill({ status: 200, body: 'ok' }); });
       await p2.goto(base + 'phieu/__mau_mo__/'); await p2.waitForLoadState('networkidle');
+      await choPhieu(p2);
       await p2.evaluate(() => { const T = window.__PHIEU_TEST__; T.sels.forEach(s => { s.value = T.ANS[s.dataset.k]; s.dispatchEvent(new Event('change', { bubbles: true })); });
         document.getElementById('ten').value = 'Mất Mạng'; document.getElementById('lop').value = '3A1'; });
       await p2.locator('#check').click(); await p2.waitForTimeout(500);
@@ -356,6 +445,7 @@ const server = http.createServer((req, res) => {
       // Chế độ chiếu đáp án
       await p2.route(/action=kiemtra/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: r.request().url().includes('mk=dung') }) }));
       await p2.goto(base + 'phieu/__mau_mo__/?dapan=1'); await p2.waitForLoadState('networkidle');
+      await choPhieu(p2);
       bao((await p2.locator('#khoa').textContent()).includes('Chỉ dành cho cô'), 'chiếu đáp án khi chưa đăng nhập → không hiện đáp án');
       await p2.evaluate(() => localStorage.setItem('coThuyTin_gv', JSON.stringify({ url: 'https://script.google.com/macros/s/MAU/exec', mk: 'dung' })));
       await p2.reload(); await p2.waitForTimeout(800);
@@ -369,6 +459,7 @@ const server = http.createServer((req, res) => {
     }
     for (const [slug, chu] of [['__mau_dong__', 'đã đóng'], ['__mau_chua__', 'chưa mở']]) {
       await page.goto(base + 'phieu/' + slug + '/'); await page.waitForLoadState('networkidle');
+      await choPhieu(page);
       const t = (await page.locator('#khoa').textContent()).toLowerCase();
       bao(t.includes(chu) && await page.locator('#check').isDisabled() && await page.locator('.opt').first().isDisabled(), `phiếu ${chu} → báo "${chu}", khóa nút Tính điểm và các ô`);
     }
@@ -377,6 +468,7 @@ const server = http.createServer((req, res) => {
       const gui = []; await page.route(/script\.google\.com/, r => { gui.push(r.request().url()); r.fulfill({ status: 200, body: 'ok' }); });
       await page.evaluate(() => localStorage.setItem('coThuyTin_gv', JSON.stringify({ url: 'x', mk: 'x' })));
       await page.goto(base + 'phieu/__mau_chua__/'); await page.waitForLoadState('networkidle');
+      await choPhieu(page);
       bao((await page.locator('#khoa').textContent()).includes('Cô đang xem trước') && !(await page.locator('#check').isDisabled()), 'máy cô mở phiếu chưa mở → "Cô đang xem trước", làm thử được');
       await page.evaluate(() => { const T = window.__PHIEU_TEST__; T.sels.forEach(s => { s.value = T.ANS[s.dataset.k]; s.dispatchEvent(new Event('change', { bubbles: true })); });
         document.getElementById('ten').value = 'Cô'; document.getElementById('lop').value = '3A1'; });
@@ -399,6 +491,7 @@ const server = http.createServer((req, res) => {
       page.on('response', r => { if (r.status() >= 400 && r.url().startsWith(base)) hong.push(r.status() + ' ' + r.url()); });
       await page.route(/script\.google\.com|docs\.google\.com/, route => { gui.push(route.request().url()); route.fulfill({ status: 200, body: 'ok' }); });
       await page.goto(base + p.link);
+      await choPhieu(page);
       await page.waitForLoadState('networkidle');
       if (ten === 'may_tinh') {
         // Thử bấm thật với 2 dạng mới (A/B/C/D và nối chấm tròn)
@@ -432,6 +525,7 @@ const server = http.createServer((req, res) => {
         if (xemTruoc) {
           bao(gui.length === 0 && (await page.locator('#sent').textContent()).includes('không gửi'), 'phiếu chưa giao: cô xem trước được, KHÔNG gửi điểm');
           const hs = await browser.newPage(); await hs.goto(base + p.link); await hs.waitForLoadState('networkidle');
+          await choPhieu(hs);
           bao((await hs.locator('#khoa').textContent()).includes('chưa được giao') && await hs.locator('#check').isDisabled(), 'học sinh mở link → báo "Phiếu chưa được giao", khóa nộp');
           await hs.close();
         } else {

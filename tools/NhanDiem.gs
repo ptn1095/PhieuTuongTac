@@ -7,6 +7,8 @@
  * - Mỗi phiếu tự tạo một trang tính riêng (tên = tên phiếu). Mỗi học sinh chỉ nộp 1 lần / phiếu.
  * - Trang tổng hợp điểm của cô (…/giaovien/) đọc điểm qua mã này, cần đúng MAT_KHAU.
  * - Muốn biết em nào CHƯA nộp: tạo trang tính tên "DanhSach", cột A = Lớp, cột B = Họ và tên (dòng 1 là tiêu đề).
+ * - Giao phiếu: trang tổng hợp tự tạo trang tính "GiaoPhieu". Cô "Công bố lên web" RIÊNG trang tính này (dạng CSV)
+ *   và gửi link cho Claude để trang của học sinh đọc được lịch giao.
  */
 const MAT_KHAU = 'doi-mat-khau-nay';   // ← CÔ ĐỔI thành mật khẩu riêng (ít nhất 6 ký tự), chỉ cô biết
 const CHAN_NOP_TRUNG = true;           // true: mỗi em chỉ nộp được 1 lần cho mỗi phiếu
@@ -14,7 +16,7 @@ const TIEU_DE = ['Thời gian nộp', 'Họ và tên', 'Lớp', 'Điểm', 'Số
 
 function doGet(e) {
   const p = (e && e.parameter) || {};
-  if (p.action === 'kiemtra' || p.action === 'tonghop') return docDiem_(p);
+  if (p.action === 'kiemtra' || p.action === 'tonghop' || p.action === 'datgiao') return docDiem_(p);
   if (!p.phieu || !p.ten) return trang_('Trang nhận điểm đang hoạt động', 'Chưa có dữ liệu bài làm được gửi tới.', '#168DCE');
   const lock = LockService.getScriptLock();
   lock.waitLock(20000);
@@ -53,11 +55,13 @@ function docDiem_(p) {
     return json_({ ok: false, loi: 'Sai mật khẩu.' });
   }
   if (p.action === 'kiemtra') return json_({ ok: true });
+  if (p.action === 'datgiao') return datGiao_(p);
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const phieu = [];
   let danhSach = [];
   ss.getSheets().forEach(sh => {
     const ten = sh.getName(), n = sh.getLastRow();
+    if (ten === TRANG_GIAO) return;
     if (ten === 'DanhSach') {
       if (n > 1) danhSach = sh.getRange(2, 1, n - 1, 2).getValues().filter(r => r[0] && r[1]).map(r => [String(r[0]).trim(), String(r[1]).trim()]);
       return;
@@ -67,7 +71,55 @@ function docDiem_(p) {
       r[0] instanceof Date ? r[0].toISOString() : String(r[0]), String(r[1]), String(r[2]), r[3], String(r[4]), String(r[5]), String(r[6])]) : [];
     phieu.push({ ten, hang });
   });
-  return json_({ ok: true, phieu, danhSach, luc: new Date().toISOString() });
+  return json_({ ok: true, phieu, danhSach, giao: docGiao_(), luc: new Date().toISOString() });
+}
+
+/* ===== Lịch giao phiếu =====
+ * Trang tính "GiaoPhieu": mỗi phiếu một dòng: slug | khoi | mo | dong | thuhoi | capnhat.
+ * Trang tổng hợp ghi vào đây (cần mật khẩu). Trang của học sinh đọc bản "Công bố lên web" (CSV) của RIÊNG trang tính này.
+ */
+const TRANG_GIAO = 'GiaoPhieu';
+const COT_GIAO = ['slug', 'khoi', 'mo', 'dong', 'thuhoi', 'capnhat'];
+function trangGiao_() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sh = ss.getSheetByName(TRANG_GIAO);
+  if (!sh) sh = ss.insertSheet(TRANG_GIAO);
+  if (sh.getRange(1, 1).getValue() !== 'slug') {   // trang tính cô tạo sẵn còn trống → ghi dòng tiêu đề
+    sh.getRange(1, 1, 1, COT_GIAO.length).setValues([COT_GIAO]).setFontWeight('bold').setBackground('#E8F4FC');
+    sh.setFrozenRows(1);
+  }
+  return sh;
+}
+function docGiao_() {
+  const sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(TRANG_GIAO);
+  if (!sh || sh.getLastRow() < 2) return [];
+  return sh.getRange(2, 1, sh.getLastRow() - 1, COT_GIAO.length).getDisplayValues().filter(r => r[0]);
+}
+/** p.ds = JSON: [{slug, khoi, mo, dong, thuhoi}] – ghi đè dòng cũ của cùng phiếu. */
+function datGiao_(p) {
+  let ds;
+  try { ds = JSON.parse(p.ds || '[]'); } catch (e) { return json_({ ok: false, loi: 'Dữ liệu giao phiếu bị lỗi.' }); }
+  if (!Array.isArray(ds) || !ds.length) return json_({ ok: false, loi: 'Chưa chọn phiếu nào.' });
+  const lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    const sh = trangGiao_();
+    const n = sh.getLastRow();
+    const slugs = n > 1 ? sh.getRange(2, 1, n - 1, 1).getValues().map(r => String(r[0])) : [];
+    const luc = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'yyyy-MM-dd HH:mm');
+    ds.forEach(g => {
+      const slug = String(g.slug || '').replace(/[^a-z0-9-]/gi, '');
+      if (!slug) return;
+      const dong = [slug, String(g.khoi || ''), String(g.mo || ''), String(g.dong || ''), g.thuhoi ? '1' : '', luc];
+      const i = slugs.indexOf(slug);
+      const r = i >= 0 ? i + 2 : sh.getLastRow() + 1;
+      if (i < 0) slugs.push(slug);
+      sh.getRange(r, 1, 1, dong.length).setNumberFormat('@').setValues([dong]);   // '@' = giữ nguyên chữ, không đổi thành ngày
+    });
+    return json_({ ok: true, giao: docGiao_() });
+  } finally {
+    lock.releaseLock();
+  }
 }
 
 function chuan_(s) { return String(s || '').normalize('NFC').toLowerCase().replace(/\s+/g, ' ').trim(); }

@@ -78,6 +78,8 @@ Khi cô gửi nhiều file và muốn giao dần (ví dụ "mỗi thứ Hai mở
    Ngày lễ / nghỉ cô nêu thì bỏ qua tuần đó.
 4. Build + kiểm tra + đẩy lên **một lần** cho cả đợt.
 5. Báo cô **bảng lịch**: Phiếu | Mở | Hạn | Lớp | link; nhắc cô xem tab **🗓 Lịch giao phiếu** trên trang tổng hợp và bấm **Xem trước** để làm thử từng phiếu.
+**Giao bằng nút bấm (ưu tiên):** trang tổng hợp → tab **📋 Giao phiếu**: bảng "Chưa giao" (tích chọn → **Giao hàng loạt**: ngày mở phiếu đầu, cách nhau n ngày, hạn sau m ngày, đổi thứ tự ▲▼) và bảng "Đã giao" (Sửa / Thu hồi / Xem trước). Giao **cả khối**, chọn được nhiều khối. Lịch lưu ở trang tính `GiaoPhieu` (Apps Script `action=datgiao`, cần mật khẩu); trang học sinh đọc bản *Công bố lên web* CSV của riêng trang tính đó, link ở `cauhinh.json` → `giaoCsv` (`assets/js/giao.js`). Lịch ở Sheet **ưu tiên hơn** `config.json`; không đọc được Sheet thì dùng `config.json`. Học sinh thấy thay đổi sau tối đa ~5 phút.
+Vì vậy phiếu mới nên tạo với `"chuaGiao": true` rồi để cô tự bấm Giao (trừ khi cô dặn lịch cụ thể ngay).
 **Chưa giao (chưa có ngày):** cô nói "chưa giao" → thêm `"chuaGiao": true` vào `web`. Phiếu ẩn với học sinh (mở link → "Phiếu chưa được giao"), trang tổng hợp ghi "Chưa giao", cô vẫn xem trước được. Khi cô bảo giao: bỏ `chuaGiao`, đặt `mo`/`dong` (hoặc chỉ bỏ `chuaGiao` để mở ngay).
 **Không cho xem đáp án** sau khi nộp (tránh nhìn bài nhau): `"xemDapAn": false`. **Trộn phương án:** `"tron": true`.
 **Câu gõ công thức** (`go`): thêm `"congThuc": true` để bỏ qua khoảng trắng và dấu = ở đầu (=A5*B5 ≡ a5 * b5).

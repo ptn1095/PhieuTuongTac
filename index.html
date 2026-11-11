@@ -121,6 +121,7 @@ h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
   <div class="nut"><button type="button" class="chinh" id="qrChep">Chép link</button><button type="button" id="qrDong">Đóng</button></div>
 </div></div>
 <script src="assets/js/qrcode.js"></script>
+<script src="assets/js/giao.js"></script>
 <script>
 const KHOI=[
   {id:'khoi-3',ten:'Khối 3',so:'3',c:'#168DCE',ic:'🎈'},
@@ -231,7 +232,14 @@ window.addEventListener('hashchange',route);window.addEventListener('resize',fit
   if(doc().length){gui();window.addEventListener('online',gui);}})();
 DA_LAM=doc('coThuyTin_daLam')||{};
 window.addEventListener('pageshow',e=>{if(e.persisted){DA_LAM=doc('coThuyTin_daLam')||{};veList();}});
-Promise.all([fetch('phieu.json?v='+Date.now()).then(r=>r.json()),fetch('lop.json?v='+Date.now()).then(r=>r.json()).catch(()=>({}))]).then(([d,l])=>{DS=d;LOP_KHOI=l;
+// Lịch giao do cô bấm trên trang tổng hợp (ưu tiên hơn config.json): giao cả khối, ngày mở, hạn nộp, thu hồi
+async function apLichGiao(d){const G=window.GiaoPhieu?await GiaoPhieu.tai(''):null;if(!G)return d;
+  const da=new Set(),ra=[];
+  d.forEach(p=>{const slug=p.link.split('/').filter(Boolean).pop(),g=G[slug];
+    if(!g){ra.push(p);return;}if(da.has(p.link))return;da.add(p.link);
+    const q=GiaoPhieu.apDung(p,g,LOP_KHOI);(Array.isArray(q.khoi)?q.khoi:[q.khoi]).forEach(k=>ra.push({...q,khoi:k}));});
+  return ra;}
+Promise.all([fetch('phieu.json?v='+Date.now()).then(r=>r.json()),fetch('lop.json?v='+Date.now()).then(r=>r.json()).catch(()=>({}))]).then(async([d,l])=>{LOP_KHOI=l;DS=await apLichGiao(d);
   if(!location.hash){// lần trước em đã chọn khối + lớp → mở lại đúng chỗ
     let c=null;try{c=JSON.parse(sessionStorage.getItem('coThuyTin_chon')||'null');}catch(e){}
     if(c&&KHOI.some(k=>k.id===c.khoi)&&(!c.lop||c.lop==='*'||lopCua(c.khoi).includes(c.lop))){cur=c.khoi;LOP=c.lop||'';datHash();}}

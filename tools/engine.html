@@ -169,12 +169,23 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 <div class="nut"><button type="button" class="o-lai" id="oLai">Ở lại làm tiếp</button><button type="button" class="di" id="diVe">Xóa bài và về trang chủ</button></div>
 </div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="../../assets/js/giao.js"></script>
 <script>
 /*__PHIEU__*/
 </script>
 <script>
-(function(){
+// Lịch giao do cô bấm trên trang tổng hợp (ưu tiên hơn config.json): khối/lớp được giao, ngày mở, hạn, thu hồi
+async function apGiaoPhieu(P){
+  if(!window.GiaoPhieu)return;
+  const [G,L]=await Promise.all([GiaoPhieu.tai('../../'),fetch('../../lop.json').then(r=>r.json()).catch(()=>({}))]);
+  const g=G&&G[P.slug];if(!g)return;
+  const w=P.web||(P.web={}),q=GiaoPhieu.apDung({khoi:w.khoi,lop:P.lop,mo:w.mo,dong:w.dong,chuaGiao:w.chuaGiao},g,L);
+  w.khoi=q.khoi;P.lop=q.lop;w.chuaGiao=q.chuaGiao;
+  if(q.mo)w.mo=q.mo;else delete w.mo;if(q.dong)w.dong=q.dong;else delete w.dong;
+}
+(async function(){
 const P=PHIEU, $=id=>document.getElementById(id);
+await apGiaoPhieu(P);
 const MAU=['#168DCE','#F28C28','#65B843'];
 const ANS={}, LAB={};
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
