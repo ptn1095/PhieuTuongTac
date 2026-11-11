@@ -156,6 +156,7 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
 - **Sau khi nộp:** hộp "Em làm sai N câu" + nút "Xem câu sai đầu tiên"; điểm ≥ 8 có pháo giấy (10 điểm: pháo to); máy lưu "đã làm" để trang chủ hiện "✓ Đã làm · tên – điểm".
 - **Mạng yếu khi nộp:** bài được lưu trên máy và tự gửi lại khi có mạng (cả khi em đã về trang chủ); trang báo rõ "chưa gửi được – sẽ tự gửi lại".
 - **Chế độ chiếu đáp án** `?dapan=1`: điền sẵn mọi đáp án, khóa trang, ẩn nút Tính điểm – chỉ mở khi máy đã đăng nhập trang tổng hợp (mật khẩu kiểm qua Apps Script).
+- **Nút "💌 Gửi tới cô Thùy Tin"** (góc trên phải vùng trắng, dưới chữ Cô Thùy Tin; điện thoại: chỉ biểu tượng bức thư): học sinh gửi tin nhắn (họ tên, lớp, nội dung ≤ 500 kí tự) → Apps Script `doPost` action=tinnhan ghi vào trang tính **TinNhan** (Thời gian | Họ và tên | Lớp | Đang làm phiếu | Tin nhắn | Đã đọc ☐). Gửi xong ô bị xóa, máy không lưu gì; không lệnh nào đọc lại tin nhắn – chỉ cô xem trên Sheet. Chống gửi liên tục 20 giây/em.
 - **Nhớ tên + lớp** trên máy (trong ngày) sau khi nộp; phiếu sau tự điền, kèm nhắc "Máy đang nhớ tên… [Không phải em]" cho máy dùng chung ở phòng tin.
 - **Sửa giao diện hoặc cách chấm:** sửa `tools/engine.html` rồi build lại; thay đổi áp dụng cho mọi phiếu. Chỉ làm khi cô yêu cầu.
 

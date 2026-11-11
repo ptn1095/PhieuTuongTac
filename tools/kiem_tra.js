@@ -412,6 +412,25 @@ const server = http.createServer((req, res) => {
     await ds1.locator('.opt[data-v="Đ"]').click();
     bao(await ds1.locator('select').inputValue() === 'Đ', 'Đúng/Sai: đổi sang "Đúng" → ghi nhận Đ');
     bao((await page.locator('#huongDan').textContent()).includes('Hạn nộp'), 'phiếu còn hạn → ghi "Hạn nộp" dưới nút Tính điểm');
+    // Nút "Gửi tới cô Thùy Tin": gửi tin nhắn, không lưu lại trên máy
+    {
+      const thu = [];
+      await page.route(/script\.google\.com/, r => { if (r.request().method() === 'POST') thu.push(r.request().postData() || ''); r.fulfill({ status: 200, body: 'ok' }); });
+      await page.fill('#ten', 'Bé Hỏi Bài'); await page.selectOption('#lop', '3A1');
+      bao(await page.locator('#nutThu').isVisible(), 'phiếu có nút "Gửi tới cô Thùy Tin"');
+      await page.click('#nutThu');
+      bao(await page.inputValue('#thuTen') === 'Bé Hỏi Bài' && await page.inputValue('#thuLop') === '3A1', 'mở hộp tin nhắn → tự điền họ tên, lớp');
+      const BI_MAT = 'Cô ơi em chưa hiểu câu 3 – mã bí mật 7392';
+      await page.fill('#thuTin', BI_MAT); await page.click('#thuGui'); await page.waitForTimeout(600);
+      const q = new URLSearchParams(thu[0] || '');
+      bao(q.get('action') === 'tinnhan' && q.get('tin') === BI_MAT && q.get('ten') === 'Bé Hỏi Bài' && q.get('lop') === '3A1' && !!q.get('phieu'), 'gửi tin nhắn (POST) kèm họ tên, lớp, tên phiếu');
+      bao((await page.textContent('#thuBao')).includes('Đã gửi') && await page.inputValue('#thuTin') === '', 'gửi xong → báo "Đã gửi cô", ô tin nhắn được xóa');
+      const conLai = await page.evaluate(m => JSON.stringify(localStorage) + JSON.stringify(sessionStorage) + document.body.innerText, '7392');
+      bao(!conLai.includes('7392'), 'máy không giữ lại nội dung tin nhắn (không xem lại được)');
+      await page.waitForTimeout(2600);
+      bao(await page.locator('#hopThu').isHidden(), 'hộp tin nhắn tự đóng');
+      await page.unroute(/script\.google\.com/); await page.route(/script\.google\.com/, r => r.fulfill({ status: 200, body: 'ok' }));
+    }
     // Gõ đáp án: không phân biệt hoa thường, chấp nhận nhiều cách viết
     await page.locator('.go-o').nth(1).fill('  ha   NOI ');
     bao(await page.evaluate(() => { const T = window.__PHIEU_TEST__, s = document.querySelectorAll('.go-o')[1]; return T.tinh().det.find(x => x.startsWith(T.LAB[s.dataset.k] + ' ')).endsWith('Đ'); }), 'gõ "  ha   NOI " được chấm đúng (Hà Nội / Ha Noi)');

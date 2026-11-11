@@ -4,12 +4,13 @@ const src=fs.readFileSync(process.argv[2] || require('path').join(__dirname, 'Nh
 function Sheet(name){this.name=name;this.rows=[];}
 Sheet.prototype={getName(){return this.name},getLastRow(){return this.rows.length},appendRow(r){this.rows.push(r)},
  getRange(r,c,nr,nc){const sh=this;nr=nr||1;nc=nc||1;return{getValues(){return sh.rows.slice(r-1,r-1+nr).map(x=>x.slice(c-1,c-1+nc))},getDisplayValues(){return this.getValues().map(x=>x.map(v=>v==null?'':String(v)))},
- setValues(v){v.forEach((row,i)=>{sh.rows[r-1+i]=sh.rows[r-1+i]||[];row.forEach((x,j)=>sh.rows[r-1+i][c-1+j]=x);});return this},setNumberFormat(){return this},getValue(){return (sh.rows[r-1]||[])[c-1]},setFontWeight(){return this},setBackground(){return this}}},
+ setValues(v){v.forEach((row,i)=>{sh.rows[r-1+i]=sh.rows[r-1+i]||[];row.forEach((x,j)=>sh.rows[r-1+i][c-1+j]=x);});return this},setNumberFormat(){return this},insertCheckboxes(){return this},setWrap(){return this},getValue(){return (sh.rows[r-1]||[])[c-1]},setFontWeight(){return this},setBackground(){return this}}},
  setFrozenRows(){},setColumnWidths(){},setColumnWidth(){}};
 const sheets=[new Sheet('Trang tính1'),new Sheet('GiaoPhieu')];  // GiaoPhieu: cô tạo sẵn, còn trốngconst ds=new Sheet('DanhSach');ds.rows=[['Lớp','Họ và tên'],['5A1','An'],['5A1','Bình']];sheets.push(ds);
 const ss={getSheetByName:n=>sheets.find(s=>s.name===n)||null,insertSheet:n=>{const s=new Sheet(n);sheets.push(s);return s},getSheets:()=>sheets};
 let slept=0;
-const ctx={process,Session:{getScriptTimeZone:()=>'Asia/Ho_Chi_Minh'},SpreadsheetApp:{getActiveSpreadsheet:()=>ss},LockService:{getScriptLock:()=>({waitLock(){},releaseLock(){}})},Utilities:{sleep:ms=>slept+=ms},
+const cacheMap={};
+const ctx={process,CacheService:{getScriptCache:()=>({get:k=>cacheMap[k]||null,put:(k,v)=>{cacheMap[k]=v;}})},Session:{getScriptTimeZone:()=>'Asia/Ho_Chi_Minh'},SpreadsheetApp:{getActiveSpreadsheet:()=>ss},LockService:{getScriptLock:()=>({waitLock(){},releaseLock(){}})},Utilities:{sleep:ms=>slept+=ms},
  ContentService:{MimeType:{JSON:'json'},createTextOutput:t=>({t,setMimeType(){return this}})},
  HtmlService:{createHtmlOutput:h=>({h,setTitle(){return this},addMetaTag(){return this}})}};
 vm.createContext(ctx);vm.runInContext(src+';this.doGet=doGet;',ctx);
@@ -25,7 +26,7 @@ ok(t.danhSach.length===2&&t.danhSach[1][1]==='Bình','tổng hợp: đọc trang
 ok(JSON.parse(g({action:'kiemtra',mk:'matkhau123'}).t).ok===true,'kiểm tra mật khẩu đúng → ok');
 
 // Giao phiếu
-ctx.Utilities.formatDate=()=>'2026-11-11 08:00';
+ctx.Utilities.formatDate=()=>'2026-11-11 08:00';ctx.Utilities.base64Encode=x=>Buffer.from(x).toString('base64');
 let gg=JSON.parse(ctx.doGet({parameter:{action:'datgiao',mk:'sai',ds:'[]'}}).t);ok(!gg.ok,'giao phiếu: sai mật khẩu → từ chối');
 gg=JSON.parse(ctx.doGet({parameter:{action:'datgiao',mk:'matkhau123',ds:JSON.stringify([{slug:'tin9-a',khoi:'khoi-9',mo:'2026-11-16',dong:'2026-11-22'},{slug:'tin9-b',khoi:'khoi-5'}])}}).t);
 ok(gg.ok&&gg.giao.length===2&&gg.giao[0].join('|')==='tin9-a|khoi-9|2026-11-16|2026-11-22||2026-11-11 08:00','giao 2 phiếu một lần (hàng loạt) → trang tính GiaoPhieu có 2 dòng');
@@ -33,3 +34,12 @@ gg=JSON.parse(ctx.doGet({parameter:{action:'datgiao',mk:'matkhau123',ds:JSON.str
 ok(gg.giao.length===2&&gg.giao[0][4]==='1','thu hồi phiếu → ghi đè đúng dòng cũ, không thêm dòng');
 const t2=JSON.parse(ctx.doGet({parameter:{action:'tonghop',mk:'matkhau123'}}).t);
 ok(t2.giao.length===2&&!t2.phieu.some(p=>p.ten==='GiaoPhieu'),'tổng hợp trả kèm lịch giao, không coi GiaoPhieu là phiếu');
+
+// Tin nhắn học sinh
+vm.runInContext('this.doPost=doPost;',ctx);
+const tn=ctx.doPost({parameter:{action:'tinnhan',ten:'Bé An',lop:'5A1',phieu:'Phiếu X',tin:'=HYPERLINK("x") cô ơi em chưa hiểu bài 2'}}).t;
+const shT=sheets.find(s=>s.name==='TinNhan');
+ok(tn==='ok'&&shT&&shT.rows.length===2&&shT.rows[1][1]==='Bé An'&&shT.rows[1][4].startsWith("'="),'tin nhắn → ghi vào trang tính TinNhan, chặn nội dung bắt đầu bằng "="');
+ok(ctx.doPost({parameter:{action:'tinnhan',ten:'Bé An',lop:'5A1',tin:'gửi lại ngay'}}).t==='cham'&&shT.rows.length===2,'gửi liên tục (< 20 giây) → không ghi thêm');
+const th=JSON.parse(ctx.doGet({parameter:{action:'tonghop',mk:'matkhau123'}}).t);
+ok(!th.phieu.some(p=>p.ten==='TinNhan')&&!JSON.stringify(th).includes('chưa hiểu bài 2'),'tin nhắn KHÔNG lộ ra ở bất kì lệnh đọc nào (kể cả trang tổng hợp)');

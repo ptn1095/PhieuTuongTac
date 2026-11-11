@@ -124,9 +124,6 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
     <h2>Đăng nhập</h2>
     <form id="fDN">
       <label>Mật khẩu<input id="mk" type="password" autocomplete="current-password" required></label>
-      <details><summary>Link nhận điểm (Apps Script)</summary>
-        <label style="margin-top:8px">Link kết thúc bằng /exec<input id="url" type="url" required></label>
-        <div class="ghi-chu">Mặc định là link đang dùng trong các phiếu. Chỉ đổi khi cô dùng Sheet khác.</div></details>
       <div id="dnLoi" role="alert"></div>
       <button class="nut" id="nutDN" type="submit">Xem điểm</button>
       <div class="ghi-chu">Máy này sẽ nhớ đăng nhập (để mở được cả chế độ chiếu đáp án). Dùng máy chung thì nhớ bấm <b>Đăng xuất</b>.</div>
@@ -226,7 +223,6 @@ const tenTrang=s=>String(s).replace(/[\[\]\*\?\/\\:]/g,' ').slice(0,90).trim();
 const so=v=>String(Math.round(v*100)/100).replace('.',',');
 let GV=null,DL=null,DS_PHIEU=[],MO_TA={},sapXep={c:'diem',tang:false};
 try{GV=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
-$('url').value=(GV&&GV.url)||URL_MAC_DINH;
 
 async function tai(){
   $('nutDN').disabled=true;$('taiLai').disabled=true;$('dnLoi').textContent='';
@@ -245,7 +241,7 @@ async function tai(){
     if($('noiDung').classList.contains('hidden'))$('dnLoi').textContent=msg;else $('capNhat').textContent='⚠ '+msg;
   }finally{$('nutDN').disabled=false;$('taiLai').disabled=false;}
 }
-$('fDN').addEventListener('submit',e=>{e.preventDefault();GV={url:$('url').value.trim(),mk:$('mk').value};tai();});
+$('fDN').addEventListener('submit',e=>{e.preventDefault();GV={url:(GV&&GV.url)||URL_MAC_DINH,mk:$('mk').value};tai();});
 $('taiLai').onclick=tai;
 $('dangXuat').onclick=()=>{try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
 if(GV&&GV.mk)tai();

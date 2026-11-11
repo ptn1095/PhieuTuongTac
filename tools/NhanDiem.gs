@@ -7,12 +7,53 @@
  * - Mỗi phiếu tự tạo một trang tính riêng (tên = tên phiếu). Mỗi học sinh chỉ nộp 1 lần / phiếu.
  * - Trang tổng hợp điểm của cô (…/giaovien/) đọc điểm qua mã này, cần đúng MAT_KHAU.
  * - Muốn biết em nào CHƯA nộp: tạo trang tính tên "DanhSach", cột A = Lớp, cột B = Họ và tên (dòng 1 là tiêu đề).
+ * - Tin nhắn học sinh gửi cô (nút trên phiếu) tự ghi vào trang tính "TinNhan" – chỉ cô đọc được.
  * - Giao phiếu: trang tổng hợp tự tạo trang tính "GiaoPhieu". Cô "Công bố lên web" RIÊNG trang tính này (dạng CSV)
  *   và gửi link cho Claude để trang của học sinh đọc được lịch giao.
  */
 const MAT_KHAU = 'doi-mat-khau-nay';   // ← CÔ ĐỔI thành mật khẩu riêng (ít nhất 6 ký tự), chỉ cô biết
 const CHAN_NOP_TRUNG = true;           // true: mỗi em chỉ nộp được 1 lần cho mỗi phiếu
 const TIEU_DE = ['Thời gian nộp', 'Họ và tên', 'Lớp', 'Điểm', 'Số câu đúng', 'Nhận xét', 'Chi tiết đúng/sai'];
+
+/* ===== Tin nhắn học sinh gửi cô =====
+ * Nút "Gửi tới cô Thùy Tin" trên phiếu gửi (POST) tới đây; ghi vào trang tính "TinNhan".
+ * Không trả lại nội dung tin nhắn cho bất kì ai: chỉ cô đọc trên Google Sheet.
+ */
+const TRANG_TIN = 'TinNhan';
+function doPost(e) {
+  const p = (e && e.parameter) || {};
+  if (p.action === 'tinnhan') return nhanTin_(p);
+  return ContentService.createTextOutput('ok');
+}
+function an_(s, n) {   // cắt độ dài + chặn công thức (=, +, -, @ ở đầu) để Sheet không chạy nội dung học sinh gõ
+  s = String(s || '').replace(/\s+$/, '').slice(0, n);
+  return /^[=+\-@]/.test(s) ? "'" + s : s;
+}
+function nhanTin_(p) {
+  const ten = an_(p.ten, 80), lop = an_(p.lop, 30), tin = an_(p.tin, 1000), phieu = an_(p.phieu, 120);
+  if (!ten || !tin) return ContentService.createTextOutput('thieu');
+  const cache = CacheService.getScriptCache(), khoa = 'tin_' + Utilities.base64Encode(ten + '|' + lop).slice(0, 200);
+  if (cache.get(khoa)) return ContentService.createTextOutput('cham');   // chống bấm gửi liên tục: 20 giây / em
+  cache.put(khoa, '1', 20);
+  const lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let sh = ss.getSheetByName(TRANG_TIN);
+    if (!sh) {
+      sh = ss.insertSheet(TRANG_TIN);
+      sh.appendRow(['Thời gian', 'Họ và tên', 'Lớp', 'Đang làm phiếu', 'Tin nhắn', 'Đã đọc']);
+      sh.getRange(1, 1, 1, 6).setFontWeight('bold').setBackground('#FDE7F0');
+      sh.setFrozenRows(1); sh.setColumnWidth(1, 150); sh.setColumnWidth(2, 180); sh.setColumnWidth(4, 220); sh.setColumnWidth(5, 480);
+    }
+    sh.appendRow([new Date(), ten, lop, phieu, tin, false]);
+    sh.getRange(sh.getLastRow(), 6).insertCheckboxes();
+    sh.getRange(sh.getLastRow(), 5).setWrap(true);
+    return ContentService.createTextOutput('ok');
+  } finally {
+    lock.releaseLock();
+  }
+}
 
 function doGet(e) {
   const p = (e && e.parameter) || {};
@@ -61,7 +102,7 @@ function docDiem_(p) {
   let danhSach = [];
   ss.getSheets().forEach(sh => {
     const ten = sh.getName(), n = sh.getLastRow();
-    if (ten === TRANG_GIAO) return;
+    if (ten === TRANG_GIAO || ten === TRANG_TIN) return;
     if (ten === 'DanhSach') {
       if (n > 1) danhSach = sh.getRange(2, 1, n - 1, 2).getValues().filter(r => r[0] && r[1]).map(r => [String(r[0]).trim(), String(r[1]).trim()]);
       return;

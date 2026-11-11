@@ -83,6 +83,24 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 .it:disabled{cursor:default}
 .noi2 svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
 .hidden{display:none!important}
+/* Nút "Gửi tới cô Thùy Tin" (góc trên phải vùng trắng, dưới chữ Cô Thùy Tin) */
+.nut-thu{position:absolute;top:98px;right:92px;z-index:5;display:flex;align-items:center;gap:6px;font:inherit;font-size:13.5px;font-weight:bold;color:#B0245A;background:#fff;border:2px solid #F48FB1;border-radius:999px;padding:3px 12px 3px 6px;cursor:pointer;box-shadow:0 3px 0 #F8BBD0;transition:transform .15s}
+.nut-thu:not(.thu-nho):hover{transform:translateY(-2px)}
+.nut-thu.thu-nho{transform-origin:top right;padding:3px 6px} .nut-thu.thu-nho span{display:none} .nut-thu:hover svg{animation:lac .5s ease-in-out 2}
+.nut-thu:focus-visible{outline:3px solid #F8BBD0;outline-offset:2px}
+@keyframes lac{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
+.hop.thu{text-align:left;border-top-color:#F06292;max-width:460px}
+.hop.thu .dau-thu{text-align:center;margin:-4px 0 4px} .hop.thu h3{text-align:center;color:#B0245A}
+.hop.thu p{font-size:14.5px;text-align:center;color:#555;margin:0 0 12px}
+.hop.thu label{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:bold;color:#B0245A;margin-bottom:10px}
+.hop.thu input,.hop.thu select,.hop.thu textarea{font:inherit;font-size:15px;padding:8px 10px;border:2px solid #F8BBD0;border-radius:10px;width:100%;max-width:100%;color:#222;background:#fff}
+.hop.thu textarea{resize:vertical;min-height:110px}
+.hop.thu input:focus,.hop.thu select:focus,.hop.thu textarea:focus{outline:3px solid #FCE4EC;border-color:#F06292}
+.hop.thu .dem{align-self:flex-end;font-weight:normal;font-size:12px;color:#888}
+#thuBao{min-height:1.4em;font-weight:bold;text-align:center;margin-bottom:8px}
+#thuBao.ok{color:#1E7E3A} #thuBao.loi{color:#C0392B}
+.hop.thu .nut{justify-content:flex-end} .hop.thu .gui{background:#F06292;color:#fff;border:2px solid #F06292}
+.hop.thu .gui:disabled{opacity:.6;cursor:default}
 /* Gõ đáp án */
 .go-o{font-size:16px;min-width:80px;border-style:solid;background:#FFFDF5}
 /* Chọn nhiều đáp án: ô vuông */
@@ -143,6 +161,7 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 <div class="topbar"><button type="button" class="tro-ve" data-tro-ve>← Trở về</button>
 <div class="tiendo" id="tiendo" aria-live="polite"><div class="chu"><span id="tdChu">Em đã làm 0 câu</span><button type="button" id="tdDen" class="hidden">Câu chưa làm ↓</button></div><div class="thanh"><i id="tdThanh"></i></div></div></div>
 <div class="fit" id="fit"><div class="paper" id="paper">
+<button type="button" class="nut-thu hidden" id="nutThu" aria-haspopup="dialog"><svg viewBox="0 0 40 30" width="30" height="23" aria-hidden="true"><rect x="2" y="4" width="36" height="24" rx="5" fill="#FFF0F5" stroke="#E2588A" stroke-width="2.4"/><path d="M4 7 L20 18 L36 7" fill="none" stroke="#E2588A" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 14.2c-1.6-2.6-5.4-1.6-4.6 1.4.6 2 4.6 4.4 4.6 4.4s4-2.4 4.6-4.4c.8-3-3-4-4.6-1.4z" fill="#F06292"/></svg><span>Gửi tới cô Thùy Tin</span></button>
 <div><div class="sub" id="mon"></div><h1 id="tieuDe"></h1></div>
 <div class="khoa hidden" id="khoa" role="alert"></div>
 <div class="info" style="flex-wrap:wrap"><div class="nho hidden" id="nho" style="width:100%"><span id="nhoChu"></span><button type="button" id="khongPhai">Không phải em</button></div><label style="flex:1">Họ và tên<input id="ten" autocomplete="off" placeholder="Nhập họ và tên"></label>
@@ -163,6 +182,16 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 </section>
 <div class="center"><button type="button" class="btn tro" data-tro-ve>← Trở về kho phiếu</button></div>
 </div></div></main>
+<div class="hop-nen hidden" id="hopThu" role="dialog" aria-modal="true" aria-labelledby="thuTieuDe"><form class="hop thu" id="fThu" autocomplete="off">
+<div class="dau-thu"><svg viewBox="0 0 40 30" width="64" height="48" aria-hidden="true"><rect x="2" y="4" width="36" height="24" rx="5" fill="#FFF0F5" stroke="#E2588A" stroke-width="2.4"/><path d="M4 7 L20 18 L36 7" fill="none" stroke="#E2588A" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 14.2c-1.6-2.6-5.4-1.6-4.6 1.4.6 2 4.6 4.4 4.6 4.4s4-2.4 4.6-4.4c.8-3-3-4-4.6-1.4z" fill="#F06292"/></svg></div>
+<h3 id="thuTieuDe">Gửi tới cô Thùy Tin</h3>
+<p>Em muốn hỏi bài hay nhắn gì cho cô thì viết ở đây nhé. <b>Chỉ cô đọc được</b> tin nhắn này.</p>
+<label>Họ và tên<input id="thuTen" maxlength="80" required></label>
+<label>Lớp<select id="thuLop" required></select></label>
+<label>Tin nhắn<textarea id="thuTin" maxlength="500" rows="5" required placeholder="Cô ơi, em…"></textarea><span class="dem" id="thuDem">0/500</span></label>
+<div id="thuBao" role="status"></div>
+<div class="nut"><button type="button" class="o-lai" id="thuDong" style="background:#fff;color:#555;border:2px solid #ccc">Đóng</button><button type="submit" class="gui" id="thuGui">💌 Gửi cô</button></div>
+</form></div>
 <div class="hop-nen hidden" id="hopNen" role="dialog" aria-modal="true" aria-labelledby="hopTieuDe"><div class="hop">
 <h3 id="hopTieuDe">Em chưa nộp bài!</h3>
 <p>Nếu về trang chủ bây giờ, <b>bài em đang làm sẽ bị xóa</b>. Lần sau mở lại phiếu, em sẽ làm lại từ đầu.</p>
@@ -335,7 +364,8 @@ document.querySelectorAll('[data-sx]').forEach(ol=>{
   ol.addEventListener('pointerup',tha);ol.addEventListener('pointercancel',tha);
   danhSo();
 });
-function fit(){const f=$('fit'),p=$('paper');const s=Math.min(1,f.clientWidth/794);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';NOI.forEach(v=>v());}
+function fit(){const f=$('fit'),p=$('paper');const s=Math.min(1,f.clientWidth/794);
+  const nt=$('nutThu');if(nt){const nho=s<0.7;nt.classList.toggle('thu-nho',nho);nt.style.transform=nho?'scale('+Math.min(1.9,0.62/s)+')':'';}p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';NOI.forEach(v=>v());}
 window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
 let curCanvas=null,curName='KetQua',done=false;
 function nhanXet(d){
@@ -533,6 +563,30 @@ function moTa(k){const s=document.querySelector('[data-k="'+k+'"]');if(!s)return
   }).catch(()=>bao('<b>Không mở được chế độ chiếu đáp án</b>Mật khẩu đã đổi hoặc mạng có vấn đề. Cô đăng nhập lại ở trang <a href="../../giaovien/">Tổng hợp điểm</a>.'));
 })();
 document.addEventListener('input',tienDo);
+// ---- Gửi tin nhắn tới cô: ghi vào trang tính TinNhan. Không lưu lại trên máy, gửi xong không xem lại được.
+(function(){if(!P.guiB)return;
+  const hop=$('hopThu'),tin=$('thuTin'),bao=$('thuBao');let cho=0,dongSau=null;
+  $('nutThu').classList.remove('hidden');
+  const mo=()=>{clearTimeout(dongSau);bao.textContent='';bao.className='';
+    $('thuTen').value=$('ten').value.trim();
+    $('thuLop').innerHTML=[...$('lop').options].map(o=>'<option value="'+esc(o.value)+'">'+esc(o.textContent)+'</option>').join('');$('thuLop').value=$('lop').value;
+    hop.classList.remove('hidden');($('thuTen').value?tin:$('thuTen')).focus();};
+  const dong=()=>{hop.classList.add('hidden');tin.value='';$('thuDem').textContent='0/500';};
+  $('nutThu').onclick=mo;$('thuDong').onclick=dong;
+  hop.addEventListener('click',e=>{if(e.target===hop)dong();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!hop.classList.contains('hidden'))dong();});
+  tin.addEventListener('input',()=>{$('thuDem').textContent=tin.value.length+'/500';});
+  $('fThu').onsubmit=e=>{e.preventDefault();
+    const ten=$('thuTen').value.trim(),lop=$('thuLop').value,noi=tin.value.trim();
+    if(!ten||!lop||!noi){bao.className='loi';bao.textContent='Em điền đủ họ tên, lớp và tin nhắn nhé.';return;}
+    if(Date.now()<cho){bao.className='loi';bao.textContent='Em vừa gửi rồi, đợi một chút rồi gửi tiếp nhé.';return;}
+    $('thuGui').disabled=true;bao.className='';bao.textContent='Đang gửi…';
+    fetch(P.guiB,{method:'POST',mode:'no-cors',body:new URLSearchParams({action:'tinnhan',ten,lop,tin:noi,phieu:P.ma||P.tieuDe})})
+      .then(()=>{tin.value='';$('thuDem').textContent='0/500';cho=Date.now()+20000;
+        bao.className='ok';bao.textContent='✓ Đã gửi cô! Cô sẽ đọc tin nhắn của em.';dongSau=setTimeout(dong,2500);})
+      .catch(()=>{bao.className='loi';bao.textContent='Chưa gửi được (mạng yếu). Em bấm Gửi lại nhé.';})
+      .finally(()=>{$('thuGui').disabled=false;});};
+})();
 window.__PHIEU_TEST__={ANS,sels,tinh,moTa,LAB};
 })();
 </script>
