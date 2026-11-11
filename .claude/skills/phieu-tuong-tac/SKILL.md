@@ -117,8 +117,12 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
   - **gửi điểm ngầm**, không mở tab mới;
   - hiện ảnh kết quả có khung: tên, lớp, điểm thang 10 làm tròn 0,5, nhận xét, ✓/✗ từng câu, giờ làm;
   - hiện nút **Lưu ảnh** và **Lưu PDF**.
+- **Trang chủ:** mỗi thẻ phiếu có nhãn **MỚI** (7 ngày), số câu, thời gian làm ước tính (tự tính khi build) và nút **▦ Mã QR** (hộp QR to để cô chiếu lên bảng, có nút chép link). Thư viện QR đặt sẵn trong `assets/js/qrcode.js`.
 - **Link dự phòng:** luôn có link "Gửi điểm cho cô" phòng khi gửi ngầm lỗi.
-- Không có nút "Làm lại". Cuối trang có link về kho phiếu.
+- Không có nút "Làm lại".
+- **Thanh trên cùng (dính khi cuộn):** nút **← Trở về** + tiến độ "Em đã làm x/y câu" + nút "Câu chưa làm ↓". Cuối phiếu có thêm nút **← Trở về kho phiếu**.
+- **Trở về khi chưa nộp:** chưa làm câu nào → về thẳng trang chủ; đã làm dở → hộp hỏi lại "Em chưa nộp bài!", chọn "Xóa bài và về trang chủ" thì bài bị xóa. Mở lại phiếu (kể cả bằng nút Back) luôn là bài trắng. Đã nộp → về thẳng.
+- **Nhớ tên + lớp** trên máy (trong ngày) sau khi nộp; phiếu sau tự điền, kèm nhắc "Máy đang nhớ tên… [Không phải em]" cho máy dùng chung ở phòng tin.
 - **Sửa giao diện hoặc cách chấm:** sửa `tools/engine.html` rồi build lại; thay đổi áp dụng cho mọi phiếu. Chỉ làm khi cô yêu cầu.
 
 ## 6. Thiết kế

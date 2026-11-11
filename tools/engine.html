@@ -82,11 +82,35 @@ select.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;bord
 .it.thieu{outline:3px solid #FFD4A8;background:#FFF3E6}
 .it:disabled{cursor:default}
 .noi2 svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
-.hidden{display:none}
+.hidden{display:none!important}
+/* Thanh trên cùng: nút Trở về + tiến độ */
+.topbar{position:sticky;top:0;z-index:50;max-width:794px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:8px 12px;background:rgba(255,255,255,.96);border-radius:0 0 14px 14px;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+.tro-ve{flex:none;font:inherit;font-size:15px;font-weight:bold;color:#2457A6;background:#fff;border:2px solid #2457A6;border-radius:999px;padding:7px 14px;cursor:pointer}
+.tro-ve:hover{background:#2457A6;color:#fff} .tro-ve:focus-visible{outline:3px solid #BFE3F7}
+.tiendo{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}
+.tiendo .chu{font-size:14px;font-weight:bold;color:#2457A6;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tiendo .chu button{font:inherit;font-size:13px;font-weight:bold;color:#B35A00;background:#FFF3E6;border:1.5px solid #F28C28;border-radius:999px;padding:1px 10px;cursor:pointer}
+.thanh{height:10px;background:#E3ECF3;border-radius:999px;overflow:hidden}
+.thanh i{display:block;height:100%;width:0;background:#168DCE;border-radius:999px;transition:width .3s}
+.tiendo.du .thanh i{background:#2E9E4F} .tiendo.du .chu{color:#1E7E3A}
+.btn.tro{background:#fff;color:#2457A6;border:2px solid #2457A6;font-size:17px;padding:10px 24px}
+/* Hộp hỏi lại */
+.hop-nen{position:fixed;inset:0;z-index:100;background:rgba(20,40,60,.45);display:flex;align-items:center;justify-content:center;padding:16px}
+.hop{background:#fff;border-radius:18px;max-width:420px;width:100%;padding:22px;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.25);border-top:8px solid #F28C28}
+.hop h3{margin:0 0 8px;font-size:21px;color:#B35A00} .hop p{margin:0 0 18px;font-size:16px;line-height:1.45}
+.hop .nut{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hop button{font:inherit;font-size:16px;font-weight:bold;border-radius:999px;padding:10px 18px;cursor:pointer}
+.hop .o-lai{background:#168DCE;color:#fff;border:2px solid #168DCE} .hop .di{background:#fff;color:#C0392B;border:2px solid #C0392B}
+/* Nhắc khi máy đã nhớ tên lần trước */
+.nho{grid-column:1/-1;font-size:13px;color:#8A5300;background:#FFF8E1;border:1.5px solid #F5C04A;border-radius:8px;padding:5px 10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nho button{font:inherit;font-size:13px;font-weight:bold;color:#C0392B;background:#fff;border:1.5px solid #C0392B;border-radius:999px;padding:1px 10px;cursor:pointer}
 </style></head><body>
-<main style="padding:0 8px"><div class="fit" id="fit"><div class="paper" id="paper">
+<main style="padding:0 8px">
+<div class="topbar"><button type="button" class="tro-ve" data-tro-ve>← Trở về</button>
+<div class="tiendo" id="tiendo" aria-live="polite"><div class="chu"><span id="tdChu">Em đã làm 0 câu</span><button type="button" id="tdDen" class="hidden">Câu chưa làm ↓</button></div><div class="thanh"><i id="tdThanh"></i></div></div></div>
+<div class="fit" id="fit"><div class="paper" id="paper">
 <div><div class="sub" id="mon"></div><h1 id="tieuDe"></h1></div>
-<div class="info"><label style="flex:1">Họ và tên<input id="ten" autocomplete="off" placeholder="Nhập họ và tên"></label>
+<div class="info" style="flex-wrap:wrap"><div class="nho hidden" id="nho" style="width:100%"><span id="nhoChu"></span><button type="button" id="khongPhai">Không phải em</button></div><label style="flex:1">Họ và tên<input id="ten" autocomplete="off" placeholder="Nhập họ và tên"></label>
 <label>Lớp<select id="lop"><option value="">— chọn lớp —</option></select></label></div>
 <div id="noidung" style="display:flex;flex-direction:column;gap:30px"></div>
 <div class="center">
@@ -101,8 +125,13 @@ select.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;bord
 <div class="center"><button id="luuPng" type="button" class="btn light">Lưu ảnh kết quả</button> <button id="luuPdf" type="button" class="btn light">Lưu PDF</button>
 <div class="note" style="margin-top:8px">Hoặc nhấn giữ vào ảnh (điện thoại) / bấm chuột phải (máy tính) rồi chọn <b>Lưu ảnh</b>.</div></div>
 </section>
-<div class="center"><a class="home" href="../../">← Về kho phiếu bài tập</a></div>
+<div class="center"><button type="button" class="btn tro" data-tro-ve>← Trở về kho phiếu</button></div>
 </div></div></main>
+<div class="hop-nen hidden" id="hopNen" role="dialog" aria-modal="true" aria-labelledby="hopTieuDe"><div class="hop">
+<h3 id="hopTieuDe">Em chưa nộp bài!</h3>
+<p>Nếu về trang chủ bây giờ, <b>bài em đang làm sẽ bị xóa</b>. Lần sau mở lại phiếu, em sẽ làm lại từ đầu.</p>
+<div class="nut"><button type="button" class="o-lai" id="oLai">Ở lại làm tiếp</button><button type="button" class="di" id="diVe">Xóa bài và về trang chủ</button></div>
+</div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
 /*__PHIEU__*/
@@ -252,7 +281,7 @@ $('check').addEventListener('click',()=>{
   $('ten').classList.toggle('thieu',!r.ten);$('lop').classList.toggle('thieu',!r.lop);
   if(!r.du){const m=[];if(!r.ten)m.push('nhập họ tên');if(!r.lop)m.push('chọn lớp');if(r.thieu)m.push('làm '+r.thieu+' ô còn trống (tô màu cam)');
     $('thieuMsg').textContent='Em chưa '+m.join(', ')+'. Hãy làm đủ rồi bấm Tính điểm nhé.';(document.querySelector('.thieu:not(select.an)')||$('check')).scrollIntoView({behavior:'smooth',block:'center'});return;}
-  $('thieuMsg').textContent='';done=true;
+  $('thieuMsg').textContent='';done=true;luuTen(r.ten,r.lop);
   sels.forEach(s=>s.classList.add(s.value===ANS[s.dataset.k]?'ok':'no'));
   document.querySelectorAll('select,input,.opt,.it').forEach(e=>e.disabled=true);
   sels.forEach(s=>{if(s.veLai)s.veLai();});
@@ -265,6 +294,44 @@ function taiVe(name,blob){const u=URL.createObjectURL(blob),a=document.createEle
 $('luuPng').onclick=()=>{if(curCanvas)curCanvas.toBlob(b=>taiVe(curName+'.png',b),'image/png');};
 $('luuPdf').onclick=()=>{if(!curCanvas||!window.jspdf)return;const pdf=new jspdf.jsPDF({orientation:'p',unit:'mm',format:'a4'});
   pdf.addImage(curCanvas.toDataURL('image/jpeg',0.92),'JPEG',0,0,210,297);taiVe(curName+'.pdf',pdf.output('blob'));};
+// ---- Tiến độ làm bài
+function tienDo(){
+  const n=sels.length,lam=sels.filter(s=>s.value).length,t=$('tiendo');
+  $('tdThanh').style.width=(n?lam/n*100:0)+'%';
+  t.classList.toggle('du',lam===n);
+  $('tdChu').textContent=done?'Em đã nộp bài':(lam===n?'✓ Em đã làm đủ '+n+' câu – bấm Tính điểm nhé!':'Em đã làm '+lam+'/'+n+' câu');
+  $('tdDen').classList.toggle('hidden',done||lam===n||lam===0);
+}
+document.addEventListener('change',tienDo);
+$('check').addEventListener('click',tienDo);
+$('tdDen').addEventListener('click',()=>{const s=sels.find(x=>!x.value);if(!s)return;
+  const el=s.classList.contains('an')?(s.closest('.opts')||s.closest('.noi2')):s;
+  el.scrollIntoView({behavior:'smooth',block:'center'});
+  if(el===s)setTimeout(()=>s.focus({preventScroll:true}),400);});
+// ---- Nút Trở về: chưa nộp mà đã làm dở thì hỏi lại; về trang chủ là bài bị xóa
+const VE='../../';
+const daLam=()=>sels.some(s=>s.value);
+function veTrangChu(){location.href=VE;}
+document.querySelectorAll('[data-tro-ve]').forEach(b=>b.addEventListener('click',()=>{
+  if(done||!daLam())return veTrangChu();
+  $('hopNen').classList.remove('hidden');$('oLai').focus();}));
+$('oLai').addEventListener('click',()=>$('hopNen').classList.add('hidden'));
+$('hopNen').addEventListener('click',e=>{if(e.target===$('hopNen'))$('hopNen').classList.add('hidden');});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('hopNen').classList.add('hidden');});
+$('diVe').addEventListener('click',()=>{xoaBai();veTrangChu();});
+function xoaBai(){sels.forEach(s=>{s.value='';s.classList.remove('thieu');s.dispatchEvent(new Event('change',{bubbles:true}));});}
+// Quay lại trang bằng nút Back của trình duyệt: chưa nộp thì làm lại từ đầu
+window.addEventListener('pageshow',e=>{if(e.persisted&&!done)location.reload();});
+// ---- Nhớ tên và lớp (trên máy này, trong ngày)
+const KEY='coThuyTin_hocSinh';
+function luuTen(ten,lop){try{localStorage.setItem(KEY,JSON.stringify({ten,lop,ngay:new Date().toDateString()}));}catch(e){}}
+(function(){let d=null;try{d=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
+  if(!d||!d.ten||d.ngay!==new Date().toDateString())return;
+  $('ten').value=d.ten;if([...$('lop').options].some(o=>o.value===d.lop))$('lop').value=d.lop;
+  $('nhoChu').textContent='Máy đang nhớ tên: '+d.ten+(d.lop?' – '+d.lop:'')+'.';$('nho').classList.remove('hidden');
+  $('khongPhai').onclick=()=>{try{localStorage.removeItem(KEY);}catch(e){}$('ten').value='';$('lop').value='';$('nho').classList.add('hidden');$('ten').focus();fit();};
+})();
+xoaBai();tienDo();fit();
 window.__PHIEU_TEST__={ANS,sels,tinh};
 })();
 </script>

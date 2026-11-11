@@ -51,7 +51,23 @@ h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
 .hep h1{font-size:25px}.hep .tabs{grid-template-columns:repeat(2,1fr)}
 .hep .head2{flex-wrap:wrap}.hep .tim{width:100%}
 .hep .card{flex-wrap:wrap;gap:10px}.hep .card .ic{display:none}.hep .go{width:100%;text-align:center}
+.hidden{display:none!important}
 .foot{text-align:center;font-size:13px;color:#777}
+.moi{display:inline-block;vertical-align:3px;margin-left:6px;font-size:12px;font-weight:bold;color:#fff;background:#E5484D;border-radius:999px;padding:2px 9px;letter-spacing:.04em}
+.meta{font-size:13.5px;color:#555;margin-top:6px;display:flex;gap:14px;flex-wrap:wrap}
+.hanhdong{flex:none;display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.qr{font:inherit;font-size:13px;font-weight:bold;color:var(--dam);background:#fff;border:1.5px solid #9DB7CC;border-radius:999px;padding:5px 12px;cursor:pointer}
+.qr:hover{border-color:var(--dam)} .qr:focus-visible{outline:3px solid #BFE3F7}
+.hep .hanhdong{width:100%;flex-direction:row}.hep .hanhdong .go{flex:1}
+/* Hộp mã QR (để cô chiếu lên bảng) */
+.qr-nen{position:fixed;inset:0;z-index:100;background:rgba(20,40,60,.6);display:flex;align-items:center;justify-content:center;padding:16px}
+.qr-hop{background:#fff;border-radius:20px;padding:22px 22px 18px;max-width:min(560px,100%);width:100%;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.3);border-top:8px solid var(--bien)}
+.qr-hop h3{margin:0 0 4px;font-size:22px;color:var(--bien)} .qr-hop .lop{color:#555;font-size:15px;margin-bottom:12px}
+#qrMa{display:flex;justify-content:center;margin:0 auto 12px} #qrMa svg{width:min(380px,70vw,55vh);height:auto}
+.qr-link{font-size:15px;word-break:break-all;background:#F4FAFE;border:1.5px dashed var(--bien);border-radius:10px;padding:8px 10px;margin-bottom:12px}
+.qr-hop .nut{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.qr-hop button{font:inherit;font-size:15px;font-weight:bold;border-radius:999px;padding:9px 18px;cursor:pointer;border:2px solid var(--bien);background:#fff;color:var(--bien)}
+.qr-hop button.chinh{background:var(--bien);color:#fff}
 </style>
 </head>
 <body>
@@ -69,6 +85,13 @@ h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
   </section>
   <div class="foot">© Cô Thùy Tin · Phiếu mới được cập nhật thường xuyên</div>
 </div></div></main>
+<div class="qr-nen hidden" id="qrNen" role="dialog" aria-modal="true" aria-labelledby="qrTen" hidden><div class="qr-hop">
+  <h3 id="qrTen"></h3><div class="lop" id="qrLop"></div>
+  <div id="qrMa" aria-label="Mã QR mở phiếu"></div>
+  <div class="qr-link" id="qrLink"></div>
+  <div class="nut"><button type="button" class="chinh" id="qrChep">Chép link</button><button type="button" id="qrDong">Đóng</button></div>
+</div></div>
+<script src="assets/js/qrcode.js"></script>
 <script>
 const KHOI=[
   {id:'khoi-3',ten:'Khối 3',so:'3',c:'#168DCE',ic:'🎈'},
@@ -92,11 +115,28 @@ function veList(){
     .sort((a,b)=>String(b.ngay).localeCompare(String(a.ngay)));
   if(!ds.length){$('list').innerHTML='<div class="trong"><b>'+(q?'Không tìm thấy phiếu phù hợp':'Chưa có phiếu nào')+'</b>'+(q?'Em thử gõ từ khác nhé.':'Cô sẽ sớm đưa phiếu bài tập lên đây!')+'</div>';fit();return;}
   $('list').innerHTML=ds.map(p=>{const d=p.ngay?p.ngay.split('-').reverse().join('/'):'';
-    return '<article class="card" style="--c:'+k.c+'"><div class="ic" aria-hidden="true">'+k.ic+'</div><div class="bd"><div class="mon">'+esc(p.mon||'')+'</div><div class="tp">'+esc(p.ten)+'</div>'+
-    '<div class="chips">'+(p.lop||[]).map(l=>'<span class="chip">'+esc(l)+'</span>').join('')+(d?'<span class="ngay">📅 '+d+'</span>':'')+'</div></div>'+
-    '<a class="go" href="'+esc(p.link)+'" target="_blank" rel="noopener">Làm bài ➜</a></article>';}).join('');
+    const moi=p.ngay&&(Date.now()-new Date(p.ngay+'T00:00:00'))<7*864e5;
+    return '<article class="card" style="--c:'+k.c+'"><div class="ic" aria-hidden="true">'+k.ic+'</div><div class="bd"><div class="mon">'+esc(p.mon||'')+'</div><div class="tp">'+esc(p.ten)+(moi?'<span class="moi">MỚI</span>':'')+'</div>'+
+    '<div class="chips">'+(p.lop||[]).map(l=>'<span class="chip">'+esc(l)+'</span>').join('')+'</div>'+
+    '<div class="meta">'+(p.soCau?'<span>📝 '+p.soCau+' câu</span>':'')+(p.phut?'<span>⏱ khoảng '+p.phut+' phút</span>':'')+(d?'<span>📅 '+d+'</span>':'')+'</div></div>'+
+    '<div class="hanhdong"><a class="go" href="'+esc(p.link)+'">Làm bài ➜</a><button type="button" class="qr" data-link="'+esc(p.link)+'" data-ten="'+esc(p.ten)+'" data-lop="'+esc((p.lop||[]).join(', '))+'">▦ Mã QR</button></div></article>';}).join('');
+  $('list').querySelectorAll('.qr').forEach(b=>b.onclick=()=>moQR(b.dataset));
   fit();
 }
+// Mã QR: cô bấm để chiếu lên bảng, học sinh quét mở phiếu
+let qrTruoc=null;
+function moQR(d){
+  const url=new URL(d.link,location.href).href;
+  $('qrTen').textContent=d.ten;$('qrLop').textContent='Lớp: '+d.lop;$('qrLink').textContent=url;$('qrMa').innerHTML='';
+  if(window.qrcode){const q=qrcode(0,'M');q.addData(url);q.make();$('qrMa').innerHTML=q.createSvgTag({cellSize:8,margin:2,scalable:true});}
+  else $('qrMa').innerHTML='<div class="trong" style="padding:16px">Chưa tải được mã QR. Cô dùng link bên dưới nhé.</div>';
+  qrTruoc=document.activeElement;$('qrNen').hidden=false;$('qrNen').classList.remove('hidden');$('qrDong').focus();
+  $('qrChep').textContent='Chép link';
+  $('qrChep').onclick=()=>{(navigator.clipboard?navigator.clipboard.writeText(url):Promise.reject()).then(()=>{$('qrChep').textContent='✓ Đã chép';},()=>{$('qrChep').textContent='Hãy chép link ở trên';});};
+}
+function dongQR(){$('qrNen').hidden=true;$('qrNen').classList.add('hidden');if(qrTruoc)qrTruoc.focus();}
+$('qrDong').onclick=dongQR;$('qrNen').addEventListener('click',e=>{if(e.target===$('qrNen'))dongQR();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('qrNen').hidden)dongQR();});
 function route(){const h=location.hash.slice(1);cur=KHOI.some(k=>k.id===h)?h:cur;veTabs();veList();}
 $('tim').addEventListener('input',veList);
 window.addEventListener('hashchange',route);window.addEventListener('resize',fit);window.addEventListener('load',fit);

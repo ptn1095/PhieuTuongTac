@@ -61,10 +61,13 @@ def main():
         js = "const PHIEU = " + json.dumps(P, ensure_ascii=False).replace("</", "<\\/") + ";"
         ghi(os.path.join(thu_muc, "index.html"), engine.replace("/*__PHIEU__*/", js))
         w = P["web"]
+        # Số ô chấm điểm (mỗi chỗ trống của dạng dien là 1 câu) và thời gian làm ước tính
+        so_o = sum(sum(c["text"].count("{}") for c in b["cau"]) if b["loai"] == "dien" else len(b["cau"]) for b in P["bai"])
+        phut = max(5, -(-so_o * 30 // 60 // 5) * 5)
         # Một phiếu có thể hiện ở nhiều khối: mỗi khối một dòng trong phieu.json
         for k in (w["khoi"] if isinstance(w["khoi"], list) else [w["khoi"]]):
             ds.append({"khoi": k, "mon": w.get("mon") or P.get("mon", ""), "ten": w.get("ten") or P["tieuDe"],
-                       "lop": P["lop"], "ngay": w["ngay"], "link": f"phieu/{slug}/"})
+                       "lop": P["lop"], "ngay": w["ngay"], "soCau": so_o, "phut": phut, "link": f"phieu/{slug}/"})
         so_cau = sum(len(b["cau"]) for b in P["bai"])
         print(f"OK  phieu/{slug}/  ({len(P['bai'])} bài, {so_cau} mục)")
 

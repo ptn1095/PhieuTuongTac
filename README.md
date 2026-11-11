@@ -9,6 +9,7 @@ Học sinh chọn khối (Khối 3, Khối 5, Khối 9, Đội Tuyển), bấm *
 index.html            Trang chủ (kho phiếu)
 phieu.json            Danh sách phiếu – tự sinh, không sửa tay
 assets/               Ảnh khung viền dùng chung (top, mid, bot, bg)
+assets/js/qrcode.js   Thư viện tạo mã QR (MIT, Kazuhiko Arase)
 phieu/<tên>/          Mỗi phiếu một thư mục
   config.json         Nội dung + đáp án của phiếu (sửa ở đây)
   index.html          Trang phiếu – tự sinh từ config.json
