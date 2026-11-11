@@ -1,19 +1,5 @@
 [
   {
-    "khoi": "khoi-3",
-    "mon": "Thử",
-    "ten": "Phiếu thử bộ tự động",
-    "lop": [
-      "3A1"
-    ],
-    "ngay": "2026-11-11",
-    "soCau": 1,
-    "phut": 5,
-    "link": "phieu/zz-thu-tu-dong/",
-    "ma": "Thu tu dong",
-    "chuaGiao": true
-  },
-  {
     "khoi": "khoi-9",
     "mon": "Tin học 9",
     "ten": "Dự án Vibe Coding: Phiếu cá nhân",
