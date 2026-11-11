@@ -419,9 +419,10 @@ const server = http.createServer((req, res) => {
       await page.fill('#ten', 'Bé Hỏi Bài'); await page.selectOption('#lop', '3A1');
       bao(await page.locator('#nutThu').isVisible(), 'phiếu có nút "Gửi tới cô Thùy Tin"');
       await page.click('#nutThu');
-      bao(await page.inputValue('#thuTen') === 'Bé Hỏi Bài' && await page.inputValue('#thuLop') === '3A1', 'mở hộp tin nhắn → tự điền họ tên, lớp');
+      bao(await page.inputValue('#thuTen') === 'Bé Hỏi Bài' && await page.inputValue('#thuLop') === '3A1' && await page.getAttribute('#thuLop', 'placeholder') !== null,
+        'mở hộp tin nhắn → Lớp là ô tự gõ (điền sẵn lớp đã chọn, sửa được)');
       const BI_MAT = 'Cô ơi em chưa hiểu câu 3 – mã bí mật 7392';
-      await page.fill('#thuTin', BI_MAT); await page.click('#thuGui'); await page.waitForTimeout(600);
+      await page.fill('#thuLop', ' 3A1 '); await page.fill('#thuTin', BI_MAT); await page.click('#thuGui'); await page.waitForTimeout(600);
       const q = new URLSearchParams(thu[0] || '');
       bao(q.get('action') === 'tinnhan' && q.get('tin') === BI_MAT && q.get('ten') === 'Bé Hỏi Bài' && q.get('lop') === '3A1' && !!q.get('phieu'), 'gửi tin nhắn (POST) kèm họ tên, lớp, tên phiếu');
       bao((await page.textContent('#thuBao')).includes('Đã gửi') && await page.inputValue('#thuTin') === '', 'gửi xong → báo "Đã gửi cô", ô tin nhắn được xóa');

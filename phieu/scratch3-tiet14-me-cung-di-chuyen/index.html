@@ -187,7 +187,7 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 <h3 id="thuTieuDe">Gửi tới cô Thùy Tin</h3>
 <p>Em muốn hỏi bài hay nhắn gì cho cô thì viết ở đây nhé. <b>Chỉ cô đọc được</b> tin nhắn này.</p>
 <label>Họ và tên<input id="thuTen" maxlength="80" required></label>
-<label>Lớp<select id="thuLop" required></select></label>
+<label>Lớp<input id="thuLop" maxlength="30" required placeholder="Ví dụ: 5A2"></label>
 <label>Tin nhắn<textarea id="thuTin" maxlength="500" rows="5" required placeholder="Cô ơi, em…"></textarea><span class="dem" id="thuDem">0/500</span></label>
 <div id="thuBao" role="status"></div>
 <div class="nut"><button type="button" class="o-lai" id="thuDong" style="background:#fff;color:#555;border:2px solid #ccc">Đóng</button><button type="submit" class="gui" id="thuGui">💌 Gửi cô</button></div>
@@ -569,15 +569,15 @@ document.addEventListener('input',tienDo);
   $('nutThu').classList.remove('hidden');
   const mo=()=>{clearTimeout(dongSau);bao.textContent='';bao.className='';
     $('thuTen').value=$('ten').value.trim();
-    $('thuLop').innerHTML=[...$('lop').options].map(o=>'<option value="'+esc(o.value)+'">'+esc(o.textContent)+'</option>').join('');$('thuLop').value=$('lop').value;
-    hop.classList.remove('hidden');($('thuTen').value?tin:$('thuTen')).focus();};
+    $('thuLop').value=$('lop').value||'';
+    hop.classList.remove('hidden');(!$('thuTen').value?$('thuTen'):!$('thuLop').value?$('thuLop'):tin).focus();};
   const dong=()=>{hop.classList.add('hidden');tin.value='';$('thuDem').textContent='0/500';};
   $('nutThu').onclick=mo;$('thuDong').onclick=dong;
   hop.addEventListener('click',e=>{if(e.target===hop)dong();});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!hop.classList.contains('hidden'))dong();});
   tin.addEventListener('input',()=>{$('thuDem').textContent=tin.value.length+'/500';});
   $('fThu').onsubmit=e=>{e.preventDefault();
-    const ten=$('thuTen').value.trim(),lop=$('thuLop').value,noi=tin.value.trim();
+    const ten=$('thuTen').value.trim(),lop=$('thuLop').value.trim(),noi=tin.value.trim();
     if(!ten||!lop||!noi){bao.className='loi';bao.textContent='Em điền đủ họ tên, lớp và tin nhắn nhé.';return;}
     if(Date.now()<cho){bao.className='loi';bao.textContent='Em vừa gửi rồi, đợi một chút rồi gửi tiếp nhé.';return;}
     $('thuGui').disabled=true;bao.className='';bao.textContent='Đang gửi…';
