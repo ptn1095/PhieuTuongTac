@@ -1,0 +1,87 @@
+{
+ "web": {
+  "khoi": [
+   "khoi-3",
+   "doi-tuyen"
+  ],
+  "mon": "Tin học – Scratch lớp 3",
+  "ten": "Tiết 1: Ôn tập giao diện Scratch 3.0",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Scratch 3 - Tiết 1",
+ "mon": "TIN HỌC – SCRATCH LỚP 3",
+ "tieuDe": "Phiếu bài tập – Tiết 1: Ôn tập giao diện Scratch 3.0",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6",
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
+ ],
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Nối số ở cột bên trái với tên khu vực tương ứng ở bên phải.<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 560 300\" width=\"520\" height=\"279\" style=\"display:block;margin:10px auto 0;max-width:100%;height:auto\" role=\"img\" aria-label=\"Giao diện Scratch có đánh số 1 đến 5\"><rect x=\"0\" y=\"0\" width=\"560\" height=\"300\" fill=\"#E9F1FC\" rx=\"6\"/><rect x=\"4\" y=\"4\" width=\"552\" height=\"30\" rx=\"4\" fill=\"#4C97FF\"/><text x=\"16\" y=\"24\" font-family=\"Arial\" font-weight=\"bold\" font-size=\"13\" fill=\"#fff\">SCRATCH</text><text x=\"100\" y=\"24\" font-family=\"Arial\" font-size=\"12\" fill=\"#fff\">Tập tin    Chỉnh sửa    Hướng dẫn</text><circle cx=\"340\" cy=\"19\" r=\"15\" fill=\"#fff\" stroke=\"#F28C28\" stroke-width=\"3\"/><text x=\"340\" y=\"25\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" font-size=\"18\" fill=\"#F28C28\">5</text><rect x=\"4\" y=\"40\" width=\"170\" height=\"256\" rx=\"4\" fill=\"#fff\" stroke=\"#2E9E44\" stroke-width=\"2\"/><rect x=\"4\" y=\"40\" width=\"20\" height=\"0\" fill=\"none\"/><circle cx=\"34\" cy=\"66\" r=\"7\" fill=\"#4C97FF\"/><circle cx=\"34\" cy=\"92\" r=\"7\" fill=\"#9966FF\"/><circle cx=\"34\" cy=\"118\" r=\"7\" fill=\"#CF63CF\"/><circle cx=\"34\" cy=\"144\" r=\"7\" fill=\"#FFBF00\"/><circle cx=\"34\" cy=\"170\" r=\"7\" fill=\"#FFAB19\"/><circle cx=\"34\" cy=\"196\" r=\"7\" fill=\"#5CB1D6\"/><circle cx=\"34\" cy=\"222\" r=\"7\" fill=\"#59C059\"/><circle cx=\"34\" cy=\"248\" r=\"7\" fill=\"#FF8C1A\"/><rect x=\"78\" y=\"64\" width=\"70\" height=\"16\" rx=\"3\" fill=\"#4C97FF\"/><rect x=\"78\" y=\"86\" width=\"60\" height=\"16\" rx=\"3\" fill=\"#4C97FF\"/><rect x=\"78\" y=\"108\" width=\"60\" height=\"16\" rx=\"3\" fill=\"#4C97FF\"/><rect x=\"78\" y=\"130\" width=\"78\" height=\"16\" rx=\"3\" fill=\"#4C97FF\"/><rect x=\"78\" y=\"152\" width=\"66\" height=\"16\" rx=\"3\" fill=\"#4C97FF\"/><rect x=\"78\" y=\"174\" width=\"84\" height=\"16\" rx=\"3\" fill=\"#4C97FF\"/><rect x=\"78\" y=\"196\" width=\"70\" height=\"16\" rx=\"3\" fill=\"#4C97FF\"/><line x1=\"58\" y1=\"40\" x2=\"58\" y2=\"296\" stroke=\"#ddd\"/><circle cx=\"130\" cy=\"260\" r=\"15\" fill=\"#fff\" stroke=\"#2E9E44\" stroke-width=\"3\"/><text x=\"130\" y=\"266\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" font-size=\"18\" fill=\"#2E9E44\">4</text><rect x=\"180\" y=\"40\" width=\"176\" height=\"256\" rx=\"4\" fill=\"#F9F9F9\" stroke=\"#1E6FD9\" stroke-width=\"2\"/><circle cx=\"268\" cy=\"168\" r=\"15\" fill=\"#fff\" stroke=\"#1E6FD9\" stroke-width=\"3\"/><text x=\"268\" y=\"174\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" font-size=\"18\" fill=\"#1E6FD9\">3</text><rect x=\"362\" y=\"40\" width=\"194\" height=\"150\" rx=\"4\" fill=\"#fff\" stroke=\"#E53935\" stroke-width=\"2\"/><path d=\"M372,47 v14 M373,48 c4,-2 7,2 12,0 v7 c-5,2 -8,-2 -12,0z\" stroke=\"#45993D\" fill=\"#4CBF56\"/><polygon points=\"394,47 400,47 404,51 404,57 400,61 394,61 390,57 390,51\" fill=\"#EC5959\"/><line x1=\"362\" y1=\"66\" x2=\"556\" y2=\"66\" stroke=\"#ddd\"/><circle cx=\"459\" cy=\"128\" r=\"15\" fill=\"#fff\" stroke=\"#E53935\" stroke-width=\"3\"/><text x=\"459\" y=\"134\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" font-size=\"18\" fill=\"#E53935\">1</text><rect x=\"362\" y=\"196\" width=\"194\" height=\"100\" rx=\"4\" fill=\"#fff\" stroke=\"#F2B600\" stroke-width=\"2\"/><rect x=\"370\" y=\"204\" width=\"130\" height=\"34\" rx=\"3\" fill=\"#F2F4F8\"/><rect x=\"372\" y=\"246\" width=\"40\" height=\"40\" rx=\"5\" fill=\"#fff\" stroke=\"#4C97FF\" stroke-width=\"2\"/><line x1=\"508\" y1=\"196\" x2=\"508\" y2=\"296\" stroke=\"#ddd\"/><circle cx=\"486\" cy=\"276\" r=\"12\" fill=\"#4C97FF\"/><circle cx=\"532\" cy=\"276\" r=\"12\" fill=\"#4C97FF\"/><circle cx=\"450\" cy=\"262\" r=\"15\" fill=\"#fff\" stroke=\"#F2B600\" stroke-width=\"3\"/><text x=\"450\" y=\"268\" text-anchor=\"middle\" font-family=\"Arial\" font-weight=\"bold\" font-size=\"18\" fill=\"#F2B600\">2</text></svg>",
+   "lc": [
+    "Khu vực lập trình",
+    "Thanh công cụ",
+    "Sân khấu",
+    "Khu vực các lệnh",
+    "Khu vực nhân vật và phông nền"
+   ],
+   "cau": [
+    {
+     "text": "<span style=\"display:inline-flex;align-items:center;gap:8px\"><span style=\"display:inline-block;width:30px;height:30px;line-height:26px;border:3px solid #E53935;border-radius:50%;text-align:center;font-weight:bold;color:#E53935;box-sizing:border-box\">1</span>Vùng số 1</span>",
+     "da": "Sân khấu"
+    },
+    {
+     "text": "<span style=\"display:inline-flex;align-items:center;gap:8px\"><span style=\"display:inline-block;width:30px;height:30px;line-height:26px;border:3px solid #F2B600;border-radius:50%;text-align:center;font-weight:bold;color:#F2B600;box-sizing:border-box\">2</span>Vùng số 2</span>",
+     "da": "Khu vực nhân vật và phông nền"
+    },
+    {
+     "text": "<span style=\"display:inline-flex;align-items:center;gap:8px\"><span style=\"display:inline-block;width:30px;height:30px;line-height:26px;border:3px solid #1E6FD9;border-radius:50%;text-align:center;font-weight:bold;color:#1E6FD9;box-sizing:border-box\">3</span>Vùng số 3</span>",
+     "da": "Khu vực lập trình"
+    },
+    {
+     "text": "<span style=\"display:inline-flex;align-items:center;gap:8px\"><span style=\"display:inline-block;width:30px;height:30px;line-height:26px;border:3px solid #2E9E44;border-radius:50%;text-align:center;font-weight:bold;color:#2E9E44;box-sizing:border-box\">4</span>Vùng số 4</span>",
+     "da": "Khu vực các lệnh"
+    },
+    {
+     "text": "<span style=\"display:inline-flex;align-items:center;gap:8px\"><span style=\"display:inline-block;width:30px;height:30px;line-height:26px;border:3px solid #F28C28;border-radius:50%;text-align:center;font-weight:bold;color:#F28C28;box-sizing:border-box\">5</span>Vùng số 5</span>",
+     "da": "Thanh công cụ"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Khoanh tròn vào chữ cái đặt trước ý đúng.",
+   "cot": 3,
+   "cau": [
+    {
+     "text": "Để chạy chương trình, em nháy vào nút nào?",
+     "lc": [
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\" width=\"54\" height=\"54\" style=\"vertical-align:middle\" role=\"img\"><path d=\"M14,8 V54\" stroke=\"#45993D\" stroke-width=\"4\" stroke-linecap=\"round\"/><path d=\"M16,10 C24,4 32,16 48,10 V34 C32,40 24,28 16,34 Z\" fill=\"#4CBF56\" stroke=\"#45993D\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\" width=\"54\" height=\"54\" style=\"vertical-align:middle\" role=\"img\"><polygon points=\"20,4 40,4 56,20 56,40 40,56 20,56 4,40 4,20\" fill=\"#EC5959\" stroke=\"#B84848\" stroke-width=\"2\"/></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\" width=\"54\" height=\"54\" style=\"vertical-align:middle\" role=\"img\"><circle cx=\"30\" cy=\"30\" r=\"27\" fill=\"#4C97FF\"/><path d=\"M18,24 L20,12 L27,19 H33 L40,12 L42,24 C46,38 38,44 30,44 C22,44 14,38 18,24 Z\" fill=\"#fff\"/><circle cx=\"25\" cy=\"30\" r=\"2\" fill=\"#4C97FF\"/><circle cx=\"35\" cy=\"30\" r=\"2\" fill=\"#4C97FF\"/><circle cx=\"45\" cy=\"15\" r=\"8\" fill=\"#fff\" stroke=\"#4C97FF\" stroke-width=\"2\"/><path d=\"M45,10 v10 M40,15 h10\" stroke=\"#4C97FF\" stroke-width=\"2.5\"/></svg>"
+     ],
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\" width=\"54\" height=\"54\" style=\"vertical-align:middle\" role=\"img\"><path d=\"M14,8 V54\" stroke=\"#45993D\" stroke-width=\"4\" stroke-linecap=\"round\"/><path d=\"M16,10 C24,4 32,16 48,10 V34 C32,40 24,28 16,34 Z\" fill=\"#4CBF56\" stroke=\"#45993D\" stroke-width=\"2\" stroke-linejoin=\"round\"/></svg>"
+    },
+    {
+     "text": "Để thêm nhân vật mới, em nháy vào nút nào?",
+     "lc": [
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\" width=\"54\" height=\"54\" style=\"vertical-align:middle\" role=\"img\"><circle cx=\"30\" cy=\"30\" r=\"27\" fill=\"#4C97FF\"/><path d=\"M18,24 L20,12 L27,19 H33 L40,12 L42,24 C46,38 38,44 30,44 C22,44 14,38 18,24 Z\" fill=\"#fff\"/><circle cx=\"25\" cy=\"30\" r=\"2\" fill=\"#4C97FF\"/><circle cx=\"35\" cy=\"30\" r=\"2\" fill=\"#4C97FF\"/><circle cx=\"45\" cy=\"15\" r=\"8\" fill=\"#fff\" stroke=\"#4C97FF\" stroke-width=\"2\"/><path d=\"M45,10 v10 M40,15 h10\" stroke=\"#4C97FF\" stroke-width=\"2.5\"/></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\" width=\"54\" height=\"54\" style=\"vertical-align:middle\" role=\"img\"><circle cx=\"30\" cy=\"30\" r=\"27\" fill=\"#4C97FF\"/><rect x=\"15\" y=\"19\" width=\"30\" height=\"24\" rx=\"3\" fill=\"#fff\"/><path d=\"M17,41 L26,30 L32,36 L36,32 L43,41 Z\" fill=\"#4C97FF\"/><circle cx=\"37\" cy=\"25\" r=\"3\" fill=\"#4C97FF\"/><circle cx=\"45\" cy=\"15\" r=\"8\" fill=\"#fff\" stroke=\"#4C97FF\" stroke-width=\"2\"/><path d=\"M45,10 v10 M40,15 h10\" stroke=\"#4C97FF\" stroke-width=\"2.5\"/></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\" width=\"54\" height=\"54\" style=\"vertical-align:middle\" role=\"img\"><circle cx=\"30\" cy=\"30\" r=\"27\" fill=\"#4C97FF\"/><path d=\"M38,14 L46,22 L30,38 L22,30 Z\" fill=\"#fff\"/><path d=\"M21,32 L28,39 C24,46 16,46 14,46 C16,42 15,36 21,32 Z\" fill=\"#fff\"/></svg>"
+     ],
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 60 60\" width=\"54\" height=\"54\" style=\"vertical-align:middle\" role=\"img\"><circle cx=\"30\" cy=\"30\" r=\"27\" fill=\"#4C97FF\"/><path d=\"M18,24 L20,12 L27,19 H33 L40,12 L42,24 C46,38 38,44 30,44 C22,44 14,38 18,24 Z\" fill=\"#fff\"/><circle cx=\"25\" cy=\"30\" r=\"2\" fill=\"#4C97FF\"/><circle cx=\"35\" cy=\"30\" r=\"2\" fill=\"#4C97FF\"/><circle cx=\"45\" cy=\"15\" r=\"8\" fill=\"#fff\" stroke=\"#4C97FF\" stroke-width=\"2\"/><path d=\"M45,10 v10 M40,15 h10\" stroke=\"#4C97FF\" stroke-width=\"2.5\"/></svg>"
+    }
+   ]
+  }
+ ]
+}

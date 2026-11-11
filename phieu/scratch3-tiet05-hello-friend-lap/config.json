@@ -1,0 +1,62 @@
+{
+ "web": {
+  "khoi": [
+   "khoi-3",
+   "doi-tuyen"
+  ],
+  "mon": "Tin học – Scratch lớp 3",
+  "ten": "Tiết 5: Dự án 1 Hello Friend – Vòng lặp và chờ đợi",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Scratch 3 - Tiết 5",
+ "mon": "TIN HỌC – SCRATCH LỚP 3",
+ "tieuDe": "Phiếu bài tập – Tiết 5: Dự án 1 Hello Friend – Vòng lặp và chờ đợi",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6",
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
+ ],
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Thử thách kết nối: nối các khối lệnh Scratch ở cột bên trái với chức năng đúng ở cột bên phải.",
+   "lc": [
+    "Làm cho các lệnh bên trong lặp lại mãi mãi không dừng.",
+    "Giúp chương trình tạm dừng trong một khoảng thời gian.",
+    "Lặp lại các lệnh bên trong theo một số lần nhất định."
+   ],
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"129\" height=\"45\" viewBox=\"0 0 164.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H158.75265625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">wait</text><rect x=\"45.3\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"65.3\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">1</text><text x=\"93.3\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">seconds</text></g></svg>",
+     "da": "Giúp chương trình tạm dừng trong một khoảng thời gian."
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"126\" height=\"89\" viewBox=\"0 0 162.0 114.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H68 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H20 a4,4 0 0 0 -4,4 V69 a4,4 0 0 0 4,4 H32 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156 a4,4 0 0 1 4,4 V101 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">repeat</text><rect x=\"62.8\" y=\"8.0\" width=\"42.3\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"83.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">10</text></g><text x=\"141\" y=\"90\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#FFFFFF\" style=\"font-family:Arial,sans-serif;font-size:20px;font-weight:bold\">↻</text></svg>",
+     "da": "Lặp lại các lệnh bên trong theo một số lần nhất định."
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"126\" height=\"83\" viewBox=\"0 0 162.0 106.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H68 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H20 a4,4 0 0 0 -4,4 V69 a4,4 0 0 0 4,4 H32 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156 a4,4 0 0 1 4,4 V101 a4,4 0 0 1 -4,4 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">forever</text></g><text x=\"141\" y=\"90\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#FFFFFF\" style=\"font-family:Arial,sans-serif;font-size:20px;font-weight:bold\">↻</text></svg>",
+     "da": "Làm cho các lệnh bên trong lặp lại mãi mãi không dừng."
+    }
+   ]
+  },
+  {
+   "loai": "go",
+   "yc": "Thử thách tính toán: giúp bạn Mèo và bạn Gấu nói chuyện khớp với nhau bằng cách điền số vào ô trống.",
+   "cau": [
+    {
+     "text": "<div style=\"display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;margin-bottom:6px\"><div><b>Nhân vật Mèo:</b><br><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"259\" height=\"45\" viewBox=\"0 0 332.2 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H326.1990625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#9966FF\" stroke=\"#774DCB\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">say</text><rect x=\"41.7\" y=\"8.0\" width=\"135.9\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"109.6\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">Chào bạn Gấu!</text><text x=\"185.5\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">for</text><rect x=\"212.8\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"232.8\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">2</text><text x=\"260.8\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">seconds</text></g></svg></div><div><b>Nhân vật Gấu:</b> để không nói đè lên lời bạn Mèo, Gấu cần phải:<br><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"260\" height=\"83\" viewBox=\"0 0 333.1 106.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H159.23265625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">wait</text><rect x=\"45.3\" y=\"8.0\" width=\"40.5\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"65.6\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">…</text><text x=\"93.8\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">seconds</text></g><path d=\"M0,53 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H327.1003125 a4,4 0 0 1 4,4 V93 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#9966FF\" stroke=\"#774DCB\"/><g transform=\"translate(1,49)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">say</text><rect x=\"41.7\" y=\"8.0\" width=\"136.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"110.0\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">Chào bạn Mèo!</text><text x=\"186.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">for</text><rect x=\"213.7\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"233.7\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">2</text><text x=\"261.7\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">seconds</text></g></svg></div></div>Số thích hợp điền vào ô <b>wait (…) seconds</b> là: {} giây",
+     "da": "2"
+    }
+   ]
+  }
+ ]
+}

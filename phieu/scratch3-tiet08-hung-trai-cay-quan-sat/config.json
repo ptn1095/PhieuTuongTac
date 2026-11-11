@@ -1,0 +1,160 @@
+{
+ "web": {
+  "khoi": [
+   "khoi-3",
+   "doi-tuyen"
+  ],
+  "mon": "Tin học – Scratch lớp 3",
+  "ten": "Tiết 8: Dự án 2 Hứng trái cây – Quan sát trò chơi",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Scratch 3 - Tiết 8",
+ "mon": "TIN HỌC – SCRATCH LỚP 3",
+ "tieuDe": "Phiếu bài tập – Tiết 8: Dự án 2 Hứng trái cây – Quan sát trò chơi",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6",
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
+ ],
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Quan sát trò chơi: khoanh tròn vào đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Người chơi điều khiển nhân vật nào?",
+     "lc": [
+      "Quả táo",
+      "Giỏ hứng trái cây",
+      "Hình nền",
+      "Mặt trời"
+     ],
+     "da": "Giỏ hứng trái cây"
+    },
+    {
+     "text": "Vật gì sẽ rơi từ trên xuống?",
+     "lc": [
+      "Trái cây",
+      "Xe hơi",
+      "Ngôi nhà",
+      "Robot"
+     ],
+     "da": "Trái cây"
+    },
+    {
+     "text": "Khi chạm vào trái cây tươi, nhân vật sẽ:",
+     "lc": [
+      "Biến mất",
+      "Nói “Ngon quá!”",
+      "Bay lên trời",
+      "Đổi màu sân khấu"
+     ],
+     "da": "Nói “Ngon quá!”"
+    },
+    {
+     "text": "Khi chạm vào trái cây thối, nhân vật sẽ:",
+     "lc": [
+      "Nói “Ối ối!”",
+      "Nhảy múa",
+      "Biến thành quả táo",
+      "Không làm gì"
+     ],
+     "da": "Nói “Ối ối!”"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Ai là nhân vật chính? Khoanh tròn vào đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Trong trò chơi “Hứng trái cây”, đâu là nhân vật chính?",
+     "lc": [
+      "Quả táo",
+      "Quả chuối",
+      "Giỏ hứng trái cây",
+      "Hình nền"
+     ],
+     "da": "Giỏ hứng trái cây"
+    },
+    {
+     "text": "Đâu là vật thể rơi từ trên xuống?",
+     "lc": [
+      "Trái cây",
+      "Mèo Scratch",
+      "Sân khấu",
+      "Đám mây"
+     ],
+     "da": "Trái cây"
+    },
+    {
+     "text": "Đâu là vật cản trong trò chơi?",
+     "lc": [
+      "Trái cây tươi",
+      "Trái cây thối",
+      "Hình nền",
+      "Con mèo"
+     ],
+     "da": "Trái cây thối"
+    },
+    {
+     "text": "Sân khấu trong Scratch dùng để:",
+     "lc": [
+      "Điều khiển nhân vật",
+      "Làm hình nền cho trò chơi",
+      "Xóa nhân vật",
+      "Tạo âm thanh"
+     ],
+     "da": "Làm hình nền cho trò chơi"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn sân khấu phù hợp: khoanh tròn vào đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Hình nền nào phù hợp nhất cho trò chơi “Hứng trái cây”?",
+     "lc": [
+      "Khu vườn trái cây",
+      "Không gian vũ trụ",
+      "Đại dương",
+      "Thành phố ban đêm"
+     ],
+     "da": "Khu vườn trái cây"
+    },
+    {
+     "text": "Vì sao nên chọn hình nền khu vườn?",
+     "lc": [
+      "Vì có nhiều cây và trái cây",
+      "Vì có tàu vũ trụ",
+      "Vì có cá heo",
+      "Vì có ô tô"
+     ],
+     "da": "Vì có nhiều cây và trái cây"
+    },
+    {
+     "text": "Hình nền giúp trò chơi:",
+     "lc": [
+      "Sinh động hơn",
+      "Chạy nhanh hơn",
+      "Xóa nhân vật",
+      "Tắt âm thanh"
+     ],
+     "da": "Sinh động hơn"
+    }
+   ]
+  }
+ ]
+}

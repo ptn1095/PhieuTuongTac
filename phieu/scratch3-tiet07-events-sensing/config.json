@@ -1,0 +1,167 @@
+{
+ "web": {
+  "khoi": [
+   "khoi-3",
+   "doi-tuyen"
+  ],
+  "mon": "Tin học – Scratch lớp 3",
+  "ten": "Tiết 7: Events & Sensing – Cảm biến và điều khiển bằng bàn phím",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Scratch 3 - Tiết 7",
+ "mon": "TIN HỌC – SCRATCH LỚP 3",
+ "tieuDe": "Phiếu bài tập – Tiết 7: Events & Sensing – Cảm biến và điều khiển bằng bàn phím",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6",
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
+ ],
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Thử thách nhận diện khối lệnh: mỗi khối lệnh sau thuộc nhóm lệnh nào (Events hay Sensing)?",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"195\" height=\"61\" viewBox=\"0 0 250.3 78.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,21 c 25,-22 71,-22 96,0 H244.33187500000003 a4,4 0 0 1 4,4 V65 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><g transform=\"translate(1,21)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">when</text><rect x=\"55.4\" y=\"8.0\" width=\"88.0\" height=\"32\" rx=\"16\" fill=\"#E6AC00\" stroke=\"#CC9900\"/><text x=\"67.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">space</text><path d=\"M121.4,21.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"151.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key pressed</text></g></svg>",
+     "lc": [
+      "Events",
+      "Sensing"
+     ],
+     "da": "Events"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"203\" height=\"33\" viewBox=\"0 0 259.7 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H237.65437500000002 L257.654375,20.0 L237.65437500000002,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key</text><rect x=\"53.7\" y=\"4.0\" width=\"108.2\" height=\"32\" rx=\"16\" fill=\"#47A8D1\" stroke=\"#2E8EB8\"/><text x=\"65.7\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">up arrow</text><path d=\"M139.8,17.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"169.8\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">pressed?</text></g></svg>",
+     "lc": [
+      "Events",
+      "Sensing"
+     ],
+     "da": "Sensing"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"218\" height=\"33\" viewBox=\"0 0 279.0 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H256.95078125 L276.95078125,20.0 L256.95078125,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">touching</text><rect x=\"90.4\" y=\"4.0\" width=\"149.4\" height=\"32\" rx=\"16\" fill=\"#47A8D1\" stroke=\"#2E8EB8\"/><text x=\"102.4\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">mouse-pointer</text><path d=\"M217.8,17.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"247.8\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">?</text></g></svg>",
+     "lc": [
+      "Events",
+      "Sensing"
+     ],
+     "da": "Sensing"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"227\" height=\"61\" viewBox=\"0 0 291.6 78.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,21 c 25,-22 71,-22 96,0 H285.58015625 a4,4 0 0 1 4,4 V65 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><g transform=\"translate(1,21)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">when</text><rect x=\"55.4\" y=\"8.0\" width=\"129.2\" height=\"32\" rx=\"16\" fill=\"#E6AC00\" stroke=\"#CC9900\"/><text x=\"67.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">down arrow</text><path d=\"M162.7,21.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"192.7\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key pressed</text></g></svg>",
+     "lc": [
+      "Events",
+      "Sensing"
+     ],
+     "da": "Events"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"164\" height=\"33\" viewBox=\"0 0 209.9 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H187.86765625 L207.86765625,20.0 L187.86765625,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">touching color</text><rect x=\"130.7\" y=\"4.0\" width=\"40\" height=\"32\" rx=\"16\" fill=\"#3DDC57\" stroke=\"#FFFFFF\" stroke-width=\"2\"/><text x=\"178.7\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">?</text></g></svg>",
+     "lc": [
+      "Events",
+      "Sensing"
+     ],
+     "da": "Sensing"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Ai là “bắt đầu” – ai là “kiểm tra”? Nối khối lệnh với chức năng phù hợp.",
+   "lc": [
+    "Kiểm tra xem phím có đang được bấm không",
+    "Bắt đầu chương trình khi nhấn phím",
+    "Kiểm tra xem nhân vật có chạm vào đối tượng không"
+   ],
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"195\" height=\"61\" viewBox=\"0 0 250.3 78.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,21 c 25,-22 71,-22 96,0 H244.33187500000003 a4,4 0 0 1 4,4 V65 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><g transform=\"translate(1,21)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">when</text><rect x=\"55.4\" y=\"8.0\" width=\"88.0\" height=\"32\" rx=\"16\" fill=\"#E6AC00\" stroke=\"#CC9900\"/><text x=\"67.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">space</text><path d=\"M121.4,21.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"151.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key pressed</text></g></svg>",
+     "da": "Bắt đầu chương trình khi nhấn phím"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"187\" height=\"33\" viewBox=\"0 0 239.5 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H217.48890625 L237.48890625,20.0 L217.48890625,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key</text><rect x=\"53.7\" y=\"4.0\" width=\"88.0\" height=\"32\" rx=\"16\" fill=\"#47A8D1\" stroke=\"#2E8EB8\"/><text x=\"65.7\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">space</text><path d=\"M119.7,17.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"149.7\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">pressed?</text></g></svg>",
+     "da": "Kiểm tra xem phím có đang được bấm không"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"218\" height=\"33\" viewBox=\"0 0 279.0 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H256.95078125 L276.95078125,20.0 L256.95078125,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">touching</text><rect x=\"90.4\" y=\"4.0\" width=\"149.4\" height=\"32\" rx=\"16\" fill=\"#47A8D1\" stroke=\"#2E8EB8\"/><text x=\"102.4\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">mouse-pointer</text><path d=\"M217.8,17.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"247.8\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">?</text></g></svg>",
+     "da": "Kiểm tra xem nhân vật có chạm vào đối tượng không"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Nhà phân tích Scratch: mỗi nội dung sau đúng với nhóm lệnh nào? Chọn tất cả nhóm lệnh đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Có màu vàng",
+     "lc": [
+      "Events (Sự kiện)",
+      "Sensing (Cảm biến)"
+     ],
+     "da": [
+      "Events (Sự kiện)"
+     ]
+    },
+    {
+     "text": "Có màu xanh nhạt",
+     "lc": [
+      "Events (Sự kiện)",
+      "Sensing (Cảm biến)"
+     ],
+     "da": [
+      "Sensing (Cảm biến)"
+     ]
+    },
+    {
+     "text": "Dùng để bắt đầu hành động",
+     "lc": [
+      "Events (Sự kiện)",
+      "Sensing (Cảm biến)"
+     ],
+     "da": [
+      "Events (Sự kiện)"
+     ]
+    },
+    {
+     "text": "Dùng để kiểm tra điều kiện",
+     "lc": [
+      "Events (Sự kiện)",
+      "Sensing (Cảm biến)"
+     ],
+     "da": [
+      "Sensing (Cảm biến)"
+     ]
+    },
+    {
+     "text": "Có thể dùng với bàn phím",
+     "lc": [
+      "Events (Sự kiện)",
+      "Sensing (Cảm biến)"
+     ],
+     "da": [
+      "Events (Sự kiện)",
+      "Sensing (Cảm biến)"
+     ]
+    },
+    {
+     "text": "Có dạng khối lục giác",
+     "lc": [
+      "Events (Sự kiện)",
+      "Sensing (Cảm biến)"
+     ],
+     "da": [
+      "Sensing (Cảm biến)"
+     ]
+    }
+   ]
+  }
+ ]
+}

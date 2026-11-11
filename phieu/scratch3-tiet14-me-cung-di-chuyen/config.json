@@ -1,0 +1,163 @@
+{
+ "web": {
+  "khoi": [
+   "khoi-3",
+   "doi-tuyen"
+  ],
+  "mon": "Tin học – Scratch lớp 3",
+  "ten": "Tiết 14: Dự án 3 Giải mã mê cung – Nhân vật di chuyển trong mê cung",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Scratch 3 - Tiết 14",
+ "mon": "TIN HỌC – SCRATCH LỚP 3",
+ "tieuDe": "Phiếu bài tập – Tiết 14: Dự án 3 Giải mã mê cung – Nhân vật di chuyển trong mê cung",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6",
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
+ ],
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Ai điều khiển ai? Chọn cột phù hợp với mỗi khối lệnh.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"222\" height=\"61\" viewBox=\"0 0 284.2 78.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,21 c 25,-22 71,-22 96,0 H278.24140625 a4,4 0 0 1 4,4 V65 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><g transform=\"translate(1,21)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">when</text><rect x=\"55.4\" y=\"8.0\" width=\"121.9\" height=\"32\" rx=\"16\" fill=\"#E6AC00\" stroke=\"#CC9900\"/><text x=\"67.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">right arrow</text><path d=\"M155.3,21.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"185.3\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key pressed</text></g></svg>",
+     "lc": [
+      "Điều khiển nhân vật",
+      "Điều khiển vật cản"
+     ],
+     "da": "Điều khiển nhân vật"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"123\" height=\"45\" viewBox=\"0 0 157.3 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H151.2809375 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change x by</text><rect x=\"104.9\" y=\"8.0\" width=\"42.3\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"126.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">10</text></g></svg>",
+     "lc": [
+      "Điều khiển nhân vật",
+      "Điều khiển vật cản"
+     ],
+     "da": "Điều khiển nhân vật"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"127\" height=\"45\" viewBox=\"0 0 162.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156.76890625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change y by</text><rect x=\"104.9\" y=\"8.0\" width=\"47.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"128.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">-10</text></g></svg>",
+     "lc": [
+      "Điều khiển nhân vật",
+      "Điều khiển vật cản"
+     ],
+     "da": "Điều khiển nhân vật"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"230\" height=\"45\" viewBox=\"0 0 295.3 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H289.33953125 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">glide</text><rect x=\"50.9\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"70.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">1</text><text x=\"98.9\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">secs to x:</text><rect x=\"176.5\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"196.5\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text><text x=\"224.5\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">y:</text><rect x=\"245.3\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"265.3\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text></g></svg>",
+     "lc": [
+      "Điều khiển nhân vật",
+      "Điều khiển vật cản"
+     ],
+     "da": "Điều khiển vật cản"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"258\" height=\"45\" viewBox=\"0 0 330.5 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H324.45500000000004 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">glide</text><rect x=\"50.9\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"70.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">1</text><text x=\"98.9\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">secs to</text><rect x=\"159.1\" y=\"8.0\" width=\"161.4\" height=\"32\" rx=\"16\" fill=\"#4280D7\" stroke=\"#3373CC\"/><text x=\"171.1\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">random position</text><path d=\"M298.5,21.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></g></svg>",
+     "lc": [
+      "Điều khiển nhân vật",
+      "Điều khiển vật cản"
+     ],
+     "da": "Điều khiển vật cản"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Khối lệnh nào đi cùng nhau? Nối các khối lệnh để tạo điều khiển đúng. <i>(Gợi ý: x – trái/phải; y – lên/xuống)</i>",
+   "lc": [
+    "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"123\" height=\"45\" viewBox=\"0 0 157.3 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H151.2809375 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change x by</text><rect x=\"104.9\" y=\"8.0\" width=\"42.3\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"126.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">10</text></g></svg>",
+    "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"123\" height=\"45\" viewBox=\"0 0 157.3 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H151.2809375 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change y by</text><rect x=\"104.9\" y=\"8.0\" width=\"42.3\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"126.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">10</text></g></svg>",
+    "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"127\" height=\"45\" viewBox=\"0 0 162.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156.76890625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change x by</text><rect x=\"104.9\" y=\"8.0\" width=\"47.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"128.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">-10</text></g></svg>"
+   ],
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"211\" height=\"61\" viewBox=\"0 0 270.5 78.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,21 c 25,-22 71,-22 96,0 H264.49734375 a4,4 0 0 1 4,4 V65 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><g transform=\"translate(1,21)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">when</text><rect x=\"55.4\" y=\"8.0\" width=\"108.2\" height=\"32\" rx=\"16\" fill=\"#E6AC00\" stroke=\"#CC9900\"/><text x=\"67.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">up arrow</text><path d=\"M141.6,21.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"171.6\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key pressed</text></g></svg>",
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"123\" height=\"45\" viewBox=\"0 0 157.3 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H151.2809375 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change y by</text><rect x=\"104.9\" y=\"8.0\" width=\"42.3\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"126.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">10</text></g></svg>"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"214\" height=\"61\" viewBox=\"0 0 274.2 78.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,21 c 25,-22 71,-22 96,0 H268.16671875000003 a4,4 0 0 1 4,4 V65 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><g transform=\"translate(1,21)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">when</text><rect x=\"55.4\" y=\"8.0\" width=\"111.8\" height=\"32\" rx=\"16\" fill=\"#E6AC00\" stroke=\"#CC9900\"/><text x=\"67.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">left arrow</text><path d=\"M145.3,21.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"175.3\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key pressed</text></g></svg>",
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"127\" height=\"45\" viewBox=\"0 0 162.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156.76890625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change x by</text><rect x=\"104.9\" y=\"8.0\" width=\"47.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"128.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">-10</text></g></svg>"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"222\" height=\"61\" viewBox=\"0 0 284.2 78.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,21 c 25,-22 71,-22 96,0 H278.24140625 a4,4 0 0 1 4,4 V65 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><g transform=\"translate(1,21)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">when</text><rect x=\"55.4\" y=\"8.0\" width=\"121.9\" height=\"32\" rx=\"16\" fill=\"#E6AC00\" stroke=\"#CC9900\"/><text x=\"67.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">right arrow</text><path d=\"M155.3,21.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"185.3\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">key pressed</text></g></svg>",
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"123\" height=\"45\" viewBox=\"0 0 157.3 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H151.2809375 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change x by</text><rect x=\"104.9\" y=\"8.0\" width=\"42.3\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"126.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">10</text></g></svg>"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chuyện gì xảy ra? Khoanh tròn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Khối lệnh nào giúp nhân vật đi sang phải?",
+     "lc": [
+      "change x by (10)",
+      "change x by (-10)",
+      "change y by (10)",
+      "glide to random position"
+     ],
+     "da": "change x by (10)"
+    },
+    {
+     "text": "Khối lệnh nào thường dùng cho vật cản chuyển động qua lại?",
+     "lc": [
+      "glide (1) secs to x: () y: ()",
+      "say [Hello!]",
+      "switch costume to",
+      "stop all"
+     ],
+     "da": "glide (1) secs to x: () y: ()"
+    },
+    {
+     "text": "Muốn vật cản di chuyển liên tục mãi mãi, em cần dùng thêm lệnh:",
+     "lc": [
+      "wait (1) seconds",
+      "forever",
+      "say [Hi!]",
+      "hide"
+     ],
+     "da": "forever"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Nhà lập trình nhí: khoanh tròn đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Trong trò chơi mê cung, nhân vật chính thường dùng khối lệnh nào để điều khiển bằng bàn phím?",
+     "lc": [
+      "when key pressed + change x/y by",
+      "glide to random position",
+      "switch backdrop to",
+      "stop all"
+     ],
+     "da": "when key pressed + change x/y by"
+    },
+    {
+     "text": "Vật cản trong mê cung phù hợp nhất với kiểu chuyển động nào?",
+     "lc": [
+      "Đứng yên hoàn toàn",
+      "Di chuyển qua lại giữa hai điểm",
+      "Di chuyển ngẫu nhiên",
+      "Chỉ đổi màu"
+     ],
+     "da": "Di chuyển qua lại giữa hai điểm"
+    }
+   ]
+  }
+ ]
+}

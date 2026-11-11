@@ -1,0 +1,150 @@
+{
+ "web": {
+  "khoi": [
+   "khoi-3",
+   "doi-tuyen"
+  ],
+  "mon": "Tin học – Scratch lớp 3",
+  "ten": "Tiết 15: Dự án 3 Giải mã mê cung – Cảm biến chạm màu & If – Then – Else",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Scratch 3 - Tiết 15",
+ "mon": "TIN HỌC – SCRATCH LỚP 3",
+ "tieuDe": "Phiếu bài tập – Tiết 15: Dự án 3 Giải mã mê cung – Cảm biến chạm màu & If – Then – Else",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6",
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
+ ],
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Khối lệnh nào đi cùng nhau? Nối các khối lệnh ở cột bên trái với chức năng phù hợp ở cột bên phải.",
+   "lc": [
+    "Nếu đúng thì làm việc này, nếu không thì làm việc khác",
+    "Đưa nhân vật về vị trí ban đầu",
+    "Kiểm tra nhân vật có chạm màu không",
+    "Kiểm tra nhân vật có chạm vật cản không"
+   ],
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"164\" height=\"33\" viewBox=\"0 0 209.9 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H187.86765625 L207.86765625,20.0 L187.86765625,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">touching color</text><rect x=\"130.7\" y=\"4.0\" width=\"40\" height=\"32\" rx=\"16\" fill=\"#7B4FC9\" stroke=\"#FFFFFF\" stroke-width=\"2\"/><text x=\"178.7\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">?</text></g></svg>",
+     "da": "Kiểm tra nhân vật có chạm màu không"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"126\" height=\"139\" viewBox=\"0 0 162.0 178.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H68 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H20 a4,4 0 0 0 -4,4 V69 a4,4 0 0 0 4,4 H32 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156 a4,4 0 0 1 4,4 V117 a4,4 0 0 1 -4,4 H68 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H20 a4,4 0 0 0 -4,4 V141 a4,4 0 0 0 4,4 H32 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156 a4,4 0 0 1 4,4 V165 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">if</text><path d=\"M40.3,8.0 h16 l16,16 l-16,16 h-16 l-16,-16 z\" fill=\"#CF8B17\" opacity=\".55\"/><text x=\"80.3\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">then</text></g><g transform=\"translate(1,73)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">else</text></g></svg>",
+     "da": "Nếu đúng thì làm việc này, nếu không thì làm việc khác"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"147\" height=\"45\" viewBox=\"0 0 188.9 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H182.93390625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">go to x:</text><rect x=\"70.1\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"90.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text><text x=\"118.1\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">y:</text><rect x=\"138.9\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"158.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text></g></svg>",
+     "da": "Đưa nhân vật về vị trí ban đầu"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"176\" height=\"33\" viewBox=\"0 0 225.8 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H203.793125 L223.793125,20.0 L203.793125,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">touching</text><rect x=\"90.4\" y=\"4.0\" width=\"96.3\" height=\"32\" rx=\"16\" fill=\"#47A8D1\" stroke=\"#2E8EB8\"/><text x=\"102.4\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">Sprite1</text><path d=\"M164.6,17.0 l5,6 l5,-6\" fill=\"none\" stroke=\"#FFFFFF\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><text x=\"194.6\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">?</text></g></svg>",
+     "da": "Kiểm tra nhân vật có chạm vật cản không"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Nếu… thì… còn không thì? Khoanh tròn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Nếu nhân vật chạm màu tường mê cung thì:",
+     "lc": [
+      "Tiếp tục đi tiếp",
+      "Quay về vị trí bắt đầu",
+      "Biến mất",
+      "Đổi hình nền"
+     ],
+     "da": "Quay về vị trí bắt đầu"
+    },
+    {
+     "text": "Nếu nhân vật KHÔNG chạm tường thì:",
+     "lc": [
+      "Tiếp tục di chuyển",
+      "Quay về đầu",
+      "Dừng trò chơi",
+      "Ẩn nhân vật"
+     ],
+     "da": "Tiếp tục di chuyển"
+    },
+    {
+     "text": "Khối lệnh nào giúp xử lí: nếu chạm → làm việc này; nếu không chạm → làm việc khác?",
+     "lc": [
+      "repeat",
+      "if then else",
+      "wait",
+      "say"
+     ],
+     "da": "if then else",
+     "cot": 4
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chuyện gì xảy ra? Khoanh tròn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Khối lệnh nào giúp kiểm tra nhân vật có chạm màu không?",
+     "lc": [
+      "say [Hello!]",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"164\" height=\"33\" viewBox=\"0 0 209.9 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H187.86765625 L207.86765625,20.0 L187.86765625,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">touching color</text><rect x=\"130.7\" y=\"4.0\" width=\"40\" height=\"32\" rx=\"16\" fill=\"#7B4FC9\" stroke=\"#FFFFFF\" stroke-width=\"2\"/><text x=\"178.7\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">?</text></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"129\" height=\"45\" viewBox=\"0 0 164.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H158.75265625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">wait</text><rect x=\"45.3\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"65.3\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">1</text><text x=\"93.3\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">seconds</text></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"91\" height=\"45\" viewBox=\"0 0 116.1 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H110.0753125 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#9966FF\" stroke=\"#774DCB\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">next costume</text></g></svg>"
+     ],
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"164\" height=\"33\" viewBox=\"0 0 209.9 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><path d=\"M20.0,0 H187.86765625 L207.86765625,20.0 L187.86765625,40 H20.0 L0,20.0 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"20.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">touching color</text><rect x=\"130.7\" y=\"4.0\" width=\"40\" height=\"32\" rx=\"16\" fill=\"#7B4FC9\" stroke=\"#FFFFFF\" stroke-width=\"2\"/><text x=\"178.7\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">?</text></g></svg>"
+    },
+    {
+     "text": "Trong trò chơi mê cung, khi nhân vật chạm tường thường sẽ:",
+     "lc": [
+      "Được cộng điểm",
+      "Quay về vị trí xuất phát",
+      "Bay lên trên",
+      "Đổi màu sân khấu"
+     ],
+     "da": "Quay về vị trí xuất phát"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Nhà lập trình nhí: khoanh tròn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Để nhân vật quay về điểm bắt đầu khi chạm tường, em nên dùng:",
+     "lc": [
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"147\" height=\"45\" viewBox=\"0 0 188.9 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H182.93390625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">go to x:</text><rect x=\"70.1\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"90.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text><text x=\"118.1\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">y:</text><rect x=\"138.9\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"158.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text></g></svg>",
+      "hide",
+      "next backdrop",
+      "play sound"
+     ],
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"147\" height=\"45\" viewBox=\"0 0 188.9 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H182.93390625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">go to x:</text><rect x=\"70.1\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"90.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text><text x=\"118.1\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">y:</text><rect x=\"138.9\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"158.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text></g></svg>"
+    },
+    {
+     "text": "Khối lệnh nào phù hợp nhất để xử lí hai trường hợp: chạm tường – không chạm tường?",
+     "lc": [
+      "repeat",
+      "if then else",
+      "wait",
+      "say"
+     ],
+     "da": "if then else",
+     "cot": 4
+    }
+   ]
+  }
+ ]
+}

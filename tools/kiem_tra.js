@@ -347,7 +347,8 @@ const server = http.createServer((req, res) => {
     for (const p of ba) await page.check(`.chon-giao[value="${p.link}"]`);
     bao((await page.textContent('#nutHangLoat')).includes('3 phiếu'), 'tích 3 phiếu → nút "Giao hàng loạt (3 phiếu)"');
     await page.click('#nutHangLoat'); await page.waitForTimeout(200);
-    if ((await page.getAttribute('#hgKhoi .chip-khoi[data-k="khoi-9"]', 'aria-pressed')) !== 'true') await page.click('#hgKhoi .chip-khoi[data-k="khoi-9"]');
+    for (const k of await page.locator('#hgKhoi .chip-khoi[aria-pressed="true"]').evaluateAll(a => a.map(x => x.dataset.k))) await page.click(`#hgKhoi .chip-khoi[data-k="${k}"]`);
+    await page.click('#hgKhoi .chip-khoi[data-k="khoi-9"]');
     await page.fill('#hlDau', '2026-12-07T07:00'); await page.dispatchEvent('#hlDau', 'input');
     const xem = await page.locator('#hlXem tr').allTextContents();
     bao(xem.length === 3 && xem[0].includes('07/12/2026 7:00') && xem[0].includes('13/12/2026') && xem[1].includes('14/12/2026') && xem[2].includes('21/12/2026'),

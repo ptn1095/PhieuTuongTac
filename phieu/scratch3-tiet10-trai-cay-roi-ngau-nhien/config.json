@@ -1,0 +1,107 @@
+{
+ "web": {
+  "khoi": [
+   "khoi-3",
+   "doi-tuyen"
+  ],
+  "mon": "Tin học – Scratch lớp 3",
+  "ten": "Tiết 10: Dự án 2 Hứng trái cây – Tạo trái cây rơi ngẫu nhiên",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Scratch 3 - Tiết 10",
+ "mon": "TIN HỌC – SCRATCH LỚP 3",
+ "tieuDe": "Phiếu bài tập – Tiết 10: Dự án 2 Hứng trái cây – Tạo trái cây rơi ngẫu nhiên",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6",
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
+ ],
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Khối lệnh nào làm gì? Nối khối lệnh với chức năng phù hợp.",
+   "lc": [
+    "Làm trái cây rơi xuống",
+    "Tạo số/vị trí ngẫu nhiên",
+    "Đưa nhân vật tới vị trí xác định"
+   ],
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"147\" height=\"45\" viewBox=\"0 0 188.9 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H182.93390625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">go to x:</text><rect x=\"70.1\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"118.1\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">y:</text><rect x=\"138.9\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/></g></svg>",
+     "da": "Đưa nhân vật tới vị trí xác định"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"182\" height=\"33\" viewBox=\"0 0 233.6 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><rect x=\"0\" y=\"0\" width=\"231.6\" height=\"40\" rx=\"20.0\" fill=\"#59C059\" stroke=\"#389438\"/><text x=\"12.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">pick random</text><rect x=\"109.8\" y=\"4.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"157.8\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">to</text><rect x=\"179.6\" y=\"4.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/></g></svg>",
+     "da": "Tạo số/vị trí ngẫu nhiên"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"127\" height=\"45\" viewBox=\"0 0 162.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156.76890625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change y by</text><rect x=\"104.9\" y=\"8.0\" width=\"47.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"128.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">-10</text></g></svg>",
+     "da": "Làm trái cây rơi xuống"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Trái cây rơi như thế nào? Khoanh tròn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Khối lệnh nào giúp trái cây xuất hiện ở nhiều vị trí khác nhau?",
+     "lc": [
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"127\" height=\"45\" viewBox=\"0 0 162.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156.76890625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change y by</text><rect x=\"104.9\" y=\"8.0\" width=\"47.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"128.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">-10</text></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"191\" height=\"33\" viewBox=\"0 0 245.1 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><rect x=\"0\" y=\"0\" width=\"243.1\" height=\"40\" rx=\"20.0\" fill=\"#59C059\" stroke=\"#389438\"/><text x=\"12.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">pick random</text><rect x=\"109.8\" y=\"4.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"129.8\" y=\"20.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">1</text><text x=\"157.8\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">to</text><rect x=\"179.6\" y=\"4.0\" width=\"51.5\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"205.3\" y=\"20.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">240</text></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"129\" height=\"45\" viewBox=\"0 0 164.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H158.75265625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">wait</text><rect x=\"45.3\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"65.3\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">1</text><text x=\"93.3\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">seconds</text></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"92\" height=\"45\" viewBox=\"0 0 117.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H111.83515625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#9966FF\" stroke=\"#774DCB\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">say</text><rect x=\"41.7\" y=\"8.0\" width=\"66.2\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"74.7\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">Hello!</text></g></svg>"
+     ],
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"191\" height=\"33\" viewBox=\"0 0 245.1 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><rect x=\"0\" y=\"0\" width=\"243.1\" height=\"40\" rx=\"20.0\" fill=\"#59C059\" stroke=\"#389438\"/><text x=\"12.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">pick random</text><rect x=\"109.8\" y=\"4.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"129.8\" y=\"20.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">1</text><text x=\"157.8\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">to</text><rect x=\"179.6\" y=\"4.0\" width=\"51.5\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"205.3\" y=\"20.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">240</text></g></svg>"
+    },
+    {
+     "text": "Khối lệnh nào làm trái cây rơi từ trên xuống?",
+     "lc": [
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"127\" height=\"45\" viewBox=\"0 0 162.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156.76890625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change y by</text><rect x=\"104.9\" y=\"8.0\" width=\"47.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"128.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">-10</text></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"123\" height=\"45\" viewBox=\"0 0 157.3 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H151.2809375 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change x by</text><rect x=\"104.9\" y=\"8.0\" width=\"42.3\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"126.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">10</text></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"156\" height=\"45\" viewBox=\"0 0 200.5 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H194.45421875 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">go to x:</text><rect x=\"70.1\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"90.1\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">0</text><text x=\"118.1\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">y:</text><rect x=\"138.9\" y=\"8.0\" width=\"51.5\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"164.7\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">180</text></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"115\" height=\"61\" viewBox=\"0 0 147.8 78.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,21 c 25,-22 71,-22 96,0 H141.8353125 a4,4 0 0 1 4,4 V65 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><g transform=\"translate(1,21)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">when</text><g transform=\"translate(55.4,12.0)\"><path d=\"M4,2 V23\" stroke=\"#45993D\" stroke-width=\"2.4\" stroke-linecap=\"round\"/><path d=\"M5,3 C9,0 13,6 21,3 V14 C13,17 9,11 5,14 Z\" fill=\"#4CBF56\" stroke=\"#45993D\" stroke-width=\"1.2\" stroke-linejoin=\"round\"/></g><text x=\"87.4\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">clicked</text></g></svg>"
+     ],
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"127\" height=\"45\" viewBox=\"0 0 162.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156.76890625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change y by</text><rect x=\"104.9\" y=\"8.0\" width=\"47.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"128.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">-10</text></g></svg>"
+    },
+    {
+     "text": "Khi trái cây chạm đáy sân khấu, cần làm gì để trò chơi tiếp tục?",
+     "lc": [
+      "Xóa trái cây",
+      "Đưa trái cây quay lại phía trên",
+      "Dừng chương trình",
+      "Đổi hình nền"
+     ],
+     "da": "Đưa trái cây quay lại phía trên"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Nhà lập trình nhí: chọn đáp án đúng để hoàn thành ý tưởng sau.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Muốn trái cây quay lại phía trên sân khấu ở vị trí khác sau khi rơi xuống, em cần dùng lệnh:",
+     "lc": [
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"182\" height=\"33\" viewBox=\"0 0 233.6 42.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><g transform=\"translate(1.0,1.0)\"><rect x=\"0\" y=\"0\" width=\"231.6\" height=\"40\" rx=\"20.0\" fill=\"#59C059\" stroke=\"#389438\"/><text x=\"12.0\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">pick random</text><rect x=\"109.8\" y=\"4.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"157.8\" y=\"20.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">to</text><rect x=\"179.6\" y=\"4.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"147\" height=\"45\" viewBox=\"0 0 188.9 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H182.93390625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">go to x:</text><rect x=\"70.1\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"118.1\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">y:</text><rect x=\"138.9\" y=\"8.0\" width=\"40.0\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/></g></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"127\" height=\"45\" viewBox=\"0 0 162.8 58.0\" style=\"vertical-align:middle;max-width:none\" role=\"img\"><path d=\"M0,5 a4,4 0 0 1 4,-4 H16 c 2,0 3,1 4,2 l 4,4 c 1,1 2,2 4,2 h 12 c 2,0 3,-1 4,-2 l 4,-4 c 1,-1 2,-2 4,-2 H156.76890625 a4,4 0 0 1 4,4 V45 a4,4 0 0 1 -4,4 H52 c -2,0 -3,1 -4,2 l -4,4 c -1,1 -2,2 -4,2 h -12 c -2,0 -3,-1 -4,-2 l -4,-4 c -1,-1 -2,-2 -4,-2 H4 a4,4 0 0 1 -4,-4 Z\" transform=\"translate(1,0)\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><g transform=\"translate(1,1)\"><text x=\"8.0\" y=\"24.0\" dominant-baseline=\"central\" fill=\"#FFFFFF\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">change y by</text><rect x=\"104.9\" y=\"8.0\" width=\"47.8\" height=\"32\" rx=\"16\" fill=\"#FFFFFF\" stroke=\"rgba(0,0,0,.15)\"/><text x=\"128.9\" y=\"24.0\" dominant-baseline=\"central\" text-anchor=\"middle\" fill=\"#575E75\" style=\"font-family:Arial,'Liberation Sans',Helvetica,sans-serif;font-size:16px\">-10</text></g></svg>",
+      "Kết hợp cả A và B"
+     ],
+     "da": "Kết hợp cả A và B",
+     "giuThuTu": true
+    }
+   ]
+  }
+ ]
+}

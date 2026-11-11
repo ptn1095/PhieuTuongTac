@@ -1,0 +1,94 @@
+{
+ "web": {
+  "khoi": [
+   "khoi-3",
+   "doi-tuyen"
+  ],
+  "mon": "Tin học – Scratch lớp 3",
+  "ten": "Tiết 13: Dự án 3 Giải mã mê cung – Giới thiệu dự án",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Scratch 3 - Tiết 13",
+ "mon": "TIN HỌC – SCRATCH LỚP 3",
+ "tieuDe": "Phiếu bài tập – Tiết 13: Dự án 3 Giải mã mê cung – Giới thiệu dự án",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6",
+  "ĐT Tin - K2",
+  "ĐT Tin - K3"
+ ],
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Quan sát trò chơi mê cung mẫu và khoanh tròn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Nhân vật trong trò chơi dùng để:",
+     "lc": [
+      "Trang trí sân khấu",
+      "Di chuyển trong mê cung",
+      "Vẽ hình nền",
+      "Phát nhạc"
+     ],
+     "da": "Di chuyển trong mê cung"
+    },
+    {
+     "text": "Mê cung trong trò chơi có chức năng:",
+     "lc": [
+      "Làm đường đi và vật cản",
+      "Đổi trang phục nhân vật",
+      "Tạo âm thanh",
+      "Xóa nhân vật"
+     ],
+     "da": "Làm đường đi và vật cản"
+    },
+    {
+     "text": "Điểm đích trong mê cung dùng để:",
+     "lc": [
+      "Bắt đầu trò chơi",
+      "Kết thúc trò chơi/chiến thắng",
+      "Đổi màu nhân vật",
+      "Tạo âm thanh"
+     ],
+     "da": "Kết thúc trò chơi/chiến thắng"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Ai là ai? Nối thành phần của trò chơi mê cung với chức năng phù hợp.",
+   "lc": [
+    "Nơi bắt đầu trò chơi",
+    "Điều khiển di chuyển",
+    "Nơi chiến thắng",
+    "Vật cản cần tránh"
+   ],
+   "cau": [
+    {
+     "text": "Nhân vật",
+     "da": "Điều khiển di chuyển"
+    },
+    {
+     "text": "Điểm bắt đầu",
+     "da": "Nơi bắt đầu trò chơi"
+    },
+    {
+     "text": "Điểm đích",
+     "da": "Nơi chiến thắng"
+    },
+    {
+     "text": "Tường mê cung",
+     "da": "Vật cản cần tránh"
+    }
+   ]
+  }
+ ]
+}
