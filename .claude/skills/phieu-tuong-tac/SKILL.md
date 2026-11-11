@@ -29,6 +29,9 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
 1. **File nội dung phiếu**: .docx hoặc .pdf, có thể có hoặc không có đáp án.
 2. **Danh sách lớp** của phiếu (ví dụ 3A4, 3A5). Không có danh sách mặc định, mỗi lần tạo phiếu đều hỏi.
    Lớp đội tuyển viết đầy đủ dạng `ĐT Tin - K2`, `ĐT Tin - K3`… Cô ghi tắt ("ĐT - K2", "K2") thì tự đổi sang dạng này.
+   **Tên lớp chuẩn nằm trong `lop.json`** (khối → danh sách lớp, năm học 2026-2027): cô nói "lớp 5" / "khối 9" thì lấy đủ lớp của khối đó trong `lop.json`; tên lớp trong phiếu phải viết **đúng y** như trong `lop.json` để trang chủ lọc và trang tổng hợp đếm "chưa nộp" đúng.
+   Trang chủ: học sinh bấm nút khối → xổ xuống các lớp của khối (lấy từ `lop.json`) → chọn lớp mới thấy phiếu. Đổi năm học / thêm lớp thì sửa `lop.json`.
+   **Không bao giờ đưa tên học sinh vào kho** (kho công khai). Danh sách học sinh chỉ nằm trong Google Sheet của cô (trang tính `DanhSach`, 2 cột Lớp | Họ và tên).
 3. **Nơi nhận điểm**: mặc định dùng Apps Script của cô (đã cài, đã kiểm tra), không cần hỏi lại:
    `https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec`
    Nếu cô muốn dùng Google Form thì xem mục 7.

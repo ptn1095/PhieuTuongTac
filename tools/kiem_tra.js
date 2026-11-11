@@ -50,12 +50,12 @@ const server = http.createServer((req, res) => {
     await page.waitForTimeout(800);
     console.log('Trang chủ');
     for (const k of [...new Set(ds.map(p => p.khoi))]) {
-      await page.evaluate(k => { location.hash = k; }, k);
+      await page.evaluate(k => { location.hash = k + ':tatca'; }, k);
       await page.waitForTimeout(200);
       const n = await page.locator('.card').count();
       bao(n === ds.filter(p => p.khoi === k).length, `${k}: ${n} phiếu hiển thị`);
     }
-    await page.evaluate(k => { location.hash = k; }, ds[0].khoi);
+    await page.evaluate(k => { location.hash = k + ':tatca'; }, ds[0].khoi);
     await page.waitForTimeout(200);
     const the = page.locator('.card').first();
     bao(await the.locator('.meta').textContent().then(t => /\d+ câu/.test(t) && /phút/.test(t)), 'thẻ phiếu có số câu và thời gian làm');
@@ -113,20 +113,35 @@ const server = http.createServer((req, res) => {
       await page.locator('#khongPhai').click();
       bao(await page.inputValue('#ten') === '', 'bấm "Không phải em" → xóa tên');
     }
-    // Trang chủ: dấu "Đã làm", lọc theo lớp
-    await page.goto(base);
+    // Trang chủ: dấu "Đã làm"
+    await page.goto(base + '#' + ds.find(p => p.link === cacPhieu[0]).khoi + ':tatca');
     await page.waitForTimeout(600);
     bao(await page.locator('.dalam').count() >= 1, 'trang chủ: phiếu vừa nộp có dấu "✓ Đã làm"');
-    const lop9 = ds.find(p => p.khoi === 'khoi-9');
-    const lopLoc = ds.find(p => p.khoi !== 'khoi-9').lop[0];
-    await page.selectOption('#locLop', lopLoc);
-    await page.waitForTimeout(200);
-    const dem9 = await page.locator('.tab[data-id="khoi-9"] .dem').textContent();
-    bao(!lop9 || dem9.startsWith('0'), `chọn lớp ${lopLoc} → khối 9 còn ${dem9}`);
-    bao(await page.locator('.chip.cua-em').count() >= 1, 'lớp của em được tô đậm trên thẻ phiếu');
-    await page.reload(); await page.waitForTimeout(500);
-    bao(await page.inputValue('#locLop') === lopLoc, 'tải lại trang chủ → vẫn nhớ lớp đã chọn');
-    await page.selectOption('#locLop', '');
+    // Trang chủ: chọn khối → xổ xuống lớp → chọn lớp
+    const LOPJ = JSON.parse(fs.readFileSync(path.join(GOC, 'lop.json'), 'utf8'));
+    await page.evaluate(() => localStorage.removeItem('coThuyTin_chon'));
+    await page.goto(base); await page.waitForTimeout(500);
+    bao(await page.locator('.goi-y-chon').isVisible() && await page.locator('.card').count() === 0 && await page.locator('#chonLop').isHidden(), 'mở trang lần đầu → chỉ có 4 nút khối + nhắc "Em bấm chọn khối"');
+    const tenTab = await page.locator('.tab .ten').allTextContents();
+    bao(tenTab.join('|') === 'Khối 3|Khối 5|Khối 9|Đội tuyển Tin học', 'nút khối: ' + tenTab.join(', '));
+    await page.click('.tab[data-id="khoi-5"]'); await page.waitForTimeout(300);
+    const nutLop = await page.locator('#chonLop .nut-lop:not(.tat-ca)').allTextContents();
+    bao(nutLop.join(',') === LOPJ['khoi-5'].join(','), 'bấm Khối 5 → xổ xuống lớp: ' + nutLop.join(', '));
+    bao(await page.locator('.card').count() === 0, 'chưa chọn lớp → chưa hiện phiếu');
+    await page.screenshot({ path: path.join(OUT, '_chon_lop.png') });
+    await page.click('#chonLop .nut-lop[data-l="5A2"]'); await page.waitForTimeout(300);
+    const the5 = ds.filter(p => p.khoi === 'khoi-5' && p.lop.includes('5A2')).length;
+    bao(await page.locator('.card').count() === the5 && (await page.locator('#chonLop').textContent()).includes('5A2'), `chọn lớp 5A2 → hiện ${the5} phiếu, thanh "Lớp 5A2 · Đổi lớp"`);
+    bao((await page.locator('.chip.cua-em').allTextContents()).every(t => t === '5A2') && await page.locator('.chip.cua-em').count() === the5, 'lớp 5A2 được tô đậm trên thẻ phiếu');
+    await page.click('.tab[data-id="doi-tuyen"]'); await page.waitForTimeout(300);
+    const nutDT = await page.locator('#chonLop .nut-lop:not(.tat-ca)').allTextContents();
+    bao(nutDT.join(',') === 'ĐT Tin - K2,ĐT Tin - K3', 'bấm Đội tuyển Tin học → xổ xuống: ' + nutDT.join(', '));
+    await page.click('.tab[data-id="khoi-5"]'); await page.click('#chonLop .nut-lop[data-l="5A2"]');
+    await page.goto(base); await page.waitForTimeout(500);
+    bao(page.url().endsWith('#khoi-5:5A2') && await page.locator('.card').count() === the5, 'mở lại trang chủ → tự về đúng Khối 5, lớp 5A2');
+    await page.click('#doiLop'); await page.waitForTimeout(200);
+    bao(await page.locator('#chonLop .nut-lop').count() === LOPJ['khoi-5'].length + 1, 'bấm "Đổi lớp" → xổ lại danh sách lớp');
+    await page.screenshot({ path: path.join(OUT, '_trang_chu_lop.png'), fullPage: true });
     await ctx.close();
   }
 
@@ -136,7 +151,7 @@ const server = http.createServer((req, res) => {
     const gia = JSON.parse(JSON.stringify(ds));
     gia.filter(p => p.khoi === gia[0].khoi).forEach((p, i) => { if (i === 0) p.dong = ng(-1); else if (i === 1) p.mo = ng(3); else p.dong = ng(5); });
     await page.route(/phieu\.json/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(gia) }));
-    await page.goto(base + '#' + gia[0].khoi); await page.waitForTimeout(600);
+    await page.goto(base + '#' + gia[0].khoi + ':tatca'); await page.waitForTimeout(600);
     console.log('Hạn làm bài (trang chủ)');
     const nhan = await page.locator('.nhan').allTextContents();
     bao(nhan.includes('ĐÃ ĐÓNG'), 'phiếu quá hạn → nhãn "ĐÃ ĐÓNG", nút "Đã hết hạn"');

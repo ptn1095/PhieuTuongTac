@@ -59,12 +59,19 @@ h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
 .qr{font:inherit;font-size:13px;font-weight:bold;color:var(--dam);background:#fff;border:1.5px solid #9DB7CC;border-radius:999px;padding:5px 12px;cursor:pointer}
 .qr:hover{border-color:var(--dam)} .qr:focus-visible{outline:3px solid #BFE3F7}
 .hep .hanhdong{width:100%;flex-direction:row}.hep .hanhdong .go{flex:1}
-/* Lọc theo lớp */
-.loc{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#F4FAFE;border:2px dashed var(--bien);border-radius:14px;padding:10px 14px}
-.loc label{font-weight:bold;color:var(--dam);font-size:16px;display:flex;align-items:center;gap:8px}
-.loc select{font:inherit;font-size:16px;padding:6px 10px;border:2px solid #9DB7CC;border-radius:10px;background:#fff;min-width:170px}
-.loc select:focus{outline:3px solid #BFE3F7;border-color:var(--bien)}
-.loc .ghi{font-size:13.5px;color:#555}
+/* Chọn lớp (xổ xuống dưới nút khối) */
+.chonlop{--c:var(--bien);border:3px solid var(--c);border-radius:18px;background:#fff;padding:14px 16px;margin-top:-8px;animation:xo .22s ease-out}
+@keyframes xo{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.chonlop h3{margin:0 0 10px;font-size:18px;color:var(--c)}
+.luoi-lop{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.nut-lop{font:inherit;font-size:18px;font-weight:bold;color:var(--c);background:color-mix(in srgb,var(--c) 10%,#fff);border:2px solid color-mix(in srgb,var(--c) 55%,#fff);border-radius:14px;padding:12px 6px;cursor:pointer;transition:transform .12s}
+.nut-lop:hover{transform:translateY(-2px);border-color:var(--c)} .nut-lop:focus-visible{outline:4px solid #BFE3F7}
+.nut-lop.tat-ca{font-size:14px;color:#555;background:#fff;border-style:dashed}
+.thanh-lop{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:-8px;padding:10px 14px;border-radius:14px;background:color-mix(in srgb,var(--c) 10%,#fff);border:2px solid color-mix(in srgb,var(--c) 45%,#fff)}
+.thanh-lop b{font-size:18px;color:var(--c)} .thanh-lop .grow{flex:1}
+.thanh-lop button{font:inherit;font-size:14px;font-weight:bold;color:var(--c);background:#fff;border:2px solid var(--c);border-radius:999px;padding:5px 14px;cursor:pointer}
+.goi-y-chon{text-align:center;padding:30px 16px;border:3px dashed #BFD7EA;border-radius:18px;background:#F7FBFE;color:#555;font-size:16px}
+.goi-y-chon b{display:block;font-size:22px;color:var(--bien);margin-bottom:4px}
 .chip.cua-em{background:var(--bien);color:#fff}
 /* Đã làm, hạn làm bài */
 .dalam{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:13.5px;font-weight:bold;color:#1E7E3A;background:#E9F7EE;border:1.5px solid #2E9E4F;border-radius:999px;padding:2px 10px}
@@ -88,11 +95,11 @@ h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
   <header>
     <div class="kicker">KHO PHIẾU BÀI TẬP TƯƠNG TÁC</div>
     <h1>Chào các em! Cùng làm bài nhé ✏️</h1>
-    <p class="lead">Em chọn khối lớp của mình, bấm <b>Làm bài</b>, làm xong bấm <b>Tính điểm</b> – điểm sẽ tự gửi về cho cô.</p>
+    <p class="lead">Em bấm chọn <b>khối</b>, rồi chọn <b>lớp</b> của mình, bấm <b>Làm bài</b>, làm xong bấm <b>Tính điểm</b> – điểm sẽ tự gửi về cho cô.</p>
   </header>
   <div class="wave" aria-hidden="true"></div>
-  <div class="loc"><label for="locLop">🎒 Em học lớp:</label><select id="locLop"><option value="">Tất cả các lớp</option></select><span class="ghi" id="locGhi">Chọn lớp để chỉ thấy phiếu của lớp em.</span></div>
   <nav class="tabs" role="tablist" aria-label="Chọn khối lớp" id="tabs"></nav>
+  <div id="chonLop" class="hidden"></div>
   <section aria-live="polite">
     <div class="head2"><h2 id="tieuDe"></h2><input class="tim" id="tim" type="search" placeholder="Tìm phiếu…" aria-label="Tìm phiếu"></div>
     <div class="list" id="list" style="margin-top:16px"></div>
@@ -111,12 +118,15 @@ const KHOI=[
   {id:'khoi-3',ten:'Khối 3',so:'3',c:'#168DCE',ic:'🎈'},
   {id:'khoi-5',ten:'Khối 5',so:'5',c:'#F28C28',ic:'🚀'},
   {id:'khoi-9',ten:'Khối 9',so:'9',c:'#65B843',ic:'🧭'},
-  {id:'doi-tuyen',ten:'Đội Tuyển',so:'🏆',c:'#2457A6',ic:'🏆'}];
+  {id:'doi-tuyen',ten:'Đội tuyển Tin học',so:'🏆',c:'#2457A6',ic:'🏆'}];
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const bo=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/gi,'d').toLowerCase();
-let DS=[],cur=KHOI[0].id,LOP='',DA_LAM={};
-const hop=p=>!LOP||(p.lop||[]).includes(LOP);
+// cur: khối đang chọn ('' = chưa chọn); LOP: lớp ('' = chưa chọn, '*' = tất cả các lớp); MO: bảng chọn lớp đang xổ
+let DS=[],LOP_KHOI={},cur='',LOP='',MO=false,DA_LAM={};
+const hop=p=>LOP==='*'||!LOP||(p.lop||[]).includes(LOP);
+// Lớp của khối: lấy theo lop.json (danh sách lớp chuẩn); khối chưa có trong lop.json thì lấy từ các phiếu
+const lopCua=k=>(LOP_KHOI[k]&&LOP_KHOI[k].length)?LOP_KHOI[k].slice():[...new Set(DS.filter(p=>p.khoi===k).flatMap(p=>p.lop||[]))].sort((a,b)=>a.localeCompare(b,'vi',{numeric:true}));
 const doc=k=>{try{return JSON.parse(localStorage.getItem(k)||'null');}catch(e){return null;}};
 const ghi=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}};
 function ngayGio(v,cuoi){if(!v)return null;const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?$/);if(!m)return null;
@@ -126,16 +136,38 @@ function trangThai(p){const bay=new Date(),mo=ngayGio(p.mo,false),dong=ngayGio(p
   if(mo&&bay<mo)return{t:'chua',mo};if(dong&&bay>dong)return{t:'dong',dong};return{t:'mo',dong};}
 function fit(){const f=$('fit'),p=$('paper'),hep=f.clientWidth<600,W=hep?480:794;p.classList.toggle('hep',hep);f.style.maxWidth=hep?'none':'794px';const s=Math.min(1,f.clientWidth/W);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';}
 function veTabs(){
-  $('tabs').innerHTML=KHOI.map(k=>{const n=DS.filter(p=>p.khoi===k.id&&hop(p)).length;
+  $('tabs').innerHTML=KHOI.map(k=>{const n=DS.filter(p=>p.khoi===k.id).length;
     return '<button class="tab" role="tab" style="--c:'+k.c+'" data-id="'+k.id+'" aria-selected="'+(k.id===cur)+'"><span class="so">'+k.so+'</span><span class="ten">'+k.ten+'</span><span class="dem">'+n+' phiếu</span></button>';}).join('');
-  $('tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{location.hash=b.dataset.id;});
+  $('tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+    if(b.dataset.id===cur){MO=!MO;if(!LOP)MO=true;veLop();veList();if(MO)cuonToi();return;}
+    cur=b.dataset.id;LOP='';MO=true;datHash();veTabs();veLop();veList();cuonToi();});
+}
+const cuonToi=()=>setTimeout(()=>{const e=$('chonLop').querySelector('.nut-lop');if(e)e.focus({preventScroll:true});},60);
+function datHash(){history.replaceState(null,'',cur?'#'+cur+(LOP?':'+(LOP==='*'?'tatca':encodeURIComponent(LOP)):''):location.pathname);}
+// Bảng chọn lớp xổ xuống dưới nút khối
+function veLop(){
+  const b=$('chonLop'),k=KHOI.find(x=>x.id===cur);
+  if(!k){b.className='hidden';b.innerHTML='';return;}
+  b.style.setProperty('--c',k.c);
+  if(MO||!LOP){const ds=lopCua(cur);
+    b.className='chonlop';b.setAttribute('role','group');b.setAttribute('aria-label','Chọn lớp '+k.ten);
+    b.innerHTML='<h3>🎒 Em học lớp nào?</h3><div class="luoi-lop">'+ds.map(l=>'<button type="button" class="nut-lop" data-l="'+esc(l)+'">'+esc(l)+'</button>').join('')+
+      '<button type="button" class="nut-lop tat-ca" data-l="*">Xem tất cả phiếu '+esc(k.ten)+'</button></div>';
+    b.querySelectorAll('.nut-lop').forEach(x=>x.onclick=()=>{LOP=x.dataset.l;MO=false;ghi('coThuyTin_chon',{khoi:cur,lop:LOP});datHash();veLop();veList();});
+  }else{
+    b.className='thanh-lop';b.removeAttribute('role');
+    b.innerHTML='<span class="grow">🎒 '+(LOP==='*'?'Tất cả các lớp – <b>'+esc(k.ten)+'</b>':'Lớp <b>'+esc(LOP)+'</b>')+'</span><button type="button" id="doiLop">Đổi lớp ▾</button>';
+    $('doiLop').onclick=()=>{MO=true;veLop();veList();cuonToi();};
+  }
 }
 function veList(){
   const k=KHOI.find(x=>x.id===cur),q=bo($('tim').value.trim());
-  $('tieuDe').textContent='Phiếu bài tập – '+k.ten;
+  const sec=$('list').parentNode;sec.querySelector('.head2').classList.toggle('hidden',!k||!LOP);
+  if(!k||!LOP){$('list').innerHTML='<div class="goi-y-chon"><b>'+(k?'👆 Em chọn lớp của mình':'👆 Em bấm chọn khối của mình')+'</b>'+(k?'Bấm vào tên lớp ở trên để xem phiếu bài tập.':'Khối 3, Khối 5, Khối 9 hoặc Đội tuyển Tin học.')+'</div>';fit();return;}
+  $('tieuDe').textContent='Phiếu bài tập – '+(LOP==='*'?k.ten:'Lớp '+LOP);
   const ds=DS.filter(p=>p.khoi===cur&&hop(p)&&(!q||bo(p.ten+' '+p.mon+' '+(p.lop||[]).join(' ')).includes(q)))
     .sort((a,b)=>((trangThai(a).t==='dong')-(trangThai(b).t==='dong'))||String(b.ngay).localeCompare(String(a.ngay)));
-  if(!ds.length){$('list').innerHTML='<div class="trong"><b>'+(q?'Không tìm thấy phiếu phù hợp':'Chưa có phiếu nào')+'</b>'+(q?'Em thử gõ từ khác nhé.':LOP?'Lớp '+esc(LOP)+' chưa có phiếu ở khối này. Em xem khối khác nhé.':'Cô sẽ sớm đưa phiếu bài tập lên đây!')+'</div>';fit();return;}
+  if(!ds.length){$('list').innerHTML='<div class="trong"><b>'+(q?'Không tìm thấy phiếu phù hợp':'Chưa có phiếu nào')+'</b>'+(q?'Em thử gõ từ khác nhé.':LOP!=='*'?'Lớp '+esc(LOP)+' chưa có phiếu nào. Cô sẽ sớm đưa phiếu lên!':'Cô sẽ sớm đưa phiếu bài tập lên đây!')+'</div>';fit();return;}
   $('list').innerHTML=ds.map(p=>{const d=p.ngay?p.ngay.split('-').reverse().join('/'):'';
     const moi=p.ngay&&(Date.now()-new Date(p.ngay+'T00:00:00'))<7*864e5,tt=trangThai(p),slug=p.link.split('/').filter(Boolean).pop(),dl=DA_LAM[slug];
     const nut=tt.t==='chua'?'<span class="go tat">Mở ngày '+dm(tt.mo)+'</span>':tt.t==='dong'?'<span class="go tat">Đã hết hạn</span>':'<a class="go" href="'+esc(p.link)+'">Làm bài ➜</a>';
@@ -163,7 +195,10 @@ function moQR(d){
 function dongQR(){$('qrNen').hidden=true;$('qrNen').classList.add('hidden');if(qrTruoc)qrTruoc.focus();}
 $('qrDong').onclick=dongQR;$('qrNen').addEventListener('click',e=>{if(e.target===$('qrNen'))dongQR();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('qrNen').hidden)dongQR();});
-function route(){const h=location.hash.slice(1);cur=KHOI.some(k=>k.id===h)?h:cur;veTabs();veList();}
+// Đường dẫn: #khoi-3 (mở bảng chọn lớp), #khoi-3:3A2 (lớp 3A2), #khoi-3:tatca (tất cả lớp)
+function route(){const [h,l]=location.hash.slice(1).split(':');
+  if(KHOI.some(k=>k.id===h)){cur=h;LOP=l?(l==='tatca'?'*':decodeURIComponent(l)):'';MO=!LOP;}
+  veTabs();veLop();veList();}
 $('tim').addEventListener('input',veList);
 window.addEventListener('hashchange',route);window.addEventListener('resize',fit);window.addEventListener('load',fit);
 // Bài nộp lúc mạng yếu còn chờ trên máy → tự gửi lại
@@ -171,19 +206,14 @@ window.addEventListener('hashchange',route);window.addEventListener('resize',fit
   const gui=()=>doc().forEach(x=>fetch(x.url,{method:'GET',mode:'no-cors',cache:'no-store'}).then(()=>{const a=doc().filter(y=>y.url!==x.url);
     try{a.length?localStorage.setItem(K,JSON.stringify(a)):localStorage.removeItem(K);}catch(e){}},()=>{}));
   if(doc().length){gui();window.addEventListener('online',gui);}})();
-function chonKhoiCo(){const c=KHOI.find(k=>DS.some(p=>p.khoi===k.id&&hop(p)));if(c)cur=c.id;}
-$('locLop').addEventListener('change',()=>{LOP=$('locLop').value;ghi('coThuyTin_lop',LOP);
-  if(!DS.some(p=>p.khoi===cur&&hop(p))){chonKhoiCo();history.replaceState(null,'','#'+cur);}
-  $('locGhi').textContent=LOP?'Đang hiện phiếu của lớp '+LOP+'.':'Chọn lớp để chỉ thấy phiếu của lớp em.';route();});
 DA_LAM=doc('coThuyTin_daLam')||{};
 window.addEventListener('pageshow',e=>{if(e.persisted){DA_LAM=doc('coThuyTin_daLam')||{};veList();}});
-fetch('phieu.json?v='+Date.now()).then(r=>r.json()).then(d=>{DS=d;
-  const tatCa=[...new Set(DS.flatMap(p=>p.lop||[]))].sort((a,b)=>a.localeCompare(b,'vi',{numeric:true}));
-  tatCa.forEach(l=>{const o=document.createElement('option');o.textContent=l;$('locLop').appendChild(o);});
-  const hs=doc('coThuyTin_hocSinh'),luu=doc('coThuyTin_lop');
-  LOP=(luu!=null?luu:(hs&&hs.lop)||'');if(!tatCa.includes(LOP))LOP='';$('locLop').value=LOP;
-  if(LOP)$('locGhi').textContent='Đang hiện phiếu của lớp '+LOP+'.';
-  if(!location.hash)chonKhoiCo();route();})
+Promise.all([fetch('phieu.json?v='+Date.now()).then(r=>r.json()),fetch('lop.json?v='+Date.now()).then(r=>r.json()).catch(()=>({}))]).then(([d,l])=>{DS=d;LOP_KHOI=l;
+  if(!location.hash){// lần trước em đã chọn khối + lớp → mở lại đúng chỗ
+    let c=doc('coThuyTin_chon');const cu=doc('coThuyTin_lop');
+    if(!c&&cu){const k=KHOI.find(x=>lopCua(x.id).includes(cu));if(k)c={khoi:k.id,lop:cu};}
+    if(c&&KHOI.some(k=>k.id===c.khoi)&&(c.lop==='*'||lopCua(c.khoi).includes(c.lop))){cur=c.khoi;LOP=c.lop;datHash();}}
+  route();})
   .catch(()=>{route();$('list').innerHTML='<div class="trong"><b>Chưa tải được danh sách phiếu</b>Em tải lại trang thử nhé.</div>';fit();});
 </script>
 </body>
