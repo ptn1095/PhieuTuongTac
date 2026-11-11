@@ -1,0 +1,125 @@
+{
+ "web": {
+  "khoi": "khoi-3",
+  "mon": "Tin học 3",
+  "ten": "Bài 14: Em thực hiện công việc như thế nào",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 3 - Bài 14 Thực hiện công việc",
+ "mon": "TIN HỌC 3 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 14: Em thực hiện công việc như thế nào",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Khoanh vào đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Khi thực hiện công việc theo từng bước, các bước phải:",
+     "lc": [
+      "Theo một thứ tự nhất định",
+      "Làm theo thứ tự nào cũng được",
+      "Làm tất cả cùng một lúc",
+      "Bỏ bớt các bước khó"
+     ],
+     "da": "Theo một thứ tự nhất định"
+    },
+    {
+     "text": "Chia một việc lớn thành những việc nhỏ hơn giúp em:",
+     "lc": [
+      "Dễ hiểu và dễ thực hiện hơn",
+      "Làm việc lâu hơn",
+      "Quên mất việc cần làm",
+      "Không cần làm việc đó nữa"
+     ],
+     "da": "Dễ hiểu và dễ thực hiện hơn"
+    },
+    {
+     "text": "Mỗi bước trong một công việc là:",
+     "lc": [
+      "Một việc nhỏ",
+      "Một việc rất lớn",
+      "Một trò chơi",
+      "Một đồ vật"
+     ],
+     "da": "Một việc nhỏ"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Kéo thả (hoặc bấm ▲▼) để sắp xếp các việc buổi sáng của bạn An trước khi đến trường.",
+   "cau": [
+    {
+     "text": "⏰ Thức dậy"
+    },
+    {
+     "text": "🪥 Vệ sinh cá nhân"
+    },
+    {
+     "text": "🍚 Ăn sáng"
+    },
+    {
+     "text": "👕 Thay quần áo"
+    },
+    {
+     "text": "🎒 Lấy cặp sách"
+    },
+    {
+     "text": "👟 Đi giày dép"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các bước rửa tay cho đúng thứ tự.",
+   "cau": [
+    {
+     "text": "Làm ướt hai bàn tay bằng nước sạch"
+    },
+    {
+     "text": "Xoa xà phòng khắp hai bàn tay"
+    },
+    {
+     "text": "Rửa sạch xà phòng dưới vòi nước"
+    },
+    {
+     "text": "Lau khô tay bằng khăn sạch"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cau": [
+    {
+     "text": "Việc <b>chải răng</b> có thể chia thành những việc nhỏ nào?",
+     "cot": 2,
+     "lc": [
+      "Chải răng cửa",
+      "Chải răng hàm bên trái",
+      "Chải răng hàm bên phải",
+      "Tưới cây"
+     ],
+     "da": [
+      "Chải răng cửa",
+      "Chải răng hàm bên trái",
+      "Chải răng hàm bên phải"
+     ]
+    }
+   ]
+  }
+ ]
+}

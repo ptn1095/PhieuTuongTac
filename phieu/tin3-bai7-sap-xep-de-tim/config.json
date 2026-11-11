@@ -1,0 +1,163 @@
+{
+ "web": {
+  "khoi": "khoi-3",
+  "mon": "Tin học 3",
+  "ten": "Bài 7: Sắp xếp để dễ tìm",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 3 - Bài 7 Sắp xếp",
+ "mon": "TIN HỌC 3 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 7: Sắp xếp để dễ tìm",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Khoanh vào đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Vì sao cần sắp xếp đồ vật một cách hợp lí?",
+     "lc": [
+      "Để tìm kiếm nhanh hơn",
+      "Để đồ vật nhiều hơn",
+      "Để đồ vật đắt tiền hơn",
+      "Để không phải dùng đến đồ vật"
+     ],
+     "da": "Để tìm kiếm nhanh hơn"
+    },
+    {
+     "text": "Cửa hàng xếp các mặt hàng cùng loại ở gần nhau để:",
+     "lc": [
+      "Khách hàng tìm được mặt hàng nhanh hơn",
+      "Cửa hàng trông chật hơn",
+      "Khách hàng khó tìm hơn",
+      "Bán được ít hàng hơn"
+     ],
+     "da": "Khách hàng tìm được mặt hàng nhanh hơn"
+    },
+    {
+     "text": "An để bút, thước, tẩy lẫn lộn trong cặp. Cách nào giúp An tìm cục tẩy nhanh nhất?",
+     "lc": [
+      "Để tất cả đồ dùng nhỏ vào hộp bút, sách vở xếp riêng",
+      "Đổ hết đồ trong cặp ra bàn rồi tìm",
+      "Mua thêm thật nhiều cục tẩy",
+      "Để đồ dùng rải rác ở nhiều nơi"
+     ],
+     "da": "Để tất cả đồ dùng nhỏ vào hộp bút, sách vở xếp riêng"
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Xếp mỗi đồ vật vào nhóm thích hợp.",
+   "lc": [
+    "Đồ dùng học tập",
+    "Đồ chơi",
+    "Quần áo"
+   ],
+   "cau": [
+    {
+     "text": "✏️ Bút chì",
+     "da": "Đồ dùng học tập"
+    },
+    {
+     "text": "⚽ Quả bóng",
+     "da": "Đồ chơi"
+    },
+    {
+     "text": "👕 Áo phông",
+     "da": "Quần áo"
+    },
+    {
+     "text": "📏 Thước kẻ",
+     "da": "Đồ dùng học tập"
+    },
+    {
+     "text": "🧸 Gấu bông",
+     "da": "Đồ chơi"
+    },
+    {
+     "text": "👖 Quần dài",
+     "da": "Quần áo"
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Xếp các con vật vào nhóm thích hợp.",
+   "lc": [
+    "Sống dưới nước",
+    "Sống trên cạn"
+   ],
+   "cau": [
+    {
+     "text": "🐟 Con cá",
+     "da": "Sống dưới nước"
+    },
+    {
+     "text": "🐶 Con chó",
+     "da": "Sống trên cạn"
+    },
+    {
+     "text": "🐙 Con bạch tuộc",
+     "da": "Sống dưới nước"
+    },
+    {
+     "text": "🐔 Con gà",
+     "da": "Sống trên cạn"
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Sắp xếp các số vào hai nhóm: <b>số chẵn</b> và <b>số lẻ</b>.",
+   "lc": [
+    "Số chẵn",
+    "Số lẻ"
+   ],
+   "cau": [
+    {
+     "text": "7",
+     "da": "Số lẻ"
+    },
+    {
+     "text": "12",
+     "da": "Số chẵn"
+    },
+    {
+     "text": "15",
+     "da": "Số lẻ"
+    },
+    {
+     "text": "20",
+     "da": "Số chẵn"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Có thể sắp xếp cùng một nhóm đồ vật theo nhiều cách khác nhau.",
+     "da": "Đ"
+    },
+    {
+     "text": "Sắp xếp lộn xộn giúp em tìm đồ nhanh hơn.",
+     "da": "S"
+    }
+   ]
+  }
+ ]
+}

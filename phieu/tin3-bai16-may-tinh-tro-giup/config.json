@@ -1,0 +1,124 @@
+{
+ "web": {
+  "khoi": "khoi-3",
+  "mon": "Tin học 3",
+  "ten": "Bài 16: Công việc của em và sự trợ giúp của máy tính",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 3 - Bài 16 Máy tính trợ giúp",
+ "mon": "TIN HỌC 3 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 16: Công việc của em và sự trợ giúp của máy tính",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Khoanh vào đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Khi làm một công việc lớn, em có thể:",
+     "lc": [
+      "Chia thành những việc nhỏ hơn, có việc làm được trên máy tính",
+      "Làm tất cả mọi việc trên máy tính",
+      "Không bao giờ dùng máy tính",
+      "Nhờ máy tính tự nghĩ ra ý tưởng thay em"
+     ],
+     "da": "Chia thành những việc nhỏ hơn, có việc làm được trên máy tính"
+    },
+    {
+     "text": "Để giới thiệu ý tưởng trồng hoa trước lớp học bằng máy tính, em dùng phần mềm:",
+     "lc": [
+      "Trình chiếu",
+      "Nghe nhạc",
+      "Trò chơi đua xe",
+      "Máy tính bỏ túi"
+     ],
+     "da": "Trình chiếu"
+    },
+    {
+     "text": "Muốn trang chiếu sinh động hơn, em có thể:",
+     "lc": [
+      "Chèn thêm hình ảnh minh họa",
+      "Xóa hết chữ trên trang chiếu",
+      "Tắt màn hình máy tính",
+      "Không lưu tệp trình chiếu"
+     ],
+     "da": "Chèn thêm hình ảnh minh họa"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các việc nhỏ khi làm một bài trình chiếu cho đúng thứ tự.",
+   "cau": [
+    {
+     "text": "💡 Nêu ý tưởng"
+    },
+    {
+     "text": "📝 Chuẩn bị nội dung"
+    },
+    {
+     "text": "🖥️ Tạo các trang chiếu"
+    },
+    {
+     "text": "✅ Hoàn thiện sản phẩm"
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Việc nào <b>cần làm trên máy tính</b>, việc nào <b>không cần máy tính</b>?",
+   "lc": [
+    "Cần máy tính",
+    "Không cần máy tính"
+   ],
+   "cau": [
+    {
+     "text": "Nêu ý tưởng cùng các bạn trong nhóm",
+     "da": "Không cần máy tính"
+    },
+    {
+     "text": "Tạo các trang chiếu trong phần mềm trình chiếu",
+     "da": "Cần máy tính"
+    },
+    {
+     "text": "Chèn hình ảnh vào trang chiếu",
+     "da": "Cần máy tính"
+    },
+    {
+     "text": "Đi quan sát bồn hoa trước lớp học",
+     "da": "Không cần máy tính"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các bước thực hành làm bài trình chiếu đề xuất trồng hoa trước lớp học.",
+   "cau": [
+    {
+     "text": "Mở phần mềm trình chiếu"
+    },
+    {
+     "text": "Tạo 6 trang chiếu theo gợi ý"
+    },
+    {
+     "text": "Chèn hình ảnh minh họa"
+    },
+    {
+     "text": "Trình chiếu toàn màn hình và lưu tệp"
+    }
+   ]
+  }
+ ]
+}

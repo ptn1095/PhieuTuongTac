@@ -1,0 +1,147 @@
+{
+ "web": {
+  "khoi": "khoi-3",
+  "mon": "Tin học 3",
+  "ten": "Bài 6: Khám phá thông tin trên Internet",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 3 - Bài 6 Internet",
+ "mon": "TIN HỌC 3 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 6: Khám phá thông tin trên Internet",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Khoanh vào đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Internet được ví như:",
+     "lc": [
+      "Một kho thông tin khổng lồ",
+      "Một chiếc tủ đựng sách",
+      "Một trò chơi điện tử",
+      "Một chiếc máy tính"
+     ],
+     "da": "Một kho thông tin khổng lồ"
+    },
+    {
+     "text": "Khi muốn dùng Internet để tìm thông tin, em cần:",
+     "lc": [
+      "Được thầy cô hoặc bố mẹ cho phép, hướng dẫn",
+      "Tự xem bất cứ trang nào em thích",
+      "Nhờ người lạ trên mạng chỉ cho",
+      "Xem thật lâu, không cần nghỉ"
+     ],
+     "da": "Được thầy cô hoặc bố mẹ cho phép, hướng dẫn",
+     "cot": 1
+    },
+    {
+     "text": "Ý nào <b>không đúng</b> về thông tin trên Internet?",
+     "lc": [
+      "Rất nhiều và phong phú",
+      "Luôn đúng và luôn phù hợp với em",
+      "Được cập nhật thường xuyên",
+      "Có cả chữ, hình ảnh, âm thanh, video"
+     ],
+     "da": "Luôn đúng và luôn phù hợp với em",
+     "cot": 1
+    },
+    {
+     "text": "Gia đình em có thể xem phim, ca nhạc trên chiếc tivi:",
+     "lc": [
+      "Có kết nối Internet",
+      "Đã tắt nguồn điện",
+      "Không có màn hình",
+      "Bị hỏng loa"
+     ],
+     "da": "Có kết nối Internet"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cau": [
+    {
+     "text": "Trên Internet, em có thể xem được những gì?",
+     "cot": 2,
+     "lc": [
+      "📰 Tin tức",
+      "🎬 Phim hoạt hình",
+      "🌦️ Dự báo thời tiết",
+      "🍰 Nếm vị ngọt của chiếc bánh"
+     ],
+     "da": [
+      "📰 Tin tức",
+      "🎬 Phim hoạt hình",
+      "🌦️ Dự báo thời tiết"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai? Bấm <b>Đúng</b> hoặc <b>Sai</b>.",
+   "cau": [
+    {
+     "text": "Mọi thông tin trên Internet đều phù hợp với em.",
+     "da": "S"
+    },
+    {
+     "text": "Có những thông tin trên Internet không chính xác hoặc khó hiểu với em.",
+     "da": "Đ"
+    },
+    {
+     "text": "Em có thể tìm trên Internet thông tin về các con vật để học bài.",
+     "da": "Đ"
+    },
+    {
+     "text": "Gặp trang web có hình ảnh đáng sợ, em nên tắt đi và báo cho bố mẹ, thầy cô.",
+     "da": "Đ"
+    },
+    {
+     "text": "Em được tự ý dùng Internet cả ngày mà không cần hỏi ai.",
+     "da": "S"
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Thông tin nào <b>phù hợp</b> với em, thông tin nào <b>không phù hợp</b>?",
+   "lc": [
+    "Phù hợp",
+    "Không phù hợp"
+   ],
+   "cau": [
+    {
+     "text": "Video dạy vẽ con mèo cho thiếu nhi",
+     "da": "Phù hợp"
+    },
+    {
+     "text": "Phim có cảnh đánh nhau, bạo lực",
+     "da": "Không phù hợp"
+    },
+    {
+     "text": "Truyện cổ tích Việt Nam",
+     "da": "Phù hợp"
+    },
+    {
+     "text": "Trò chơi có hình ảnh ma quỷ đáng sợ",
+     "da": "Không phù hợp"
+    }
+   ]
+  }
+ ]
+}

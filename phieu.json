@@ -161,6 +161,139 @@
     "chuaGiao": true
   },
   {
+    "khoi": "khoi-3",
+    "mon": "Tin học 3",
+    "ten": "Bài 8: Sơ đồ hình cây. Tổ chức thông tin trong máy tính",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 12,
+    "phut": 10,
+    "link": "phieu/tin3-bai8-so-do-hinh-cay/",
+    "ma": "Tin 3 - Bài 8 Cây thư mục",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-3",
+    "mon": "Tin học 3",
+    "ten": "Bài 7: Sắp xếp để dễ tìm",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 19,
+    "phut": 10,
+    "link": "phieu/tin3-bai7-sap-xep-de-tim/",
+    "ma": "Tin 3 - Bài 7 Sắp xếp",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-3",
+    "mon": "Tin học 3",
+    "ten": "Bài 6: Khám phá thông tin trên Internet",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 14,
+    "phut": 10,
+    "link": "phieu/tin3-bai6-kham-pha-internet/",
+    "ma": "Tin 3 - Bài 6 Internet",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-3",
+    "mon": "Tin học 3",
+    "ten": "Bài 16: Công việc của em và sự trợ giúp của máy tính",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 15,
+    "phut": 10,
+    "link": "phieu/tin3-bai16-may-tinh-tro-giup/",
+    "ma": "Tin 3 - Bài 16 Máy tính trợ giúp",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-3",
+    "mon": "Tin học 3",
+    "ten": "Bài 15: Công việc được thực hiện theo điều kiện",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 15,
+    "phut": 10,
+    "link": "phieu/tin3-bai15-cong-viec-theo-dieu-kien/",
+    "ma": "Tin 3 - Bài 15 Theo điều kiện",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-3",
+    "mon": "Tin học 3",
+    "ten": "Bài 14: Em thực hiện công việc như thế nào",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 14,
+    "phut": 10,
+    "link": "phieu/tin3-bai14-thuc-hien-cong-viec/",
+    "ma": "Tin 3 - Bài 14 Thực hiện công việc",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-3",
+    "mon": "Tin học 3",
+    "ten": "Bài 10: Bảo vệ thông tin khi dùng máy tính",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 13,
+    "phut": 10,
+    "link": "phieu/tin3-bai10-bao-ve-thong-tin/",
+    "ma": "Tin 3 - Bài 10 Bảo vệ thông tin",
+    "chuaGiao": true
+  },
+  {
     "khoi": "khoi-5",
     "mon": "Tin học – Scratch",
     "ten": "Variables – Phần 2: Danh sách (List)",

@@ -1,0 +1,142 @@
+{
+ "web": {
+  "khoi": "khoi-3",
+  "mon": "Tin học 3",
+  "ten": "Bài 8: Sơ đồ hình cây. Tổ chức thông tin trong máy tính",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 3 - Bài 8 Cây thư mục",
+ "mon": "TIN HỌC 3 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 8: Sơ đồ hình cây. Tổ chức thông tin trong máy tính",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Khoanh vào đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Một cách sắp xếp, phân loại có thể được biểu diễn bằng:",
+     "lc": [
+      "Sơ đồ hình cây",
+      "Bảng cửu chương",
+      "Bản đồ thế giới",
+      "Bức tranh phong cảnh"
+     ],
+     "da": "Sơ đồ hình cây"
+    },
+    {
+     "text": "Trong máy tính, thông tin được lưu trong:",
+     "lc": [
+      "Tệp",
+      "Hộp bút",
+      "Cặp sách",
+      "Bàn phím"
+     ],
+     "da": "Tệp"
+    },
+    {
+     "text": "Nơi chứa các tệp và thư mục khác được gọi là:",
+     "lc": [
+      "Thư mục",
+      "Chuột",
+      "Loa",
+      "Màn hình"
+     ],
+     "da": "Thư mục"
+    },
+    {
+     "text": "Ổ đĩa còn được gọi là:",
+     "lc": [
+      "Thư mục gốc",
+      "Thư mục con",
+      "Tệp hình ảnh",
+      "Trang chiếu"
+     ],
+     "da": "Thư mục gốc"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Quan sát cây thư mục dưới đây rồi trả lời.<div style=\"margin-top:8px;font-weight:normal;overflow-x:auto\"><svg viewBox=\"-6 0 626 230\" width=\"560\" style=\"max-width:100%;height:auto\" xmlns=\"http://www.w3.org/2000/svg\" font-family=\"Arial\" font-size=\"14\" role=\"img\" aria-label=\"Cây thư mục\"><path d=\"M310 42 V61.0 H90 V80\" fill=\"none\" stroke=\"#888\" stroke-width=\"2\"/><path d=\"M310 42 V61.0 H310 V80\" fill=\"none\" stroke=\"#888\" stroke-width=\"2\"/><path d=\"M310 42 V61.0 H530 V80\" fill=\"none\" stroke=\"#888\" stroke-width=\"2\"/><path d=\"M90 112 V136.0 H40 V160\" fill=\"none\" stroke=\"#888\" stroke-width=\"2\"/><path d=\"M90 112 V136.0 H170 V160\" fill=\"none\" stroke=\"#888\" stroke-width=\"2\"/><path d=\"M310 112 V136.0 H310 V160\" fill=\"none\" stroke=\"#888\" stroke-width=\"2\"/><g><rect x=\"251\" y=\"10\" width=\"118\" height=\"32\" rx=\"6\" fill=\"#65B843\" stroke=\"#4C9431\"/><text x=\"310.0\" y=\"31\" text-anchor=\"middle\" fill=\"#fff\" font-weight=\"bold\">Ổ đĩa D</text></g><g><path d=\"M31 84 h14 l4 -4 h14 v4\" fill=\"#F5B83D\"/><rect x=\"31\" y=\"84\" width=\"118\" height=\"26\" rx=\"4\" fill=\"#FCD66B\" stroke=\"#E0A526\"/><text x=\"90.0\" y=\"102\" text-anchor=\"middle\">Hoc tap</text></g><g><path d=\"M251 84 h14 l4 -4 h14 v4\" fill=\"#F5B83D\"/><rect x=\"251\" y=\"84\" width=\"118\" height=\"26\" rx=\"4\" fill=\"#FCD66B\" stroke=\"#E0A526\"/><text x=\"310.0\" y=\"102\" text-anchor=\"middle\">Giai tri</text></g><g><rect x=\"471\" y=\"84\" width=\"118\" height=\"26\" rx=\"3\" fill=\"#fff\" stroke=\"#168DCE\" stroke-dasharray=\"0\"/><text x=\"530.0\" y=\"102\" text-anchor=\"middle\">📄 Anh lop.jpg</text></g><g><path d=\"M-2 164 h14 l4 -4 h14 v4\" fill=\"#F5B83D\"/><rect x=\"-2\" y=\"164\" width=\"90\" height=\"26\" rx=\"4\" fill=\"#FCD66B\" stroke=\"#E0A526\"/><text x=\"43.0\" y=\"182\" text-anchor=\"middle\">Toan</text></g><g><path d=\"M125 164 h14 l4 -4 h14 v4\" fill=\"#F5B83D\"/><rect x=\"125\" y=\"164\" width=\"100\" height=\"26\" rx=\"4\" fill=\"#FCD66B\" stroke=\"#E0A526\"/><text x=\"175.0\" y=\"182\" text-anchor=\"middle\">Tieng Viet</text></g><g><path d=\"M251 164 h14 l4 -4 h14 v4\" fill=\"#F5B83D\"/><rect x=\"251\" y=\"164\" width=\"118\" height=\"26\" rx=\"4\" fill=\"#FCD66B\" stroke=\"#E0A526\"/><text x=\"310.0\" y=\"182\" text-anchor=\"middle\">Truyen tranh</text></g></svg><div style=\"font-size:13px;color:#555;margin-top:4px\">🟨 = thư mục &nbsp;&nbsp; 📄 = tệp &nbsp;&nbsp; 🟩 = ổ đĩa</div></div>",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Thư mục gốc (ổ đĩa) của cây thư mục là:",
+     "lc": [
+      "Ổ đĩa D",
+      "Hoc tap",
+      "Giai tri",
+      "Toan"
+     ],
+     "da": "Ổ đĩa D"
+    },
+    {
+     "text": "Thư mục <b>Hoc tap</b> có mấy thư mục con?",
+     "lc": [
+      "1",
+      "2",
+      "3",
+      "4"
+     ],
+     "da": "2",
+     "cot": 4
+    },
+    {
+     "text": "Thư mục <b>Truyen tranh</b> là thư mục con của thư mục nào?",
+     "lc": [
+      "Giai tri",
+      "Hoc tap",
+      "Toan",
+      "Tieng Viet"
+     ],
+     "da": "Giai tri"
+    },
+    {
+     "text": "Tệp <b>Anh lop.jpg</b> nằm trực tiếp trong:",
+     "lc": [
+      "Ổ đĩa D",
+      "Thư mục Hoc tap",
+      "Thư mục Giai tri",
+      "Thư mục Toan"
+     ],
+     "da": "Ổ đĩa D"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Dựa vào cây thư mục ở trên: đúng hay sai?",
+   "cau": [
+    {
+     "text": "Thư mục <b>Toan</b> và thư mục <b>Tieng Viet</b> cùng nằm trong thư mục <b>Hoc tap</b>.",
+     "da": "Đ"
+    },
+    {
+     "text": "<b>Anh lop.jpg</b> là một thư mục.",
+     "da": "S"
+    },
+    {
+     "text": "Ổ đĩa D chứa 2 thư mục và 1 tệp.",
+     "da": "Đ"
+    },
+    {
+     "text": "Thư mục <b>Truyen tranh</b> nằm trong thư mục <b>Hoc tap</b>.",
+     "da": "S"
+    }
+   ]
+  }
+ ]
+}

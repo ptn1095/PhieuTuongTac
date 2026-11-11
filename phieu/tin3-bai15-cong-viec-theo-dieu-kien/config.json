@@ -1,0 +1,155 @@
+{
+ "web": {
+  "khoi": "khoi-3",
+  "mon": "Tin học 3",
+  "ten": "Bài 15: Công việc được thực hiện theo điều kiện",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 3 - Bài 15 Theo điều kiện",
+ "mon": "TIN HỌC 3 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 15: Công việc được thực hiện theo điều kiện",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>điều kiện</b> ở bên trái với <b>công việc</b> phù hợp ở bên phải.",
+   "lc": [
+    "Em chào cô",
+    "Em phơi quần áo",
+    "Em bơm mực",
+    "Em cặp nhiệt độ",
+    "Em mang áo mưa"
+   ],
+   "cau": [
+    {
+     "text": "Nếu gặp cô giáo",
+     "da": "Em chào cô"
+    },
+    {
+     "text": "Nếu giặt xong quần áo",
+     "da": "Em phơi quần áo"
+    },
+    {
+     "text": "Nếu bút hết mực",
+     "da": "Em bơm mực"
+    },
+    {
+     "text": "Nếu thấy người nóng, mệt",
+     "da": "Em cặp nhiệt độ"
+    },
+    {
+     "text": "Nếu trời mưa",
+     "da": "Em mang áo mưa"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn từ thích hợp điền vào chỗ trống để được câu <b>Nếu … thì …</b> đúng.",
+   "bank": [
+    "mưa",
+    "đỏ",
+    "xanh",
+    "hết mực"
+   ],
+   "lc": [
+    "mưa",
+    "đỏ",
+    "xanh",
+    "hết mực"
+   ],
+   "cau": [
+    {
+     "text": "a) Nếu trời {} thì em mang áo mưa.",
+     "da": [
+      "mưa"
+     ]
+    },
+    {
+     "text": "b) Nếu đèn giao thông màu {} thì em dừng lại.",
+     "da": [
+      "đỏ"
+     ]
+    },
+    {
+     "text": "c) Nếu đèn giao thông màu {} thì em được đi.",
+     "da": [
+      "xanh"
+     ]
+    },
+    {
+     "text": "d) Nếu bút {} thì em bơm mực.",
+     "da": [
+      "hết mực"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Khoanh vào đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Trong câu <i>“Nếu đèn giao thông màu đỏ thì em dừng lại”</i>, điều kiện là:",
+     "lc": [
+      "Đèn giao thông màu đỏ",
+      "Em dừng lại",
+      "Em đi tiếp",
+      "Đèn giao thông màu xanh"
+     ],
+     "da": "Đèn giao thông màu đỏ"
+    },
+    {
+     "text": "Trong câu <i>“Nếu làm xong bài tập thì em được xem hoạt hình”</i>, công việc được thực hiện là:",
+     "lc": [
+      "Em được xem hoạt hình",
+      "Làm xong bài tập",
+      "Em đi ngủ",
+      "Em làm thêm bài tập"
+     ],
+     "da": "Em được xem hoạt hình"
+    },
+    {
+     "text": "Hôm nay trời <b>không</b> mưa. Theo quy định <i>“Nếu trời mưa thì em mang áo mưa”</i>, em sẽ:",
+     "lc": [
+      "Không cần mang áo mưa",
+      "Vẫn phải mang áo mưa",
+      "Ở nhà, không đi học",
+      "Mang hai chiếc áo mưa"
+     ],
+     "da": "Không cần mang áo mưa"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Công việc trong câu “Nếu… thì…” chỉ được thực hiện khi điều kiện xảy ra.",
+     "da": "Đ"
+    },
+    {
+     "text": "“Nếu đèn xanh thì em được đi qua đường” là một câu có điều kiện.",
+     "da": "Đ"
+    },
+    {
+     "text": "Nếu bút còn mực thì em phải bơm mực ngay.",
+     "da": "S"
+    }
+   ]
+  }
+ ]
+}

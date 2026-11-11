@@ -1,0 +1,141 @@
+{
+ "web": {
+  "khoi": "khoi-3",
+  "mon": "Tin học 3",
+  "ten": "Bài 10: Bảo vệ thông tin khi dùng máy tính",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 3 - Bài 10 Bảo vệ thông tin",
+ "mon": "TIN HỌC 3 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 10: Bảo vệ thông tin khi dùng máy tính",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Khoanh vào đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Thông tin nào dưới đây có thể được lưu trữ trong máy tính?",
+     "lc": [
+      "Ảnh, video của gia đình em",
+      "Mùi thơm của bông hoa",
+      "Vị ngọt của chiếc kẹo",
+      "Hơi ấm của chiếc chăn"
+     ],
+     "da": "Ảnh, video của gia đình em"
+    },
+    {
+     "text": "Thông tin trong máy tính có thể được trao đổi nhờ:",
+     "lc": [
+      "Thẻ nhớ USB hoặc Internet",
+      "Bút chì và thước kẻ",
+      "Chiếc quạt điện",
+      "Bình nước uống"
+     ],
+     "da": "Thẻ nhớ USB hoặc Internet"
+    },
+    {
+     "text": "Một người lạ nhắn tin hỏi địa chỉ nhà em. Em nên làm gì?",
+     "lc": [
+      "Không trả lời và báo ngay cho bố mẹ, thầy cô",
+      "Gửi ngay địa chỉ nhà cho người đó",
+      "Gửi thêm số điện thoại của bố mẹ",
+      "Hẹn gặp người đó để nói chuyện"
+     ],
+     "da": "Không trả lời và báo ngay cho bố mẹ, thầy cô"
+    },
+    {
+     "text": "Vì sao không nên đưa thông tin cá nhân cho người lạ trên mạng?",
+     "lc": [
+      "Người xấu có thể lợi dụng để gây hại cho em và gia đình",
+      "Vì thông tin đó quá dài",
+      "Vì máy tính sẽ bị hết pin",
+      "Vì Internet sẽ bị chậm"
+     ],
+     "da": "Người xấu có thể lợi dụng để gây hại cho em và gia đình"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cau": [
+    {
+     "text": "Những thông tin nào là <b>thông tin cá nhân</b> cần giữ bí mật với người lạ?",
+     "cot": 2,
+     "lc": [
+      "🏠 Địa chỉ nhà",
+      "📞 Số điện thoại",
+      "🔑 Mật khẩu",
+      "🌤️ Hôm nay trời nắng"
+     ],
+     "da": [
+      "🏠 Địa chỉ nhà",
+      "📞 Số điện thoại",
+      "🔑 Mật khẩu"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Việc nào <b>nên làm</b>, việc nào <b>không nên làm</b> khi dùng máy tính?",
+   "lc": [
+    "Nên làm",
+    "Không nên làm"
+   ],
+   "cau": [
+    {
+     "text": "Hỏi ý kiến bố mẹ trước khi gửi ảnh của mình lên mạng",
+     "da": "Nên làm"
+    },
+    {
+     "text": "Mở tin nhắn, đường link lạ do người không quen gửi đến",
+     "da": "Không nên làm"
+    },
+    {
+     "text": "Cho bạn bè biết mật khẩu của mình",
+     "da": "Không nên làm"
+    },
+    {
+     "text": "Báo cho thầy cô khi thấy tin nhắn đáng ngờ",
+     "da": "Nên làm"
+    },
+    {
+     "text": "Đăng cả họ tên, trường lớp, địa chỉ nhà lên mạng",
+     "da": "Không nên làm"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Thông tin của em và gia đình có thể được lưu trữ trong máy tính.",
+     "da": "Đ"
+    },
+    {
+     "text": "Người lạ khen em trên mạng thì em có thể tin và kể hết chuyện gia đình.",
+     "da": "S"
+    },
+    {
+     "text": "Em cần giữ bí mật mật khẩu của mình.",
+     "da": "Đ"
+    }
+   ]
+  }
+ ]
+}
