@@ -16,7 +16,9 @@ phieu/<tên>/          Mỗi phiếu một thư mục
 tools/engine.html     Khuôn trang phiếu (giao diện, chấm điểm, gửi điểm)
 tools/build_phieu.py  Dựng lại mọi phiếu, phieu.json và bảng dưới đây
 tools/kiem_tra.js     Tự làm thử mọi phiếu trong trình duyệt ẩn
-tools/NhanDiem.gs     Apps Script nhận điểm (dán vào Google Sheet)
+tools/NhanDiem.gs     Apps Script nhận điểm + số liệu cho trang tổng hợp (dán vào Google Sheet)
+tools/kiem_tra_gs.js  Chạy thử NhanDiem.gs với Sheet giả lập
+giaovien/             Trang tổng hợp điểm cho cô (cần mật khẩu)
 .claude/skills/       Skill hướng dẫn Claude tạo phiếu
 ```
 

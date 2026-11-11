@@ -20,7 +20,8 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
   - `tools/engine.html`: khuôn giao diện, chấm điểm, gửi điểm.
   - `tools/build_phieu.py`: dựng trang phiếu, `phieu.json`, bảng README.
   - `tools/kiem_tra.js`: làm thử mọi phiếu.
-  - `tools/NhanDiem.gs`: Apps Script nhận điểm.
+  - `tools/NhanDiem.gs`: Apps Script nhận điểm + trả số liệu cho trang tổng hợp (có mật khẩu); `tools/kiem_tra_gs.js` chạy thử nó.
+  - `giaovien/index.html`: trang tổng hợp điểm cho cô (đăng nhập bằng `MAT_KHAU`).
   - `assets/`: ảnh khung dùng chung.
 - Không sửa tay `phieu.json`, `phieu/*/index.html` hay bảng trong README, vì các file này tự sinh.
 
@@ -102,14 +103,20 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
 | `traloi` | Trắc nghiệm a, b, c… (có thể kèm hình chung) | `cau:[{text có "{}" ở chỗ ô chọn, lc, da}]`; `hinh`, `khungHinh:true` |
 | `abcd` | Trắc nghiệm **bấm ô A/B/C/D** (giống khoanh tròn trên giấy) | `cau:[{text, lc:[nội dung các phương án], da: nội dung phương án đúng, cot?}]`; `cot` = số cột ô phương án (1, 2 hoặc 4; mặc định 2, có thể đặt chung ở bài). Phương án được chứa ảnh/SVG |
 | `noidot` | **Nối chấm tròn**: bấm chấm bên trái rồi bấm chấm bên phải, hiện đường nối | Giống `noi`: `lc` = cột phải (theo thứ tự hiện), `cau:[{text: ô trái, da}]`. Bấm lại ô trái đã nối để nối lại |
+| `nhieu` | **Chọn nhiều đáp án đúng** (ô vuông bật/tắt) | Giống `abcd` nhưng `da: [các phương án đúng]`. Chấm cả câu: đúng khi chọn đủ và không chọn thừa |
+| `go` | **Gõ đáp án** (chữ hoặc số) | `cau:[{text có "{}", da: "7" hoặc ["Hà Nội","Ha Noi"]}]` (nhiều cách viết được chấp nhận). Nhiều chỗ gõ trong 1 câu: `da: ["x", ["y","yy"]]` theo thứ tự. Không phân biệt hoa thường, khoảng trắng thừa; số "3,5" = "3.5". `boDau: true` (ở câu hoặc bài) để chấp nhận gõ không dấu |
+| `sapxep` | **Kéo thả sắp xếp** (giữ ☰ để kéo, hoặc bấm ▲▼) | `cau:[{text}]` ghi **theo đúng thứ tự**; trang tự xáo. Mỗi mục là 1 câu chấm (đúng vị trí) |
 
 - Chọn dạng theo cách làm trên giấy của cô:
   - "Khoanh tròn đáp án A/B/C/D" → `abcd`. Số cột: phương án ngắn (≤ 14 ký tự) thì 4; ≤ 30 ký tự thì 2; dài hơn thì 1.
   - "Nối (dùng bút vẽ đường nối)" → `noidot`.
   - Điền chỗ trống, chọn trong câu → `dien` / `traloi` (ô thả xuống).
+  - "Khoanh tất cả đáp án đúng" → `nhieu`. "Ghi đáp án / tính kết quả" (số, từ ngắn, rõ một đáp án) → `go`; nếu đáp án dài hoặc nhiều cách diễn đạt thì đổi sang dạng chọn.
+  - "Sắp xếp các bước / đánh số thứ tự" → `sapxep` (hoặc `thutu` nếu các bước dài, cần ô số).
 - `abcd`: không dùng chữ A/B/C/D làm nội dung phương án; ghi nội dung thật, engine tự gắn nhãn A/B/C/D.
 - Cả hai dạng mới vẫn chấm điểm, tô xanh/đỏ, ghi nhãn B…, gửi Sheet như các dạng khác.
 - Trộn thứ tự các lựa chọn trong `lc` để đáp án không luôn ở cùng một vị trí.
+- **Trộn mỗi lần mở** (chống nhìn bài): thêm `"tron": true` ở đầu config → phương án của `abcd`/`nhieu` và ô thả xuống được xáo lại mỗi lần em mở phiếu. Thứ tự **câu** không đổi (để thống kê "câu sai nhiều nhất" đúng). Câu có phương án kiểu "Cả A và B" thì thêm `"giuThuTu": true` cho câu đó.
 - Các phương án không được chồng lấn nhau hoặc làm lộ đáp án.
 
 ## 5. Hành vi cố định của trang
@@ -127,6 +134,8 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
 - **Thanh trên cùng (dính khi cuộn):** nút **← Trở về** + tiến độ "Em đã làm x/y câu" + nút "Câu chưa làm ↓". Cuối phiếu có thêm nút **← Trở về kho phiếu**.
 - **Trở về khi chưa nộp:** chưa làm câu nào → về thẳng trang chủ; đã làm dở → hộp hỏi lại "Em chưa nộp bài!", chọn "Xóa bài và về trang chủ" thì bài bị xóa. Mở lại phiếu (kể cả bằng nút Back) luôn là bài trắng. Đã nộp → về thẳng.
 - **Sau khi nộp:** hộp "Em làm sai N câu" + nút "Xem câu sai đầu tiên"; điểm ≥ 8 có pháo giấy (10 điểm: pháo to); máy lưu "đã làm" để trang chủ hiện "✓ Đã làm · tên – điểm".
+- **Mạng yếu khi nộp:** bài được lưu trên máy và tự gửi lại khi có mạng (cả khi em đã về trang chủ); trang báo rõ "chưa gửi được – sẽ tự gửi lại".
+- **Chế độ chiếu đáp án** `?dapan=1`: điền sẵn mọi đáp án, khóa trang, ẩn nút Tính điểm – chỉ mở khi máy đã đăng nhập trang tổng hợp (mật khẩu kiểm qua Apps Script).
 - **Nhớ tên + lớp** trên máy (trong ngày) sau khi nộp; phiếu sau tự điền, kèm nhắc "Máy đang nhớ tên… [Không phải em]" cho máy dùng chung ở phòng tin.
 - **Sửa giao diện hoặc cách chấm:** sửa `tools/engine.html` rồi build lại; thay đổi áp dụng cho mọi phiếu. Chỉ làm khi cô yêu cầu.
 
@@ -146,7 +155,10 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
 4. Sao chép **URL ứng dụng web** (kết thúc bằng `/exec`) gửi cho Claude, rồi đặt vào `guiB` của phiếu.
 5. Mỗi phiếu tự tạo một trang tính riêng với các cột: Thời gian nộp | Họ và tên | Lớp | Điểm | Số câu đúng | Nhận xét | Chi tiết.
    - Mỗi em chỉ nộp được 1 lần cho mỗi phiếu. Muốn cho nộp nhiều lần thì đổi `CHAN_NOP_TRUNG = false`.
-   - Sửa mã thì phải vào **Quản lý triển khai → Chỉnh sửa → Phiên bản mới** thì mã mới mới chạy.
+   - Sửa mã thì phải vào **Quản lý triển khai → Chỉnh sửa → Phiên bản mới** thì mã mới mới chạy (giữ nguyên link).
+6. Dòng `MAT_KHAU` trong mã: cô đặt mật khẩu riêng (≥ 6 ký tự). Dùng để đăng nhập **trang tổng hợp điểm** `…/giaovien/` và mở **chế độ chiếu đáp án** (`phieu/<tên>/?dapan=1`, chỉ chạy trên máy cô đã đăng nhập).
+7. Trang tính **`DanhSach`** (tùy chọn): cột A Lớp, cột B Họ và tên → trang tổng hợp hiện "em chưa nộp" và sĩ số.
+- Sửa `NhanDiem.gs` xong phải chạy `node tools/kiem_tra_gs.js` (Sheet giả lập) và gửi cô mã mới kèm cách "Phiên bản mới".
 
 **Cách A: Google Form chung**
 - Form của cô: `https://docs.google.com/forms/d/e/1FAIpQLSd4Z3-qZv_Wug7_11Vq_vxcpmPM9bq9Ff8CNiCQM2ZtomKFHQ/formResponse`.

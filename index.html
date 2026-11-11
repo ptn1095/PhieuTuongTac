@@ -97,7 +97,7 @@ h1{margin:4px 0 6px;font-size:32px;line-height:1.15;color:var(--bien)}
     <div class="head2"><h2 id="tieuDe"></h2><input class="tim" id="tim" type="search" placeholder="Tìm phiếu…" aria-label="Tìm phiếu"></div>
     <div class="list" id="list" style="margin-top:16px"></div>
   </section>
-  <div class="foot">© Cô Thùy Tin · Phiếu mới được cập nhật thường xuyên</div>
+  <div class="foot">© Cô Thùy Tin · Phiếu mới được cập nhật thường xuyên · <a href="giaovien/" style="color:#777">Dành cho cô</a></div>
 </div></div></main>
 <div class="qr-nen hidden" id="qrNen" role="dialog" aria-modal="true" aria-labelledby="qrTen" hidden><div class="qr-hop">
   <h3 id="qrTen"></h3><div class="lop" id="qrLop"></div>
@@ -166,6 +166,11 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('qrNen').hidden)
 function route(){const h=location.hash.slice(1);cur=KHOI.some(k=>k.id===h)?h:cur;veTabs();veList();}
 $('tim').addEventListener('input',veList);
 window.addEventListener('hashchange',route);window.addEventListener('resize',fit);window.addEventListener('load',fit);
+// Bài nộp lúc mạng yếu còn chờ trên máy → tự gửi lại
+(function(){const K='coThuyTin_choGui';const doc=()=>{try{return JSON.parse(localStorage.getItem(K)||'[]');}catch(e){return [];}};
+  const gui=()=>doc().forEach(x=>fetch(x.url,{method:'GET',mode:'no-cors',cache:'no-store'}).then(()=>{const a=doc().filter(y=>y.url!==x.url);
+    try{a.length?localStorage.setItem(K,JSON.stringify(a)):localStorage.removeItem(K);}catch(e){}},()=>{}));
+  if(doc().length){gui();window.addEventListener('online',gui);}})();
 function chonKhoiCo(){const c=KHOI.find(k=>DS.some(p=>p.khoi===k.id&&hop(p)));if(c)cur=c.id;}
 $('locLop').addEventListener('change',()=>{LOP=$('locLop').value;ghi('coThuyTin_lop',LOP);
   if(!DS.some(p=>p.khoi===cur&&hop(p))){chonKhoiCo();history.replaceState(null,'','#'+cur);}

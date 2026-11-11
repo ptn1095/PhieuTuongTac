@@ -16,7 +16,8 @@
     "ngay": "2026-11-10",
     "soCau": 30,
     "phut": 15,
-    "link": "phieu/scratch-variables-2-danh-sach/"
+    "link": "phieu/scratch-variables-2-danh-sach/",
+    "ma": "Scratch - Variables P2 Danh sách"
   },
   {
     "khoi": "doi-tuyen",
@@ -35,7 +36,8 @@
     "ngay": "2026-11-10",
     "soCau": 30,
     "phut": 15,
-    "link": "phieu/scratch-variables-2-danh-sach/"
+    "link": "phieu/scratch-variables-2-danh-sach/",
+    "ma": "Scratch - Variables P2 Danh sách"
   },
   {
     "khoi": "khoi-5",
@@ -54,7 +56,8 @@
     "ngay": "2026-11-10",
     "soCau": 23,
     "phut": 15,
-    "link": "phieu/scratch-variables-1-bien-nho/"
+    "link": "phieu/scratch-variables-1-bien-nho/",
+    "ma": "Scratch - Variables P1 Biến nhớ"
   },
   {
     "khoi": "doi-tuyen",
@@ -73,7 +76,8 @@
     "ngay": "2026-11-10",
     "soCau": 23,
     "phut": 15,
-    "link": "phieu/scratch-variables-1-bien-nho/"
+    "link": "phieu/scratch-variables-1-bien-nho/",
+    "ma": "Scratch - Variables P1 Biến nhớ"
   },
   {
     "khoi": "doi-tuyen",
@@ -86,7 +90,8 @@
     "ngay": "2026-11-10",
     "soCau": 25,
     "phut": 15,
-    "link": "phieu/scratch-but-ve-pen/"
+    "link": "phieu/scratch-but-ve-pen/",
+    "ma": "Tin - Nhóm lệnh Bút vẽ (Pen)"
   },
   {
     "khoi": "khoi-9",
@@ -107,6 +112,7 @@
     "ngay": "2026-11-10",
     "soCau": 40,
     "phut": 20,
-    "link": "phieu/tin9-xac-thuc-du-lieu/"
+    "link": "phieu/tin9-xac-thuc-du-lieu/",
+    "ma": "Tin học 9 - Công cụ xác thực dữ liệu"
   }
 ]

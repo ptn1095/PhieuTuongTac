@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tổng hợp điểm – Cô Thùy Tin</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<style>
+*{box-sizing:border-box}
+:root{--cam:#F28C28;--la:#65B843;--bien:#168DCE;--dam:#2457A6;--chu:#222;--phu:#5A6B7B;--vien:#D7E2EB;--nen:#EEF3F7;--the:#fff;--do:#C0392B}
+body{margin:0;background:var(--nen);font-family:Arial,Helvetica,sans-serif;color:var(--chu);line-height:1.45}
+.dau{background:#fff;border-bottom:4px solid var(--cam);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.dau .trong{max-width:1060px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.dau h1{margin:0;font-size:22px;color:var(--bien);flex:1;min-width:200px}
+.dau h1 small{display:block;font-size:13px;color:var(--cam);letter-spacing:.06em}
+.dau a,.dau button{font:inherit;font-size:14px;font-weight:bold;color:var(--dam);background:#fff;border:2px solid var(--dam);border-radius:999px;padding:6px 14px;text-decoration:none;cursor:pointer}
+main{max-width:1060px;margin:0 auto;padding:16px}
+.the{background:var(--the);border:1px solid var(--vien);border-radius:16px;padding:16px 18px;margin-bottom:16px}
+.the h2{margin:0 0 12px;font-size:18px;color:var(--dam)}
+.the h2 .phu{font-size:13px;color:var(--phu);font-weight:normal;margin-left:6px}
+label{font-weight:bold;font-size:14px;color:var(--dam);display:flex;flex-direction:column;gap:4px}
+input,select{font:inherit;font-size:16px;padding:8px 10px;border:2px solid #9DB7CC;border-radius:10px;background:#fff;color:var(--chu);min-width:0}
+input:focus,select:focus{outline:3px solid #BFE3F7;border-color:var(--bien)}
+.nut{font:inherit;font-size:15px;font-weight:bold;border-radius:999px;padding:9px 18px;cursor:pointer;border:2px solid var(--bien);background:var(--bien);color:#fff;text-decoration:none;display:inline-block}
+.nut.phu{background:#fff;color:var(--bien)}
+.nut:disabled{opacity:.6;cursor:default}
+.hidden{display:none!important}
+/* Đăng nhập */
+#dangNhap{max-width:460px;margin:40px auto}
+#dangNhap form{display:flex;flex-direction:column;gap:12px}
+#dangNhap details{font-size:14px;color:var(--phu)}
+#dnLoi{color:var(--do);font-weight:bold;min-height:1.4em}
+.ghi-chu{font-size:13.5px;color:var(--phu)}
+/* Bộ lọc */
+.loc{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}
+.loc label{flex:1;min-width:200px}
+.loc .nhom-nut{display:flex;gap:8px;flex-wrap:wrap}
+/* Thẻ số liệu */
+.so-lieu{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.o-so{background:#fff;border:1px solid var(--vien);border-radius:14px;padding:12px 14px}
+.o-so .nhan{font-size:13px;color:var(--phu);font-weight:bold}
+.o-so .gia{font-size:30px;font-weight:bold;color:var(--chu);line-height:1.15;margin-top:2px}
+.o-so .gia small{font-size:16px;color:var(--phu);font-weight:normal}
+.o-so .them{font-size:12.5px;color:var(--phu);margin-top:2px}
+.hai-cot{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px}
+.hai-cot>.the{margin-bottom:0}
+/* Biểu đồ cột phân bố điểm */
+.bd{position:relative;height:210px;display:grid;grid-template-columns:repeat(5,1fr);align-items:end;gap:6px;padding:0 4px;border-bottom:1px solid #B9C7D3}
+.cot{position:relative;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;cursor:default}
+.cot .thanh{width:24px;background:var(--bien);border-radius:4px 4px 0 0;min-height:0;transition:height .3s}
+.cot .so{font-size:13px;font-weight:bold;color:var(--chu);margin-bottom:4px}
+.cot:hover .thanh,.cot:focus .thanh{filter:brightness(.88)}
+.truc{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:6px 4px 0;font-size:12.5px;color:var(--phu);text-align:center}
+.goi-y-bd{position:absolute;pointer-events:none;background:#1F2A35;color:#fff;font-size:13px;padding:6px 9px;border-radius:8px;white-space:nowrap;transform:translate(-50%,-100%);z-index:3}
+/* Câu sai nhiều nhất */
+.sai{display:flex;flex-direction:column;gap:10px;list-style:none;margin:0;padding:0}
+.sai li{display:grid;grid-template-columns:52px minmax(0,1fr) 92px;gap:10px;align-items:center}
+.sai .nh{font-weight:bold;color:var(--dam);font-size:14px}
+.sai .nd{font-size:13.5px;color:var(--chu);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sai .nen-thanh{height:10px;background:#E6EDF3;border-radius:4px;margin-top:4px;overflow:hidden}
+.sai .nen-thanh i{display:block;height:100%;background:var(--bien);border-radius:0 4px 4px 0}
+.sai .pt{text-align:right;font-size:14px;font-weight:bold}
+.sai .pt small{display:block;font-weight:normal;color:var(--phu);font-size:12px}
+/* Bảng */
+.bang-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--vien);text-align:left;white-space:nowrap}
+th{font-size:13px;color:var(--phu);cursor:pointer;user-select:none;background:#F7FAFC;position:sticky;top:0}
+th[aria-sort]::after{content:" ▾";color:var(--bien)} th[aria-sort=ascending]::after{content:" ▴"}
+td.d{font-weight:bold}
+.diem-cao{color:#1E7E3A} .diem-thap{color:var(--do)}
+.chua-nop{display:flex;flex-wrap:wrap;gap:6px}
+.chua-nop span{font-size:14px;background:#FFF3E6;border:1.5px solid var(--cam);border-radius:999px;padding:2px 10px}
+.trong-rong{color:var(--phu);font-size:14px;text-align:center;padding:16px}
+@media (max-width:760px){.so-lieu{grid-template-columns:repeat(2,minmax(0,1fr))}.hai-cot{grid-template-columns:1fr}.o-so .gia{font-size:26px}}
+</style>
+</head>
+<body>
+<header class="dau"><div class="trong">
+  <h1><small>DÀNH CHO CÔ</small>📊 Tổng hợp điểm phiếu bài tập</h1>
+  <a href="../">← Kho phiếu</a>
+  <button type="button" id="dangXuat" class="hidden">Đăng xuất</button>
+</div></header>
+<main>
+  <section class="the" id="dangNhap">
+    <h2>Đăng nhập</h2>
+    <form id="fDN">
+      <label>Mật khẩu<input id="mk" type="password" autocomplete="current-password" required></label>
+      <details><summary>Link nhận điểm (Apps Script)</summary>
+        <label style="margin-top:8px">Link kết thúc bằng /exec<input id="url" type="url" required></label>
+        <div class="ghi-chu">Mặc định là link đang dùng trong các phiếu. Chỉ đổi khi cô dùng Sheet khác.</div></details>
+      <div id="dnLoi" role="alert"></div>
+      <button class="nut" id="nutDN" type="submit">Xem điểm</button>
+      <div class="ghi-chu">Máy này sẽ nhớ đăng nhập (để mở được cả chế độ chiếu đáp án). Dùng máy chung thì nhớ bấm <b>Đăng xuất</b>.</div>
+    </form>
+  </section>
+
+  <div id="noiDung" class="hidden">
+    <section class="the loc">
+      <label>Phiếu<select id="chonPhieu"></select></label>
+      <label style="max-width:220px">Lớp<select id="chonLop"></select></label>
+      <div class="nhom-nut"><button type="button" class="nut phu" id="taiLai">↻ Tải lại</button><a class="nut" id="chieuDA" target="_blank" rel="noopener">🎯 Chiếu đáp án</a></div>
+    </section>
+    <div class="ghi-chu" id="capNhat" style="margin:-8px 0 12px 4px"></div>
+
+    <div class="so-lieu" id="soLieu"></div>
+
+    <div class="hai-cot" style="margin-bottom:16px">
+      <section class="the"><h2>Phân bố điểm</h2>
+        <div style="position:relative"><div class="bd" id="bieuDo" role="img"></div><div class="truc" id="truc"></div></div>
+      </section>
+      <section class="the"><h2>Câu sai nhiều nhất <span class="phu">– cần giảng lại</span></h2><ol class="sai" id="caiSai"></ol></section>
+    </div>
+
+    <section class="the" id="theChua"><h2>Em chưa nộp <span class="phu" id="demChua"></span></h2><div id="chuaNop"></div></section>
+
+    <section class="the"><h2>Bảng điểm <span class="phu" id="demBang"></span></h2>
+      <input id="timHS" type="search" placeholder="Tìm tên học sinh…" aria-label="Tìm tên học sinh" style="width:100%;max-width:320px;margin-bottom:10px">
+      <div class="bang-wrap"><table><thead><tr>
+        <th data-c="ten">Họ và tên</th><th data-c="lop">Lớp</th><th data-c="diem" aria-sort="descending">Điểm</th><th data-c="dung">Số câu đúng</th><th data-c="luc">Giờ nộp</th>
+      </tr></thead><tbody id="bang"></tbody></table></div>
+    </section>
+  </div>
+  <iframe id="khung" title="Đọc nội dung câu hỏi" hidden></iframe>
+</main>
+<script>
+const URL_MAC_DINH='https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec';
+const KEY='coThuyTin_gv';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const chuan=s=>String(s||'').normalize('NFC').toLowerCase().replace(/\s+/g,' ').trim();
+const tenTrang=s=>String(s).replace(/[\[\]\*\?\/\\:]/g,' ').slice(0,90).trim();
+const so=v=>String(Math.round(v*100)/100).replace('.',',');
+let GV=null,DL=null,DS_PHIEU=[],MO_TA={},sapXep={c:'diem',tang:false};
+try{GV=JSON.parse(localStorage.getItem(KEY)||'null');}catch(e){}
+$('url').value=(GV&&GV.url)||URL_MAC_DINH;
+
+async function tai(){
+  $('nutDN').disabled=true;$('taiLai').disabled=true;$('dnLoi').textContent='';
+  try{
+    const r=await fetch(GV.url+'?action=tonghop&mk='+encodeURIComponent(GV.mk),{cache:'no-store'});
+    const d=await r.json();
+    if(!d.ok)throw new Error(d.loi||'Không đọc được điểm.');
+    DL=d;try{localStorage.setItem(KEY,JSON.stringify(GV));}catch(e){}
+    if(!DS_PHIEU.length)DS_PHIEU=await fetch('../phieu.json?v='+Date.now()).then(x=>x.json()).catch(()=>[]);
+    $('dangNhap').classList.add('hidden');$('noiDung').classList.remove('hidden');$('dangXuat').classList.remove('hidden');
+    $('capNhat').textContent='Cập nhật lúc '+new Date(d.luc||Date.now()).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})+' · '+d.phieu.length+' phiếu có người nộp';
+    veChonPhieu();
+  }catch(e){
+    const msg=e instanceof TypeError?'Không kết nối được tới Google Sheet. Cô kiểm tra mạng, link nhận điểm, và đã cập nhật mã Apps Script bản mới (có MAT_KHAU) chưa.'
+      :e instanceof SyntaxError?'Google Sheet chưa trả số liệu. Có thể mã Apps Script chưa được cập nhật bản mới – cô xem hướng dẫn cài đặt.':e.message;
+    if($('noiDung').classList.contains('hidden'))$('dnLoi').textContent=msg;else $('capNhat').textContent='⚠ '+msg;
+  }finally{$('nutDN').disabled=false;$('taiLai').disabled=false;}
+}
+$('fDN').addEventListener('submit',e=>{e.preventDefault();GV={url:$('url').value.trim(),mk:$('mk').value};tai();});
+$('taiLai').onclick=tai;
+$('dangXuat').onclick=()=>{try{localStorage.removeItem(KEY);}catch(e){}location.reload();};
+if(GV&&GV.mk)tai();
+
+// Ghép trang tính (tên = "ma" của phiếu) với phiếu trong kho
+const timPhieu=ten=>DS_PHIEU.find(p=>tenTrang(p.ma||'')===ten);
+function veChonPhieu(){
+  const cu=$('chonPhieu').value;
+  const ds=DL.phieu.slice().sort((a,b)=>{const pa=timPhieu(a.ten),pb=timPhieu(b.ten);return String(pb&&pb.ngay||'').localeCompare(String(pa&&pa.ngay||''));});
+  $('chonPhieu').innerHTML=ds.length?ds.map(p=>{const k=timPhieu(p.ten);return '<option value="'+esc(p.ten)+'">'+esc(k?k.ten+' ('+k.mon+')':p.ten)+' – '+p.hang.length+' bài</option>';}).join(''):'<option value="">Chưa có bài nộp nào</option>';
+  if(cu&&ds.some(p=>p.ten===cu))$('chonPhieu').value=cu;
+  doiPhieu();
+}
+function doiPhieu(){
+  const ph=DL.phieu.find(p=>p.ten===$('chonPhieu').value),k=ph&&timPhieu(ph.ten);
+  const lopCo=new Set([...(k?k.lop:[]),...(ph?ph.hang.map(h=>h[2]):[])].filter(Boolean));
+  const cu=$('chonLop').value;
+  $('chonLop').innerHTML='<option value="">Tất cả các lớp</option>'+[...lopCo].sort((a,b)=>a.localeCompare(b,'vi',{numeric:true})).map(l=>'<option>'+esc(l)+'</option>').join('');
+  if([...lopCo].includes(cu))$('chonLop').value=cu;
+  if(k){$('chieuDA').href='../'+k.link+'?dapan=1';$('chieuDA').classList.remove('hidden');}else $('chieuDA').classList.add('hidden');
+  MO_TA={};if(k)docMoTa(k.link);
+  ve();
+}
+$('chonPhieu').onchange=doiPhieu;$('chonLop').onchange=ve;$('timHS').oninput=veBang;
+
+// Đọc nội dung câu hỏi từ chính trang phiếu (để hiện "câu sai nhiều nhất" kèm nội dung)
+function docMoTa(link){const f=$('khung');f.onload=()=>{try{const T=f.contentWindow.__PHIEU_TEST__;MO_TA={};
+  Object.keys(T.LAB).forEach(k=>{MO_TA[T.LAB[k]]=T.moTa?T.moTa(k):'';});veSai();}catch(e){}};f.src='../'+link+'?xem=1';}
+
+function hangDangXem(){const ph=DL.phieu.find(p=>p.ten===$('chonPhieu').value);if(!ph)return [];const l=$('chonLop').value;
+  return ph.hang.map(h=>({luc:h[0],ten:h[1],lop:h[2],diem:typeof h[3]==='number'?h[3]:parseFloat(String(h[3]).replace(',','.')),dung:h[4],ct:h[6]})).filter(h=>!l||h.lop===l);}
+function ve(){veSo();veBieuDo();veSai();veChua();veBang();}
+
+function veSo(){
+  const H=hangDangXem(),n=H.length,d=H.map(h=>h.diem).filter(x=>!isNaN(x));
+  const l=$('chonLop').value,siSo=DL.danhSach.filter(r=>!l?(timPhieu($('chonPhieu').value)||{lop:[]}).lop.includes(r[0]):r[0]===l).length;
+  const tb=d.length?d.reduce((a,b)=>a+b,0)/d.length:0,cao=d.filter(x=>x>=8).length;
+  const o=(nhan,gia,them)=>'<div class="o-so"><div class="nhan">'+nhan+'</div><div class="gia">'+gia+'</div><div class="them">'+(them||'&nbsp;')+'</div></div>';
+  $('soLieu').innerHTML=o('Đã nộp',n+(siSo?'<small> / '+siSo+'</small>':''),siSo?Math.round(n/siSo*100)+'% sĩ số':'')+
+    o('Điểm trung bình',d.length?so(tb):'–','')+
+    o('Đạt từ 8 điểm',cao+'<small> em</small>',n?Math.round(cao/n*100)+'% số bài nộp':'')+
+    o('Thấp nhất – cao nhất',d.length?so(Math.min(...d))+' – '+so(Math.max(...d)):'–','');
+}
+
+const KHOANG=[['Dưới 5',0,5],['5 – 6,5',5,7],['7 – 7,5',7,8],['8 – 9,5',8,10],['10',10,10.01]];
+function veBieuDo(){
+  const H=hangDangXem(),dem=KHOANG.map(([,a,b])=>H.filter(h=>h.diem>=a&&h.diem<b).length),max=Math.max(1,...dem);
+  $('bieuDo').setAttribute('aria-label','Phân bố điểm: '+KHOANG.map((k,i)=>k[0]+' điểm: '+dem[i]+' em').join('; '));
+  $('bieuDo').innerHTML=KHOANG.map((k,i)=>'<div class="cot" tabindex="0" data-g="'+esc(k[0]+' điểm: '+dem[i]+' em'+(H.length?' ('+Math.round(dem[i]/H.length*100)+'%)':''))+'">'+
+    '<span class="so">'+(dem[i]||'')+'</span><span class="thanh" style="height:'+(dem[i]/max*170)+'px"></span></div>').join('');
+  $('truc').innerHTML=KHOANG.map(k=>'<span>'+k[0]+'</span>').join('');
+  $('bieuDo').querySelectorAll('.cot').forEach(c=>{const hien=()=>{goiY(c);},an=()=>{const g=document.querySelector('.goi-y-bd');if(g)g.remove();};
+    c.onmouseenter=hien;c.onfocus=hien;c.onmouseleave=an;c.onblur=an;});
+}
+function goiY(c){let g=document.querySelector('.goi-y-bd');if(!g){g=document.createElement('div');g.className='goi-y-bd';$('bieuDo').parentNode.appendChild(g);}
+  const r=c.getBoundingClientRect(),p=$('bieuDo').parentNode.getBoundingClientRect(),t=c.querySelector('.thanh').getBoundingClientRect();
+  g.textContent=c.dataset.g;g.style.left=(r.left-p.left+r.width/2)+'px';g.style.top=(t.top-p.top-24)+'px';}
+
+function veSai(){
+  const H=hangDangXem(),dem={},tong={};
+  H.forEach(h=>String(h.ct||'').split(';').map(x=>x.trim()).filter(Boolean).forEach(x=>{const m=x.match(/^(.*)\s([ĐS])$/);if(!m)return;
+    tong[m[1]]=(tong[m[1]]||0)+1;if(m[2]==='S')dem[m[1]]=(dem[m[1]]||0)+1;}));
+  const ds=Object.keys(dem).map(k=>({k,s:dem[k],t:tong[k]})).sort((a,b)=>b.s/b.t-a.s/a.t||b.s-a.s).slice(0,8);
+  $('caiSai').innerHTML=ds.length?ds.map(x=>{const p=Math.round(x.s/x.t*100);
+    return '<li title="'+esc(x.k+': '+(MO_TA[x.k]||''))+'"><span class="nh">'+esc(x.k)+'</span><div><div class="nd">'+esc(MO_TA[x.k]||'')+'</div><div class="nen-thanh"><i style="width:'+p+'%"></i></div></div>'+
+      '<span class="pt">'+p+'% sai<small>'+x.s+'/'+x.t+' em</small></span></li>';}).join(''):'<div class="trong-rong">'+(H.length?'🎉 Không có câu nào bị sai!':'Chưa có bài nộp.')+'</div>';
+}
+
+function veChua(){
+  const k=timPhieu($('chonPhieu').value),l=$('chonLop').value;
+  if(!DL.danhSach.length){$('demChua').textContent='';$('chuaNop').innerHTML='<div class="ghi-chu">Muốn biết em nào chưa nộp: trong Google Sheet, tạo trang tính tên <b>DanhSach</b>, cột A = <b>Lớp</b>, cột B = <b>Họ và tên</b> (dòng 1 là tiêu đề).</div>';return;}
+  const nop=new Set(hangDangXem().map(h=>chuan(h.lop)+'|'+chuan(h.ten)));
+  const chua=DL.danhSach.filter(r=>(l?r[0]===l:(k?k.lop.includes(r[0]):true))&&!nop.has(chuan(r[0])+'|'+chuan(r[1])));
+  $('demChua').textContent='– '+chua.length+' em';
+  $('chuaNop').innerHTML=chua.length?'<div class="chua-nop">'+chua.map(r=>'<span>'+esc(r[1])+(l?'':' · '+esc(r[0]))+'</span>').join('')+'</div>':'<div class="trong-rong">✓ Tất cả đã nộp.</div>';
+}
+
+function veBang(){
+  const q=chuan($('timHS').value),H=hangDangXem().filter(h=>!q||chuan(h.ten).includes(q));
+  const c=sapXep.c,dau=sapXep.tang?1:-1;
+  H.sort((a,b)=>{const x=a[c],y=b[c];return (typeof x==='number'&&typeof y==='number'?x-y:String(x).localeCompare(String(y),'vi',{numeric:true}))*dau;});
+  $('demBang').textContent='– '+H.length+' bài';
+  $('bang').innerHTML=H.length?H.map(h=>'<tr><td>'+esc(h.ten)+'</td><td>'+esc(h.lop)+'</td><td class="d '+(h.diem>=8?'diem-cao':h.diem<5?'diem-thap':'')+'">'+so(h.diem)+'</td><td>'+esc(h.dung)+'</td><td>'+
+    esc(h.luc&&!isNaN(new Date(h.luc))?new Date(h.luc).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'}):h.luc)+'</td></tr>').join(''):'<tr><td colspan="5" class="trong-rong">Chưa có bài nộp.</td></tr>';
+}
+document.querySelectorAll('th[data-c]').forEach(th=>th.onclick=()=>{const c=th.dataset.c;sapXep={c,tang:sapXep.c===c?!sapXep.tang:c!=='diem'};
+  document.querySelectorAll('th').forEach(x=>x.removeAttribute('aria-sort'));th.setAttribute('aria-sort',sapXep.tang?'ascending':'descending');veBang();});
+</script>
+</body>
+</html>

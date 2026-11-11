@@ -16,7 +16,7 @@ h1{margin:0;font-size:28px;color:#168DCE;line-height:1.2} h2{margin:0;font-size:
 select,input{font-family:inherit;font-size:15px;padding:6px 8px;border:2px solid #9DB7CC;border-radius:8px;background:#fff;color:#222;max-width:100%}
 select:focus,input:focus{outline:3px solid #BFE3F7;border-color:#168DCE}
 select:disabled,input:disabled{opacity:1;color:#222}
-select.ok{border-color:#2E9E4F;background:#E9F7EE} select.no{border-color:#D93025;background:#FDECEC}
+select.ok,input.go-o.ok{border-color:#2E9E4F;background:#E9F7EE} select.no,input.go-o.no{border-color:#D93025;background:#FDECEC}
 select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px solid #FFD4A8}
 .info{display:flex;gap:12px;padding:12px 14px;background:#F4FAFE;border:2px dashed #168DCE;border-radius:12px}
 .info label{display:flex;flex-direction:column;gap:3px;font-size:14px;font-weight:bold;color:#168DCE}
@@ -54,7 +54,7 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 .home{font-size:14px;color:#2457A6;font-weight:bold;text-decoration:none}
 /* ô chọn ẩn: giữ đáp án cho dạng abcd và noidot */
 .an-box{position:absolute;left:50%;top:0;width:1px;height:1px;overflow:hidden}
-select.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;border:0;opacity:0;pointer-events:none}
+.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;border:0;opacity:0;pointer-events:none}
 /* Trắc nghiệm A/B/C/D */
 .c-abcd{margin:8px 0 16px}
 .c-abcd .q{display:flex;gap:8px;align-items:flex-start}
@@ -83,6 +83,27 @@ select.an{position:absolute;left:50%;top:50%;width:1px;height:1px;padding:0;bord
 .it:disabled{cursor:default}
 .noi2 svg{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:1}
 .hidden{display:none!important}
+/* Gõ đáp án */
+.go-o{font-size:16px;min-width:80px;border-style:solid;background:#FFFDF5}
+/* Chọn nhiều đáp án: ô vuông */
+.opts.nhieu .opt .L{border-radius:7px}
+.goi-y{font-size:13.5px;color:#B35A00;font-weight:bold;margin-left:4px}
+/* Kéo thả sắp xếp */
+.sx{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:8px;position:relative}
+.sx li{position:relative;display:flex;align-items:center;gap:10px;padding:8px 10px;background:#fff;border:2px solid #C9D9E6;border-radius:12px;user-select:none}
+.sx li.keo{border-color:#168DCE;background:#E8F4FC;box-shadow:0 6px 16px rgba(22,141,206,.25);z-index:2}
+.sx .tay{flex:none;width:34px;height:34px;border-radius:8px;background:#F4FAFE;border:1.5px solid #9DB7CC;color:#2457A6;font-size:18px;display:flex;align-items:center;justify-content:center;cursor:grab;touch-action:none}
+.sx .so{flex:none;width:28px;height:28px;border-radius:50%;background:#168DCE;color:#fff;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.sx .nd{flex:1;min-width:0}
+.sx .mui{flex:none;display:flex;flex-direction:column;gap:2px}
+.sx .mui button{font:inherit;font-size:12px;line-height:1;width:30px;height:20px;border:1.5px solid #9DB7CC;background:#fff;border-radius:6px;cursor:pointer;color:#2457A6}
+.sx .mui button:disabled{opacity:.35;cursor:default}
+.sx li.ok{border-color:#2E9E4F;background:#E9F7EE} .sx li.ok .so{background:#2E9E4F}
+.sx li.no{border-color:#D93025;background:#FDECEC} .sx li.no .so{background:#D93025}
+.sx.thieu{outline:3px solid #FFD4A8;outline-offset:4px;border-radius:12px}
+.sx-ok{font:inherit;font-size:14px;font-weight:bold;color:#2457A6;background:#fff;border:1.5px solid #2457A6;border-radius:999px;padding:4px 14px;margin-top:8px;cursor:pointer}
+/* Chế độ chiếu đáp án */
+.khoa.chieu{border-color:#2E9E4F;background:#E9F7EE} .khoa.chieu b{color:#1E7E3A}
 /* Đúng/Sai bằng nút */
 .c-ds .opts.ds{margin:0;flex:none;grid-template-columns:repeat(2,auto);gap:6px}
 .opts.ds .opt{min-height:38px;padding:5px 12px 5px 6px;font-weight:bold}
@@ -156,9 +177,16 @@ const P=PHIEU, $=id=>document.getElementById(id);
 const MAU=['#168DCE','#F28C28','#65B843'];
 const ANS={}, LAB={};
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const tron=a=>{const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[b[i],b[j]]=[b[j],b[i]];}return b;};
+const TRON=!!P.tron, KT={};
 function sel(k,opts,da,lab,cls){ANS[k]=da;LAB[k]=lab;
+  if(TRON&&cls!=='an'&&cls!=='nho')opts=tron(opts);
   return '<select data-k="'+k+'" class="'+(cls||'')+'" aria-label="'+esc(lab)+'"'+(cls==='an'?' tabindex="-1" aria-hidden="true"':'')+'><option value="">— chọn —</option>'+opts.map(o=>'<option>'+esc(o)+'</option>').join('')+'</select>';}
 const ABC='abcdefghijklmnopqrstuvwxyz';
+const chuan=(v,boDau)=>{let t=String(v||'').normalize('NFC').trim().toLowerCase().replace(/\s+/g,' ');
+  if(/^-?\d+([.,]\d+)?$/.test(t))t=String(parseFloat(t.replace(',','.')));
+  if(boDau)t=t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d');return t;};
+const an=(k,da,lab)=>{ANS[k]=da;LAB[k]=lab;return '<input class="an" data-k="'+k+'" tabindex="-1" aria-hidden="true" readonly>';};
 $('mon').textContent=P.mon||'';$('tieuDe').textContent=P.tieuDe||'Phiếu bài tập';document.title=P.tieuDe||'Phiếu bài tập';
 (P.lop||[]).forEach(l=>{const o=document.createElement('option');o.textContent=l;$('lop').appendChild(o);});
 $('huongDan').innerHTML='Làm xong cả '+P.bai.length+' bài, em bấm <b>Tính điểm</b>. Em chỉ được bấm <b>một lần</b>, sau đó không sửa được nữa.';
@@ -180,7 +208,11 @@ P.bai.forEach((b,bi)=>{
       const t=c.text.replace(/\{\}/g,()=>{const da=c.da[j++];k++;return sel('b'+n+'_'+ci+'_'+j,c.lc||lc,da,'B'+n+'.'+(b.cau.length>1||c.da.length>1?k:1));});
       return c.hinh?'<div class="card"><div class="hinh">'+c.hinh+'</div><div class="c-dien">'+t+'</div></div>':'<div class="c-dien">'+t+'</div>';});
     h+=b.cau.some(c=>c.hinh)?'<div class="cards">'+items.join('')+'</div>':items.join('');}
-  else if(b.loai==='abcd'){b.cau.forEach((c,ci)=>{const l=ABC[ci],o=c.lc||lc,L=o.map((_,i)=>'ABCDEFGH'[i]),k='b'+n+'_'+l;
+  else if(b.loai==='abcd'||b.loai==='nhieu'){const nh=b.loai==='nhieu';b.cau.forEach((c,ci)=>{const l=ABC[ci],o=(TRON&&!c.giuThuTu)?tron(c.lc||lc):(c.lc||lc),L=o.map((_,i)=>'ABCDEFGH'[i]),k='b'+n+'_'+l;
+    if(nh){const dung=L.filter((_,i)=>c.da.includes(o[i])).join('');
+      h+='<div class="c-abcd"><div class="q"><span class="lt">'+l+')</span><div class="grow">'+c.text.replace(/\s*\{\}\s*/g,' ').trim()+' <span class="goi-y">(Chọn tất cả đáp án đúng)</span></div></div>'+
+        '<div class="opts nhieu" data-nhieu="'+k+'" style="--cot:'+(c.cot||b.cot||2)+'" role="group" aria-label="'+esc('Câu '+l+', chọn nhiều đáp án')+'">'+an(k,dung,'B'+n+'.'+l)+
+        o.map((t,i)=>'<button type="button" class="opt" role="checkbox" aria-checked="false" data-v="'+L[i]+'"><span class="L">'+L[i]+'</span><span>'+t+'</span></button>').join('')+'</div></div>';return;}
     h+='<div class="c-abcd"><div class="q"><span class="lt">'+l+')</span><div class="grow">'+c.text.replace(/\s*\{\}\s*/g,' ').trim()+'</div></div>'+
       '<div class="opts" data-abcd="'+k+'" style="--cot:'+(c.cot||b.cot||2)+'" role="radiogroup" aria-label="'+esc('Câu '+l)+'">'+sel(k,L,L[o.indexOf(c.da)],'B'+n+'.'+l,'an')+
       o.map((t,i)=>'<button type="button" class="opt" role="radio" aria-checked="false" data-v="'+L[i]+'"><span class="L">'+L[i]+'</span><span>'+t+'</span></button>').join('')+'</div></div>';});}
@@ -188,13 +220,26 @@ P.bai.forEach((b,bi)=>{
     h+='<div class="noi2" data-noi="'+n+'"><svg aria-hidden="true"></svg><div class="an-box">'+b.cau.map((c,ci)=>sel('b'+n+'_'+ci,lc,c.da,'B'+n+'.'+(ci+1),'an')).join('')+'</div><div class="col colL">'+
       b.cau.map((c,ci)=>'<button type="button" class="it L" data-i="'+ci+'"><span>'+c.text+'</span><span class="dot"></span></button>').join('')+
       '</div><div class="col colR">'+lc.map((t,j)=>'<button type="button" class="it R" data-j="'+j+'"><span class="dot"></span><span>'+t+'</span></button>').join('')+'</div></div>';}
+  else if(b.loai==='go'){b.cau.forEach((c,ci)=>{const l=ABC[ci],m=(c.text.match(/\{\}/g)||[]).length;let j=0;
+    const t=c.text.replace(/\{\}/g,()=>{const nhan=m>1?l+(j+1):l,k='b'+n+'_'+l+(m>1?'_'+(j+1):'');
+      const ds=m===1?(Array.isArray(c.da)?c.da:[c.da]):(Array.isArray(c.da[j])?c.da[j]:[c.da[j]]);j++;
+      ANS[k]=String(ds[0]);LAB[k]='B'+n+'.'+nhan;const bd=c.boDau||b.boDau;KT[k]=v=>ds.some(a=>chuan(a,bd)===chuan(v,bd));
+      const w=Math.max(90,Math.min(320,Math.max(...ds.map(a=>String(a).length))*11+40));
+      return '<input class="go-o" data-k="'+k+'" aria-label="'+esc('Câu '+nhan)+'" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="gõ…" style="width:'+w+'px">';});
+    h+='<div class="c-chon" style="align-items:flex-start"><span class="lt">'+l+')</span><div class="grow" style="line-height:2.2">'+t+'</div></div>';});}
+  else if(b.loai==='sapxep'){let ds=b.cau.map((c,i)=>({c,i}));
+    if(ds.length>1){do{ds=tron(ds);}while(ds.every((x,i)=>x.i===i));}
+    h+='<ol class="sx" data-sx="'+n+'" aria-label="Kéo thả hoặc bấm mũi tên để sắp xếp">'+ds.map(({c,i})=>'<li data-i="'+i+'">'+an('b'+n+'_'+(i+1),String(i+1),'B'+n+'.'+(i+1))+
+      '<span class="tay" title="Giữ và kéo">☰</span><span class="so"></span><span class="nd">'+c.text+'</span><span class="mui"><button type="button" data-d="-1" aria-label="Đưa lên">▲</button><button type="button" data-d="1" aria-label="Đưa xuống">▼</button></span></li>').join('')+
+      '</ol><button type="button" class="sx-ok">✓ Em xếp xong</button>';}
   else if(b.loai==='traloi'){b.cau.forEach((c,ci)=>{const l=ABC[ci];
     h+='<div class="c-chon" style="align-items:flex-start"><span class="lt">'+l+')</span><div class="grow">'+c.text.replace('{}',()=>sel('b'+n+'_'+l,c.lc||lc,c.da,'B'+n+'.'+l))+'</div></div>';});}
   if(b.hinh) h='<div class="hinhbai"><div class="hinh'+(b.khungHinh?' hinhkhung':'')+'">'+b.hinh+'</div><div class="ds-cau">'+h+'</div></div>';
   html+='<section><div class="bai"><span class="badge" style="background:'+mau+'">Bài '+n+'</span><span class="yc">'+b.yc+'</span></div>'+h+'</section>';
 });
 $('noidung').innerHTML=html;
-const sels=[...document.querySelectorAll('select[data-k]')];
+const sels=[...document.querySelectorAll('[data-k]')];
+const dung=s=>{const k=s.dataset.k;return KT[k]?KT[k](s.value):s.value===ANS[k];};
 const BG=new Image();BG.src='../../assets/bg.jpg';
 const XEM_DA=P.xemDapAn!==false;
 const chon=(s,v)=>{s.value=v;s.dispatchEvent(new Event('change',{bubbles:true}));};
@@ -236,6 +281,42 @@ document.querySelectorAll('[data-noi]').forEach(g=>{
   [...L,...R].forEach(x=>x.addEventListener('click',()=>bam(x)));
   sL.forEach(s=>{s.addEventListener('change',ve);s.veLai=ve;});NOI.push(ve);
 });
+// Chọn nhiều đáp án: bấm để bật/tắt từng ô
+document.querySelectorAll('[data-nhieu]').forEach(g=>{
+  const s=g.querySelector('[data-k]'),bs=[...g.querySelectorAll('.opt')];
+  const ve=()=>{const k=s.dataset.k,ket=s.classList.contains('ok')||s.classList.contains('no'),v=s.value||'';
+    g.classList.toggle('thieu',s.classList.contains('thieu')&&!v);
+    bs.forEach(b=>{const on=v.includes(b.dataset.v),dd=ANS[k].includes(b.dataset.v);b.setAttribute('aria-checked',on);
+      b.className='opt'+(ket?(on?(dd?' ok':' no'):(dd&&XEM_DA?' dung':'')):(on?' on':''));});};
+  bs.forEach(b=>b.addEventListener('click',()=>{if(s.disabled)return;const v=new Set((s.value||'').split('').filter(Boolean));
+    v.has(b.dataset.v)?v.delete(b.dataset.v):v.add(b.dataset.v);chon(s,[...v].sort().join(''));}));
+  s.addEventListener('change',ve);s.veLai=ve;ve();
+});
+// Kéo thả sắp xếp: giữ nút ☰ để kéo, hoặc bấm ▲▼
+document.querySelectorAll('[data-sx]').forEach(ol=>{
+  const li=()=>[...ol.children],ins=()=>li().map(x=>x.querySelector('[data-k]'));
+  const danhSo=()=>li().forEach((x,i)=>{x.querySelector('.so').textContent=i+1;const m=x.querySelectorAll('.mui button');m[0].disabled=i===0||ins()[0].disabled;m[1].disabled=i===li().length-1||ins()[0].disabled;});
+  const ghi=()=>{li().forEach((x,i)=>{x.querySelector('[data-k]').value=String(i+1);});ins().forEach(s=>s.dispatchEvent(new Event('change',{bubbles:true})));};
+  const ve=()=>{const a=ins(),ket=a[0].classList.contains('ok')||a[0].classList.contains('no');
+    if(a.every(s=>s.value))li().sort((x,y)=>x.querySelector('[data-k]').value-y.querySelector('[data-k]').value).forEach(x=>ol.appendChild(x));
+    ol.classList.toggle('thieu',a.some(s=>s.classList.contains('thieu')&&!s.value));
+    li().forEach(x=>{const s=x.querySelector('[data-k]');x.classList.toggle('ok',ket&&s.classList.contains('ok'));x.classList.toggle('no',ket&&s.classList.contains('no'));
+      let g=x.querySelector('.dapan');if(ket&&XEM_DA&&s.classList.contains('no')&&!g){g=document.createElement('span');g.className='dapan';g.textContent='✓ vị trí '+ANS[s.dataset.k];x.querySelector('.nd').after(g);}});
+    danhSo();};
+  ins().forEach(s=>{s.addEventListener('change',()=>{if(!dangGhi)ve();});s.veLai=ve;});
+  let dangGhi=false;const ghiLai=()=>{dangGhi=true;ghi();dangGhi=false;ve();};
+  ol.addEventListener('click',e=>{const b=e.target.closest('.mui button');if(!b||b.disabled)return;const x=b.closest('li'),d=+b.dataset.d;
+    if(d<0&&x.previousElementSibling)ol.insertBefore(x,x.previousElementSibling);else if(d>0&&x.nextElementSibling)ol.insertBefore(x.nextElementSibling,x);ghiLai();b.focus();});
+  ol.nextElementSibling.addEventListener('click',()=>{if(!ins()[0].disabled)ghiLai();});
+  let keo=null;
+  ol.addEventListener('pointerdown',e=>{const t=e.target.closest('.tay');if(!t||ins()[0].disabled)return;keo=t.closest('li');keo.classList.add('keo');t.setPointerCapture(e.pointerId);e.preventDefault();});
+  ol.addEventListener('pointermove',e=>{if(!keo)return;const ds=li().filter(x=>x!==keo);
+    const sau=ds.find(x=>{const r=x.getBoundingClientRect();return e.clientY<r.top+r.height/2;});
+    if(sau)ol.insertBefore(keo,sau);else ol.appendChild(keo);danhSo();});
+  const tha=()=>{if(!keo)return;keo.classList.remove('keo');keo=null;ghiLai();};
+  ol.addEventListener('pointerup',tha);ol.addEventListener('pointercancel',tha);
+  danhSo();
+});
 function fit(){const f=$('fit'),p=$('paper');const s=Math.min(1,f.clientWidth/794);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';NOI.forEach(v=>v());}
 window.addEventListener('resize',fit);window.addEventListener('load',fit);fit();
 let curCanvas=null,curName='KetQua',done=false;
@@ -248,7 +329,7 @@ function nhanXet(d){
 function tinh(){
   let thieu=0;sels.forEach(s=>{if(!s.value)thieu++;});
   const ten=$('ten').value.trim(),lop=$('lop').value;let d=0;const det=[];
-  sels.forEach(s=>{const ok=s.value===ANS[s.dataset.k];if(ok)d++;det.push(LAB[s.dataset.k]+' '+(ok?'Đ':'S'));});
+  sels.forEach(s=>{const ok=dung(s);if(ok)d++;det.push(LAB[s.dataset.k]+' '+(ok?'Đ':'S'));});
   const n=sels.length,diem=Math.round(d/n*20)/2,diemTxt=String(diem).replace('.',','),nx=nhanXet(diem);
   const chiTiet='Đúng '+d+'/'+n+' câu. '+nx+'\nChi tiết: '+det.join('; ');
   let url='';
@@ -259,13 +340,25 @@ function tinh(){
 }
 // Gửi điểm ngầm (không mở tab mới). Không đọc được phản hồi từ Google (no-cors),
 // nên chỉ báo lỗi khi mạng hỏng; luôn để sẵn link dự phòng.
+// Hàng chờ gửi điểm: mạng yếu thì lưu lại trên máy và tự gửi lại khi có mạng (cả khi mở trang khác của kho)
+const CHO='coThuyTin_choGui';
+const docCho=()=>{try{return JSON.parse(localStorage.getItem(CHO)||'[]');}catch(e){return [];}};
+const ghiCho=a=>{try{a.length?localStorage.setItem(CHO,JSON.stringify(a)):localStorage.removeItem(CHO);}catch(e){}};
+const guiMot=url=>fetch(url,{method:'GET',mode:'no-cors',cache:'no-store'});
+let urlCuaEm='',henGui=null;
+function baoGui(trangThai){const s=$('sent'),link=' <a href="'+esc(urlCuaEm)+'" target="_blank" rel="noopener">Gửi điểm cho cô</a>';
+  if(trangThai==='ok'){s.className='sent ok';s.innerHTML='✓ Điểm của em đã được gửi cho cô.<div style="font-weight:normal;font-size:14px;margin-top:4px">Nếu cô nhắc chưa nhận được bài, em bấm vào đây:'+link+'</div>';}
+  else{s.className='sent loi';s.innerHTML='📶 Mạng đang yếu nên <b>chưa gửi được điểm</b>. Máy sẽ <b>tự gửi lại</b> khi có mạng – em đừng xóa lịch sử trình duyệt nhé.<div style="font-weight:normal;font-size:14px;margin-top:4px">Hoặc em bấm vào đây để gửi ngay:'+link+'</div>';}}
+function guiLaiCho(){const a=docCho();if(!a.length){clearInterval(henGui);henGui=null;return;}
+  a.forEach(x=>guiMot(x.url).then(()=>{ghiCho(docCho().filter(y=>y.url!==x.url));if(x.url===urlCuaEm)baoGui('ok');},()=>{}));}
 function guiDiem(url){
-  const s=$('sent'),link=' <a href="'+esc(url)+'" target="_blank" rel="noopener">Gửi điểm cho cô</a>';
-  if(!url){s.className='sent';s.textContent='Phiếu này chưa cài nơi nhận điểm. Em chụp ảnh kết quả gửi cô nhé.';return;}
-  fetch(url,{method:'GET',mode:'no-cors',cache:'no-store'})
-    .then(()=>{s.className='sent ok';s.innerHTML='✓ Điểm của em đã được gửi cho cô.<div style="font-weight:normal;font-size:14px;margin-top:4px">Nếu cô nhắc chưa nhận được bài, em bấm vào đây:'+link+'</div>';})
-    .catch(()=>{s.className='sent loi';s.innerHTML='Chưa gửi được điểm (mạng có vấn đề). Em bấm vào đây để gửi:'+link;});
+  urlCuaEm=url;
+  if(!url){const s=$('sent');s.className='sent';s.textContent='Phiếu này chưa cài nơi nhận điểm. Em chụp ảnh kết quả gửi cô nhé.';return;}
+  guiMot(url).then(()=>baoGui('ok'),()=>{const a=docCho();if(!a.some(x=>x.url===url))a.push({url,luc:Date.now()});ghiCho(a);baoGui('cho');
+    if(!henGui)henGui=setInterval(guiLaiCho,15000);});
 }
+window.addEventListener('online',guiLaiCho);
+if(docCho().length){guiLaiCho();henGui=setInterval(guiLaiCho,15000);}
 function wrap(ctx,t,w){const out=[];let line='';for(const word of t.split(' ')){const tt=line?line+' '+word:word;if(ctx.measureText(tt).width>w&&line){out.push(line);line=word;}else line=tt;}if(line)out.push(line);return out;}
 function rr(x,X,Y,w,h,r,fill,stroke,lw){x.beginPath();x.roundRect(X,Y,w,h,r);if(fill){x.fillStyle=fill;x.fill();}if(stroke){x.strokeStyle=stroke;x.lineWidth=lw||2;x.stroke();}}
 function veAnh(r){
@@ -302,8 +395,8 @@ $('check').addEventListener('click',()=>{
   if(!r.du){const m=[];if(!r.ten)m.push('nhập họ tên');if(!r.lop)m.push('chọn lớp');if(r.thieu)m.push('làm '+r.thieu+' ô còn trống (tô màu cam)');
     $('thieuMsg').textContent='Em chưa '+m.join(', ')+'. Hãy làm đủ rồi bấm Tính điểm nhé.';(document.querySelector('.thieu:not(select.an)')||$('check')).scrollIntoView({behavior:'smooth',block:'center'});return;}
   $('thieuMsg').textContent='';done=true;luuTen(r.ten,r.lop);
-  sels.forEach(s=>s.classList.add(s.value===ANS[s.dataset.k]?'ok':'no'));
-  document.querySelectorAll('select,input,.opt,.it').forEach(e=>e.disabled=true);
+  sels.forEach(s=>s.classList.add(dung(s)?'ok':'no'));
+  document.querySelectorAll('select,input,.opt,.it,.sx button').forEach(e=>e.disabled=true);
   sels.forEach(s=>{if(s.veLai)s.veLai();});
   const a=$('check');a.textContent='Đã tính điểm';a.classList.add('done');a.disabled=true;
   guiDiem(r.url);luuDaLam(r);xemLai(r);
@@ -393,7 +486,30 @@ function luuTen(ten,lop){try{localStorage.setItem(KEY,JSON.stringify({ten,lop,ng
   $('khongPhai').onclick=()=>{try{localStorage.removeItem(KEY);}catch(e){}$('ten').value='';$('lop').value='';$('nho').classList.add('hidden');$('ten').focus();fit();};
 })();
 xoaBai();tienDo();fit();
-window.__PHIEU_TEST__={ANS,sels,tinh};
+// Mô tả ngắn từng câu (trang tổng hợp điểm của cô dùng để hiện "câu sai nhiều nhất")
+function moTa(k){const s=document.querySelector('[data-k="'+k+'"]');if(!s)return '';
+  const kh=s.closest('.c-abcd,.c-chon,.c-ds,.c-noi,.c-dien,.card,li')||(s.closest('.noi2')&&s.closest('.noi2').querySelectorAll('.it.L')[sels.filter(x=>x.closest('.noi2')===s.closest('.noi2')).indexOf(s)]);
+  if(!kh)return '';const c=kh.cloneNode(true);c.querySelectorAll('select,input,.opts,.mui,.tay,.so,.dot,.lt,.goi-y').forEach(x=>x.remove());
+  c.querySelectorAll('img').forEach(i=>i.replaceWith('[hình]'));let t=c.textContent.replace(/\s+/g,' ').trim();
+  if(kh.matches('.it,.c-noi'))t+=' → '+ANS[k];return t.slice(0,110);}
+// Chế độ chiếu đáp án: ...?dapan=1, chỉ mở trên máy cô đã đăng nhập trang Tổng hợp điểm
+(function(){if(!/[?&]dapan=1/.test(location.search))return;
+  let gv=null;try{gv=JSON.parse(localStorage.getItem('coThuyTin_gv')||'null');}catch(e){}
+  khoa=true;$('check').disabled=true;$('check').classList.add('done');
+  const bao=(h,cls)=>{$('khoa').className='khoa '+(cls||'');$('khoa').innerHTML=h;};
+  if(!gv||!gv.url||!gv.mk){bao('<b>Chế độ chiếu đáp án</b>Chỉ dành cho cô. Cô đăng nhập ở trang <a href="../../giaovien/">Tổng hợp điểm</a> trên máy này trước nhé.');return;}
+  bao('<b>Đang kiểm tra…</b>');
+  fetch(gv.url+'?action=kiemtra&mk='+encodeURIComponent(gv.mk)).then(r=>r.json()).then(d=>{
+    if(!d||!d.ok)throw 0;
+    sels.forEach(s=>{s.value=ANS[s.dataset.k];s.classList.add('ok');s.dispatchEvent(new Event('change',{bubbles:true}));});
+    document.querySelectorAll('select,input,.opt,.it,.sx button').forEach(e=>e.disabled=true);
+    sels.forEach(s=>{if(s.veLai)s.veLai();});
+    bao('<b>🎯 Chế độ chiếu đáp án</b>Mọi ô đã điền sẵn đáp án đúng để cô chữa bài trên lớp.','chieu');
+    $('tdChu').textContent='Chế độ chiếu đáp án';$('check').parentNode.classList.add('hidden');document.querySelector('.info').classList.add('hidden');NOI.forEach(v=>v());fit();
+  }).catch(()=>bao('<b>Không mở được chế độ chiếu đáp án</b>Mật khẩu đã đổi hoặc mạng có vấn đề. Cô đăng nhập lại ở trang <a href="../../giaovien/">Tổng hợp điểm</a>.'));
+})();
+document.addEventListener('input',tienDo);
+window.__PHIEU_TEST__={ANS,sels,tinh,moTa,LAB};
 })();
 </script>
 </body></html>

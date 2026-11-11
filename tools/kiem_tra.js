@@ -14,10 +14,13 @@ const MAU = {
   __mau_mo__: { dong: ng(3) }, __mau_dong__: { dong: ng(-2) }, __mau_chua__: { mo: ng(2) },
 };
 function phieuMau(slug) {
-  const P = { slug, web: { khoi: 'khoi-3', ngay: ng(0), ...MAU[slug] }, ma: 'Phiếu mẫu', mon: 'MẪU', tieuDe: 'Phiếu mẫu', lop: ['3A1'],
+  const P = { slug, tron: true, web: { khoi: 'khoi-3', ngay: ng(0), ...MAU[slug] }, ma: 'Phiếu mẫu', mon: 'MẪU', tieuDe: 'Phiếu mẫu', lop: ['3A1'],
     guiB: 'https://script.google.com/macros/s/MAU/exec', bai: [
       { loai: 'ds', yc: 'Đúng hay sai?', cau: [{ text: '1 + 1 = 2', da: 'Đ' }, { text: '2 + 2 = 5', da: 'S' }] },
       { loai: 'abcd', yc: 'Chọn đáp án.', cau: [{ text: '3 × 3 = ?', lc: ['6', '9', '12', '33'], da: '9' }] },
+      { loai: 'go', yc: 'Gõ đáp án.', cau: [{ text: '5 + 2 = {}', da: '7' }, { text: 'Thủ đô Việt Nam là {}', da: ['Hà Nội', 'Ha Noi'] }] },
+      { loai: 'nhieu', yc: 'Chọn tất cả.', cau: [{ text: 'Số chẵn là', lc: ['2', '3', '4', '5'], da: ['2', '4'] }] },
+      { loai: 'sapxep', yc: 'Sắp xếp từ bé đến lớn.', cau: [{ text: 'một' }, { text: 'hai' }, { text: 'ba' }] },
       { loai: 'dien', yc: 'Điền.', lc: ['đỏ', 'xanh', 'vàng'], cau: [{ text: 'Lá cây màu {}.', da: ['xanh'] }, { text: 'Mặt trời màu {}.', da: ['đỏ'] }] }] };
   return ENGINE.replace('/*__PHIEU__*/', 'const PHIEU = ' + JSON.stringify(P) + ';');
 }
@@ -142,6 +145,43 @@ const server = http.createServer((req, res) => {
     await page.close();
   }
 
+  // Trang tổng hợp điểm của cô (Sheet giả lập)
+  {
+    console.log('Trang tổng hợp điểm');
+    const ph = ds.find(p => p.link.startsWith('phieu/') && p.ma);
+    const L = ph.lop;
+    const hang = [['2026-11-11T02:00:00Z', 'An', L[0], 10, '23/23', '', 'B1.1 Đ; B1.2 Đ; B2.1 Đ'],
+      ['2026-11-11T02:05:00Z', 'Bình', L[0], 6.5, '15/23', '', 'B1.1 S; B1.2 Đ; B2.1 S'],
+      ['2026-11-11T02:07:00Z', 'Chi', L[1] || L[0], 4, '9/23', '', 'B1.1 S; B1.2 S; B2.1 Đ']];
+    const gia = { ok: true, luc: '2026-11-11T03:00:00Z', phieu: [{ ten: ph.ma, hang }], danhSach: [[L[0], 'An'], [L[0], 'Bình'], [L[0], 'Dũng']] };
+    const page = await browser.newPage({ viewport: { width: 1100, height: 1300 } });
+    const loiGV = []; page.on('pageerror', e => loiGV.push(e.message));
+    await page.route(/action=tonghop/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(r.request().url().includes('mk=dung') ? gia : { ok: false, loi: 'Sai mật khẩu.' }) }));
+    await page.goto(base + 'giaovien/');
+    await page.fill('#mk', 'sai'); await page.click('#nutDN'); await page.waitForTimeout(400);
+    bao((await page.locator('#dnLoi').textContent()).includes('Sai mật khẩu'), 'sai mật khẩu → báo lỗi, không hiện điểm');
+    await page.fill('#mk', 'dung'); await page.click('#nutDN'); await page.waitForTimeout(1500);
+    const tiles = await page.locator('.o-so .gia').allTextContents();
+    bao(await page.locator('#noiDung').isVisible() && tiles[0].replace(/\s/g, '').startsWith('3'), 'đúng mật khẩu → hiện tổng hợp (đã nộp: ' + tiles[0].replace(/\s+/g, ' ') + ')');
+    bao(tiles[1] === '6,83', 'điểm trung bình (10 + 6,5 + 4)/3 = ' + tiles[1]);
+    const cot = await page.locator('.cot .so').allTextContents();
+    bao(cot.join('|') === '1|1|||1', 'biểu đồ phân bố: dưới 5 = 1, 5–6,5 = 1, 10 = 1');
+    const sai1 = await page.locator('#caiSai li').first().textContent();
+    bao(sai1.includes('B1.1') && sai1.includes('67% sai'), 'câu sai nhiều nhất: B1.1 – 67% sai');
+    bao((await page.locator('#caiSai .nd').first().textContent()).length > 3, 'câu sai có kèm nội dung câu hỏi: "' + (await page.locator('#caiSai .nd').first().textContent()).slice(0, 50) + '"');
+    await page.selectOption('#chonLop', L[0]); await page.waitForTimeout(200);
+    bao((await page.locator('#chuaNop').textContent()).includes('Dũng') && !(await page.locator('#chuaNop').textContent()).includes('Bình'), 'lọc lớp ' + L[0] + ' → "chưa nộp" có Dũng, không có Bình');
+    bao((await page.getAttribute('#chieuDA', 'href')).endsWith('?dapan=1'), 'nút "Chiếu đáp án" mở phiếu ở chế độ chiếu đáp án');
+    await page.selectOption('#chonLop', '');
+    await page.screenshot({ path: path.join(OUT, '_giao_vien.png'), fullPage: true });
+    await page.reload(); await page.waitForTimeout(1200);
+    bao(await page.locator('#noiDung').isVisible(), 'tải lại trang → vẫn đăng nhập (máy cô)');
+    await page.click('#dangXuat'); await page.waitForTimeout(400);
+    bao(await page.locator('#dangNhap').isVisible() && await page.evaluate(() => !localStorage.getItem('coThuyTin_gv')), 'Đăng xuất → xóa đăng nhập trên máy');
+    bao(loiGV.length === 0, 'trang tổng hợp không lỗi' + (loiGV.length ? ': ' + loiGV.join('; ') : ''));
+    await page.close();
+  }
+
   // Phiếu mẫu: Đúng/Sai bằng nút, xem lại bài, pháo giấy, phiếu đóng/chưa mở
   {
     console.log('Phiếu mẫu (Đúng/Sai, xem lại bài, hạn làm bài)');
@@ -155,6 +195,28 @@ const server = http.createServer((req, res) => {
     await ds1.locator('.opt[data-v="Đ"]').click();
     bao(await ds1.locator('select').inputValue() === 'Đ', 'Đúng/Sai: đổi sang "Đúng" → ghi nhận Đ');
     bao((await page.locator('#huongDan').textContent()).includes('Hạn nộp'), 'phiếu còn hạn → ghi "Hạn nộp" dưới nút Tính điểm');
+    // Gõ đáp án: không phân biệt hoa thường, chấp nhận nhiều cách viết
+    await page.locator('.go-o').nth(1).fill('  ha   NOI ');
+    bao(await page.evaluate(() => { const T = window.__PHIEU_TEST__, s = document.querySelectorAll('.go-o')[1]; return T.tinh().det.find(x => x.startsWith(T.LAB[s.dataset.k] + ' ')).endsWith('Đ'); }), 'gõ "  ha   NOI " được chấm đúng (Hà Nội / Ha Noi)');
+    // Chọn nhiều đáp án
+    const nh = page.locator('[data-nhieu]').first();
+    const lcs = await nh.locator('.opt').allTextContents();
+    for (let i = 0; i < lcs.length; i++) if (/[24]$/.test(lcs[i].trim())) await nh.locator('.opt').nth(i).click();
+    bao(await page.evaluate(() => { const s = document.querySelector('[data-nhieu] [data-k]'); return s.value === window.__PHIEU_TEST__.ANS[s.dataset.k]; }), 'chọn nhiều: bấm 2 và 4 → đúng');
+    // Kéo thả sắp xếp: dùng mũi tên rồi kéo bằng chuột
+    const ol = page.locator('[data-sx]').first();
+    const thuTu = async () => (await ol.locator('.nd').allTextContents()).join(',');
+    const truoc = await thuTu();
+    await ol.locator('li').nth(1).locator('button[data-d="-1"]').click();
+    bao((await thuTu()) !== truoc, 'sắp xếp: bấm ▲ đổi chỗ (' + truoc + ' → ' + (await thuTu()) + ')');
+    const tay = ol.locator('li').first().locator('.tay'), cuoi = await ol.locator('li').last().boundingBox();
+    const bb = await tay.boundingBox();
+    await page.mouse.move(bb.x + bb.width / 2, bb.y + bb.height / 2); await page.mouse.down();
+    await page.mouse.move(bb.x + bb.width / 2, cuoi.y + cuoi.height - 2, { steps: 8 }); await page.mouse.up();
+    bao((await ol.locator('[data-k]').evaluateAll(a => a.every(s => s.value))), 'sắp xếp: kéo bằng chuột → ghi nhận thứ tự (' + (await thuTu()) + ')');
+    // Trộn phương án: đáp án vẫn chấm đúng
+    bao(await page.evaluate(() => { const T = window.__PHIEU_TEST__; return T.sels.every(s => typeof T.ANS[s.dataset.k] === 'string'); }), 'trộn phương án: mọi câu vẫn có đáp án');
+    bao(await page.evaluate(() => window.__PHIEU_TEST__.moTa('b1_a').includes('1 + 1')), 'mô tả câu cho trang tổng hợp: "' + await page.evaluate(() => window.__PHIEU_TEST__.moTa('b1_a')) + '"');
     await page.evaluate(() => { const T = window.__PHIEU_TEST__; T.sels.forEach((s, i) => { s.value = i === T.sels.length - 1 ? 'vàng' : T.ANS[s.dataset.k]; s.dispatchEvent(new Event('change', { bubbles: true })); });
       document.getElementById('ten').value = 'Mẫu'; document.getElementById('lop').value = '3A1'; });
     await page.locator('#check').click();
@@ -163,6 +225,33 @@ const server = http.createServer((req, res) => {
     bao(await page.locator('#phaoGiay').count() === 1, 'điểm ≥ 8 → có pháo giấy');
     await page.screenshot({ path: path.join(OUT, '_mau_xem_lai.png'), fullPage: true });
     bao(await page.evaluate(() => !!JSON.parse(localStorage.getItem('coThuyTin_daLam') || '{}').__mau_mo__), 'lưu "đã làm" cho trang chủ');
+    // Mất mạng khi nộp → lưu hàng chờ, có mạng lại thì tự gửi
+    {
+      const p2 = await browser.newPage({ viewport: { width: 900, height: 1000 } });
+      let lan = 0; const daNhan = [];
+      await p2.route(/script\.google\.com/, r => { lan++; if (lan === 1) return r.abort('internetdisconnected'); daNhan.push(r.request().url()); r.fulfill({ status: 200, body: 'ok' }); });
+      await p2.goto(base + 'phieu/__mau_mo__/'); await p2.waitForLoadState('networkidle');
+      await p2.evaluate(() => { const T = window.__PHIEU_TEST__; T.sels.forEach(s => { s.value = T.ANS[s.dataset.k]; s.dispatchEvent(new Event('change', { bubbles: true })); });
+        document.getElementById('ten').value = 'Mất Mạng'; document.getElementById('lop').value = '3A1'; });
+      await p2.locator('#check').click(); await p2.waitForTimeout(500);
+      bao((await p2.locator('#sent').textContent()).includes('tự gửi lại') && await p2.evaluate(() => JSON.parse(localStorage.getItem('coThuyTin_choGui') || '[]').length === 1), 'mất mạng khi nộp → báo "tự gửi lại", lưu hàng chờ');
+      await p2.evaluate(() => window.dispatchEvent(new Event('online'))); await p2.waitForTimeout(500);
+      bao(daNhan.length === 1 && (await p2.locator('#sent').textContent()).includes('đã được gửi') && await p2.evaluate(() => !localStorage.getItem('coThuyTin_choGui')), 'có mạng lại → tự gửi, báo "đã được gửi", xóa hàng chờ');
+      await p2.screenshot({ path: path.join(OUT, '_mau_day_du.png'), fullPage: true });
+      // Chế độ chiếu đáp án
+      await p2.route(/action=kiemtra/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: r.request().url().includes('mk=dung') }) }));
+      await p2.goto(base + 'phieu/__mau_mo__/?dapan=1'); await p2.waitForLoadState('networkidle');
+      bao((await p2.locator('#khoa').textContent()).includes('Chỉ dành cho cô'), 'chiếu đáp án khi chưa đăng nhập → không hiện đáp án');
+      await p2.evaluate(() => localStorage.setItem('coThuyTin_gv', JSON.stringify({ url: 'https://script.google.com/macros/s/MAU/exec', mk: 'dung' })));
+      await p2.reload(); await p2.waitForTimeout(800);
+      const daDien = await p2.evaluate(() => window.__PHIEU_TEST__.sels.every(s => s.value === window.__PHIEU_TEST__.ANS[s.dataset.k]));
+      bao(daDien && (await p2.locator('#khoa').textContent()).includes('Chế độ chiếu đáp án') && await p2.locator('#check').isHidden(), 'chiếu đáp án (cô đã đăng nhập) → điền sẵn mọi đáp án, ẩn nút Tính điểm');
+      await p2.screenshot({ path: path.join(OUT, '_mau_chieu_dap_an.png'), fullPage: true });
+      await p2.evaluate(() => localStorage.setItem('coThuyTin_gv', JSON.stringify({ url: 'https://script.google.com/macros/s/MAU/exec', mk: 'sai' })));
+      await p2.reload(); await p2.waitForTimeout(800);
+      bao((await p2.locator('#khoa').textContent()).includes('Không mở được'), 'sai mật khẩu → không hiện đáp án');
+      await p2.close();
+    }
     for (const [slug, chu] of [['__mau_dong__', 'đã đóng'], ['__mau_chua__', 'chưa mở']]) {
       await page.goto(base + 'phieu/' + slug + '/'); await page.waitForLoadState('networkidle');
       const t = (await page.locator('#khoa').textContent()).toLowerCase();

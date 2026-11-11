@@ -38,9 +38,24 @@ def kiem_tra(slug, P):
         assert w["mo"] <= w["dong"], f"{slug}: ngày mở phải trước ngày đóng"
     assert P.get("lop"), f"{slug}: thiếu danh sách lớp"
     assert P.get("guiB") or P.get("guiA"), f"{slug}: thiếu nơi nhận điểm (guiB hoặc guiA)"
+    LOAI = {"chon", "noi", "noidot", "ds", "thutu", "dien", "traloi", "abcd", "nhieu", "go", "sapxep"}
     for i, b in enumerate(P["bai"], 1):
+        assert b.get("loai") in LOAI, f"{slug}: Bài {i}: loai '{b.get('loai')}' không có; dùng một trong {sorted(LOAI)}"
+        if b["loai"] == "sapxep":
+            assert len(b["cau"]) >= 2, f"{slug}: Bài {i}: sắp xếp cần ít nhất 2 mục"
+            continue
         for j, c in enumerate(b["cau"], 1):
+            if b["loai"] == "go":
+                m = c["text"].count("{}")
+                assert m >= 1, f"{slug}: Bài {i} câu {j}: thiếu chỗ gõ {{}}"
+                assert m == 1 or (isinstance(c["da"], list) and len(c["da"]) == m), f"{slug}: Bài {i} câu {j}: số chỗ gõ khác số đáp án"
+                continue
             lc = c.get("lc") or b.get("lc") or []
+            if b["loai"] == "nhieu":
+                assert isinstance(c["da"], list) and c["da"], f"{slug}: Bài {i} câu {j}: chọn nhiều cần da là danh sách"
+                for da in c["da"]:
+                    assert da in lc, f"{slug}: Bài {i} câu {j}: đáp án '{da}' không có trong lựa chọn"
+                continue
             if b["loai"] == "ds":
                 lc = ["Đ", "S"]
             if b["loai"] == "thutu":
@@ -67,12 +82,12 @@ def main():
         ghi(os.path.join(thu_muc, "index.html"), engine.replace("/*__PHIEU__*/", js))
         w = P["web"]
         # Số ô chấm điểm (mỗi chỗ trống của dạng dien là 1 câu) và thời gian làm ước tính
-        so_o = sum(sum(c["text"].count("{}") for c in b["cau"]) if b["loai"] == "dien" else len(b["cau"]) for b in P["bai"])
+        so_o = sum(sum(c["text"].count("{}") for c in b["cau"]) if b["loai"] in ("dien", "go") else len(b["cau"]) for b in P["bai"])
         phut = max(5, -(-so_o * 30 // 60 // 5) * 5)
         # Một phiếu có thể hiện ở nhiều khối: mỗi khối một dòng trong phieu.json
         for k in (w["khoi"] if isinstance(w["khoi"], list) else [w["khoi"]]):
             ds.append({"khoi": k, "mon": w.get("mon") or P.get("mon", ""), "ten": w.get("ten") or P["tieuDe"],
-                       "lop": P["lop"], "ngay": w["ngay"], "soCau": so_o, "phut": phut, "link": f"phieu/{slug}/",
+                       "lop": P["lop"], "ngay": w["ngay"], "soCau": so_o, "phut": phut, "link": f"phieu/{slug}/", "ma": P.get("ma") or P["tieuDe"],
                        **{k: w[k] for k in ("mo", "dong") if w.get(k)}})
         so_cau = sum(len(b["cau"]) for b in P["bai"])
         print(f"OK  phieu/{slug}/  ({len(P['bai'])} bài, {so_cau} mục)")
