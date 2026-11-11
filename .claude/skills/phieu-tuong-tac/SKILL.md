@@ -21,7 +21,7 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
   - `tools/build_phieu.py`: dựng trang phiếu, `phieu.json`, bảng README.
   - `tools/kiem_tra.js`: làm thử mọi phiếu.
   - `tools/NhanDiem.gs`: Apps Script nhận điểm + trả số liệu cho trang tổng hợp (có mật khẩu); `tools/kiem_tra_gs.js` chạy thử nó.
-  - `giaovien/index.html`: trang tổng hợp điểm cho cô (đăng nhập bằng `MAT_KHAU`).
+  - `giaovien/index.html`: trang tổng hợp điểm cho cô (đăng nhập bằng `MAT_KHAU`). Chọn thời gian: Tuần này / Tuần trước / Tháng này / Tháng trước / Đến nay / Tùy chọn (lọc theo giờ nộp). Tab "Theo từng phiếu" (phân bố điểm, câu sai nhiều nhất, chưa nộp) và tab "Tổng hợp nhiều phiếu" (lượt nộp, biểu đồ theo ngày/tuần, bảng theo lớp, bảng theo học sinh: đã làm x/y phiếu được giao, điểm TB/cao/thấp, phiếu chưa làm; tải CSV). "Phiếu được giao" trong khoảng = phiếu có `web.ngay` nằm trong khoảng.
   - `assets/`: ảnh khung dùng chung.
 - Không sửa tay `phieu.json`, `phieu/*/index.html` hay bảng trong README, vì các file này tự sinh.
 

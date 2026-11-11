@@ -197,6 +197,47 @@ const server = http.createServer((req, res) => {
     await page.close();
   }
 
+  // Tổng hợp theo tuần / tháng / khoảng thời gian (Sheet giả lập, giờ nộp rải ra)
+  {
+    console.log('Tổng hợp theo thời gian');
+    const hai = [...new Map(ds.filter(p => p.link.startsWith('phieu/') && p.lop.includes('5A1')).map(p => [p.link, p])).values()].slice(0, 2);
+    const bay = Date.now(), t = ms => new Date(ms).toISOString();
+    const d0 = new Date(); const thu2 = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() - ((d0.getDay() + 6) % 7));
+    const tuanTruoc = t(thu2.getTime() - 3 * 864e5 + 10 * 36e5), cach40 = t(bay - 40 * 864e5), vuaXong = t(bay - 6e4);
+    const gia = { ok: true, luc: t(bay), danhSach: [['5A1', 'An'], ['5A1', 'Bình'], ['5A1', 'Cường']], phieu: [
+      { ten: hai[0].ma, hang: [[vuaXong, 'An', '5A1', 9, '', '', 'B1.1 Đ'], [tuanTruoc, 'Bình', '5A1', 6, '', '', 'B1.1 S'], [cach40, 'Cường', '5A1', 4, '', '', 'B1.1 S']] },
+      { ten: hai[1].ma, hang: [[vuaXong, 'Bình', '5A1', 10, '', '', 'B1.1 Đ']] }] };
+    const page = await browser.newPage({ viewport: { width: 1100, height: 1300 }, acceptDownloads: true });
+    const loi = []; page.on('pageerror', e => loi.push(e.message));
+    await page.route(/action=tonghop/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(gia) }));
+    await page.goto(base + 'giaovien/'); await page.fill('#mk', 'x'); await page.click('#nutDN'); await page.waitForTimeout(1200);
+    await page.click('.tab-xem[data-xem="th"]'); await page.waitForTimeout(300);
+    const luot = async () => (await page.locator('#thSo .o-so .gia').first().textContent()).trim();
+    bao(await page.locator('#xemTH').isVisible() && await page.locator('#xemPhieu').isHidden(), 'tab "Tổng hợp nhiều phiếu" → hiện bảng tổng hợp');
+    await page.click('.chip[data-tg="tatca"]'); bao(await luot() === '4', 'Đến nay: 4 lượt nộp');
+    await page.click('.chip[data-tg="tuan"]'); bao(await luot() === '2', 'Tuần này: 2 lượt nộp (' + await page.locator('#nhanTG').textContent() + ')');
+    await page.click('.chip[data-tg="tuantruoc"]'); bao(await luot() === '1', 'Tuần trước: 1 lượt nộp');
+    await page.click('.chip[data-tg="tuy"]');
+    const ymd = ms => { const d = new Date(ms); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+    await page.fill('#tuNgay', ymd(bay - 50 * 864e5)); await page.fill('#denNgay', ymd(bay - 30 * 864e5)); await page.dispatchEvent('#denNgay', 'change');
+    bao(await luot() === '1' && (await page.locator('#thHS').textContent()).includes('Cường'), 'Tùy chọn (50–30 ngày trước): 1 lượt, em Cường');
+    await page.click('.chip[data-tg="tatca"]'); await page.selectOption('#chonLop', '5A1'); await page.waitForTimeout(200);
+    const dongAn = await page.locator('#thHS tr', { hasText: 'An' }).first().textContent();
+    bao(dongAn.includes('1 / 2') && dongAn.includes(hai[1].ten), 'em An: đã làm 1/2 phiếu, ghi rõ phiếu chưa làm');
+    bao((await page.locator('#thLop').textContent()).includes('5A1'), 'bảng theo lớp có 5A1');
+    bao(await page.locator('#thBD .cot').count() > 1, 'biểu đồ số bài nộp có ' + await page.locator('#thBD .cot').count() + ' cột (' + await page.locator('#thBDTieuDe').textContent() + ')');
+    const [tai] = await Promise.all([page.waitForEvent('download'), page.click('#taiCSV')]);
+    const noi = fs.readFileSync(await tai.path(), 'utf8');
+    bao(tai.suggestedFilename().endsWith('.csv') && noi.includes('Phiếu chưa làm') && noi.includes('"Cường"'), 'tải Excel (CSV): ' + tai.suggestedFilename());
+    await page.screenshot({ path: path.join(OUT, '_tong_hop_thoi_gian.png'), fullPage: true });
+    await page.click('.tab-xem[data-xem="phieu"]'); await page.click('.chip[data-tg="tuan"]'); await page.waitForTimeout(200);
+    const p0 = await page.inputValue('#chonPhieu');
+    const soTuan = gia.phieu.find(x => x.ten === p0).hang.filter(h => h[0] === vuaXong).length;
+    bao(await page.locator('#bang tr').count() === (soTuan || 1), 'tab "Theo từng phiếu" + Tuần này: bảng điểm chỉ còn ' + soTuan + ' bài');
+    bao(loi.length === 0, 'không lỗi' + (loi.length ? ': ' + loi.join('; ') : ''));
+    await page.close();
+  }
+
   // Phiếu mẫu: Đúng/Sai bằng nút, xem lại bài, pháo giấy, phiếu đóng/chưa mở
   {
     console.log('Phiếu mẫu (Đúng/Sai, xem lại bài, hạn làm bài)');
