@@ -2,6 +2,29 @@
   {
     "khoi": "khoi-9",
     "mon": "Tin học 9",
+    "ten": "Dự án Vibe Coding: Phiếu cá nhân",
+    "lop": [
+      "9A1",
+      "9A2",
+      "9A3",
+      "9A4",
+      "9A5",
+      "9A6",
+      "9A7",
+      "9A8",
+      "9A9",
+      "9A10"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 26,
+    "phut": 15,
+    "link": "phieu/tin9-du-an-vibe-coding/",
+    "ma": "Tin 9 - Vibe Coding Phiếu cá nhân",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-9",
+    "mon": "Tin học 9",
     "ten": "Bảng tính 6: Ôn tập tổng hợp",
     "lop": [
       "9A1",

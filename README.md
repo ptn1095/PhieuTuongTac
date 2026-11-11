@@ -32,6 +32,7 @@ giaovien/             Trang tổng hợp điểm cho cô (cần mật khẩu)
 <!-- DS_PHIEU -->
 | Khối | Môn | Tên phiếu | Lớp | Ngày mở | Hạn nộp | Link |
 |---|---|---|---|---|---|---|
+| Khối 9 | Tin học 9 | Dự án Vibe Coding: Phiếu cá nhân | 9A1, 9A2, 9A3, 9A4, 9A5, 9A6, 9A7, 9A8, 9A9, 9A10 | Chưa giao | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/tin9-du-an-vibe-coding/) |
 | Khối 9 | Tin học 9 | Bảng tính 6: Ôn tập tổng hợp | 9A1, 9A2, 9A3, 9A4, 9A5, 9A6, 9A7, 9A8, 9A9, 9A10 | Chưa giao | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/tin9-bang-tinh-6-on-tap/) |
 | Khối 9 | Tin học 9 | Bảng tính 5: Hàm IF | 9A1, 9A2, 9A3, 9A4, 9A5, 9A6, 9A7, 9A8, 9A9, 9A10 | Chưa giao | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/tin9-bang-tinh-5-if/) |
 | Khối 9 | Tin học 9 | Bảng tính 4: Hàm SUMIF | 9A1, 9A2, 9A3, 9A4, 9A5, 9A6, 9A7, 9A8, 9A9, 9A10 | Chưa giao | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/tin9-bang-tinh-4-sumif/) |
