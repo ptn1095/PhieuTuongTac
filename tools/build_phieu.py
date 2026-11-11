@@ -76,7 +76,7 @@ def main():
 
     # Bảng trong README
     def lop_txt(lop):
-        return f"{lop[0]} – {lop[-1]}" if len(lop) > 3 else ", ".join(lop)
+        return ", ".join(lop)
     dong = ["| Khối | Môn | Tên phiếu | Lớp | Ngày | Link |", "|---|---|---|---|---|---|"]
     gop = {}
     for p in ds:
