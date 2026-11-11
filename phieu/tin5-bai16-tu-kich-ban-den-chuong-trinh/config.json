@@ -1,0 +1,143 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 16: Từ kịch bản đến chương trình",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 16 Từ kịch bản đến CT",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 16: Từ kịch bản đến chương trình",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Đọc kịch bản trò chơi và chọn đáp án đúng.<br><div style=\"border:2px dashed #168DCE;border-radius:10px;padding:8px 12px;background:#f3f9fd\"><b>Kịch bản trò chơi “Mèo bắt bóng”</b><br>• Quả bóng di chuyển liên tục trên sân khấu, chạm cạnh thì bật lại.<br>• Mèo luôn di chuyển theo con trỏ chuột.<br>• Người chơi điều khiển chuột để mèo chạm vào bóng.<br>• Mỗi lần mèo chạm bóng, người chơi được cộng 1 điểm.</div>",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Trò chơi có mấy nhân vật?",
+     "lc": [
+      "2 (Mèo và Bóng)",
+      "1 (Mèo)",
+      "1 (Bóng)",
+      "3 (Mèo, Bóng, Chuột)"
+     ],
+     "da": "2 (Mèo và Bóng)"
+    },
+    {
+     "text": "Cần tạo biến nào để lưu kết quả của người chơi?",
+     "lc": [
+      "Biến điểm",
+      "Biến tên",
+      "Biến tuổi",
+      "Không cần biến"
+     ],
+     "da": "Biến điểm"
+    },
+    {
+     "text": "“Bóng di chuyển liên tục” nên dùng cấu trúc nào?",
+     "lc": [
+      "Lặp liên tục (forever)",
+      "Rẽ nhánh dạng đủ",
+      "Tuần tự, không lặp",
+      "Lặp 1 lần"
+     ],
+     "da": "Lặp liên tục (forever)"
+    },
+    {
+     "text": "“Mỗi lần mèo chạm bóng thì cộng 1 điểm” cần dùng cấu trúc nào bên trong vòng lặp?",
+     "lc": [
+      "Rẽ nhánh (if … then)",
+      "Lặp 10 lần",
+      "Chỉ dùng tuần tự",
+      "Không cần lệnh nào"
+     ],
+     "da": "Rẽ nhánh (if … then)"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>khối lệnh</b> với <b>hoạt động</b> trong kịch bản mà nó thực hiện.",
+   "lc": [
+    "Bóng di chuyển liên tục, chạm cạnh thì bật lại",
+    "Mèo đi theo con trỏ chuột",
+    "Mèo chạm bóng thì được cộng 1 điểm",
+    "Đầu trò chơi, điểm bằng 0"
+   ],
+   "cau": [
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjMiIGhlaWdodD0iMTQwIiB2aWV3Qm94PSIwIDAgMTYzIDE0MCIgc3R5bGU9InZlcnRpY2FsLWFsaWduOm1pZGRsZTttYXgtd2lkdGg6MTAwJSI+PHBhdGggZD0iTTIsOCBRMiw0IDYsNCBMMTIuMCw0LjAgTDE3LjAsOS4wIEwyOS4wLDkuMCBMMzQuMCw0LjAgTDk4LDQgUTEwMiw0IDEwMiw4IEwxMDIsMzQgUTEwMiwzOCA5OCwzOCBMNTAsMzggTDQ1LDQzIEwzMyw0MyBMMjgsMzggTDIyLDM4IFExOCwzOCAxOCw0MiBMMTgsMTA0IFExOCwxMDggMjIsMTA4IEw5OCwxMDggUTEwMiwxMDggMTAyLDExMiBMMTAyLDEyNiBRMTAyLDEzMCA5OCwxMzAgTDYsMTMwIFEyLDEzMCAyLDEyNiBaIiBmaWxsPSIjRkZBQjE5IiBzdHJva2U9IiNDRjhCMTciLz48dGV4dCB4PSIxMi4wIiB5PSIyNS4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPmZvcmV2ZXI8L3RleHQ+PHBhdGggZD0iTTE4LDQyIFExOCwzOCAyMiwzOCBMMjguMCwzOC4wIEwzMy4wLDQzLjAgTDQ1LjAsNDMuMCBMNTAuMCwzOC4wIEwxMzEuNywzOCBRMTM1LjcsMzggMTM1LjcsNDIgTDEzNS43LDcwIFExMzUuNyw3NCAxMzEuNyw3NCBMNTAuMCw3NC4wIEw0NS4wLDc5LjAgTDMzLjAsNzkuMCBMMjguMCw3NC4wIEwyMiw3NCBRMTgsNzQgMTgsNzAgWiIgZmlsbD0iIzRDOTdGRiIgc3Ryb2tlPSIjMzM3M0NDIi8+PHRleHQgeD0iMjguMCIgeT0iNjAuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5tb3ZlPC90ZXh0PjxyZWN0IHg9IjU5LjgiIHk9IjQ1LjAiIHdpZHRoPSIyNy40IiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMzM3M0NDIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IHg9IjczLjUiIHk9IjYwLjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1NzVFNzUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+MTA8L3RleHQ+PHRleHQgeD0iOTIuMiIgeT0iNjAuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5zdGVwczwvdGV4dD48cGF0aCBkPSJNMTgsNzggUTE4LDc0IDIyLDc0IEwyOC4wLDc0LjAgTDMzLjAsNzkuMCBMNDUuMCw3OS4wIEw1MC4wLDc0LjAgTDE1NC42MDAwMDAwMDAwMDAwMiw3NCBRMTU4LjYwMDAwMDAwMDAwMDAyLDc0IDE1OC42MDAwMDAwMDAwMDAwMiw3OCBMMTU4LjYwMDAwMDAwMDAwMDAyLDEwNCBRMTU4LjYwMDAwMDAwMDAwMDAyLDEwOCAxNTQuNjAwMDAwMDAwMDAwMDIsMTA4IEw1MC4wLDEwOC4wIEw0NS4wLDExMy4wIEwzMy4wLDExMy4wIEwyOC4wLDEwOC4wIEwyMiwxMDggUTE4LDEwOCAxOCwxMDQgWiIgZmlsbD0iIzRDOTdGRiIgc3Ryb2tlPSIjMzM3M0NDIi8+PHRleHQgeD0iMjguMCIgeT0iOTUuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5pZiBvbiBlZGdlLCBib3VuY2U8L3RleHQ+PC9zdmc+\" width=\"163\" height=\"140\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Bóng di chuyển liên tục, chạm cạnh thì bật lại"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxOTQiIGhlaWdodD0iMTA2IiB2aWV3Qm94PSIwIDAgMTk0IDEwNiIgc3R5bGU9InZlcnRpY2FsLWFsaWduOm1pZGRsZTttYXgtd2lkdGg6MTAwJSI+PHBhdGggZD0iTTIsOCBRMiw0IDYsNCBMMTIuMCw0LjAgTDE3LjAsOS4wIEwyOS4wLDkuMCBMMzQuMCw0LjAgTDk4LDQgUTEwMiw0IDEwMiw4IEwxMDIsMzQgUTEwMiwzOCA5OCwzOCBMNTAsMzggTDQ1LDQzIEwzMyw0MyBMMjgsMzggTDIyLDM4IFExOCwzOCAxOCw0MiBMMTgsNzAgUTE4LDc0IDIyLDc0IEw5OCw3NCBRMTAyLDc0IDEwMiw3OCBMMTAyLDkyIFExMDIsOTYgOTgsOTYgTDYsOTYgUTIsOTYgMiw5MiBaIiBmaWxsPSIjRkZBQjE5IiBzdHJva2U9IiNDRjhCMTciLz48dGV4dCB4PSIxMi4wIiB5PSIyNS4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPmZvcmV2ZXI8L3RleHQ+PHBhdGggZD0iTTE4LDQyIFExOCwzOCAyMiwzOCBMMjguMCwzOC4wIEwzMy4wLDQzLjAgTDQ1LjAsNDMuMCBMNTAuMCwzOC4wIEwxODUuNjAwMDAwMDAwMDAwMDIsMzggUTE4OS42MDAwMDAwMDAwMDAwMiwzOCAxODkuNjAwMDAwMDAwMDAwMDIsNDIgTDE4OS42MDAwMDAwMDAwMDAwMiw3MCBRMTg5LjYwMDAwMDAwMDAwMDAyLDc0IDE4NS42MDAwMDAwMDAwMDAwMiw3NCBMNTAuMCw3NC4wIEw0NS4wLDc5LjAgTDMzLjAsNzkuMCBMMjguMCw3NC4wIEwyMiw3NCBRMTgsNzQgMTgsNzAgWiIgZmlsbD0iIzRDOTdGRiIgc3Ryb2tlPSIjMzM3M0NDIi8+PHRleHQgeD0iMjguMCIgeT0iNjAuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5nbyB0bzwvdGV4dD48cmVjdCB4PSI2Ni41IiB5PSI0NS4wIiB3aWR0aD0iMTEzLjEiIGhlaWdodD0iMjIiIHJ4PSI0IiBmaWxsPSIjMzM3M0NDIiBzdHJva2U9IiMzMzczQ0MiLz48dGV4dCB4PSI3My41IiB5PSI2MC4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPm1vdXNlLXBvaW50ZXIg4pa+PC90ZXh0Pjwvc3ZnPg==\" width=\"194\" height=\"106\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Mèo đi theo con trỏ chuột"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNDMiIGhlaWdodD0iMjA2IiB2aWV3Qm94PSIwIDAgMjQzIDIwNiIgc3R5bGU9InZlcnRpY2FsLWFsaWduOm1pZGRsZTttYXgtd2lkdGg6MTAwJSI+PHBhdGggZD0iTTIsOCBRMiw0IDYsNCBMMTIuMCw0LjAgTDE3LjAsOS4wIEwyOS4wLDkuMCBMMzQuMCw0LjAgTDk4LDQgUTEwMiw0IDEwMiw4IEwxMDIsMzQgUTEwMiwzOCA5OCwzOCBMNTAsMzggTDQ1LDQzIEwzMyw0MyBMMjgsMzggTDIyLDM4IFExOCwzOCAxOCw0MiBMMTgsMTcwIFExOCwxNzQgMjIsMTc0IEw5OCwxNzQgUTEwMiwxNzQgMTAyLDE3OCBMMTAyLDE5MiBRMTAyLDE5NiA5OCwxOTYgTDYsMTk2IFEyLDE5NiAyLDE5MiBaIiBmaWxsPSIjRkZBQjE5IiBzdHJva2U9IiNDRjhCMTciLz48dGV4dCB4PSIxMi4wIiB5PSIyNS4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPmZvcmV2ZXI8L3RleHQ+PHBhdGggZD0iTTE4LDQyIFExOCwzOCAyMiwzOCBMMjguMCwzOC4wIEwzMy4wLDQzLjAgTDQ1LjAsNDMuMCBMNTAuMCwzOC4wIEwyMzUuMjk5OTk5OTk5OTk5OTgsMzggUTIzOS4yOTk5OTk5OTk5OTk5OCwzOCAyMzkuMjk5OTk5OTk5OTk5OTgsNDIgTDIzOS4yOTk5OTk5OTk5OTk5OCw3NiBRMjM5LjI5OTk5OTk5OTk5OTk4LDgwIDIzNS4yOTk5OTk5OTk5OTk5OCw4MCBMNjYsODAgTDYxLDg1IEw0OSw4NSBMNDQsODAgTDM4LDgwIFEzNCw4MCAzNCw4NCBMMzQsMTQ4IFEzNCwxNTIgMzgsMTUyIEwyMzUuMjk5OTk5OTk5OTk5OTgsMTUyIFEyMzkuMjk5OTk5OTk5OTk5OTgsMTUyIDIzOS4yOTk5OTk5OTk5OTk5OCwxNTYgTDIzOS4yOTk5OTk5OTk5OTk5OCwxNzAgUTIzOS4yOTk5OTk5OTk5OTk5OCwxNzQgMjM1LjI5OTk5OTk5OTk5OTk4LDE3NCBMNTAuMCwxNzQuMCBMNDUuMCwxNzkuMCBMMzMuMCwxNzkuMCBMMjguMCwxNzQuMCBMMjIsMTc0IFExOCwxNzQgMTgsMTcwIFoiIGZpbGw9IiNGRkFCMTkiIHN0cm9rZT0iI0NGOEIxNyIvPjx0ZXh0IHg9IjI4LjAiIHk9IjYzLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+aWY8L3RleHQ+PHBhdGggZD0iTTQ2LjQsNTkuMCBMNjAuNCw0NS4wIEwxODMuNSw0NS4wIEwxOTcuNSw1OS4wIEwxODMuNSw3My4wIEw2MC40LDczLjAgWiIgZmlsbD0iIzVDQjFENiIgc3Ryb2tlPSIjMkU4RUI4Ii8+PHRleHQgeD0iNjAuNCIgeT0iNjMuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj50b3VjaGluZzwvdGV4dD48cmVjdCB4PSIxMTkuMCIgeT0iNDguMCIgd2lkdGg9IjUyLjgiIGhlaWdodD0iMjIiIHJ4PSI0IiBmaWxsPSIjMkU4RUI4IiBzdHJva2U9IiMyRThFQjgiLz48dGV4dCB4PSIxMjYuMCIgeT0iNjMuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5CYWxsIOKWvjwvdGV4dD48dGV4dCB4PSIxNzYuOCIgeT0iNjMuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj4/PC90ZXh0Pjx0ZXh0IHg9IjIwMi41IiB5PSI2My4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPnRoZW48L3RleHQ+PHBhdGggZD0iTTM0LDg0IFEzNCw4MCAzOCw4MCBMNDQuMCw4MC4wIEw0OS4wLDg1LjAgTDYxLjAsODUuMCBMNjYuMCw4MC4wIEwxOTUuNCw4MCBRMTk5LjQsODAgMTk5LjQsODQgTDE5OS40LDExMiBRMTk5LjQsMTE2IDE5NS40LDExNiBMNjYuMCwxMTYuMCBMNjEuMCwxMjEuMCBMNDkuMCwxMjEuMCBMNDQuMCwxMTYuMCBMMzgsMTE2IFEzNCwxMTYgMzQsMTEyIFoiIGZpbGw9IiNGRjhDMUEiIHN0cm9rZT0iI0RCNkUwMCIvPjx0ZXh0IHg9IjQ0LjAiIHk9IjEwMi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPmNoYW5nZTwvdGV4dD48cmVjdCB4PSI4OS4yIiB5PSI4Ny4wIiB3aWR0aD0iNTIuOCIgaGVpZ2h0PSIyMiIgcng9IjQiIGZpbGw9IiNEQjZFMDAiIHN0cm9rZT0iI0RCNkUwMCIvPjx0ZXh0IHg9Ijk2LjIiIHk9IjEwMi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPsSRaeG7g20g4pa+PC90ZXh0Pjx0ZXh0IHg9IjE0Ny4wIiB5PSIxMDIuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5ieTwvdGV4dD48cmVjdCB4PSIxNjUuNCIgeT0iODcuMCIgd2lkdGg9IjI0LjAiIGhlaWdodD0iMjIiIHJ4PSIxMS4wIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNEQjZFMDAiIHN0cm9rZS13aWR0aD0iMC44Ii8+PHRleHQgeD0iMTc3LjQiIHk9IjEwMi4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNTc1RTc1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPjE8L3RleHQ+PHBhdGggZD0iTTM0LDEyMCBRMzQsMTE2IDM4LDExNiBMNDQuMCwxMTYuMCBMNDkuMCwxMjEuMCBMNjEuMCwxMjEuMCBMNjYuMCwxMTYuMCBMMTU3LjcsMTE2IFExNjEuNywxMTYgMTYxLjcsMTIwIEwxNjEuNywxNDggUTE2MS43LDE1MiAxNTcuNywxNTIgTDY2LjAsMTUyLjAgTDYxLjAsMTU3LjAgTDQ5LjAsMTU3LjAgTDQ0LjAsMTUyLjAgTDM4LDE1MiBRMzQsMTUyIDM0LDE0OCBaIiBmaWxsPSIjRkZBQjE5IiBzdHJva2U9IiNDRjhCMTciLz48dGV4dCB4PSI0NC4wIiB5PSIxMzguMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj53YWl0PC90ZXh0PjxyZWN0IHg9Ijc1LjgiIHk9IjEyMy4wIiB3aWR0aD0iMjQuMCIgaGVpZ2h0PSIyMiIgcng9IjExLjAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI0NGOEIxNyIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCB4PSI4Ny44IiB5PSIxMzguMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzU3NUU3NSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj4xPC90ZXh0Pjx0ZXh0IHg9IjEwNC44IiB5PSIxMzguMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5zZWNvbmRzPC90ZXh0Pjwvc3ZnPg==\" width=\"243\" height=\"206\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Mèo chạm bóng thì được cộng 1 điểm"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTEiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAxNTEgNTAiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDggUTIsNCA2LDQgTDEyLjAsNC4wIEwxNy4wLDkuMCBMMjkuMCw5LjAgTDM0LjAsNC4wIEwxNDMuMyw0IFExNDcuMyw0IDE0Ny4zLDggTDE0Ny4zLDM2IFExNDcuMyw0MCAxNDMuMyw0MCBMMzQuMCw0MC4wIEwyOS4wLDQ1LjAgTDE3LjAsNDUuMCBMMTIuMCw0MC4wIEw2LDQwIFEyLDQwIDIsMzYgWiIgZmlsbD0iI0ZGOEMxQSIgc3Ryb2tlPSIjREI2RTAwIi8+PHRleHQgeD0iMTIuMCIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5zZXQ8L3RleHQ+PHJlY3QgeD0iMzcuMSIgeT0iMTEuMCIgd2lkdGg9IjUyLjgiIGhlaWdodD0iMjIiIHJ4PSI0IiBmaWxsPSIjREI2RTAwIiBzdHJva2U9IiNEQjZFMDAiLz48dGV4dCB4PSI0NC4xIiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPsSRaeG7g20g4pa+PC90ZXh0Pjx0ZXh0IHg9Ijk0LjkiIHk9IjI2LjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+dG88L3RleHQ+PHJlY3QgeD0iMTEzLjMiIHk9IjExLjAiIHdpZHRoPSIyNC4wIiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjREI2RTAwIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IHg9IjEyNS4zIiB5PSIyNi4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNTc1RTc1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPjA8L3RleHQ+PC9zdmc+\" width=\"151\" height=\"50\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Đầu trò chơi, điểm bằng 0"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các bước <b>từ kịch bản đến chương trình</b> theo đúng thứ tự.",
+   "cau": [
+    {
+     "text": "Viết kịch bản: xác định các nhân vật và hoạt động của từng nhân vật."
+    },
+    {
+     "text": "Xác định cấu trúc (tuần tự, lặp, rẽ nhánh) phù hợp với mỗi hoạt động."
+    },
+    {
+     "text": "Chọn các lệnh Scratch phù hợp với từng cấu trúc."
+    },
+    {
+     "text": "Ghép các lệnh thành chương trình cho từng nhân vật."
+    },
+    {
+     "text": "Chạy thử chương trình, phát hiện lỗi và sửa lỗi."
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Kịch bản mô tả các nhân vật và hoạt động của nhân vật trong chương trình.",
+     "da": "Đ"
+    },
+    {
+     "text": "Có kịch bản rõ ràng giúp em tạo chương trình dễ dàng hơn.",
+     "da": "Đ"
+    },
+    {
+     "text": "Chương trình đã chạy được thì không cần chạy thử và kiểm tra lại.",
+     "da": "S"
+    },
+    {
+     "text": "Trong trò chơi “Mèo bắt bóng”, mỗi nhân vật có thể có chương trình riêng của mình.",
+     "da": "Đ"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,177 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 6 Định dạng kí tự",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>nút lệnh</b> (trong dải lệnh Home) với <b>tác dụng</b> của nó.",
+   "lc": [
+    "Chữ đậm",
+    "Chữ nghiêng",
+    "Chữ gạch chân",
+    "Đổi màu chữ",
+    "Chọn cỡ chữ",
+    "Chọn phông chữ"
+   ],
+   "cau": [
+    {
+     "text": "<span style=\"display:inline-block;min-width:22px;padding:1px 6px;border:1px solid #999;border-radius:4px;background:#f4f4f4;text-align:center;font-family:Times New Roman,serif;font-size:17px;\"><b>B</b></span>",
+     "da": "Chữ đậm"
+    },
+    {
+     "text": "<span style=\"display:inline-block;min-width:22px;padding:1px 6px;border:1px solid #999;border-radius:4px;background:#f4f4f4;text-align:center;font-family:Times New Roman,serif;font-size:17px;\"><i>I</i></span>",
+     "da": "Chữ nghiêng"
+    },
+    {
+     "text": "<span style=\"display:inline-block;min-width:22px;padding:1px 6px;border:1px solid #999;border-radius:4px;background:#f4f4f4;text-align:center;font-family:Times New Roman,serif;font-size:17px;\"><u>U</u></span>",
+     "da": "Chữ gạch chân"
+    },
+    {
+     "text": "<span style=\"display:inline-block;min-width:22px;padding:1px 6px;border:1px solid #999;border-radius:4px;background:#f4f4f4;text-align:center;font-family:Times New Roman,serif;font-size:17px;\"><span style=\"border-bottom:4px solid #e00\">A</span></span> ▾",
+     "da": "Đổi màu chữ"
+    },
+    {
+     "text": "<span style=\"display:inline-block;min-width:22px;padding:1px 6px;border:1px solid #999;border-radius:4px;background:#f4f4f4;text-align:center;font-family:Times New Roman,serif;font-size:17px;font-family:Arial;font-size:13px;min-width:34px\">11</span> ▾",
+     "da": "Chọn cỡ chữ"
+    },
+    {
+     "text": "<span style=\"display:inline-block;min-width:22px;padding:1px 6px;border:1px solid #999;border-radius:4px;background:#f4f4f4;text-align:center;font-family:Times New Roman,serif;font-size:17px;font-size:13px\">Times New Roman</span> ▾",
+     "da": "Chọn phông chữ"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn tổ hợp phím phù hợp điền vào chỗ trống.",
+   "bank": [
+    "Ctrl + B",
+    "Ctrl + I",
+    "Ctrl + U"
+   ],
+   "lc": [
+    "Ctrl + B",
+    "Ctrl + I",
+    "Ctrl + U"
+   ],
+   "cau": [
+    {
+     "text": "a) Muốn chữ <b>đậm</b>, em nhấn {}.",
+     "da": [
+      "Ctrl + B"
+     ]
+    },
+    {
+     "text": "b) Muốn chữ <i>nghiêng</i>, em nhấn {}.",
+     "da": [
+      "Ctrl + I"
+     ]
+    },
+    {
+     "text": "c) Muốn chữ <u>gạch chân</u>, em nhấn {}.",
+     "da": [
+      "Ctrl + U"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Trước khi định dạng một đoạn chữ, em cần làm gì đầu tiên?",
+     "cot": 1,
+     "lc": [
+      "Chọn (bôi đen) phần chữ cần định dạng.",
+      "Lưu văn bản.",
+      "Tắt máy tính.",
+      "Chèn hình ảnh."
+     ],
+     "da": "Chọn (bôi đen) phần chữ cần định dạng."
+    },
+    {
+     "text": "Kiểu bố trí để chữ <b>bao quanh hình theo khung vuông</b> là:",
+     "lc": [
+      "Square",
+      "Behind Text",
+      "In Line with Text",
+      "In Front of Text"
+     ],
+     "da": "Square"
+    },
+    {
+     "text": "Kiểu bố trí để hình ảnh <b>nằm trên một dòng như một kí tự</b> là:",
+     "lc": [
+      "In Line with Text",
+      "Square",
+      "Tight",
+      "Behind Text"
+     ],
+     "da": "In Line with Text"
+    },
+    {
+     "text": "Kiểu bố trí để hình ảnh <b>nằm phía sau chữ</b> (làm nền) là:",
+     "lc": [
+      "Behind Text",
+      "In Front of Text",
+      "Square",
+      "Tight"
+     ],
+     "da": "Behind Text"
+    },
+    {
+     "text": "Để mở bảng chọn các kiểu bố trí hình ảnh, em chọn hình ảnh rồi nháy vào nút:",
+     "lc": [
+      "Layout Options",
+      "Save",
+      "Paste",
+      "Font Color"
+     ],
+     "da": "Layout Options"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Tiêu đề nên được định dạng chữ to, đậm để nổi bật.",
+     "da": "Đ"
+    },
+    {
+     "text": "Một văn bản nên dùng thật nhiều phông chữ và màu chữ khác nhau cho đẹp.",
+     "da": "S"
+    },
+    {
+     "text": "Các nút lệnh định dạng kí tự nằm trong dải lệnh Home.",
+     "da": "Đ"
+    },
+    {
+     "text": "Bố trí hình ảnh hợp lí giúp văn bản dễ đọc và đẹp hơn.",
+     "da": "Đ"
+    }
+   ]
+  }
+ ]
+}

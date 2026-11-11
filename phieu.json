@@ -642,6 +642,25 @@
     "chuaGiao": true
   },
   {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 7: Thực hành soạn thảo văn bản",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 21,
+    "phut": 15,
+    "link": "phieu/tin5-bai7-thuc-hanh-soan-thao/",
+    "ma": "Tin 5 - Bài 7 Thực hành soạn thảo",
+    "chuaGiao": true
+  },
+  {
     "khoi": "khoi-3",
     "mon": "Tin học 3",
     "ten": "Bài 7: Sắp xếp để dễ tìm",
@@ -658,6 +677,25 @@
     "phut": 10,
     "link": "phieu/tin3-bai7-sap-xep-de-tim/",
     "ma": "Tin 3 - Bài 7 Sắp xếp",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 6: Định dạng kí tự và bố trí hình ảnh trong văn bản",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 18,
+    "phut": 10,
+    "link": "phieu/tin5-bai6-dinh-dang-ki-tu-hinh-anh/",
+    "ma": "Tin 5 - Bài 6 Định dạng kí tự",
     "chuaGiao": true
   },
   {
@@ -680,6 +718,63 @@
     "chuaGiao": true
   },
   {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 5: Bản quyền nội dung thông tin",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 14,
+    "phut": 10,
+    "link": "phieu/tin5-bai5-ban-quyen-noi-dung/",
+    "ma": "Tin 5 - Bài 5 Bản quyền",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 4: Cây thư mục",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 21,
+    "phut": 15,
+    "link": "phieu/tin5-bai4-cay-thu-muc/",
+    "ma": "Tin 5 - Bài 4 Cây thư mục",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 16: Từ kịch bản đến chương trình",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 17,
+    "phut": 10,
+    "link": "phieu/tin5-bai16-tu-kich-ban-den-chuong-trinh/",
+    "ma": "Tin 5 - Bài 16 Từ kịch bản đến CT",
+    "chuaGiao": true
+  },
+  {
     "khoi": "khoi-3",
     "mon": "Tin học 3",
     "ten": "Bài 16: Công việc của em và sự trợ giúp của máy tính",
@@ -696,6 +791,25 @@
     "phut": 10,
     "link": "phieu/tin3-bai16-may-tinh-tro-giup/",
     "ma": "Tin 3 - Bài 16 Máy tính trợ giúp",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 15: Sử dụng biểu thức trong chương trình",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 16,
+    "phut": 10,
+    "link": "phieu/tin5-bai15-su-dung-bieu-thuc/",
+    "ma": "Tin 5 - Bài 15 Sử dụng biểu thức",
     "chuaGiao": true
   },
   {
@@ -718,6 +832,25 @@
     "chuaGiao": true
   },
   {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 14: Sử dụng biến trong chương trình",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 15,
+    "phut": 10,
+    "link": "phieu/tin5-bai14-su-dung-bien/",
+    "ma": "Tin 5 - Bài 14 Sử dụng biến",
+    "chuaGiao": true
+  },
+  {
     "khoi": "khoi-3",
     "mon": "Tin học 3",
     "ten": "Bài 14: Em thực hiện công việc như thế nào",
@@ -734,6 +867,82 @@
     "phut": 10,
     "link": "phieu/tin3-bai14-thuc-hien-cong-viec/",
     "ma": "Tin 3 - Bài 14 Thực hiện công việc",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 13: Cấu trúc rẽ nhánh",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 16,
+    "phut": 10,
+    "link": "phieu/tin5-bai13-cau-truc-re-nhanh/",
+    "ma": "Tin 5 - Bài 13 Cấu trúc rẽ nhánh",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 12: Thực hành sử dụng lệnh lặp",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 14,
+    "phut": 10,
+    "link": "phieu/tin5-bai12-thuc-hanh-lenh-lap/",
+    "ma": "Tin 5 - Bài 12 Thực hành lệnh lặp",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 11: Cấu trúc lặp",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 16,
+    "phut": 10,
+    "link": "phieu/tin5-bai11-cau-truc-lap/",
+    "ma": "Tin 5 - Bài 11 Cấu trúc lặp",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Tin học 5",
+    "ten": "Bài 10: Cấu trúc tuần tự",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-11",
+    "soCau": 11,
+    "phut": 10,
+    "link": "phieu/tin5-bai10-cau-truc-tuan-tu/",
+    "ma": "Tin 5 - Bài 10 Cấu trúc tuần tự",
     "chuaGiao": true
   },
   {

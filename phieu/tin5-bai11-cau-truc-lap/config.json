@@ -1,0 +1,146 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 11: Cấu trúc lặp",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 11 Cấu trúc lặp",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 11: Cấu trúc lặp",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>khối lệnh lặp</b> với <b>tên gọi</b> của nó.",
+   "lc": [
+    "Lặp với số lần biết trước",
+    "Lặp liên tục (mãi mãi)",
+    "Lặp cho đến khi điều kiện đúng"
+   ],
+   "cau": [
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDYiIGhlaWdodD0iOTIiIHZpZXdCb3g9IjAgMCAxMDYgOTIiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDggUTIsNCA2LDQgTDEyLjAsNC4wIEwxNy4wLDkuMCBMMjkuMCw5LjAgTDM0LjAsNC4wIEw5OCw0IFExMDIsNCAxMDIsOCBMMTAyLDM2IFExMDIsNDAgOTgsNDAgTDUwLDQwIEw0NSw0NSBMMzMsNDUgTDI4LDQwIEwyMiw0MCBRMTgsNDAgMTgsNDQgTDE4LDU2IFExOCw2MCAyMiw2MCBMOTgsNjAgUTEwMiw2MCAxMDIsNjQgTDEwMiw3OCBRMTAyLDgyIDk4LDgyIEwzNC4wLDgyLjAgTDI5LjAsODcuMCBMMTcuMCw4Ny4wIEwxMi4wLDgyLjAgTDYsODIgUTIsODIgMiw3OCBaIiBmaWxsPSIjRkZBQjE5IiBzdHJva2U9IiNDRjhCMTciLz48dGV4dCB4PSIxMi4wIiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPnJlcGVhdDwvdGV4dD48cmVjdCB4PSI1Ny4yIiB5PSIxMS4wIiB3aWR0aD0iMjcuNCIgaGVpZ2h0PSIyMiIgcng9IjExLjAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI0NGOEIxNyIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCB4PSI3MC45IiB5PSIyNi4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNTc1RTc1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPjEwPC90ZXh0Pjwvc3ZnPg==\" width=\"106\" height=\"92\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Lặp với số lần biết trước"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDYiIGhlaWdodD0iOTAiIHZpZXdCb3g9IjAgMCAxMDYgOTAiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDggUTIsNCA2LDQgTDEyLjAsNC4wIEwxNy4wLDkuMCBMMjkuMCw5LjAgTDM0LjAsNC4wIEw5OCw0IFExMDIsNCAxMDIsOCBMMTAyLDM0IFExMDIsMzggOTgsMzggTDUwLDM4IEw0NSw0MyBMMzMsNDMgTDI4LDM4IEwyMiwzOCBRMTgsMzggMTgsNDIgTDE4LDU0IFExOCw1OCAyMiw1OCBMOTgsNTggUTEwMiw1OCAxMDIsNjIgTDEwMiw3NiBRMTAyLDgwIDk4LDgwIEw2LDgwIFEyLDgwIDIsNzYgWiIgZmlsbD0iI0ZGQUIxOSIgc3Ryb2tlPSIjQ0Y4QjE3Ii8+PHRleHQgeD0iMTIuMCIgeT0iMjUuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5mb3JldmVyPC90ZXh0Pjwvc3ZnPg==\" width=\"106\" height=\"90\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Lặp liên tục (mãi mãi)"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMzkiIGhlaWdodD0iOTIiIHZpZXdCb3g9IjAgMCAxMzkgOTIiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDggUTIsNCA2LDQgTDEyLjAsNC4wIEwxNy4wLDkuMCBMMjkuMCw5LjAgTDM0LjAsNC4wIEwxMzEuNCw0IFExMzUuNCw0IDEzNS40LDggTDEzNS40LDM2IFExMzUuNCw0MCAxMzEuNCw0MCBMNTAsNDAgTDQ1LDQ1IEwzMyw0NSBMMjgsNDAgTDIyLDQwIFExOCw0MCAxOCw0NCBMMTgsNTYgUTE4LDYwIDIyLDYwIEwxMzEuNCw2MCBRMTM1LjQsNjAgMTM1LjQsNjQgTDEzNS40LDc4IFExMzUuNCw4MiAxMzEuNCw4MiBMMzQuMCw4Mi4wIEwyOS4wLDg3LjAgTDE3LjAsODcuMCBMMTIuMCw4Mi4wIEw2LDgyIFEyLDgyIDIsNzggWiIgZmlsbD0iI0ZGQUIxOSIgc3Ryb2tlPSIjQ0Y4QjE3Ii8+PHRleHQgeD0iMTIuMCIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5yZXBlYXQgdW50aWw8L3RleHQ+PHBhdGggZD0iTTk3LjQsMjIuMCBMMTA4LjQsMTEuMCBMMTE0LjQsMTEuMCBMMTI1LjQsMjIuMCBMMTE0LjQsMzMuMCBMMTA4LjQsMzMuMCBaIiBmaWxsPSIjQ0Y4QjE3IiBzdHJva2U9IiNDRjhCMTciLz48dGV4dCB4PSIxMTEuNCIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj48L3RleHQ+PC9zdmc+\" width=\"139\" height=\"92\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Lặp cho đến khi điều kiện đúng"
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Mỗi hoạt động dưới đây thuộc kiểu lặp nào? Chọn trong ô ▾.",
+   "lc": [
+    "Lặp với số lần biết trước",
+    "Lặp liên tục",
+    "Lặp có điều kiện"
+   ],
+   "cau": [
+    {
+     "text": "Em chạy đúng 5 vòng quanh sân trường.",
+     "da": "Lặp với số lần biết trước"
+    },
+    {
+     "text": "Em chải răng nhiều lần cho đến khi răng sạch thì dừng.",
+     "da": "Lặp có điều kiện"
+    },
+    {
+     "text": "Kim giây của đồng hồ cứ quay mãi, không dừng.",
+     "da": "Lặp liên tục"
+    },
+    {
+     "text": "Em đọc bài nhiều lần cho đến khi thuộc bài thì dừng.",
+     "da": "Lặp có điều kiện"
+    },
+    {
+     "text": "Em nhảy dây đúng 20 cái.",
+     "da": "Lặp với số lần biết trước"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Quan sát chương trình và chọn đáp án đúng.",
+   "hinh": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"166\" height=\"192\" viewBox=\"0 0 166 192\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,20 C22,2 62,2 82,16 L119.69999999999999,16 Q123.69999999999999,16 123.69999999999999,20 L123.69999999999999,50 Q123.69999999999999,54 119.69999999999999,54 L34.0,54.0 L29.0,59.0 L17.0,59.0 L12.0,54.0 L2,54 Z\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><text x=\"12.0\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">when</text><path d=\"M46.8,44.0 L46.8,30.0 Q51.8,27.0 55.8,31.0 Q58.8,34.0 60.8,31.0 L60.8,38.0 Q57.8,41.0 54.8,38.0 Q50.8,35.0 46.8,38.0\" fill=\"#4CBF56\" stroke=\"#45993D\" stroke-width=\"1\"/><text x=\"66.8\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">clicked</text><path d=\"M2,58 Q2,54 6,54 L12.0,54.0 L17.0,59.0 L29.0,59.0 L34.0,54.0 L98,54 Q102,54 102,58 L102,86 Q102,90 98,90 L50,90 L45,95 L33,95 L28,90 L22,90 Q18,90 18,94 L18,158 Q18,162 22,162 L98,162 Q102,162 102,166 L102,180 Q102,184 98,184 L34.0,184.0 L29.0,189.0 L17.0,189.0 L12.0,184.0 L6,184 Q2,184 2,180 Z\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><text x=\"12.0\" y=\"76.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">repeat</text><rect x=\"57.2\" y=\"61.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#CF8B17\" stroke-width=\"0.8\"/><text x=\"69.2\" y=\"76.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">4</text><path d=\"M18,94 Q18,90 22,90 L28.0,90.0 L33.0,95.0 L45.0,95.0 L50.0,90.0 L138.4,90 Q142.4,90 142.4,94 L142.4,122 Q142.4,126 138.4,126 L50.0,126.0 L45.0,131.0 L33.0,131.0 L28.0,126.0 L22,126 Q18,126 18,122 Z\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><text x=\"28.0\" y=\"112.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">move</text><rect x=\"59.8\" y=\"97.0\" width=\"34.1\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#3373CC\" stroke-width=\"0.8\"/><text x=\"76.8\" y=\"112.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">100</text><text x=\"98.9\" y=\"112.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">steps</text><path d=\"M18,130 Q18,126 22,126 L28.0,126.0 L33.0,131.0 L45.0,131.0 L50.0,126.0 L158.5,126 Q162.5,126 162.5,130 L162.5,158 Q162.5,162 158.5,162 L50.0,162.0 L45.0,167.0 L33.0,167.0 L28.0,162.0 L22,162 Q18,162 18,158 Z\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><text x=\"28.0\" y=\"148.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">turn ↻</text><rect x=\"73.2\" y=\"133.0\" width=\"27.4\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#3373CC\" stroke-width=\"0.8\"/><text x=\"86.9\" y=\"148.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">90</text><text x=\"105.6\" y=\"148.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">degrees</text></svg>",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Hai lệnh bên trong khối <b>repeat</b> được thực hiện mấy lần?",
+     "lc": [
+      "1",
+      "2",
+      "4",
+      "100"
+     ],
+     "da": "4",
+     "cot": 4
+    },
+    {
+     "text": "Nhân vật di chuyển theo hình gì?",
+     "lc": [
+      "Hình vuông",
+      "Hình tam giác",
+      "Hình tròn",
+      "Đường thẳng"
+     ],
+     "da": "Hình vuông",
+     "cot": 4
+    },
+    {
+     "text": "Tổng cộng nhân vật đi được bao nhiêu bước?",
+     "lc": [
+      "100",
+      "200",
+      "400",
+      "90"
+     ],
+     "da": "400",
+     "cot": 4
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Cấu trúc lặp giúp chương trình ngắn gọn hơn khi có công việc lặp đi lặp lại.",
+     "da": "Đ"
+    },
+    {
+     "text": "Khối lệnh <b>forever</b> lặp lại các lệnh bên trong mãi, cho đến khi dừng chương trình.",
+     "da": "Đ"
+    },
+    {
+     "text": "Khối lệnh <b>repeat 10</b> lặp lại các lệnh bên trong đúng 10 lần.",
+     "da": "Đ"
+    },
+    {
+     "text": "Có thể đặt thêm lệnh nối vào phía dưới khối <b>forever</b>.",
+     "da": "S"
+    },
+    {
+     "text": "Để chim bồ câu vỗ cánh liên tục, em dùng khối lệnh <b>forever</b>.",
+     "da": "Đ"
+    }
+   ]
+  }
+ ]
+}

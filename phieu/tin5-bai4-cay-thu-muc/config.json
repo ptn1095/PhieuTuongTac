@@ -1,0 +1,185 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 4: Cây thư mục",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 4 Cây thư mục",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 4: Cây thư mục",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Quan sát cây thư mục của bạn An và chọn đáp án đúng.",
+   "hinh": "<div style=\"text-align:center\"><b>Cây thư mục của bạn An</b><br><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"190\" height=\"236\" viewBox=\"0 0 190 236\"><path d=\"M12,11 l7,0 l2,3 l11,0 l0,12 l-20,0 z\" fill=\"#F8C94A\" stroke=\"#C9971C\"/><text x=\"38\" y=\"23\" font-family=\"Arial\" font-size=\"14\" fill=\"#222\">An</text><path d=\"M21,26 L21,46 L46,46\" fill=\"none\" stroke=\"#888\" stroke-width=\"1.2\"/><path d=\"M46,39 l7,0 l2,3 l11,0 l0,12 l-20,0 z\" fill=\"#F8C94A\" stroke=\"#C9971C\"/><text x=\"72\" y=\"51\" font-family=\"Arial\" font-size=\"14\" fill=\"#222\">HOC_TAP</text><path d=\"M55,54 L55,74 L80,74\" fill=\"none\" stroke=\"#888\" stroke-width=\"1.2\"/><path d=\"M80,67 l7,0 l2,3 l11,0 l0,12 l-20,0 z\" fill=\"#F8C94A\" stroke=\"#C9971C\"/><text x=\"106\" y=\"79\" font-family=\"Arial\" font-size=\"14\" fill=\"#222\">Toan</text><path d=\"M55,54 L55,102 L80,102\" fill=\"none\" stroke=\"#888\" stroke-width=\"1.2\"/><path d=\"M80,95 l7,0 l2,3 l11,0 l0,12 l-20,0 z\" fill=\"#F8C94A\" stroke=\"#C9971C\"/><text x=\"106\" y=\"107\" font-family=\"Arial\" font-size=\"14\" fill=\"#222\">Tieng_Viet</text><path d=\"M55,54 L55,130 L80,130\" fill=\"none\" stroke=\"#888\" stroke-width=\"1.2\"/><path d=\"M80,123 l7,0 l2,3 l11,0 l0,12 l-20,0 z\" fill=\"#F8C94A\" stroke=\"#C9971C\"/><text x=\"106\" y=\"135\" font-family=\"Arial\" font-size=\"14\" fill=\"#222\">Tin_hoc</text><path d=\"M21,26 L21,158 L46,158\" fill=\"none\" stroke=\"#888\" stroke-width=\"1.2\"/><path d=\"M46,151 l7,0 l2,3 l11,0 l0,12 l-20,0 z\" fill=\"#F8C94A\" stroke=\"#C9971C\"/><text x=\"72\" y=\"163\" font-family=\"Arial\" font-size=\"14\" fill=\"#222\">GIAI_TRI</text><path d=\"M55,166 L55,186 L80,186\" fill=\"none\" stroke=\"#888\" stroke-width=\"1.2\"/><path d=\"M80,179 l7,0 l2,3 l11,0 l0,12 l-20,0 z\" fill=\"#F8C94A\" stroke=\"#C9971C\"/><text x=\"106\" y=\"191\" font-family=\"Arial\" font-size=\"14\" fill=\"#222\">Am_nhac</text><path d=\"M55,166 L55,214 L80,214\" fill=\"none\" stroke=\"#888\" stroke-width=\"1.2\"/><path d=\"M80,207 l7,0 l2,3 l11,0 l0,12 l-20,0 z\" fill=\"#F8C94A\" stroke=\"#C9971C\"/><text x=\"106\" y=\"219\" font-family=\"Arial\" font-size=\"14\" fill=\"#222\">Tranh_ve</text></svg></div>",
+   "khungHinh": true,
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Thư mục <b>Toan</b> nằm trong thư mục nào?",
+     "lc": [
+      "HOC_TAP",
+      "GIAI_TRI",
+      "Tin_hoc",
+      "Tranh_ve"
+     ],
+     "da": "HOC_TAP"
+    },
+    {
+     "text": "Thư mục <b>GIAI_TRI</b> có mấy thư mục con?",
+     "lc": [
+      "1",
+      "2",
+      "3",
+      "5"
+     ],
+     "da": "2",
+     "cot": 4
+    },
+    {
+     "text": "Thư mục <b>An</b> chứa trực tiếp những thư mục nào?",
+     "lc": [
+      "HOC_TAP và GIAI_TRI",
+      "Toan và Am_nhac",
+      "Tin_hoc và Tranh_ve",
+      "Chỉ có HOC_TAP"
+     ],
+     "da": "HOC_TAP và GIAI_TRI"
+    },
+    {
+     "text": "Đường dẫn đúng tới thư mục <b>Tranh_ve</b> là:",
+     "cot": 1,
+     "lc": [
+      "An\\GIAI_TRI\\Tranh_ve",
+      "An\\HOC_TAP\\Tranh_ve",
+      "An\\Tranh_ve\\GIAI_TRI",
+      "GIAI_TRI\\An\\Tranh_ve"
+     ],
+     "da": "An\\GIAI_TRI\\Tranh_ve"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Bạn An muốn lưu các tệp dưới đây cho gọn gàng. Nối mỗi <b>tệp</b> với <b>thư mục</b> phù hợp nhất để lưu.",
+   "lc": [
+    "Tieng_Viet",
+    "Toan",
+    "Tin_hoc",
+    "Am_nhac",
+    "Tranh_ve"
+   ],
+   "cau": [
+    {
+     "text": "📄 BaiVan_TaCanhBien.docx",
+     "da": "Tieng_Viet"
+    },
+    {
+     "text": "📊 OnTap_PhanSo.pptx",
+     "da": "Toan"
+    },
+    {
+     "text": "🐱 MeoDiDao.sb3 (chương trình Scratch)",
+     "da": "Tin_hoc"
+    },
+    {
+     "text": "🎵 BaiHat_QueHuong.mp3",
+     "da": "Am_nhac"
+    },
+    {
+     "text": "🖼️ ConMeoCuaEm.png",
+     "da": "Tranh_ve"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Cây thư mục giúp em tìm kiếm tệp nhanh và dễ dàng hơn.",
+     "da": "Đ"
+    },
+    {
+     "text": "Một thư mục có thể chứa cả tệp và các thư mục con.",
+     "da": "Đ"
+    },
+    {
+     "text": "Để nhanh, em nên lưu tất cả các tệp vào chung một thư mục.",
+     "da": "S"
+    },
+    {
+     "text": "Nên đặt tên thư mục, tên tệp ngắn gọn, gợi nhớ đến nội dung bên trong.",
+     "da": "Đ"
+    },
+    {
+     "text": "Có thể phân loại tệp theo nội dung, theo thời gian hoặc theo người sở hữu để tạo cây thư mục hợp lí.",
+     "da": "Đ"
+    },
+    {
+     "text": "Trong cùng một thư mục, hai thư mục con được phép đặt trùng tên.",
+     "da": "S"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các bước <b>tạo thư mục mới</b> theo đúng thứ tự (kéo ☰ hoặc bấm ▲▼).",
+   "cau": [
+    {
+     "text": "Mở thư mục mà em muốn tạo thư mục con bên trong."
+    },
+    {
+     "text": "Nháy nút phải chuột vào vùng trống trong cửa sổ."
+    },
+    {
+     "text": "Chọn <b>New</b> → <b>Folder</b>."
+    },
+    {
+     "text": "Gõ tên cho thư mục mới rồi nhấn phím <b>Enter</b>."
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Lệnh dùng để tạo thư mục mới trong máy tính là:",
+     "lc": [
+      "New folder",
+      "New file",
+      "Delete",
+      "Rename"
+     ],
+     "da": "New folder",
+     "cot": 4
+    },
+    {
+     "text": "Tên thư mục nào sau đây <b>gợi nhớ</b> nội dung tốt nhất để lưu ảnh chuyến tham quan Hạ Long của lớp?",
+     "lc": [
+      "Anh_ThamQuan_HaLong",
+      "Thu muc moi",
+      "ABC123",
+      "New folder (2)"
+     ],
+     "da": "Anh_ThamQuan_HaLong"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,122 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 10: Cấu trúc tuần tự",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 10 Cấu trúc tuần tự",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 10: Cấu trúc tuần tự",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "nhieu",
+   "yc": "Chọn tất cả các công việc được thực hiện theo <b>cấu trúc tuần tự</b>.",
+   "cau": [
+    {
+     "text": "Công việc nào được thực hiện lần lượt từng bước, mỗi bước một lần?",
+     "cot": 1,
+     "lc": [
+      "Làm bài tập lần lượt từ bài thứ nhất đến hết.",
+      "Thực hiện lần lượt các bước để tạo một thư mục mới.",
+      "Thực hiện lần lượt các bước để chèn hình ảnh vào văn bản.",
+      "Chải răng nhiều lần cho đến khi răng sạch thì dừng lại.",
+      "Nếu trời mưa thì mang áo mưa."
+     ],
+     "da": [
+      "Làm bài tập lần lượt từ bài thứ nhất đến hết.",
+      "Thực hiện lần lượt các bước để tạo một thư mục mới.",
+      "Thực hiện lần lượt các bước để chèn hình ảnh vào văn bản."
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Quan sát chương trình Scratch và chọn đáp án đúng.",
+   "hinh": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"231\" height=\"206\" viewBox=\"0 0 231 206\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,20 C22,2 62,2 82,16 L119.69999999999999,16 Q123.69999999999999,16 123.69999999999999,20 L123.69999999999999,50 Q123.69999999999999,54 119.69999999999999,54 L34.0,54.0 L29.0,59.0 L17.0,59.0 L12.0,54.0 L2,54 Z\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><text x=\"12.0\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">when</text><path d=\"M46.8,44.0 L46.8,30.0 Q51.8,27.0 55.8,31.0 Q58.8,34.0 60.8,31.0 L60.8,38.0 Q57.8,41.0 54.8,38.0 Q50.8,35.0 46.8,38.0\" fill=\"#4CBF56\" stroke=\"#45993D\" stroke-width=\"1\"/><text x=\"66.8\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">clicked</text><path d=\"M2,58 Q2,54 6,54 L12.0,54.0 L17.0,59.0 L29.0,59.0 L34.0,54.0 L148.0,54 Q152.0,54 152.0,58 L152.0,86 Q152.0,90 148.0,90 L34.0,90.0 L29.0,95.0 L17.0,95.0 L12.0,90.0 L6,90 Q2,90 2,86 Z\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><text x=\"12.0\" y=\"76.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">go to x:</text><rect x=\"70.6\" y=\"61.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#3373CC\" stroke-width=\"0.8\"/><text x=\"82.6\" y=\"76.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">0</text><text x=\"99.6\" y=\"76.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">y:</text><rect x=\"118.0\" y=\"61.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#3373CC\" stroke-width=\"0.8\"/><text x=\"130.0\" y=\"76.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">0</text><path d=\"M2,94 Q2,90 6,90 L12.0,90.0 L17.0,95.0 L29.0,95.0 L34.0,90.0 L223.4,90 Q227.4,90 227.4,94 L227.4,122 Q227.4,126 223.4,126 L34.0,126.0 L29.0,131.0 L17.0,131.0 L12.0,126.0 L6,126 Q2,126 2,122 Z\" fill=\"#9966FF\" stroke=\"#774DCB\"/><text x=\"12.0\" y=\"112.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">say</text><rect x=\"37.1\" y=\"97.0\" width=\"74.3\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"74.2\" y=\"112.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">Xin chào!</text><text x=\"116.4\" y=\"112.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">for</text><rect x=\"141.5\" y=\"97.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"153.5\" y=\"112.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text><text x=\"170.5\" y=\"112.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">seconds</text><path d=\"M2,130 Q2,126 6,126 L12.0,126.0 L17.0,131.0 L29.0,131.0 L34.0,126.0 L122.4,126 Q126.4,126 126.4,130 L126.4,158 Q126.4,162 122.4,162 L34.0,162.0 L29.0,167.0 L17.0,167.0 L12.0,162.0 L6,162 Q2,162 2,158 Z\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><text x=\"12.0\" y=\"148.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">move</text><rect x=\"43.8\" y=\"133.0\" width=\"34.1\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#3373CC\" stroke-width=\"0.8\"/><text x=\"60.8\" y=\"148.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">100</text><text x=\"82.9\" y=\"148.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">steps</text><path d=\"M2,166 Q2,162 6,162 L12.0,162.0 L17.0,167.0 L29.0,167.0 L34.0,162.0 L223.4,162 Q227.4,162 227.4,166 L227.4,194 Q227.4,198 223.4,198 L34.0,198.0 L29.0,203.0 L17.0,203.0 L12.0,198.0 L6,198 Q2,198 2,194 Z\" fill=\"#9966FF\" stroke=\"#774DCB\"/><text x=\"12.0\" y=\"184.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">say</text><rect x=\"37.1\" y=\"169.0\" width=\"74.3\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"74.2\" y=\"184.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">Tạm biệt!</text><text x=\"116.4\" y=\"184.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">for</text><rect x=\"141.5\" y=\"169.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"153.5\" y=\"184.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text><text x=\"170.5\" y=\"184.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">seconds</text></svg>",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Sau khi bấm lá cờ xanh, lệnh nào được thực hiện <b>đầu tiên</b>?",
+     "lc": [
+      "go to x: 0 y: 0",
+      "say Xin chào! for 2 seconds",
+      "move 100 steps",
+      "say Tạm biệt! for 2 seconds"
+     ],
+     "da": "go to x: 0 y: 0"
+    },
+    {
+     "text": "Nhân vật nói \"Tạm biệt!\" vào lúc nào?",
+     "lc": [
+      "Sau khi di chuyển 100 bước.",
+      "Ngay khi bấm lá cờ xanh.",
+      "Trước khi nói \"Xin chào!\".",
+      "Nhân vật không nói \"Tạm biệt!\"."
+     ],
+     "da": "Sau khi di chuyển 100 bước."
+    },
+    {
+     "text": "Nếu đổi chỗ hai lệnh <b>say</b> cho nhau thì:",
+     "lc": [
+      "Nhân vật nói \"Tạm biệt!\" trước, \"Xin chào!\" sau.",
+      "Chương trình không thay đổi gì.",
+      "Nhân vật không di chuyển nữa.",
+      "Nhân vật nói hai câu cùng một lúc."
+     ],
+     "da": "Nhân vật nói \"Tạm biệt!\" trước, \"Xin chào!\" sau."
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các lệnh để mèo <b>chào</b> rồi <b>giới thiệu</b>: nói \"Xin chào!\" trong 2 giây, sau đó nói \"Rất vui được gặp các bạn.\" trong 2 giây.",
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"128\" height=\"62\" viewBox=\"0 0 128 62\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,20 C22,2 62,2 82,16 L119.69999999999999,16 Q123.69999999999999,16 123.69999999999999,20 L123.69999999999999,50 Q123.69999999999999,54 119.69999999999999,54 L34.0,54.0 L29.0,59.0 L17.0,59.0 L12.0,54.0 L2,54 Z\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><text x=\"12.0\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">when</text><path d=\"M46.8,44.0 L46.8,30.0 Q51.8,27.0 55.8,31.0 Q58.8,34.0 60.8,31.0 L60.8,38.0 Q57.8,41.0 54.8,38.0 Q50.8,35.0 46.8,38.0\" fill=\"#4CBF56\" stroke=\"#45993D\" stroke-width=\"1\"/><text x=\"66.8\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">clicked</text></svg>"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"231\" height=\"50\" viewBox=\"0 0 231 50\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,8 Q2,4 6,4 L12.0,4.0 L17.0,9.0 L29.0,9.0 L34.0,4.0 L223.4,4 Q227.4,4 227.4,8 L227.4,36 Q227.4,40 223.4,40 L34.0,40.0 L29.0,45.0 L17.0,45.0 L12.0,40.0 L6,40 Q2,40 2,36 Z\" fill=\"#9966FF\" stroke=\"#774DCB\"/><text x=\"12.0\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">say</text><rect x=\"37.1\" y=\"11.0\" width=\"74.3\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"74.2\" y=\"26.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">Xin chào!</text><text x=\"116.4\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">for</text><rect x=\"141.5\" y=\"11.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"153.5\" y=\"26.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text><text x=\"170.5\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">seconds</text></svg>"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"339\" height=\"50\" viewBox=\"0 0 339 50\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,8 Q2,4 6,4 L12.0,4.0 L17.0,9.0 L29.0,9.0 L34.0,4.0 L330.6,4 Q334.6,4 334.6,8 L334.6,36 Q334.6,40 330.6,40 L34.0,40.0 L29.0,45.0 L17.0,45.0 L12.0,40.0 L6,40 Q2,40 2,36 Z\" fill=\"#9966FF\" stroke=\"#774DCB\"/><text x=\"12.0\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">say</text><rect x=\"37.1\" y=\"11.0\" width=\"181.5\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"127.8\" y=\"26.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">Rất vui được gặp các bạn.</text><text x=\"223.6\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">for</text><rect x=\"248.7\" y=\"11.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"260.7\" y=\"26.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text><text x=\"277.7\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">seconds</text></svg>"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Trong cấu trúc tuần tự, các lệnh được thực hiện lần lượt từ trên xuống dưới.",
+     "da": "Đ"
+    },
+    {
+     "text": "Đổi thứ tự các lệnh có thể làm kết quả chương trình thay đổi.",
+     "da": "Đ"
+    },
+    {
+     "text": "Trong cấu trúc tuần tự, mỗi lệnh luôn được thực hiện nhiều lần.",
+     "da": "S"
+    },
+    {
+     "text": "Khối lệnh <img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjgiIGhlaWdodD0iNjIiIHZpZXdCb3g9IjAgMCAxMjggNjIiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDIwIEMyMiwyIDYyLDIgODIsMTYgTDExOS42OTk5OTk5OTk5OTk5OSwxNiBRMTIzLjY5OTk5OTk5OTk5OTk5LDE2IDEyMy42OTk5OTk5OTk5OTk5OSwyMCBMMTIzLjY5OTk5OTk5OTk5OTk5LDUwIFExMjMuNjk5OTk5OTk5OTk5OTksNTQgMTE5LjY5OTk5OTk5OTk5OTk5LDU0IEwzNC4wLDU0LjAgTDI5LjAsNTkuMCBMMTcuMCw1OS4wIEwxMi4wLDU0LjAgTDIsNTQgWiIgZmlsbD0iI0ZGQkYwMCIgc3Ryb2tlPSIjQ0M5OTAwIi8+PHRleHQgeD0iMTIuMCIgeT0iNDEuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj53aGVuPC90ZXh0PjxwYXRoIGQ9Ik00Ni44LDQ0LjAgTDQ2LjgsMzAuMCBRNTEuOCwyNy4wIDU1LjgsMzEuMCBRNTguOCwzNC4wIDYwLjgsMzEuMCBMNjAuOCwzOC4wIFE1Ny44LDQxLjAgNTQuOCwzOC4wIFE1MC44LDM1LjAgNDYuOCwzOC4wIiBmaWxsPSIjNENCRjU2IiBzdHJva2U9IiM0NTk5M0QiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjY2LjgiIHk9IjQxLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+Y2xpY2tlZDwvdGV4dD48L3N2Zz4=\" width=\"128\" height=\"62\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\"> (khi bấm vào lá cờ xanh) dùng để bắt đầu chạy chương trình.",
+     "da": "Đ"
+    }
+   ]
+  }
+ ]
+}

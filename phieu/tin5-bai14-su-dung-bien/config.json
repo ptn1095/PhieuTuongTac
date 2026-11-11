@@ -1,0 +1,155 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 14: Sử dụng biến trong chương trình",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 14 Sử dụng biến",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 14: Sử dụng biến trong chương trình",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>khối lệnh</b> với <b>tác dụng</b> của nó.",
+   "lc": [
+    "Gán (đặt) giá trị cho biến",
+    "Tăng (hoặc giảm) giá trị của biến",
+    "Hỏi và chờ người dùng nhập",
+    "Lưu điều người dùng vừa nhập"
+   ],
+   "cau": [
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTEiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAxNTEgNTAiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDggUTIsNCA2LDQgTDEyLjAsNC4wIEwxNy4wLDkuMCBMMjkuMCw5LjAgTDM0LjAsNC4wIEwxNDMuMyw0IFExNDcuMyw0IDE0Ny4zLDggTDE0Ny4zLDM2IFExNDcuMyw0MCAxNDMuMyw0MCBMMzQuMCw0MC4wIEwyOS4wLDQ1LjAgTDE3LjAsNDUuMCBMMTIuMCw0MC4wIEw2LDQwIFEyLDQwIDIsMzYgWiIgZmlsbD0iI0ZGOEMxQSIgc3Ryb2tlPSIjREI2RTAwIi8+PHRleHQgeD0iMTIuMCIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5zZXQ8L3RleHQ+PHJlY3QgeD0iMzcuMSIgeT0iMTEuMCIgd2lkdGg9IjUyLjgiIGhlaWdodD0iMjIiIHJ4PSI0IiBmaWxsPSIjREI2RTAwIiBzdHJva2U9IiNEQjZFMDAiLz48dGV4dCB4PSI0NC4xIiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPsSRaeG7g20g4pa+PC90ZXh0Pjx0ZXh0IHg9Ijk0LjkiIHk9IjI2LjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+dG88L3RleHQ+PHJlY3QgeD0iMTEzLjMiIHk9IjExLjAiIHdpZHRoPSIyNC4wIiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjREI2RTAwIiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IHg9IjEyNS4zIiB5PSIyNi4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNTc1RTc1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPjA8L3RleHQ+PC9zdmc+\" width=\"151\" height=\"50\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Gán (đặt) giá trị cho biến"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAxNzEgNTAiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDggUTIsNCA2LDQgTDEyLjAsNC4wIEwxNy4wLDkuMCBMMjkuMCw5LjAgTDM0LjAsNC4wIEwxNjMuNCw0IFExNjcuNCw0IDE2Ny40LDggTDE2Ny40LDM2IFExNjcuNCw0MCAxNjMuNCw0MCBMMzQuMCw0MC4wIEwyOS4wLDQ1LjAgTDE3LjAsNDUuMCBMMTIuMCw0MC4wIEw2LDQwIFEyLDQwIDIsMzYgWiIgZmlsbD0iI0ZGOEMxQSIgc3Ryb2tlPSIjREI2RTAwIi8+PHRleHQgeD0iMTIuMCIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5jaGFuZ2U8L3RleHQ+PHJlY3QgeD0iNTcuMiIgeT0iMTEuMCIgd2lkdGg9IjUyLjgiIGhlaWdodD0iMjIiIHJ4PSI0IiBmaWxsPSIjREI2RTAwIiBzdHJva2U9IiNEQjZFMDAiLz48dGV4dCB4PSI2NC4yIiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPsSRaeG7g20g4pa+PC90ZXh0Pjx0ZXh0IHg9IjExNS4wIiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPmJ5PC90ZXh0PjxyZWN0IHg9IjEzMy40IiB5PSIxMS4wIiB3aWR0aD0iMjQuMCIgaGVpZ2h0PSIyMiIgcng9IjExLjAiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI0RCNkUwMCIgc3Ryb2tlLXdpZHRoPSIwLjgiLz48dGV4dCB4PSIxNDUuNCIgeT0iMjYuMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzU3NUU3NSIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj4xPC90ZXh0Pjwvc3ZnPg==\" width=\"171\" height=\"50\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Tăng (hoặc giảm) giá trị của biến"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMTgiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCAyMTggNTAiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDggUTIsNCA2LDQgTDEyLjAsNC4wIEwxNy4wLDkuMCBMMjkuMCw5LjAgTDM0LjAsNC4wIEwyMDkuNSw0IFEyMTMuNSw0IDIxMy41LDggTDIxMy41LDM2IFEyMTMuNSw0MCAyMDkuNSw0MCBMMzQuMCw0MC4wIEwyOS4wLDQ1LjAgTDE3LjAsNDUuMCBMMTIuMCw0MC4wIEw2LDQwIFEyLDQwIDIsMzYgWiIgZmlsbD0iIzVDQjFENiIgc3Ryb2tlPSIjMkU4RUI4Ii8+PHRleHQgeD0iMTIuMCIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5hc2s8L3RleHQ+PHJlY3QgeD0iMzcuMSIgeT0iMTEuMCIgd2lkdGg9IjEwNy44IiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMkU4RUI4IiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IHg9IjkxLjAiIHk9IjI2LjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM1NzVFNzUiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+QuG6oW4gdMOqbiBsw6AgZ8OsPzwvdGV4dD48dGV4dCB4PSIxNDkuOSIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5hbmQgd2FpdDwvdGV4dD48L3N2Zz4=\" width=\"218\" height=\"50\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Hỏi và chờ người dùng nhập"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSIyNiIgdmlld0JveD0iMCAwIDY0IDI2IiBzdHlsZT0idmVydGljYWwtYWxpZ246bWlkZGxlO21heC13aWR0aDoxMDAlIj48cmVjdCB4PSIyLjAiIHk9IjIuMCIgd2lkdGg9IjYwLjIiIGhlaWdodD0iMjIiIHJ4PSIxMS4wIiBmaWxsPSIjNUNCMUQ2IiBzdHJva2U9IiMyRThFQjgiLz48dGV4dCB4PSIxMi4wIiB5PSIxNy4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPmFuc3dlcjwvdGV4dD48L3N2Zz4=\" width=\"64\" height=\"26\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Lưu điều người dùng vừa nhập"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Tính giá trị của biến sau khi chạy các lệnh.",
+   "cot": 4,
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"151\" height=\"86\" viewBox=\"0 0 151 86\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,8 Q2,4 6,4 L12.0,4.0 L17.0,9.0 L29.0,9.0 L34.0,4.0 L123.2,4 Q127.2,4 127.2,8 L127.2,36 Q127.2,40 123.2,40 L34.0,40.0 L29.0,45.0 L17.0,45.0 L12.0,40.0 L6,40 Q2,40 2,36 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">set</text><rect x=\"37.1\" y=\"11.0\" width=\"32.7\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"44.1\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">a ▾</text><text x=\"74.8\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">to</text><rect x=\"93.2\" y=\"11.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"105.2\" y=\"26.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">5</text><path d=\"M2,44 Q2,40 6,40 L12.0,40.0 L17.0,45.0 L29.0,45.0 L34.0,40.0 L143.3,40 Q147.3,40 147.3,44 L147.3,72 Q147.3,76 143.3,76 L34.0,76.0 L29.0,81.0 L17.0,81.0 L12.0,76.0 L6,76 Q2,76 2,72 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">change</text><rect x=\"57.2\" y=\"47.0\" width=\"32.7\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"64.2\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">a ▾</text><text x=\"94.9\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">by</text><rect x=\"113.3\" y=\"47.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"125.3\" y=\"62.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text></svg><br>Giá trị của biến <b>a</b> là:",
+     "lc": [
+      "7",
+      "5",
+      "2",
+      "3"
+     ],
+     "da": "7"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"171\" height=\"158\" viewBox=\"0 0 171 158\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,8 Q2,4 6,4 L12.0,4.0 L17.0,9.0 L29.0,9.0 L34.0,4.0 L143.3,4 Q147.3,4 147.3,8 L147.3,36 Q147.3,40 143.3,40 L34.0,40.0 L29.0,45.0 L17.0,45.0 L12.0,40.0 L6,40 Q2,40 2,36 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">set</text><rect x=\"37.1\" y=\"11.0\" width=\"52.8\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"44.1\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">điểm ▾</text><text x=\"94.9\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">to</text><rect x=\"113.3\" y=\"11.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"125.3\" y=\"26.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">0</text><path d=\"M2,44 Q2,40 6,40 L12.0,40.0 L17.0,45.0 L29.0,45.0 L34.0,40.0 L163.4,40 Q167.4,40 167.4,44 L167.4,72 Q167.4,76 163.4,76 L34.0,76.0 L29.0,81.0 L17.0,81.0 L12.0,76.0 L6,76 Q2,76 2,72 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">change</text><rect x=\"57.2\" y=\"47.0\" width=\"52.8\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"64.2\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">điểm ▾</text><text x=\"115.0\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">by</text><rect x=\"133.4\" y=\"47.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"145.4\" y=\"62.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">1</text><path d=\"M2,80 Q2,76 6,76 L12.0,76.0 L17.0,81.0 L29.0,81.0 L34.0,76.0 L163.4,76 Q167.4,76 167.4,80 L167.4,108 Q167.4,112 163.4,112 L34.0,112.0 L29.0,117.0 L17.0,117.0 L12.0,112.0 L6,112 Q2,112 2,108 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">change</text><rect x=\"57.2\" y=\"83.0\" width=\"52.8\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"64.2\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">điểm ▾</text><text x=\"115.0\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">by</text><rect x=\"133.4\" y=\"83.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"145.4\" y=\"98.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">1</text><path d=\"M2,116 Q2,112 6,112 L12.0,112.0 L17.0,117.0 L29.0,117.0 L34.0,112.0 L163.4,112 Q167.4,112 167.4,116 L167.4,144 Q167.4,148 163.4,148 L34.0,148.0 L29.0,153.0 L17.0,153.0 L12.0,148.0 L6,148 Q2,148 2,144 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"134.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">change</text><rect x=\"57.2\" y=\"119.0\" width=\"52.8\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"64.2\" y=\"134.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">điểm ▾</text><text x=\"115.0\" y=\"134.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">by</text><rect x=\"133.4\" y=\"119.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"145.4\" y=\"134.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">1</text></svg><br>Giá trị của biến <b>điểm</b> là:",
+     "lc": [
+      "3",
+      "1",
+      "0",
+      "4"
+     ],
+     "da": "3"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"167\" height=\"144\" viewBox=\"0 0 167 144\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,8 Q2,4 6,4 L12.0,4.0 L17.0,9.0 L29.0,9.0 L34.0,4.0 L123.2,4 Q127.2,4 127.2,8 L127.2,36 Q127.2,40 123.2,40 L34.0,40.0 L29.0,45.0 L17.0,45.0 L12.0,40.0 L6,40 Q2,40 2,36 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">set</text><rect x=\"37.1\" y=\"11.0\" width=\"32.7\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"44.1\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">A ▾</text><text x=\"74.8\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">to</text><rect x=\"93.2\" y=\"11.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"105.2\" y=\"26.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">5</text><path d=\"M2,44 Q2,40 6,40 L12.0,40.0 L17.0,45.0 L29.0,45.0 L34.0,40.0 L98,40 Q102,40 102,44 L102,72 Q102,76 98,76 L50,76 L45,81 L33,81 L28,76 L22,76 Q18,76 18,80 L18,108 Q18,112 22,112 L98,112 Q102,112 102,116 L102,130 Q102,134 98,134 L34.0,134.0 L29.0,139.0 L17.0,139.0 L12.0,134.0 L6,134 Q2,134 2,130 Z\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><text x=\"12.0\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">repeat</text><rect x=\"57.2\" y=\"47.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#CF8B17\" stroke-width=\"0.8\"/><text x=\"69.2\" y=\"62.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">3</text><path d=\"M18,80 Q18,76 22,76 L28.0,76.0 L33.0,81.0 L45.0,81.0 L50.0,76.0 L159.3,76 Q163.3,76 163.3,80 L163.3,108 Q163.3,112 159.3,112 L50.0,112.0 L45.0,117.0 L33.0,117.0 L28.0,112.0 L22,112 Q18,112 18,108 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"28.0\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">change</text><rect x=\"73.2\" y=\"83.0\" width=\"32.7\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"80.2\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">A ▾</text><text x=\"110.9\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">by</text><rect x=\"129.3\" y=\"83.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"141.3\" y=\"98.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">5</text></svg><br>Giá trị của biến <b>A</b> là:",
+     "lc": [
+      "20",
+      "15",
+      "10",
+      "5"
+     ],
+     "da": "20"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"192\" height=\"122\" viewBox=\"0 0 192 122\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,8 Q2,4 6,4 L12.0,4.0 L17.0,9.0 L29.0,9.0 L34.0,4.0 L163.4,4 Q167.4,4 167.4,8 L167.4,36 Q167.4,40 163.4,40 L34.0,40.0 L29.0,45.0 L17.0,45.0 L12.0,40.0 L6,40 Q2,40 2,36 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">set</text><rect x=\"37.1\" y=\"11.0\" width=\"72.9\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"44.1\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">bước đi ▾</text><text x=\"115.0\" y=\"26.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">to</text><rect x=\"133.4\" y=\"11.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"145.4\" y=\"26.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">0</text><path d=\"M2,44 Q2,40 6,40 L12.0,40.0 L17.0,45.0 L29.0,45.0 L34.0,40.0 L115.7,40 Q119.7,40 119.7,44 L119.7,72 Q119.7,76 115.7,76 L34.0,76.0 L29.0,81.0 L17.0,81.0 L12.0,76.0 L6,76 Q2,76 2,72 Z\" fill=\"#4C97FF\" stroke=\"#3373CC\"/><text x=\"12.0\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">move</text><rect x=\"43.8\" y=\"47.0\" width=\"27.4\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#3373CC\" stroke-width=\"0.8\"/><text x=\"57.5\" y=\"62.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">50</text><text x=\"76.2\" y=\"62.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">steps</text><path d=\"M2,80 Q2,76 6,76 L12.0,76.0 L17.0,81.0 L29.0,81.0 L34.0,76.0 L183.5,76 Q187.5,76 187.5,80 L187.5,108 Q187.5,112 183.5,112 L34.0,112.0 L29.0,117.0 L17.0,117.0 L12.0,112.0 L6,112 Q2,112 2,108 Z\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"12.0\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">change</text><rect x=\"57.2\" y=\"83.0\" width=\"72.9\" height=\"22\" rx=\"4\" fill=\"#DB6E00\" stroke=\"#DB6E00\"/><text x=\"64.2\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">bước đi ▾</text><text x=\"135.1\" y=\"98.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">by</text><rect x=\"153.5\" y=\"83.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#DB6E00\" stroke-width=\"0.8\"/><text x=\"165.5\" y=\"98.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">1</text></svg><br>Giá trị của biến <b>bước đi</b> là:",
+     "lc": [
+      "1",
+      "50",
+      "51",
+      "0"
+     ],
+     "da": "1"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Quan sát chương trình và chọn đáp án đúng.",
+   "hinh": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"283\" height=\"140\" viewBox=\"0 0 283 140\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,20 C22,2 62,2 82,16 L119.69999999999999,16 Q123.69999999999999,16 123.69999999999999,20 L123.69999999999999,50 Q123.69999999999999,54 119.69999999999999,54 L34.0,54.0 L29.0,59.0 L17.0,59.0 L12.0,54.0 L2,54 Z\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><text x=\"12.0\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">when</text><path d=\"M46.8,44.0 L46.8,30.0 Q51.8,27.0 55.8,31.0 Q58.8,34.0 60.8,31.0 L60.8,38.0 Q57.8,41.0 54.8,38.0 Q50.8,35.0 46.8,38.0\" fill=\"#4CBF56\" stroke=\"#45993D\" stroke-width=\"1\"/><text x=\"66.8\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">clicked</text><path d=\"M2,58 Q2,54 6,54 L12.0,54.0 L17.0,59.0 L29.0,59.0 L34.0,54.0 L236.3,54 Q240.3,54 240.3,58 L240.3,86 Q240.3,90 236.3,90 L34.0,90.0 L29.0,95.0 L17.0,95.0 L12.0,90.0 L6,90 Q2,90 2,86 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"12.0\" y=\"76.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">ask</text><rect x=\"37.1\" y=\"61.0\" width=\"134.6\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#2E8EB8\" stroke-width=\"0.8\"/><text x=\"104.4\" y=\"76.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">Tên của bạn là gì?</text><text x=\"176.7\" y=\"76.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">and wait</text><path d=\"M2,94 Q2,90 6,90 L12.0,90.0 L17.0,95.0 L29.0,95.0 L34.0,90.0 L274.6,90 Q278.6,90 278.6,94 L278.6,128 Q278.6,132 274.6,132 L34.0,132.0 L29.0,137.0 L17.0,137.0 L12.0,132.0 L6,132 Q2,132 2,128 Z\" fill=\"#9966FF\" stroke=\"#774DCB\"/><text x=\"12.0\" y=\"115.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">say</text><rect x=\"37.1\" y=\"97.0\" width=\"231.5\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><text x=\"47.1\" y=\"115.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">join</text><rect x=\"78.9\" y=\"100.0\" width=\"114.5\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"136.2\" y=\"115.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">Bạn đó tên là: </text><rect x=\"198.4\" y=\"100.0\" width=\"60.2\" height=\"22\" rx=\"11.0\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"208.4\" y=\"115.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">answer</text></svg>",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Em gõ <b>Lan</b> rồi nhấn Enter. Nhân vật nói:",
+     "lc": [
+      "Bạn đó tên là: Lan",
+      "Bạn đó tên là: answer",
+      "Tên của bạn là gì?",
+      "Lan là tên của bạn"
+     ],
+     "da": "Bạn đó tên là: Lan"
+    },
+    {
+     "text": "Biến <b>answer</b> (trả lời) là biến có sẵn, nằm trong nhóm lệnh:",
+     "lc": [
+      "Sensing (Cảm biến)",
+      "Motion (Chuyển động)",
+      "Sound (Âm thanh)",
+      "Pen (Bút vẽ)"
+     ],
+     "da": "Sensing (Cảm biến)",
+     "cot": 2
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Biến dùng để lưu dữ liệu (ví dụ điểm số) trong khi chương trình chạy.",
+     "da": "Đ"
+    },
+    {
+     "text": "Em tạo biến mới bằng nút <b>Make a Variable</b> trong nhóm lệnh Variables (Các biến số).",
+     "da": "Đ"
+    },
+    {
+     "text": "Lưu số điểm người chơi đạt được là tình huống cần dùng biến.",
+     "da": "Đ"
+    },
+    {
+     "text": "Lệnh <b>change điểm by 1</b> luôn đặt biến điểm về 1.",
+     "da": "S"
+    },
+    {
+     "text": "Giá trị của biến có thể thay đổi khi chương trình đang chạy.",
+     "da": "Đ"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,174 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 7: Thực hành soạn thảo văn bản",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 7 Thực hành soạn thảo",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 7: Thực hành soạn thảo văn bản",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các bước <b>chèn hình ảnh</b> vào văn bản theo đúng thứ tự.",
+   "cau": [
+    {
+     "text": "Đặt con trỏ soạn thảo ở vị trí muốn chèn hình ảnh."
+    },
+    {
+     "text": "Mở dải lệnh <b>Insert</b>."
+    },
+    {
+     "text": "Chọn <b>Pictures</b> trong nhóm lệnh Illustrations."
+    },
+    {
+     "text": "Tìm và chọn tệp hình ảnh trong hộp thoại."
+    },
+    {
+     "text": "Nháy chuột vào nút <b>Insert</b> trong hộp thoại."
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn phím thích hợp điền vào chỗ trống.",
+   "bank": [
+    "Backspace",
+    "Delete",
+    "Shift",
+    "Enter"
+   ],
+   "lc": [
+    "Backspace",
+    "Delete",
+    "Shift",
+    "Enter"
+   ],
+   "cau": [
+    {
+     "text": "a) Phím {} xoá kí tự ở <b>bên trái</b> con trỏ soạn thảo.",
+     "da": [
+      "Backspace"
+     ]
+    },
+    {
+     "text": "b) Phím {} xoá kí tự ở <b>bên phải</b> con trỏ soạn thảo.",
+     "da": [
+      "Delete"
+     ]
+    },
+    {
+     "text": "c) Nhấn giữ phím {} cùng với phím chữ để gõ chữ in hoa.",
+     "da": [
+      "Shift"
+     ]
+    },
+    {
+     "text": "d) Nhấn phím {} để kết thúc một đoạn và xuống dòng.",
+     "da": [
+      "Enter"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>tổ hợp phím</b> với <b>tác dụng</b> của nó.",
+   "lc": [
+    "Sao chép",
+    "Cắt",
+    "Dán",
+    "Lưu văn bản"
+   ],
+   "cau": [
+    {
+     "text": "<kbd style=\"display:inline-block;padding:1px 7px;border:1px solid #aaa;border-bottom-width:3px;border-radius:5px;background:#fafafa;font-family:Arial\">Ctrl</kbd> + <kbd style=\"display:inline-block;padding:1px 7px;border:1px solid #aaa;border-bottom-width:3px;border-radius:5px;background:#fafafa;font-family:Arial\">C</kbd>",
+     "da": "Sao chép"
+    },
+    {
+     "text": "<kbd style=\"display:inline-block;padding:1px 7px;border:1px solid #aaa;border-bottom-width:3px;border-radius:5px;background:#fafafa;font-family:Arial\">Ctrl</kbd> + <kbd style=\"display:inline-block;padding:1px 7px;border:1px solid #aaa;border-bottom-width:3px;border-radius:5px;background:#fafafa;font-family:Arial\">X</kbd>",
+     "da": "Cắt"
+    },
+    {
+     "text": "<kbd style=\"display:inline-block;padding:1px 7px;border:1px solid #aaa;border-bottom-width:3px;border-radius:5px;background:#fafafa;font-family:Arial\">Ctrl</kbd> + <kbd style=\"display:inline-block;padding:1px 7px;border:1px solid #aaa;border-bottom-width:3px;border-radius:5px;background:#fafafa;font-family:Arial\">V</kbd>",
+     "da": "Dán"
+    },
+    {
+     "text": "<kbd style=\"display:inline-block;padding:1px 7px;border:1px solid #aaa;border-bottom-width:3px;border-radius:5px;background:#fafafa;font-family:Arial\">Ctrl</kbd> + <kbd style=\"display:inline-block;padding:1px 7px;border:1px solid #aaa;border-bottom-width:3px;border-radius:5px;background:#fafafa;font-family:Arial\">S</kbd>",
+     "da": "Lưu văn bản"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Cách nào sau đây <b>KHÔNG</b> dùng để lưu văn bản?",
+     "lc": [
+      "Nháy nút lệnh Paste.",
+      "Nhấn tổ hợp phím Ctrl + S.",
+      "Chọn File → Save.",
+      "Nháy nút lệnh Save (hình đĩa mềm)."
+     ],
+     "da": "Nháy nút lệnh Paste."
+    },
+    {
+     "text": "Để phóng to, thu nhỏ hình ảnh mà vẫn giữ đúng tỉ lệ, em làm thế nào?",
+     "lc": [
+      "Chọn hình rồi kéo thả nút tròn ở góc hình.",
+      "Nhấn phím Delete.",
+      "Kéo thả nút tròn ở giữa cạnh trên.",
+      "Nhấn tổ hợp phím Ctrl + B."
+     ],
+     "da": "Chọn hình rồi kéo thả nút tròn ở góc hình."
+    },
+    {
+     "text": "Em dùng một hình ảnh tìm được trên Internet để minh hoạ cho văn bản. Em cần:",
+     "lc": [
+      "Ghi nguồn của hình ảnh ở cuối văn bản.",
+      "Ghi tên em là tác giả hình ảnh.",
+      "Không cần ghi gì cả.",
+      "Xoá tên tác giả trên ảnh."
+     ],
+     "da": "Ghi nguồn của hình ảnh ở cuối văn bản."
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các việc cần làm để tạo một văn bản hoàn chỉnh.",
+   "cau": [
+    {
+     "text": "Gõ nội dung văn bản."
+    },
+    {
+     "text": "Chèn hình ảnh minh hoạ."
+    },
+    {
+     "text": "Định dạng chữ và bố trí hình ảnh cho đẹp."
+    },
+    {
+     "text": "Kiểm tra lại, sửa lỗi chính tả."
+    },
+    {
+     "text": "Lưu văn bản."
+    }
+   ]
+  }
+ ]
+}

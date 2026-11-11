@@ -145,7 +145,7 @@ const server = http.createServer((req, res) => {
     bao(await page.locator('.card').count() === 0, 'chưa chọn lớp → chưa hiện phiếu');
     await page.screenshot({ path: path.join(OUT, '_chon_lop.png') });
     await page.click('#chonLop .nut-lop[data-l="5A2"]'); await page.waitForTimeout(300);
-    const the5 = ds.filter(p => p.khoi === 'khoi-5' && p.lop.includes('5A2')).length;
+    const the5 = ds.filter(p => p.khoi === 'khoi-5' && p.lop.includes('5A2') && hsThay(p)).length;
     bao(await page.locator('.card').count() === the5 && (await page.locator('#chonLop').textContent()).includes('5A2'), `chọn lớp 5A2 → hiện ${the5} phiếu, thanh "Lớp 5A2 · Đổi lớp"`);
     bao(await page.locator('.card .chips').count() === 0 && await page.locator('.card .qr').count() === 0 && await page.locator('.tab .dem').count() === 0,
       'học sinh: thẻ phiếu KHÔNG hiện các lớp được giao, không có nút Mã QR, không hiện số phiếu');
@@ -154,7 +154,8 @@ const server = http.createServer((req, res) => {
     bao(oLop.filter(x => !x.includes('chọn')).join(',') === '5A2' && await page.inputValue('#lop') === '5A2', 'vào phiếu: ô Lớp chỉ có đúng lớp 5A2 (đã chọn sẵn)');
     await page.locator('.topbar [data-tro-ve]').click(); await page.waitForURL(u => u.toString().startsWith(base) && !u.toString().includes('/phieu/'));
     await page.evaluate(() => localStorage.setItem('coThuyTin_gv', '{"url":"x","mk":"x"}')); await page.reload(); await page.waitForTimeout(500);
-    bao((await page.locator('.chip.cua-em').allTextContents()).every(t => t === '5A2') && await page.locator('.chip.cua-em').count() === the5 && await page.locator('.card .qr').count() === the5,
+    const the5Co = ds.filter(p => p.khoi === 'khoi-5' && p.lop.includes('5A2')).length;  // máy cô thấy cả phiếu chưa giao
+    bao((await page.locator('.chip.cua-em').allTextContents()).every(t => t === '5A2') && await page.locator('.chip.cua-em').count() === the5Co && await page.locator('.card .qr').count() === the5Co,
       'máy cô: thấy các lớp (5A2 tô đậm) và nút Mã QR');
     await page.evaluate(() => localStorage.removeItem('coThuyTin_gv')); await page.reload(); await page.waitForTimeout(400);
     await page.click('#chonLai'); await page.waitForTimeout(300);
@@ -191,7 +192,7 @@ const server = http.createServer((req, res) => {
       await page.evaluate(() => localStorage.setItem('coThuyTin_gv', JSON.stringify({ url: 'x', mk: 'x' })));
       await page.reload(); await page.waitForTimeout(600);
       const nhanCo = await page.locator('.nhan').allTextContents();
-      bao(nhanCo.some(t => t.includes('SẮP MỞ') && t.includes('chỉ cô thấy')) && await page.locator('a.go', { hasText: 'Cô xem trước' }).count() === 1, 'máy cô: thấy phiếu sắp mở ("chỉ cô thấy") + nút "Cô xem trước"');
+      bao(nhanCo.some(t => t.includes('SẮP MỞ') && t.includes('chỉ cô thấy')) && await page.locator('a.go', { hasText: 'Cô xem trước' }).count() === 1 + gia.filter(p => p.khoi === kh && p.chuaGiao).length, 'máy cô: thấy phiếu sắp mở ("chỉ cô thấy") + nút "Cô xem trước"');
       await page.screenshot({ path: path.join(OUT, '_trang_chu_han.png'), fullPage: true });
       await page.evaluate(() => localStorage.removeItem('coThuyTin_gv'));
       // phiếu đặt hienTruoc: học sinh thấy trước với nhãn SẮP MỞ, nút khóa
@@ -243,7 +244,7 @@ const server = http.createServer((req, res) => {
   // Tổng hợp theo tuần / tháng / khoảng thời gian (Sheet giả lập, giờ nộp rải ra)
   {
     console.log('Tổng hợp theo thời gian');
-    const hai = [...new Map(ds.filter(p => p.link.startsWith('phieu/') && p.lop.includes('5A1')).map(p => [p.link, p])).values()].slice(0, 2);
+    const hai = [...new Map(ds.filter(p => p.link.startsWith('phieu/') && p.lop.includes('5A1') && hsThay(p)).map(p => [p.link, p])).values()].slice(0, 2);
     const bay = Date.now(), t = ms => new Date(ms).toISOString();
     const d0 = new Date(); const thu2 = new Date(d0.getFullYear(), d0.getMonth(), d0.getDate() - ((d0.getDay() + 6) % 7));
     const tuanTruoc = t(thu2.getTime() - 3 * 864e5 + 10 * 36e5), cach40 = t(bay - 40 * 864e5), vuaXong = t(bay - 6e4);

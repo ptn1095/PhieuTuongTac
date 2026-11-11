@@ -1,0 +1,143 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 13: Cấu trúc rẽ nhánh",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 13 Cấu trúc rẽ nhánh",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 13: Cấu trúc rẽ nhánh",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "chon",
+   "yc": "Mỗi câu dưới đây là rẽ nhánh <b>dạng thiếu</b> (Nếu… thì…) hay <b>dạng đủ</b> (Nếu… thì…, nếu không thì…)?",
+   "lc": [
+    "Dạng thiếu",
+    "Dạng đủ"
+   ],
+   "cau": [
+    {
+     "text": "Nếu trời mưa thì em mang áo mưa.",
+     "da": "Dạng thiếu"
+    },
+    {
+     "text": "Nếu trời mưa thì em mang ô, nếu không thì em đội mũ.",
+     "da": "Dạng đủ"
+    },
+    {
+     "text": "Nếu em làm xong bài tập thì em được xem hoạt hình.",
+     "da": "Dạng thiếu"
+    },
+    {
+     "text": "Nếu đèn xanh thì em đi tiếp, nếu không thì em dừng lại.",
+     "da": "Dạng đủ"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Quan sát chương trình và chọn đáp án đúng.",
+   "hinh": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"247\" height=\"258\" viewBox=\"0 0 247 258\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2,20 C22,2 62,2 82,16 L119.69999999999999,16 Q123.69999999999999,16 123.69999999999999,20 L123.69999999999999,50 Q123.69999999999999,54 119.69999999999999,54 L34.0,54.0 L29.0,59.0 L17.0,59.0 L12.0,54.0 L2,54 Z\" fill=\"#FFBF00\" stroke=\"#CC9900\"/><text x=\"12.0\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">when</text><path d=\"M46.8,44.0 L46.8,30.0 Q51.8,27.0 55.8,31.0 Q58.8,34.0 60.8,31.0 L60.8,38.0 Q57.8,41.0 54.8,38.0 Q50.8,35.0 46.8,38.0\" fill=\"#4CBF56\" stroke=\"#45993D\" stroke-width=\"1\"/><text x=\"66.8\" y=\"41.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">clicked</text><path d=\"M2,58 Q2,54 6,54 L12.0,54.0 L17.0,59.0 L29.0,59.0 L34.0,54.0 L176.0,54 Q180.0,54 180.0,58 L180.0,86 Q180.0,90 176.0,90 L34.0,90.0 L29.0,95.0 L17.0,95.0 L12.0,90.0 L6,90 Q2,90 2,86 Z\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"12.0\" y=\"76.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">ask</text><rect x=\"37.1\" y=\"61.0\" width=\"74.3\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#2E8EB8\" stroke-width=\"0.8\"/><text x=\"74.2\" y=\"76.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">5 + 5 = ?</text><text x=\"116.4\" y=\"76.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">and wait</text><path d=\"M2,94 Q2,90 6,90 L12.0,90.0 L17.0,95.0 L29.0,95.0 L34.0,90.0 L200.5,90 Q204.5,90 204.5,94 L204.5,128 Q204.5,132 200.5,132 L50,132 L45,137 L33,137 L28,132 L22,132 Q18,132 18,136 L18,164 Q18,168 22,168 L200.5,168 Q204.5,168 204.5,172 L204.5,188 Q204.5,192 200.5,192 L50,192 L45,197 L33,197 L28,192 L22,192 Q18,192 18,196 L18,224 Q18,228 22,228 L200.5,228 Q204.5,228 204.5,232 L204.5,246 Q204.5,250 200.5,250 L34.0,250.0 L29.0,255.0 L17.0,255.0 L12.0,250.0 L6,250 Q2,250 2,246 Z\" fill=\"#FFAB19\" stroke=\"#CF8B17\"/><text x=\"12.0\" y=\"115.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">if</text><path d=\"M30.4,111.0 L44.4,97.0 L148.7,97.0 L162.7,111.0 L148.7,125.0 L44.4,125.0 Z\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"44.4\" y=\"100.0\" width=\"60.2\" height=\"22\" rx=\"11.0\" fill=\"#5CB1D6\" stroke=\"#2E8EB8\"/><text x=\"54.4\" y=\"115.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">answer</text><text x=\"109.6\" y=\"115.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">=</text><rect x=\"121.3\" y=\"100.0\" width=\"27.4\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"135.0\" y=\"115.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">10</text><text x=\"167.7\" y=\"115.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">then</text><path d=\"M18,136 Q18,132 22,132 L28.0,132.0 L33.0,137.0 L45.0,137.0 L50.0,132.0 L239.4,132 Q243.4,132 243.4,136 L243.4,164 Q243.4,168 239.4,168 L50.0,168.0 L45.0,173.0 L33.0,173.0 L28.0,168.0 L22,168 Q18,168 18,164 Z\" fill=\"#9966FF\" stroke=\"#774DCB\"/><text x=\"28.0\" y=\"154.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">say</text><rect x=\"53.1\" y=\"139.0\" width=\"74.3\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"90.2\" y=\"154.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">Đúng rồi!</text><text x=\"132.4\" y=\"154.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">for</text><rect x=\"157.5\" y=\"139.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"169.5\" y=\"154.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text><text x=\"186.5\" y=\"154.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">seconds</text><path d=\"M18,196 Q18,192 22,192 L28.0,192.0 L33.0,197.0 L45.0,197.0 L50.0,192.0 L232.7,192 Q236.7,192 236.7,196 L236.7,224 Q236.7,228 232.7,228 L50.0,228.0 L45.0,233.0 L33.0,233.0 L28.0,228.0 L22,228 Q18,228 18,224 Z\" fill=\"#9966FF\" stroke=\"#774DCB\"/><text x=\"28.0\" y=\"214.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">say</text><rect x=\"53.1\" y=\"199.0\" width=\"67.6\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"86.9\" y=\"214.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">Sai rồi!</text><text x=\"125.7\" y=\"214.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">for</text><rect x=\"150.8\" y=\"199.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#774DCB\" stroke-width=\"0.8\"/><text x=\"162.8\" y=\"214.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text><text x=\"179.8\" y=\"214.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">seconds</text><text x=\"12\" y=\"184.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">else</text></svg>",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Em nhập <b>10</b>. Nhân vật nói gì?",
+     "lc": [
+      "Đúng rồi!",
+      "Sai rồi!",
+      "5 + 5 = ?",
+      "Không nói gì"
+     ],
+     "da": "Đúng rồi!"
+    },
+    {
+     "text": "Em nhập <b>9</b>. Nhân vật nói gì?",
+     "lc": [
+      "Sai rồi!",
+      "Đúng rồi!",
+      "9",
+      "Không nói gì"
+     ],
+     "da": "Sai rồi!"
+    },
+    {
+     "text": "Khối lệnh <b>if … then … else</b> trong chương trình là cấu trúc:",
+     "lc": [
+      "Rẽ nhánh dạng đủ",
+      "Rẽ nhánh dạng thiếu",
+      "Lặp",
+      "Tuần tự"
+     ],
+     "da": "Rẽ nhánh dạng đủ"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>khối lệnh</b> với <b>ý nghĩa</b> đúng.",
+   "lc": [
+    "Rẽ nhánh dạng thiếu",
+    "Rẽ nhánh dạng đủ",
+    "Điều kiện: chạm vào cạnh sân khấu",
+    "Điều kiện: phím dấu cách được nhấn"
+   ],
+   "cau": [
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDYiIGhlaWdodD0iOTIiIHZpZXdCb3g9IjAgMCAxMDYgOTIiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLDggUTIsNCA2LDQgTDEyLjAsNC4wIEwxNy4wLDkuMCBMMjkuMCw5LjAgTDM0LjAsNC4wIEw5OCw0IFExMDIsNCAxMDIsOCBMMTAyLDM2IFExMDIsNDAgOTgsNDAgTDUwLDQwIEw0NSw0NSBMMzMsNDUgTDI4LDQwIEwyMiw0MCBRMTgsNDAgMTgsNDQgTDE4LDU2IFExOCw2MCAyMiw2MCBMOTgsNjAgUTEwMiw2MCAxMDIsNjQgTDEwMiw3OCBRMTAyLDgyIDk4LDgyIEwzNC4wLDgyLjAgTDI5LjAsODcuMCBMMTcuMCw4Ny4wIEwxMi4wLDgyLjAgTDYsODIgUTIsODIgMiw3OCBaIiBmaWxsPSIjRkZBQjE5IiBzdHJva2U9IiNDRjhCMTciLz48dGV4dCB4PSIxMi4wIiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPmlmPC90ZXh0PjxwYXRoIGQ9Ik0zMC40LDIyLjAgTDQxLjQsMTEuMCBMNDcuNCwxMS4wIEw1OC40LDIyLjAgTDQ3LjQsMzMuMCBMNDEuNCwzMy4wIFoiIGZpbGw9IiNDRjhCMTciIHN0cm9rZT0iI0NGOEIxNyIvPjx0ZXh0IHg9IjQ0LjQiIHk9IjI2LjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+PC90ZXh0Pjx0ZXh0IHg9IjYzLjQiIHk9IjI2LjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+dGhlbjwvdGV4dD48L3N2Zz4=\" width=\"106\" height=\"92\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Rẽ nhánh dạng thiếu"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDYiIGhlaWdodD0iMTM2IiB2aWV3Qm94PSIwIDAgMTA2IDEzNiIgc3R5bGU9InZlcnRpY2FsLWFsaWduOm1pZGRsZTttYXgtd2lkdGg6MTAwJSI+PHBhdGggZD0iTTIsOCBRMiw0IDYsNCBMMTIuMCw0LjAgTDE3LjAsOS4wIEwyOS4wLDkuMCBMMzQuMCw0LjAgTDk4LDQgUTEwMiw0IDEwMiw4IEwxMDIsMzYgUTEwMiw0MCA5OCw0MCBMNTAsNDAgTDQ1LDQ1IEwzMyw0NSBMMjgsNDAgTDIyLDQwIFExOCw0MCAxOCw0NCBMMTgsNTYgUTE4LDYwIDIyLDYwIEw5OCw2MCBRMTAyLDYwIDEwMiw2NCBMMTAyLDgwIFExMDIsODQgOTgsODQgTDUwLDg0IEw0NSw4OSBMMzMsODkgTDI4LDg0IEwyMiw4NCBRMTgsODQgMTgsODggTDE4LDEwMCBRMTgsMTA0IDIyLDEwNCBMOTgsMTA0IFExMDIsMTA0IDEwMiwxMDggTDEwMiwxMjIgUTEwMiwxMjYgOTgsMTI2IEwzNC4wLDEyNi4wIEwyOS4wLDEzMS4wIEwxNy4wLDEzMS4wIEwxMi4wLDEyNi4wIEw2LDEyNiBRMiwxMjYgMiwxMjIgWiIgZmlsbD0iI0ZGQUIxOSIgc3Ryb2tlPSIjQ0Y4QjE3Ii8+PHRleHQgeD0iMTIuMCIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5pZjwvdGV4dD48cGF0aCBkPSJNMzAuNCwyMi4wIEw0MS40LDExLjAgTDQ3LjQsMTEuMCBMNTguNCwyMi4wIEw0Ny40LDMzLjAgTDQxLjQsMzMuMCBaIiBmaWxsPSIjQ0Y4QjE3IiBzdHJva2U9IiNDRjhCMTciLz48dGV4dCB4PSI0NC40IiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPjwvdGV4dD48dGV4dCB4PSI2My40IiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPnRoZW48L3RleHQ+PHRleHQgeD0iMTIiIHk9Ijc2LjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+ZWxzZTwvdGV4dD48L3N2Zz4=\" width=\"106\" height=\"136\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Rẽ nhánh dạng đủ"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTUiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAxNTUgMzIiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLjAsMTYuMCBMMTYuMCwyLjAgTDEzOS4xLDIuMCBMMTUzLjEsMTYuMCBMMTM5LjEsMzAuMCBMMTYuMCwzMC4wIFoiIGZpbGw9IiM1Q0IxRDYiIHN0cm9rZT0iIzJFOEVCOCIvPjx0ZXh0IHg9IjE2LjAiIHk9IjIwLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+dG91Y2hpbmc8L3RleHQ+PHJlY3QgeD0iNzQuNiIgeT0iNS4wIiB3aWR0aD0iNTIuOCIgaGVpZ2h0PSIyMiIgcng9IjQiIGZpbGw9IiMyRThFQjgiIHN0cm9rZT0iIzJFOEVCOCIvPjx0ZXh0IHg9IjgxLjYiIHk9IjIwLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+ZWRnZSDilr48L3RleHQ+PHRleHQgeD0iMTMyLjQiIHk9IjIwLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+PzwvdGV4dD48L3N2Zz4=\" width=\"155\" height=\"32\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Điều kiện: chạm vào cạnh sân khấu"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzUiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAxNzUgMzIiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxwYXRoIGQ9Ik0yLjAsMTYuMCBMMTYuMCwyLjAgTDE1OS4yLDIuMCBMMTczLjIsMTYuMCBMMTU5LjIsMzAuMCBMMTYuMCwzMC4wIFoiIGZpbGw9IiM1Q0IxRDYiIHN0cm9rZT0iIzJFOEVCOCIvPjx0ZXh0IHg9IjE2LjAiIHk9IjIwLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+a2V5PC90ZXh0PjxyZWN0IHg9IjQxLjEiIHk9IjUuMCIgd2lkdGg9IjU5LjUiIGhlaWdodD0iMjIiIHJ4PSI0IiBmaWxsPSIjMkU4RUI4IiBzdHJva2U9IiMyRThFQjgiLz48dGV4dCB4PSI0OC4xIiB5PSIyMC4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPnNwYWNlIOKWvjwvdGV4dD48dGV4dCB4PSIxMDUuNiIgeT0iMjAuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5wcmVzc2VkPzwvdGV4dD48L3N2Zz4=\" width=\"175\" height=\"32\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "Điều kiện: phím dấu cách được nhấn"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Cấu trúc rẽ nhánh dùng để chọn việc cần làm tuỳ theo điều kiện đúng hay sai.",
+     "da": "Đ"
+    },
+    {
+     "text": "Ở rẽ nhánh dạng thiếu, nếu điều kiện sai thì không làm gì cả.",
+     "da": "Đ"
+    },
+    {
+     "text": "Ở rẽ nhánh dạng đủ, khi điều kiện sai thì thực hiện các lệnh sau <b>else</b> (nếu không thì).",
+     "da": "Đ"
+    },
+    {
+     "text": "Ô điều kiện trong khối <b>if</b> có hình chữ nhật bo tròn.",
+     "da": "S"
+    },
+    {
+     "text": "Điểm thi là 7, chương trình kiểm tra “điểm &gt; 8” thì điều kiện này đúng.",
+     "da": "S"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,146 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 15: Sử dụng biểu thức trong chương trình",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 15 Sử dụng biểu thức",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 15: Sử dụng biểu thức trong chương trình",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>biểu thức trong Scratch</b> với <b>biểu thức toán học</b> tương ứng.",
+   "lc": [
+    "a × b",
+    "(a × h) : 2",
+    "r × (r × 3,14)",
+    "[(a + b) × h] : 2"
+   ],
+   "cau": [
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5NCIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDk0IDMyIiBzdHlsZT0idmVydGljYWwtYWxpZ246bWlkZGxlO21heC13aWR0aDoxMDAlIj48cmVjdCB4PSIyLjAiIHk9IjIuMCIgd2lkdGg9IjkwLjEiIGhlaWdodD0iMjgiIHJ4PSIxNC4wIiBmaWxsPSIjNTlDMDU5IiBzdHJva2U9IiMzODk0MzgiLz48cmVjdCB4PSIxMi4wIiB5PSI1LjAiIHdpZHRoPSIyNi43IiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI0ZGOEMxQSIgc3Ryb2tlPSIjREI2RTAwIi8+PHRleHQgeD0iMjIuMCIgeT0iMjAuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5hPC90ZXh0Pjx0ZXh0IHg9IjQzLjciIHk9IjIwLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+KjwvdGV4dD48cmVjdCB4PSI1NS40IiB5PSI1LjAiIHdpZHRoPSIyNi43IiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI0ZGOEMxQSIgc3Ryb2tlPSIjREI2RTAwIi8+PHRleHQgeD0iNjUuNCIgeT0iMjAuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5iPC90ZXh0Pjwvc3ZnPg==\" width=\"94\" height=\"32\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "a × b"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTUiIGhlaWdodD0iMzgiIHZpZXdCb3g9IjAgMCAxNTUgMzgiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxyZWN0IHg9IjIuMCIgeT0iMi4wIiB3aWR0aD0iMTUwLjgiIGhlaWdodD0iMzQiIHJ4PSIxNy4wIiBmaWxsPSIjNTlDMDU5IiBzdHJva2U9IiMzODk0MzgiLz48cmVjdCB4PSIxMi4wIiB5PSI1LjAiIHdpZHRoPSI5MC4xIiBoZWlnaHQ9IjI4IiByeD0iMTQuMCIgZmlsbD0iIzU5QzA1OSIgc3Ryb2tlPSIjMzg5NDM4Ii8+PHJlY3QgeD0iMjIuMCIgeT0iOC4wIiB3aWR0aD0iMjYuNyIgaGVpZ2h0PSIyMiIgcng9IjExLjAiIGZpbGw9IiNGRjhDMUEiIHN0cm9rZT0iI0RCNkUwMCIvPjx0ZXh0IHg9IjMyLjAiIHk9IjIzLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+YTwvdGV4dD48dGV4dCB4PSI1My43IiB5PSIyMy4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPio8L3RleHQ+PHJlY3QgeD0iNjUuNCIgeT0iOC4wIiB3aWR0aD0iMjYuNyIgaGVpZ2h0PSIyMiIgcng9IjExLjAiIGZpbGw9IiNGRjhDMUEiIHN0cm9rZT0iI0RCNkUwMCIvPjx0ZXh0IHg9Ijc1LjQiIHk9IjIzLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+aDwvdGV4dD48dGV4dCB4PSIxMDcuMSIgeT0iMjMuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj4vPC90ZXh0PjxyZWN0IHg9IjExOC44IiB5PSI4LjAiIHdpZHRoPSIyNC4wIiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMzg5NDM4IiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IHg9IjEzMC44IiB5PSIyMy4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNTc1RTc1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPjI8L3RleHQ+PC9zdmc+\" width=\"155\" height=\"38\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "(a × h) : 2"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzIiIGhlaWdodD0iMzgiIHZpZXdCb3g9IjAgMCAxNzIgMzgiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxyZWN0IHg9IjIuMCIgeT0iMi4wIiB3aWR0aD0iMTY3LjYiIGhlaWdodD0iMzQiIHJ4PSIxNy4wIiBmaWxsPSIjNTlDMDU5IiBzdHJva2U9IiMzODk0MzgiLz48cmVjdCB4PSIxMi4wIiB5PSI4LjAiIHdpZHRoPSIyNi43IiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI0ZGOEMxQSIgc3Ryb2tlPSIjREI2RTAwIi8+PHRleHQgeD0iMjIuMCIgeT0iMjMuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5yPC90ZXh0Pjx0ZXh0IHg9IjQzLjciIHk9IjIzLjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+KjwvdGV4dD48cmVjdCB4PSI1NS40IiB5PSI1LjAiIHdpZHRoPSIxMDQuMiIgaGVpZ2h0PSIyOCIgcng9IjE0LjAiIGZpbGw9IiM1OUMwNTkiIHN0cm9rZT0iIzM4OTQzOCIvPjxyZWN0IHg9IjY1LjQiIHk9IjguMCIgd2lkdGg9IjI2LjciIGhlaWdodD0iMjIiIHJ4PSIxMS4wIiBmaWxsPSIjRkY4QzFBIiBzdHJva2U9IiNEQjZFMDAiLz48dGV4dCB4PSI3NS40IiB5PSIyMy4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPnI8L3RleHQ+PHRleHQgeD0iOTcuMSIgeT0iMjMuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj4qPC90ZXh0PjxyZWN0IHg9IjEwOC44IiB5PSI4LjAiIHdpZHRoPSI0MC44IiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMzg5NDM4IiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IHg9IjEyOS4yIiB5PSIyMy4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNTc1RTc1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPjMuMTQ8L3RleHQ+PC9zdmc+\" width=\"172\" height=\"38\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "r × (r × 3,14)"
+    },
+    {
+     "text": "<img src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMTgiIGhlaWdodD0iNDQiIHZpZXdCb3g9IjAgMCAyMTggNDQiIHN0eWxlPSJ2ZXJ0aWNhbC1hbGlnbjptaWRkbGU7bWF4LXdpZHRoOjEwMCUiPjxyZWN0IHg9IjIuMCIgeT0iMi4wIiB3aWR0aD0iMjE0LjIiIGhlaWdodD0iNDAiIHJ4PSIyMC4wIiBmaWxsPSIjNTlDMDU5IiBzdHJva2U9IiMzODk0MzgiLz48cmVjdCB4PSIxMi4wIiB5PSI1LjAiIHdpZHRoPSIxNTMuNSIgaGVpZ2h0PSIzNCIgcng9IjE3LjAiIGZpbGw9IiM1OUMwNTkiIHN0cm9rZT0iIzM4OTQzOCIvPjxyZWN0IHg9IjIyLjAiIHk9IjguMCIgd2lkdGg9IjkwLjEiIGhlaWdodD0iMjgiIHJ4PSIxNC4wIiBmaWxsPSIjNTlDMDU5IiBzdHJva2U9IiMzODk0MzgiLz48cmVjdCB4PSIzMi4wIiB5PSIxMS4wIiB3aWR0aD0iMjYuNyIgaGVpZ2h0PSIyMiIgcng9IjExLjAiIGZpbGw9IiNGRjhDMUEiIHN0cm9rZT0iI0RCNkUwMCIvPjx0ZXh0IHg9IjQyLjAiIHk9IjI2LjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+YTwvdGV4dD48dGV4dCB4PSI2My43IiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPis8L3RleHQ+PHJlY3QgeD0iNzUuNCIgeT0iMTEuMCIgd2lkdGg9IjI2LjciIGhlaWdodD0iMjIiIHJ4PSIxMS4wIiBmaWxsPSIjRkY4QzFBIiBzdHJva2U9IiNEQjZFMDAiLz48dGV4dCB4PSI4NS40IiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPmI8L3RleHQ+PHRleHQgeD0iMTE3LjEiIHk9IjI2LjAiIGZpbGw9IiNmZmYiIGZvbnQtZmFtaWx5PSJBcmlhbCxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiI+KjwvdGV4dD48cmVjdCB4PSIxMjguOCIgeT0iMTEuMCIgd2lkdGg9IjI2LjciIGhlaWdodD0iMjIiIHJ4PSIxMS4wIiBmaWxsPSIjRkY4QzFBIiBzdHJva2U9IiNEQjZFMDAiLz48dGV4dCB4PSIxMzguOCIgeT0iMjYuMCIgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIj5oPC90ZXh0Pjx0ZXh0IHg9IjE3MC41IiB5PSIyNi4wIiBmaWxsPSIjZmZmIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPi88L3RleHQ+PHJlY3QgeD0iMTgyLjIiIHk9IjExLjAiIHdpZHRoPSIyNC4wIiBoZWlnaHQ9IjIyIiByeD0iMTEuMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjMzg5NDM4IiBzdHJva2Utd2lkdGg9IjAuOCIvPjx0ZXh0IHg9IjE5NC4yIiB5PSIyNi4wIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNTc1RTc1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiPjI8L3RleHQ+PC9zdmc+\" width=\"218\" height=\"44\" alt=\"khối lệnh\" style=\"vertical-align:middle;max-width:100%;height:auto\">",
+     "da": "[(a + b) × h] : 2"
+    }
+   ]
+  },
+  {
+   "loai": "go",
+   "yc": "Tính kết quả của các biểu thức Scratch rồi gõ vào ô trống.",
+   "cau": [
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"214\" height=\"38\" viewBox=\"0 0 214 38\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"209.5\" height=\"34\" rx=\"17.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"5.0\" width=\"84.7\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"22.0\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"34.0\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">8</text><text x=\"51.0\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">+</text><rect x=\"62.7\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"74.7\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">3</text><text x=\"101.7\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">*</text><rect x=\"113.4\" y=\"5.0\" width=\"88.1\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"123.4\" y=\"8.0\" width=\"27.4\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"137.1\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">14</text><text x=\"155.8\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">-</text><rect x=\"167.5\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"179.5\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">4</text></svg> = {}",
+     "da": "110"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"210\" height=\"38\" viewBox=\"0 0 210 38\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"206.1\" height=\"34\" rx=\"17.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"5.0\" width=\"84.7\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"22.0\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"34.0\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text><text x=\"51.0\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">+</text><rect x=\"62.7\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"74.7\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">5</text><text x=\"101.7\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">*</text><rect x=\"113.4\" y=\"5.0\" width=\"84.7\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"123.4\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"135.4\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">8</text><text x=\"152.4\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">-</text><rect x=\"164.1\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"176.1\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">4</text></svg> = {}",
+     "da": "28"
+    },
+    {
+     "text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"153\" height=\"38\" viewBox=\"0 0 153 38\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"148.8\" height=\"34\" rx=\"17.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"5.0\" width=\"88.1\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"22.0\" y=\"8.0\" width=\"27.4\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"35.7\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">20</text><text x=\"54.4\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">-</text><rect x=\"66.1\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"78.1\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">4</text><text x=\"105.1\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">/</text><rect x=\"116.8\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"128.8\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">2</text></svg> = {}",
+     "da": "8"
+    },
+    {
+     "text": "Biến <b>a</b> = 5. <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"155\" height=\"38\" viewBox=\"0 0 155 38\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"150.8\" height=\"34\" rx=\"17.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"8.0\" width=\"26.7\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"22.0\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">a</text><text x=\"43.7\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">*</text><rect x=\"55.4\" y=\"5.0\" width=\"87.4\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"65.4\" y=\"8.0\" width=\"26.7\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"75.4\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">a</text><text x=\"97.1\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">*</text><rect x=\"108.8\" y=\"8.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"120.8\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">6</text></svg> = {}",
+     "da": "150"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Biến <b>cạnh</b> lưu độ dài cạnh hình vuông. Biểu thức tính <b>chu vi</b> hình vuông là:",
+     "lc": [
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"112\" height=\"32\" viewBox=\"0 0 112 32\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"107.5\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"5.0\" width=\"46.8\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"22.0\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">cạnh</text><text x=\"63.8\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">*</text><rect x=\"75.5\" y=\"5.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"87.5\" y=\"20.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">4</text></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"112\" height=\"32\" viewBox=\"0 0 112 32\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"107.5\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"5.0\" width=\"46.8\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"22.0\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">cạnh</text><text x=\"63.8\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">+</text><rect x=\"75.5\" y=\"5.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"87.5\" y=\"20.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">4</text></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"134\" height=\"32\" viewBox=\"0 0 134 32\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"130.3\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"5.0\" width=\"46.8\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"22.0\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">cạnh</text><text x=\"63.8\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">*</text><rect x=\"75.5\" y=\"5.0\" width=\"46.8\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"85.5\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">cạnh</text></svg>",
+      "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"112\" height=\"32\" viewBox=\"0 0 112 32\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"107.5\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"5.0\" width=\"46.8\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"22.0\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">cạnh</text><text x=\"63.8\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">/</text><rect x=\"75.5\" y=\"5.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"87.5\" y=\"20.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">4</text></svg>"
+     ],
+     "da": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"112\" height=\"32\" viewBox=\"0 0 112 32\" style=\"vertical-align:middle;max-width:100%\"><rect x=\"2.0\" y=\"2.0\" width=\"107.5\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"12.0\" y=\"5.0\" width=\"46.8\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"22.0\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">cạnh</text><text x=\"63.8\" y=\"20.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">*</text><rect x=\"75.5\" y=\"5.0\" width=\"24.0\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"87.5\" y=\"20.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">4</text></svg>"
+    },
+    {
+     "text": "Trong Scratch, phép <b>nhân</b> được viết bằng dấu nào?",
+     "lc": [
+      "*",
+      "x",
+      ":",
+      "/"
+     ],
+     "da": "*",
+     "cot": 4
+    },
+    {
+     "text": "Biến a = 3, b = 12. Biểu thức <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"166\" height=\"38\" viewBox=\"0 0 166 38\" style=\"vertical-align:middle;max-width:100%\"><path d=\"M2.0,19.0 L19.0,2.0 L147.2,2.0 L164.2,19.0 L147.2,36.0 L19.0,36.0 Z\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"16.0\" y=\"8.0\" width=\"27.4\" height=\"22\" rx=\"11.0\" fill=\"#fff\" stroke=\"#389438\" stroke-width=\"0.8\"/><text x=\"29.7\" y=\"23.0\" text-anchor=\"middle\" fill=\"#575E75\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">30</text><text x=\"48.4\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">=</text><rect x=\"60.1\" y=\"5.0\" width=\"90.1\" height=\"28\" rx=\"14.0\" fill=\"#59C059\" stroke=\"#389438\"/><rect x=\"70.1\" y=\"8.0\" width=\"26.7\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"80.1\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">a</text><text x=\"101.8\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">+</text><rect x=\"113.5\" y=\"8.0\" width=\"26.7\" height=\"22\" rx=\"11.0\" fill=\"#FF8C1A\" stroke=\"#DB6E00\"/><text x=\"123.5\" y=\"23.0\" fill=\"#fff\" font-family=\"Arial,Helvetica,sans-serif\" font-size=\"12\">b</text></svg> cho kết quả:",
+     "lc": [
+      "Sai (false)",
+      "Đúng (true)",
+      "15",
+      "30"
+     ],
+     "da": "Sai (false)",
+     "cot": 4
+    },
+    {
+     "text": "Các khối phép toán (+, −, *, /, &gt;, &lt;, =) nằm trong nhóm lệnh nào?",
+     "lc": [
+      "Operators (Các phép toán)",
+      "Motion (Chuyển động)",
+      "Looks (Hiển thị)",
+      "Events (Sự kiện)"
+     ],
+     "da": "Operators (Các phép toán)"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Trong Scratch, phép chia được viết bằng dấu <b>/</b>.",
+     "da": "Đ"
+    },
+    {
+     "text": "Biểu thức so sánh (&gt;, &lt;, =) cho kết quả là Đúng hoặc Sai.",
+     "da": "Đ"
+    },
+    {
+     "text": "Muốn tính phép tính trong ngoặc trước, em lồng khối phép toán đó vào bên trong khối kia.",
+     "da": "Đ"
+    },
+    {
+     "text": "Scratch không tính được các phép tính có dấu ngoặc.",
+     "da": "S"
+    }
+   ]
+  }
+ ]
+}

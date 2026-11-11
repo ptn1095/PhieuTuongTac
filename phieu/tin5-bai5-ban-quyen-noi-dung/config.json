@@ -1,0 +1,142 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Tin học 5",
+  "ten": "Bài 5: Bản quyền nội dung thông tin",
+  "ngay": "2026-11-11",
+  "chuaGiao": true
+ },
+ "ma": "Tin 5 - Bài 5 Bản quyền",
+ "mon": "TIN HỌC 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 5: Bản quyền nội dung thông tin",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai?",
+   "cau": [
+    {
+     "text": "Tác giả là người sở hữu nội dung thông tin do mình tạo ra.",
+     "da": "Đ"
+    },
+    {
+     "text": "Tác giả có quyền cho phép hoặc không cho phép người khác sử dụng nội dung của mình.",
+     "da": "Đ"
+    },
+    {
+     "text": "Nội dung thông tin chỉ có thể ở dạng chữ (văn bản).",
+     "da": "S"
+    },
+    {
+     "text": "Một nội dung thông tin bắt buộc phải có đủ cả chữ, hình ảnh và âm thanh.",
+     "da": "S"
+    },
+    {
+     "text": "Bài viết, bức ảnh, bài hát, đoạn video… đều là những nội dung thông tin có bản quyền.",
+     "da": "Đ"
+    },
+    {
+     "text": "Thông tin đăng trên Internet thì ai cũng được tự do lấy dùng mà không cần ghi nguồn.",
+     "da": "S"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi <b>tình huống</b> với <b>cách ghi nguồn</b> phù hợp.",
+   "lc": [
+    "Ảnh: Nguyễn Văn A",
+    "Thơ: Xuân Quỳnh",
+    "Phỏng theo truyện Cây khế",
+    "Nguồn: địa chỉ trang web"
+   ],
+   "cau": [
+    {
+     "text": "Em dùng bức ảnh do chú Nguyễn Văn A chụp trên báo tường của lớp.",
+     "da": "Ảnh: Nguyễn Văn A"
+    },
+    {
+     "text": "Em chép một bài thơ của nhà thơ Xuân Quỳnh lên báo tường.",
+     "da": "Thơ: Xuân Quỳnh"
+    },
+    {
+     "text": "Em kể lại câu chuyện Cây khế theo lời văn của mình.",
+     "da": "Phỏng theo truyện Cây khế"
+    },
+    {
+     "text": "Em lấy thông tin về loài voi từ một trang web.",
+     "da": "Nguồn: địa chỉ trang web"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn tất cả các việc làm <b>tôn trọng bản quyền</b>.",
+   "cau": [
+    {
+     "text": "Việc làm nào thể hiện em tôn trọng bản quyền nội dung thông tin?",
+     "cot": 1,
+     "lc": [
+      "Ghi tên tác giả bên dưới bức ảnh em sử dụng.",
+      "Xin phép bạn trước khi dùng bức tranh bạn vẽ cho bài thuyết trình của nhóm.",
+      "Ghi rõ nguồn trang web khi dùng thông tin tìm được trên Internet.",
+      "Chép bài văn của bạn rồi ghi tên mình vào để nộp.",
+      "Cắt bỏ tên tác giả trên bức ảnh rồi đăng lên mạng."
+     ],
+     "da": [
+      "Ghi tên tác giả bên dưới bức ảnh em sử dụng.",
+      "Xin phép bạn trước khi dùng bức tranh bạn vẽ cho bài thuyết trình của nhóm.",
+      "Ghi rõ nguồn trang web khi dùng thông tin tìm được trên Internet."
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Vì sao khi đăng bài trên báo tường cần ghi tên tác giả?",
+     "lc": [
+      "Để cho biết ai là người sở hữu nội dung đó.",
+      "Để bài báo dài hơn.",
+      "Để trang trí cho đẹp.",
+      "Vì cô giáo thích tên đẹp."
+     ],
+     "da": "Để cho biết ai là người sở hữu nội dung đó."
+    },
+    {
+     "text": "Nội dung thông tin có thể ở những dạng nào?",
+     "lc": [
+      "Chữ, hình ảnh, âm thanh hoặc đa phương tiện.",
+      "Chỉ ở dạng chữ.",
+      "Chỉ ở dạng hình ảnh.",
+      "Chỉ ở dạng âm thanh."
+     ],
+     "da": "Chữ, hình ảnh, âm thanh hoặc đa phương tiện."
+    },
+    {
+     "text": "Bạn Minh muốn dùng một bài hát của nhạc sĩ cho video của lớp. Bạn Minh nên làm gì?",
+     "lc": [
+      "Ghi rõ tên bài hát, tên tác giả; xin phép nếu cần.",
+      "Dùng luôn, không cần ghi gì.",
+      "Nói đó là bài hát do Minh sáng tác.",
+      "Sửa vài câu rồi ghi tên Minh."
+     ],
+     "da": "Ghi rõ tên bài hát, tên tác giả; xin phép nếu cần."
+    }
+   ]
+  }
+ ]
+}
