@@ -28,6 +28,8 @@ const server = http.createServer((req, res) => {
   let p = decodeURIComponent(req.url.split('?')[0]);
   const mm = p.match(/^\/phieu\/(__mau_\w+__)\/$/);
   if (mm && MAU[mm[1]]) { res.writeHead(200, { 'Content-Type': MIME['.html'] }); return res.end(phieuMau(mm[1])); }
+  // Khi thử: mặc định coi như chưa cài link lịch giao (phần thử lịch giao tự giả lập link riêng)
+  if (p === '/cauhinh.json') { res.writeHead(200, { 'Content-Type': MIME['.json'] }); return res.end('{"giaoCsv": ""}'); }
   if (p.endsWith('/')) p += 'index.html';
   const f = path.join(GOC, p);
   if (!f.startsWith(GOC) || !fs.existsSync(f)) { res.writeHead(404); return res.end('404'); }
@@ -317,6 +319,16 @@ const server = http.createServer((req, res) => {
     await page.click('.tab-xem[data-xem="lich"]'); await page.waitForTimeout(300);
     bao(await page.locator('#bangChuaGiao .chon-giao').count() === chua.length && await page.locator('#chuaCsv').isVisible(),
       `tab Giao phiếu: ${chua.length} phiếu chưa giao + nhắc "chưa cài link công bố"`);
+    { // đã cài link nhưng chưa đọc được → dòng kiểm tra báo rõ
+      const p2 = await browser.newPage();
+      await p2.route(/cauhinh\.json/, r => r.fulfill({ status: 200, contentType: 'application/json', body: '{"giaoCsv":"https://docs.google.com/spreadsheets/d/e/X/pub?output=csv"}' }));
+      await p2.route(/docs\.google\.com/, r => r.fulfill({ status: 403, body: '' }));
+      await p2.route(/action=tonghop/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, phieu: [], danhSach: [], giao: [['a', 'khoi-5', '', '', '', 'x']], luc: new Date().toISOString() }) }));
+      await p2.goto(base + 'giaovien/'); await p2.fill('#mk', 'x'); await p2.click('#nutDN'); await p2.waitForTimeout(1000);
+      await p2.click('.tab-xem[data-xem="lich"]'); await p2.waitForTimeout(800);
+      bao(await p2.locator('#chuaCsv').isHidden() && (await p2.textContent('#ktCsv')).includes('chưa đọc được'), 'đã cài link mà chưa đọc được → báo "Học sinh chưa đọc được lịch giao"');
+      await p2.close();
+    }
     // giao 1 phiếu cho Khối 5, mở ngay, không hạn
     const p1 = chua[0];
     await page.click(`[data-giao="${p1.link}"]`); await page.waitForTimeout(200);

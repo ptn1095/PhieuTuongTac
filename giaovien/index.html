@@ -173,6 +173,7 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
 
     <div id="xemLich" class="hidden">
       <div class="canh-bao hidden" id="chuaCsv">⚠ <b>Chưa cài link công bố lịch giao.</b> Cô vẫn bấm Giao được (lưu vào Google Sheet), nhưng <b>học sinh chưa thấy thay đổi</b> cho tới khi cô làm bước "Công bố lên web" trang tính <b>GiaoPhieu</b> và gửi link cho Claude.</div>
+      <div class="ghi-chu" id="ktCsv" style="margin:-6px 0 12px 4px"></div>
       <div class="so-lieu" id="lichSo"></div>
       <section class="the"><div class="dau-bang"><h2 style="margin:0">Chưa giao <span class="phu" id="demChuaGiao"></span></h2>
         <button type="button" class="nut" id="nutHangLoat" disabled>📦 Giao hàng loạt</button></div>
@@ -341,8 +342,15 @@ const tenKhoi=k=>(Array.isArray(k)?k:[k]).map(x=>TEN_KHOI[x]||x).join(', ');
 let CO_CSV=true;fetch('../cauhinh.json?v='+Date.now()).then(r=>r.json()).then(c=>{CO_CSV=!!(c&&c.giaoCsv);if(XEM==='lich')veLich();}).catch(()=>{});
 // ===== Giao phiếu =====
 function trangThaiGiao(p){if(p.chuaGiao)return 'chuagiao';const bay=new Date(),m=moCua(p),d=dongCua(p);return bay<m?'chua':d&&bay>d?'dong':'mo';}
+// Kiểm tra trang của học sinh có đọc được lịch giao (bản công bố CSV) không
+let KT_LUC=0;
+async function kiemTraCsv(){if(!CO_CSV||!window.GiaoPhieu||Date.now()-KT_LUC<20000)return;KT_LUC=Date.now();
+  const G=await GiaoPhieu.tai('../',8000),el=$('ktCsv');
+  if(!G){el.innerHTML=(DL.giao&&DL.giao.length)?'⚠ <b>Học sinh chưa đọc được lịch giao</b> từ link công bố. Nếu cô vừa giao lần đầu, chờ 5 phút rồi bấm Tải lại; nếu vẫn báo, kiểm tra lại bước "Công bố lên web" (chọn GiaoPhieu, dạng .csv).':'ℹ Link công bố đã cài. Sau lần bấm Giao đầu tiên (và tối đa 5 phút), học sinh sẽ đọc được lịch giao.';return;}
+  const G2=GIAO(),lech=Object.keys(G2).filter(k=>{const a=G2[k],b=G[k];return !b||a.khoi!==b.khoi||a.mo!==b.mo||a.dong!==b.dong||a.thuhoi!==b.thuhoi;}).length;
+  el.innerHTML=lech?'⏳ Học sinh đọc được lịch giao, nhưng <b>'+lech+' thay đổi mới</b> đang chờ Google cập nhật (tối đa 5 phút).':'✓ Học sinh đọc được lịch giao – đã khớp với Sheet.';}
 function veLich(){
-  $('chuaCsv').classList.toggle('hidden',CO_CSV);
+  $('chuaCsv').classList.toggle('hidden',CO_CSV);kiemTraCsv();
   const l=$('chonLop').value,bay=new Date(),hn=isoNgay(bay),ds=motPhieu().filter(p=>!l||p.chuaGiao||p.lop.includes(l));
   const dem={mo:0,chua:0,dong:0,chuagiao:0};ds.forEach(p=>dem[trangThaiGiao(p)]++);
   const daGiao=ds.filter(p=>!p.chuaGiao).sort((a,b)=>moCua(a)-moCua(b)),chua=ds.filter(p=>p.chuaGiao).sort((a,b)=>a.ten.localeCompare(b.ten,'vi',{numeric:true}));
@@ -416,7 +424,7 @@ $('fGiao').onsubmit=async e=>{e.preventDefault();
     if(coHan&&$('hgHanNgay').value<mo.slice(0,10)){$('hgLoi').textContent='Hạn nộp phải sau ngày mở.';return;}
     ds=[{slug:slugCua({link:HG.links[0]}),khoi:KH,mo:sangChu(mo),dong:coHan?$('hgHanNgay').value:''}];}
   $('hgOK').disabled=true;$('hgLoi').textContent='Đang lưu…';
-  try{await guiGiao(ds);$('hopGiao').classList.add('hidden');veLich();
+  try{await guiGiao(ds);$('hopGiao').classList.add('hidden');KT_LUC=0;veLich();
     $('capNhat').textContent='✓ Đã lưu lịch giao '+ds.length+' phiếu cho '+tenKhoi(KH.split('|'))+'. Học sinh thấy sau tối đa 5 phút.';}
   catch(err){$('hgLoi').textContent=(err instanceof TypeError?'Không kết nối được Google Sheet. ':'')+(err.message||'')+' Có thể mã Apps Script chưa được cập nhật bản mới.';$('hgOK').disabled=false;}};
 async function thuHoi(link){const p=motPhieu().find(q=>q.link===link);
