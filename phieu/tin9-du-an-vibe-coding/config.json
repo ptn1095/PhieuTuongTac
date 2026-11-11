@@ -6,7 +6,7 @@
   "ngay": "2026-11-11",
   "chuaGiao": true
  },
- "ma": "Tin 9 - Vibe Coding Phiếu cá nhân",
+ "ma": "Tin 9 - Vibe Coding Phiếu cá nhân 20 câu",
  "mon": "TIN HỌC 9 – DỰ ÁN VIBE CODING",
  "tieuDe": "Phiếu cá nhân – Dự án Vibe Coding",
  "lop": [
@@ -32,207 +32,54 @@
    "cot": 1,
    "cau": [
     {
-     "text": "<b>Vibe Coding</b> là cách tạo ứng dụng như thế nào?",
+     "text": "Khi em gửi câu lệnh cho Google AI Studio, AI tạo ra mã ứng dụng bằng cách nào?",
      "lc": [
-      "Mô tả yêu cầu bằng lời để công cụ AI viết mã, rồi em kiểm thử và chỉnh sửa",
-      "Tự gõ toàn bộ mã nguồn, không dùng bất kì công cụ nào",
-      "Chép nguyên một ứng dụng của người khác trên mạng",
-      "Chỉ kéo thả các khối lệnh có sẵn giống Scratch"
+      "Dự đoán mã phù hợp dựa trên câu lệnh và dữ liệu đã học, không tự kiểm chứng kết quả",
+      "Sao chép nguyên một ứng dụng có sẵn trên mạng rồi đổi tên",
+      "Gửi yêu cầu cho một lập trình viên viết thay em",
+      "Luôn kiểm tra kiến thức với SGK trước khi trả kết quả"
      ],
-     "da": "Mô tả yêu cầu bằng lời để công cụ AI viết mã, rồi em kiểm thử và chỉnh sửa"
+     "da": "Dự đoán mã phù hợp dựa trên câu lệnh và dữ liệu đã học, không tự kiểm chứng kết quả"
     },
     {
-     "text": "Khi em gửi câu lệnh cho Google AI Studio để tạo ứng dụng, <b>đầu vào</b> của hệ thống AI là:",
+     "text": "AI viết trong ứng dụng của em: “Ánh sáng đi từ không khí vào nước thì góc khúc xạ lớn hơn góc tới.” Nguồn nào <b>đáng tin nhất</b> để kiểm tra câu này?",
      "lc": [
-      "Câu lệnh mô tả yêu cầu (và tệp, hình đính kèm nếu có)",
-      "Mã nguồn của ứng dụng đã hoàn thành",
-      "Đường link chia sẻ ứng dụng",
-      "Điểm số giáo viên chấm"
+      "SGK Khoa học tự nhiên 9 hoặc trang web chính thống của Bộ, của trường",
+      "Một video ngắn trên mạng xã hội có nhiều lượt thích",
+      "Hỏi lại chính công cụ AI đó xem có chắc không",
+      "Bình luận của một người lạ trên diễn đàn"
      ],
-     "da": "Câu lệnh mô tả yêu cầu (và tệp, hình đính kèm nếu có)"
+     "da": "SGK Khoa học tự nhiên 9 hoặc trang web chính thống của Bộ, của trường"
     },
     {
-     "text": "Vì sao AI có thể tạo ra mã hoặc kiến thức <b>sai</b> dù câu lệnh của em đúng?",
+     "text": "Em cần tìm thêm hình minh họa và kiến thức cho bài <b>Khúc xạ ánh sáng</b> lớp 9. Cụm từ tìm kiếm nào giúp lọc kết quả <b>sát nhất</b>?",
      "lc": [
-      "AI dự đoán kết quả dựa trên dữ liệu đã học, không tự kiểm chứng như con người",
-      "AI luôn cố tình trả lời sai để thử học sinh",
-      "Vì máy tính của em không đủ bộ nhớ",
-      "Vì mạng Internet bị chậm"
+      "khúc xạ ánh sáng KHTN 9 hình minh họa",
+      "ánh sáng",
+      "vật lí hay nhất",
+      "bài tập khó"
      ],
-     "da": "AI dự đoán kết quả dựa trên dữ liệu đã học, không tự kiểm chứng như con người"
+     "da": "khúc xạ ánh sáng KHTN 9 hình minh họa"
     },
     {
-     "text": "Câu lệnh (prompt) nào <b>có cấu trúc tốt nhất</b>?",
+     "text": "Ứng dụng chạy tốt trên máy em, nhưng cô và các bạn mở link thì báo <b>không có quyền truy cập</b>. Em nên làm gì trước tiên?",
      "lc": [
-      "Em là học sinh lớp 9 ôn bài Khúc xạ ánh sáng. Hãy đóng vai lập trình viên web giáo dục, tạo trang mô phỏng tia sáng đi qua mặt nước có thanh trượt góc tới và 3 câu hỏi ôn tập. Kết quả là 1 trang web tiếng Việt, dùng được trên điện thoại.",
-      "Em là học sinh lớp 9. Làm cho tôi một trang web thật đẹp về vật lí, càng nhiều hiệu ứng và màu sắc rực rỡ càng tốt để các bạn thích.",
-      "Hãy đóng vai lập trình viên giỏi nhất thế giới, viết thật nhiều mã HTML, CSS, JavaScript cho tôi ngay bây giờ, không cần hỏi lại gì cả.",
-      "Tạo trang mô phỏng khúc xạ ánh sáng, ghi lên trang giới thiệu tên và số điện thoại của em: Nguyễn Văn A, 0912 345 678."
+      "Kiểm tra lại chế độ chia sẻ/xuất bản ứng dụng, rồi mở thử link bằng tab ẩn danh",
+      "Xóa ứng dụng và làm lại từ đầu",
+      "Gửi mật khẩu tài khoản Google của em cho cô",
+      "Chờ vài ngày, lỗi sẽ tự hết"
      ],
-     "da": "Em là học sinh lớp 9 ôn bài Khúc xạ ánh sáng. Hãy đóng vai lập trình viên web giáo dục, tạo trang mô phỏng tia sáng đi qua mặt nước có thanh trượt góc tới và 3 câu hỏi ôn tập. Kết quả là 1 trang web tiếng Việt, dùng được trên điện thoại."
+     "da": "Kiểm tra lại chế độ chia sẻ/xuất bản ứng dụng, rồi mở thử link bằng tab ẩn danh"
     },
     {
-     "text": "Ứng dụng do AI tạo cho kết quả: tia sáng đi từ <b>không khí vào nước</b> thì góc khúc xạ <b>lớn hơn</b> góc tới. Em nên làm gì?",
+     "text": "Để mọi bạn (kể cả bạn nhìn màu kém) đều dễ dùng ứng dụng của em, em nên làm gì?",
      "lc": [
-      "Đối chiếu với SGK, rồi yêu cầu AI sửa và nêu rõ quy luật đúng: góc khúc xạ nhỏ hơn góc tới",
-      "Giữ nguyên vì kết quả do AI tạo luôn đúng",
-      "Đổi màu giao diện cho đẹp hơn để không ai để ý",
-      "Xóa câu hỏi về khúc xạ, không cần kiểm tra lại"
+      "Dùng chữ đủ to, màu chữ tương phản rõ với nền, nút có nhãn và có hướng dẫn sử dụng",
+      "Dùng thật nhiều màu sáng chồng lên nhau cho nổi bật",
+      "Bỏ phần hướng dẫn để giao diện gọn hơn",
+      "Viết chữ nhỏ để chứa được nhiều nội dung"
      ],
-     "da": "Đối chiếu với SGK, rồi yêu cầu AI sửa và nêu rõ quy luật đúng: góc khúc xạ nhỏ hơn góc tới"
-    },
-    {
-     "text": "Khi chia sẻ ứng dụng công khai, việc nào em <b>KHÔNG được làm</b>?",
-     "lc": [
-      "Để khóa API (API key) hiện trong mã nguồn",
-      "Ghi tên công cụ AI đã hỗ trợ",
-      "Ghi nguồn các hình ảnh đã dùng",
-      "Thêm hướng dẫn sử dụng cho người dùng"
-     ],
-     "da": "Để khóa API (API key) hiện trong mã nguồn"
-    },
-    {
-     "text": "Muốn so sánh <b>công bằng</b> hai công cụ AI, em làm thế nào?",
-     "lc": [
-      "Gửi cùng một yêu cầu cho cả hai rồi so theo cùng tiêu chí: tốc độ, độ chính xác, dạng kết quả",
-      "Hỏi mỗi công cụ một câu khác nhau",
-      "Chọn công cụ có giao diện đẹp hơn",
-      "Chọn công cụ bạn bè dùng nhiều nhất"
-     ],
-     "da": "Gửi cùng một yêu cầu cho cả hai rồi so theo cùng tiêu chí: tốc độ, độ chính xác, dạng kết quả"
-    }
-   ]
-  },
-  {
-   "loai": "dien",
-   "yc": "Một câu lệnh có cấu trúc gồm 4 phần. Chọn tên phần thích hợp cho mỗi đoạn.",
-   "bank": [
-    "Bối cảnh",
-    "Vai trò của AI",
-    "Mục tiêu",
-    "Định dạng đầu ra"
-   ],
-   "lc": [
-    "Bối cảnh",
-    "Vai trò của AI",
-    "Mục tiêu",
-    "Định dạng đầu ra"
-   ],
-   "cau": [
-    {
-     "text": "{} : “Em là học sinh lớp 9, đang ôn bài Lực đẩy Archimedes cho bài kiểm tra.”",
-     "da": [
-      "Bối cảnh"
-     ]
-    },
-    {
-     "text": "{} : “Hãy đóng vai một lập trình viên làm phần mềm học tập cho học sinh THCS.”",
-     "da": [
-      "Vai trò của AI"
-     ]
-    },
-    {
-     "text": "{} : “Tạo mô phỏng vật chìm, nổi trong chất lỏng; người dùng chỉnh được khối lượng vật và loại chất lỏng; có 3 câu hỏi ôn tập.”",
-     "da": [
-      "Mục tiêu"
-     ]
-    },
-    {
-     "text": "{} : “Kết quả là một trang web tiếng Việt, chữ to, dùng được trên điện thoại.”",
-     "da": [
-      "Định dạng đầu ra"
-     ]
-    }
-   ]
-  },
-  {
-   "loai": "dien",
-   "yc": "Chọn từ thích hợp điền vào chỗ trống.",
-   "bank": [
-    "kiểm thử",
-    "đối chiếu",
-    "ảo tưởng",
-    "mô hình",
-    "quyền riêng tư",
-    "minh bạch"
-   ],
-   "lc": [
-    "kiểm thử",
-    "đối chiếu",
-    "ảo tưởng",
-    "mô hình",
-    "quyền riêng tư",
-    "minh bạch"
-   ],
-   "cau": [
-    {
-     "text": "1. Trước khi nộp, em phải {} ứng dụng với nhiều trường hợp khác nhau để tìm lỗi.",
-     "da": [
-      "kiểm thử"
-     ]
-    },
-    {
-     "text": "2. Kiến thức do AI tạo ra cần được {} với SGK hoặc nguồn chính thống.",
-     "da": [
-      "đối chiếu"
-     ]
-    },
-    {
-     "text": "3. AI đưa ra thông tin sai nhưng trông rất thuyết phục, hiện tượng này gọi là “{}”.",
-     "da": [
-      "ảo tưởng"
-     ]
-    },
-    {
-     "text": "4. Ứng dụng mô phỏng chỉ là một {} đơn giản hóa, không giống hoàn toàn thực tế.",
-     "da": [
-      "mô hình"
-     ]
-    },
-    {
-     "text": "5. Không đưa họ tên, số điện thoại, ảnh cá nhân vào AI để bảo vệ {} .",
-     "da": [
-      "quyền riêng tư"
-     ]
-    },
-    {
-     "text": "6. Ghi “Ứng dụng được xây dựng với sự hỗ trợ của AI – tên công cụ” là để {} việc dùng AI.",
-     "da": [
-      "minh bạch"
-     ]
-    }
-   ]
-  },
-  {
-   "loai": "noidot",
-   "yc": "Nối mỗi tình huống với cách xử lí đúng.",
-   "lc": [
-    "Bỏ thông tin cá nhân trước khi gửi cho AI",
-    "Mô tả lỗi cụ thể, yêu cầu AI sửa rồi kiểm thử lại",
-    "Dùng ảnh tự tạo hoặc ảnh có giấy phép và ghi nguồn",
-    "Ghi dòng khai báo tên công cụ AI đã dùng",
-    "Đối chiếu số liệu với SGK, nguồn chính thống"
-   ],
-   "cau": [
-    {
-     "text": "Bấm nút “Bắt đầu” nhưng mô phỏng không chạy",
-     "da": "Mô tả lỗi cụ thể, yêu cầu AI sửa rồi kiểm thử lại"
-    },
-    {
-     "text": "Ứng dụng cần hình minh họa lấy từ Internet",
-     "da": "Dùng ảnh tự tạo hoặc ảnh có giấy phép và ghi nguồn"
-    },
-    {
-     "text": "Định dán họ tên, số điện thoại của bạn vào câu lệnh",
-     "da": "Bỏ thông tin cá nhân trước khi gửi cho AI"
-    },
-    {
-     "text": "Kết quả mô phỏng hiện một số liệu lạ, nghi là sai",
-     "da": "Đối chiếu số liệu với SGK, nguồn chính thống"
-    },
-    {
-     "text": "Ứng dụng được tạo với sự hỗ trợ của AI",
-     "da": "Ghi dòng khai báo tên công cụ AI đã dùng"
+     "da": "Dùng chữ đủ to, màu chữ tương phản rõ với nền, nút có nhãn và có hướng dẫn sử dụng"
     }
    ]
   },
@@ -241,20 +88,129 @@
    "yc": "Đúng hay sai?",
    "cau": [
     {
+     "text": "AI trả lời trôi chảy, tự tin thì nội dung chắc chắn đúng.",
+     "da": "S"
+    },
+    {
+     "text": "Có thể dùng ChatGPT hoặc Gemini để lên ý tưởng, rồi dùng Google AI Studio để tạo ứng dụng chạy được.",
+     "da": "Đ"
+    },
+    {
      "text": "Mã do AI viết đã chạy được thì không cần kiểm thử thêm.",
      "da": "S"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Một câu lệnh (prompt) có cấu trúc tốt nên có những phần nào?",
+     "lc": [
+      "Bối cảnh",
+      "Vai trò của AI",
+      "Mục tiêu cụ thể",
+      "Định dạng đầu ra",
+      "Họ tên và số điện thoại của em",
+      "Mật khẩu tài khoản"
+     ],
+     "da": [
+      "Bối cảnh",
+      "Vai trò của AI",
+      "Mục tiêu cụ thể",
+      "Định dạng đầu ra"
+     ]
     },
     {
-     "text": "Có thể dùng nhiều vòng câu lệnh để cải tiến dần ứng dụng.",
-     "da": "Đ"
+     "text": "Những thông tin nào em <b>KHÔNG</b> được đưa vào câu lệnh hay để lộ trong ứng dụng?",
+     "lc": [
+      "Số điện thoại, địa chỉ nhà",
+      "Ảnh khuôn mặt của bạn khi chưa được đồng ý",
+      "Khóa API (API key) của em",
+      "Mật khẩu tài khoản",
+      "Tên bài học lớp 9",
+      "Công thức định luật khúc xạ"
+     ],
+     "da": [
+      "Số điện thoại, địa chỉ nhà",
+      "Ảnh khuôn mặt của bạn khi chưa được đồng ý",
+      "Khóa API (API key) của em",
+      "Mật khẩu tài khoản"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Kéo thả (hoặc bấm ▲▼) để sắp xếp các bước làm một dự án Vibe Coding cho đúng thứ tự.",
+   "cau": [
+    {
+     "text": "Xác định chủ đề, người dùng và các chức năng cần có"
     },
     {
-     "text": "Hình ảnh tìm thấy trên Internet đều có thể dùng tự do cho ứng dụng.",
-     "da": "S"
+     "text": "Viết câu lệnh có cấu trúc gửi cho công cụ AI để tạo ứng dụng"
     },
     {
-     "text": "Em vẫn là người chịu trách nhiệm cuối cùng về ứng dụng, dù AI viết mã giúp.",
-     "da": "Đ"
+     "text": "Chạy thử, đối chiếu kiến thức với SGK, ghi lại lỗi và yêu cầu AI sửa"
+    },
+    {
+     "text": "Xuất bản, chia sẻ link công khai và nộp bài"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi tình huống với cách xử lí đúng.",
+   "lc": [
+    "Chia sẻ ở chế độ “Bất kỳ ai có đường liên kết”, mở thử bằng tab ẩn danh",
+    "Mô tả lỗi cụ thể, yêu cầu AI sửa rồi chạy thử lại",
+    "Yêu cầu AI chuyển bảng số liệu thành biểu đồ hoặc hình động tương tác",
+    "Dùng ảnh tự tạo hoặc ảnh có giấy phép phù hợp và ghi nguồn"
+   ],
+   "cau": [
+    {
+     "text": "Bấm nút “Bắt đầu” nhưng mô phỏng không chạy",
+     "da": "Mô tả lỗi cụ thể, yêu cầu AI sửa rồi chạy thử lại"
+    },
+    {
+     "text": "Cần hình minh họa lấy từ Internet",
+     "da": "Dùng ảnh tự tạo hoặc ảnh có giấy phép phù hợp và ghi nguồn"
+    },
+    {
+     "text": "Bảng số liệu dài, bạn đọc khó hiểu",
+     "da": "Yêu cầu AI chuyển bảng số liệu thành biểu đồ hoặc hình động tương tác"
+    },
+    {
+     "text": "Muốn cô và các bạn mở được ứng dụng",
+     "da": "Chia sẻ ở chế độ “Bất kỳ ai có đường liên kết”, mở thử bằng tab ẩn danh"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn từ thích hợp điền vào chỗ trống.",
+   "lc": [
+    "9A1_NguyenMinhAn_VibeCoding.pdf",
+    "Bai cua em (2) moi nhat.docx",
+    "Tai lieu khong co tieu de",
+    "ảo tưởng",
+    "sáng tạo",
+    "ngẫu nhiên"
+   ],
+   "cau": [
+    {
+     "text": "1. Theo quy ước của đề, tên tệp hồ sơ đúng là: {}",
+     "da": [
+      "9A1_NguyenMinhAn_VibeCoding.pdf"
+     ]
+    },
+    {
+     "text": "2. AI đưa ra thông tin sai nhưng trông rất thuyết phục, hiện tượng này gọi là “{}”.",
+     "da": [
+      "ảo tưởng"
+     ]
     }
    ]
   }
