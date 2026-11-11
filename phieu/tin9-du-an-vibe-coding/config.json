@@ -88,10 +88,6 @@
    "yc": "Đúng hay sai?",
    "cau": [
     {
-     "text": "AI trả lời trôi chảy, tự tin thì nội dung chắc chắn đúng.",
-     "da": "S"
-    },
-    {
      "text": "Có thể dùng ChatGPT hoặc Gemini để lên ý tưởng, rồi dùng Google AI Studio để tạo ứng dụng chạy được.",
      "da": "Đ"
     },
@@ -128,16 +124,16 @@
      "lc": [
       "Số điện thoại, địa chỉ nhà",
       "Ảnh khuôn mặt của bạn khi chưa được đồng ý",
-      "Khóa API (API key) của em",
-      "Mật khẩu tài khoản",
+      "Mật khẩu (password) tài khoản Google của em",
+      "Họ tên đầy đủ kèm ngày sinh",
       "Tên bài học lớp 9",
       "Công thức định luật khúc xạ"
      ],
      "da": [
       "Số điện thoại, địa chỉ nhà",
       "Ảnh khuôn mặt của bạn khi chưa được đồng ý",
-      "Khóa API (API key) của em",
-      "Mật khẩu tài khoản"
+      "Mật khẩu (password) tài khoản Google của em",
+      "Họ tên đầy đủ kèm ngày sinh"
      ]
     }
    ]
@@ -195,9 +191,10 @@
     "9A1_NguyenMinhAn_VibeCoding.pdf",
     "Bai cua em (2) moi nhat.docx",
     "Tai lieu khong co tieu de",
-    "ảo tưởng",
-    "sáng tạo",
-    "ngẫu nhiên"
+    "lỗi",
+    "kiểm tra lại",
+    "tin tưởng hoàn toàn",
+    "bỏ qua"
    ],
    "cau": [
     {
@@ -207,9 +204,10 @@
      ]
     },
     {
-     "text": "2. AI đưa ra thông tin sai nhưng trông rất thuyết phục, hiện tượng này gọi là “{}”.",
+     "text": "2. AI có thể mắc {} , vì vậy em phải {} thông tin trước khi dùng. Người chịu trách nhiệm cuối cùng về sản phẩm là chính em – người dùng AI.",
      "da": [
-      "ảo tưởng"
+      "lỗi",
+      "kiểm tra lại"
      ]
     }
    ]
