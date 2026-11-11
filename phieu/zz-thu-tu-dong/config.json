@@ -1,0 +1,4 @@
+{"web":{"khoi":"khoi-3","mon":"Thử","ten":"Phiếu thử bộ tự động","ngay":"2026-11-11","chuaGiao":true},
+ "ma":"Thu tu dong","mon":"THỬ","tieuDe":"Phiếu thử bộ tự động","lop":["3A1"],
+ "guiB":"https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec","guiA":null,
+ "bai":[{"loai":"ds","yc":"Đúng hay sai?","cau":[{"text":"1 + 1 = 2","da":"Đ"}]}]}
