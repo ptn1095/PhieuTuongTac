@@ -48,6 +48,7 @@ const server = http.createServer((req, res) => {
   const ds = JSON.parse(fs.readFileSync(path.join(GOC, 'phieu.json'), 'utf8'));
   {
     const page = await browser.newPage({ viewport: { width: 900, height: 1200 } });
+    await page.addInitScript(() => localStorage.setItem('coThuyTin_gv', '{"url":"x","mk":"x"}'));  // máy cô: thấy nút Mã QR
     await page.goto(base);
     await page.waitForTimeout(800);
     console.log('Trang chủ');
@@ -55,7 +56,7 @@ const server = http.createServer((req, res) => {
       await page.evaluate(k => { location.hash = k + ':tatca'; }, k);
       await page.waitForTimeout(200);
       const n = await page.locator('.card').count();
-      bao(n === ds.filter(p => p.khoi === k && hsThay(p)).length, `${k}: ${n} phiếu hiển thị (học sinh)` + (ds.some(p => p.khoi === k && !hsThay(p)) ? `, ẩn ${ds.filter(p => p.khoi === k && !hsThay(p)).length} phiếu chưa giao` : ''));
+      bao(n === ds.filter(p => p.khoi === k).length, `${k}: máy cô thấy ${n} phiếu` + (ds.some(p => p.khoi === k && !hsThay(p)) ? ` (gồm ${ds.filter(p => p.khoi === k && !hsThay(p)).length} phiếu chưa giao – học sinh không thấy)` : ''));
     }
     await page.evaluate(k => { location.hash = k + ':tatca'; }, ds[0].khoi);
     await page.waitForTimeout(200);
@@ -125,6 +126,7 @@ const server = http.createServer((req, res) => {
     await page.goto(base); await page.waitForTimeout(500);
     bao(await page.locator('#khuPhieu').isHidden() && await page.locator('#chonLop').isHidden() && await page.locator('#chonLai').isHidden() && await page.locator('.tab').count() === 4,
       'mở trang lần đầu → chỉ có nền, lời chào và 4 nút khối');
+    bao(await page.locator('.tab .dem').count() === 0, 'màn hình đầu không hiện số lượng phiếu');
     await page.screenshot({ path: path.join(OUT, '_man_hinh_dau.png') });
     const tenTab = await page.locator('.tab .ten').allTextContents();
     bao(tenTab.join('|') === 'Khối 3|Khối 5|Khối 9|Đội tuyển Tin học', 'nút khối: ' + tenTab.join(', '));
@@ -138,7 +140,16 @@ const server = http.createServer((req, res) => {
     await page.click('#chonLop .nut-lop[data-l="5A2"]'); await page.waitForTimeout(300);
     const the5 = ds.filter(p => p.khoi === 'khoi-5' && p.lop.includes('5A2')).length;
     bao(await page.locator('.card').count() === the5 && (await page.locator('#chonLop').textContent()).includes('5A2'), `chọn lớp 5A2 → hiện ${the5} phiếu, thanh "Lớp 5A2 · Đổi lớp"`);
-    bao((await page.locator('.chip.cua-em').allTextContents()).every(t => t === '5A2') && await page.locator('.chip.cua-em').count() === the5, 'lớp 5A2 được tô đậm trên thẻ phiếu');
+    bao(await page.locator('.card .chips').count() === 0 && await page.locator('.card .qr').count() === 0 && await page.locator('.tab .dem').count() === 0,
+      'học sinh: thẻ phiếu KHÔNG hiện các lớp được giao, không có nút Mã QR, không hiện số phiếu');
+    await page.locator('.card a.go').first().click(); await page.waitForLoadState('networkidle');
+    const oLop = await page.locator('#lop option').allTextContents();
+    bao(oLop.filter(x => !x.includes('chọn')).join(',') === '5A2' && await page.inputValue('#lop') === '5A2', 'vào phiếu: ô Lớp chỉ có đúng lớp 5A2 (đã chọn sẵn)');
+    await page.locator('.topbar [data-tro-ve]').click(); await page.waitForURL(u => u.toString().startsWith(base) && !u.toString().includes('/phieu/'));
+    await page.evaluate(() => localStorage.setItem('coThuyTin_gv', '{"url":"x","mk":"x"}')); await page.reload(); await page.waitForTimeout(500);
+    bao((await page.locator('.chip.cua-em').allTextContents()).every(t => t === '5A2') && await page.locator('.chip.cua-em').count() === the5 && await page.locator('.card .qr').count() === the5,
+      'máy cô: thấy các lớp (5A2 tô đậm) và nút Mã QR');
+    await page.evaluate(() => localStorage.removeItem('coThuyTin_gv')); await page.reload(); await page.waitForTimeout(400);
     await page.click('#chonLai'); await page.waitForTimeout(300);
     bao(await page.locator('button.tab').count() === 4 && await page.locator('#khuPhieu').isHidden(), 'bấm "Chọn nhầm khối?" → về lại màn hình chọn khối');
     await page.click('.tab[data-id="doi-tuyen"]'); await page.waitForTimeout(300);

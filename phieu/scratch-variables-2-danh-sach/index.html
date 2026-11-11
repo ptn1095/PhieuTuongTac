@@ -189,7 +189,11 @@ const chuan=(v,boDau)=>{let t=String(v||'').normalize('NFC').trim().toLowerCase(
   if(boDau)t=t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d');return t;};
 const an=(k,da,lab)=>{ANS[k]=da;LAB[k]=lab;return '<input class="an" data-k="'+k+'" tabindex="-1" aria-hidden="true" readonly>';};
 $('mon').textContent=P.mon||'';$('tieuDe').textContent=P.tieuDe||'Phiếu bài tập';document.title=P.tieuDe||'Phiếu bài tập';
-(P.lop||[]).forEach(l=>{const o=document.createElement('option');o.textContent=l;$('lop').appendChild(o);});
+// Em đã chọn lớp ở trang chủ → ô Lớp chỉ có đúng lớp đó (không lộ các lớp khác cùng làm phiếu). Máy cô / mở link trực tiếp thì đủ danh sách.
+(function(){let ds=P.lop||[];try{const c=JSON.parse(sessionStorage.getItem('coThuyTin_chon')||'null'),laCo=!!localStorage.getItem('coThuyTin_gv');
+  if(!laCo&&c&&c.lop&&ds.includes(c.lop))ds=[c.lop];}catch(e){}
+  ds.forEach(l=>{const o=document.createElement('option');o.textContent=l;$('lop').appendChild(o);});
+  if(ds.length===1)$('lop').value=ds[0];})();
 $('huongDan').innerHTML='Làm xong cả '+P.bai.length+' bài, em bấm <b>Tính điểm</b>. Em chỉ được bấm <b>một lần</b>, sau đó không sửa được nữa.';
 let html='';
 P.bai.forEach((b,bi)=>{

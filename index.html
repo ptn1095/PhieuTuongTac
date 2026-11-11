@@ -156,9 +156,9 @@ function veTabs(){
   $('chonLai').classList.toggle('hidden',!k0);
   $('khuPhieu').classList.toggle('hidden',!k0);
   if(k0){$('tabs').setAttribute('aria-label','Khối của em');
-    $('tabs').innerHTML='<div class="tab" style="--c:'+k0.c+'" aria-selected="true" aria-disabled="true"><span class="so">'+k0.so+'</span><span class="ten">'+k0.ten+'</span><span class="dem">'+dem(k0)+' phiếu</span></div>';return;}
+    $('tabs').innerHTML='<div class="tab" style="--c:'+k0.c+'" aria-selected="true" aria-disabled="true"><span class="so">'+k0.so+'</span><span class="ten">'+k0.ten+'</span>'+(LA_CO?'<span class="dem">'+dem(k0)+' phiếu</span>':'')+'</div>';return;}
   $('tabs').setAttribute('aria-label','Chọn khối lớp');
-  $('tabs').innerHTML=KHOI.map(k=>'<button class="tab" style="--c:'+k.c+'" data-id="'+k.id+'"><span class="so">'+k.so+'</span><span class="ten">'+k.ten+'</span><span class="dem">'+dem(k)+' phiếu</span></button>').join('');
+  $('tabs').innerHTML=KHOI.map(k=>'<button class="tab" style="--c:'+k.c+'" data-id="'+k.id+'"><span class="so">'+k.so+'</span><span class="ten">'+k.ten+'</span>'+(LA_CO?'<span class="dem">'+dem(k)+' phiếu</span>':'')+'</button>').join('');
   $('tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
     cur=b.dataset.id;LOP='';MO=true;luuChon();datHash();veTabs();veLop();veList();cuonToi();});
 }
@@ -196,11 +196,11 @@ function veList(){
     const nut=tt.t==='chua'?(LA_CO?'<a class="go" href="'+esc(p.link)+'">Cô xem trước ➜</a>':'<span class="go tat">'+(tt.chuaGiao?'Chưa giao':'Mở ngày '+dm(tt.mo))+'</span>'):tt.t==='dong'?'<span class="go tat">Đã hết hạn</span>':'<a class="go" href="'+esc(p.link)+'">Làm bài ➜</a>';
     return '<article class="card'+(tt.t==='dong'?' dong':'')+'" style="--c:'+k.c+'"><div class="ic" aria-hidden="true">'+k.ic+'</div><div class="bd"><div class="mon">'+esc(p.mon||'')+'</div><div class="tp">'+esc(p.ten)+
       (tt.t==='dong'?'<span class="nhan">ĐÃ ĐÓNG</span>':tt.t==='chua'?'<span class="nhan">'+(tt.chuaGiao?'CHƯA GIAO':'SẮP MỞ '+dm(tt.mo))+(LA_CO&&!p.hienTruoc?' · chỉ cô thấy':'')+'</span>':moi?'<span class="moi">MỚI</span>':'')+'</div>'+
-    '<div class="chips">'+(p.lop||[]).map(l=>'<span class="chip'+(l===LOP?' cua-em':'')+'">'+esc(l)+'</span>').join('')+'</div>'+
+    (LA_CO?'<div class="chips">'+(p.lop||[]).map(l=>'<span class="chip'+(l===LOP?' cua-em':'')+'">'+esc(l)+'</span>').join('')+'</div>':'')+
     '<div class="meta">'+(p.soCau?'<span>📝 '+p.soCau+' câu</span>':'')+(p.phut?'<span>⏱ khoảng '+p.phut+' phút</span>':'')+(d?'<span>📅 '+d+'</span>':'')+
       (tt.t==='mo'&&tt.dong?'<span class="han">⏳ Hạn nộp: '+dm(tt.dong)+'</span>':'')+'</div>'+
     (dl?'<div class="dalam">✓ Đã làm · '+esc(dl.ten)+' – '+String(dl.diem).replace('.',',')+' điểm</div>':'')+'</div>'+
-    '<div class="hanhdong">'+nut+'<button type="button" class="qr" data-link="'+esc(p.link)+'" data-ten="'+esc(p.ten)+'" data-lop="'+esc((p.lop||[]).join(', '))+'">▦ Mã QR</button></div></article>';}).join('');
+    '<div class="hanhdong">'+nut+(LA_CO?'<button type="button" class="qr" data-link="'+esc(p.link)+'" data-ten="'+esc(p.ten)+'" data-lop="'+esc((p.lop||[]).join(', '))+'">▦ Mã QR</button>':'')+'</div></article>';}).join('');
   $('list').querySelectorAll('.qr').forEach(b=>b.onclick=()=>moQR(b.dataset));
   fit();
 }
