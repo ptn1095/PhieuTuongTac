@@ -28,6 +28,11 @@ giaovien/             Trang tổng hợp điểm cho cô (cần mật khẩu)
 2. Chạy `python3 tools/build_phieu.py` rồi `node tools/kiem_tra.js`.
 3. Commit và push lên `main`. Khoảng 1–2 phút sau trang web cập nhật; link phiếu giữ nguyên.
 
+## Tạo phiếu khi chỉ có chat Claude (gói Free)
+1. Ở chat claude.ai (đã bật skill **phieu-tuong-tac** và *Code execution*), gửi file Word/PDF → Claude đưa file `config.json`.
+2. Trên GitHub: **Add file → Create new file**, tên file `phieu/<tên-phiếu>/config.json`, dán nội dung → **Commit changes**.
+3. Bộ tự động (thẻ **Actions**) tự dựng và đăng phiếu sau khoảng 2 phút. ✓ xanh là xong; ✗ đỏ thì bấm vào đọc dòng "LỖI…" và gửi cho Claude.
+
 ## Danh sách phiếu
 <!-- DS_PHIEU -->
 | Khối | Môn | Tên phiếu | Lớp | Ngày mở | Hạn nộp | Link |

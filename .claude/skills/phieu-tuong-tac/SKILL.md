@@ -62,7 +62,7 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
    - Script kiểm tra: làm đúng hết được 10 điểm, gửi điểm đúng 1 lần với đủ tham số, ảnh kết quả hiện, không lỗi tải ảnh khung.
    - Script chụp màn hình bản máy tính và bản điện thoại. **Mở ảnh chụp ra xem** để chắc bố cục không tràn, không đè viền, tiếng Việt đúng dấu.
    - Yêu cầu tới Google bị chặn trong lúc thử, không có điểm giả vào Sheet thật.
-8. **Đăng**:
+8. **Đăng** (bộ tự động GitHub Actions cũng tự build lại sau mỗi lần push, nên kể cả quên build thì web vẫn đúng):
    - Commit với tác giả `ptn1095` (`git -c user.name=ptn1095 -c user.email=ptn1095@users.noreply.github.com commit ...`).
    - `git fetch origin main`, rebase nếu cần, rồi `git push origin main`.
    - Khoảng 1–2 phút sau phiếu lên mạng tại `https://ptn1095.github.io/PhieuTuongTac/phieu/<tên>/` và hiện ở đúng khối trên trang chủ.
@@ -185,14 +185,24 @@ Mỗi ô chọn là 1 câu chấm điểm. Nhãn `B<số bài>.<số/chữ>` hi�
 - Đọc mã entry của Form khác: mở `.../viewform`, chạy `FB_PUBLIC_LOAD_DATA_[1][1].map(q=>[q[1],q[4][0][0]])`.
 - Không gửi thử vào Form của cô khi chưa được cho phép.
 
-## 8. Khi không push được lên GitHub
-Ví dụ khi đang ở chat claude.ai không có quyền GitHub:
-1. Vẫn soạn `config.json` đầy đủ.
-2. Gửi cô file `config.json`, kèm hướng dẫn:
-   - Mở https://github.com/ptn1095/PhieuTuongTac, bấm **Add file → Create new file**.
-   - Đặt tên `phieu/<tên>/config.json`, dán nội dung, bấm **Commit changes**.
-3. Nói cô mở một phiên Claude Code với kho PhieuTuongTac và nhắn "build và đăng phiếu <tên>", để chạy bước 6–8.
-4. **Không** đăng phiếu lên artifact thay thế.
+## 8. Làm ở chat claude.ai (gói Free, không có Claude Code / không push được)
+Kho có **bộ tự động GitHub Actions** (`.github/workflows/dang-phieu.yml`): mỗi khi kho thay đổi, GitHub tự chạy `build_phieu.py`, lưu file dựng ra và đăng web (1–2 phút). Vì vậy ở chat chỉ cần tạo **`config.json`**:
+1. Soạn phiếu như mục 1–4 (duyệt đáp án với cô như thường).
+2. Viết `config.json` theo mục 3 – dùng **code execution** để tạo file, kiểm tra trước khi đưa cô:
+   - `json.load` được; mọi `da` có trong `lc` (dạng `nhieu`: mọi phần tử của `da`); `dien`/`go`: số `{}` khớp số đáp án;
+   - `web.khoi` ∈ khoi-3/khoi-5/khoi-9/doi-tuyen; `web.ngay` = hôm nay (YYYY-MM-DD); `lop` đúng tên trong danh sách lớp dưới đây;
+   - ảnh nhúng base64 (≤ 900px) để file gọn; văn bản có dấu `<` `>` trong `text`/`lc` của `abcd`, `nhieu`, `noidot` phải viết `&lt;` `&gt;`.
+   - Đặt `guiB` = link Apps Script mặc định (mục 1).
+3. Đưa cô file `config.json` (tải về được) + **tên thư mục** đề xuất (chữ thường không dấu, nối bằng `-`), kèm hướng dẫn tải lên:
+   - Mở https://github.com/ptn1095/PhieuTuongTac → **Add file → Create new file**.
+   - Ô tên file gõ: `phieu/<tên-thư-mục>/config.json` (gõ dấu `/` thì GitHub tự tạo thư mục).
+   - Mở file `config.json` bằng Notepad, chép toàn bộ, dán vào ô nội dung → **Commit changes**.
+   - Khoảng 2 phút sau phiếu lên web. Xem tiến trình ở thẻ **Actions** (dấu ✓ xanh = xong; ✗ đỏ = có lỗi, bấm vào để đọc dòng "LỖI…", gửi lại cho Claude sửa).
+   - Sửa phiếu: mở `phieu/<tên>/config.json` trên GitHub → biểu tượng bút chì → dán nội dung mới → Commit.
+4. Nhắc cô: đăng nhập trang tổng hợp rồi bấm **Cô xem trước** để làm thử (ở chat không có bước tự làm thử bằng trình duyệt).
+5. **Không** đăng phiếu lên artifact thay thế.
+
+**Danh sách lớp năm học 2026-2027** (đồng bộ với `lop.json`): khoi-3: 3A1–3A6 · khoi-5: 5A1–5A6 · khoi-9: 9A1–9A10 · doi-tuyen: ĐT Tin - K2, ĐT Tin - K3.
 
 ## 9. Kiểm tra cuối trước khi bàn giao
 - [ ] Mọi câu trong file đã có mặt, hoặc đã báo cô lý do bỏ/đổi dạng.

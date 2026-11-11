@@ -76,7 +76,11 @@ def main():
     for cfg in sorted(glob.glob(os.path.join(GOC, "phieu", "*", "config.json"))):
         thu_muc = os.path.dirname(cfg)
         slug = os.path.basename(thu_muc)
-        P = doc_json(cfg)
+        try:
+            P = doc_json(cfg)
+        except (json.JSONDecodeError, UnicodeDecodeError) as e:
+            raise SystemExit(f"LỖI: phieu/{slug}/config.json sai định dạng (dòng {getattr(e, 'lineno', '?')}): {e}. "
+                             "Hãy nhờ Claude kiểm tra lại file này.")
         kiem_tra(slug, P)
         js = "const PHIEU = " + json.dumps({**P, "slug": slug}, ensure_ascii=False).replace("</", "<\\/") + ";"
         ghi(os.path.join(thu_muc, "index.html"), engine.replace("/*__PHIEU__*/", js))
@@ -125,4 +129,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except AssertionError as e:   # lỗi nội dung phiếu: in rõ để cô đọc được trên GitHub
+        raise SystemExit(f"LỖI trong phiếu: {e}")
