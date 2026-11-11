@@ -12,7 +12,7 @@ import os
 import re
 
 GOC = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEN_KHOI = {"khoi-3": "Khối 3", "khoi-5": "Khối 5", "khoi-9": "Khối 9", "doi-tuyen": "Đội Tuyển"}
+TEN_KHOI = {"khoi-3": "Khối 3", "khoi-5": "Khối 5", "khoi-9": "Khối 9", "doi-tuyen": "Đội tuyển Tin học"}
 
 
 def doc_json(path):
@@ -88,7 +88,7 @@ def main():
         for k in (w["khoi"] if isinstance(w["khoi"], list) else [w["khoi"]]):
             ds.append({"khoi": k, "mon": w.get("mon") or P.get("mon", ""), "ten": w.get("ten") or P["tieuDe"],
                        "lop": P["lop"], "ngay": w["ngay"], "soCau": so_o, "phut": phut, "link": f"phieu/{slug}/", "ma": P.get("ma") or P["tieuDe"],
-                       **{k: w[k] for k in ("mo", "dong") if w.get(k)}})
+                       **{k: w[k] for k in ("mo", "dong", "hienTruoc") if w.get(k)}})
         so_cau = sum(len(b["cau"]) for b in P["bai"])
         print(f"OK  phieu/{slug}/  ({len(P['bai'])} bài, {so_cau} mục)")
 
@@ -101,7 +101,7 @@ def main():
     # Bảng trong README
     def lop_txt(lop):
         return ", ".join(lop)
-    dong = ["| Khối | Môn | Tên phiếu | Lớp | Ngày | Link |", "|---|---|---|---|---|---|"]
+    dong = ["| Khối | Môn | Tên phiếu | Lớp | Ngày mở | Hạn nộp | Link |", "|---|---|---|---|---|---|---|"]
     gop = {}
     for p in ds:
         if p["link"] in gop:
@@ -109,9 +109,11 @@ def main():
         else:
             gop[p["link"]] = {**p, "khoi_ds": [p["khoi"]]}
     for p in gop.values():
-        ngay = "/".join(reversed(p["ngay"].split("-")))
+        vn = lambda v: "/".join(reversed(str(v)[:10].split("-"))) + (" " + str(v)[11:] if len(str(v)) > 10 else "")
+        ngay = vn(p.get("mo") or p["ngay"])
+        han = vn(p["dong"]) if p.get("dong") else "–"
         link = p["link"] if p["link"].startswith("http") else "https://ptn1095.github.io/PhieuTuongTac/" + p["link"]
-        dong.append(f"| {', '.join(TEN_KHOI[k] for k in p['khoi_ds'])} | {p['mon']} | {p['ten']} | {lop_txt(p['lop'])} | {ngay} | [Mở phiếu]({link}) |")
+        dong.append(f"| {', '.join(TEN_KHOI[k] for k in p['khoi_ds'])} | {p['mon']} | {p['ten']} | {lop_txt(p['lop'])} | {ngay} | {han} | [Mở phiếu]({link}) |")
     readme = os.path.join(GOC, "README.md")
     text = open(readme, encoding="utf-8").read()
     bang = "<!-- DS_PHIEU -->\n" + "\n".join(dong) + "\n<!-- /DS_PHIEU -->"

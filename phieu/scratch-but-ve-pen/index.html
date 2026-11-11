@@ -103,6 +103,7 @@ select.thieu,input.thieu{border-color:#F28C28;background:#FFF3E6;outline:2px sol
 .sx.thieu{outline:3px solid #FFD4A8;outline-offset:4px;border-radius:12px}
 .sx-ok{font:inherit;font-size:14px;font-weight:bold;color:#2457A6;background:#fff;border:1.5px solid #2457A6;border-radius:999px;padding:4px 14px;margin-top:8px;cursor:pointer}
 /* Chế độ chiếu đáp án */
+.khoa.xem-truoc{border-color:#F5C04A;background:#FFF8E1} .khoa.xem-truoc b{color:#8A5300}
 .khoa.chieu{border-color:#2E9E4F;background:#E9F7EE} .khoa.chieu b{color:#1E7E3A}
 /* Đúng/Sai bằng nút */
 .c-ds .opts.ds{margin:0;flex:none;grid-template-columns:repeat(2,auto);gap:6px}
@@ -353,6 +354,7 @@ function guiLaiCho(){const a=docCho();if(!a.length){clearInterval(henGui);henGui
   a.forEach(x=>guiMot(x.url).then(()=>{ghiCho(docCho().filter(y=>y.url!==x.url));if(x.url===urlCuaEm)baoGui('ok');},()=>{}));}
 function guiDiem(url){
   urlCuaEm=url;
+  if(XEM_TRUOC){const s=$('sent');s.className='sent';s.textContent='👀 Cô đang xem trước – bài làm thử không gửi về Google Sheet.';return;}
   if(!url){const s=$('sent');s.className='sent';s.textContent='Phiếu này chưa cài nơi nhận điểm. Em chụp ảnh kết quả gửi cô nhé.';return;}
   guiMot(url).then(()=>baoGui('ok'),()=>{const a=docCho();if(!a.some(x=>x.url===url))a.push({url,luc:Date.now()});ghiCho(a);baoGui('cho');
     if(!henGui)henGui=setInterval(guiLaiCho,15000);});
@@ -394,7 +396,7 @@ $('check').addEventListener('click',()=>{
   $('ten').classList.toggle('thieu',!r.ten);$('lop').classList.toggle('thieu',!r.lop);
   if(!r.du){const m=[];if(!r.ten)m.push('nhập họ tên');if(!r.lop)m.push('chọn lớp');if(r.thieu)m.push('làm '+r.thieu+' ô còn trống (tô màu cam)');
     $('thieuMsg').textContent='Em chưa '+m.join(', ')+'. Hãy làm đủ rồi bấm Tính điểm nhé.';(document.querySelector('.thieu:not(select.an)')||$('check')).scrollIntoView({behavior:'smooth',block:'center'});return;}
-  $('thieuMsg').textContent='';done=true;luuTen(r.ten,r.lop);
+  $('thieuMsg').textContent='';done=true;if(!XEM_TRUOC)luuTen(r.ten,r.lop);
   sels.forEach(s=>s.classList.add(dung(s)?'ok':'no'));
   document.querySelectorAll('select,input,.opt,.it,.sx button').forEach(e=>e.disabled=true);
   sels.forEach(s=>{if(s.veLai)s.veLai();});
@@ -421,7 +423,7 @@ function xemLai(r){
   NOI.forEach(v=>v());fit();
 }
 // ---- Lưu "em đã làm phiếu này" trên máy để trang chủ hiện dấu ✓
-function luuDaLam(r){try{const k='coThuyTin_daLam',d=JSON.parse(localStorage.getItem(k)||'{}');
+function luuDaLam(r){if(XEM_TRUOC)return;try{const k='coThuyTin_daLam',d=JSON.parse(localStorage.getItem(k)||'{}');
   d[P.slug||P.ma]={ten:r.ten,lop:r.lop,diem:r.diem,luc:Date.now()};localStorage.setItem(k,JSON.stringify(d));}catch(e){}}
 // ---- Pháo giấy khi điểm cao
 function phaoGiay(soHat){
@@ -439,12 +441,16 @@ function phaoGiay(soHat){
 function ngayGio(v,cuoiNgay){if(!v)return null;const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?$/);if(!m)return null;
   return m[4]!=null?new Date(+m[1],m[2]-1,+m[3],+m[4],+m[5]):new Date(+m[1],m[2]-1,+m[3],cuoiNgay?23:0,cuoiNgay?59:0,cuoiNgay?59:0);}
 const hienNgay=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0')+'/'+d.getFullYear()+((d.getHours()||d.getMinutes())&&!(d.getHours()===23&&d.getMinutes()===59)?' lúc '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'):'');
-let khoa=false;
+let khoa=false,XEM_TRUOC=false;
 (function(){const w=P.web||{},mo=ngayGio(w.mo,false),dong=ngayGio(w.dong,true),bay=new Date();let msg='';
+  const laCo=(()=>{try{return !!localStorage.getItem('coThuyTin_gv');}catch(e){return false;}})();
   if(mo&&bay<mo)msg='<b>Phiếu chưa mở</b>Cô sẽ mở phiếu này vào ngày '+hienNgay(mo)+'. Em quay lại sau nhé!';
   else if(dong&&bay>dong)msg='<b>Phiếu đã đóng</b>Hạn làm phiếu này là ngày '+hienNgay(dong)+'. Em không nộp bài được nữa.';
   else if(dong)$('huongDan').innerHTML+='<br>⏳ Hạn nộp: <b>'+hienNgay(dong)+'</b>.';
   if(!msg)return;
+  if(laCo&&!/[?&]dapan=1/.test(location.search)){// máy cô: cho làm thử, không gửi điểm
+    XEM_TRUOC=true;$('khoa').className='khoa xem-truoc';
+    $('khoa').innerHTML='<b>👀 Cô đang xem trước</b>'+(mo&&bay<mo?'Học sinh sẽ thấy phiếu này từ ngày '+hienNgay(mo)+'.':'Phiếu đã đóng với học sinh (hạn '+hienNgay(dong)+').')+' Bài làm thử <b>không gửi</b> về Google Sheet.';return;}
   khoa=true;$('khoa').innerHTML=msg;$('khoa').classList.remove('hidden');
   document.querySelectorAll('select,input,.opt,.it,#check').forEach(e=>e.disabled=true);$('check').classList.add('done');
 })();

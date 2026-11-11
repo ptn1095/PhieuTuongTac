@@ -30,10 +30,10 @@ giaovien/             Trang tổng hợp điểm cho cô (cần mật khẩu)
 
 ## Danh sách phiếu
 <!-- DS_PHIEU -->
-| Khối | Môn | Tên phiếu | Lớp | Ngày | Link |
-|---|---|---|---|---|---|
-| Khối 5, Đội Tuyển | Tin học – Scratch | Variables – Phần 2: Danh sách (List) | 5A1, 5A2, 5A3, 5A4, 5A5, 5A6, ĐT Tin - K2, ĐT Tin - K3 | 10/11/2026 | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-variables-2-danh-sach/) |
-| Khối 5, Đội Tuyển | Tin học – Scratch | Variables – Phần 1: Biến nhớ | 5A1, 5A2, 5A3, 5A4, 5A5, 5A6, ĐT Tin - K2, ĐT Tin - K3 | 10/11/2026 | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-variables-1-bien-nho/) |
-| Đội Tuyển | Tin học – Scratch | Nhóm lệnh Bút vẽ (Pen) | ĐT Tin - K2, ĐT Tin - K3 | 10/11/2026 | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-but-ve-pen/) |
-| Khối 9 | Tin học 9 | Công cụ xác thực dữ liệu (Data Validation) | 9A1, 9A2, 9A3, 9A4, 9A5, 9A6, 9A7, 9A8, 9A9, 9A10 | 10/11/2026 | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/tin9-xac-thuc-du-lieu/) |
+| Khối | Môn | Tên phiếu | Lớp | Ngày mở | Hạn nộp | Link |
+|---|---|---|---|---|---|---|
+| Khối 5, Đội tuyển Tin học | Tin học – Scratch | Variables – Phần 2: Danh sách (List) | 5A1, 5A2, 5A3, 5A4, 5A5, 5A6, ĐT Tin - K2, ĐT Tin - K3 | 10/11/2026 | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-variables-2-danh-sach/) |
+| Khối 5, Đội tuyển Tin học | Tin học – Scratch | Variables – Phần 1: Biến nhớ | 5A1, 5A2, 5A3, 5A4, 5A5, 5A6, ĐT Tin - K2, ĐT Tin - K3 | 10/11/2026 | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-variables-1-bien-nho/) |
+| Đội tuyển Tin học | Tin học – Scratch | Nhóm lệnh Bút vẽ (Pen) | ĐT Tin - K2, ĐT Tin - K3 | 10/11/2026 | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch-but-ve-pen/) |
+| Khối 9 | Tin học 9 | Công cụ xác thực dữ liệu (Data Validation) | 9A1, 9A2, 9A3, 9A4, 9A5, 9A6, 9A7, 9A8, 9A9, 9A10 | 10/11/2026 | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/tin9-xac-thuc-du-lieu/) |
 <!-- /DS_PHIEU -->

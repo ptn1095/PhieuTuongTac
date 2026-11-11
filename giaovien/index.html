@@ -91,6 +91,9 @@ td.d{font-weight:bold}
 .bd2 .cot .thanh{width:min(24px,80%)}
 .truc2{display:flex;gap:3px;padding:6px 2px 0;font-size:11.5px;color:var(--phu)}
 .truc2 span{flex:1;min-width:0;text-align:center;white-space:nowrap;overflow:visible}
+.tt{display:inline-block;font-size:12.5px;font-weight:bold;border-radius:999px;padding:2px 10px;white-space:nowrap}
+.tt.mo{background:#E9F7EE;color:#1E7E3A;border:1.5px solid #2E9E4F} .tt.chua{background:#FFF8E1;color:#8A5300;border:1.5px solid #F5C04A} .tt.dong{background:#EEF1F4;color:#5A6B7B;border:1.5px solid #B9C7D3}
+tr.hom-nay td{background:#F4FAFE}
 .nut-csv{font:inherit;font-size:14px;font-weight:bold;color:#1E7E3A;background:#fff;border:2px solid #2E9E4F;border-radius:999px;padding:6px 14px;cursor:pointer;margin-left:auto}
 .dau-bang{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
 td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
@@ -127,7 +130,7 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
       <div class="tuy-chon hidden" id="tuyChon"><label>Từ ngày<input type="date" id="tuNgay"></label><label>Đến ngày<input type="date" id="denNgay"></label></div>
       <div class="nhan-tg" id="nhanTG"></div>
     </section>
-    <div class="tabs-xem" role="tablist"><button type="button" class="tab-xem" role="tab" data-xem="phieu" aria-selected="true">📄 Theo từng phiếu</button><button type="button" class="tab-xem" role="tab" data-xem="th" aria-selected="false">📅 Tổng hợp nhiều phiếu</button></div>
+    <div class="tabs-xem" role="tablist"><button type="button" class="tab-xem" role="tab" data-xem="phieu" aria-selected="true">📄 Theo từng phiếu</button><button type="button" class="tab-xem" role="tab" data-xem="th" aria-selected="false">📅 Tổng hợp nhiều phiếu</button><button type="button" class="tab-xem" role="tab" data-xem="lich" aria-selected="false">🗓 Lịch giao phiếu</button></div>
     <section class="the loc">
       <label id="nhanPhieu">Phiếu<select id="chonPhieu"></select></label>
       <label style="max-width:220px">Lớp<select id="chonLop"></select></label>
@@ -155,6 +158,12 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
     </section>
     </div>
 
+    <div id="xemLich" class="hidden">
+      <div class="so-lieu" id="lichSo"></div>
+      <section class="the"><h2>Lịch giao phiếu <span class="phu">– theo ngày mở; phiếu "Sắp mở" học sinh chưa thấy</span></h2>
+        <div class="bang-wrap"><table><thead><tr><th>Ngày mở</th><th>Hạn nộp</th><th>Phiếu</th><th>Lớp</th><th>Trạng thái</th><th>Đã nộp</th><th></th></tr></thead><tbody id="lichBang"></tbody></table></div>
+        <div class="ghi-chu" style="margin-top:6px">Muốn đổi lịch: nhắn Claude, ví dụ "dời phiếu Biến nhớ sang mở ngày 25/11, hạn 30/11".</div></section>
+    </div>
     <div id="xemTH" class="hidden">
       <div class="so-lieu" id="thSo"></div>
       <section class="the"><h2 id="thBDTieuDe">Số bài nộp</h2>
@@ -229,7 +238,7 @@ function docMoTa(link){const f=$('khung');f.onload=()=>{try{const T=f.contentWin
 function hangDangXem(){const ph=DL.phieu.find(p=>p.ten===$('chonPhieu').value);if(!ph)return [];const l=$('chonLop').value;
   return ph.hang.map(docHang).filter(h=>(!l||h.lop===l)&&trongTG(h.luc));}
 const docHang=h=>({luc:h[0],ten:h[1],lop:h[2],diem:typeof h[3]==='number'?h[3]:parseFloat(String(h[3]).replace(',','.')),dung:h[4],ct:h[6]});
-function ve(){if(XEM==='th')return veTH();veSo();veBieuDo();veSai();veChua();veBang();}
+function ve(){if(XEM==='th')return veTH();if(XEM==='lich')return veLich();veSo();veBieuDo();veSai();veChua();veBang();}
 
 // ===== Khoảng thời gian =====
 let TG={loai:'tatca',tu:null,den:null},XEM='phieu';
@@ -262,11 +271,12 @@ datTG((()=>{try{return localStorage.getItem('coThuyTin_gvTG')||'tatca';}catch(e)
 // ===== Hai cách xem: theo từng phiếu / tổng hợp nhiều phiếu =====
 document.querySelectorAll('.tab-xem').forEach(t=>t.onclick=()=>{XEM=t.dataset.xem;
   document.querySelectorAll('.tab-xem').forEach(x=>x.setAttribute('aria-selected',x===t));
-  $('xemPhieu').classList.toggle('hidden',XEM!=='phieu');$('xemTH').classList.toggle('hidden',XEM!=='th');
+  $('xemPhieu').classList.toggle('hidden',XEM!=='phieu');$('xemTH').classList.toggle('hidden',XEM!=='th');$('xemLich').classList.toggle('hidden',XEM!=='lich');
+  document.querySelector('.tg').classList.toggle('hidden',XEM==='lich');
   $('nhanPhieu').classList.toggle('hidden',XEM!=='phieu');$('chieuDA').classList.toggle('hidden',XEM!=='phieu'||!timPhieu($('chonPhieu').value));
   datLop();ve();});
 function datLop(){const cu=$('chonLop').value;let ds;
-  if(XEM==='th')ds=new Set([...Object.values(LOP_CHUAN).flat(),...DL.danhSach.map(r=>r[0]),...DL.phieu.flatMap(p=>p.hang.map(h=>h[2]))].filter(Boolean));
+  if(XEM!=='phieu')ds=new Set([...Object.values(LOP_CHUAN).flat(),...DL.danhSach.map(r=>r[0]),...DL.phieu.flatMap(p=>p.hang.map(h=>h[2]))].filter(Boolean));
   else{const ph=DL.phieu.find(p=>p.ten===$('chonPhieu').value),k=ph&&timPhieu(ph.ten);ds=new Set([...(k?k.lop:[]),...(ph?ph.hang.map(h=>h[2]):[])].filter(Boolean));}
   $('chonLop').innerHTML='<option value="">Tất cả các lớp</option>'+[...ds].sort((a,b)=>a.localeCompare(b,'vi',{numeric:true})).map(l=>'<option>'+esc(l)+'</option>').join('');
   if(ds.has(cu))$('chonLop').value=cu;}
@@ -274,7 +284,31 @@ let LOP_CHUAN={};fetch('../lop.json').then(r=>r.json()).then(d=>{LOP_CHUAN=d;}).
 
 // ===== Tổng hợp nhiều phiếu trong khoảng thời gian =====
 let TH_HS=[],sx2={c:'lam',tang:false};
-const PHIEU_GIAO=()=>{const da=new Set();return DS_PHIEU.filter(p=>p.ma&&!da.has(p.link)&&da.add(p.link)&&ngayTrongTG(p.ngay));};
+// Ngày mở của phiếu = web.mo (nếu có) hoặc ngày đăng; phiếu chưa tới ngày mở chưa tính là "được giao"
+const moCua=p=>p.mo?ngayGioP(p.mo,false):new Date(p.ngay+'T00:00');
+const dongCua=p=>p.dong?ngayGioP(p.dong,true):null;
+function ngayGioP(v,cuoi){const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?$/);if(!m)return null;
+  return m[4]!=null?new Date(+m[1],m[2]-1,+m[3],+m[4],+m[5]):new Date(+m[1],m[2]-1,+m[3],cuoi?23:0,cuoi?59:0,cuoi?59:0);}
+const motPhieu=()=>{const da=new Set();return DS_PHIEU.filter(p=>p.ma&&!da.has(p.link)&&da.add(p.link));};
+const PHIEU_GIAO=()=>motPhieu().filter(p=>moCua(p)<=new Date()&&ngayTrongTG(isoNgay(moCua(p))));
+// ===== Lịch giao phiếu =====
+function veLich(){
+  const l=$('chonLop').value,bay=new Date(),hn=isoNgay(bay);
+  const ds=motPhieu().filter(p=>!l||p.lop.includes(l)).sort((a,b)=>moCua(a)-moCua(b));
+  const tt=p=>{const m=moCua(p),d=dongCua(p);return bay<m?'chua':d&&bay>d?'dong':'mo';};
+  const dem={mo:0,chua:0,dong:0};ds.forEach(p=>dem[tt(p)]++);
+  const tiep=ds.find(p=>tt(p)==='chua');
+  const o=(nhan,gia,them)=>'<div class="o-so"><div class="nhan">'+nhan+'</div><div class="gia">'+gia+'</div><div class="them">'+(them||'&nbsp;')+'</div></div>';
+  $('lichSo').innerHTML=o('Đang mở',dem.mo,'học sinh đang làm')+o('Sắp mở',dem.chua,'học sinh chưa thấy')+o('Đã đóng',dem.dong,'')+
+    o('Phiếu mở tiếp theo',tiep?ngayVN(moCua(tiep)).slice(0,5):'–',tiep?esc(tiep.ten):'');
+  const gio=d=>d?ngayVN(d)+((d.getHours()||d.getMinutes())&&!(d.getHours()===23&&d.getMinutes()===59)?' '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'):''):'–';
+  const nhanTT={mo:'Đang mở',chua:'Sắp mở',dong:'Đã đóng'};
+  $('lichBang').innerHTML=ds.length?ds.map(p=>{const t=tt(p),sh=DL.phieu.find(x=>x.ten===tenTrang(p.ma)),n=sh?sh.hang.filter(h=>!l||h[2]===l).length:0;
+    return '<tr class="'+(isoNgay(moCua(p))===hn?'hom-nay':'')+'"><td><b>'+gio(moCua(p))+'</b></td><td>'+gio(dongCua(p))+'</td><td>'+esc(p.ten)+'<div class="ghi-chu">'+esc(p.mon)+'</div></td>'+
+      '<td style="white-space:normal;min-width:140px;font-size:13px">'+esc(p.lop.join(', '))+'</td><td><span class="tt '+t+'">'+nhanTT[t]+'</span></td><td>'+n+'</td>'+
+      '<td><a href="../'+esc(p.link)+'" target="_blank" rel="noopener" style="font-weight:bold;color:var(--bien)">'+(t==='chua'?'Xem trước':'Mở')+' ↗</a></td></tr>';}).join('')
+    :'<tr><td colspan="7" class="trong-rong">Chưa có phiếu nào.</td></tr>';
+}
 function veTH(){
   const l=$('chonLop').value,giao=PHIEU_GIAO(),khoa=(lop,ten)=>chuan(lop)+'|'+chuan(ten);
   // mọi bài nộp trong khoảng thời gian (tất cả phiếu)

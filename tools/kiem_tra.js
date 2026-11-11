@@ -155,8 +155,21 @@ const server = http.createServer((req, res) => {
     console.log('Hạn làm bài (trang chủ)');
     const nhan = await page.locator('.nhan').allTextContents();
     bao(nhan.includes('ĐÃ ĐÓNG'), 'phiếu quá hạn → nhãn "ĐÃ ĐÓNG", nút "Đã hết hạn"');
-    if (gia.filter(p => p.khoi === gia[0].khoi).length > 1) bao(nhan.includes('SẮP MỞ'), 'phiếu chưa tới ngày mở → nhãn "SẮP MỞ"');
-    await page.screenshot({ path: path.join(OUT, '_trang_chu_han.png'), fullPage: true });
+    const cung = gia.filter(p => p.khoi === gia[0].khoi);
+    if (cung.length > 1) {
+      bao(!nhan.some(t => t.startsWith('SẮP MỞ')) && await page.locator('.card').count() === cung.length - 1, 'học sinh: phiếu chưa tới ngày mở bị ẩn (' + await page.locator('.card').count() + '/' + cung.length + ' phiếu)');
+      // máy cô: thấy cả phiếu chưa mở, có nút "Cô xem trước"
+      await page.evaluate(() => localStorage.setItem('coThuyTin_gv', JSON.stringify({ url: 'x', mk: 'x' })));
+      await page.reload(); await page.waitForTimeout(600);
+      const nhanCo = await page.locator('.nhan').allTextContents();
+      bao(nhanCo.some(t => t.includes('SẮP MỞ') && t.includes('chỉ cô thấy')) && await page.locator('a.go', { hasText: 'Cô xem trước' }).count() === 1, 'máy cô: thấy phiếu sắp mở ("chỉ cô thấy") + nút "Cô xem trước"');
+      await page.screenshot({ path: path.join(OUT, '_trang_chu_han.png'), fullPage: true });
+      await page.evaluate(() => localStorage.removeItem('coThuyTin_gv'));
+      // phiếu đặt hienTruoc: học sinh thấy trước với nhãn SẮP MỞ, nút khóa
+      cung[1].hienTruoc = true;
+      await page.reload(); await page.waitForTimeout(600);
+      bao((await page.locator('.nhan').allTextContents()).some(t => t.startsWith('SẮP MỞ')) && (await page.locator('.go.tat').allTextContents()).some(t => t.startsWith('Mở ngày')), 'phiếu "hienTruoc": học sinh thấy nhãn SẮP MỞ, nút "Mở ngày …" bị khóa');
+    }
     await page.close();
   }
 
@@ -238,6 +251,27 @@ const server = http.createServer((req, res) => {
     await page.close();
   }
 
+  // Lịch giao phiếu (trang tổng hợp)
+  {
+    console.log('Lịch giao phiếu');
+    const gia = JSON.parse(JSON.stringify(ds)), mot = [...new Map(gia.map(p => [p.link, p])).values()];
+    const sap = mot[0].link; gia.filter(p => p.link === sap).forEach(p => { p.mo = ng(4) + ' 07:00'; p.dong = ng(10); });
+    const page = await browser.newPage({ viewport: { width: 1100, height: 1200 } });
+    const loiL = []; page.on('pageerror', e => loiL.push(e.message));
+    await page.route(/phieu\.json/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(gia) }));
+    await page.route(/action=tonghop/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, phieu: [], danhSach: [], luc: new Date().toISOString() }) }));
+    await page.goto(base + 'giaovien/'); await page.fill('#mk', 'x'); await page.click('#nutDN'); await page.waitForTimeout(1200);
+    await page.click('.tab-xem[data-xem="lich"]'); await page.waitForTimeout(300);
+    const so = await page.locator('#lichSo .gia').allTextContents();
+    bao(so[1].trim() === '1' && so[0].trim() === String(mot.length - 1), 'tab Lịch: đang mở ' + so[0] + ', sắp mở ' + so[1]);
+    const dong1 = await page.locator('#lichBang tr').last().textContent();
+    bao(dong1.includes('Sắp mở') && dong1.includes('7:00') && dong1.includes('Xem trước'), 'phiếu sắp mở xếp cuối, có giờ mở 7:00 và link "Xem trước"');
+    bao(await page.locator('.tg').isHidden(), 'tab Lịch ẩn thanh chọn thời gian (lịch luôn hiện đủ)');
+    await page.screenshot({ path: path.join(OUT, '_lich_giao.png'), fullPage: true });
+    bao(loiL.length === 0, 'tab Lịch không lỗi' + (loiL.length ? ': ' + loiL.join('; ') : ''));
+    await page.close();
+  }
+
   // Phiếu mẫu: Đúng/Sai bằng nút, xem lại bài, pháo giấy, phiếu đóng/chưa mở
   {
     console.log('Phiếu mẫu (Đúng/Sai, xem lại bài, hạn làm bài)');
@@ -314,6 +348,17 @@ const server = http.createServer((req, res) => {
       bao(t.includes(chu) && await page.locator('#check').isDisabled() && await page.locator('.opt').first().isDisabled(), `phiếu ${chu} → báo "${chu}", khóa nút Tính điểm và các ô`);
     }
     await page.screenshot({ path: path.join(OUT, '_mau_khoa.png') });
+    {
+      const gui = []; await page.route(/script\.google\.com/, r => { gui.push(r.request().url()); r.fulfill({ status: 200, body: 'ok' }); });
+      await page.evaluate(() => localStorage.setItem('coThuyTin_gv', JSON.stringify({ url: 'x', mk: 'x' })));
+      await page.goto(base + 'phieu/__mau_chua__/'); await page.waitForLoadState('networkidle');
+      bao((await page.locator('#khoa').textContent()).includes('Cô đang xem trước') && !(await page.locator('#check').isDisabled()), 'máy cô mở phiếu chưa mở → "Cô đang xem trước", làm thử được');
+      await page.evaluate(() => { const T = window.__PHIEU_TEST__; T.sels.forEach(s => { s.value = T.ANS[s.dataset.k]; s.dispatchEvent(new Event('change', { bubbles: true })); });
+        document.getElementById('ten').value = 'Cô'; document.getElementById('lop').value = '3A1'; });
+      await page.locator('#check').click(); await page.waitForTimeout(500);
+      bao(gui.length === 0 && (await page.locator('#sent').textContent()).includes('không gửi'), 'cô bấm Tính điểm khi xem trước → KHÔNG gửi điểm về Sheet');
+      await page.evaluate(() => localStorage.removeItem('coThuyTin_gv'));
+    }
     bao(loiMau.length === 0, 'phiếu mẫu không lỗi' + (loiMau.length ? ': ' + loiMau.join('; ') : ''));
     await page.close();
   }

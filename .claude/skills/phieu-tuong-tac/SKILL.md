@@ -70,6 +70,18 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
 9. **Báo cô**: link phiếu, khối, số bài và số câu, câu nào tự giải. Nhắc cô làm thử một lần với tên "Thử" và xem điểm đã về Sheet chưa, rồi mới giao cho học sinh.
 10. **Sửa phiếu**: sửa `config.json`, chạy lại bước 6–8. Link giữ nguyên.
 
+## 2b. Tạo nhiều phiếu một lúc, giao dần theo lịch
+Khi cô gửi nhiều file và muốn giao dần (ví dụ "mỗi thứ Hai mở 1 phiếu, hạn hết Chủ nhật", "phiếu 1 mở 18/11, phiếu 2 mở 25/11…"):
+1. Hỏi gộp MỘT lần những gì còn thiếu: thứ tự các phiếu, ngày mở phiếu đầu, nhịp (mỗi tuần / mỗi 2 tuần / ngày cụ thể), hạn nộp (bao nhiêu ngày sau khi mở, hoặc không hạn), giờ mở nếu cần (mặc định 00:00 – học sinh thấy từ đầu ngày), lớp.
+2. Soạn từng phiếu như mục 2 (duyệt đáp án gộp một bảng cho tất cả phiếu).
+3. Ghi lịch vào `web.mo` / `web.dong` của từng config (`"mo": "2026-11-18"` hoặc `"2026-11-18 07:00"`). `web.ngay` = ngày tạo phiếu.
+   Ngày lễ / nghỉ cô nêu thì bỏ qua tuần đó.
+4. Build + kiểm tra + đẩy lên **một lần** cho cả đợt.
+5. Báo cô **bảng lịch**: Phiếu | Mở | Hạn | Lớp | link; nhắc cô xem tab **🗓 Lịch giao phiếu** trên trang tổng hợp và bấm **Xem trước** để làm thử từng phiếu.
+Hành vi: phiếu chưa tới ngày mở **ẩn với học sinh** (trang chủ không hiện; mở link trực tiếp thì báo "Phiếu chưa mở"). Muốn học sinh thấy trước với nhãn "SẮP MỞ" thì thêm `"hienTruoc": true` vào `web`.
+Máy cô (đã đăng nhập trang tổng hợp) thấy cả phiếu sắp mở ("chỉ cô thấy") và làm thử được ("Cô đang xem trước" – không gửi điểm, không lưu tên).
+Đổi lịch: sửa `mo`/`dong` → build → push (link giữ nguyên). Thống kê "phiếu được giao" tính theo ngày mở, phiếu chưa mở không tính.
+
 ## 3. `config.json`
 ```json
 {

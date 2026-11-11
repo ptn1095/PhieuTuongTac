@@ -132,11 +132,16 @@ const ghi=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}};
 function ngayGio(v,cuoi){if(!v)return null;const m=String(v).match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T](\d{2}):(\d{2}))?$/);if(!m)return null;
   return m[4]!=null?new Date(+m[1],m[2]-1,+m[3],+m[4],+m[5]):new Date(+m[1],m[2]-1,+m[3],cuoi?23:0,cuoi?59:0,cuoi?59:0);}
 const dm=d=>String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');
+// Máy của cô (đã đăng nhập trang tổng hợp) thấy cả phiếu chưa mở để xem trước
+const LA_CO=(()=>{try{return !!localStorage.getItem('coThuyTin_gv');}catch(e){return false;}})();
+// Phiếu chưa tới ngày mở: ẩn với học sinh (trừ khi phiếu đặt "hienTruoc")
+const hien=p=>trangThai(p).t!=='chua'||p.hienTruoc||LA_CO;
+const ngayMo=p=>p.mo?String(p.mo).slice(0,10):p.ngay;
 function trangThai(p){const bay=new Date(),mo=ngayGio(p.mo,false),dong=ngayGio(p.dong,true);
   if(mo&&bay<mo)return{t:'chua',mo};if(dong&&bay>dong)return{t:'dong',dong};return{t:'mo',dong};}
 function fit(){const f=$('fit'),p=$('paper'),hep=f.clientWidth<600,W=hep?480:794;p.classList.toggle('hep',hep);f.style.maxWidth=hep?'none':'794px';const s=Math.min(1,f.clientWidth/W);p.style.transform='scale('+s+')';f.style.height=(p.offsetHeight*s)+'px';}
 function veTabs(){
-  $('tabs').innerHTML=KHOI.map(k=>{const n=DS.filter(p=>p.khoi===k.id).length;
+  $('tabs').innerHTML=KHOI.map(k=>{const n=DS.filter(p=>p.khoi===k.id&&hien(p)).length;
     return '<button class="tab" role="tab" style="--c:'+k.c+'" data-id="'+k.id+'" aria-selected="'+(k.id===cur)+'"><span class="so">'+k.so+'</span><span class="ten">'+k.ten+'</span><span class="dem">'+n+' phiếu</span></button>';}).join('');
   $('tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
     if(b.dataset.id===cur){MO=!MO;if(!LOP)MO=true;veLop();veList();if(MO)cuonToi();return;}
@@ -165,14 +170,14 @@ function veList(){
   const sec=$('list').parentNode;sec.querySelector('.head2').classList.toggle('hidden',!k||!LOP);
   if(!k||!LOP){$('list').innerHTML='<div class="goi-y-chon"><b>'+(k?'👆 Em chọn lớp của mình':'👆 Em bấm chọn khối của mình')+'</b>'+(k?'Bấm vào tên lớp ở trên để xem phiếu bài tập.':'Khối 3, Khối 5, Khối 9 hoặc Đội tuyển Tin học.')+'</div>';fit();return;}
   $('tieuDe').textContent='Phiếu bài tập – '+(LOP==='*'?k.ten:'Lớp '+LOP);
-  const ds=DS.filter(p=>p.khoi===cur&&hop(p)&&(!q||bo(p.ten+' '+p.mon+' '+(p.lop||[]).join(' ')).includes(q)))
-    .sort((a,b)=>((trangThai(a).t==='dong')-(trangThai(b).t==='dong'))||String(b.ngay).localeCompare(String(a.ngay)));
+  const ds=DS.filter(p=>p.khoi===cur&&hop(p)&&hien(p)&&(!q||bo(p.ten+' '+p.mon+' '+(p.lop||[]).join(' ')).includes(q)))
+    .sort((a,b)=>((trangThai(a).t==='dong')-(trangThai(b).t==='dong'))||((trangThai(a).t==='chua')-(trangThai(b).t==='chua'))||String(ngayMo(b)).localeCompare(String(ngayMo(a))));
   if(!ds.length){$('list').innerHTML='<div class="trong"><b>'+(q?'Không tìm thấy phiếu phù hợp':'Chưa có phiếu nào')+'</b>'+(q?'Em thử gõ từ khác nhé.':LOP!=='*'?'Lớp '+esc(LOP)+' chưa có phiếu nào. Cô sẽ sớm đưa phiếu lên!':'Cô sẽ sớm đưa phiếu bài tập lên đây!')+'</div>';fit();return;}
-  $('list').innerHTML=ds.map(p=>{const d=p.ngay?p.ngay.split('-').reverse().join('/'):'';
-    const moi=p.ngay&&(Date.now()-new Date(p.ngay+'T00:00:00'))<7*864e5,tt=trangThai(p),slug=p.link.split('/').filter(Boolean).pop(),dl=DA_LAM[slug];
-    const nut=tt.t==='chua'?'<span class="go tat">Mở ngày '+dm(tt.mo)+'</span>':tt.t==='dong'?'<span class="go tat">Đã hết hạn</span>':'<a class="go" href="'+esc(p.link)+'">Làm bài ➜</a>';
+  $('list').innerHTML=ds.map(p=>{const nm=ngayMo(p),d=nm?nm.split('-').reverse().join('/'):'';
+    const moi=nm&&(Date.now()-new Date(nm+'T00:00:00'))<7*864e5,tt=trangThai(p),slug=p.link.split('/').filter(Boolean).pop(),dl=DA_LAM[slug];
+    const nut=tt.t==='chua'?(LA_CO?'<a class="go" href="'+esc(p.link)+'">Cô xem trước ➜</a>':'<span class="go tat">Mở ngày '+dm(tt.mo)+'</span>'):tt.t==='dong'?'<span class="go tat">Đã hết hạn</span>':'<a class="go" href="'+esc(p.link)+'">Làm bài ➜</a>';
     return '<article class="card'+(tt.t==='dong'?' dong':'')+'" style="--c:'+k.c+'"><div class="ic" aria-hidden="true">'+k.ic+'</div><div class="bd"><div class="mon">'+esc(p.mon||'')+'</div><div class="tp">'+esc(p.ten)+
-      (tt.t==='dong'?'<span class="nhan">ĐÃ ĐÓNG</span>':tt.t==='chua'?'<span class="nhan">SẮP MỞ</span>':moi?'<span class="moi">MỚI</span>':'')+'</div>'+
+      (tt.t==='dong'?'<span class="nhan">ĐÃ ĐÓNG</span>':tt.t==='chua'?'<span class="nhan">SẮP MỞ '+dm(tt.mo)+(LA_CO&&!p.hienTruoc?' · chỉ cô thấy':'')+'</span>':moi?'<span class="moi">MỚI</span>':'')+'</div>'+
     '<div class="chips">'+(p.lop||[]).map(l=>'<span class="chip'+(l===LOP?' cua-em':'')+'">'+esc(l)+'</span>').join('')+'</div>'+
     '<div class="meta">'+(p.soCau?'<span>📝 '+p.soCau+' câu</span>':'')+(p.phut?'<span>⏱ khoảng '+p.phut+' phút</span>':'')+(d?'<span>📅 '+d+'</span>':'')+
       (tt.t==='mo'&&tt.dong?'<span class="han">⏳ Hạn nộp: '+dm(tt.dong)+'</span>':'')+'</div>'+
