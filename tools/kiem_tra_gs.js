@@ -6,7 +6,8 @@ Sheet.prototype={getName(){return this.name},getLastRow(){return this.rows.lengt
  getRange(r,c,nr,nc){const sh=this;nr=nr||1;nc=nc||1;return{getValues(){return sh.rows.slice(r-1,r-1+nr).map(x=>x.slice(c-1,c-1+nc))},getDisplayValues(){return this.getValues().map(x=>x.map(v=>v==null?'':String(v)))},
  setValues(v){v.forEach((row,i)=>{sh.rows[r-1+i]=sh.rows[r-1+i]||[];row.forEach((x,j)=>sh.rows[r-1+i][c-1+j]=x);});return this},setNumberFormat(){return this},insertCheckboxes(){return this},setWrap(){return this},getValue(){return (sh.rows[r-1]||[])[c-1]},setFontWeight(){return this},setBackground(){return this}}},
  setFrozenRows(){},setColumnWidths(){},setColumnWidth(){}};
-const sheets=[new Sheet('Trang tính1'),new Sheet('GiaoPhieu')];  // GiaoPhieu: cô tạo sẵn, còn trốngconst ds=new Sheet('DanhSach');ds.rows=[['Lớp','Họ và tên'],['5A1','An'],['5A1','Bình']];sheets.push(ds);
+const sheets=[new Sheet('Trang tính1'),new Sheet('GiaoPhieu')];  // GiaoPhieu: cô tạo sẵn, còn trống
+const ds=new Sheet('DanhSach');ds.rows=[['Lớp','Họ và tên'],['5A1','An'],['5A1','Bình']];sheets.push(ds);
 const ss={getSheetByName:n=>sheets.find(s=>s.name===n)||null,insertSheet:n=>{const s=new Sheet(n);sheets.push(s);return s},getSheets:()=>sheets};
 let slept=0;
 const cacheMap={};
@@ -43,3 +44,27 @@ ok(tn==='ok'&&shT&&shT.rows.length===2&&shT.rows[1][1]==='Bé An'&&shT.rows[1][4
 ok(ctx.doPost({parameter:{action:'tinnhan',ten:'Bé An',lop:'5A1',tin:'gửi lại ngay'}}).t==='cham'&&shT.rows.length===2,'gửi liên tục (< 20 giây) → không ghi thêm');
 const th=JSON.parse(ctx.doGet({parameter:{action:'tonghop',mk:'matkhau123'}}).t);
 ok(!th.phieu.some(p=>p.ten==='TinNhan')&&!JSON.stringify(th).includes('chưa hiểu bài 2'),'tin nhắn KHÔNG lộ ra ở bất kì lệnh đọc nào (kể cả trang tổng hợp)');
+
+// Khớp tên khi nhận bài + cô ghép tay
+const shA=sheets.find(s=>s.name==='Phiếu A');
+ok(shA.rows[0][7]==='Tên trong danh sách'&&shA.rows[1][7]==='An'&&shA.rows[1][8]==='Chắc chắn','nộp bài "An" → cột Tên trong danh sách = An, Mức khớp = Chắc chắn');
+ctx.doGet({parameter:{phieu:'Phiếu A',ten:'Binh',lop:'5A1',diem:'7'}});
+ok(shA.rows[2][7]==='Bình'&&shA.rows[2][8]==='Chắc chắn','gõ "Binh" (không dấu) → tự khớp Bình');
+let r9=ctx.doGet({parameter:{phieu:'Phiếu A',ten:'Bình',lop:'5A1',diem:'9'}});
+ok(r9.h.includes('đã nộp bài này rồi'),'"Bình" nộp lại (lần trước gõ "Binh") → chặn nộp trùng theo tên chuẩn');
+ctx.doGet({parameter:{phieu:'Phiếu A',ten:'Bé Su',lop:'5A1',diem:'6'}});
+ok(shA.rows[3][8]==='Không thấy trong danh sách','gõ biệt danh "Bé Su" → Không thấy trong danh sách');
+let gh=JSON.parse(ctx.doGet({parameter:{action:'ghepten',mk:'sai',lop:'5A1',tengo:'Bé Su',tenchuan:'Bình'}}).t);
+ok(!gh.ok,'ghép tên: sai mật khẩu → từ chối');
+gh=JSON.parse(ctx.doGet({parameter:{action:'ghepten',mk:'matkhau123',lop:'5A1',tengo:'Bé Su',tenchuan:'An'}}).t);
+ok(gh.ok&&gh.ghep.length===1&&shA.rows[3][7]==='An'&&shA.rows[3][8]==='Cô đã ghép','cô ghép "Bé Su" → An: lưu GhepTen + sửa bài đã nộp');
+ctx.doGet({parameter:{phieu:'Phiếu B2',ten:'bé su',lop:'5A1',diem:'8'}});
+const shB=sheets.find(s=>s.name==='Phiếu B2');
+ok(shB.rows[1][7]==='An'&&shB.rows[1][8]==='Chắc chắn','phiếu sau em gõ "bé su" → tự nhận ra là An (nhờ cô đã ghép)');
+const th3=JSON.parse(ctx.doGet({parameter:{action:'tonghop',mk:'matkhau123'}}).t);
+ok(th3.ghep.length===1&&th3.phieu.find(p=>p.ten==='Phiếu A').hang[0].length===9&&!th3.phieu.some(p=>p.ten==='GhepTen'),'tổng hợp trả kèm bảng ghép tên và 2 cột mới');
+// Hai bản hàm khopTen (trang web và Google Sheet) cho cùng kết quả
+const kWeb=require('../assets/js/khopten.js');
+const DS2=[['5A2','Nguyễn Văn An'],['5A2','Lê Văn Tâm'],['5A2','Lê Văn Tám'],['5A2','Phạm Gia Huy'],['5A2','Đỗ Hoàng Huy']];
+const ca=['Nguyen Van An','An Nguyễn','Huy','Le Van Tam','Nguễn Văn An','xyz','Lê Văn Tám'];
+ok(ca.every(t=>JSON.stringify(kWeb(t,'5A2',DS2,[]))===JSON.stringify(vm.runInContext('khopTen('+JSON.stringify(t)+',"5A2",'+JSON.stringify(DS2)+',[])',ctx))),'hàm khopTen ở trang web và ở Google Sheet cho cùng kết quả');

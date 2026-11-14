@@ -10,6 +10,7 @@ index.html            Trang chủ (kho phiếu)
 phieu.json            Danh sách phiếu – tự sinh, không sửa tay
 cauhinh.json          giaoCsv = link "Công bố lên web" (CSV) của trang tính GiaoPhieu – lịch giao do cô bấm
 assets/js/giao.js     Đọc lịch giao từ Google Sheet và áp vào phiếu
+assets/js/khopten.js  Khớp tên học sinh gõ với danh sách lớp (dùng chung với NhanDiem.gs)
 lop.json              Tên các lớp theo khối (năm học 2026-2027) – dùng cho ô chọn lớp ở trang chủ
 assets/               Ảnh khung viền dùng chung (top, mid, bot, bg)
 assets/js/qrcode.js   Thư viện tạo mã QR (MIT, Kazuhiko Arase)

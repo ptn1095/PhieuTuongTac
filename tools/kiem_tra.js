@@ -305,6 +305,44 @@ const server = http.createServer((req, res) => {
     await page.close();
   }
 
+  // Khớp tên học sinh gõ với danh sách lớp (trang tổng hợp)
+  {
+    console.log('Khớp tên học sinh (trang tổng hợp)');
+    const ph = ds.find(p => p.link.includes('scratch-variables-2')) || ds.find(p => p.ma);
+    const L = '5A2', t = new Date().toISOString();
+    const danhSach = [[L, 'Nguyễn Văn An'], [L, 'Phạm Gia Huy'], [L, 'Đỗ Hoàng Huy'], [L, 'Lê Thị Bích Ngọc'], [L, 'Trần Minh Khang']];
+    const hang = [[t, 'nguyen van an', L, 9, '', '', 'B1.1 Đ'], [t, 'Huy', L, 7, '', '', 'B1.1 Đ'], [t, 'Ngọc', L, 8, '', '', 'B1.1 Đ'], [t, 'Bé Su', L, 6, '', '', 'B1.1 S']];
+    let ghep = [], lenh = [];
+    const page = await browser.newPage({ viewport: { width: 1150, height: 1300 } });
+    const loiK = []; page.on('pageerror', e => loiK.push(e.message));
+    await page.route(/action=tonghop/, r => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, phieu: [{ ten: ph.ma, hang }], danhSach, giao: [], ghep, luc: t }) }));
+    await page.route(/action=ghepten/, r => { const q = new URL(r.request().url()).searchParams; lenh.push(Object.fromEntries(q));
+      ghep = ghep.filter(g => g[1] !== q.get('tengo')).concat([[q.get('lop'), q.get('tengo'), q.get('tenchuan'), 'x']]);
+      r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, ghep }) }); });
+    await page.goto(base + 'giaovien/'); await page.fill('#mk', 'x'); await page.click('#nutDN'); await page.waitForTimeout(1200);
+    await page.click('.chip[data-tg="tatca"]'); await page.selectOption('#chonLop', L); await page.waitForTimeout(300);
+    const chua = await page.textContent('#chuaNop');
+    bao(!chua.includes('Nguyễn Văn An') && chua.includes('Trần Minh Khang'), 'em gõ "nguyen van an" → tính là Nguyễn Văn An ĐÃ nộp (không còn báo chưa làm)');
+    bao((await page.locator('#bang tr', { hasText: 'Nguyễn Văn An' }).textContent()).includes('em gõ: nguyen van an'), 'bảng điểm hiện tên chuẩn, ghi kèm "em gõ: …"');
+    bao(await page.locator('#theXacNhan').isVisible() && await page.locator('#bangXacNhan tr').count() === 3, 'mục "Cần cô xác nhận tên": 3 tên (Huy – 2 bạn trùng, Ngọc – chỉ tên gọi, Bé Su – biệt danh)');
+    const dongGo = go => page.locator('#bangXacNhan tr').filter({ has: page.locator('td:nth-child(2)', { hasText: new RegExp('^' + go + '\\b') }) });
+    const hNgoc = dongGo('Ngọc');
+    bao(await hNgoc.locator('select').inputValue() === 'Lê Thị Bích Ngọc', 'gợi ý sẵn "Lê Thị Bích Ngọc" cho em gõ "Ngọc"');
+    await page.screenshot({ path: path.join(OUT, '_xac_nhan_ten.png'), fullPage: true });
+    await hNgoc.locator('button').click(); await page.waitForTimeout(500);
+    bao(lenh[0] && lenh[0].tengo === 'Ngọc' && lenh[0].tenchuan === 'Lê Thị Bích Ngọc' && lenh[0].lop === L, 'bấm Ghép → gửi lệnh ghép tên đúng');
+    bao(await page.locator('#bangXacNhan tr').count() === 2 && !(await page.textContent('#chuaNop')).includes('Lê Thị Bích Ngọc'), 'sau khi ghép: còn 2 tên cần xác nhận, Ngọc không còn trong "chưa nộp"');
+    const hHuy = dongGo('Huy');
+    bao(await hHuy.locator('select').inputValue() === '', '"Huy" có 2 bạn trùng tên → ô chọn để trống, cô phải tự chọn');
+    await hHuy.locator('button').click(); bao(lenh.length === 1, 'chưa chọn tên mà bấm Ghép → không gửi');
+    await hHuy.locator('select').selectOption('Đỗ Hoàng Huy'); await hHuy.locator('button').click(); await page.waitForTimeout(500);
+    await page.click('.tab-xem[data-xem="th"]'); await page.waitForTimeout(300);
+    const dongHuy = await page.locator('#thHS tr', { hasText: 'Đỗ Hoàng Huy' }).textContent();
+    bao(dongHuy.includes('1') && !dongHuy.includes('0 /'), 'tab Tổng hợp: Đỗ Hoàng Huy được tính đã làm 1 phiếu');
+    bao(loiK.length === 0, 'khớp tên không lỗi' + (loiK.length ? ': ' + loiK.join('; ') : ''));
+    await page.close();
+  }
+
   // Tab Giao phiếu (trang tổng hợp): giao 1 phiếu, giao hàng loạt, thu hồi
   {
     console.log('Giao phiếu (trang tổng hợp)');

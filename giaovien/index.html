@@ -147,6 +147,13 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
       <div class="nhom-nut"><button type="button" class="nut phu" id="taiLai">↻ Tải lại</button><a class="nut" id="chieuDA" target="_blank" rel="noopener">🎯 Chiếu đáp án</a></div>
     </section>
     <div class="ghi-chu" id="capNhat" style="margin:-8px 0 12px 4px"></div>
+    <section class="the hidden" id="theXacNhan" style="border:2px solid #F5C04A;background:#FFFCF2">
+      <div class="dau-bang"><h2 style="margin:0">🔎 Cần cô xác nhận tên <span class="phu" id="demXacNhan"></span></h2>
+        <button type="button" class="nut-nho" id="anXacNhan">Thu gọn</button></div>
+      <div id="khuXacNhan">
+        <div class="ghi-chu" style="margin-bottom:8px">Học sinh gõ tên chưa khớp chắc chắn với danh sách lớp. Cô chọn đúng tên rồi bấm <b>Ghép</b> – lần sau em gõ y như vậy sẽ tự khớp, và các bài đã nộp cũng được sửa trên Google Sheet.</div>
+        <div class="bang-wrap"><table><thead><tr><th>Lớp</th><th>Em gõ</th><th>Số bài</th><th>Đúng là</th><th></th></tr></thead><tbody id="bangXacNhan"></tbody></table></div>
+      </div></section>
 
     <div id="xemPhieu">
     <div class="so-lieu" id="soLieu"></div>
@@ -213,6 +220,7 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
   </form></div>
 </main>
 <script src="../assets/js/giao.js"></script>
+<script src="../assets/js/khopten.js"></script>
 <script>
 const URL_MAC_DINH='https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec';
 const KEY='coThuyTin_gv';
@@ -230,7 +238,7 @@ async function tai(){
     const r=await fetch(GV.url+'?action=tonghop&mk='+encodeURIComponent(GV.mk),{cache:'no-store'});
     const d=await r.json();
     if(!d.ok)throw new Error(d.loi||'Không đọc được điểm.');
-    DL=d;try{localStorage.setItem(KEY,JSON.stringify(GV));}catch(e){}
+    DL=d;KHOP={};if(!DL.ghep)DL.ghep=[];try{localStorage.setItem(KEY,JSON.stringify(GV));}catch(e){}
     if(!DS_PHIEU.length)DS_PHIEU=await fetch('../phieu.json?v='+Date.now()).then(x=>x.json()).catch(()=>[]);
     $('dangNhap').classList.add('hidden');$('noiDung').classList.remove('hidden');$('dangXuat').classList.remove('hidden');
     $('capNhat').textContent='Cập nhật lúc '+new Date(d.luc||Date.now()).toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})+' · '+d.phieu.length+' phiếu có người nộp';
@@ -273,8 +281,39 @@ function docMoTa(link){const f=$('khung');
 
 function hangDangXem(){const ph=DL.phieu.find(p=>p.ten===$('chonPhieu').value);if(!ph)return [];const l=$('chonLop').value;
   return ph.hang.map(docHang).filter(h=>(!l||h.lop===l)&&trongTG(h.luc));}
-const docHang=h=>({luc:h[0],ten:h[1],lop:h[2],diem:typeof h[3]==='number'?h[3]:parseFloat(String(h[3]).replace(',','.')),dung:h[4],ct:h[6]});
-function ve(){if(XEM==='th')return veTH();if(XEM==='lich')return veLich();veSo();veBieuDo();veSai();veChua();veBang();}
+// Tên em gõ → tên trong danh sách (khớp chắc chắn thì dùng tên chuẩn để đếm "đã nộp / chưa nộp")
+let KHOP={};
+function khop(ten,lop){const k=lop+'|'+ten;if(!KHOP[k])KHOP[k]=(window.khopTen&&DL.danhSach.length)?khopTen(ten,lop,DL.danhSach,DL.ghep||[]):{ten:'',muc:'',goiY:[]};return KHOP[k];}
+const docHang=h=>{const k=khop(h[1],h[2]);return {luc:h[0],ten:k.muc==='chac'?k.ten:h[1],tenGo:h[1],muc:k.muc,goiY:k.goiY,lop:h[2],diem:typeof h[3]==='number'?h[3]:parseFloat(String(h[3]).replace(',','.')),dung:h[4],ct:h[6]};};
+function ve(){veXacNhan();if(XEM==='th')return veTH();if(XEM==='lich')return veLich();veSo();veBieuDo();veSai();veChua();veBang();}
+
+// ===== Cần cô xác nhận tên =====
+function veXacNhan(){
+  const the=$('theXacNhan');
+  if(!DL||!DL.danhSach.length||XEM==='lich'){the.classList.add('hidden');return;}
+  const nhom=new Map();
+  DL.phieu.forEach(p=>p.hang.forEach(h=>{const k=khop(h[1],h[2]);if(k.muc==='chac')return;const key=chuan(h[2])+'|'+chuan(h[1]);
+    if(!nhom.has(key))nhom.set(key,{lop:h[2],go:h[1],k,n:0});nhom.get(key).n++;}));
+  const ds=[...nhom.values()].sort((a,b)=>a.lop.localeCompare(b.lop,'vi',{numeric:true})||a.go.localeCompare(b.go,'vi'));
+  the.classList.toggle('hidden',!ds.length);if(!ds.length)return;
+  $('demXacNhan').textContent='– '+ds.length+' tên';
+  $('bangXacNhan').innerHTML=ds.map((x,i)=>{const lopDS=DL.danhSach.filter(r=>chuan(r[0]).replace(/\s+/g,'')===chuan(x.lop).replace(/\s+/g,'')).map(r=>r[1]);
+    const goi=x.k.goiY.filter(t=>lopDS.includes(t)),con=lopDS.filter(t=>!goi.includes(t)).sort((a,b)=>a.localeCompare(b,'vi'));
+    // đúng 1 gợi ý thì chọn sẵn; nhiều gợi ý (ví dụ 2 bạn cùng tên) thì để cô tự chọn, tránh ghép nhầm
+    const opt=(goi.length===1?'':'<option value="">— chọn tên —</option>')+(goi.length?'<optgroup label="Gợi ý">'+goi.map(t=>'<option>'+esc(t)+'</option>').join('')+'</optgroup>':'')+
+      '<optgroup label="Cả lớp '+esc(x.lop)+'">'+con.map(t=>'<option>'+esc(t)+'</option>').join('')+'</optgroup>';
+    return '<tr><td><b>'+esc(x.lop)+'</b></td><td>'+esc(x.go)+(x.k.muc==='gan'?' <span class="tt chua">gần đúng</span>':' <span class="tt dong">không thấy</span>')+'</td><td>'+x.n+'</td>'+
+      '<td><select data-i="'+i+'" style="min-width:200px;font-size:14px;padding:5px 8px">'+opt+'</select></td>'+
+      '<td><button type="button" class="nut-nho chinh" data-ghep="'+i+'">Ghép</button></td></tr>';}).join('');
+  $('bangXacNhan').querySelectorAll('[data-ghep]').forEach(b=>b.onclick=async()=>{const x=ds[+b.dataset.ghep],sel=$('bangXacNhan').querySelector('select[data-i="'+b.dataset.ghep+'"]');
+    if(!sel.value){sel.focus();return;}
+    b.disabled=true;b.textContent='Đang ghép…';
+    try{const r=await fetch(GV.url+'?action=ghepten&mk='+encodeURIComponent(GV.mk)+'&lop='+encodeURIComponent(x.lop)+'&tengo='+encodeURIComponent(x.go)+'&tenchuan='+encodeURIComponent(sel.value),{cache:'no-store'});
+      const d=await r.json();if(!d.ok)throw new Error(d.loi||'Không ghép được.');
+      DL.ghep=d.ghep;KHOP={};$('capNhat').textContent='✓ Đã ghép "'+x.go+'" ('+x.lop+') → '+sel.value+'.';ve();}
+    catch(e){b.disabled=false;b.textContent='Ghép';alert('Chưa ghép được: '+(e.message||'lỗi kết nối')+'. Có thể mã Apps Script chưa được cập nhật bản mới.');}});
+}
+$('anXacNhan').onclick=()=>{const k=$('khuXacNhan');k.classList.toggle('hidden');$('anXacNhan').textContent=k.classList.contains('hidden')?'Mở ra':'Thu gọn';};
 
 // ===== Khoảng thời gian =====
 let TG={loai:'tatca',tu:null,den:null},XEM='phieu';
@@ -539,7 +578,7 @@ function veBang(){
   const c=sapXep.c,dau=sapXep.tang?1:-1;
   H.sort((a,b)=>{const x=a[c],y=b[c];return (typeof x==='number'&&typeof y==='number'?x-y:String(x).localeCompare(String(y),'vi',{numeric:true}))*dau;});
   $('demBang').textContent='– '+H.length+' bài';
-  $('bang').innerHTML=H.length?H.map(h=>'<tr><td>'+esc(h.ten)+'</td><td>'+esc(h.lop)+'</td><td class="d '+(h.diem>=8?'diem-cao':h.diem<5?'diem-thap':'')+'">'+so(h.diem)+'</td><td>'+esc(h.dung)+'</td><td>'+
+  $('bang').innerHTML=H.length?H.map(h=>'<tr><td>'+esc(h.ten)+(h.muc&&h.muc!=='chac'?' <span class="tt chua">cần xác nhận</span>':chuan(h.tenGo)!==chuan(h.ten)?'<div class="ghi-chu">em gõ: '+esc(h.tenGo)+'</div>':'')+'</td><td>'+esc(h.lop)+'</td><td class="d '+(h.diem>=8?'diem-cao':h.diem<5?'diem-thap':'')+'">'+so(h.diem)+'</td><td>'+esc(h.dung)+'</td><td>'+
     esc(h.luc&&!isNaN(new Date(h.luc))?new Date(h.luc).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'}):h.luc)+'</td></tr>').join(''):'<tr><td colspan="5" class="trong-rong">Chưa có bài nộp.</td></tr>';
 }
 document.querySelectorAll('#xemPhieu th[data-c]').forEach(th=>th.onclick=()=>{const c=th.dataset.c;sapXep={c,tang:sapXep.c===c?!sapXep.tang:c!=='diem'};

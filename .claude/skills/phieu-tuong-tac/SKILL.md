@@ -21,6 +21,7 @@ Trao đổi với cô bằng tiếng Việt, ngắn gọn, không dùng thuật 
   - `tools/build_phieu.py`: dựng trang phiếu, `phieu.json`, bảng README.
   - `tools/kiem_tra.js`: làm thử mọi phiếu.
   - `tools/NhanDiem.gs`: Apps Script nhận điểm + trả số liệu cho trang tổng hợp (có mật khẩu); `tools/kiem_tra_gs.js` chạy thử nó.
+  - `assets/js/khopten.js`: **khớp tên học sinh gõ với DanhSach** (bỏ dấu, hoa thường, đảo thứ tự, thiếu tên đệm, chỉ gõ tên gọi, sai 1–3 chữ cái; mức chac/gan/khong). `NhanDiem.gs` có bản sao y hệt hàm `khopTen` (sửa một bản thì sửa cả bản kia; `node tools/kiem_tra_khopten.js` và `kiem_tra_gs.js` kiểm tra). Apps Script ghi cột "Tên trong danh sách", "Mức khớp" khi nhận bài và chặn nộp trùng theo tên chuẩn; trang tổng hợp có mục **"Cần cô xác nhận tên"** (nút Ghép → `action=ghepten` → trang tính `GhepTen`, sửa luôn bài đã nộp).
   - `giaovien/index.html`: trang tổng hợp điểm cho cô (đăng nhập bằng `MAT_KHAU`). Chọn thời gian: Tuần này / Tuần trước / Tháng này / Tháng trước / Đến nay / Tùy chọn (lọc theo giờ nộp). Tab "Theo từng phiếu" (phân bố điểm, câu sai nhiều nhất, chưa nộp) và tab "Tổng hợp nhiều phiếu" (lượt nộp, biểu đồ theo ngày/tuần, bảng theo lớp, bảng theo học sinh: đã làm x/y phiếu được giao, điểm TB/cao/thấp, phiếu chưa làm; tải CSV). "Phiếu được giao" trong khoảng = phiếu có `web.ngay` nằm trong khoảng.
   - `assets/`: ảnh khung dùng chung.
 - Không sửa tay `phieu.json`, `phieu/*/index.html` hay bảng trong README, vì các file này tự sinh.
