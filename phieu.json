@@ -1,6 +1,24 @@
 [
   {
     "khoi": "khoi-3",
+    "mon": "Tin học 3",
+    "ten": "Bài 6: Luyện tập – Khám phá thông tin trên Internet",
+    "lop": [
+      "3A1",
+      "3A2",
+      "3A3",
+      "3A4",
+      "3A5",
+      "3A6"
+    ],
+    "ngay": "2026-11-16",
+    "soCau": 10,
+    "phut": 5,
+    "link": "phieu/tin3-bai6-luyen-tap/",
+    "ma": "Tin 3 - Bài 6 Luyện tập"
+  },
+  {
+    "khoi": "khoi-3",
     "mon": "Công nghệ 3",
     "ten": "Bài 4: Sử dụng máy thu thanh",
     "lop": [

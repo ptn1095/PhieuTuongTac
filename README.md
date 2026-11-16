@@ -40,6 +40,7 @@ giaovien/             Trang tổng hợp điểm cho cô (cần mật khẩu)
 <!-- DS_PHIEU -->
 | Khối | Môn | Tên phiếu | Lớp | Ngày mở | Hạn nộp | Link |
 |---|---|---|---|---|---|---|
+| Khối 3 | Tin học 3 | Bài 6: Luyện tập – Khám phá thông tin trên Internet | 3A1, 3A2, 3A3, 3A4, 3A5, 3A6 | 16/11/2026 | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/tin3-bai6-luyen-tap/) |
 | Khối 3 | Công nghệ 3 | Bài 4: Sử dụng máy thu thanh | 3A1, 3A2, 3A3, 3A4, 3A5, 3A6 | Chưa giao | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/cn3-bai4-may-thu-thanh/) |
 | Khối 3, Đội tuyển Tin học | Tin học – Scratch lớp 3 | Tiết 9: Dự án 2 Hứng trái cây – Điều khiển nhân vật | 3A1, 3A2, 3A3, 3A4, 3A5, 3A6, ĐT Tin - K2, ĐT Tin - K3 | Chưa giao | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch3-tiet09-hung-trai-cay-dieu-khien/) |
 | Khối 3, Đội tuyển Tin học | Tin học – Scratch lớp 3 | Tiết 8: Dự án 2 Hứng trái cây – Quan sát trò chơi | 3A1, 3A2, 3A3, 3A4, 3A5, 3A6, ĐT Tin - K2, ĐT Tin - K3 | Chưa giao | – | [Mở phiếu](https://ptn1095.github.io/PhieuTuongTac/phieu/scratch3-tiet08-hung-trai-cay-quan-sat/) |

@@ -1,0 +1,113 @@
+{
+ "web": {
+  "khoi": "khoi-3",
+  "mon": "Tin học 3",
+  "ten": "Bài 6: Luyện tập – Khám phá thông tin trên Internet",
+  "ngay": "2026-11-16"
+ },
+ "ma": "Tin 3 - Bài 6 Luyện tập",
+ "mon": "TIN HỌC 3 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu luyện tập – Bài 6: Khám phá thông tin trên Internet",
+ "lop": [
+  "3A1",
+  "3A2",
+  "3A3",
+  "3A4",
+  "3A5",
+  "3A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Khoanh vào đáp án đúng.",
+   "cot": 1,
+   "cau": [
+    {
+     "text": "Khi truy cập Internet, em có thể xem được những gì?",
+     "lc": [
+      "Chỉ xem được chữ, không có hình ảnh",
+      "Tin tức, phim hoạt hình, phim truyện, ca nhạc…",
+      "Chỉ chơi được trò chơi",
+      "Không xem được gì cả"
+     ],
+     "da": "Tin tức, phim hoạt hình, phim truyện, ca nhạc…"
+    },
+    {
+     "text": "Thông tin trên Internet có đặc điểm nào?",
+     "lc": [
+      "Rất ít và không bao giờ thay đổi",
+      "Lúc nào cũng đúng, cũng chính xác",
+      "Đa dạng, phong phú và được cập nhật thường xuyên",
+      "Chỉ dành cho người lớn"
+     ],
+     "da": "Đa dạng, phong phú và được cập nhật thường xuyên"
+    },
+    {
+     "text": "Em muốn nghe một bài hát thiếu nhi mà máy tính của em chưa có. Em nên làm gì?",
+     "lc": [
+      "Tìm bài hát trên Internet khi được bố mẹ, thầy cô cho phép",
+      "Nhờ một người lạ trên mạng gửi cho",
+      "Tắt máy tính đi vì không thể nghe được",
+      "Tự mở mọi trang web mà không hỏi ai"
+     ],
+     "da": "Tìm bài hát trên Internet khi được bố mẹ, thầy cô cho phép"
+    },
+    {
+     "text": "Vì sao khi dùng Internet, em cần có thầy cô hoặc bố mẹ hướng dẫn?",
+     "lc": [
+      "Vì Internet rất chậm",
+      "Vì có thông tin không chính xác, khó hiểu hoặc không phù hợp với em",
+      "Vì Internet chỉ có trò chơi",
+      "Vì máy tính sẽ bị hỏng"
+     ],
+     "da": "Vì có thông tin không chính xác, khó hiểu hoặc không phù hợp với em"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối thông tin với dạng thông tin đúng: bấm chấm tròn bên trái rồi bấm chấm tròn bên phải.",
+   "lc": [
+    "Chữ",
+    "Hình ảnh",
+    "Âm thanh",
+    "Video"
+   ],
+   "cau": [
+    {
+     "text": "📷 Bức ảnh chụp chú mèo",
+     "da": "Hình ảnh"
+    },
+    {
+     "text": "🐦 Tiếng chim hót",
+     "da": "Âm thanh"
+    },
+    {
+     "text": "🎬 Bộ phim hoạt hình",
+     "da": "Video"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đúng hay sai? Bấm <b>Đúng</b> hoặc <b>Sai</b>.",
+   "cau": [
+    {
+     "text": "Thông tin trên Internet lúc nào cũng chính xác.",
+     "da": "S"
+    },
+    {
+     "text": "Internet là một kho thông tin khổng lồ, khi cần em có thể tìm thông tin trên Internet.",
+     "da": "Đ"
+    },
+    {
+     "text": "Gặp nội dung lạ hoặc đáng sợ, em đóng lại ngay và báo cho bố mẹ, thầy cô.",
+     "da": "Đ"
+    }
+   ]
+  }
+ ]
+}
