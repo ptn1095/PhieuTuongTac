@@ -1,0 +1,209 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Công nghệ 5",
+  "ten": "Bài 1: Vai trò của công nghệ",
+  "ngay": "2026-11-23",
+  "chuaGiao": true
+ },
+ "ma": "CN5 - Bài 1 Vai trò công nghệ",
+ "mon": "CÔNG NGHỆ 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 1: Vai trò của công nghệ",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Chiếc <b>tủ lạnh</b> có vai trò gì trong gia đình?",
+     "lc": [
+      "Giúp con người đi lại",
+      "Bảo quản thực phẩm",
+      "Giải trí, xem phim",
+      "Làm sạch nhà cửa"
+     ],
+     "da": "Bảo quản thực phẩm"
+    },
+    {
+     "text": "Sản phẩm công nghệ nào giúp <b>tăng năng suất lao động</b> trong nông nghiệp?",
+     "lc": [
+      "Ti vi",
+      "Xe đạp",
+      "Máy gặt",
+      "Quạt điện"
+     ],
+     "da": "Máy gặt"
+    },
+    {
+     "text": "<b>Máy hút bụi</b> và <b>bếp năng lượng mặt trời</b> giúp con người điều gì?",
+     "cot": 1,
+     "lc": [
+      "Cải thiện môi trường sống",
+      "Đi lại nhanh hơn",
+      "Liên lạc với người thân",
+      "Học tập, giải trí"
+     ],
+     "da": "Cải thiện môi trường sống"
+    },
+    {
+     "text": "Ở nhà máy sản xuất giấy, nước thải <b>chưa được xử lí</b> thải ra ngoài sẽ gây ra điều gì?",
+     "cot": 1,
+     "lc": [
+      "Làm môi trường sạch hơn",
+      "Gây ô nhiễm môi trường",
+      "Giúp cây cối tốt hơn",
+      "Không ảnh hưởng gì"
+     ],
+     "da": "Gây ô nhiễm môi trường"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi sản phẩm công nghệ với vai trò của nó.",
+   "lc": [
+    "Nâng cao hiệu quả làm việc",
+    "Giúp con người đi lại",
+    "Tạo môi trường sống trong lành",
+    "Tăng năng suất lao động",
+    "Bảo quản thực phẩm"
+   ],
+   "cau": [
+    {
+     "text": "🚲 Xe đạp",
+     "da": "Giúp con người đi lại"
+    },
+    {
+     "text": "🧊 Tủ lạnh",
+     "da": "Bảo quản thực phẩm"
+    },
+    {
+     "text": "🚜 Máy cày",
+     "da": "Tăng năng suất lao động"
+    },
+    {
+     "text": "💻 Máy tính",
+     "da": "Nâng cao hiệu quả làm việc"
+    },
+    {
+     "text": "🌸 Hoa, cây cảnh",
+     "da": "Tạo môi trường sống trong lành"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cot": 3,
+   "cau": [
+    {
+     "text": "Những sản phẩm nào đáp ứng nhu cầu <b>đi lại, giải trí</b> hằng ngày?",
+     "lc": [
+      "Xe máy",
+      "Máy cấy",
+      "Ô tô",
+      "Máy gặt",
+      "Ti vi",
+      "Máy cày"
+     ],
+     "da": [
+      "Xe máy",
+      "Ô tô",
+      "Ti vi"
+     ]
+    },
+    {
+     "text": "Đâu là <b>tác động không mong muốn</b> của công nghệ?",
+     "cot": 2,
+     "lc": [
+      "Phụ thuộc vào sản phẩm công nghệ",
+      "Giảm giao tiếp trực tiếp giữa mọi người",
+      "Mất an toàn thông tin",
+      "Ảnh hưởng đến sức khoẻ",
+      "Giúp liên lạc với người thân ở xa",
+      "Giúp học tập dễ dàng hơn"
+     ],
+     "da": [
+      "Phụ thuộc vào sản phẩm công nghệ",
+      "Giảm giao tiếp trực tiếp giữa mọi người",
+      "Mất an toàn thông tin",
+      "Ảnh hưởng đến sức khoẻ"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Bấm <b>Đúng</b> hoặc <b>Sai</b> cho mỗi ý.",
+   "cau": [
+    {
+     "text": "Công nghệ chỉ mang lại lợi ích, không gây hại gì cho con người.",
+     "da": "S"
+    },
+    {
+     "text": "Thức khuya xem ti vi có thể ảnh hưởng đến sức khoẻ.",
+     "da": "Đ"
+    },
+    {
+     "text": "Tắt hết đèn rồi nằm xem điện thoại trước khi ngủ là thói quen tốt cho mắt.",
+     "da": "S"
+    },
+    {
+     "text": "Dùng bếp năng lượng mặt trời góp phần bảo vệ môi trường.",
+     "da": "Đ"
+    },
+    {
+     "text": "Chúng ta cần sử dụng công nghệ một cách hợp lí.",
+     "da": "Đ"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn từ thích hợp điền vào chỗ trống.",
+   "bank": [
+    "nhu cầu",
+    "năng suất",
+    "môi trường",
+    "hợp lí",
+    "sức khoẻ"
+   ],
+   "lc": [
+    "nhu cầu",
+    "năng suất",
+    "môi trường",
+    "hợp lí",
+    "sức khoẻ"
+   ],
+   "cau": [
+    {
+     "text": "Sản phẩm công nghệ giúp đáp ứng {} của con người, nâng cao {} lao động và cải thiện {} sống.",
+     "da": [
+      "nhu cầu",
+      "năng suất",
+      "môi trường"
+     ]
+    },
+    {
+     "text": "Dùng máy tính, điện thoại quá nhiều sẽ ảnh hưởng đến {}. Vì vậy, em cần sử dụng công nghệ một cách {}.",
+     "da": [
+      "sức khoẻ",
+      "hợp lí"
+     ]
+    }
+   ]
+  }
+ ]
+}

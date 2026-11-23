@@ -1,0 +1,201 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Công nghệ 5",
+  "ten": "Bài 2: Nhà sáng chế",
+  "ngay": "2026-11-23",
+  "chuaGiao": true
+ },
+ "ma": "CN5 - Bài 2 Nhà sáng chế",
+ "mon": "CÔNG NGHỆ 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 2: Nhà sáng chế",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi nhà sáng chế với sáng chế của ông.",
+   "lc": [
+    "Ô tô",
+    "Bóng đèn sợi đốt",
+    "Máy hơi nước",
+    "Điện thoại"
+   ],
+   "cau": [
+    {
+     "text": "Giêm Oát (James Watt)",
+     "da": "Máy hơi nước"
+    },
+    {
+     "text": "A-lếch-xan-đơ Gra-ham Beo (Alexander Graham Bell)",
+     "da": "Điện thoại"
+    },
+    {
+     "text": "Tô-mát Ê-đi-xơn (Thomas Edison)",
+     "da": "Bóng đèn sợi đốt"
+    },
+    {
+     "text": "Các Ben (Karl Benz)",
+     "da": "Ô tô"
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 4,
+   "cau": [
+    {
+     "text": "Điện thoại được cấp bằng sáng chế vào năm nào?",
+     "lc": [
+      "1867",
+      "1876",
+      "1786",
+      "1678"
+     ],
+     "da": "1876"
+    },
+    {
+     "text": "Bóng đèn sợi đốt của Ê-đi-xơn được cấp bằng sáng chế vào năm nào?",
+     "lc": [
+      "1879",
+      "1897",
+      "1789",
+      "1978"
+     ],
+     "da": "1879"
+    },
+    {
+     "text": "Ô tô của Các Ben được cấp bằng sáng chế vào năm nào?",
+     "lc": [
+      "1868",
+      "1886",
+      "1688",
+      "1986"
+     ],
+     "da": "1886"
+    },
+    {
+     "text": "Chiếc <b>quạt sạc dùng năng lượng mặt trời</b> mang lại lợi ích gì?",
+     "cot": 1,
+     "lc": [
+      "Tốn nhiều tiền điện hơn",
+      "Tiết kiệm điện, bảo vệ môi trường",
+      "Gây ô nhiễm không khí",
+      "Chỉ dùng được vào ban đêm"
+     ],
+     "da": "Tiết kiệm điện, bảo vệ môi trường"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các sáng chế theo thứ tự năm được cấp bằng sáng chế, <b>từ sớm nhất đến muộn nhất</b> (giữ ☰ để kéo, hoặc bấm ▲▼).",
+   "cau": [
+    {
+     "text": "Máy hơi nước"
+    },
+    {
+     "text": "Điện thoại"
+    },
+    {
+     "text": "Bóng đèn sợi đốt"
+    },
+    {
+     "text": "Ô tô"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Một nhà sáng chế cần có những phẩm chất nào?",
+     "lc": [
+      "Kiên trì, nhẫn nại",
+      "Ham hiểu biết khoa học",
+      "Sáng tạo",
+      "Không ngại khó khăn, thất bại",
+      "Dễ bỏ cuộc khi gặp khó",
+      "Ngại quan sát, tìm tòi"
+     ],
+     "da": [
+      "Kiên trì, nhẫn nại",
+      "Ham hiểu biết khoa học",
+      "Sáng tạo",
+      "Không ngại khó khăn, thất bại"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Bấm <b>Đúng</b> hoặc <b>Sai</b> cho mỗi ý.",
+   "cau": [
+    {
+     "text": "Sáng chế giúp cuộc sống của con người tiện nghi hơn.",
+     "da": "Đ"
+    },
+    {
+     "text": "Sáng chế có thể cải tiến những sản phẩm đã có.",
+     "da": "Đ"
+    },
+    {
+     "text": "Sáng chế không có vai trò gì trong sự phát triển của công nghệ.",
+     "da": "S"
+    },
+    {
+     "text": "Nhà sáng chế chỉ cần may mắn, không cần học hỏi.",
+     "da": "S"
+    },
+    {
+     "text": "Học sinh lớp 5 cũng có thể rèn luyện sự sáng tạo, ham tìm tòi như nhà sáng chế.",
+     "da": "Đ"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn từ thích hợp điền vào chỗ trống.",
+   "bank": [
+    "kiên trì",
+    "sáng tạo",
+    "tiện nghi",
+    "phát triển"
+   ],
+   "lc": [
+    "kiên trì",
+    "sáng tạo",
+    "tiện nghi",
+    "phát triển"
+   ],
+   "cau": [
+    {
+     "text": "Các sáng chế giúp cuộc sống {} hơn và thúc đẩy công nghệ {}.",
+     "da": [
+      "tiện nghi",
+      "phát triển"
+     ]
+    },
+    {
+     "text": "Ê-đi-xơn đã thử nghiệm rất nhiều lần mới làm ra bóng đèn. Điều đó cho thấy ông rất {} và {}.",
+     "da": [
+      "kiên trì",
+      "sáng tạo"
+     ]
+    }
+   ]
+  }
+ ]
+}

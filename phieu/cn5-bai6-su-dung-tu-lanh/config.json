@@ -1,0 +1,195 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Công nghệ 5",
+  "ten": "Bài 6: Sử dụng tủ lạnh",
+  "ngay": "2026-11-23",
+  "chuaGiao": true
+ },
+ "ma": "CN5 - Bài 6 Sử dụng tủ lạnh",
+ "mon": "CÔNG NGHỆ 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 6: Sử dụng tủ lạnh",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Tủ lạnh có tác dụng gì?",
+     "cot": 1,
+     "lc": [
+      "Làm chín thức ăn",
+      "Bảo quản thực phẩm, giữ thực phẩm tươi lâu hơn",
+      "Làm mát cả căn phòng",
+      "Sấy khô quần áo"
+     ],
+     "da": "Bảo quản thực phẩm, giữ thực phẩm tươi lâu hơn"
+    },
+    {
+     "text": "Tủ lạnh thường có những khoang nào?",
+     "cot": 1,
+     "lc": [
+      "Chỉ có khoang cấp đông",
+      "Chỉ có khoang làm lạnh",
+      "Khoang cấp đông và khoang làm lạnh",
+      "Khoang nước nóng"
+     ],
+     "da": "Khoang cấp đông và khoang làm lạnh"
+    },
+    {
+     "text": "Khoang <b>cấp đông</b> (ngăn đá) có nhiệt độ như thế nào?",
+     "lc": [
+      "Dưới 0°C",
+      "Khoảng 30°C",
+      "Khoảng 50°C",
+      "Trên 100°C"
+     ],
+     "da": "Dưới 0°C"
+    },
+    {
+     "text": "Tủ lạnh bị hỏng mà gia đình không tự sửa được thì nên làm gì?",
+     "cot": 1,
+     "lc": [
+      "Tự tháo tủ ra sửa",
+      "Gọi thợ sửa chữa",
+      "Đổ nước vào tủ",
+      "Để mặc, vẫn dùng tiếp"
+     ],
+     "da": "Gọi thợ sửa chữa"
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Mỗi thực phẩm nên để vào khoang nào của tủ lạnh?",
+   "lc": [
+    "Khoang cấp đông (ngăn đá)",
+    "Khoang làm lạnh (ngăn mát)"
+   ],
+   "cau": [
+    {
+     "text": "🍨 Kem",
+     "da": "Khoang cấp đông (ngăn đá)"
+    },
+    {
+     "text": "🧊 Khay làm đá viên",
+     "da": "Khoang cấp đông (ngăn đá)"
+    },
+    {
+     "text": "🥩 Thịt cần để dành nhiều tuần",
+     "da": "Khoang cấp đông (ngăn đá)"
+    },
+    {
+     "text": "🥬 Rau xanh",
+     "da": "Khoang làm lạnh (ngăn mát)"
+    },
+    {
+     "text": "🥛 Sữa tươi",
+     "da": "Khoang làm lạnh (ngăn mát)"
+    },
+    {
+     "text": "🍎 Hoa quả",
+     "da": "Khoang làm lạnh (ngăn mát)"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Sử dụng tủ lạnh đúng cách: bấm <b>Đúng</b> hoặc <b>Sai</b>.",
+   "cau": [
+    {
+     "text": "Mở cửa tủ lạnh thật lâu để chọn đồ.",
+     "da": "S"
+    },
+    {
+     "text": "Cho thức ăn còn đang nóng vào tủ lạnh ngay.",
+     "da": "S"
+    },
+    {
+     "text": "Đậy kín hoặc cho thực phẩm vào hộp, túi trước khi cất vào tủ.",
+     "da": "Đ"
+    },
+    {
+     "text": "Không xếp thực phẩm quá chật, để hơi lạnh lưu thông.",
+     "da": "Đ"
+    },
+    {
+     "text": "Thường xuyên kiểm tra hạn sử dụng và lau dọn tủ lạnh.",
+     "da": "Đ"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối mỗi hiện tượng bất thường của tủ lạnh với cách xử lí phù hợp.",
+   "lc": [
+    "Kiểm tra ống thoát nước có bị tắc không",
+    "Bỏ thực phẩm hỏng, lau tủ bằng nước giấm loãng",
+    "Rã đông, làm tan lớp tuyết",
+    "Kiểm tra tủ kê có chắc không, có vật cản quạt không"
+   ],
+   "cau": [
+    {
+     "text": "Tủ lạnh kêu to",
+     "da": "Kiểm tra tủ kê có chắc không, có vật cản quạt không"
+    },
+    {
+     "text": "Tủ lạnh bốc mùi",
+     "da": "Bỏ thực phẩm hỏng, lau tủ bằng nước giấm loãng"
+    },
+    {
+     "text": "Ngăn đá đóng tuyết dày",
+     "da": "Rã đông, làm tan lớp tuyết"
+    },
+    {
+     "text": "Nước chảy ra ngoài tủ",
+     "da": "Kiểm tra ống thoát nước có bị tắc không"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn từ thích hợp điền vào chỗ trống.",
+   "bank": [
+    "cấp đông",
+    "làm lạnh",
+    "tiết kiệm",
+    "đóng kín"
+   ],
+   "lc": [
+    "cấp đông",
+    "làm lạnh",
+    "tiết kiệm",
+    "đóng kín"
+   ],
+   "cau": [
+    {
+     "text": "Thịt, cá muốn để lâu nhiều tuần thì cất ở khoang {}; rau, quả dùng trong vài ngày thì cất ở khoang {}.",
+     "da": [
+      "cấp đông",
+      "làm lạnh"
+     ]
+    },
+    {
+     "text": "Lấy đồ xong em {} cửa tủ ngay để {} điện.",
+     "da": [
+      "đóng kín",
+      "tiết kiệm"
+     ]
+    }
+   ]
+  }
+ ]
+}

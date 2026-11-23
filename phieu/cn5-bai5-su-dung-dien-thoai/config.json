@@ -1,0 +1,203 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Công nghệ 5",
+  "ten": "Bài 5: Sử dụng điện thoại",
+  "ngay": "2026-11-23",
+  "chuaGiao": true
+ },
+ "ma": "CN5 - Bài 5 Sử dụng điện thoại",
+ "mon": "CÔNG NGHỆ 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 5: Sử dụng điện thoại",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Tác dụng chính của điện thoại là gì?",
+     "cot": 1,
+     "lc": [
+      "Dùng để liên lạc, trao đổi thông tin",
+      "Dùng để nấu cơm",
+      "Dùng để làm mát phòng",
+      "Dùng để bảo quản thực phẩm"
+     ],
+     "da": "Dùng để liên lạc, trao đổi thông tin"
+    },
+    {
+     "text": "Điện thoại đang bật <b>chế độ máy bay</b> ✈️. Em có gọi điện được không?",
+     "cot": 1,
+     "lc": [
+      "Gọi được bình thường",
+      "Không gọi được",
+      "Chỉ gọi được cho bạn bè",
+      "Chỉ gọi được ban đêm"
+     ],
+     "da": "Không gọi được"
+    },
+    {
+     "text": "Vì sao em nên <b>nhớ số điện thoại</b> của bố mẹ, người thân?",
+     "cot": 1,
+     "lc": [
+      "Để liên lạc khi cần thiết, khẩn cấp",
+      "Để khoe với bạn bè",
+      "Để chơi trò chơi",
+      "Không cần nhớ"
+     ],
+     "da": "Để liên lạc khi cần thiết, khẩn cấp"
+    }
+   ]
+  },
+  {
+   "loai": "chon",
+   "yc": "Chọn ý nghĩa của mỗi biểu tượng trên điện thoại.",
+   "lc": [
+    "Chế độ máy bay",
+    "Máy ảnh",
+    "Mức sóng điện thoại",
+    "Thực hiện cuộc gọi",
+    "Đang sạc pin"
+   ],
+   "cau": [
+    {
+     "text": "<span style='font-size:30px'>✈️</span>",
+     "da": "Chế độ máy bay"
+    },
+    {
+     "text": "<span style='font-size:30px'>📷</span>",
+     "da": "Máy ảnh"
+    },
+    {
+     "text": "<span style='font-size:30px'>📶</span>",
+     "da": "Mức sóng điện thoại"
+    },
+    {
+     "text": "<span style='font-size:30px'>📞</span>",
+     "da": "Thực hiện cuộc gọi"
+    },
+    {
+     "text": "<span style='font-size:30px'>🔌</span>",
+     "da": "Đang sạc pin"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Nối số điện thoại khẩn cấp với trường hợp cần gọi.",
+   "lc": [
+    "Cấp cứu y tế (người bị tai nạn, ốm nặng)",
+    "Có cháy nhà, cần cứu hoả",
+    "Có kẻ trộm, đánh nhau, mất an ninh trật tự"
+   ],
+   "cau": [
+    {
+     "text": "113",
+     "da": "Có kẻ trộm, đánh nhau, mất an ninh trật tự"
+    },
+    {
+     "text": "114",
+     "da": "Có cháy nhà, cần cứu hoả"
+    },
+    {
+     "text": "115",
+     "da": "Cấp cứu y tế (người bị tai nạn, ốm nặng)"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cot": 3,
+   "cau": [
+    {
+     "text": "Những bộ phận nào có trên <b>điện thoại di động</b>?",
+     "lc": [
+      "Màn hình",
+      "Loa",
+      "Camera",
+      "Ngăn đá",
+      "Cánh quạt",
+      "Cổng sạc"
+     ],
+     "da": [
+      "Màn hình",
+      "Loa",
+      "Camera",
+      "Cổng sạc"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Sử dụng điện thoại an toàn, tiết kiệm: bấm <b>Đúng</b> hoặc <b>Sai</b>.",
+   "cau": [
+    {
+     "text": "Vừa sạc pin vừa dùng điện thoại để chơi trò chơi.",
+     "da": "S"
+    },
+    {
+     "text": "Để điện thoại gần bếp lửa, nơi có nhiệt độ cao.",
+     "da": "S"
+    },
+    {
+     "text": "Không dùng điện thoại khi đang đi trên đường.",
+     "da": "Đ"
+    },
+    {
+     "text": "Tắt các ứng dụng không dùng đến để tiết kiệm pin.",
+     "da": "Đ"
+    },
+    {
+     "text": "Khi gọi điện, em nói ngắn gọn, đúng mục đích.",
+     "da": "Đ"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các việc khi <b>gọi điện thoại lịch sự</b> theo thứ tự hợp lí.",
+   "cau": [
+    {
+     "text": "Chào hỏi và giới thiệu tên của mình"
+    },
+    {
+     "text": "Nói người mình cần gặp và mục đích cuộc gọi"
+    },
+    {
+     "text": "Trao đổi ngắn gọn, nói nhẹ nhàng, lịch sự"
+    },
+    {
+     "text": "Chào tạm biệt rồi kết thúc cuộc gọi"
+    }
+   ]
+  },
+  {
+   "loai": "go",
+   "yc": "Gõ số điện thoại khẩn cấp em cần gọi.",
+   "cau": [
+    {
+     "text": "Thấy nhà hàng xóm bốc cháy, em nhờ người lớn gọi ngay số {}.",
+     "da": "114"
+    },
+    {
+     "text": "Có người bị ngất xỉu cần đưa đi bệnh viện, em gọi số {}.",
+     "da": "115"
+    }
+   ]
+  }
+ ]
+}

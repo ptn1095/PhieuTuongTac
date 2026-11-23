@@ -2,6 +2,63 @@
   {
     "khoi": "khoi-5",
     "mon": "Công nghệ 5",
+    "ten": "Bài 6: Sử dụng tủ lạnh",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-23",
+    "soCau": 23,
+    "phut": 15,
+    "link": "phieu/cn5-bai6-su-dung-tu-lanh/",
+    "ma": "CN5 - Bài 6 Sử dụng tủ lạnh",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Công nghệ 5",
+    "ten": "Bài 5: Sử dụng điện thoại",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-23",
+    "soCau": 23,
+    "phut": 15,
+    "link": "phieu/cn5-bai5-su-dung-dien-thoai/",
+    "ma": "CN5 - Bài 5 Sử dụng điện thoại",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Công nghệ 5",
+    "ten": "Bài 4: Thiết kế sản phẩm",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-23",
+    "soCau": 21,
+    "phut": 15,
+    "link": "phieu/cn5-bai4-thiet-ke-san-pham/",
+    "ma": "CN5 - Bài 4 Thiết kế sản phẩm",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Công nghệ 5",
     "ten": "Bài 3: Tìm hiểu thiết kế",
     "lop": [
       "5A1"
@@ -11,6 +68,44 @@
     "phut": 15,
     "link": "phieu/cn5-bai3-tim-hieu-thiet-ke/",
     "ma": "CN5 - Bài 3 Tìm hiểu thiết kế"
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Công nghệ 5",
+    "ten": "Bài 2: Nhà sáng chế",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-23",
+    "soCau": 22,
+    "phut": 15,
+    "link": "phieu/cn5-bai2-nha-sang-che/",
+    "ma": "CN5 - Bài 2 Nhà sáng chế",
+    "chuaGiao": true
+  },
+  {
+    "khoi": "khoi-5",
+    "mon": "Công nghệ 5",
+    "ten": "Bài 1: Vai trò của công nghệ",
+    "lop": [
+      "5A1",
+      "5A2",
+      "5A3",
+      "5A4",
+      "5A5",
+      "5A6"
+    ],
+    "ngay": "2026-11-23",
+    "soCau": 21,
+    "phut": 15,
+    "link": "phieu/cn5-bai1-vai-tro-cua-cong-nghe/",
+    "ma": "CN5 - Bài 1 Vai trò công nghệ",
+    "chuaGiao": true
   },
   {
     "khoi": "khoi-3",

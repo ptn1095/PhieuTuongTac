@@ -1,0 +1,178 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Công nghệ 5",
+  "ten": "Bài 4: Thiết kế sản phẩm",
+  "ngay": "2026-11-23",
+  "chuaGiao": true
+ },
+ "ma": "CN5 - Bài 4 Thiết kế sản phẩm",
+ "mon": "CÔNG NGHỆ 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 4: Thiết kế sản phẩm",
+ "lop": [
+  "5A1",
+  "5A2",
+  "5A3",
+  "5A4",
+  "5A5",
+  "5A6"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các bước thiết kế <b>chong chóng 4 cánh</b> theo đúng thứ tự (giữ ☰ để kéo, hoặc bấm ▲▼).",
+   "cau": [
+    {
+     "text": "Hình thành ý tưởng: làm chong chóng 4 cánh"
+    },
+    {
+     "text": "Vẽ phác thảo, chọn vật liệu và dụng cụ"
+    },
+    {
+     "text": "Làm sản phẩm mẫu"
+    },
+    {
+     "text": "Đánh giá và hoàn thiện sản phẩm"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các bước làm <b>đồng hồ đồ chơi</b> bằng giấy bìa theo đúng thứ tự.",
+   "cau": [
+    {
+     "text": "Làm mặt đồng hồ"
+    },
+    {
+     "text": "Làm dây đeo và viền khung"
+    },
+    {
+     "text": "Làm kim giờ, kim phút"
+    },
+    {
+     "text": "Lắp ráp các bộ phận thành đồng hồ"
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cot": 3,
+   "cau": [
+    {
+     "text": "Để làm đồng hồ đồ chơi, em cần chuẩn bị những vật liệu, dụng cụ nào?",
+     "lc": [
+      "Giấy bìa",
+      "Kéo",
+      "Keo dán",
+      "Màu vẽ",
+      "Búa",
+      "Đinh sắt"
+     ],
+     "da": [
+      "Giấy bìa",
+      "Kéo",
+      "Keo dán",
+      "Màu vẽ"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Khi thiết kế, bước <b>vẽ phác thảo</b> giúp em điều gì?",
+     "cot": 1,
+     "lc": [
+      "Hình dung rõ hình dạng sản phẩm trước khi làm",
+      "Bán được sản phẩm",
+      "Không cần làm sản phẩm mẫu nữa",
+      "Sản phẩm tự quay được"
+     ],
+     "da": "Hình dung rõ hình dạng sản phẩm trước khi làm"
+    },
+    {
+     "text": "Chong chóng làm xong nhưng quay không đều. Em nên làm gì?",
+     "cot": 1,
+     "lc": [
+      "Vứt đi, không làm nữa",
+      "Kiểm tra, chỉnh lại các cánh cho cân đối",
+      "Tô thêm màu cho đẹp",
+      "Dán thêm thật nhiều keo"
+     ],
+     "da": "Kiểm tra, chỉnh lại các cánh cho cân đối"
+    },
+    {
+     "text": "Bước nào giúp em biết sản phẩm đã đạt yêu cầu hay chưa?",
+     "lc": [
+      "Hình thành ý tưởng",
+      "Vẽ phác thảo",
+      "Làm sản phẩm mẫu",
+      "Đánh giá sản phẩm"
+     ],
+     "da": "Đánh giá sản phẩm"
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Bạn Lan thiết kế <b>chong chóng 4 cánh</b>. Nối mỗi bước với việc bạn Lan đã làm.",
+   "lc": [
+    "Cắt giấy bìa, gấp cánh và gắn vào que",
+    "Thổi thử, chỉnh lại cánh để chong chóng quay đều",
+    "Muốn làm một chiếc chong chóng để chơi ngày hè",
+    "Vẽ hình chong chóng; chọn giấy bìa, kéo, keo dán"
+   ],
+   "cau": [
+    {
+     "text": "Hình thành ý tưởng",
+     "da": "Muốn làm một chiếc chong chóng để chơi ngày hè"
+    },
+    {
+     "text": "Vẽ phác thảo, chọn vật liệu",
+     "da": "Vẽ hình chong chóng; chọn giấy bìa, kéo, keo dán"
+    },
+    {
+     "text": "Làm sản phẩm mẫu",
+     "da": "Cắt giấy bìa, gấp cánh và gắn vào que"
+    },
+    {
+     "text": "Đánh giá, hoàn thiện",
+     "da": "Thổi thử, chỉnh lại cánh để chong chóng quay đều"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Đây có phải là tiêu chí để đánh giá sản phẩm đồ chơi em làm không? Bấm <b>Đúng</b> hoặc <b>Sai</b>.",
+   "cau": [
+    {
+     "text": "Sản phẩm đúng hình dạng đã thiết kế.",
+     "da": "Đ"
+    },
+    {
+     "text": "Sản phẩm chắc chắn.",
+     "da": "Đ"
+    },
+    {
+     "text": "Sản phẩm đẹp, cân đối.",
+     "da": "Đ"
+    },
+    {
+     "text": "Sản phẩm càng tốn nhiều vật liệu càng tốt.",
+     "da": "S"
+    },
+    {
+     "text": "Chong chóng có đủ bộ phận và quay đều.",
+     "da": "Đ"
+    }
+   ]
+  }
+ ]
+}
