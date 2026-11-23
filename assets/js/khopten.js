@@ -2,7 +2,7 @@
 // Dùng chung cho trang tổng hợp (trình duyệt) và mã Google Sheet (NhanDiem.gs có bản sao y hệt hàm khopTen).
 //   khopTen(tenGo, lop, danhSach, ghep) → { ten: tên chuẩn | '', muc: 'chac' | 'gan' | 'khong', goiY: [tên…] }
 //   danhSach: [[lớp, họ tên], …]   ghep: [[lớp, tên em gõ, tên chuẩn], …] (cô đã ghép tay)
-// Mức "chac": tự ghép được; "gan": gần đúng – cần cô xác nhận; "khong": không tìm thấy.
+// Mức "chac": tự ghép được; "gan": gần đúng – cần cô xác nhận; "khong": không tìm thấy; "bo": cô đã bỏ (không tính).
 function khopTen(tenGo, lop, danhSach, ghep) {
   const thuong = s => String(s || '').normalize('NFC').toLowerCase().replace(/\s+/g, ' ').trim();
   const boDau = s => thuong(s).normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
@@ -13,7 +13,10 @@ function khopTen(tenGo, lop, danhSach, ghep) {
   const ds = (danhSach || []).filter(r => lopChuan(r[0]) === L).map(r => String(r[1]).trim());
   // 0. cô đã ghép tay trước đó
   const g = (ghep || []).find(r => lopChuan(r[0]) === L && thuong(r[1]) === go);
-  if (g && String(g[2]).trim()) return ra(String(g[2]).trim(), 'chac');
+  if (g && String(g[2]).trim()) {
+    const t = String(g[2]).trim();
+    return t === '(bỏ)' ? ra('', 'bo', []) : ra(t, 'chac');   // "(bỏ)": cô bỏ – bài không tính
+  }
   if (!ds.length) return ra('', 'khong', []);
   const duy = (arr, muc) => arr.length === 1 ? ra(arr[0], muc) : arr.length > 1 ? ra('', 'gan', arr.slice(0, 3)) : null;
   // 1. giống hệt (bỏ qua hoa thường, khoảng trắng thừa)

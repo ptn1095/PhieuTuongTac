@@ -152,8 +152,11 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
         <button type="button" class="nut-nho" id="anXacNhan">Thu gọn</button></div>
       <div id="khuXacNhan">
         <div class="ghi-chu" style="margin-bottom:8px">Học sinh gõ tên chưa khớp chắc chắn với danh sách lớp. Cô chọn đúng tên rồi bấm <b>Ghép</b> – lần sau em gõ y như vậy sẽ tự khớp, và các bài đã nộp cũng được sửa trên Google Sheet.</div>
-        <div class="bang-wrap"><table><thead><tr><th>Lớp</th><th>Em gõ</th><th>Số bài</th><th>Đúng là</th><th></th></tr></thead><tbody id="bangXacNhan"></tbody></table></div>
+        <div class="bang-wrap"><table><thead><tr><th>Lớp em chọn</th><th>Em gõ</th><th>Số bài</th><th>Đúng là</th><th></th></tr></thead><tbody id="bangXacNhan"></tbody></table></div>
+        <div class="ghi-chu" style="margin-top:6px"><b>Đổi lớp</b>: em chọn nhầm lớp nhưng gõ đúng tên. <b>Bỏ</b>: không xác định được em là ai → các bài này <b>không tính</b> (coi như chưa có bài); bài vẫn còn trên Google Sheet và khôi phục được.</div>
       </div></section>
+    <section class="the hidden" id="theDaBo"><details><summary style="cursor:pointer;font-weight:bold;color:var(--phu)">🗑 Đã bỏ – không tính <span id="demDaBo"></span></summary>
+      <div class="bang-wrap" style="margin-top:8px"><table><thead><tr><th>Lớp</th><th>Em gõ</th><th>Số bài</th><th></th></tr></thead><tbody id="bangDaBo"></tbody></table></div></details></section>
 
     <div id="xemPhieu">
     <div class="so-lieu" id="soLieu"></div>
@@ -280,39 +283,73 @@ function docMoTa(link){const f=$('khung');
   f.src='../'+link+'?xem=1';}
 
 function hangDangXem(){const ph=DL.phieu.find(p=>p.ten===$('chonPhieu').value);if(!ph)return [];const l=$('chonLop').value;
-  return ph.hang.map(docHang).filter(h=>(!l||h.lop===l)&&trongTG(h.luc));}
+  return ph.hang.map(docHang).filter(h=>!h.bo&&(!l||h.lop===l)&&trongTG(h.luc));}
 // Tên em gõ → tên trong danh sách (khớp chắc chắn thì dùng tên chuẩn để đếm "đã nộp / chưa nộp")
 let KHOP={};
 function khop(ten,lop){const k=lop+'|'+ten;if(!KHOP[k])KHOP[k]=(window.khopTen&&DL.danhSach.length)?khopTen(ten,lop,DL.danhSach,DL.ghep||[]):{ten:'',muc:'',goiY:[]};return KHOP[k];}
-const docHang=h=>{const k=khop(h[1],h[2]);return {luc:h[0],ten:k.muc==='chac'?k.ten:h[1],tenGo:h[1],muc:k.muc,goiY:k.goiY,lop:h[2],diem:typeof h[3]==='number'?h[3]:parseFloat(String(h[3]).replace(',','.')),dung:h[4],ct:h[6]};};
+const docHang=h=>{const k=khop(h[1],h[2]);return {luc:h[0],ten:k.muc==='chac'?k.ten:h[1],tenGo:h[1],muc:k.muc,bo:k.muc==='bo',goiY:k.goiY,lop:h[2],diem:typeof h[3]==='number'?h[3]:parseFloat(String(h[3]).replace(',','.')),dung:h[4],ct:h[6]};};
 function ve(){veXacNhan();if(XEM==='th')return veTH();if(XEM==='lich')return veLich();veSo();veBieuDo();veSai();veChua();veBang();}
 
 // ===== Cần cô xác nhận tên =====
+const lopTrong=()=>[...new Set(DL.danhSach.map(r=>r[0]))].sort((a,b)=>a.localeCompare(b,'vi',{numeric:true}));
+const lopKey=s=>chuan(s).replace(/\s+/g,'');
+// Tìm tên em gõ ở các lớp khác (em chọn nhầm lớp nhưng gõ đúng tên)
+function timLopKhac(go,lop){return lopTrong().filter(c=>lopKey(c)!==lopKey(lop)).map(c=>({lop:c,k:khopTen(go,c,DL.danhSach,DL.ghep||[])})).filter(x=>x.k.muc==='chac').map(x=>({lop:x.lop,ten:x.k.ten}));}
+async function goiLenh(tham){const q=new URLSearchParams({mk:GV.mk,...tham});
+  const r=await fetch(GV.url+'?'+q.toString(),{cache:'no-store'});const d=await r.json();if(!d.ok)throw new Error(d.loi||'Không thực hiện được.');return d;}
+async function ghepTen(lop,go,tenChuan){const d=await goiLenh({action:'ghepten',lop,tengo:go,tenchuan:tenChuan});DL.ghep=d.ghep;KHOP={};}
+// Đổi lớp: sửa trên Sheet rồi sửa luôn dữ liệu đang xem (khỏi tải lại)
+async function doiLop(lopCu,go,lopMoi,mot){await goiLenh({action:'doilop',lopcu:lopCu,tengo:go,lopmoi:lopMoi,...(mot?{phieu:mot.phieu,luc:mot.luc}:{})});
+  DL.phieu.forEach(p=>p.hang.forEach(h=>{if(lopKey(h[2])===lopKey(lopCu)&&chuan(h[1])===chuan(go)&&(!mot||(p.ten===mot.phieu&&h[0]===mot.luc)))h[2]=lopMoi;}));KHOP={};}
+function baoLoi(e){alert('Chưa thực hiện được: '+(e.message||'lỗi kết nối')+'. Có thể mã Apps Script chưa được cập nhật bản mới.');}
 function veXacNhan(){
   const the=$('theXacNhan');
-  if(!DL||!DL.danhSach.length||XEM==='lich'){the.classList.add('hidden');return;}
-  const nhom=new Map();
-  DL.phieu.forEach(p=>p.hang.forEach(h=>{const k=khop(h[1],h[2]);if(k.muc==='chac')return;const key=chuan(h[2])+'|'+chuan(h[1]);
-    if(!nhom.has(key))nhom.set(key,{lop:h[2],go:h[1],k,n:0});nhom.get(key).n++;}));
-  const ds=[...nhom.values()].sort((a,b)=>a.lop.localeCompare(b.lop,'vi',{numeric:true})||a.go.localeCompare(b.go,'vi'));
-  the.classList.toggle('hidden',!ds.length);if(!ds.length)return;
+  if(!DL||!DL.danhSach.length||XEM==='lich'){the.classList.add('hidden');$('theDaBo').classList.add('hidden');return;}
+  const nhom=new Map(),bo=new Map();
+  DL.phieu.forEach(p=>p.hang.forEach(h=>{const k=khop(h[1],h[2]);if(k.muc==='chac')return;const key=lopKey(h[2])+'|'+chuan(h[1]),M=k.muc==='bo'?bo:nhom;
+    if(!M.has(key))M.set(key,{lop:h[2],go:h[1],k,n:0});M.get(key).n++;}));
+  const sx=a=>[...a.values()].sort((a,b)=>a.lop.localeCompare(b.lop,'vi',{numeric:true})||a.go.localeCompare(b.go,'vi'));
+  const ds=sx(nhom),dsBo=sx(bo);
+  // đã bỏ
+  $('theDaBo').classList.toggle('hidden',!dsBo.length);$('demDaBo').textContent='('+dsBo.length+')';
+  $('bangDaBo').innerHTML=dsBo.map((x,i)=>'<tr><td>'+esc(x.lop)+'</td><td>'+esc(x.go)+'</td><td>'+x.n+'</td><td><button type="button" class="nut-nho" data-khoiphuc="'+i+'">Khôi phục</button></td></tr>').join('');
+  $('bangDaBo').querySelectorAll('[data-khoiphuc]').forEach(b=>b.onclick=async()=>{const x=dsBo[+b.dataset.khoiphuc];b.disabled=true;
+    try{await ghepTen(x.lop,x.go,'');$('capNhat').textContent='✓ Đã khôi phục các bài của "'+x.go+'" ('+x.lop+').';ve();}catch(e){b.disabled=false;baoLoi(e);}});
+  // cần xác nhận
+  the.classList.toggle('hidden',!ds.length);if(!ds.length){$('bangXacNhan').innerHTML='';return;}
   $('demXacNhan').textContent='– '+ds.length+' tên';
-  $('bangXacNhan').innerHTML=ds.map((x,i)=>{const lopDS=DL.danhSach.filter(r=>chuan(r[0]).replace(/\s+/g,'')===chuan(x.lop).replace(/\s+/g,'')).map(r=>r[1]);
+  const tatCaLop=lopTrong();
+  $('bangXacNhan').innerHTML=ds.map((x,i)=>{const lopDS=DL.danhSach.filter(r=>lopKey(r[0])===lopKey(x.lop)).map(r=>r[1]);
     const goi=x.k.goiY.filter(t=>lopDS.includes(t)),con=lopDS.filter(t=>!goi.includes(t)).sort((a,b)=>a.localeCompare(b,'vi'));
     // đúng 1 gợi ý thì chọn sẵn; nhiều gợi ý (ví dụ 2 bạn cùng tên) thì để cô tự chọn, tránh ghép nhầm
     const opt=(goi.length===1?'':'<option value="">— chọn tên —</option>')+(goi.length?'<optgroup label="Gợi ý">'+goi.map(t=>'<option>'+esc(t)+'</option>').join('')+'</optgroup>':'')+
-      '<optgroup label="Cả lớp '+esc(x.lop)+'">'+con.map(t=>'<option>'+esc(t)+'</option>').join('')+'</optgroup>';
-    return '<tr><td><b>'+esc(x.lop)+'</b></td><td>'+esc(x.go)+(x.k.muc==='gan'?' <span class="tt chua">gần đúng</span>':' <span class="tt dong">không thấy</span>')+'</td><td>'+x.n+'</td>'+
-      '<td><select data-i="'+i+'" style="min-width:200px;font-size:14px;padding:5px 8px">'+opt+'</select></td>'+
-      '<td><button type="button" class="nut-nho chinh" data-ghep="'+i+'">Ghép</button></td></tr>';}).join('');
-  $('bangXacNhan').querySelectorAll('[data-ghep]').forEach(b=>b.onclick=async()=>{const x=ds[+b.dataset.ghep],sel=$('bangXacNhan').querySelector('select[data-i="'+b.dataset.ghep+'"]');
-    if(!sel.value){sel.focus();return;}
-    b.disabled=true;b.textContent='Đang ghép…';
-    try{const r=await fetch(GV.url+'?action=ghepten&mk='+encodeURIComponent(GV.mk)+'&lop='+encodeURIComponent(x.lop)+'&tengo='+encodeURIComponent(x.go)+'&tenchuan='+encodeURIComponent(sel.value),{cache:'no-store'});
-      const d=await r.json();if(!d.ok)throw new Error(d.loi||'Không ghép được.');
-      DL.ghep=d.ghep;KHOP={};$('capNhat').textContent='✓ Đã ghép "'+x.go+'" ('+x.lop+') → '+sel.value+'.';ve();}
-    catch(e){b.disabled=false;b.textContent='Ghép';alert('Chưa ghép được: '+(e.message||'lỗi kết nối')+'. Có thể mã Apps Script chưa được cập nhật bản mới.');}});
+      (con.length?'<optgroup label="Cả lớp '+esc(x.lop)+'">'+con.map(t=>'<option>'+esc(t)+'</option>').join('')+'</optgroup>':'');
+    const khac=timLopKhac(x.go,x.lop);
+    return '<tr><td><b>'+esc(x.lop)+'</b></td><td>'+esc(x.go)+(x.k.muc==='gan'?' <span class="tt chua">gần đúng</span>':' <span class="tt dong">không thấy</span>')+
+      (khac.length?'<div class="ghi-chu" style="color:#1E7E3A;font-weight:bold">Có thể chọn nhầm lớp: '+khac.map(c=>esc(c.ten)+' – '+esc(c.lop)).join(', ')+'</div>':'')+'</td><td>'+x.n+'</td>'+
+      '<td><div class="nhom-nho"><select data-i="'+i+'" style="min-width:190px;font-size:14px;padding:5px 8px">'+opt+'</select>'+
+        '<button type="button" class="nut-nho chinh" data-ghep="'+i+'">Ghép</button></div>'+
+        '<div class="nhom-nho" style="margin-top:6px">'+khac.map(c=>'<button type="button" class="nut-nho chinh" style="background:#2E9E4F;border-color:#2E9E4F" data-chuyen="'+i+'" data-lop="'+esc(c.lop)+'">Chuyển sang '+esc(c.lop)+'</button>').join('')+
+        '<select data-lopmoi="'+i+'" style="font-size:13px;padding:3px 6px" aria-label="Đổi sang lớp"><option value="">Đổi sang lớp…</option>'+tatCaLop.filter(c=>lopKey(c)!==lopKey(x.lop)).map(c=>'<option>'+esc(c)+'</option>').join('')+'</select>'+
+        '<button type="button" class="nut-nho" data-doilop="'+i+'">Đổi lớp</button></div></td>'+
+      '<td><button type="button" class="nut-nho do" data-bo="'+i+'" title="Không xác định được – không tính các bài này">Bỏ</button></td></tr>';}).join('');
+  const q=(sel,i)=>$('bangXacNhan').querySelector(sel+'="'+i+'"]');
+  $('bangXacNhan').querySelectorAll('[data-ghep]').forEach(b=>b.onclick=async()=>{const x=ds[+b.dataset.ghep],sel=q('select[data-i',b.dataset.ghep);
+    if(!sel.value){sel.focus();return;}b.disabled=true;b.textContent='Đang ghép…';
+    try{await ghepTen(x.lop,x.go,sel.value);$('capNhat').textContent='✓ Đã ghép "'+x.go+'" ('+x.lop+') → '+sel.value+'.';ve();}catch(e){b.disabled=false;b.textContent='Ghép';baoLoi(e);}});
+  const chuyen=async(b,x,lopMoi)=>{b.disabled=true;
+    try{await doiLop(x.lop,x.go,lopMoi);$('capNhat').textContent='✓ Đã chuyển các bài của "'+x.go+'" từ '+x.lop+' sang '+lopMoi+'.';datLop();ve();}catch(e){b.disabled=false;baoLoi(e);}};
+  $('bangXacNhan').querySelectorAll('[data-chuyen]').forEach(b=>b.onclick=()=>chuyen(b,ds[+b.dataset.chuyen],b.dataset.lop));
+  $('bangXacNhan').querySelectorAll('[data-doilop]').forEach(b=>b.onclick=()=>{const sel=q('select[data-lopmoi',b.dataset.doilop);if(!sel.value){sel.focus();return;}chuyen(b,ds[+b.dataset.doilop],sel.value);});
+  $('bangXacNhan').querySelectorAll('[data-bo]').forEach(b=>b.onclick=async()=>{const x=ds[+b.dataset.bo];
+    if(!confirm('Bỏ các bài của "'+x.go+'" ('+x.lop+')?\nCác bài này sẽ KHÔNG được tính (coi như chưa có bài). Bài vẫn còn trên Google Sheet và có thể khôi phục.'))return;
+    b.disabled=true;try{await ghepTen(x.lop,x.go,'(bỏ)');$('capNhat').textContent='✓ Đã bỏ các bài của "'+x.go+'" ('+x.lop+') – không tính.';ve();}catch(e){b.disabled=false;baoLoi(e);}});
 }
+// Bảng điểm: đổi lớp cho MỘT bài (khi lớp em chọn nhầm lại có bạn trùng tên)
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-doilop-bai]');if(!b)return;
+  const d=JSON.parse(b.dataset.doilopBai),lopMoi=prompt('Bài của "'+d.go+'" đang ở lớp '+d.lop+'.\nĐổi sang lớp nào? (ví dụ '+(lopTrong()[0]||'5A1')+')');
+  if(!lopMoi||!lopMoi.trim())return;const lm=lopTrong().find(c=>lopKey(c)===lopKey(lopMoi))||lopMoi.trim();
+  b.disabled=true;try{await doiLop(d.lop,d.go,lm,{phieu:$('chonPhieu').value,luc:d.luc});$('capNhat').textContent='✓ Đã đổi bài của "'+d.go+'" sang lớp '+lm+'.';datLop();ve();}catch(err){b.disabled=false;baoLoi(err);}});
 $('anXacNhan').onclick=()=>{const k=$('khuXacNhan');k.classList.toggle('hidden');$('anXacNhan').textContent=k.classList.contains('hidden')?'Mở ra':'Thu gọn';};
 
 // ===== Khoảng thời gian =====
@@ -469,7 +506,7 @@ async function thuHoi(link){const p=motPhieu().find(q=>q.link===link);
 function veTH(){
   const l=$('chonLop').value,giao=PHIEU_GIAO(),khoa=(lop,ten)=>chuan(lop)+'|'+chuan(ten);
   // mọi bài nộp trong khoảng thời gian (tất cả phiếu)
-  const nop=DL.phieu.flatMap(p=>p.hang.map(h=>({...docHang(h),phieu:p.ten}))).filter(h=>trongTG(h.luc)&&(!l||h.lop===l));
+  const nop=DL.phieu.flatMap(p=>p.hang.map(h=>({...docHang(h),phieu:p.ten}))).filter(h=>!h.bo&&trongTG(h.luc)&&(!l||h.lop===l));
   // danh sách học sinh: trang DanhSach (nếu có) + các em đã nộp
   const hs=new Map();
   DL.danhSach.filter(r=>!l||r[0]===l).forEach(r=>hs.set(khoa(r[0],r[1]),{ten:r[1],lop:r[0],bai:[]}));
@@ -578,7 +615,7 @@ function veBang(){
   const c=sapXep.c,dau=sapXep.tang?1:-1;
   H.sort((a,b)=>{const x=a[c],y=b[c];return (typeof x==='number'&&typeof y==='number'?x-y:String(x).localeCompare(String(y),'vi',{numeric:true}))*dau;});
   $('demBang').textContent='– '+H.length+' bài';
-  $('bang').innerHTML=H.length?H.map(h=>'<tr><td>'+esc(h.ten)+(h.muc&&h.muc!=='chac'?' <span class="tt chua">cần xác nhận</span>':chuan(h.tenGo)!==chuan(h.ten)?'<div class="ghi-chu">em gõ: '+esc(h.tenGo)+'</div>':'')+'</td><td>'+esc(h.lop)+'</td><td class="d '+(h.diem>=8?'diem-cao':h.diem<5?'diem-thap':'')+'">'+so(h.diem)+'</td><td>'+esc(h.dung)+'</td><td>'+
+  $('bang').innerHTML=H.length?H.map(h=>'<tr><td>'+esc(h.ten)+(h.muc&&h.muc!=='chac'?' <span class="tt chua">cần xác nhận</span>':chuan(h.tenGo)!==chuan(h.ten)?'<div class="ghi-chu">em gõ: '+esc(h.tenGo)+'</div>':'')+'</td><td>'+esc(h.lop)+' <button type="button" class="nut-nho" style="padding:1px 8px;font-size:12px" data-doilop-bai="'+esc(JSON.stringify({lop:h.lop,go:h.tenGo,luc:h.luc}))+'" title="Em chọn nhầm lớp">đổi lớp</button></td><td class="d '+(h.diem>=8?'diem-cao':h.diem<5?'diem-thap':'')+'">'+so(h.diem)+'</td><td>'+esc(h.dung)+'</td><td>'+
     esc(h.luc&&!isNaN(new Date(h.luc))?new Date(h.luc).toLocaleString('vi-VN',{hour:'2-digit',minute:'2-digit',day:'2-digit',month:'2-digit'}):h.luc)+'</td></tr>').join(''):'<tr><td colspan="5" class="trong-rong">Chưa có bài nộp.</td></tr>';
 }
 document.querySelectorAll('#xemPhieu th[data-c]').forEach(th=>th.onclick=()=>{const c=th.dataset.c;sapXep={c,tang:sapXep.c===c?!sapXep.tang:c!=='diem'};

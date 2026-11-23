@@ -15,7 +15,7 @@
 const MAT_KHAU = 'doi-mat-khau-nay';   // ← CÔ ĐỔI thành mật khẩu riêng (ít nhất 6 ký tự), chỉ cô biết
 const CHAN_NOP_TRUNG = true;           // true: mỗi em chỉ nộp được 1 lần cho mỗi phiếu
 const TIEU_DE = ['Thời gian nộp', 'Họ và tên', 'Lớp', 'Điểm', 'Số câu đúng', 'Nhận xét', 'Chi tiết đúng/sai', 'Tên trong danh sách', 'Mức khớp'];
-const MUC_KHOP = { chac: 'Chắc chắn', gan: 'Gần đúng – cần cô xác nhận', khong: 'Không thấy trong danh sách', co: 'Cô đã ghép' };
+const MUC_KHOP = { chac: 'Chắc chắn', gan: 'Gần đúng – cần cô xác nhận', khong: 'Không thấy trong danh sách', co: 'Cô đã ghép', bo: 'Cô đã bỏ – không tính' };
 const TRANG_GHEP = 'GhepTen';   // tên em gõ → tên trong danh sách (cô ghép tay ở trang tổng hợp)
 
 /* ===== Tin nhắn học sinh gửi cô =====
@@ -60,7 +60,7 @@ function nhanTin_(p) {
 
 function doGet(e) {
   const p = (e && e.parameter) || {};
-  if (p.action === 'kiemtra' || p.action === 'tonghop' || p.action === 'datgiao' || p.action === 'ghepten') return docDiem_(p);
+  if (['kiemtra', 'tonghop', 'datgiao', 'ghepten', 'doilop'].includes(p.action)) return docDiem_(p);
   if (!p.phieu || !p.ten) return trang_('Trang nhận điểm đang hoạt động', 'Chưa có dữ liệu bài làm được gửi tới.', '#168DCE');
   const lock = LockService.getScriptLock();
   lock.waitLock(20000);
@@ -110,6 +110,7 @@ function docDiem_(p) {
   if (p.action === 'kiemtra') return json_({ ok: true });
   if (p.action === 'datgiao') return datGiao_(p);
   if (p.action === 'ghepten') return ghepTen_(p);
+  if (p.action === 'doilop') return doiLop_(p);
   const ss = SpreadsheetApp.getActiveSpreadsheet();
   const phieu = [];
   let danhSach = [];
@@ -213,10 +214,39 @@ function ghepTen_(p) {
       const v = s2.getRange(2, 2, m - 1, 2).getValues();
       v.forEach((r, j) => {
         if (chuan_(r[0]) === chuan_(go) && chuan_(r[1]).replace(/\s+/g, '') === chuan_(lop).replace(/\s+/g, ''))
-          s2.getRange(j + 2, 8, 1, 2).setValues([[chuanTen, chuanTen ? MUC_KHOP.co : '']]);
+          s2.getRange(j + 2, 8, 1, 2).setValues([chuanTen === '(bỏ)' ? ['', MUC_KHOP.bo] : [chuanTen, chuanTen ? MUC_KHOP.co : '']]);
       });
     });
     return json_({ ok: true, ghep: docGhep_() });
+  } finally {
+    lock.releaseLock();
+  }
+}
+/** Cô đổi lớp cho bài em chọn nhầm lớp: p.lopcu, p.tengo, p.lopmoi; p.phieu + p.luc (tùy chọn) = chỉ một bài.
+ *  Sửa cột Lớp và khớp lại tên theo lớp mới. */
+function doiLop_(p) {
+  const lopCu = String(p.lopcu || '').trim(), go = String(p.tengo || '').trim(), lopMoi = String(p.lopmoi || '').trim();
+  if (!lopCu || !go || !lopMoi) return json_({ ok: false, loi: 'Thiếu lớp hoặc tên.' });
+  const luc = p.luc ? new Date(p.luc).getTime() : null, ds = docDanhSach_(), gh = docGhep_();
+  const lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    let n = 0;
+    SpreadsheetApp.getActiveSpreadsheet().getSheets().forEach(sh => {
+      const m = sh.getLastRow();
+      if (m < 2 || sh.getRange(1, 1).getValue() !== TIEU_DE[0]) return;
+      if (p.phieu && sh.getName() !== String(p.phieu)) return;
+      const v = sh.getRange(2, 1, m - 1, 3).getValues();
+      v.forEach((r, j) => {
+        if (chuan_(r[1]) !== chuan_(go) || chuan_(r[2]).replace(/\s+/g, '') !== chuan_(lopCu).replace(/\s+/g, '')) return;
+        if (luc !== null && !(r[0] instanceof Date && Math.abs(r[0].getTime() - luc) < 1000)) return;
+        const k = ds.length ? khopTen(r[1], lopMoi, ds, gh) : { ten: '', muc: '' };
+        sh.getRange(j + 2, 3).setValue(lopMoi);
+        sh.getRange(j + 2, 8, 1, 2).setValues([[k.muc === 'chac' || k.muc === 'gan' ? k.ten : '', k.muc === 'bo' ? MUC_KHOP.bo : (MUC_KHOP[k.muc] || '') + ' (cô đổi lớp)']]);
+        n++;
+      });
+    });
+    return json_({ ok: true, soBai: n });
   } finally {
     lock.releaseLock();
   }
@@ -232,7 +262,10 @@ function khopTen(tenGo, lop, danhSach, ghep) {
   const ds = (danhSach || []).filter(r => lopChuan(r[0]) === L).map(r => String(r[1]).trim());
   // 0. cô đã ghép tay trước đó
   const g = (ghep || []).find(r => lopChuan(r[0]) === L && thuong(r[1]) === go);
-  if (g && String(g[2]).trim()) return ra(String(g[2]).trim(), 'chac');
+  if (g && String(g[2]).trim()) {
+    const t = String(g[2]).trim();
+    return t === '(bỏ)' ? ra('', 'bo', []) : ra(t, 'chac');   // "(bỏ)": cô bỏ – bài không tính
+  }
   if (!ds.length) return ra('', 'khong', []);
   const duy = (arr, muc) => arr.length === 1 ? ra(arr[0], muc) : arr.length > 1 ? ra('', 'gan', arr.slice(0, 3)) : null;
   // 1. giống hệt (bỏ qua hoa thường, khoảng trắng thừa)

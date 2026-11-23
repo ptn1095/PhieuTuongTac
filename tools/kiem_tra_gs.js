@@ -4,7 +4,7 @@ const src=fs.readFileSync(process.argv[2] || require('path').join(__dirname, 'Nh
 function Sheet(name){this.name=name;this.rows=[];}
 Sheet.prototype={getName(){return this.name},getLastRow(){return this.rows.length},appendRow(r){this.rows.push(r)},
  getRange(r,c,nr,nc){const sh=this;nr=nr||1;nc=nc||1;return{getValues(){return sh.rows.slice(r-1,r-1+nr).map(x=>x.slice(c-1,c-1+nc))},getDisplayValues(){return this.getValues().map(x=>x.map(v=>v==null?'':String(v)))},
- setValues(v){v.forEach((row,i)=>{sh.rows[r-1+i]=sh.rows[r-1+i]||[];row.forEach((x,j)=>sh.rows[r-1+i][c-1+j]=x);});return this},setNumberFormat(){return this},insertCheckboxes(){return this},setWrap(){return this},getValue(){return (sh.rows[r-1]||[])[c-1]},setFontWeight(){return this},setBackground(){return this}}},
+ setValues(v){v.forEach((row,i)=>{sh.rows[r-1+i]=sh.rows[r-1+i]||[];row.forEach((x,j)=>sh.rows[r-1+i][c-1+j]=x);});return this},setNumberFormat(){return this},setValue(x){return this.setValues([[x]])},insertCheckboxes(){return this},setWrap(){return this},getValue(){return (sh.rows[r-1]||[])[c-1]},setFontWeight(){return this},setBackground(){return this}}},
  setFrozenRows(){},setColumnWidths(){},setColumnWidth(){}};
 const sheets=[new Sheet('Trang tính1'),new Sheet('GiaoPhieu')];  // GiaoPhieu: cô tạo sẵn, còn trống
 const ds=new Sheet('DanhSach');ds.rows=[['Lớp','Họ và tên'],['5A1','An'],['5A1','Bình']];sheets.push(ds);
@@ -63,6 +63,20 @@ const shB=sheets.find(s=>s.name==='Phiếu B2');
 ok(shB.rows[1][7]==='An'&&shB.rows[1][8]==='Chắc chắn','phiếu sau em gõ "bé su" → tự nhận ra là An (nhờ cô đã ghép)');
 const th3=JSON.parse(ctx.doGet({parameter:{action:'tonghop',mk:'matkhau123'}}).t);
 ok(th3.ghep.length===1&&th3.phieu.find(p=>p.ten==='Phiếu A').hang[0].length===9&&!th3.phieu.some(p=>p.ten==='GhepTen'),'tổng hợp trả kèm bảng ghép tên và 2 cột mới');
+// Đổi lớp + bỏ bài
+ds.rows.push(['5A3','Chi']);
+ctx.doGet({parameter:{phieu:'Phiếu A',ten:'Chi',lop:'5A1',diem:'5'}});
+const iChi=shA.rows.findIndex(r=>r[1]==='Chi');
+ok(shA.rows[iChi][8]==='Không thấy trong danh sách','em Chi (lớp 5A3) chọn nhầm 5A1 → Không thấy trong danh sách');
+let dl=JSON.parse(ctx.doGet({parameter:{action:'doilop',mk:'matkhau123',lopcu:'5A1',tengo:'Chi',lopmoi:'5A3'}}).t);
+ok(dl.ok&&dl.soBai===1&&shA.rows[iChi][2]==='5A3'&&shA.rows[iChi][7]==='Chi'&&shA.rows[iChi][8].startsWith('Chắc chắn'),'cô đổi lớp → bài chuyển sang 5A3, khớp lại "Chi" chắc chắn');
+ok(!JSON.parse(ctx.doGet({parameter:{action:'doilop',mk:'sai',lopcu:'5A3',tengo:'Chi',lopmoi:'5A1'}}).t).ok,'đổi lớp: sai mật khẩu → từ chối');
+ctx.doGet({parameter:{phieu:'Phiếu A',ten:'Ai Đó',lop:'5A1',diem:'3'}});
+JSON.parse(ctx.doGet({parameter:{action:'ghepten',mk:'matkhau123',lop:'5A1',tengo:'Ai Đó',tenchuan:'(bỏ)'}}).t);
+const rBo=shA.rows.find(r=>r[1]==='Ai Đó');
+ok(rBo&&rBo[7]===''&&rBo[8]==='Cô đã bỏ – không tính','cô bỏ "Ai Đó" → bài vẫn còn, ghi "Cô đã bỏ – không tính"');
+JSON.parse(ctx.doGet({parameter:{action:'ghepten',mk:'matkhau123',lop:'5A1',tengo:'Ai Đó',tenchuan:''}}).t);
+ok(rBo[8]==='','khôi phục → bỏ đánh dấu');
 // Hai bản hàm khopTen (trang web và Google Sheet) cho cùng kết quả
 const kWeb=require('../assets/js/khopten.js');
 const DS2=[['5A2','Nguyễn Văn An'],['5A2','Lê Văn Tâm'],['5A2','Lê Văn Tám'],['5A2','Phạm Gia Huy'],['5A2','Đỗ Hoàng Huy']];
