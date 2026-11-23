@@ -1,0 +1,226 @@
+{
+ "web": {
+  "khoi": "khoi-5",
+  "mon": "Công nghệ 5",
+  "ten": "Bài 3: Tìm hiểu thiết kế",
+  "ngay": "2026-11-23"
+ },
+ "ma": "CN5 - Bài 3 Tìm hiểu thiết kế",
+ "mon": "CÔNG NGHỆ 5 – KẾT NỐI TRI THỨC",
+ "tieuDe": "Phiếu bài tập – Bài 3: Tìm hiểu thiết kế",
+ "lop": [
+  "5A1"
+ ],
+ "tron": true,
+ "guiB": "https://script.google.com/macros/s/AKfycbypoQt_uqRBGqN9N-EfLDGdsMPrirkGAQLlFwRTlot7tpruG2jivFKT6U3pbA2LuQV00Q/exec",
+ "guiA": null,
+ "bai": [
+  {
+   "loai": "abcd",
+   "yc": "Chọn đáp án đúng.",
+   "cot": 2,
+   "cau": [
+    {
+     "text": "Hoạt động <b>đầu tiên</b> khi tạo ra một sản phẩm công nghệ là gì?",
+     "lc": [
+      "Sản xuất",
+      "Thiết kế",
+      "Vận hành, sử dụng",
+      "Bảo dưỡng, sửa chữa"
+     ],
+     "da": "Thiết kế"
+    },
+    {
+     "text": "Những chiếc đồng hồ có hình dạng, màu sắc khác nhau là nhờ hoạt động nào?",
+     "lc": [
+      "Sửa chữa",
+      "Vận hành",
+      "Thiết kế",
+      "Bảo dưỡng"
+     ],
+     "da": "Thiết kế"
+    },
+    {
+     "text": "Bước đầu tiên khi thiết kế một sản phẩm là gì?",
+     "cot": 1,
+     "lc": [
+      "Làm sản phẩm mẫu",
+      "Hình thành ý tưởng về sản phẩm",
+      "Đánh giá và hoàn thiện sản phẩm",
+      "Vẽ phác thảo sản phẩm"
+     ],
+     "da": "Hình thành ý tưởng về sản phẩm"
+    },
+    {
+     "text": "Ở bước <b>vẽ phác thảo sản phẩm</b>, em cần làm thêm việc gì?",
+     "cot": 1,
+     "lc": [
+      "Lựa chọn vật liệu và dụng cụ",
+      "Bán sản phẩm cho mọi người",
+      "Sửa chữa sản phẩm bị hỏng",
+      "Sản xuất thật nhiều sản phẩm"
+     ],
+     "da": "Lựa chọn vật liệu và dụng cụ"
+    },
+    {
+     "text": "Làm xong sản phẩm mẫu, bước tiếp theo là gì?",
+     "cot": 1,
+     "lc": [
+      "Hình thành ý tưởng mới",
+      "Vứt bỏ sản phẩm mẫu",
+      "Đánh giá và hoàn thiện sản phẩm",
+      "Vẽ phác thảo lại từ đầu"
+     ],
+     "da": "Đánh giá và hoàn thiện sản phẩm"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp các hoạt động của con người với sản phẩm công nghệ theo thứ tự hợp lí (giữ ☰ để kéo, hoặc bấm ▲▼).",
+   "cau": [
+    {
+     "text": "Thiết kế"
+    },
+    {
+     "text": "Sản xuất"
+    },
+    {
+     "text": "Vận hành, sử dụng"
+    },
+    {
+     "text": "Bảo dưỡng, sửa chữa"
+    }
+   ]
+  },
+  {
+   "loai": "sapxep",
+   "yc": "Sắp xếp <b>4 bước chính</b> khi thiết kế sản phẩm theo đúng thứ tự.",
+   "cau": [
+    {
+     "text": "Hình thành ý tưởng về sản phẩm"
+    },
+    {
+     "text": "Vẽ phác thảo sản phẩm và lựa chọn vật liệu, dụng cụ"
+    },
+    {
+     "text": "Làm sản phẩm mẫu"
+    },
+    {
+     "text": "Đánh giá và hoàn thiện sản phẩm"
+    }
+   ]
+  },
+  {
+   "loai": "ds",
+   "yc": "Bấm <b>Đúng</b> hoặc <b>Sai</b> cho mỗi ý.",
+   "cau": [
+    {
+     "text": "Thiết kế là hoạt động đầu tiên khi tạo ra sản phẩm công nghệ.",
+     "da": "Đ"
+    },
+    {
+     "text": "Thiết kế cần có sự sáng tạo của con người.",
+     "da": "Đ"
+    },
+    {
+     "text": "Con người sử dụng sản phẩm trước khi thiết kế sản phẩm.",
+     "da": "S"
+    },
+    {
+     "text": "Để thiết kế sản phẩm, cần thực hiện 4 bước chính.",
+     "da": "Đ"
+    },
+    {
+     "text": "Vẽ phác thảo xong là sản xuất hàng loạt ngay, không cần làm mẫu và đánh giá.",
+     "da": "S"
+    }
+   ]
+  },
+  {
+   "loai": "dien",
+   "yc": "Chọn từ thích hợp điền vào chỗ trống.",
+   "bank": [
+    "sản phẩm công nghệ",
+    "sáng tạo",
+    "con người",
+    "nhu cầu",
+    "sửa chữa"
+   ],
+   "lc": [
+    "sản phẩm công nghệ",
+    "sáng tạo",
+    "con người",
+    "nhu cầu",
+    "sửa chữa"
+   ],
+   "cau": [
+    {
+     "text": "Thiết kế là hoạt động đầu tiên để tạo ra {}. Thiết kế cần sự {} của {}.",
+     "da": [
+      "sản phẩm công nghệ",
+      "sáng tạo",
+      "con người"
+     ]
+    },
+    {
+     "text": "Sản phẩm được thiết kế ra để đáp ứng {} của con người.",
+     "da": [
+      "nhu cầu"
+     ]
+    }
+   ]
+  },
+  {
+   "loai": "noidot",
+   "yc": "Bạn An thiết kế một <b>chiếc túi vải đựng bút và thước</b>. Nối mỗi bước thiết kế với việc bạn An đã làm.",
+   "lc": [
+    "Cắt vải, khâu và dán thành chiếc túi.",
+    "Muốn có một chiếc túi để đựng bút và thước cho gọn.",
+    "Bỏ thử bút, thước vào túi; khâu lại chỗ chưa chắc chắn.",
+    "Vẽ hình chiếc túi có 2 ngăn; chọn vải, kéo, kim chỉ, keo dán."
+   ],
+   "cau": [
+    {
+     "text": "Hình thành ý tưởng",
+     "da": "Muốn có một chiếc túi để đựng bút và thước cho gọn."
+    },
+    {
+     "text": "Vẽ phác thảo, chọn vật liệu",
+     "da": "Vẽ hình chiếc túi có 2 ngăn; chọn vải, kéo, kim chỉ, keo dán."
+    },
+    {
+     "text": "Làm sản phẩm mẫu",
+     "da": "Cắt vải, khâu và dán thành chiếc túi."
+    },
+    {
+     "text": "Đánh giá, hoàn thiện",
+     "da": "Bỏ thử bút, thước vào túi; khâu lại chỗ chưa chắc chắn."
+    }
+   ]
+  },
+  {
+   "loai": "nhieu",
+   "yc": "Chọn <b>tất cả</b> các đáp án đúng.",
+   "cot": 3,
+   "cau": [
+    {
+     "text": "Những sản phẩm công nghệ nào là <b>đồ dùng học tập</b>?",
+     "lc": [
+      "Thước kẻ",
+      "Máy giặt",
+      "Com-pa",
+      "Ô tô điều khiển",
+      "Máy tính bỏ túi",
+      "Nồi cơm điện"
+     ],
+     "da": [
+      "Thước kẻ",
+      "Com-pa",
+      "Máy tính bỏ túi"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,5 +1,18 @@
 [
   {
+    "khoi": "khoi-5",
+    "mon": "Công nghệ 5",
+    "ten": "Bài 3: Tìm hiểu thiết kế",
+    "lop": [
+      "5A1"
+    ],
+    "ngay": "2026-11-23",
+    "soCau": 27,
+    "phut": 15,
+    "link": "phieu/cn5-bai3-tim-hieu-thiet-ke/",
+    "ma": "CN5 - Bài 3 Tìm hiểu thiết kế"
+  },
+  {
     "khoi": "khoi-3",
     "mon": "Tin học 3",
     "ten": "Bài 6: Luyện tập – Khám phá thông tin trên Internet",

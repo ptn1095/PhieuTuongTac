@@ -267,7 +267,7 @@ const server = http.createServer((req, res) => {
     bao(await luot() === '1' && (await page.locator('#thHS').textContent()).includes('Cường'), 'Tùy chọn (50–30 ngày trước): 1 lượt, em Cường');
     await page.click('.chip[data-tg="tatca"]'); await page.selectOption('#chonLop', '5A1'); await page.waitForTimeout(200);
     const dongAn = await page.locator('#thHS tr', { hasText: 'An' }).first().textContent();
-    bao(dongAn.includes('1 / 2') && dongAn.includes(hai[1].ten), 'em An: đã làm 1/2 phiếu, ghi rõ phiếu chưa làm');
+    bao(/1 \/ \d/.test(dongAn) && dongAn.includes(hai[1].ten), 'em An: đã làm 1 phiếu trong số phiếu được giao, ghi rõ phiếu chưa làm');
     bao((await page.locator('#thLop').textContent()).includes('5A1'), 'bảng theo lớp có 5A1');
     bao(await page.locator('#thBD .cot').count() > 1, 'biểu đồ số bài nộp có ' + await page.locator('#thBD .cot').count() + ' cột (' + await page.locator('#thBDTieuDe').textContent() + ')');
     const [tai] = await Promise.all([page.waitForEvent('download'), page.click('#taiCSV')]);
