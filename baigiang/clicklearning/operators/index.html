@@ -73,6 +73,8 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
 .sb.op{--b:#59C059;--d:#389438}
 .sb.va{--b:#FF8C1A;--d:#DB6E00}
 .sb.pen{--b:#0FBD8C;--d:#0B8E69}
+.sb.sn{--b:#CF63CF;--d:#BD42BD}
+.sb.my{--b:#FF6680;--d:#FF4D6A}
 .sb.cap{border-bottom-left-radius:9px}
 .sb.cap::after{display:none}
 .sb.hat{margin-top:24px;border-top-left-radius:0}
@@ -217,7 +219,7 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
 
 <div id="start">
   <svg viewBox="0 0 200 240" style="width:min(200px,30vw)" class="pop" id="bitStart"></svg>
-  <div class="st2" style="background:#FF006E;border:4px solid #fff;border-radius:40px;padding:6px 22px">🖱️ CLICKLEARNING • Nhánh 6/7</div>
+  <div class="st2" style="background:#FF006E;border:4px solid #fff;border-radius:40px;padding:6px 22px">🖱️ CLICKLEARNING • Nhánh 7/10</div>
   <div class="st1">NHÓM LỆNH<br>OPERATORS</div>
   <div class="st2">Các phép toán — 5 nội dung • 10 câu đố • nhận giấy chứng nhận</div>
   <div class="st2" id="hello" style="color:#FFE066"></div>
@@ -282,7 +284,7 @@ const T = v => `<span class="t">${v}</span>`;
 const HX = '<span class="hx"></span>';
 
 /* ===== NHÁNH 6: OPERATORS – CÁC PHÉP TOÁN ===== */
-const META = { key: 'operators', num: 6, title: 'Nhóm lệnh Operators', big: 'NHÓM LỆNH<br>OPERATORS',
+const META = { key: 'operators', num: 7, title: 'Nhóm lệnh Operators', big: 'NHÓM LỆNH<br>OPERATORS',
   st2: 'Các phép toán — 5 nội dung • 10 câu đố • nhận giấy chứng nhận',
   hello: 'Cùng khám phá nhóm lệnh Các phép toán (màu xanh lá) nhé!',
   cert: 'NHÓM LỆNH OPERATORS – PHÉP TOÁN', file: 'Operators', pass: 8 };
@@ -431,7 +433,7 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef', `
   <div class="pat" style="position:absolute;inset:0;border-radius:58px;background-image:radial-gradient(rgba(255,255,255,.3) 3px,transparent 3.5px);background-size:48px 48px"></div>
-  <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">🖱️ CLICKLEARNING • NHÁNH ${META.num}/7</div>
+  <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">🖱️ CLICKLEARNING • NHÁNH 7/10</div>
   <div class="bigtitle">${META.big}</div>
   <div style="position:absolute;left:76px;top:440px;width:1000px;color:#fff;font-weight:800;font-size:40px;line-height:1.35;text-shadow:0 4px 0 rgba(20,20,50,.3)">${TOPICS.length} nội dung • ${TOPICS.reduce((a, t) => a + t.quiz.length, 0)} câu đố vui<br>Bấm ▶ hoặc bấm vào khung để zoom!<br>Đạt từ ${PASS} ⭐ trở lên nhận <span style="color:#FFE066">giấy chứng nhận</span> 🎓</div>
   <svg viewBox="0 0 200 240" style="position:absolute;left:1130px;top:70px;width:330px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>

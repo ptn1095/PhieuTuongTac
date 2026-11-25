@@ -1,5 +1,5 @@
 /* ===== NHÁNH 6: OPERATORS – CÁC PHÉP TOÁN ===== */
-const META = { key: 'operators', num: 6, title: 'Nhóm lệnh Operators', big: 'NHÓM LỆNH<br>OPERATORS',
+const META = { key: 'operators', num: 7, title: 'Nhóm lệnh Operators', big: 'NHÓM LỆNH<br>OPERATORS',
   st2: 'Các phép toán — 5 nội dung • 10 câu đố • nhận giấy chứng nhận',
   hello: 'Cùng khám phá nhóm lệnh Các phép toán (màu xanh lá) nhé!',
   cert: 'NHÓM LỆNH OPERATORS – PHÉP TOÁN', file: 'Operators', pass: 8 };

@@ -1,5 +1,5 @@
 /* ===== NHÁNH 5: SENSING – CẢM BIẾN ===== */
-const META = { key: 'sensing', num: 5, title: 'Nhóm lệnh Sensing', big: 'NHÓM LỆNH<br>SENSING',
+const META = { key: 'sensing', num: 6, title: 'Nhóm lệnh Sensing', big: 'NHÓM LỆNH<br>SENSING',
   st2: 'Cảm biến — 5 nội dung • 10 câu đố • nhận giấy chứng nhận',
   hello: 'Cùng khám phá nhóm lệnh Cảm biến (màu xanh da trời) nhé!',
   cert: 'NHÓM LỆNH SENSING – CẢM BIẾN', file: 'Sensing', pass: 8 };

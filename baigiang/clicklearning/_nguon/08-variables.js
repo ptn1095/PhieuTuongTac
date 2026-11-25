@@ -1,5 +1,5 @@
 /* ===== NHÁNH 7: VARIABLES – BIẾN ===== */
-const META = { key: 'variables', num: 7, title: 'Nhóm lệnh Variables', big: 'NHÓM LỆNH<br>VARIABLES',
+const META = { key: 'variables', num: 8, title: 'Nhóm lệnh Variables', big: 'NHÓM LỆNH<br>VARIABLES',
   st2: 'Biến và danh sách — 5 nội dung • 10 câu đố • nhận giấy chứng nhận',
   hello: 'Cùng khám phá nhóm lệnh Biến (màu cam đậm) nhé!',
   cert: 'NHÓM LỆNH VARIABLES – BIẾN', file: 'Variables', pass: 8 };

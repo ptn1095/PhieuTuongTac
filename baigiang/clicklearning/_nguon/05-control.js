@@ -1,5 +1,5 @@
 /* ===== NHÁNH 4: CONTROL – ĐIỀU KHIỂN ===== */
-const META = { key: 'control', num: 4, title: 'Nhóm lệnh Control', big: 'NHÓM LỆNH<br>CONTROL',
+const META = { key: 'control', num: 5, title: 'Nhóm lệnh Control', big: 'NHÓM LỆNH<br>CONTROL',
   st2: 'Điều khiển — 5 nội dung • 10 câu đố • nhận giấy chứng nhận',
   hello: 'Cùng khám phá nhóm lệnh Điều khiển (màu cam) nhé!',
   cert: 'NHÓM LỆNH CONTROL – ĐIỀU KHIỂN', file: 'Control', pass: 8 };

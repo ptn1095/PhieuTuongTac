@@ -1,5 +1,5 @@
 /* ===== NHÁNH 3: EVENTS – SỰ KIỆN ===== */
-const META = { key: 'events', num: 3, title: 'Nhóm lệnh Events', big: 'NHÓM LỆNH<br>EVENTS',
+const META = { key: 'events', num: 4, title: 'Nhóm lệnh Events', big: 'NHÓM LỆNH<br>EVENTS',
   st2: 'Sự kiện — 5 nội dung • 10 câu đố • nhận giấy chứng nhận',
   hello: 'Cùng khám phá nhóm lệnh Sự kiện (màu vàng) nhé!',
   cert: 'NHÓM LỆNH EVENTS – SỰ KIỆN', file: 'Events', pass: 8 };
