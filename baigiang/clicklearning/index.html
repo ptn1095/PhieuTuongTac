@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClickLearning – Học các nhóm lệnh Scratch – Cô Thùy Tin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&subset=vietnamese&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1D3557;--purple:#3D1A78;--pink:#FF006E;--yellow:#FFD60A}
+*{box-sizing:border-box;margin:0;padding:0}
+html{min-height:100%;background:linear-gradient(135deg,#4F7CFF,#B06BFF 55%,#FF5DA2)}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);min-height:100vh;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.25) 2.5px,transparent 3px);background-size:48px 48px;z-index:0}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:22px 16px 60px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:none;border-radius:40px;padding:12px 24px;font-family:inherit;font-weight:900;font-size:18px;color:#fff;cursor:pointer;box-shadow:0 6px 0 rgba(20,20,50,.35);transition:transform .1s,box-shadow .1s;text-decoration:none}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(20,20,50,.35)}
+.btn.lock{background:#8E8EA8!important;cursor:not-allowed}
+/* đầu trang */
+header{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+header svg.bot{width:96px;flex:none;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+.logo{font-weight:900;font-size:clamp(40px,7vw,72px);line-height:1;color:#fff;text-shadow:4px 0 0 var(--purple),-4px 0 0 var(--purple),0 4px 0 var(--purple),0 -4px 0 var(--purple),3px 3px 0 var(--purple),-3px -3px 0 var(--purple),3px -3px 0 var(--purple),-3px 3px 0 var(--purple),0 9px 0 rgba(20,20,50,.3)}
+.logo span{color:var(--yellow)}
+.sub{color:#fff;font-weight:800;font-size:clamp(15px,2.2vw,20px);margin-top:10px;text-shadow:0 2px 0 rgba(20,20,50,.3)}
+/* thẻ trắng */
+.card{background:#FFFDF5;border:5px solid var(--ink);border-radius:30px;box-shadow:0 9px 0 rgba(20,20,50,.35);padding:20px 22px;margin-top:22px}
+.card h2{font-weight:900;font-size:24px;color:#5A189A;margin-bottom:10px}
+/* học sinh */
+.who{display:grid;grid-template-columns:1.3fr 1fr auto;gap:14px;align-items:end}
+.who label{display:block;font-weight:900;font-size:16px;margin-bottom:6px}
+.who input{width:100%;font-family:inherit;font-weight:800;font-size:20px;padding:11px 16px;border:4px solid #CBD5E1;border-radius:18px;outline:none;color:var(--ink);background:#fff}
+.who input:focus{border-color:#8338EC}
+.err{color:#E5383B;font-weight:800;min-height:22px;margin-top:8px}
+.hi{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hi .av{width:64px;height:64px;border-radius:50%;background:var(--yellow);border:5px solid var(--ink);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:28px}
+.hi .nm{font-weight:900;font-size:clamp(22px,3vw,28px);color:var(--pink)}
+.hi .cl{font-weight:800;font-size:18px}
+.hi .sp{flex:1}
+/* tiến độ */
+.prog{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}
+.bar{flex:1;min-width:200px;height:28px;background:#E9EEF2;border:4px solid var(--ink);border-radius:20px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#FFD60A,#FF7F11,#FF006E);transition:width .8s}
+.pill{font-weight:900;font-size:18px;background:#FFF3BF;border:3px solid #FFB703;border-radius:30px;padding:7px 16px;white-space:nowrap}
+/* cách học */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.st{background:#fff;border:4px solid #E2E8F0;border-radius:20px;padding:12px 14px;font-weight:700;font-size:15px;line-height:1.35}
+.st b.n{display:inline-flex;width:30px;height:30px;border-radius:50%;background:var(--pink);color:#fff;align-items:center;justify-content:center;margin-right:6px;font-weight:900}
+/* nhánh */
+.sect{color:#fff;font-weight:900;font-size:clamp(24px,3.4vw,32px);margin:30px 0 4px;text-shadow:0 3px 0 rgba(20,20,50,.3)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-top:14px}
+.br{position:relative;border-radius:30px;border:5px solid #fff;box-shadow:0 10px 0 rgba(20,20,50,.3);padding:18px 18px 16px;color:#fff;cursor:pointer;transition:transform .15s;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;gap:10px}
+.br:hover{transform:translateY(-6px) rotate(-1deg)}
+.br::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.22) 2.5px,transparent 3px);background-size:30px 30px;pointer-events:none}
+.br .top{display:flex;align-items:center;gap:12px;position:relative}
+.br .num{width:52px;height:52px;border-radius:50%;background:var(--yellow);color:var(--ink);border:5px solid #fff;font-weight:900;font-size:24px;display:flex;align-items:center;justify-content:center;flex:none}
+.br .en{font-weight:900;font-size:28px;line-height:1;text-shadow:0 3px 0 rgba(20,20,50,.3)}
+.br .vi{font-weight:800;font-size:16px;opacity:.95}
+.br .blk{position:relative;align-self:flex-start;background:#fff;color:var(--ink);border-radius:12px;padding:8px 12px;font-weight:800;font-size:14px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.br .blk span{display:inline-block;border-radius:8px;padding:6px 10px;color:#fff;font-weight:700}
+.br .ds{position:relative;font-weight:700;font-size:14.5px;line-height:1.35;background:rgba(255,255,255,.95);color:var(--ink);border-radius:16px;padding:10px 12px;flex:1}
+.br .ft{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.br .sc{font-weight:900;font-size:17px;background:rgba(0,0,0,.22);border-radius:20px;padding:6px 12px}
+.br .go{font-weight:900;font-size:16px;background:#fff;color:var(--ink);border-radius:20px;padding:7px 14px;box-shadow:0 4px 0 rgba(20,20,50,.3)}
+.br .ok{position:absolute;right:-8px;top:12px;background:#2DA44E;border:4px solid #fff;border-radius:20px;padding:4px 12px 4px 10px;font-weight:900;font-size:14px;transform:rotate(8deg);box-shadow:0 4px 0 rgba(20,20,50,.3);display:none}
+.br.pass .ok{display:block}
+/* chứng nhận tổng */
+.final{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.final svg{width:120px;flex:none}
+.final .tx{flex:1;min-width:240px}
+.final .tx p{font-weight:700;font-size:17px;line-height:1.4}
+.need{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.need span{font-weight:800;font-size:14px;border-radius:20px;padding:5px 12px;color:#fff}
+.need span.no{opacity:.4}
+footer{color:#fff;font-weight:800;text-align:center;margin-top:34px;text-shadow:0 2px 0 rgba(20,20,50,.3)}
+/* hộp chứng nhận */
+#certBox{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(29,53,87,.6);padding:14px}
+#certBox.show{display:flex}
+.cpanel{background:#FFFDF5;border:6px solid var(--ink);border-radius:30px;box-shadow:0 10px 0 rgba(20,20,50,.4);padding:20px;width:min(980px,100%);max-height:100%;overflow:auto;text-align:center}
+.cpanel h2{font-weight:900;font-size:clamp(22px,3.4vw,30px);color:#5A189A;margin-bottom:10px}
+#certImg{width:100%;max-height:calc(100vh - 170px);object-fit:contain;border-radius:12px;box-shadow:0 6px 0 rgba(20,20,50,.25);display:block}
+.row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px}
+#printArea{display:none}
+@media print{@page{size:A4 landscape;margin:0}body>*{display:none!important}body::before{display:none}#printArea{display:block!important}#printArea img{width:100%;height:auto}}
+@media (max-width:760px){.who{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}header svg.bot{width:70px}}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="wrap">
+  <header>
+    <svg class="bot" viewBox="0 0 200 240" id="botH"></svg>
+    <div><div class="logo">🖱️ Click<span>Learning</span></div>
+    <div class="sub">Học lập trình Scratch qua 7 nhánh nhóm lệnh • Slide zoom • Đố vui • Giấy chứng nhận</div></div>
+  </header>
+
+  <!-- HỌC SINH -->
+  <div class="card" id="whoCard">
+    <h2>👤 Thông tin học sinh</h2>
+    <div id="whoForm">
+      <div class="who">
+        <div><label for="iName">Họ và tên</label><input id="iName" maxlength="40" autocomplete="name" placeholder="VD: Nguyễn Văn An"></div>
+        <div><label for="iClass">Lớp</label><input id="iClass" maxlength="10" placeholder="VD: 4A"></div>
+        <button class="btn" id="bSave" style="background:#FF006E">✔ Vào học</button>
+      </div>
+      <div class="err" id="err"></div>
+    </div>
+    <div id="whoView" style="display:none">
+      <div class="hi"><div class="av" id="av">A</div>
+        <div><div class="nm" id="vName"></div><div class="cl" id="vClass"></div></div>
+        <div class="sp"></div>
+        <button class="btn" id="bEdit" style="background:#1982C4;font-size:16px">✏️ Đổi tên / lớp</button></div>
+      <div class="prog"><div class="pill" id="pDone">✅ 0/7 nhánh</div><div class="bar"><i id="pBar"></i></div><div class="pill" id="pStar">⭐ 0/70</div></div>
+    </div>
+  </div>
+
+  <!-- CÁCH HỌC -->
+  <div class="card">
+    <h2>🧭 Cách học</h2>
+    <div class="steps">
+      <div class="st"><b class="n">1</b>Điền <b>họ tên</b> và <b>lớp</b> rồi bấm <b>Vào học</b>.</div>
+      <div class="st"><b class="n">2</b>Chọn một <b>nhánh</b>, bấm ▶ để zoom qua từng nội dung.</div>
+      <div class="st"><b class="n">3</b>Mỗi nhánh có <b>10 câu đố</b>. Đạt <b>8/10 ⭐</b> là hoàn thành nhánh.</div>
+      <div class="st"><b class="n">4</b>Hoàn thành <b>đủ 7 nhánh</b> để nhận <b>giấy chứng nhận ClickLearning</b> 🎓</div>
+    </div>
+  </div>
+
+  <div class="sect">🌳 7 nhánh nhóm lệnh</div>
+  <div class="grid" id="grid"></div>
+
+  <!-- CHỨNG NHẬN TỔNG -->
+  <div class="card">
+    <div class="final">
+      <svg viewBox="0 0 300 300" id="cupH"></svg>
+      <div class="tx"><h2>🎓 Giấy chứng nhận ClickLearning</h2>
+        <p id="fMsg">Hoàn thành cả 7 nhánh (mỗi nhánh ít nhất 8/10 ⭐) để nhận giấy chứng nhận.</p>
+        <div class="need" id="need"></div></div>
+      <button class="btn lock" id="bCert" style="background:#8338EC;font-size:20px">🔒 Chưa đủ điều kiện</button>
+    </div>
+  </div>
+  <footer>Giáo viên – Cô Thùy Tin 💜</footer>
+</div>
+
+<div id="certBox"><div class="cpanel">
+  <h2>🎉 Giấy chứng nhận của em</h2>
+  <img id="certImg" alt="Giấy chứng nhận">
+  <div class="row"><button class="btn" id="cSave" style="background:#2DA44E">⬇️ Tải ảnh</button><button class="btn" id="cPrint" style="background:#1982C4">🖨️ In</button><button class="btn" id="cClose" style="background:#8E8EA8">✖ Đóng</button></div>
+</div></div>
+<div id="printArea"><img id="printImg" alt=""></div>
+
+<script>
+const O = '#1D3557';
+const BR = [
+  { key: 'motion', en: 'Motion', vi: 'Chuyển động', c: ['#4C97FF', '#1E6FE0'], blk: 'move (10) steps', ds: 'Toạ độ x, y • move, turn • point in direction • go to, glide • bounce' },
+  { key: 'looks', en: 'Looks', vi: 'Hiển thị', c: ['#9966FF', '#6A3FD6'], blk: 'say (Hello!)', ds: 'say, think • trang phục (costume) • phông nền • kích thước, hiệu ứng • ẩn/hiện' },
+  { key: 'events', en: 'Events', vi: 'Sự kiện', c: ['#FFBF00', '#F08C00'], blk: 'when 🏁 clicked', ds: 'Cờ xanh • bấm phím • bấm vào nhân vật • đổi phông nền • phát thông điệp' },
+  { key: 'control', en: 'Control', vi: 'Điều khiển', c: ['#FFAB19', '#E8590C'], blk: 'repeat (10)', ds: 'wait • repeat • forever, stop • if, if-else • nhân bản (clone)' },
+  { key: 'sensing', en: 'Sensing', vi: 'Cảm biến', c: ['#5CB1D6', '#1E87B5'], blk: '‹touching edge?›', ds: 'touching • chuột, khoảng cách • ask và answer • key pressed? • timer' },
+  { key: 'operators', en: 'Operators', vi: 'Các phép toán', c: ['#59C059', '#2B8A3E'], blk: '(3) + (4)', ds: 'Phép tính • so sánh > < = • and, or, not • pick random • join, mod, round' },
+  { key: 'variables', en: 'Variables', vi: 'Biến', c: ['#FF8C1A', '#D9480F'], blk: 'set (điểm) to (0)', ds: 'Biến là gì • set, change • hiện biến • trò chơi tính điểm • danh sách (List)' },
+];
+const PASS = 8, NQ = 10, $ = id => document.getElementById(id);
+const tidy = v => v.replace(/\s+/g, ' ').trim();
+const nameCase = v => tidy(v).split(' ').map(w => w ? w[0].toLocaleUpperCase('vi') + w.slice(1).toLocaleLowerCase('vi') : w).join(' ');
+const get = k => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } };
+const set = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+const who = () => ({ name: get('btName'), cls: get('btClass') });
+const prog = key => { const w = who(); try { return JSON.parse(get('cl:' + w.name + '|' + w.cls + ':' + key) || '{}'); } catch (e) { return {}; } };
+
+function robot() {
+  return `<line x1="100" y1="40" x2="100" y2="16" stroke="${O}" stroke-width="6" stroke-linecap="round"/><circle cx="100" cy="13" r="10" fill="#FF595E" stroke="${O}" stroke-width="4"/>
+  <rect x="20" y="70" width="20" height="44" rx="9" fill="#FF9F1C" stroke="${O}" stroke-width="5"/><rect x="160" y="70" width="20" height="44" rx="9" fill="#FF9F1C" stroke="${O}" stroke-width="5"/>
+  <rect x="30" y="36" width="140" height="112" rx="42" fill="#2EC4B6" stroke="${O}" stroke-width="6"/><rect x="47" y="54" width="106" height="74" rx="28" fill="#1B2A49"/>
+  <ellipse cx="78" cy="88" rx="11" ry="14" fill="#7DF9FF"/><ellipse cx="122" cy="88" rx="11" ry="14" fill="#7DF9FF"/><circle cx="82" cy="82" r="4" fill="#fff"/><circle cx="126" cy="82" r="4" fill="#fff"/>
+  <path d="M84 107 Q100 120 116 107" stroke="#7DF9FF" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="60" cy="112" rx="8" ry="5" fill="#FF8FAB"/><ellipse cx="140" cy="112" rx="8" ry="5" fill="#FF8FAB"/>
+  <rect x="28" y="152" width="22" height="52" rx="11" fill="#2EC4B6" stroke="${O}" stroke-width="5" transform="rotate(22 39 152)"/><rect x="150" y="152" width="22" height="52" rx="11" fill="#2EC4B6" stroke="${O}" stroke-width="5" transform="rotate(-22 161 152)"/>
+  <rect x="70" y="200" width="22" height="30" rx="9" fill="#ADB5BD" stroke="${O}" stroke-width="5"/><rect x="108" y="200" width="22" height="30" rx="9" fill="#ADB5BD" stroke="${O}" stroke-width="5"/>
+  <rect x="52" y="148" width="96" height="64" rx="24" fill="#FF9F1C" stroke="${O}" stroke-width="6"/><path d="M100 194 C78 180 82 162 94 166 Q100 168 100 175 Q100 168 106 166 C118 162 122 180 100 194Z" fill="#FF595E" stroke="${O}" stroke-width="3"/>`;
+}
+const star = (x, y, s, c) => `<path d="M${x} ${y-s} Q${x+s*.18} ${y-s*.18} ${x+s} ${y} Q${x+s*.18} ${y+s*.18} ${x} ${y+s} Q${x-s*.18} ${y+s*.18} ${x-s} ${y} Q${x-s*.18} ${y-s*.18} ${x} ${y-s}Z" fill="${c}"/>`;
+const trophy = () => `<rect x="96" y="236" width="108" height="34" rx="10" fill="#8D5524" stroke="${O}" stroke-width="7"/><rect x="132" y="184" width="36" height="56" fill="#FFC300" stroke="${O}" stroke-width="7"/>
+  <path d="M60 70 Q20 70 28 112 Q36 150 90 150" stroke="${O}" stroke-width="20" fill="none" stroke-linecap="round"/><path d="M60 70 Q20 70 28 112 Q36 150 90 150" stroke="#FFC300" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <path d="M240 70 Q280 70 272 112 Q264 150 210 150" stroke="${O}" stroke-width="20" fill="none" stroke-linecap="round"/><path d="M240 70 Q280 70 272 112 Q264 150 210 150" stroke="#FFC300" stroke-width="9" fill="none" stroke-linecap="round"/>
+  <path d="M64 40 H236 V96 Q236 196 150 196 Q64 196 64 96Z" fill="#FFD60A" stroke="${O}" stroke-width="8" stroke-linejoin="round"/><path d="M90 56 H120 V110 Q120 150 96 160 Q88 130 90 56Z" fill="#fff" opacity=".45"/>${star(150, 108, 32, '#FF7F11')}`;
+$('botH').innerHTML = robot(); $('cupH').innerHTML = trophy();
+
+$('grid').innerHTML = BR.map((b, i) => `<a class="br" id="br_${b.key}" href="${b.key}/" style="background:linear-gradient(135deg,${b.c[0]},${b.c[1]})">
+  <div class="ok">✅ Đạt</div>
+  <div class="top"><div class="num">${i + 1}</div><div><div class="en">${b.en}</div><div class="vi">${b.vi}</div></div></div>
+  <div class="blk"><span style="background:${b.c[0]}">${b.blk}</span></div>
+  <div class="ds">${b.ds}</div>
+  <div class="ft"><div class="sc" id="sc_${b.key}">Chưa học</div><div class="go">Vào học ▶</div></div></a>`).join('');
+
+function render() {
+  const w = who(), has = w.name && w.cls;
+  $('whoForm').style.display = has ? 'none' : ''; $('whoView').style.display = has ? '' : 'none';
+  if (has) { $('vName').textContent = w.name; $('vClass').textContent = 'Lớp ' + w.cls; $('av').textContent = w.name.split(' ').pop()[0] || '🙂'; }
+  let done = 0, total = 0;
+  BR.forEach(b => {
+    const p = has ? prog(b.key) : {}, best = p.best || 0, pass = best >= PASS;
+    total += best; if (pass) done++;
+    $('br_' + b.key).classList.toggle('pass', pass);
+    $('sc_' + b.key).textContent = p.done ? `⭐ ${best}/${NQ}` : 'Chưa học';
+  });
+  $('pDone').textContent = `✅ ${done}/7 nhánh`; $('pStar').textContent = `⭐ ${total}/70`;
+  $('pBar').style.width = (done / 7 * 100) + '%';
+  $('need').innerHTML = BR.map(b => `<span class="${has && (prog(b.key).best || 0) >= PASS ? '' : 'no'}" style="background:${b.c[0]}">${has && (prog(b.key).best || 0) >= PASS ? '✔' : '○'} ${b.en}</span>`).join('');
+  const ok = has && done === 7;
+  $('bCert').classList.toggle('lock', !ok);
+  $('bCert').textContent = ok ? '🎓 Nhận giấy chứng nhận' : `🔒 Còn ${7 - done} nhánh`;
+  $('fMsg').textContent = ok ? `Tuyệt vời! Em đã hoàn thành cả 7 nhánh với ${total}/70 ⭐. Bấm để nhận giấy chứng nhận nhé!` :
+    'Hoàn thành cả 7 nhánh (mỗi nhánh ít nhất 8/10 ⭐) để nhận giấy chứng nhận.';
+  return { done, total, ok };
+}
+function saveWho() {
+  const n = nameCase($('iName').value), c = tidy($('iClass').value).toUpperCase();
+  if (n.length < 2) { $('err').textContent = 'Em hãy điền họ và tên nhé!'; $('iName').focus(); return; }
+  if (!c) { $('err').textContent = 'Em hãy điền lớp nhé!'; $('iClass').focus(); return; }
+  set('btName', n); set('btClass', c); $('err').textContent = ''; render(); burst(120);
+}
+$('bSave').onclick = saveWho;
+['iName', 'iClass'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') saveWho(); }));
+$('bEdit').onclick = () => { const w = who(); $('iName').value = w.name; $('iClass').value = w.cls; $('whoForm').style.display = ''; $('whoView').style.display = 'none'; $('iName').focus(); };
+// chưa có tên thì chưa vào nhánh
+document.querySelectorAll('.br').forEach(a => a.addEventListener('click', e => {
+  const w = who(); if (w.name && w.cls) return;
+  e.preventDefault(); $('err').textContent = 'Điền họ tên và lớp trước rồi vào học nhé! 👆';
+  $('whoCard').scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => $('iName').focus(), 400);
+}));
+addEventListener('pageshow', render);
+addEventListener('storage', render);
+{ const w = who(); $('iName').value = w.name; $('iClass').value = w.cls; }
+render();
+
+/* ===== GIẤY CHỨNG NHẬN TỔNG ===== */
+let certURL = '';
+function svgImg(inner, vb) { return new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null);
+  im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}">${inner}</svg>`); }); }
+function cStar(g, x, y, r, fill, stroke) { g.beginPath(); for (let i = 0; i < 10; i++) { const a = -Math.PI/2 + i*Math.PI/5, q = i % 2 ? r*.46 : r; g.lineTo(x + q*Math.cos(a), y + q*Math.sin(a)); }
+  g.closePath(); g.fillStyle = fill; g.fill(); if (stroke) { g.lineWidth = 5; g.strokeStyle = stroke; g.lineJoin = 'round'; g.stroke(); } }
+function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function fitText(g, t, maxW, size, weight = 900) { let s = size; do { g.font = `${weight} ${s}px Inter, sans-serif`; s -= 2; } while (g.measureText(t).width > maxW && s > 20); }
+async function drawCert(name, cls, scores) {
+  try { await Promise.all(['900 40px Inter', '800 40px Inter', '700 40px Inter', 'italic 900 40px Inter'].map(f => document.fonts.load(f, 'ĐƯỢC ẤỮ'))); } catch (e) {}
+  const Wd = 1600, Hd = 1130, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
+  const g = cv.getContext('2d'), INK = O, total = scores.reduce((a, b) => a + b, 0);
+  let gr = g.createLinearGradient(0, 0, Wd, Hd); gr.addColorStop(0, '#4F7CFF'); gr.addColorStop(.5, '#B06BFF'); gr.addColorStop(1, '#FF5DA2');
+  g.fillStyle = gr; g.fillRect(0, 0, Wd, Hd);
+  g.fillStyle = 'rgba(255,255,255,.28)'; for (let y = 16, r = 0; y < Hd; y += 40, r++) for (let x = r % 2 ? 36 : 16; x < Wd; x += 40) { g.beginPath(); g.arc(x, y, 3, 0, 7); g.fill(); }
+  rr(g, 44, 44, Wd - 88, Hd - 88, 46); g.fillStyle = '#FFFDF5'; g.fill(); g.lineWidth = 8; g.strokeStyle = INK; g.stroke();
+  g.setLineDash([22, 16]); rr(g, 72, 72, Wd - 144, Hd - 144, 32); g.lineWidth = 5; g.strokeStyle = '#FFC300'; g.stroke(); g.setLineDash([]);
+  [[112, 112, '#FF006E'], [Wd - 112, 112, '#1982C4'], [112, Hd - 112, '#2DA44E'], [Wd - 112, Hd - 112, '#FF7F11']].forEach(([x, y, c]) => cStar(g, x, y, 30, c, INK));
+  g.textAlign = 'center'; g.lineJoin = 'round';
+  g.font = '900 104px Inter, sans-serif'; g.lineWidth = 22; g.strokeStyle = '#3D1A78'; g.strokeText('GIẤY CHỨNG NHẬN', Wd/2, 218);
+  gr = g.createLinearGradient(0, 130, 0, 218); gr.addColorStop(0, '#FFE066'); gr.addColorStop(1, '#FF9F1C'); g.fillStyle = gr; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 218);
+  rr(g, Wd/2 - 360, 250, 720, 74, 37); g.fillStyle = '#FF006E'; g.fill(); g.lineWidth = 6; g.strokeStyle = INK; g.stroke();
+  g.fillStyle = '#fff'; g.font = '900 40px Inter, sans-serif'; g.fillText('HOÀN THÀNH CLICKLEARNING', Wd/2, 301);
+  g.fillStyle = INK; g.font = '700 36px Inter, sans-serif'; g.fillText('Chứng nhận học sinh', Wd/2, 390);
+  fitText(g, name, 860, 92); g.fillStyle = '#FF006E'; g.fillText(name, Wd/2, 492);
+  g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = '#B06BFF'; g.beginPath(); g.moveTo(Wd/2 - 450, 522); g.lineTo(Wd/2 + 450, 522); g.stroke(); g.setLineDash([]);
+  g.fillStyle = INK; g.font = '800 44px Inter, sans-serif'; g.fillText('Lớp: ' + cls, Wd/2, 590);
+  g.font = '700 34px Inter, sans-serif'; g.fillText('Đã hoàn thành 7 nhánh nhóm lệnh lập trình Scratch', Wd/2, 650);
+  // 7 nhánh
+  const bw = 176, gap = 14, x0 = Wd/2 - (7*bw + 6*gap)/2;
+  BR.forEach((b, i) => { const x = x0 + i*(bw + gap); rr(g, x, 684, bw, 92, 22); g.fillStyle = b.c[0]; g.fill(); g.lineWidth = 5; g.strokeStyle = INK; g.stroke();
+    g.fillStyle = '#fff'; fitText(g, b.en, bw - 20, 28); g.fillText(b.en, x + bw/2, 722); g.font = '900 28px Inter, sans-serif'; g.fillText(`${scores[i]}/10 ★`, x + bw/2, 760); });
+  const rank = total >= 70 ? 'XUẤT SẮC TUYỆT ĐỐI' : total >= 63 ? 'XUẤT SẮC' : 'HOÀN THÀNH TỐT';
+  rr(g, Wd/2 - 380, 806, 760, 92, 46); g.fillStyle = '#FFF3BF'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#FFB703'; g.stroke();
+  cStar(g, Wd/2 - 322, 852, 30, '#FFD60A', INK);
+  g.textAlign = 'left'; g.fillStyle = INK; g.font = '900 42px Inter, sans-serif'; g.fillText(`${total}/70 sao`, Wd/2 - 276, 867);
+  g.fillStyle = '#E5383B'; fitText(g, rank, 350, 40); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 350, 866); g.textAlign = 'center';
+  const d = new Date();
+  g.fillStyle = INK; g.font = '700 32px Inter, sans-serif'; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 400, 990);
+  g.font = '800 32px Inter, sans-serif'; g.fillText('Giáo viên', 1200, 962);
+  g.font = 'italic 900 46px Inter, sans-serif'; g.fillStyle = '#8338EC'; g.fillText('Cô Thùy Tin', 1200, 1022);
+  const [bot, cup] = await Promise.all([svgImg(robot(), '0 0 200 240'), svgImg(trophy(), '0 0 300 300')]);
+  if (bot) g.drawImage(bot, 130, 360, 200, 240);
+  if (cup) g.drawImage(cup, 1270, 350, 230, 230);
+  return cv.toDataURL('image/png');
+}
+$('bCert').onclick = async () => {
+  const r = render(); if (!r.ok) { $('fMsg').textContent = 'Em cần đạt ít nhất 8/10 ⭐ ở cả 7 nhánh. Cố lên nhé! 💪'; return; }
+  const w = who(); $('bCert').textContent = 'Đang tạo…';
+  certURL = await drawCert(w.name, w.cls, BR.map(b => prog(b.key).best || 0));
+  $('certImg').src = certURL; $('printImg').src = certURL; $('certBox').classList.add('show'); render(); burst(220);
+};
+$('cClose').onclick = () => $('certBox').classList.remove('show');
+$('certBox').addEventListener('click', e => { if (e.target.id === 'certBox') $('certBox').classList.remove('show'); });
+$('cPrint').onclick = () => window.print();
+$('cSave').onclick = () => { const a = document.createElement('a'); a.href = certURL; a.download = 'ChungNhan_ClickLearning_' + who().name.replace(/\s+/g, '_') + '.png'; document.body.appendChild(a); a.click(); a.remove(); };
+
+/* ===== pháo giấy ===== */
+const cv = $('confetti'), cx = cv.getContext('2d'); let parts = [], run = false;
+function burst(n) { cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; const C = ['#FF006E', '#FFD60A', '#3A86FF', '#8AC926', '#FF7F11', '#8338EC'];
+  for (let i = 0; i < n; i++) parts.push({ x: innerWidth/2 + (Math.random() - .5)*200, y: innerHeight*.5, vx: (Math.random() - .5)*16, vy: -Math.random()*17 - 7, w: 8 + Math.random()*8, h: 5 + Math.random()*6, a: Math.random()*6, va: (Math.random() - .5)*.4, c: C[i % 6], life: 0 });
+  if (!run) { run = true; requestAnimationFrame(tick); } }
+function tick() { const d = devicePixelRatio; cx.clearRect(0, 0, cv.width, cv.height);
+  parts.forEach(p => { p.vy += .45; p.x += p.vx; p.y += p.vy; p.a += p.va; p.life++; cx.save(); cx.globalAlpha = Math.max(0, 1 - Math.max(0, p.life - 90)/60); cx.translate(p.x*d, p.y*d); cx.rotate(p.a); cx.fillStyle = p.c; cx.fillRect(-p.w*d/2, -p.h*d/2, p.w*d, p.h*d); cx.restore(); });
+  parts = parts.filter(p => p.life < 150); if (parts.length) requestAnimationFrame(tick); else { run = false; cx.clearRect(0, 0, cv.width, cv.height); } }
+</script>
+</body>
+</html>
