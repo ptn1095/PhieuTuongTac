@@ -151,7 +151,6 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
   <div id="step">1/1</div>
   <button class="hb big" id="bNext" title="Tiếp (phím → hoặc Space)">▶</button>
   <div id="score">⭐ <span id="sc">0</span>/<span id="scT">0</span></div>
-  <button class="hb" id="bMusic" title="Nhạc nền">🎵</button>
   <button class="hb" id="bSfx" title="Âm thanh">🔊</button>
   <button class="hb" id="bFull" title="Toàn màn hình">⛶</button>
 </div>
@@ -159,7 +158,7 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
 <div id="certBox">
   <div class="cpanel" id="cForm">
     <h2>🎓 Nhận giấy chứng nhận</h2>
-    <p>Em đạt <b id="cScore">0</b>/20 ⭐. Điền họ tên và lớp để nhận giấy chứng nhận nhé!</p>
+    <p>Em đạt <b id="cScore">0</b>/<span class="nQ">20</span> ⭐. Điền họ tên và lớp để nhận giấy chứng nhận nhé!</p>
     <label for="cName">Họ và tên</label><input id="cName" maxlength="40" autocomplete="name" placeholder="VD: Nguyễn Văn An">
     <label for="cClass">Lớp</label><input id="cClass" maxlength="12" placeholder="VD: 9A1">
     <div class="err" id="cErr"></div>
@@ -506,8 +505,8 @@ function W(id) {        // vị trí khung trong thế giới
 });
 
 // vị trí các chủ đề trên hình elip
-const RX = 2150, RY = 1380, TK = 0.6;
-const POS = TOPICS.map((t, i) => { const a = (-72 + i*36)*Math.PI/180; return { x: RX*Math.cos(a), y: RY*Math.sin(a), r: [-4, 3, -3, 4, -2, 3, -4, 2, -3, 4][i] }; });
+const NT = TOPICS.length, STEP = 360/NT, RX = Math.max(2150, NT*215), RY = RX*0.64, TK = 0.6;
+const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180; return { x: RX*Math.cos(a), y: RY*Math.sin(a), r: [-4, 3, -3, 4][i % 4] }; });
 
 // đường đi nối các chủ đề
 (function () {
@@ -563,7 +562,7 @@ const KEY = ['Ô = cột + hàng: <b>B3</b><br>Khối ô: <b>A1:C5</b>', 'Công 
   'Cột: so sánh<br>Đường: xu hướng<br>Tròn: tỉ lệ %', '<b>COUNTIF</b> <b>SUMIF</b> <b>IF</b><br>Điều kiện để trong " "', '<b>Data Validation</b><br>List, Error Alert', '<b>#VALUE!</b> <b>#DIV/0!</b><br><b>#NAME?</b> <b>#####</b>'];
 addFrame('recap', 'title', 995, 770, 0.2, -2, 'recap', `
   <div class="bigtitle" style="left:0;right:0;top:34px;text-align:center;font-size:84px">📚 TỔNG KẾT KIẾN THỨC</div>
-  <div class="rgrid">${TOPICS.map((t, i) => `<div class="rcard" data-act="goto:${t.id}" style="background:linear-gradient(135deg,${t.c[0]},${t.c[1]})">
+  <div class="rgrid" style="grid-template-columns:repeat(${Math.ceil(NT/2)},1fr)">${TOPICS.map((t, i) => `<div class="rcard" data-act="goto:${t.id}" style="background:linear-gradient(135deg,${t.c[0]},${t.c[1]})">
     <div class="rn">${i+1}</div><div class="rt">${t.title}</div><div class="rk">${KEY[i]}</div></div>`).join('')}</div>
   <div style="position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#fff;font-weight:800;font-size:30px;text-shadow:0 3px 0 rgba(20,20,50,.3)">Bấm vào thẻ để xem lại nội dung • Bấm ▶ để xem kết quả</div>`,
   { background: 'linear-gradient(135deg,#22C493,#4F7CFF)' });
@@ -585,6 +584,7 @@ addFrame('result', 'title', 1345, 770, 0.2, 2, 'result', `
     <button class="btn" data-act="home" style="background:#2DA44E">🗺️ Tổng quan</button></div>`);
 PATH.push('result');
 document.getElementById('scT').textContent = Object.keys(QUIZ).length;
+document.querySelectorAll('.nQ').forEach(e => e.textContent = Object.keys(QUIZ).length);
 
 /* =========================================================
    4. CAMERA – BAY & ZOOM KIỂU PREZI
@@ -720,7 +720,7 @@ function bitMood(m) { bitEl.classList.remove('happy', 'sad'); void bitEl.offsetW
 function sayFor(id) {
   if (id === 'overview') return say('Đây là bản đồ toàn bài! Bấm vào chủ đề nào cũng được, hoặc bấm ▶ để đi lần lượt.');
   if (id === 'title') return say('Xin chào! Mình là Bít 🤖 Cùng ôn lại toàn bộ kiến thức bảng tính nhé!');
-  if (id === 'result') return say(score() >= PASS ? 'Giỏi quá! Bấm “Nhận chứng nhận” rồi điền tên, lớp nha 🎓' : 'Về đích rồi! 🏆 Cần 15 ⭐ để nhận chứng nhận đó.', 5000);
+  if (id === 'result') return say(score() >= PASS ? 'Giỏi quá! Bấm “Nhận chứng nhận” rồi điền tên, lớp nha 🎓' : `Về đích rồi! 🏆 Cần ${PASS} ⭐ để nhận chứng nhận đó.`, 5000);
   if (id === 'recap') return say('Ôn nhanh 10 nội dung nè! Bấm vào thẻ nào để xem lại nội dung đó.');
   const q = QUIZ[id];
   if (q) return ans[id] == null ? say(`Đố vui ${q.i + 1}: chọn A, B, C hoặc D nhé!`) : say('Câu này em làm rồi. Bấm ▶ để đi tiếp nha!');
@@ -730,16 +730,14 @@ function sayFor(id) {
 /* =========================================================
    8. ÂM THANH (tự tạo bằng WebAudio)
    ========================================================= */
-let AC = null, sfxOn = true, musicOn = true, sfxBus, musBus, noiseBuf;
+let AC = null, sfxOn = true, sfxBus, noiseBuf;
 function initAudio() {
   if (AC) return;
   AC = new (window.AudioContext || window.webkitAudioContext)();
   const comp = AC.createDynamicsCompressor(); comp.connect(AC.destination);
   sfxBus = AC.createGain(); sfxBus.gain.value = 0.55; sfxBus.connect(comp);
-  musBus = AC.createGain(); musBus.gain.value = 0.16; musBus.connect(comp);
   noiseBuf = AC.createBuffer(1, AC.sampleRate, AC.sampleRate);
   const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random()*2 - 1;
-  startMusic();
 }
 function tone(f, t, dur, type = 'sine', g = 0.3, bus = sfxBus, f2) {
   const o = AC.createOscillator(), a = AC.createGain();
@@ -766,33 +764,6 @@ const sfx = {
     [[523, 659, 784], [523, 659, 784, 1047]].forEach((ch, k) => ch.forEach(f => { tone(f, t + k*.22, k ? 1.4 : .2, 'sawtooth', .07); tone(f, t + k*.22, k ? 1.4 : .2, 'triangle', .12); }));
     [1568, 2093, 2637, 3136].forEach((f, i) => bell(f, t + .5 + i*.07, .12, .6)); },
 };
-// nhạc nền 116 bpm – vòng C G Am F C F G C, giai điệu marimba ngũ cung
-let musT = null, nextT = 0, eighth = 0;
-const N = n => 440*Math.pow(2, (n - 69)/12);
-const CHORDS = [[48, 52, 55], [43, 47, 50], [45, 48, 52], [41, 45, 48], [48, 52, 55], [41, 45, 48], [43, 47, 50], [48, 52, 55]];
-const MEL = [[72, 76, 79, 76, 81, 79, 76, 74], [74, 79, 74, 72, 74, 76, 79, 81], [76, 72, 69, 72, 76, 79, 76, 72], [72, 69, 72, 74, 76, 74, 72, 69],
-             [79, 76, 72, 76, 79, 84, 81, 79], [81, 79, 76, 72, 74, 76, 72, 69], [74, 76, 79, 81, 79, 76, 74, 79], [84, 79, 76, 72, 76, 74, 72, 0]];
-const RHY = [1, 0, 1, 1, 0, 1, 1, 1];
-function marimba(f, t, g) { tone(f, t, .35, 'sine', g, musBus); tone(f*4, t, .08, 'sine', g*.25, musBus); }
-function startMusic() {
-  const E = 60/116/2;
-  nextT = AC.currentTime + .1;
-  musT = setInterval(() => {
-    while (nextT < AC.currentTime + .25) {
-      const bar = Math.floor(eighth/8) % 8, b = eighth % 8, t = nextT;
-      if (musicOn) {
-        const m = MEL[bar][b]; if (RHY[b] && m) marimba(N(m), t, .5);
-        if (b === 0 || b === 4 || b === 7) tone(N(CHORDS[bar][0] - 12), t, .4, 'sine', .6, musBus);
-        if (b === 2 || b === 6) CHORDS[bar].forEach((n, i) => tone(N(n + 12), t + i*.012, .25, 'triangle', .12, musBus));
-        if (b === 0 || b === 4) tone(140, t, .14, 'sine', .7, musBus, 45);
-        if (b === 2 || b === 6) noise(t, .12, 1800, 2500, .25, musBus, .8);
-        noise(t, .04, 8000, 9000, .08, musBus, 2);
-      }
-      nextT += E; eighth++;
-    }
-  }, 50);
-}
-
 /* =========================================================
    9. PHÁO GIẤY
    ========================================================= */
@@ -865,7 +836,6 @@ stage.addEventListener('click', e => {
 document.getElementById('bNext').onclick = () => { sfx.pop(); go(step + 1); };
 document.getElementById('bPrev').onclick = () => { sfx.pop(); go(step - 1); };
 document.getElementById('bHome').onclick = () => { sfx.pop(); go(0); };
-document.getElementById('bMusic').onclick = e => { musicOn = !musicOn; e.currentTarget.classList.toggle('off', !musicOn); };
 document.getElementById('bSfx').onclick = e => { sfxOn = !sfxOn; e.currentTarget.classList.toggle('off', !sfxOn); e.currentTarget.textContent = sfxOn ? '🔊' : '🔈'; };
 document.getElementById('bFull').onclick = () => { const d = document; if (!d.fullscreenElement) (d.documentElement.requestFullscreen || d.documentElement.webkitRequestFullscreen || (() => {})).call(d.documentElement); else d.exitFullscreen(); };
 addEventListener('keydown', e => {
@@ -945,10 +915,10 @@ async function drawCert(name, cls, sc) {
   g.fillStyle = INK; g.font = '800 46px Inter, sans-serif'; g.fillText('Lớp: ' + cls, Wd/2, 625);
   g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành bài ôn tập tổng kết', Wd/2, 700);
   g.font = '900 46px Inter, sans-serif'; g.fillStyle = '#5A189A'; g.fillText('PHẦN MỀM BẢNG TÍNH – TIN HỌC THCS', Wd/2, 760);
-  const rank = sc >= 20 ? 'XUẤT SẮC TUYỆT ĐỐI' : sc >= 18 ? 'XUẤT SẮC' : 'HOÀN THÀNH TỐT';
+  const TQ = Object.keys(QUIZ).length, rank = sc >= TQ ? 'XUẤT SẮC TUYỆT ĐỐI' : sc >= Math.ceil(TQ*.9) ? 'XUẤT SẮC' : 'HOÀN THÀNH TỐT';
   rr(g, Wd/2 - 360, 800, 720, 96, 48); g.fillStyle = '#FFF3BF'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#FFB703'; g.stroke();
   cStar(g, Wd/2 - 300, 848, 30, '#FFD60A', INK);
-  g.textAlign = 'left'; g.fillStyle = INK; g.font = '900 44px Inter, sans-serif'; g.fillText(`${sc}/20 sao`, Wd/2 - 252, 864);
+  g.textAlign = 'left'; g.fillStyle = INK; g.font = '900 44px Inter, sans-serif'; g.fillText(`${sc}/${Object.keys(QUIZ).length} sao`, Wd/2 - 252, 864);
   g.fillStyle = '#E5383B'; fitText(g, rank, 330, 40); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 330, 863); g.textAlign = 'center';
   const d = new Date();
   g.fillStyle = INK; g.font = '700 32px Inter, sans-serif'; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 400, 990);
