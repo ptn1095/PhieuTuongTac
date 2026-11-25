@@ -27,12 +27,12 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:Inter,system-ui,san
 .frame{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;cursor:pointer}
 .frame.cur{cursor:default}
 .wdeco{position:absolute;border-radius:50%;background:rgba(255,255,255,.13);pointer-events:none}
-.glabel{position:absolute;transform:translate(-50%,-50%);font-weight:900;font-size:150px;color:#fff;padding:20px 80px;border-radius:200px;border:12px solid #fff;box-shadow:0 26px 0 rgba(20,20,50,.25);white-space:nowrap;pointer-events:none}
+.glabel-unused{position:absolute;transform:translate(-50%,-50%);font-weight:900;font-size:150px;color:#fff;padding:20px 80px;border-radius:200px;border:12px solid #fff;box-shadow:0 26px 0 rgba(20,20,50,.25);white-space:nowrap;pointer-events:none}
 /* ===== Khung chủ đề ===== */
 .topic{border-radius:64px;border:12px solid #fff;box-shadow:0 26px 0 rgba(20,20,50,.28);overflow:visible}
 .topic .pat{position:absolute;inset:0;border-radius:52px;background-image:radial-gradient(rgba(255,255,255,.3) 3px,transparent 3.5px);background-size:48px 48px;pointer-events:none}
 .num{position:absolute;left:44px;top:34px;width:118px;height:118px;border-radius:50%;background:var(--yellow);border:9px solid #fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:66px;color:var(--ink);box-shadow:0 9px 0 rgba(20,20,50,.3)}
-.ttl{position:absolute;left:186px;top:46px;right:300px;font-weight:900;font-size:68px;line-height:1.05;color:#fff;text-shadow:4px 0 0 var(--purple),-4px 0 0 var(--purple),0 4px 0 var(--purple),0 -4px 0 var(--purple),3px 3px 0 var(--purple),-3px -3px 0 var(--purple),3px -3px 0 var(--purple),-3px 3px 0 var(--purple),0 11px 0 rgba(20,20,50,.3)}
+.ttl{position:absolute;left:186px;top:46px;right:60px;font-weight:900;font-size:68px;line-height:1.05;color:#fff;text-shadow:4px 0 0 var(--purple),-4px 0 0 var(--purple),0 4px 0 var(--purple),0 -4px 0 var(--purple),3px 3px 0 var(--purple),-3px -3px 0 var(--purple),3px -3px 0 var(--purple),-3px 3px 0 var(--purple),0 11px 0 rgba(20,20,50,.3)}
 .tag{position:absolute;right:48px;top:48px;background:#fff;border-radius:60px;padding:12px 34px;font-weight:900;font-size:40px;box-shadow:0 8px 0 rgba(20,20,50,.25)}
 .panel{position:absolute;left:46px;top:178px;width:880px;height:680px;background:#fff;border-radius:42px;border:7px solid;padding:30px 36px;box-shadow:0 12px 0 rgba(20,20,50,.22);font-size:34px;font-weight:700;line-height:1.3;overflow:hidden}
 .panel ul{list-style:none}
@@ -78,6 +78,31 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
 .result{border-radius:60px;border:14px solid #fff;background:linear-gradient(135deg,#FFC300,#FF7F11);box-shadow:0 22px 0 rgba(20,20,50,.3)}
 .btn{display:inline-flex;align-items:center;gap:14px;border:none;border-radius:60px;padding:18px 44px;font-family:inherit;font-weight:900;font-size:44px;color:#fff;cursor:pointer;box-shadow:0 10px 0 rgba(20,20,50,.35);transition:transform .1s,box-shadow .1s}
 .btn:active{transform:translateY(6px);box-shadow:0 4px 0 rgba(20,20,50,.35)}
+.recap{border-radius:60px;border:14px solid #fff;box-shadow:0 22px 0 rgba(20,20,50,.3)}
+.rgrid{position:absolute;left:40px;right:40px;top:146px;bottom:72px;display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.rcard{border-radius:30px;border:6px solid #fff;padding:12px 14px;color:#fff;box-shadow:0 9px 0 rgba(20,20,50,.25);cursor:pointer;position:relative;overflow:hidden;transition:transform .15s}
+.cur .rcard:hover{transform:translateY(-6px) rotate(-1deg)}
+.rn{width:50px;height:50px;border-radius:50%;background:#FFD60A;color:#1D3557;font-weight:900;font-size:28px;display:flex;align-items:center;justify-content:center;border:5px solid #fff}
+.rt{font-weight:900;font-size:27px;line-height:1.1;margin:8px 0 8px;text-shadow:0 3px 0 rgba(20,20,50,.3)}
+.rk{font-weight:700;font-size:23px;line-height:1.28;background:rgba(255,255,255,.95);color:#1D3557;border-radius:18px;padding:10px 12px}
+.rk b{color:#D62828;font-weight:900}
+.btn.lock{background:#8E8EA8!important}
+/* ===== Chứng nhận ===== */
+#certBox{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(29,53,87,.6);padding:14px}
+#certBox.show{display:flex}
+.cpanel{background:#FFFDF5;border:6px solid var(--ink);border-radius:30px;box-shadow:0 10px 0 rgba(20,20,50,.4);padding:22px 26px;width:min(560px,100%);max-height:100%;overflow:auto;text-align:center;user-select:text;-webkit-user-select:text}
+.cpanel.wide{width:min(980px,100%)}
+.cpanel h2{font-weight:900;font-size:clamp(22px,3.4vw,32px);color:#5A189A;margin-bottom:6px}
+.cpanel p{font-weight:700;font-size:17px;margin-bottom:14px}
+.cpanel label{display:block;text-align:left;font-weight:900;font-size:17px;margin:10px 0 6px}
+.cpanel input{width:100%;font-family:inherit;font-weight:800;font-size:22px;padding:12px 16px;border:4px solid #CBD5E1;border-radius:18px;outline:none;color:var(--ink)}
+.cpanel input:focus{border-color:#8338EC}
+.cpanel .err{color:#E5383B;font-weight:800;min-height:24px;margin-top:8px}
+.cpanel .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px}
+.cpanel .btn{font-size:clamp(18px,2.4vw,24px);padding:12px 26px}
+#certImg{width:100%;max-height:calc(100vh - 140px);object-fit:contain;border-radius:12px;box-shadow:0 6px 0 rgba(20,20,50,.25);display:block}
+#printArea{display:none}
+@media print{@page{size:A4 landscape;margin:0}body>*{display:none!important}#printArea{display:block!important}#printArea img{width:100%;height:auto}html,body{overflow:visible;height:auto}}
 /* ===== Thanh điều khiển ===== */
 #hud{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:#fff;border-radius:40px;padding:8px 10px;border:4px solid var(--ink);box-shadow:0 7px 0 rgba(20,20,50,.35);z-index:20}
 .hb{width:52px;height:52px;border-radius:50%;border:none;background:#EEF2FF;font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 5px 0 #C7D2FE;transition:transform .1s,box-shadow .1s;color:var(--ink);font-family:inherit;font-weight:900}
@@ -131,10 +156,26 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
   <button class="hb" id="bFull" title="Toàn màn hình">⛶</button>
 </div>
 
+<div id="certBox">
+  <div class="cpanel" id="cForm">
+    <h2>🎓 Nhận giấy chứng nhận</h2>
+    <p>Em đạt <b id="cScore">0</b>/20 ⭐. Điền họ tên và lớp để nhận giấy chứng nhận nhé!</p>
+    <label for="cName">Họ và tên</label><input id="cName" maxlength="40" autocomplete="name" placeholder="VD: Nguyễn Văn An">
+    <label for="cClass">Lớp</label><input id="cClass" maxlength="12" placeholder="VD: 9A1">
+    <div class="err" id="cErr"></div>
+    <div class="row"><button class="btn" id="cMake" style="background:#8338EC">✨ Tạo chứng nhận</button><button class="btn" id="cClose1" style="background:#8E8EA8">Đóng</button></div>
+  </div>
+  <div class="cpanel wide" id="cView" style="display:none">
+    <img id="certImg" alt="Giấy chứng nhận">
+    <div class="row"><button class="btn" id="cSave" style="background:#2DA44E">⬇️ Tải ảnh</button><button class="btn" id="cPrint" style="background:#1982C4">🖨️ In</button><button class="btn" id="cEdit" style="background:#FF7F11">✏️ Sửa tên</button><button class="btn" id="cClose2" style="background:#8E8EA8">Đóng</button></div>
+  </div>
+</div>
+<div id="printArea"><img id="printImg" alt=""></div>
+
 <div id="start">
   <svg viewBox="0 0 200 240" style="width:min(200px,30vw)" class="pop" id="bitStart"></svg>
   <div class="st1">TỔNG KẾT<br>BẢNG TÍNH THCS</div>
-  <div class="st2">Tin học 7 • 8 • 9 — Zoom khám phá 10 chủ đề và giải 20 câu đố vui</div>
+  <div class="st2">Ôn tập theo nội dung — Zoom khám phá 10 chủ đề, giải 20 câu đố, nhận giấy chứng nhận</div>
   <button class="btn" id="go">▶ BẮT ĐẦU</button>
   <div class="st2" style="font-size:clamp(13px,1.8vw,18px);opacity:.9">Bấm ▶ hoặc phím → để đi tiếp • Bấm vào khung bất kỳ để zoom • Kéo / lăn chuột để tự khám phá</div>
 </div>
@@ -318,7 +359,7 @@ const ILL = {
    2. NỘI DUNG BÀI HỌC
    ========================================================= */
 const TOPICS = [
-  { id: 't1', lop: 'LỚP 7', c: ['#FFA62B', '#FF5DA2'], dk: '#D9480F', title: 'Làm quen với bảng tính',
+  { id: 't1', c: ['#FFA62B', '#FF5DA2'], dk: '#D9480F', title: 'Làm quen với bảng tính',
     tip: 'Địa chỉ ô = tên CỘT viết trước, tên HÀNG viết sau. Ví dụ B3 nè!',
     html: `<ul>
       <li>Bảng tính gồm nhiều <span class="k">trang tính</span> (sheet).</li>
@@ -330,7 +371,7 @@ const TOPICS = [
     quiz: [
       { q: 'Ô nằm ở cột C, hàng 5 có địa chỉ là gì?', o: ['5C', 'C5', 'C-5', 'CC5'], a: 1, why: 'Tên cột viết trước, tên hàng viết sau → C5.' },
       { q: 'Khối ô gồm các ô từ A1 đến C4 được viết là:', o: ['A1-C4', 'A1;C4', 'A1:C4', 'A1..C4'], a: 2, why: 'Dùng dấu hai chấm giữa ô trên trái và ô dưới phải: A1:C4.' } ] },
-  { id: 't2', lop: 'LỚP 7', c: ['#3A8DFF', '#00C2D1'], dk: '#1864AB', title: 'Công thức',
+  { id: 't2', c: ['#3A8DFF', '#00C2D1'], dk: '#1864AB', title: 'Công thức',
     tip: 'Quên dấu = là bảng tính tưởng em gõ chữ thường đó!',
     html: `<ul>
       <li>Luôn bắt đầu bằng dấu <span class="k">=</span></li>
@@ -341,7 +382,7 @@ const TOPICS = [
     quiz: [
       { q: 'Công thức trong bảng tính luôn bắt đầu bằng dấu nào?', o: ['+', '=', '#', ':'], a: 1, why: 'Gõ dấu = trước để bảng tính hiểu đây là công thức.' },
       { q: 'Công thức =2+3*2 cho kết quả bao nhiêu?', o: ['10', '8', '12', '7'], a: 1, why: 'Nhân trước, cộng sau: 3*2 = 6, rồi 2 + 6 = 8.' } ] },
-  { id: 't3', lop: 'LỚP 7', c: ['#7AD86F', '#14A0A0'], dk: '#087F5B', title: 'Hàm cơ bản',
+  { id: 't3', c: ['#7AD86F', '#14A0A0'], dk: '#087F5B', title: 'Hàm cơ bản',
     tip: 'Hàm giống cái máy: bỏ dữ liệu vào, kết quả chạy ra!',
     html: `<div style="margin-bottom:4px">Cú pháp: <code>=TÊN_HÀM(đối số)</code></div>
       <table class="tb"><tr><th>Hàm</th><th>Công dụng</th><th>Ví dụ</th></tr>
@@ -353,7 +394,7 @@ const TOPICS = [
     quiz: [
       { q: 'Hàm nào dùng để tính trung bình cộng?', o: ['SUM', 'MAX', 'AVERAGE', 'COUNT'], a: 2, why: 'AVERAGE = trung bình cộng.' },
       { q: 'A1 = 4, A2 = 7, A3 = 1. Công thức =MAX(A1:A3) cho kết quả:', o: ['1', '4', '7', '12'], a: 2, why: 'MAX tìm giá trị lớn nhất trong khối A1:A3 → 7.' } ] },
-  { id: 't4', lop: 'LỚP 7', c: ['#FFB14E', '#FF5E78'], dk: '#C2255C', title: 'Trình bày bảng tính',
+  { id: 't4', c: ['#FFB14E', '#FF5E78'], dk: '#C2255C', title: 'Trình bày bảng tính',
     tip: 'Bảng tính đẹp, rõ ràng thì ai đọc cũng thích!',
     html: `<ul>
       <li>Định dạng chữ: phông, cỡ, màu, <b>B</b> <i>I</i> <u>U</u></li>
@@ -365,7 +406,7 @@ const TOPICS = [
     quiz: [
       { q: 'Muốn gộp nhiều ô thành một ô và căn giữa tiêu đề, em dùng lệnh:', o: ['Merge & Center', 'Wrap Text', 'Sort', 'Filter'], a: 0, why: 'Merge & Center gộp các ô đã chọn và căn giữa nội dung.' },
       { q: 'Muốn ô có số 0,25 hiển thị thành 25%, em chọn định dạng:', o: ['Tiền tệ (Currency)', 'Phần trăm (%)', 'Ngày (Date)', 'Văn bản (Text)'], a: 1, why: 'Định dạng Phần trăm nhân 100 và thêm dấu %: 0,25 → 25%.' } ] },
-  { id: 't5', lop: 'LỚP 8', c: ['#4F7CFF', '#B06BFF'], dk: '#5F3DC4', title: 'Địa chỉ tương đối & tuyệt đối',
+  { id: 't5', c: ['#4F7CFF', '#B06BFF'], dk: '#5F3DC4', title: 'Địa chỉ tương đối & tuyệt đối',
     tip: 'Dấu $ giống cái ghim: ghim chặt cột hoặc hàng lại. Bấm F4 cho nhanh!',
     html: `<table class="tb"><tr><th>Kiểu</th><th>Viết</th><th>Khi sao chép</th></tr>
       <tr><td>Tương đối</td><td><code>A1</code></td><td>Thay đổi theo</td></tr>
@@ -376,7 +417,7 @@ const TOPICS = [
     quiz: [
       { q: 'Địa chỉ nào là địa chỉ tuyệt đối?', o: ['A1', '$A1', 'A$1', '$A$1'], a: 3, why: 'Có $ trước cả tên cột và tên hàng → không đổi khi sao chép.' },
       { q: 'Ô C1 có công thức =A1+B1. Sao chép xuống ô C2, công thức trở thành:', o: ['=A1+B1', '=A2+B2', '=B1+C1', '=A2+B1'], a: 1, why: 'Địa chỉ tương đối đổi theo: xuống 1 hàng → A2, B2.' } ] },
-  { id: 't6', lop: 'LỚP 8', c: ['#22C493', '#1E9BD7'], dk: '#0B7285', title: 'Sắp xếp và lọc dữ liệu',
+  { id: 't6', c: ['#22C493', '#1E9BD7'], dk: '#0B7285', title: 'Sắp xếp và lọc dữ liệu',
     tip: 'Sắp xếp là xếp hàng, còn lọc là chỉ giữ lại những gì mình cần!',
     html: `<ul>
       <li><span class="k">Sắp xếp</span> (Sort): <b>tăng dần</b> A→Z, 1→9 hoặc <b>giảm dần</b> Z→A, 9→1.</li>
@@ -387,7 +428,7 @@ const TOPICS = [
     quiz: [
       { q: 'Chỉ muốn hiện các bạn lớp 8A trong danh sách cả khối, em dùng:', o: ['Sắp xếp (Sort)', 'Lọc (Filter)', 'Biểu đồ (Chart)', 'Gộp ô (Merge)'], a: 1, why: 'Lọc giúp chỉ hiện những dòng thoả điều kiện “Lớp = 8A”.' },
       { q: 'Xếp điểm từ cao xuống thấp là sắp xếp theo thứ tự:', o: ['Tăng dần', 'Giảm dần', 'Ngẫu nhiên', 'Theo màu'], a: 1, why: 'Từ lớn đến nhỏ là giảm dần.' } ] },
-  { id: 't7', lop: 'LỚP 8', c: ['#FF7F11', '#FF006E'], dk: '#C2255C', title: 'Biểu đồ',
+  { id: 't7', c: ['#FF7F11', '#FF006E'], dk: '#C2255C', title: 'Biểu đồ',
     tip: 'Một biểu đồ đẹp nói được nhiều hơn cả bảng số dài!',
     html: `<div class="chips"><span class="chip" style="background:#FF006E">Cột: so sánh</span><span class="chip" style="background:#8338EC">Đường: xu hướng</span><span class="chip" style="background:#14A0A0">Tròn: tỉ lệ %</span></div>
       <ul><li><b>Cột</b>: so sánh số liệu giữa các nhóm.</li>
@@ -397,7 +438,7 @@ const TOPICS = [
     quiz: [
       { q: 'Muốn thể hiện tỉ lệ phần trăm các phần trong một tổng thể, nên dùng biểu đồ:', o: ['Cột', 'Đường', 'Tròn', 'Không cần biểu đồ'], a: 2, why: 'Biểu đồ tròn cho thấy mỗi phần chiếm bao nhiêu % của cả hình tròn.' },
       { q: 'Theo dõi nhiệt độ thay đổi qua 12 tháng, nên dùng biểu đồ:', o: ['Đường', 'Tròn', 'Không vẽ được', 'Chỉ dùng bảng số'], a: 0, why: 'Biểu đồ đường thể hiện rõ xu hướng tăng giảm theo thời gian.' } ] },
-  { id: 't8', lop: 'LỚP 9', c: ['#B65CFF', '#5A189A'], dk: '#5A189A', title: 'Hàm có điều kiện',
+  { id: 't8', c: ['#B65CFF', '#5A189A'], dk: '#5A189A', title: 'Hàm có điều kiện',
     tip: 'Điều kiện là chữ hoặc có dấu so sánh thì nhớ đặt trong ngoặc kép " " nha!',
     html: `<ul style="font-size:32px">
       <li><span class="k">COUNTIF</span> đếm ô thoả điều kiện<br><code>=COUNTIF(C2:C40,"&gt;=8")</code></li>
@@ -407,7 +448,7 @@ const TOPICS = [
     quiz: [
       { q: 'Công thức =COUNTIF(C2:C40,">=8") dùng để:', o: ['Tính tổng các điểm ≥ 8', 'Đếm số ô có giá trị ≥ 8', 'Tìm điểm cao nhất', 'Tính trung bình các điểm ≥ 8'], a: 1, why: 'COUNTIF đếm số ô trong C2:C40 thoả điều kiện ≥ 8.' },
       { q: 'Ô E2 = 4,5. Công thức =IF(E2>=5,"Đạt","Chưa đạt") cho kết quả:', o: ['Đạt', 'Chưa đạt', '4,5', 'FALSE'], a: 1, why: '4,5 ≥ 5 là SAI → IF lấy giá trị thứ ba: “Chưa đạt”.' } ] },
-  { id: 't9', lop: 'LỚP 9', c: ['#2EC4B6', '#1982C4'], dk: '#1864AB', title: 'Xác thực dữ liệu',
+  { id: 't9', c: ['#2EC4B6', '#1982C4'], dk: '#1864AB', title: 'Xác thực dữ liệu',
     tip: 'Xác thực dữ liệu là “chú bảo vệ” canh cửa ô tính đó!',
     html: `<ul>
       <li>Vào thẻ <b>Data</b> → <span class="k">Data Validation</span></li>
@@ -418,7 +459,7 @@ const TOPICS = [
     quiz: [
       { q: 'Để ô chỉ cho chọn “Nam” hoặc “Nữ” từ danh sách thả xuống, trong Data Validation em chọn:', o: ['Whole number', 'Decimal', 'List', 'Text length'], a: 2, why: 'List tạo danh sách thả xuống với các giá trị cho phép.' },
       { q: 'Phần nào hiện cảnh báo khi người dùng nhập sai dữ liệu?', o: ['Input Message', 'Error Alert', 'Settings', 'Print Preview'], a: 1, why: 'Error Alert = thông báo lỗi khi nhập dữ liệu không hợp lệ.' } ] },
-  { id: 't10', lop: 'TỔNG KẾT', c: ['#FF595E', '#FFB14E'], dk: '#C92A2A', title: 'Lỗi thường gặp & ghi nhớ',
+  { id: 't10', c: ['#FF595E', '#FFB14E'], dk: '#C92A2A', title: 'Lỗi thường gặp & ghi nhớ',
     tip: 'Gặp lỗi đừng sợ, đọc tên lỗi là biết sai ở đâu ngay!',
     html: `<table class="tb"><tr><th>Lỗi</th><th>Nguyên nhân</th></tr>
       <tr><td>#VALUE!</td><td>Sai kiểu dữ liệu (VD: cộng số với chữ)</td></tr>
@@ -431,6 +472,7 @@ const TOPICS = [
       { q: 'Gõ nhầm tên hàm =SUMM(A1:A3) sẽ báo lỗi:', o: ['#NAME?', '#DIV/0!', '#####', '#VALUE!'], a: 0, why: 'Bảng tính không biết hàm SUMM → #NAME?' } ] },
 ];
 const LCOL = ['#FF006E', '#1982C4', '#2DA44E', '#FF7F11'];
+const PASS = 15;
 const PRAISE = ['Giỏi quá! 🎉', 'Chính xác luôn! ⭐', 'Siêu đỉnh! 🚀', 'Tuyệt vời! 💯', 'Đúng rồi, quá xịn! ✨'];
 
 /* =========================================================
@@ -480,23 +522,16 @@ const POS = TOPICS.map((t, i) => { const a = (-72 + i*36)*Math.PI/180; return { 
   Object.assign(s.style, { position: 'absolute', left: '-3500px', top: '-2500px', pointerEvents: 'none' });
 })();
 
-// nhãn khối lớp
-[['LỚP 7', '#FF7F11', [0, 1, 2, 3]], ['LỚP 8', '#4F7CFF', [4, 5, 6]], ['LỚP 9', '#8338EC', [7, 8]]].forEach(([t, c, idx]) => {
-  let x = 0, y = 0; idx.forEach(i => { x += POS[i].x; y += POS[i].y; }); x /= idx.length; y /= idx.length;
-  const m = Math.hypot(x, y), f = (m + (idx.length > 2 ? 900 : 760))/m;
-  const g = el('div', 'glabel', t); g.style.left = x*f + 'px'; g.style.top = y*f + 'px'; g.style.background = c;
-});
 
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef', `
   <div class="pat" style="position:absolute;inset:0;border-radius:58px;background-image:radial-gradient(rgba(255,255,255,.3) 3px,transparent 3.5px);background-size:48px 48px"></div>
   <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">TỔNG KẾT • TIN HỌC THCS</div>
   <div class="bigtitle">PHẦN MỀM<br>BẢNG TÍNH</div>
-  <div style="position:absolute;left:74px;top:440px;display:flex;gap:22px">
-    <span class="pill" style="background:#FF7F11;font-size:44px">Lớp 7</span><span class="pill" style="background:#4F7CFF;font-size:44px">Lớp 8</span><span class="pill" style="background:#8338EC;font-size:44px">Lớp 9</span></div>
-  <div style="position:absolute;left:76px;top:570px;width:1000px;color:#fff;font-weight:800;font-size:40px;line-height:1.35;text-shadow:0 4px 0 rgba(20,20,50,.3)">10 chủ đề • 20 câu đố vui<br>Bấm ▶ hoặc bấm vào khung để zoom khám phá!</div>
-  <svg viewBox="0 0 200 240" style="position:absolute;left:1080px;top:110px;width:400px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
-  <div style="position:absolute;left:1180px;top:595px;color:#fff;font-weight:900;font-size:34px;text-shadow:0 4px 0 rgba(20,20,50,.35)">🏆 Về đích</div>
+  <div style="position:absolute;left:76px;top:440px;width:1000px;color:#fff;font-weight:800;font-size:40px;line-height:1.35;text-shadow:0 4px 0 rgba(20,20,50,.3)">10 nội dung • 20 câu đố vui<br>Bấm ▶ hoặc bấm vào khung để zoom!<br>Đạt từ 15 ⭐ trở lên nhận <span style="color:#FFE066">giấy chứng nhận</span> 🎓</div>
+  <svg viewBox="0 0 200 240" style="position:absolute;left:1130px;top:70px;width:330px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
+  <div style="position:absolute;left:830px;top:612px;width:330px;text-align:center;color:#fff;font-weight:900;font-size:34px;text-shadow:0 4px 0 rgba(20,20,50,.35)">📚 Tổng kết</div>
+  <div style="position:absolute;left:1180px;top:612px;width:330px;text-align:center;color:#fff;font-weight:900;font-size:34px;text-shadow:0 4px 0 rgba(20,20,50,.35)">🏆 Về đích</div>
 `, { background: 'linear-gradient(135deg,#4F7CFF,#B06BFF)' });
 PATH.push('title');
 
@@ -504,7 +539,7 @@ PATH.push('title');
 TOPICS.forEach((t, i) => {
   const p = POS[i];
   addFrame(t.id, null, p.x, p.y, TK, p.r, 'topic', `<div class="pat"></div>
-    <div class="num">${i+1}</div><div class="ttl">${t.title}</div><div class="tag" style="color:${t.dk}">${t.lop}</div>
+    <div class="num">${i+1}</div><div class="ttl">${t.title}</div>
     <div class="panel" style="border-color:${t.dk};--c:${t.c[0]}">${t.html}</div>
     <div class="ill" style="border-color:${t.dk}">${ILL[t.id]()}</div>
     <div class="qlabel">❓ Đố vui – bấm để zoom</div>`, { background: `linear-gradient(135deg,${t.c[0]},${t.c[1]})` });
@@ -522,16 +557,29 @@ TOPICS.forEach((t, i) => {
   });
 });
 
+// khung tổng kết kiến thức (lồng trong khung tiêu đề)
+const KEY = ['Ô = cột + hàng: <b>B3</b><br>Khối ô: <b>A1:C5</b>', 'Công thức luôn bắt đầu bằng dấu <b>=</b>', '<b>SUM</b> • <b>AVERAGE</b><br><b>MAX</b> • <b>MIN</b> • <b>COUNT</b>',
+  '<b>Merge &amp; Center</b><br>Định dạng <b>%</b>, viền, màu', '<b>A1</b> đổi theo<br><b>$A$1</b> giữ nguyên<br>Phím <b>F4</b>', '<b>Sort</b>: xếp tăng, giảm<br><b>Filter</b>: lọc dòng',
+  'Cột: so sánh<br>Đường: xu hướng<br>Tròn: tỉ lệ %', '<b>COUNTIF</b> <b>SUMIF</b> <b>IF</b><br>Điều kiện để trong " "', '<b>Data Validation</b><br>List, Error Alert', '<b>#VALUE!</b> <b>#DIV/0!</b><br><b>#NAME?</b> <b>#####</b>'];
+addFrame('recap', 'title', 995, 770, 0.2, -2, 'recap', `
+  <div class="bigtitle" style="left:0;right:0;top:34px;text-align:center;font-size:84px">📚 TỔNG KẾT KIẾN THỨC</div>
+  <div class="rgrid">${TOPICS.map((t, i) => `<div class="rcard" data-act="goto:${t.id}" style="background:linear-gradient(135deg,${t.c[0]},${t.c[1]})">
+    <div class="rn">${i+1}</div><div class="rt">${t.title}</div><div class="rk">${KEY[i]}</div></div>`).join('')}</div>
+  <div style="position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#fff;font-weight:800;font-size:30px;text-shadow:0 3px 0 rgba(20,20,50,.3)">Bấm vào thẻ để xem lại nội dung • Bấm ▶ để xem kết quả</div>`,
+  { background: 'linear-gradient(135deg,#22C493,#4F7CFF)' });
+PATH.push('recap');
+
 // khung kết quả (lồng trong khung tiêu đề)
-addFrame('result', 'title', 1290, 765, 0.2, 2, 'result', `
+addFrame('result', 'title', 1345, 770, 0.2, 2, 'result', `
   <div style="position:absolute;left:50px;top:120px;width:520px;height:520px">${ILL.trophy()}</div>
   <div style="position:absolute;left:600px;top:50px;right:50px">
     <div class="bigtitle" style="position:static;font-size:120px">VỀ ĐÍCH!</div>
-    <div id="rStars" style="font-size:120px;margin-top:6px;letter-spacing:10px">☆☆☆</div>
-    <div style="font-weight:900;font-size:64px;color:#fff;text-shadow:0 5px 0 rgba(20,20,50,.3)">Đúng <span id="rScore">0</span> / ${Object.keys(QUIZ).length} câu</div>
+    <div id="rStars" style="font-size:100px;margin-top:0;letter-spacing:8px;line-height:1.1">☆☆☆</div>
+    <div style="font-weight:900;font-size:64px;color:#fff;text-shadow:0 5px 0 rgba(20,20,50,.3)">Đạt <span id="rScore">0</span> / ${Object.keys(QUIZ).length} ⭐</div>
     <div id="rMsg" style="font-weight:800;font-size:40px;color:#fff;margin-top:12px;line-height:1.3;text-shadow:0 4px 0 rgba(20,20,50,.3)"></div>
   </div>
-  <div style="position:absolute;left:600px;top:560px;display:flex;flex-wrap:wrap;gap:26px;width:940px">
+  <div style="position:absolute;left:600px;top:540px;display:flex;flex-wrap:wrap;gap:24px;width:960px">
+    <button class="btn" data-act="cert" id="bCert" style="background:#8338EC;font-size:42px">🎓 Nhận chứng nhận</button>
     <button class="btn" data-act="redo" style="background:#FF006E">🔁 Làm lại</button>
     <button class="btn" data-act="wrong" style="background:#1982C4">🔎 Xem câu sai</button>
     <button class="btn" data-act="home" style="background:#2DA44E">🗺️ Tổng quan</button></div>`);
@@ -638,10 +686,14 @@ function choose(id, n) {
 function showResult() {
   const s = score(), T = Object.keys(QUIZ).length, pct = s/T, done = Object.keys(ans).length;
   const st = pct >= .8 ? 3 : pct >= .5 ? 2 : s > 0 ? 1 : 0;
-  document.getElementById('rScore').textContent = s;
+  document.getElementById('rScore').textContent = s; document.getElementById('sc').textContent = s;
   document.getElementById('rStars').innerHTML = '<span style="color:#FFF3BF">★</span>'.repeat(st) + '<span style="color:rgba(255,255,255,.45)">☆</span>'.repeat(3 - st);
-  document.getElementById('rMsg').textContent = done < T ? `Em mới trả lời ${done}/${T} câu. Quay lại làm nốt nhé!` :
-    st === 3 ? 'Xuất sắc! Em đã nắm chắc kiến thức bảng tính!' : st === 2 ? 'Khá lắm! Xem lại các câu sai để nhớ lâu hơn nha.' : 'Cố lên! Bấm “Xem câu sai” để ôn lại nhé.';
+  const pass = s >= PASS;
+  document.getElementById('rMsg').textContent = pass ? 'Chúc mừng! Em đủ điều kiện nhận giấy chứng nhận 🎓' :
+    done < T ? `Em mới trả lời ${done}/${T} câu. Cần ${PASS} ⭐ để nhận chứng nhận – quay lại làm nốt nhé!` :
+    `Cần ít nhất ${PASS} ⭐ để nhận chứng nhận (em còn thiếu ${PASS - s}). Bấm “Làm lại” để thử lần nữa nhé!`;
+  document.getElementById('bCert').classList.toggle('lock', !pass);
+  document.getElementById('bCert').innerHTML = pass ? '🎓 Nhận chứng nhận' : `🔒 Cần ${PASS} ⭐`;
   setTimeout(() => { sfx.tada(); burst(180); }, 900);
 }
 function reset() {
@@ -667,8 +719,9 @@ function say(t, ms = 7000) {
 function bitMood(m) { bitEl.classList.remove('happy', 'sad'); void bitEl.offsetWidth; bitEl.classList.add(m); setTimeout(() => bitEl.classList.remove(m), 1600); }
 function sayFor(id) {
   if (id === 'overview') return say('Đây là bản đồ toàn bài! Bấm vào chủ đề nào cũng được, hoặc bấm ▶ để đi lần lượt.');
-  if (id === 'title') return say('Xin chào! Mình là Bít 🤖 Cùng ôn lại bảng tính từ lớp 7 đến lớp 9 nhé!');
-  if (id === 'result') return say('Về đích rồi! 🏆 Xem kết quả của em nè.', 3500);
+  if (id === 'title') return say('Xin chào! Mình là Bít 🤖 Cùng ôn lại toàn bộ kiến thức bảng tính nhé!');
+  if (id === 'result') return say(score() >= PASS ? 'Giỏi quá! Bấm “Nhận chứng nhận” rồi điền tên, lớp nha 🎓' : 'Về đích rồi! 🏆 Cần 15 ⭐ để nhận chứng nhận đó.', 5000);
+  if (id === 'recap') return say('Ôn nhanh 10 nội dung nè! Bấm vào thẻ nào để xem lại nội dung đó.');
   const q = QUIZ[id];
   if (q) return ans[id] == null ? say(`Đố vui ${q.i + 1}: chọn A, B, C hoặc D nhé!`) : say('Câu này em làm rồi. Bấm ▶ để đi tiếp nha!');
   const t = TOPICS.find(x => x.id === id); if (t) say(t.tip);
@@ -805,6 +858,8 @@ stage.addEventListener('click', e => {
   sfx.click();
   if (b.dataset.act === 'redo') reset();
   else if (b.dataset.act === 'home') go(0);
+  else if (b.dataset.act.startsWith('goto:')) goId(b.dataset.act.slice(5));
+  else if (b.dataset.act === 'cert') { if (score() >= PASS) openCert(); else { sfx.buzz(); bitMood('sad'); say(`Em cần ít nhất ${PASS} ⭐ mới nhận được chứng nhận. Làm lại các câu sai nhé!`); } }
   else if (b.dataset.act === 'wrong') { const w = PATH.find(id => QUIZ[id] && ans[id] !== QUIZ[id].q.a); if (w) goId(w); else say('Em không có câu sai nào! Giỏi quá 🎉'); }
 });
 document.getElementById('bNext').onclick = () => { sfx.pop(); go(step + 1); };
@@ -814,6 +869,7 @@ document.getElementById('bMusic').onclick = e => { musicOn = !musicOn; e.current
 document.getElementById('bSfx').onclick = e => { sfxOn = !sfxOn; e.currentTarget.classList.toggle('off', !sfxOn); e.currentTarget.textContent = sfxOn ? '🔊' : '🔈'; };
 document.getElementById('bFull').onclick = () => { const d = document; if (!d.fullscreenElement) (d.documentElement.requestFullscreen || d.documentElement.webkitRequestFullscreen || (() => {})).call(d.documentElement); else d.exitFullscreen(); };
 addEventListener('keydown', e => {
+  if (document.getElementById('certBox').classList.contains('show')) { if (e.key === 'Escape') closeCert(); else if (e.key === 'Enter' && document.getElementById('cForm').style.display !== 'none') makeCert(); return; }
   if (document.getElementById('start').style.display !== 'none') { if (e.key === 'Enter' || e.key === ' ') begin(); return; }
   if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); sfx.pop(); go(step + 1); }
   else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); sfx.pop(); go(step - 1); }
@@ -829,6 +885,87 @@ stage.addEventListener('touchend', e => {
   tStart = null;
 });
 addEventListener('resize', () => { sizeCv(); fly(curId, true); });
+
+/* =========================================================
+   11b. GIẤY CHỨNG NHẬN (vẽ bằng canvas, tải về PNG / in)
+   ========================================================= */
+const cBox = document.getElementById('certBox'), $ = id => document.getElementById(id);
+let certURL = '';
+function openCert() {
+  try { $('cName').value = localStorage.getItem('btName') || ''; $('cClass').value = localStorage.getItem('btClass') || ''; } catch (e) {}
+  $('cScore').textContent = score(); $('cErr').textContent = '';
+  $('cForm').style.display = ''; $('cView').style.display = 'none';
+  cBox.classList.add('show'); sfx.pop(); setTimeout(() => $('cName').focus(), 100);
+}
+function closeCert() { cBox.classList.remove('show'); }
+const tidy = v => v.replace(/\s+/g, ' ').trim();
+function nameCase(v) { return tidy(v).split(' ').map(w => w ? w[0].toLocaleUpperCase('vi') + w.slice(1).toLocaleLowerCase('vi') : w).join(' '); }
+async function makeCert() {
+  const name = nameCase($('cName').value), cls = tidy($('cClass').value).toUpperCase();
+  if (name.length < 2) { $('cErr').textContent = 'Em hãy điền họ và tên nhé!'; $('cName').focus(); sfx.buzz(); return; }
+  if (!cls) { $('cErr').textContent = 'Em hãy điền lớp nhé!'; $('cClass').focus(); sfx.buzz(); return; }
+  if (score() < PASS) { $('cErr').textContent = `Cần ít nhất ${PASS} ⭐ để nhận chứng nhận.`; return; }
+  try { localStorage.setItem('btName', name); localStorage.setItem('btClass', cls); } catch (e) {}
+  $('cErr').textContent = 'Đang tạo…';
+  certURL = await drawCert(name, cls, score());
+  $('certImg').src = certURL; $('printImg').src = certURL;
+  $('cForm').style.display = 'none'; $('cView').style.display = '';
+  $('cErr').textContent = '';
+  sfx.tada(); burst(200); bitMood('happy');
+}
+function svgImg(inner, vb) {
+  return new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null);
+    im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}">${inner}</svg>`); });
+}
+function cStar(g, x, y, r, fill, stroke) {
+  g.beginPath(); for (let i = 0; i < 10; i++) { const a = -Math.PI/2 + i*Math.PI/5, q = i % 2 ? r*.46 : r; g.lineTo(x + q*Math.cos(a), y + q*Math.sin(a)); }
+  g.closePath(); g.fillStyle = fill; g.fill(); if (stroke) { g.lineWidth = 5; g.strokeStyle = stroke; g.lineJoin = 'round'; g.stroke(); }
+}
+function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function fitText(g, t, maxW, size, weight = 900) { let s = size; do { g.font = `${weight} ${s}px Inter, sans-serif`; s -= 2; } while (g.measureText(t).width > maxW && s > 20); }
+async function drawCert(name, cls, sc) {
+  try { await Promise.all(['900 40px Inter', '800 40px Inter', '700 40px Inter', 'italic 900 40px Inter'].map(f => document.fonts.load(f, 'ĐƯỢC ẤỮ'))); } catch (e) {}
+  const Wd = 1600, Hd = 1130, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
+  const g = cv.getContext('2d'), INK = '#1D3557';
+  let gr = g.createLinearGradient(0, 0, Wd, Hd); gr.addColorStop(0, '#4F7CFF'); gr.addColorStop(.5, '#B06BFF'); gr.addColorStop(1, '#FF5DA2');
+  g.fillStyle = gr; g.fillRect(0, 0, Wd, Hd);
+  g.fillStyle = 'rgba(255,255,255,.28)'; for (let y = 16, r = 0; y < Hd; y += 40, r++) for (let x = r % 2 ? 36 : 16; x < Wd; x += 40) { g.beginPath(); g.arc(x, y, 3, 0, 7); g.fill(); }
+  rr(g, 44, 44, Wd - 88, Hd - 88, 46); g.fillStyle = '#FFFDF5'; g.fill(); g.lineWidth = 8; g.strokeStyle = INK; g.stroke();
+  g.setLineDash([22, 16]); rr(g, 72, 72, Wd - 144, Hd - 144, 32); g.lineWidth = 5; g.strokeStyle = '#FFC300'; g.stroke(); g.setLineDash([]);
+  [[112, 112, '#FF006E'], [Wd - 112, 112, '#1982C4'], [112, Hd - 112, '#2DA44E'], [Wd - 112, Hd - 112, '#FF7F11']].forEach(([x, y, c]) => cStar(g, x, y, 30, c, INK));
+  g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
+  g.font = '900 104px Inter, sans-serif';
+  g.lineWidth = 22; g.strokeStyle = '#3D1A78'; g.strokeText('GIẤY CHỨNG NHẬN', Wd/2, 228);
+  gr = g.createLinearGradient(0, 140, 0, 228); gr.addColorStop(0, '#FFE066'); gr.addColorStop(1, '#FF9F1C'); g.fillStyle = gr; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 228);
+  rr(g, Wd/2 - 330, 262, 660, 74, 37); g.fillStyle = '#FF006E'; g.fill(); g.lineWidth = 6; g.strokeStyle = INK; g.stroke();
+  g.fillStyle = '#fff'; g.font = '900 40px Inter, sans-serif'; g.fillText('HOÀN THÀNH ÔN TẬP', Wd/2, 313);
+  g.fillStyle = INK; g.font = '700 38px Inter, sans-serif'; g.fillText('Chứng nhận học sinh', Wd/2, 410);
+  fitText(g, name, 860, 96); g.fillStyle = '#FF006E'; g.fillText(name, Wd/2, 520);
+  g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = '#B06BFF'; g.beginPath(); g.moveTo(Wd/2 - 450, 552); g.lineTo(Wd/2 + 450, 552); g.stroke(); g.setLineDash([]);
+  g.fillStyle = INK; g.font = '800 46px Inter, sans-serif'; g.fillText('Lớp: ' + cls, Wd/2, 625);
+  g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành bài ôn tập tổng kết', Wd/2, 700);
+  g.font = '900 46px Inter, sans-serif'; g.fillStyle = '#5A189A'; g.fillText('PHẦN MỀM BẢNG TÍNH – TIN HỌC THCS', Wd/2, 760);
+  const rank = sc >= 20 ? 'XUẤT SẮC TUYỆT ĐỐI' : sc >= 18 ? 'XUẤT SẮC' : 'HOÀN THÀNH TỐT';
+  rr(g, Wd/2 - 360, 800, 720, 96, 48); g.fillStyle = '#FFF3BF'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#FFB703'; g.stroke();
+  cStar(g, Wd/2 - 300, 848, 30, '#FFD60A', INK);
+  g.textAlign = 'left'; g.fillStyle = INK; g.font = '900 44px Inter, sans-serif'; g.fillText(`${sc}/20 sao`, Wd/2 - 252, 864);
+  g.fillStyle = '#E5383B'; fitText(g, rank, 330, 40); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 330, 863); g.textAlign = 'center';
+  const d = new Date();
+  g.fillStyle = INK; g.font = '700 32px Inter, sans-serif'; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 400, 990);
+  g.font = '800 32px Inter, sans-serif'; g.fillText('Giáo viên', 1200, 962);
+  g.font = 'italic 900 46px Inter, sans-serif'; g.fillStyle = '#8338EC'; g.fillText('Cô Thùy Tin', 1200, 1022);
+  const [bot, cup] = await Promise.all([svgImg(robot(), '0 0 200 240'), svgImg(ILL.trophy().replace(/^<svg[^>]*>|<\/svg>$/g, ''), '0 0 300 300')]);
+  if (bot) g.drawImage(bot, 120, 390, 220, 264);
+  if (cup) g.drawImage(cup, 1250, 380, 250, 250);
+  cStar(g, 250, 340, 18, '#FFD60A'); cStar(g, 1450, 690, 16, '#FF006E'); cStar(g, 1340, 350, 14, '#2EC4B6');
+  return cv.toDataURL('image/png');
+}
+$('cMake').onclick = makeCert;
+$('cClose1').onclick = $('cClose2').onclick = closeCert;
+$('cEdit').onclick = () => { $('cForm').style.display = ''; $('cView').style.display = 'none'; $('cName').focus(); };
+$('cSave').onclick = () => { const a = document.createElement('a'); a.href = certURL; a.download = 'ChungNhan_BangTinh_' + tidy($('cName').value).replace(/\s+/g, '_') + '.png'; document.body.appendChild(a); a.click(); a.remove(); };
+$('cPrint').onclick = () => window.print();
+cBox.addEventListener('click', e => { if (e.target === cBox) closeCert(); });
 
 /* =========================================================
    12. BẮT ĐẦU
