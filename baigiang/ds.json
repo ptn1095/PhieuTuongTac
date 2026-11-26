@@ -1,6 +1,6 @@
 [
   { "link": "minecraft3d/", "ten": "Minecraft thế giới 3D", "ic": "⛏️", "mon": "Tin học – MakeCode Minecraft", "mau": "#2DA44E",
-    "mota": "Tìm hiểu 12 nhóm lệnh MakeCode for Minecraft, mỗi nhóm lệnh là 1 bài: 5 nội dung, 10 câu đố, giấy chứng nhận.",
+    "mota": "Tìm hiểu 15 nhóm lệnh MakeCode for Minecraft, mỗi nhóm lệnh là 1 bài: 5 nội dung, 10 câu đố, giấy chứng nhận.",
     "ds": "minecraft3d/ds.js" },
   { "link": "bangtinh/", "ten": "Bảng tính THCS", "ic": "📊", "mon": "Tin học 7 – 8 – 9", "mau": "#2DA44E",
     "mota": "Chuỗi 13 bài giảng zoom về Excel THCS (Tin 7: 6 bài, Tin 8: 3 bài, Tin 9: Bài 9–12 theo SGK), mỗi bài 6 chủ đề, 12 câu đố, giấy chứng nhận.",

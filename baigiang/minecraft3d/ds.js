@@ -3,7 +3,7 @@ const DS = [
  {
   "key": "player",
   "num": 1,
-  "lab": "Bài 1/12",
+  "lab": "Bài 1/15",
   "title": "Nhóm lệnh Player",
   "topics": [
    "Lệnh chat: on chat command",
@@ -17,7 +17,7 @@ const DS = [
  {
   "key": "blocks",
   "num": 2,
-  "lab": "Bài 2/12",
+  "lab": "Bài 2/15",
   "title": "Nhóm lệnh Blocks",
   "topics": [
    "Đặt một khối: place",
@@ -31,7 +31,7 @@ const DS = [
  {
   "key": "mobs",
   "num": 3,
-  "lab": "Bài 3/12",
+  "lab": "Bài 3/15",
   "title": "Nhóm lệnh Mobs",
   "topics": [
    "Gọi sinh vật: spawn",
@@ -45,7 +45,7 @@ const DS = [
  {
   "key": "agent",
   "num": 4,
-  "lab": "Bài 4/12",
+  "lab": "Bài 4/15",
   "title": "Nhóm lệnh Agent",
   "topics": [
    "Gọi và di chuyển Agent",
@@ -59,7 +59,7 @@ const DS = [
  {
   "key": "gameplay",
   "num": 5,
-  "lab": "Bài 5/12",
+  "lab": "Bài 5/15",
   "title": "Nhóm lệnh Gameplay",
   "topics": [
    "Thời tiết: weather",
@@ -73,7 +73,7 @@ const DS = [
  {
   "key": "positions",
   "num": 6,
-  "lab": "Bài 6/12",
+  "lab": "Bài 6/15",
   "title": "Nhóm lệnh Positions",
   "topics": [
    "Ba trục x, y, z",
@@ -87,7 +87,7 @@ const DS = [
  {
   "key": "loops",
   "num": 7,
-  "lab": "Bài 7/12",
+  "lab": "Bài 7/15",
   "title": "Nhóm lệnh Loops",
   "topics": [
    "on start, forever, pause",
@@ -101,7 +101,7 @@ const DS = [
  {
   "key": "logic",
   "num": 8,
-  "lab": "Bài 8/12",
+  "lab": "Bài 8/15",
   "title": "Nhóm lệnh Logic",
   "topics": [
    "Đúng và Sai: true, false",
@@ -115,7 +115,7 @@ const DS = [
  {
   "key": "variables",
   "num": 9,
-  "lab": "Bài 9/12",
+  "lab": "Bài 9/15",
   "title": "Nhóm lệnh Variables",
   "topics": [
    "Biến là gì?",
@@ -129,7 +129,7 @@ const DS = [
  {
   "key": "math",
   "num": 10,
-  "lab": "Bài 10/12",
+  "lab": "Bài 10/15",
   "title": "Nhóm lệnh Math",
   "topics": [
    "Bốn phép tính",
@@ -143,7 +143,7 @@ const DS = [
  {
   "key": "builder",
   "num": 11,
-  "lab": "Bài 11/12",
+  "lab": "Bài 11/15",
   "title": "Nhóm lệnh Builder",
   "topics": [
    "Builder: cây bút 3D",
@@ -157,7 +157,7 @@ const DS = [
  {
   "key": "shapes",
   "num": 12,
-  "lab": "Bài 12/12",
+  "lab": "Bài 12/15",
   "title": "Nhóm lệnh Shapes",
   "topics": [
    "Đường thẳng: line of",
@@ -165,6 +165,48 @@ const DS = [
    "Hình cầu: sphere of",
    "Đặc, rỗng, viền",
    "Kết hợp với vòng lặp"
+  ],
+  "nq": 10
+ },
+ {
+  "key": "functions",
+  "num": 13,
+  "lab": "Bài 13/15",
+  "title": "Nhóm lệnh Functions",
+  "topics": [
+   "Hàm là gì?",
+   "Gọi hàm: call",
+   "Hàm có tham số",
+   "Hàm trả kết quả: return",
+   "Vì sao nên dùng hàm?"
+  ],
+  "nq": 10
+ },
+ {
+  "key": "arrays",
+  "num": 14,
+  "lab": "Bài 14/15",
+  "title": "Nhóm lệnh Arrays",
+  "topics": [
+   "Mảng là gì?",
+   "Đọc mảng",
+   "Thêm và bớt phần tử",
+   "Sửa, tìm, đảo ngược",
+   "Mảng trong Minecraft"
+  ],
+  "nq": 10
+ },
+ {
+  "key": "text",
+  "num": 15,
+  "lab": "Bài 15/15",
+  "title": "Nhóm lệnh Text",
+  "topics": [
+   "Chuỗi chữ và độ dài",
+   "Ghép chữ: join",
+   "Chữ thành số",
+   "Tìm trong chuỗi",
+   "Cắt chữ: substring"
   ],
   "nq": 10
  }

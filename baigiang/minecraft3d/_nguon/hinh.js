@@ -7,7 +7,7 @@ const MR = (cat, s, cls = '') => `<span class="mb rp ${cat} ${cls} ${ML(s)}">${R
 const MH = (cat, s, cls = '') => `<span class="mb hx ${cat} ${cls}">${s}</span>`;       // khối đúng/sai (lục giác)
 const STK = (...b) => `<div class="stk">${b.join('')}</div>`;
 // khối chữ C: sự kiện (hat = true) hoặc vòng lặp/điều kiện
-const MC = (cat, head, body, hat = false) => `<div class="mc ${cat}"><span class="mb ${cat} top ${hat ? 'hat' : ''} ${ML(head)}">${RW(head)}</span><div class="mid"><div class="arm"></div>${STK(...(body || []))}</div><span class="mb ${cat} bot ${hat ? 'cap' : ''}"></span></div>`;
+const MC = (cat, head, body, hat = false) => `<div class="mc ${cat}"><span class="mb ${cat} top ${hat ? 'hat' : ''} ${hat === 'fn' ? 'fnh' : ''} ${ML(head)}">${RW(head)}</span><div class="mid"><div class="arm"></div>${STK(...(body || []))}</div><span class="mb ${cat} bot ${hat ? 'cap' : ''}"></span></div>`;
 const MIF = (cond, a, b) => `<div class="mc lg"><span class="mb lg top">if ${cond} then</span><div class="mid"><div class="arm"></div>${STK(...a)}</div><span class="mb lg mid2">else</span><div class="mid"><div class="arm"></div>${STK(...b)}</div><span class="mb lg bot"></span></div>`;
 const n = v => `<span class="n">${v}</span>`;
 const s = v => `<span class="s">${v}</span>`;
@@ -56,7 +56,7 @@ const PT = (x, y, z, ox = 300, oy = 250, S = 40) => [ox + (x - z)*S*0.866, oy + 
 // khung chat của Minecraft
 const CHAT = (x, y, w, t, fs = 26) => `<rect x="${x}" y="${y}" width="${w}" height="${fs + 26}" rx="6" fill="#1B1B24" opacity=".85"/><text x="${x + 14}" y="${y + fs + 6}" font-size="${fs}" fill="#fff" font-family="Roboto Mono,monospace" font-weight="700">${t}</text>`;
 // một khối lệnh nhỏ trong hình (chữ tiếng Anh, màu gốc)
-const BK = (x, y, cat, t, fs = 20) => { const col = { pl: '#0078D7', bl: '#7ABB55', mo: '#764BCC', ag: '#D83B01', ga: '#8F6D40', po: '#69B090', lo: '#569138', lg: '#459197', va: '#EA2B1F', ma: '#6C6EA0', bu: '#CB48B7', sh: '#EC7505' }[cat], w = t.length*fs*.62 + 26;
+const BK = (x, y, cat, t, fs = 20) => { const col = { pl: '#0078D7', bl: '#7ABB55', mo: '#764BCC', ag: '#D83B01', ga: '#8F6D40', po: '#69B090', lo: '#569138', lg: '#459197', va: '#EA2B1F', ma: '#6C6EA0', bu: '#CB48B7', sh: '#EC7505', fn: '#235789', ar: '#A94400', tx: '#E89005' }[cat], w = t.length*fs*.62 + 26;
   return `<rect x="${x}" y="${y}" width="${w}" height="${fs + 22}" rx="5" fill="${col}"/><text x="${x + 13}" y="${y + fs + 5}" font-size="${fs}" fill="#fff" font-family="Roboto Mono,monospace" font-weight="700">${t}</text>`; };
 const stars = (...p) => p.map(([x, y, s = 14, c]) => star(x, y, s, c || ['#FFD60A', '#FF006E', '#2EC4B6', '#8338EC'][(x + y) % 4])).join('');
 // biểu tượng nhỏ trong ô chọn khối (block picker)

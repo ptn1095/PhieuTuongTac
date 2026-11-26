@@ -71,6 +71,9 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
 .mb .pk::after{content:"▾";font-size:.8em}
 .mb .pk svg{width:36px;height:36px}
 .pl{--b:#0078D7}.bl{--b:#7ABB55}.mo{--b:#764BCC}.ag{--b:#D83B01}.ga{--b:#8F6D40}.po{--b:#69B090}
+.fn{--b:#235789}.ar{--b:#A94400}.tx{--b:#E89005}
+.mb .ar.sd{--b:#8F3A00}.mb .tx.sd{--b:#C57A04}
+.mc>.mb.top.fnh{border-top-left-radius:40px 26px;padding-top:16px}
 .lo{--b:#569138}.lg{--b:#459197}.va{--b:#EA2B1F}.ma{--b:#6C6EA0}.bu{--b:#CB48B7}.sh{--b:#EC7505}
 .mb .po.sd{--b:#59967A}.mb .mo.sd{--b:#6440AD}.mb .lg.sd{--b:#3B7B80}.mb .va.sd{--b:#C02319}.mb .bl.sd{--b:#689F48}
 .stk{display:inline-flex;flex-direction:column;align-items:flex-start}
@@ -214,7 +217,7 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
 
 <div id="start">
   <svg viewBox="0 0 200 240" style="width:min(200px,30vw)" class="pop" id="bitStart"></svg>
-  <div class="st2" style="background:#FF006E;border:4px solid #fff;border-radius:40px;padding:6px 22px">⛏️ MINECRAFT 3D • Bài 2/12</div>
+  <div class="st2" style="background:#FF006E;border:4px solid #fff;border-radius:40px;padding:6px 22px">⛏️ MINECRAFT 3D • Bài 2/15</div>
   <div class="st1">NHÓM LỆNH<br>BLOCKS</div>
   <div class="st2">Khối — 5 nội dung • 10 câu đố • nhận giấy chứng nhận</div>
   <div class="st2" id="hello" style="color:#FFE066"></div>
@@ -263,7 +266,7 @@ const MR = (cat, s, cls = '') => `<span class="mb rp ${cat} ${cls} ${ML(s)}">${R
 const MH = (cat, s, cls = '') => `<span class="mb hx ${cat} ${cls}">${s}</span>`;       // khối đúng/sai (lục giác)
 const STK = (...b) => `<div class="stk">${b.join('')}</div>`;
 // khối chữ C: sự kiện (hat = true) hoặc vòng lặp/điều kiện
-const MC = (cat, head, body, hat = false) => `<div class="mc ${cat}"><span class="mb ${cat} top ${hat ? 'hat' : ''} ${ML(head)}">${RW(head)}</span><div class="mid"><div class="arm"></div>${STK(...(body || []))}</div><span class="mb ${cat} bot ${hat ? 'cap' : ''}"></span></div>`;
+const MC = (cat, head, body, hat = false) => `<div class="mc ${cat}"><span class="mb ${cat} top ${hat ? 'hat' : ''} ${hat === 'fn' ? 'fnh' : ''} ${ML(head)}">${RW(head)}</span><div class="mid"><div class="arm"></div>${STK(...(body || []))}</div><span class="mb ${cat} bot ${hat ? 'cap' : ''}"></span></div>`;
 const MIF = (cond, a, b) => `<div class="mc lg"><span class="mb lg top">if ${cond} then</span><div class="mid"><div class="arm"></div>${STK(...a)}</div><span class="mb lg mid2">else</span><div class="mid"><div class="arm"></div>${STK(...b)}</div><span class="mb lg bot"></span></div>`;
 const n = v => `<span class="n">${v}</span>`;
 const s = v => `<span class="s">${v}</span>`;
@@ -312,7 +315,7 @@ const PT = (x, y, z, ox = 300, oy = 250, S = 40) => [ox + (x - z)*S*0.866, oy + 
 // khung chat của Minecraft
 const CHAT = (x, y, w, t, fs = 26) => `<rect x="${x}" y="${y}" width="${w}" height="${fs + 26}" rx="6" fill="#1B1B24" opacity=".85"/><text x="${x + 14}" y="${y + fs + 6}" font-size="${fs}" fill="#fff" font-family="Roboto Mono,monospace" font-weight="700">${t}</text>`;
 // một khối lệnh nhỏ trong hình (chữ tiếng Anh, màu gốc)
-const BK = (x, y, cat, t, fs = 20) => { const col = { pl: '#0078D7', bl: '#7ABB55', mo: '#764BCC', ag: '#D83B01', ga: '#8F6D40', po: '#69B090', lo: '#569138', lg: '#459197', va: '#EA2B1F', ma: '#6C6EA0', bu: '#CB48B7', sh: '#EC7505' }[cat], w = t.length*fs*.62 + 26;
+const BK = (x, y, cat, t, fs = 20) => { const col = { pl: '#0078D7', bl: '#7ABB55', mo: '#764BCC', ag: '#D83B01', ga: '#8F6D40', po: '#69B090', lo: '#569138', lg: '#459197', va: '#EA2B1F', ma: '#6C6EA0', bu: '#CB48B7', sh: '#EC7505', fn: '#235789', ar: '#A94400', tx: '#E89005' }[cat], w = t.length*fs*.62 + 26;
   return `<rect x="${x}" y="${y}" width="${w}" height="${fs + 22}" rx="5" fill="${col}"/><text x="${x + 13}" y="${y + fs + 5}" font-size="${fs}" fill="#fff" font-family="Roboto Mono,monospace" font-weight="700">${t}</text>`; };
 const stars = (...p) => p.map(([x, y, s = 14, c]) => star(x, y, s, c || ['#FFD60A', '#FF006E', '#2EC4B6', '#8338EC'][(x + y) % 4])).join('');
 // biểu tượng nhỏ trong ô chọn khối (block picker)
@@ -469,7 +472,7 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef', `
   <div class="pat" style="position:absolute;inset:0;border-radius:58px;background-image:radial-gradient(rgba(255,255,255,.3) 3px,transparent 3.5px);background-size:48px 48px"></div>
-  <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">⛏️ MINECRAFT 3D • BÀI 2/12</div>
+  <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">⛏️ MINECRAFT 3D • BÀI 2/15</div>
   <div class="bigtitle">${META.big}</div>
   <div style="position:absolute;left:76px;top:440px;width:1000px;color:#fff;font-weight:800;font-size:40px;line-height:1.35;text-shadow:0 4px 0 rgba(20,20,50,.3)">${TOPICS.length} nội dung • ${TOPICS.reduce((a, t) => a + t.quiz.length, 0)} câu đố vui<br>Bấm ▶ hoặc bấm vào khung để zoom!<br>Đạt từ ${PASS} ⭐ trở lên nhận <span style="color:#FFE066">giấy chứng nhận</span> 🎓</div>
   <svg viewBox="0 0 200 240" style="position:absolute;left:1130px;top:70px;width:330px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
@@ -839,41 +842,72 @@ function cStar(g, x, y, r, fill, stroke) {
 }
 function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 function fitText(g, t, maxW, size, weight = 900) { let s = size; do { g.font = `${weight} ${s}px Inter, sans-serif`; s -= 2; } while (g.measureText(t).width > maxW && s > 20); }
+/* ---- Giấy chứng nhận kiểu khối pixel, màu khối cỏ ---- */
+function pxS(g, x, y, s, rows, pal) { rows.forEach((r, j) => [...r].forEach((ch, i) => { if (pal[ch]) { g.fillStyle = pal[ch]; g.fillRect(x + i*s, y + j*s, s, s); } })); }
+const PX_HERO = ['...GGGgGGGgGG...', '...GgGGGGGGgG...', '...DGgDGGDGgD...', '...DDdDDDDdDD...', '....SSSSSSSS....', '....SEBSSEBS....', '....SSSssSSS....', '....SSMMMMSS....', '....sSSSSSSs....',
+  '..OOOOOOOOOOOO..', '..OOOOOOOOOOOO..', '..OoOOOOOOOOoO..', '..SSOOOOOOOOSS..', '..SSOOOOOOOOSS..', '..ssOOOOOOOOss..', '....oooooooo....', '....PPPppPPP....', '....PPPppPPP....', '....PPPppPPP....', '....PPPppPPP....',
+  '....PPPppPPP....', '....PPPppPPP....', '....KKKKKKKK....', '....KKKKKKKK....'];
+const PX_HERO_PAL = { G: '#6DB43F', g: '#4E8A2F', D: '#8B5A2B', d: '#6B4423', S: '#F2C28B', s: '#D9A066', E: '#FFFFFF', B: '#1D3557', M: '#B5523B', O: '#FF8A3D', o: '#C2410C', P: '#3949AB', p: '#283593', K: '#4B5563' };
+const PX_CUP = ['..kkkkkkkkkk..', 'kkkWYYYYYYykkk', 'kYkWYYYYYYykYk', 'kYkWYYYYYYykYk', 'kkkWYYYYYYykkk', '..kWYYYYYYyk..', '...kYYYYYyk...', '....kYYYyk....', '.....kYyk.....', '.....kYyk.....', '....kkYykk....', '...kYYYYyyk...', '..kkkkkkkkkk..'];
+const PX_CUP_PAL = { k: '#5C3A00', Y: '#FFC300', y: '#E09A00', W: '#FFE45C' };
+const PX_STAR = ['...Y...', '...Y...', 'YYYYYYY', '.YYYYY.', '..YYY..', '.YY.YY.', '.Y...Y.'];
+function pxStar(g, x, y, s, c) { pxS(g, x, y, s, PX_STAR, { Y: c }); }
+// một khối cỏ 8×8 điểm ảnh, ngẫu nhiên có hạt giống
+function grassTile(g, x, y, s, seed) {
+  let r = seed*9301 + 49297; const rnd = () => (r = (r*9301 + 49297) % 233280) / 233280;
+  const GR = ['#6DB43F', '#7ABB55', '#5D9B37', '#4E8A2F', '#86C95A'], DI = ['#8B5A2B', '#9B6B3D', '#7A4E25', '#A9774A', '#6B4423'];
+  const drip = [...Array(8)].map(() => 2 + Math.floor(rnd()*2.2));
+  for (let j = 0; j < 8; j++) for (let i = 0; i < 8; i++) { g.fillStyle = j < drip[i] ? GR[Math.floor(rnd()*GR.length)] : DI[Math.floor(rnd()*DI.length)]; g.fillRect(x + i*s, y + j*s, s, s); }
+}
 async function drawCert(name, cls, sc) {
   try { await Promise.all(['900 40px Inter', '800 40px Inter', '700 40px Inter', 'italic 900 40px Inter'].map(f => document.fonts.load(f, 'ĐƯỢC ẤỮ'))); } catch (e) {}
-  const Wd = 1600, Hd = 1130, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
-  const g = cv.getContext('2d'), INK = '#1D3557';
-  let gr = g.createLinearGradient(0, 0, Wd, Hd); gr.addColorStop(0, '#4F7CFF'); gr.addColorStop(.5, '#B06BFF'); gr.addColorStop(1, '#FF5DA2');
-  g.fillStyle = gr; g.fillRect(0, 0, Wd, Hd);
-  g.fillStyle = 'rgba(255,255,255,.28)'; for (let y = 16, r = 0; y < Hd; y += 40, r++) for (let x = r % 2 ? 36 : 16; x < Wd; x += 40) { g.beginPath(); g.arc(x, y, 3, 0, 7); g.fill(); }
-  rr(g, 44, 44, Wd - 88, Hd - 88, 46); g.fillStyle = '#FFFDF5'; g.fill(); g.lineWidth = 8; g.strokeStyle = INK; g.stroke();
-  g.setLineDash([22, 16]); rr(g, 72, 72, Wd - 144, Hd - 144, 32); g.lineWidth = 5; g.strokeStyle = '#FFC300'; g.stroke(); g.setLineDash([]);
-  [[112, 112, '#FF006E'], [Wd - 112, 112, '#1982C4'], [112, Hd - 112, '#2DA44E'], [Wd - 112, Hd - 112, '#FF7F11']].forEach(([x, y, c]) => cStar(g, x, y, 30, c, INK));
-  g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
-  g.font = '900 104px Inter, sans-serif';
-  g.lineWidth = 22; g.strokeStyle = '#3D1A78'; g.strokeText('GIẤY CHỨNG NHẬN', Wd/2, 228);
-  gr = g.createLinearGradient(0, 140, 0, 228); gr.addColorStop(0, '#FFE066'); gr.addColorStop(1, '#FF9F1C'); g.fillStyle = gr; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 228);
-  rr(g, Wd/2 - 330, 262, 660, 74, 37); g.fillStyle = '#FF006E'; g.fill(); g.lineWidth = 6; g.strokeStyle = INK; g.stroke();
-  g.fillStyle = '#fff'; g.font = '900 40px Inter, sans-serif'; g.fillText('HOÀN THÀNH BÀI HỌC', Wd/2, 313);
+  const Wd = 1600, Hd = 1120, T = 80, P = 10, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
+  const g = cv.getContext('2d'), INK = '#2B1D0E', DG = '#2F5A1A';
+  // nền viền: các khối cỏ pixel
+  for (let ty = 0; ty < Hd/T; ty++) for (let tx = 0; tx < Wd/T; tx++) grassTile(g, tx*T, ty*T, P, tx*31 + ty*17 + 7);
+  g.fillStyle = 'rgba(0,0,0,.18)'; for (let ty = 0; ty < Hd/T; ty++) for (let tx = 0; tx < Wd/T; tx++) { g.fillRect(tx*T, ty*T + T - 4, T, 4); g.fillRect(tx*T + T - 4, ty*T, 4, T); }
+  // tấm giấy bên trong (góc bậc thang kiểu pixel)
+  const X0 = 100, Y0 = 100, X1 = Wd - 100, Y1 = Hd - 100, st = 20;
+  const panel = (o, c) => { g.fillStyle = c; g.fillRect(X0 - o + st, Y0 - o, X1 - X0 + 2*o - 2*st, Y1 - Y0 + 2*o); g.fillRect(X0 - o, Y0 - o + st, X1 - X0 + 2*o, Y1 - Y0 + 2*o - 2*st); };
+  panel(16, INK); panel(8, '#7ABB55'); panel(0, '#FFF8E7');
+  g.fillStyle = 'rgba(122,187,85,.10)'; for (let y = Y0 + 20; y < Y1 - 20; y += 40) for (let x = X0 + 20 + ((y/40) % 2)*20; x < X1 - 20; x += 40) g.fillRect(x, y, 10, 10);
+  g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.lineJoin = 'miter';
+  // tiêu đề chữ khối
+  g.font = '900 100px Inter, sans-serif';
+  g.fillStyle = DG; for (let k = 10; k > 0; k -= 2) g.fillText('GIẤY CHỨNG NHẬN', Wd/2 + k, 236 + k);
+  g.lineWidth = 12; g.strokeStyle = DG; g.strokeText('GIẤY CHỨNG NHẬN', Wd/2, 236);
+  let gr = g.createLinearGradient(0, 160, 0, 236); gr.addColorStop(0, '#B6EB6A'); gr.addColorStop(.55, '#7ABB55'); gr.addColorStop(.56, '#9B6B3D'); gr.addColorStop(1, '#7A4E25');
+  g.fillStyle = gr; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 236);
+  // băng rôn khối đất
+  const bx = Wd/2 - 320, by = 270, bw = 640, bh = 72;
+  g.fillStyle = INK; g.fillRect(bx - 6, by - 6, bw + 12, bh + 12);
+  for (let i = 0; i < bw/12; i++) { g.fillStyle = ['#8B5A2B', '#9B6B3D', '#7A4E25'][(i*7) % 3]; g.fillRect(bx + i*12, by, 12, bh); g.fillStyle = ['#6DB43F', '#7ABB55', '#5D9B37'][(i*5) % 3]; g.fillRect(bx + i*12, by, 12, 12 + ((i*3) % 2)*10); }
+  g.fillStyle = '#fff'; g.font = '900 38px Inter, sans-serif'; g.fillText('HOÀN THÀNH BÀI HỌC', Wd/2, by + 56);
   g.fillStyle = INK; g.font = '700 38px Inter, sans-serif'; g.fillText('Chứng nhận học sinh', Wd/2, 410);
-  fitText(g, name, 860, 96); g.fillStyle = '#FF006E'; g.fillText(name, Wd/2, 520);
-  g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = '#B06BFF'; g.beginPath(); g.moveTo(Wd/2 - 450, 552); g.lineTo(Wd/2 + 450, 552); g.stroke(); g.setLineDash([]);
-  g.fillStyle = INK; g.font = '800 46px Inter, sans-serif'; g.fillText('Lớp: ' + cls, Wd/2, 625);
-  g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành bài học tương tác', Wd/2, 700);
-  g.fillStyle = '#5A189A'; fitText(g, META.cert, 1100, 46); g.fillText(META.cert, Wd/2, 760);
+  fitText(g, name, 820, 94); g.fillStyle = '#C2410C'; g.fillText(name, Wd/2, 516);
+  g.fillStyle = '#7ABB55'; for (let x = Wd/2 - 440; x < Wd/2 + 440; x += 28) g.fillRect(x, 544, 14, 10);
+  g.fillStyle = INK; g.font = '800 46px Inter, sans-serif'; g.fillText('Lớp: ' + cls, Wd/2, 618);
+  g.font = '700 34px Inter, sans-serif'; g.fillText('Đã hoàn thành bài học Minecraft thế giới 3D', Wd/2, 688);
+  g.fillStyle = DG; fitText(g, META.cert, 1060, 46); g.fillText(META.cert, Wd/2, 746);
+  // thanh kinh nghiệm (XP) = số sao
   const TQ = Object.keys(QUIZ).length, rank = sc >= TQ ? 'XUẤT SẮC TUYỆT ĐỐI' : sc >= Math.ceil(TQ*.9) ? 'XUẤT SẮC' : 'HOÀN THÀNH TỐT';
-  rr(g, Wd/2 - 360, 800, 720, 96, 48); g.fillStyle = '#FFF3BF'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#FFB703'; g.stroke();
-  cStar(g, Wd/2 - 300, 848, 30, '#FFD60A', INK);
-  g.textAlign = 'left'; g.fillStyle = INK; g.font = '900 44px Inter, sans-serif'; g.fillText(`${sc}/${Object.keys(QUIZ).length} sao`, Wd/2 - 252, 864);
-  g.fillStyle = '#E5383B'; fitText(g, rank, 330, 40); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 330, 863); g.textAlign = 'center';
+  const sx = Wd/2 - 400, sy = 778, sw = 800, sh = 108;
+  g.fillStyle = INK; g.fillRect(sx - 6, sy - 6, sw + 12, sh + 12); g.fillStyle = '#C6C6C6'; g.fillRect(sx, sy, sw, sh);
+  g.fillStyle = '#E8E8E8'; g.fillRect(sx, sy, sw, 6); g.fillRect(sx, sy, 6, sh); g.fillStyle = '#8B8B8B'; g.fillRect(sx, sy + sh - 6, sw, 6); g.fillRect(sx + sw - 6, sy, 6, sh);
+  pxStar(g, sx + 22, sy + 20, 10, '#FFC300');
+  g.textAlign = 'left'; g.fillStyle = INK; g.font = '900 40px Inter, sans-serif'; g.fillText(`${sc}/${TQ} sao`, sx + 104, sy + 52);
+  const segW = (sw - 140)/TQ; for (let i = 0; i < TQ; i++) { g.fillStyle = INK; g.fillRect(sx + 104 + i*segW, sy + 66, segW - 4, 24); g.fillStyle = i < sc ? '#80E030' : '#5A5A5A'; g.fillRect(sx + 107 + i*segW, sy + 69, segW - 10, 18); }
+  g.textAlign = 'right'; g.fillStyle = '#C92A2A'; fitText(g, rank, 400, 36); g.fillText(rank, sx + sw - 26, sy + 50); g.textAlign = 'center';
   const d = new Date();
-  g.fillStyle = INK; g.font = '700 32px Inter, sans-serif'; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 400, 990);
-  g.font = '800 32px Inter, sans-serif'; g.fillText('Giáo viên', 1200, 962);
-  g.font = 'italic 900 46px Inter, sans-serif'; g.fillStyle = '#8338EC'; g.fillText('Cô Thùy Tin', 1200, 1022);
-  const [bot, cup] = await Promise.all([svgImg(robot(), '0 0 200 240'), svgImg(ILL.trophy().replace(/^<svg[^>]*>|<\/svg>$/g, ''), '0 0 300 300')]);
-  if (bot) g.drawImage(bot, 120, 390, 220, 264);
-  if (cup) g.drawImage(cup, 1250, 380, 250, 250);
-  cStar(g, 250, 340, 18, '#FFD60A'); cStar(g, 1450, 690, 16, '#FF006E'); cStar(g, 1340, 350, 14, '#2EC4B6');
+  g.fillStyle = INK; g.font = '700 32px Inter, sans-serif'; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 420, 975);
+  g.font = '800 32px Inter, sans-serif'; g.fillText('Giáo viên', 1180, 948);
+  g.font = 'italic 900 46px Inter, sans-serif'; g.fillStyle = DG; g.fillText('Cô Thùy Tin', 1180, 1004);
+  // nhân vật khối + cúp pixel + khối cỏ
+  g.fillStyle = 'rgba(0,0,0,.16)'; g.fillRect(166, 668, 200, 16);
+  pxS(g, 178, 400, 11, PX_HERO, PX_HERO_PAL);
+  grassTile(g, 1266, 572, 14, 3); g.fillStyle = INK; g.fillRect(1260, 566, 124, 6); g.fillRect(1260, 566, 6, 124); g.fillRect(1378, 566, 6, 124); g.fillRect(1260, 684, 124, 6);
+  pxS(g, 1210, 360, 16, PX_CUP, PX_CUP_PAL);
+  pxStar(g, 1160, 360, 7, '#FFD60A'); pxStar(g, 1420, 520, 6, '#2EC4B6'); pxStar(g, 340, 370, 6, '#FFD60A'); pxStar(g, 150, 330, 5, '#FF7F11');
   return cv.toDataURL('image/png');
 }
 $('cMake').onclick = makeCert;
