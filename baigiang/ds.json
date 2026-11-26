@@ -1,4 +1,7 @@
 [
+  { "link": "clicklearn-tin9/", "ten": "ClickLearn Tin học 9", "ic": "🖱️", "mon": "Tin học 9", "mau": "#3A8DFF",
+    "mota": "Tin học 9 (Kết nối tri thức): Bài 1, 2, 4, 5, 7. Mỗi bài 5 hoạt động × 4 bước, 10 câu đố, giấy chứng nhận.",
+    "ds": "clicklearn-tin9/ds.js" },
   { "link": "congnghevui4/", "ten": "Công nghệ vui 4", "ic": "🌷", "mon": "Công nghệ 4", "mau": "#2DA44E",
     "mota": "Phần một – Công nghệ và đời sống (Kết nối tri thức): hoa, cây cảnh. 6 bài, mỗi bài 5 hoạt động × 4 bước, 10 câu đố, giấy chứng nhận.",
     "ds": "congnghevui4/ds.js" },
