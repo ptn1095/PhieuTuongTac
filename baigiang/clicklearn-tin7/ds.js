@@ -88,8 +88,8 @@ const DS = [
   "key": "bai7",
   "num": 7,
   "title": "Bài 7. Tính toán tự động trên bảng tính",
-  "theme": "vutru",
-  "tname": "Vũ trụ",
+  "theme": "go",
+  "tname": "Gỗ tre",
   "topics": [
    "Công thức trong bảng tính",
    "Cách nhập công thức",
@@ -102,8 +102,8 @@ const DS = [
   "key": "bai8",
   "num": 8,
   "title": "Bài 8. Công cụ hỗ trợ tính toán",
-  "theme": "daiduong",
-  "tname": "Đại dương",
+  "theme": "nghinle",
+  "tname": "Nghìn lẻ một đêm",
   "topics": [
    "Hàm trong bảng tính",
    "Hàm SUM tính tổng",
@@ -172,8 +172,8 @@ const DS = [
   "key": "bai13",
   "num": 13,
   "title": "Bài 13. Thực hành tổng hợp: Hoàn thiện bài trình chiếu",
-  "theme": "vutru",
-  "tname": "Vũ trụ",
+  "theme": "go",
+  "tname": "Gỗ tre",
   "topics": [
    "Hiệu ứng chuyển trang",
    "Hiệu ứng cho đối tượng",
@@ -200,8 +200,8 @@ const DS = [
   "key": "bai15",
   "num": 15,
   "title": "Bài 15. Thuật toán tìm kiếm nhị phân",
-  "theme": "samac",
-  "tname": "Sa mạc",
+  "theme": "nghinle",
+  "tname": "Nghìn lẻ một đêm",
   "topics": [
    "Điều kiện của tìm kiếm nhị phân",
    "Ý tưởng: so sánh với phần tử giữa",

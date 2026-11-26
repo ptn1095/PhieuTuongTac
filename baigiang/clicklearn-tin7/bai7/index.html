@@ -6,26 +6,30 @@
 <title>Bài 7. Tính toán tự động trên bảng tính – ClickLearn Tin học 7 – Cô Thùy Tin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Exo+2:wght@500;600;700;800&family=Baloo+2:wght@500;600;700;800&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ===== PHONG CÁCH VŨ TRỤ ===== */
-:root{--fh:'Chakra Petch';--fhw:700;--fb:'Exo 2';--fs:35px;--ink:#1B1F4B;--bink:#EAF2FF;--rad:36px;--big:108px;
-  --board:radial-gradient(circle at 18% 14%,rgba(176,107,255,.38),transparent 38%),radial-gradient(circle at 88% 92%,rgba(0,194,209,.32),transparent 42%),radial-gradient(circle,rgba(255,255,255,.85) 0 1.6px,transparent 2.6px) 0 0/96px 96px,radial-gradient(circle,rgba(255,255,255,.5) 0 1px,transparent 2px) 48px 30px/140px 140px,linear-gradient(160deg,#2A2E74,#0E1238);
-  --board-sh:0 0 0 8px #7DF9FF,0 0 0 15px #3A2C8F,0 0 60px 16px rgba(125,249,255,.45),0 30px 0 15px rgba(0,0,0,.35);
-  --board-sh-s:0 0 0 5px #7DF9FF,0 0 0 10px #3A2C8F,0 0 40px 10px rgba(125,249,255,.4),0 14px 0 10px rgba(0,0,0,.35);
-  --edge:#2A1F6B;--dark:#6A5FE0;--panel:#F4F6FF;--soft:#E3E8FF;--ill:#F7F8FF;
-  --plq:linear-gradient(180deg,#B06BFF,#4F7CFF);--plq-edge:#7DF9FF;--plq-ink:#fff;--plq-fx:0 0 14px rgba(125,249,255,.9),0 3px 0 #2A1F6B;--plq-rad:44px;
-  --medal:radial-gradient(circle at 35% 30%,#FFF6B0,#FFD23F 55%,#F08A00);--medal-ink:#2A1F6B;
-  --title-c:#fff;--title-fx:0 0 10px #7DF9FF,0 0 26px #7DF9FF,0 0 50px #B06BFF,0 8px 0 #3A2C8F;--title-fx-s:0 0 8px #7DF9FF,0 0 22px #B06BFF,0 5px 0 #3A2C8F;
-  --ttl-fx:0 0 14px rgba(125,249,255,.75),0 4px 0 #2A1F6B;
-  --btn-top:#7DF9FF;--btn:#3A8DFF;--btn-dark:#1F3A8F;--accent:#FFD23F;--acc-p:#5A3FC7;
-  --hud:linear-gradient(180deg,#3A3F8F,#1B1F4B);--hb:linear-gradient(180deg,#F4F6FF,#B9C2FF);--hud-ink:#EAF2FF;
-  --s0:#2B2F77;--s1:#05071A;--code-bg:#E0E7FF;--code-ink:#3A2C8F;--cpanel:#F4F6FF;--wdeco:rgba(125,249,255,.05)}
-.rk b{color:#5A3FC7}
-.board .edg{position:absolute;pointer-events:none;z-index:4}
-.tw{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px rgba(200,230,255,.9);animation:twinkle 3s ease-in-out infinite}
-.shoot{position:absolute;width:160px;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(-24deg);animation:shoot 7s linear infinite;opacity:0}
-@keyframes shoot{0%{translate:0 0;opacity:0}3%{opacity:1}12%{translate:-55vw 25vw;opacity:0}100%{opacity:0;translate:-55vw 25vw}}
+/* ===== PHONG CÁCH GỖ TRE (từ Tin học 6) ===== */
+:root{--fh:'Baloo 2';--fhw:800;--fb:'Baloo 2';--fs:37px;--ink:#4A2A0F;--bink:#4A2A0F;--rad:30px;--big:116px;
+  --board:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 4px,transparent 4px 74px),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 2px,transparent 2px 23px),linear-gradient(180deg,#E6B873,#CF9750);
+  --board-sh:inset 0 0 0 8px #93592A,inset 0 16px 0 rgba(255,255,255,.2),0 30px 0 rgba(0,0,0,.35);
+  --board-sh-s:inset 0 0 0 5px #93592A,inset 0 8px 0 rgba(255,255,255,.2),0 0 0 9px #7FBF35,0 0 0 12px #2C5C12,0 14px 0 12px rgba(0,0,0,.4);
+  --edge:#5E3515;--dark:#93592A;--panel:#FFF8E4;--soft:#F5E6C4;--ill:#FFFDF3;
+  --plq:repeating-linear-gradient(90deg,rgba(60,30,5,.12) 0 3px,transparent 3px 46px),linear-gradient(180deg,#B97F3D,#93592A);--plq-edge:#5E3515;--plq-ink:#FFF7DF;--plq-fx:0 4px 0 #5E3515;--plq-rad:20px;
+  --medal:radial-gradient(circle at 35% 30%,#FFF27A,#FFCF2F 55%,#D98500);--medal-ink:#4A2A0F;
+  --title-c:#3F8A1C;--title-fx:5px 0 0 #FFF7DF,-5px 0 0 #FFF7DF,0 5px 0 #FFF7DF,0 -5px 0 #FFF7DF,4px 4px 0 #FFF7DF,-4px -4px 0 #FFF7DF,4px -4px 0 #FFF7DF,-4px 4px 0 #FFF7DF,0 14px 0 rgba(94,53,21,.45);
+  --title-fx-s:3px 0 0 #FFF7DF,-3px 0 0 #FFF7DF,0 3px 0 #FFF7DF,0 -3px 0 #FFF7DF,0 8px 0 rgba(94,53,21,.45);
+  --ttl-fx:0 3px 0 rgba(255,247,223,.55);
+  --btn-top:#93D655;--btn:#5CAE2E;--btn-dark:#2D7612;--accent:#2D7612;--acc-p:#2D7612;
+  --hud:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 30px),linear-gradient(180deg,#E6B873,#CF9750);--hb:linear-gradient(180deg,#F0CB8C,#B97F3D);--hud-ink:#4A2A0F;
+  --s0:#2F6E22;--s1:#0F2E12;--code-bg:#E3F3C8;--code-ink:#2D6012;--cpanel:#FFF8E4;--wdeco:rgba(196,236,122,.05)}
+.bb{position:absolute;border-radius:22px;z-index:3;pointer-events:none;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.bb.t,.bb.b{left:-34px;right:-34px;height:44px;background:repeating-linear-gradient(90deg,transparent 0 220px,#2C5C12 220px 228px,#C4EC7A 228px 234px,transparent 234px 330px),linear-gradient(180deg,#C4EC7A,#7FBF35 42%,#3F7F1A)}
+.bb.t{top:-18px}.bb.b{bottom:-18px}
+.bb.l,.bb.r{top:-34px;bottom:-34px;width:44px;background:repeating-linear-gradient(180deg,transparent 0 220px,#2C5C12 220px 228px,#C4EC7A 228px 234px,transparent 234px 330px),linear-gradient(90deg,#C4EC7A,#7FBF35 42%,#3F7F1A)}
+.bb.l{left:-18px}.bb.r{right:-18px}
+.tie{position:absolute;width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,#A8703A,#5E3515);border:5px solid #3E220C;transform:rotate(45deg);z-index:4;pointer-events:none}
+.lfc{position:absolute;opacity:.22;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
+.ffly{position:absolute;width:8px;height:8px;border-radius:50%;background:#FFF27A;box-shadow:0 0 12px 4px rgba(255,236,120,.7);animation:glow 3.2s ease-in-out infinite}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fb),'Baloo 2',system-ui,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
@@ -262,49 +266,42 @@ const mk = (d, html, css) => { const e = document.createElement('div'); e.innerH
 const rnd = (a, b) => a + Math.random()*(b - a);
 const prng = s => () => (s = (s*16807) % 2147483647)/2147483647;   // ngẫu nhiên cố định cho giấy chứng nhận
 const SV = (w, h, inner, vb) => `<svg width="${w}" height="${h}" viewBox="${vb || `0 0 ${w} ${h}`}" style="overflow:visible">${inner}</svg>`;
-/* ===== PHONG CÁCH VŨ TRỤ ===== */
-const planet = (x, y, r, c, c2, ring = '#FFB14E') => `<path d="M${x - r*2.1} ${y} A${r*2.1} ${r*.42} 0 0 1 ${x + r*2.1} ${y}" fill="none" stroke="${O}" stroke-width="${r*.2 + 6}" transform="rotate(-12 ${x} ${y})"/><path d="M${x - r*2.1} ${y} A${r*2.1} ${r*.42} 0 0 1 ${x + r*2.1} ${y}" fill="none" stroke="${ring}" stroke-width="${r*.2}" transform="rotate(-12 ${x} ${y})"/>
-  <circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="${O}" stroke-width="6"/><path d="M${x - r*.95} ${y - r*.25} Q${x} ${y - r*.05} ${x + r*.95} ${y - r*.35} L${x + r*.92} ${y - r*.05} Q${x} ${y + r*.25} ${x - r*.92} ${y + r*.05}Z" fill="${c2}"/><circle cx="${x - r*.4}" cy="${y - r*.45}" r="${r*.18}" fill="#fff" opacity=".55"/>
-  <path d="M${x - r*2.1} ${y} A${r*2.1} ${r*.42} 0 0 0 ${x + r*2.1} ${y}" fill="none" stroke="${O}" stroke-width="${r*.2 + 6}" transform="rotate(-12 ${x} ${y})"/><path d="M${x - r*2.1} ${y} A${r*2.1} ${r*.42} 0 0 0 ${x + r*2.1} ${y}" fill="none" stroke="${ring}" stroke-width="${r*.2}" transform="rotate(-12 ${x} ${y})"/>`;
-const moon = (x, y, r) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#DDE3F0" stroke="${O}" stroke-width="5"/><circle cx="${x - r*.3}" cy="${y - r*.2}" r="${r*.22}" fill="#B8C2D6"/><circle cx="${x + r*.35}" cy="${y + r*.3}" r="${r*.16}" fill="#B8C2D6"/>`;
-const rocket = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})"><path d="M-14 60 Q0 110 14 60Z" fill="#FFD23F"/><path d="M-8 60 Q0 92 8 60Z" fill="#FF7F11"/>
-  <path d="M-30 30 L-48 66 L-20 56Z M30 30 L48 66 L20 56Z" fill="#FF006E" stroke="${O}" stroke-width="5" stroke-linejoin="round"/><path d="M0 -70 Q34 -30 26 58 L-26 58 Q-34 -30 0 -70Z" fill="#F1F3F5" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>
-  <circle cx="0" cy="-4" r="14" fill="#7DF9FF" stroke="${O}" stroke-width="5"/><path d="M-22 -36 Q0 -48 22 -36" stroke="#FF006E" stroke-width="8" fill="none"/></g>`;
+/* ===== PHONG CÁCH GỖ TRE (từ Tin học 6) ===== */
+const LEAF = (a, L, c, d) => `<g transform="rotate(${a})"><path d="M0 0 C${L*.2} ${-L*.25} ${L*.24} ${-L*.72} 0 ${-L} C${-L*.24} ${-L*.72} ${-L*.2} ${-L*.25} 0 0Z" fill="${c}" stroke="${d}" stroke-width="5" stroke-linejoin="round"/><path d="M0 -4 L0 ${-L*.92}" stroke="${d}" stroke-width="4" stroke-linecap="round"/>${[.3, .5, .7].map(k => `<path d="M0 ${-L*k} l${L*.1} ${-L*.1} M0 ${-L*k} l${-L*.1} ${-L*.1}" stroke="${d}" stroke-width="3" stroke-linecap="round" opacity=".6"/>`).join('')}</g>`;
+const LEAVES = [[-74, 120, '#3F9A22'], [74, 120, '#3F9A22'], [-50, 160, '#5DBB34'], [50, 160, '#5DBB34'], [-24, 178, '#4FAE2C'], [24, 178, '#4FAE2C'], [0, 186, '#6CC63C']].map(([a, L, c]) => LEAF(a, L, c, '#2A6F16')).join('');
+const bambooBar = (x, y, w, h) => { const hor = w > h, len = hor ? w : h; let n = ''; for (let p = 150; p < len - 40; p += 170) n += hor ? `<rect x="${x + p}" y="${y + 3}" width="6" height="${h - 6}" fill="#2C5C12"/><rect x="${x + p + 6}" y="${y + 3}" width="4" height="${h - 6}" fill="#C4EC7A"/>` : `<rect x="${x + 3}" y="${y + p}" width="${w - 6}" height="6" fill="#2C5C12"/><rect x="${x + 3}" y="${y + p + 6}" width="${w - 6}" height="4" fill="#C4EC7A"/>`;
+  return `<rect x="${x}" y="${y + 6}" width="${w}" height="${h}" rx="${Math.min(w, h)/2}" fill="#000" opacity=".3"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${Math.min(w, h)/2}" fill="url(#bam${hor ? 'H' : 'V'})" stroke="#2C5C12" stroke-width="3"/>${n}`; };
+const tieS = (x, y) => `<rect x="${x - 26}" y="${y - 26}" width="52" height="52" rx="10" fill="#7A4520" stroke="#3E220C" stroke-width="5" transform="rotate(45 ${x} ${y})"/>`;
 const TH = {
-  key: 'vutru', name: 'Vũ trụ', ic: '🚀',
-  bgs: [['#2B2F77', '#0B0E2A'], ['#3A1C71', '#0D0628'], ['#123A6B', '#050F24'], ['#4B1D5E', '#120623'], ['#1D4E6B', '#06141F']],
-  tbg: ['#2B2F77', '#070A1F'], rbg: ['#4B1D5E', '#0D0628'],
-  road: 'rgba(125,249,255,.55)', dot: ['#FFD23F', '#2A1F6B'], off: ['#3A3F8F', '#1B1F4B'],
-  conf: ['#7DF9FF', '#B06BFF', '#FFD23F', '#FF5DA2', '#4F7CFF', '#FFFFFF'],
-  crown: `${planet(0, -112, 62, '#B06BFF', '#8A4FE0')}${moon(-230, -70, 30)}${star(-150, -150, 16, '#FFD23F')}${star(240, -150, 13, '#7DF9FF')}${star(170, -50, 10, '#fff')}${star(-280, -150, 9, '#fff')}
-    <g style="animation:floaty 3.4s ease-in-out infinite">${rocket(250, -95, .75, 30)}</g>`,
-  edge: `<svg class="edg" style="left:-70px;bottom:-70px" width="190" height="190" viewBox="-95 -95 190 190">${planet(0, 0, 42, '#2EC4B6', '#1C9C90', '#FFD23F')}</svg>
-    <svg class="edg" style="right:-46px;top:150px" width="90" height="90" viewBox="-45 -45 90 90">${moon(0, 0, 32)}</svg>`,
+  key: 'go', name: 'Gỗ tre', ic: '🌿',
+  bgs: [['#2F6E22', '#0F2E12'], ['#1F6046', '#0B2B1C'], ['#356B1C', '#11320D'], ['#1C5A50', '#0A2A24'], ['#4E5A18', '#1E2A0C']],
+  tbg: ['#2F6E22', '#0F2E12'], rbg: ['#4E5A18', '#1E2A0C'],
+  road: 'rgba(255,247,223,.5)', dot: ['#FFCF2F', '#5E3515'], off: ['#8A5A2B', '#5E3515'],
+  conf: ['#FFCF2F', '#8CC63F', '#3FC7F2', '#E8890C', '#E5392C', '#FFF7DF'],
+  crown: `<g class="sw">${LEAVES}</g>`,
+  edge: `<i class="bb t"></i><i class="bb b"></i><i class="bb l"></i><i class="bb r"></i>` + ['left:-25px;top:-25px', 'right:-25px;top:-25px', 'left:-25px;bottom:-25px', 'right:-25px;bottom:-25px'].map(p => `<i class="tie" style="${p}"></i>`).join(''),
   deco(d) {
-    for (let i = 0; i < 46; i++) mk(d, '', `left:${rnd(0, 99)}%;top:${rnd(0, 96)}%`).className = 'tw', d.lastChild.style.animationDelay = -rnd(0, 3) + 's', d.lastChild.style.scale = rnd(.5, 1.4);
-    for (let i = 0; i < 2; i++) { const s = mk(d, '', `left:${rnd(60, 100)}%;top:${rnd(0, 30)}%`); s.className = 'shoot'; s.style.animationDelay = i*3.5 + 's'; }
-    mk(d, SV(240, 240, planet(120, 120, 56, '#FF5DA2', '#E0457B', '#7DF9FF')), 'right:-60px;bottom:40px;opacity:.5;animation:floaty 6s ease-in-out infinite');
-    mk(d, SV(160, 160, moon(80, 80, 50)), 'left:-30px;top:30px;opacity:.45;animation:floaty 7s ease-in-out infinite');
+    [['left:-60px;top:-40px', 30], ['right:-70px;top:-40px', -25], ['left:-80px;bottom:-60px', 160], ['right:-60px;bottom:-50px', 200]].forEach(([p, r], i) => {
+      const e = mk(d, `<svg width="420" height="230" viewBox="-310 -200 620 210">${LEAVES}</svg>`, p + `;transform:rotate(${r}deg)`); e.className = 'lfc'; e.style.animationDelay = -i*1.3 + 's'; });
+    for (let i = 0; i < 16; i++) { const f = mk(d, '', `left:${rnd(0, 96)}%;top:${rnd(0, 85)}%`); f.className = 'ffly'; f.style.animationDelay = -rnd(0, 3) + 's'; f.style.animationDuration = rnd(2.6, 5) + 's'; }
   },
-  acc: `<circle cx="100" cy="92" r="84" fill="#BDEBFF" fill-opacity=".2" stroke="#E6F7FF" stroke-width="6"/><path d="M42 62 Q58 26 98 18" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" opacity=".85"/>
-    <rect x="44" y="160" width="112" height="16" rx="8" fill="#E9ECEF" stroke="${O}" stroke-width="5"/>`,
+  acc: `<g transform="translate(100 12)">${LEAF(-30, 40, '#5DBB34', '#2A6F16')}${LEAF(30, 40, '#4FAE2C', '#2A6F16')}</g>`,
   cert: {
-    fh: 'Chakra Petch', tw: 700, fb: 'Exo 2', fn: 'Chakra Petch', nw: 700,
-    ink: '#1B1F4B', name: '#3A2C8F', nstroke: '#fff', accent: '#6A3FC7', line: '#6A5FE0', pill: 'rgba(106,95,224,.12)', rank: '#D6336C', teacher: '#3A2C8F',
-    plq: ['#B06BFF', '#4F7CFF', '#7DF9FF'], prad: 59, tink: '#fff', tsh: '#2A1F6B', tglow: '#7DF9FF', rib: ['#00C2D1', '#1982C4', '#0B4F7A'],
+    fh: 'Baloo 2', tw: 800, fb: 'Baloo 2', fn: 'Baloo 2', nw: 800,
+    ink: '#4A2A0F', name: '#2D7612', nstroke: '#FFF7DF', accent: '#9C3F00', line: '#93592A', pill: 'rgba(90,50,15,.18)', rank: '#C2190E', teacher: '#2D7612',
+    plq: ['#B97F3D', '#93592A', '#5E3515'], prad: 22, tink: '#FFF7DF', tsh: '#5E3515', rib: ['#93D655', '#4C9B22', '#2D7612'],
     bg(W, H) {
-      const r = prng(7); let st = '';
-      for (let i = 0; i < 260; i++) { const x = r()*W, y = r()*H, s = r(); st += `<circle cx="${x}" cy="${y}" r="${.8 + s*2.2}" fill="#fff" opacity="${.35 + s*.6}"/>`; }
-      return `<defs><radialGradient id="sg" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#2B2F77"/><stop offset="1" stop-color="#05071A"/></radialGradient>
-        <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E8FF"/></linearGradient>
-        <filter id="bl"><feGaussianBlur stdDeviation="40"/></filter></defs>
-        <rect width="${W}" height="${H}" fill="url(#sg)"/>
-        <circle cx="260" cy="200" r="220" fill="#B06BFF" opacity=".45" filter="url(#bl)"/><circle cx="1380" cy="930" r="240" fill="#00C2D1" opacity=".35" filter="url(#bl)"/>${st}
-        <rect x="88" y="102" width="${W - 176}" height="${H - 194}" rx="42" fill="none" stroke="#B06BFF" stroke-width="6" opacity=".9"/>
-        <rect x="100" y="114" width="${W - 200}" height="${H - 218}" rx="34" fill="url(#pg)" stroke="#7DF9FF" stroke-width="10"/>
-        <rect x="126" y="140" width="${W - 252}" height="${H - 270}" rx="24" fill="none" stroke="#6A5FE0" stroke-width="4" stroke-dasharray="14 12"/>
-        ${planet(70, 1060, 70, '#2EC4B6', '#1C9C90', '#FFD23F')}${planet(1520, 120, 48, '#FF5DA2', '#E0457B', '#7DF9FF')}${moon(80, 90, 40)}
-        ${rocket(1540, 1000, .9, -20)}${star(1450, 260, 18, '#FFD23F')}${star(150, 600, 16, '#7DF9FF')}${star(1500, 700, 14, '#fff')}`;
+      const lv = (x, y, r) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(.9)" opacity=".55">${LEAVES}</g>`;
+      return `<defs><radialGradient id="fg" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#2F6E22"/><stop offset="1" stop-color="#0F2E12"/></radialGradient>
+        <linearGradient id="wd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6B873"/><stop offset="1" stop-color="#CF9750"/></linearGradient>
+        <linearGradient id="bamH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C4EC7A"/><stop offset=".42" stop-color="#7FBF35"/><stop offset="1" stop-color="#3F7F1A"/></linearGradient>
+        <linearGradient id="bamV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C4EC7A"/><stop offset=".42" stop-color="#7FBF35"/><stop offset="1" stop-color="#3F7F1A"/></linearGradient></defs>
+        <rect width="${W}" height="${H}" fill="url(#fg)"/>${lv(0, 0, 135)}${lv(W, 0, -135)}${lv(0, H, 45)}${lv(W, H, -45)}
+        <rect x="96" y="110" width="${W - 192}" height="${H - 210}" rx="30" fill="url(#wd)"/>
+        ${[...Array(30)].map((_, i) => `<rect x="${110 + i*46}" y="110" width="3" height="${H - 210}" fill="rgba(110,60,15,.10)"/>`).join('')}
+        <rect x="120" y="134" width="${W - 240}" height="${H - 258}" rx="20" fill="none" stroke="#93592A" stroke-width="6"/>
+        ${bambooBar(66, 88, W - 132, 46)}${bambooBar(66, H - 124, W - 132, 46)}${bambooBar(74, 80, 46, H - 196)}${bambooBar(W - 120, 80, 46, H - 196)}
+        ${tieS(97, 111)}${tieS(W - 97, 111)}${tieS(97, H - 101)}${tieS(W - 97, H - 101)}<g transform="translate(${W/2} 116) scale(.95)">${LEAVES}</g>`;
     },
   },
 };
@@ -555,9 +552,9 @@ const card = (x, y, w, h, c, t, fs = 22, tc = '#fff') => `<rect x="${x + 6}" y="
 
 
 /* ===== BÀI 7: TÍNH TOÁN TỰ ĐỘNG TRÊN BẢNG TÍNH ===== */
-const META = { key: 'bai7', num: 7, theme: 'vutru', title: 'Bài 7. Tính toán tự động trên bảng tính', big: 'Tính toán tự động<br>trên bảng tính',
+const META = { key: 'bai7', num: 7, theme: 'go', title: 'Bài 7. Tính toán tự động trên bảng tính', big: 'Tính toán tự động<br>trên bảng tính',
   st2: 'Chủ đề 4 • 5 phần kiến thức cần nhớ • 10 câu đố • giấy chứng nhận',
-  hello: 'Cùng phi thuyền bảng tính tính toán siêu nhanh nào!',
+  hello: 'Cùng để bảng tính tính toán siêu nhanh nào!',
   cert: 'Tin học 7 – Bài 7. Tính toán tự động trên bảng tính', file: 'Tin7_Bai7', pass: 8 };
 
 const Y = '#FFE38A', OR = '#FFD8A8';
@@ -595,7 +592,7 @@ const TOPICS = [
     quiz: [
       { q: 'Kết thúc việc nhập công thức, em nhấn phím:', o: ['Delete', 'Enter', 'Shift', 'Esc'], a: 1, why: 'Nhấn Enter để kết thúc nhập công thức.' },
       { q: 'Vì sao nên nháy chuột vào ô khi nhập công thức?', o: ['Để chữ đẹp hơn', 'Để ô đổi màu', 'Tránh gõ nhầm địa chỉ ô', 'Để in nhanh'], a: 2, why: 'Nháy chuột vào ô giúp đưa đúng địa chỉ vào công thức.' } ] },
-  { id: 't3', name: 'Sao chép công thức', tip: 'Kéo nút điền như kéo chiếc đuôi sao chổi!',
+  { id: 't3', name: 'Sao chép công thức', tip: 'Kéo nút điền một cái là cả cột có công thức!',
     html: KT([
       'Có thể <b>sao chép công thức</b> cho các ô khác cần tính giống nhau.',
       'Cách 1: chọn ô, <b>Ctrl + C</b>, chọn ô đích, <b>Ctrl + V</b>.',

@@ -4,8 +4,8 @@ const DS = [
   "key": "bai1",
   "num": 1,
   "title": "Bài 1. Lược sử công cụ tính toán",
-  "theme": "lauda",
-  "tname": "Lâu đài châu Âu",
+  "theme": "go",
+  "tname": "Gỗ tre",
   "topics": [
    "Người xưa tính toán thế nào?",
    "Bàn tính và máy cơ học",
@@ -46,8 +46,8 @@ const DS = [
   "key": "bai4",
   "num": 4,
   "title": "Bài 4. Đạo đức và văn hoá trong sử dụng công nghệ kĩ thuật số",
-  "theme": "chibi",
-  "tname": "Thú cưng chibi",
+  "theme": "nghinle",
+  "tname": "Nghìn lẻ một đêm",
   "topics": [
    "Chuyện gì đang xảy ra?",
    "Hành vi vi phạm",
@@ -102,8 +102,8 @@ const DS = [
   "key": "bai8a",
   "num": "8a",
   "title": "Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản",
-  "theme": "daiduong",
-  "tname": "Đại dương",
+  "theme": "go",
+  "tname": "Gỗ tre",
   "topics": [
    "Văn bản dễ đọc hơn",
    "Danh sách liệt kê",
@@ -172,8 +172,8 @@ const DS = [
   "key": "bai13",
   "num": 13,
   "title": "Bài 13. Biểu diễn dữ liệu",
-  "theme": "vutru",
-  "tname": "Vũ trụ",
+  "theme": "nghinle",
+  "tname": "Nghìn lẻ một đêm",
   "topics": [
    "Chiếc hộp đựng điểm",
    "Biến và hằng",

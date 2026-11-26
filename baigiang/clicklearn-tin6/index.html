@@ -167,10 +167,10 @@ const LOOK = {
   bai16: { en: 'Cấu trúc điều khiển', ic: '🔀', cd: 6 },
   bai17: { en: 'Chương trình máy tính', ic: '💻', cd: 6 },
 };
-const THN = { rung: ['🌿', 'Tre gỗ rừng', '#7FBF35'], vutru: ['🚀', 'Vũ trụ', '#4A5680'], chibi: ['🐱', 'Thú chibi', '#FF9EC4'], daiduong: ['🌊', 'Đại dương', '#14A9A0'],
-  samac: ['🏜️', 'Sa mạc', '#D2693C'], laudai: ['🏰', 'Lâu đài', '#7B2CBF'], tuyet: ['❄️', 'Tuyết mùa đông', '#86BFE0'] };
+const THN = { go: ['🌿', 'Gỗ tre', '#7FBF35'], vutru: ['🚀', 'Vũ trụ', '#4A5680'], chibi: ['🐱', 'Thú cưng chibi', '#FF9EC4'], daiduong: ['🐠', 'Đại dương', '#14A9A0'],
+  samac: ['🌵', 'Sa mạc', '#D2693C'], lauda: ['🏰', 'Lâu đài châu Âu', '#7B2CBF'], tuyet: ['⛄', 'Tuyết mùa đông', '#86BFE0'], nghinle: ['🌙', 'Nghìn lẻ một đêm', '#8B2C5C'] };
 Object.values(LOOK).forEach(L => { const c = CD[L.cd - 1]; L.c = [c, c]; L.blk = 'Chủ đề ' + L.cd; });
-DS.forEach(d => { LOOK[d.key].th = THN[d.theme] || THN.rung; });
+DS.forEach(d => { LOOK[d.key].th = THN[d.theme] || THN.go; });
 const ACTN = ['Khởi động', 'Khám phá', 'Luyện tập', 'Vận dụng', 'Củng cố'], ACTC = ['#B4520A', '#145A8C', '#2D6012', '#155E57', '#9C5A00'];
 const PASS = 8, NQ = 10, $ = id => document.getElementById(id), N = DS.length;
 const tidy = v => v.replace(/\s+/g, ' ').trim();

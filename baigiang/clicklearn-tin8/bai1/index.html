@@ -6,30 +6,30 @@
 <title>Bài 1. Lược sử công cụ tính toán – ClickLearn Tin học 8 – Cô Thùy Tin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Grenze+Gotisch:wght@600;700;800&family=Baloo+2:wght@500;600;700;800&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ===== PHONG CÁCH LÂU ĐÀI CHÂU ÂU ===== */
-:root{--fh:'Playfair Display';--fhw:900;--fb:'Baloo 2';--fs:37px;--ink:#3B1F0E;--bink:#3B1F0E;--rad:18px;--big:104px;
-  --board:radial-gradient(ellipse at center,#FFF8E4 0%,#F5E2B5 70%,#E5C688 100%);
-  --board-sh:inset 0 0 0 6px #D4A017,inset 0 0 0 13px #6B2D8A,inset 0 0 0 17px #D4A017,0 0 0 7px #4A1D63,0 0 0 11px #D4A017,0 30px 0 11px rgba(0,0,0,.35);
-  --board-sh-s:inset 0 0 0 4px #D4A017,inset 0 0 0 9px #6B2D8A,inset 0 0 0 12px #D4A017,0 0 0 5px #4A1D63,0 14px 0 5px rgba(0,0,0,.35);
-  --edge:#4A1D63;--dark:#8E5AB8;--panel:#FFFBF0;--soft:#F1E3FA;--ill:#fff;
-  --plq:linear-gradient(180deg,#C0392B,#8E1B2A);--plq-edge:#D4A017;--plq-ink:#FFE7A0;--plq-fx:0 3px 0 #5A0F1A;--plq-rad:8px;
-  --medal:radial-gradient(circle at 35% 30%,#FFF3B0,#F5C542 50%,#B8860B);--medal-ink:#4A1D63;
-  --title-c:#5B1F7A;--title-fx:3px 0 0 #FFE7A0,-3px 0 0 #FFE7A0,0 3px 0 #FFE7A0,0 -3px 0 #FFE7A0,3px 3px 0 #FFE7A0,-3px -3px 0 #FFE7A0,3px -3px 0 #FFE7A0,-3px 3px 0 #FFE7A0,0 7px 0 #D4A017,0 10px 0 #B8860B,0 18px 14px rgba(74,29,99,.35);
-  --title-fx-s:2px 0 0 #FFE7A0,-2px 0 0 #FFE7A0,0 2px 0 #FFE7A0,0 -2px 0 #FFE7A0,0 5px 0 #D4A017,0 7px 0 #B8860B;
-  --ttl-fx:0 3px 0 rgba(255,231,160,.9);
-  --btn-top:#C792EA;--btn:#7B3FA8;--btn-dark:#4A1D63;--accent:#8E1B2A;--acc-p:#6B2D8A;
-  --hud:linear-gradient(180deg,#FFF8E4,#E5C688);--hb:linear-gradient(180deg,#FFFBF0,#F5E2B5);--hud-ink:#3B1F0E;
-  --s0:#5B3A9E;--s1:#140A2A;--code-bg:#F1E3FA;--code-ink:#5B1F7A;--cpanel:#FFFBF0;--wdeco:rgba(245,197,66,.05)}
-.plq::before,.plq::after,.sboard .pq::before,.sboard .pq::after{content:"";position:absolute;top:18%;width:62px;height:100%;background:#8E1B2A;border:6px solid #D4A017;z-index:-1}
-.plq::before,.sboard .pq::before{left:-56px;clip-path:polygon(0 0,100% 0,100% 100%,0 100%,22px 50%)}
-.plq::after,.sboard .pq::after{right:-56px;clip-path:polygon(0 0,100% 0,calc(100% - 22px) 50%,100% 100%,0 100%)}
-.sboard .pq::before,.sboard .pq::after{width:32px;border-width:3px}.sboard .pq::before{left:-28px}.sboard .pq::after{right:-28px}
-.board .edg{position:absolute;pointer-events:none;z-index:4}
-.spk{position:absolute;animation:twinkle 2.6s ease-in-out infinite}
-.flag{transform-origin:0 50%;animation:wave 1.6s ease-in-out infinite}
-@keyframes wave{0%,100%{transform:skewY(-6deg) scaleX(1)}50%{transform:skewY(6deg) scaleX(.9)}}
+/* ===== PHONG CÁCH GỖ TRE (từ Tin học 6) ===== */
+:root{--fh:'Baloo 2';--fhw:800;--fb:'Baloo 2';--fs:37px;--ink:#4A2A0F;--bink:#4A2A0F;--rad:30px;--big:116px;
+  --board:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 4px,transparent 4px 74px),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 2px,transparent 2px 23px),linear-gradient(180deg,#E6B873,#CF9750);
+  --board-sh:inset 0 0 0 8px #93592A,inset 0 16px 0 rgba(255,255,255,.2),0 30px 0 rgba(0,0,0,.35);
+  --board-sh-s:inset 0 0 0 5px #93592A,inset 0 8px 0 rgba(255,255,255,.2),0 0 0 9px #7FBF35,0 0 0 12px #2C5C12,0 14px 0 12px rgba(0,0,0,.4);
+  --edge:#5E3515;--dark:#93592A;--panel:#FFF8E4;--soft:#F5E6C4;--ill:#FFFDF3;
+  --plq:repeating-linear-gradient(90deg,rgba(60,30,5,.12) 0 3px,transparent 3px 46px),linear-gradient(180deg,#B97F3D,#93592A);--plq-edge:#5E3515;--plq-ink:#FFF7DF;--plq-fx:0 4px 0 #5E3515;--plq-rad:20px;
+  --medal:radial-gradient(circle at 35% 30%,#FFF27A,#FFCF2F 55%,#D98500);--medal-ink:#4A2A0F;
+  --title-c:#3F8A1C;--title-fx:5px 0 0 #FFF7DF,-5px 0 0 #FFF7DF,0 5px 0 #FFF7DF,0 -5px 0 #FFF7DF,4px 4px 0 #FFF7DF,-4px -4px 0 #FFF7DF,4px -4px 0 #FFF7DF,-4px 4px 0 #FFF7DF,0 14px 0 rgba(94,53,21,.45);
+  --title-fx-s:3px 0 0 #FFF7DF,-3px 0 0 #FFF7DF,0 3px 0 #FFF7DF,0 -3px 0 #FFF7DF,0 8px 0 rgba(94,53,21,.45);
+  --ttl-fx:0 3px 0 rgba(255,247,223,.55);
+  --btn-top:#93D655;--btn:#5CAE2E;--btn-dark:#2D7612;--accent:#2D7612;--acc-p:#2D7612;
+  --hud:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 30px),linear-gradient(180deg,#E6B873,#CF9750);--hb:linear-gradient(180deg,#F0CB8C,#B97F3D);--hud-ink:#4A2A0F;
+  --s0:#2F6E22;--s1:#0F2E12;--code-bg:#E3F3C8;--code-ink:#2D6012;--cpanel:#FFF8E4;--wdeco:rgba(196,236,122,.05)}
+.bb{position:absolute;border-radius:22px;z-index:3;pointer-events:none;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.bb.t,.bb.b{left:-34px;right:-34px;height:44px;background:repeating-linear-gradient(90deg,transparent 0 220px,#2C5C12 220px 228px,#C4EC7A 228px 234px,transparent 234px 330px),linear-gradient(180deg,#C4EC7A,#7FBF35 42%,#3F7F1A)}
+.bb.t{top:-18px}.bb.b{bottom:-18px}
+.bb.l,.bb.r{top:-34px;bottom:-34px;width:44px;background:repeating-linear-gradient(180deg,transparent 0 220px,#2C5C12 220px 228px,#C4EC7A 228px 234px,transparent 234px 330px),linear-gradient(90deg,#C4EC7A,#7FBF35 42%,#3F7F1A)}
+.bb.l{left:-18px}.bb.r{right:-18px}
+.tie{position:absolute;width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,#A8703A,#5E3515);border:5px solid #3E220C;transform:rotate(45deg);z-index:4;pointer-events:none}
+.lfc{position:absolute;opacity:.22;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
+.ffly{position:absolute;width:8px;height:8px;border-radius:50%;background:#FFF27A;box-shadow:0 0 12px 4px rgba(255,236,120,.7);animation:glow 3.2s ease-in-out infinite}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fb),'Baloo 2',system-ui,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
@@ -260,50 +260,42 @@ const mk = (d, html, css) => { const e = document.createElement('div'); e.innerH
 const rnd = (a, b) => a + Math.random()*(b - a);
 const prng = s => () => (s = (s*16807) % 2147483647)/2147483647;   // ngẫu nhiên cố định cho giấy chứng nhận
 const SV = (w, h, inner, vb) => `<svg width="${w}" height="${h}" viewBox="${vb || `0 0 ${w} ${h}`}" style="overflow:visible">${inner}</svg>`;
-/* ===== PHONG CÁCH LÂU ĐÀI CHÂU ÂU ===== */
-const ctower = (x, y, w, h, roof, flag) => `<rect x="${x - w/2}" y="${y - h}" width="${w}" height="${h}" fill="#E9DCC9" stroke="${O}" stroke-width="6"/>
-  ${[...Array(Math.max(2, Math.round(w/26)))].map((_, i, a) => `<rect x="${x - w/2 + i*w/a.length + 3}" y="${y - h - 16}" width="${w/a.length - 6}" height="18" fill="#E9DCC9" stroke="${O}" stroke-width="5"/>`).join('')}
-  <path d="M${x - w/2 - 8} ${y - h - 14} L${x} ${y - h - w*1.15} L${x + w/2 + 8} ${y - h - 14}Z" fill="${roof}" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>
-  <line x1="${x}" y1="${y - h - w*1.15}" x2="${x}" y2="${y - h - w*1.15 - 40}" stroke="${O}" stroke-width="5"/><path class="flag" d="M${x} ${y - h - w*1.15 - 40} l34 9 l-34 9Z" fill="${flag}" stroke="${O}" stroke-width="4" style="transform-origin:${x}px ${y - h - w*1.15 - 31}px"/>
-  <path d="M${x - w*.16} ${y - h*.42} V${y - h*.62} Q${x} ${y - h*.78} ${x + w*.16} ${y - h*.62} V${y - h*.42}Z" fill="#4A1D63" stroke="${O}" stroke-width="4"/>`;
-const castle = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})"><rect x="-150" y="-80" width="300" height="80" fill="#D8C8AE" stroke="${O}" stroke-width="6"/>${[...Array(9)].map((_, i) => `<rect x="${-148 + i*34}" y="-96" width="22" height="18" fill="#D8C8AE" stroke="${O}" stroke-width="5"/>`).join('')}
-  <path d="M-30 0 V-46 Q0 -76 30 -46 V0Z" fill="#8D5524" stroke="${O}" stroke-width="6"/>${ctower(-150, 0, 70, 150, '#6B2D8A', '#C0392B')}${ctower(150, 0, 70, 150, '#6B2D8A', '#F5C542')}${ctower(0, -70, 84, 120, '#8E1B2A', '#F5C542')}</g>`;
-const crownI = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-50 20 L-50 -24 L-26 -6 L0 -36 L26 -6 L50 -24 L50 20Z" fill="#F5C542" stroke="${O}" stroke-width="6" stroke-linejoin="round"/><rect x="-54" y="16" width="108" height="16" rx="6" fill="#D4A017" stroke="${O}" stroke-width="5"/><circle cx="0" cy="4" r="8" fill="#C0392B" stroke="${O}" stroke-width="3"/><circle cx="-30" cy="8" r="6" fill="#1982C4" stroke="${O}" stroke-width="3"/><circle cx="30" cy="8" r="6" fill="#2DA44E" stroke="${O}" stroke-width="3"/></g>`;
-const gem = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})"><circle r="30" fill="#F5C542" stroke="${O}" stroke-width="5"/><path d="M0 -18 L16 0 L0 18 L-16 0Z" fill="#C0392B" stroke="${O}" stroke-width="4"/><circle r="38" fill="none" stroke="#D4A017" stroke-width="4" stroke-dasharray="4 7"/></g>`;
+/* ===== PHONG CÁCH GỖ TRE (từ Tin học 6) ===== */
+const LEAF = (a, L, c, d) => `<g transform="rotate(${a})"><path d="M0 0 C${L*.2} ${-L*.25} ${L*.24} ${-L*.72} 0 ${-L} C${-L*.24} ${-L*.72} ${-L*.2} ${-L*.25} 0 0Z" fill="${c}" stroke="${d}" stroke-width="5" stroke-linejoin="round"/><path d="M0 -4 L0 ${-L*.92}" stroke="${d}" stroke-width="4" stroke-linecap="round"/>${[.3, .5, .7].map(k => `<path d="M0 ${-L*k} l${L*.1} ${-L*.1} M0 ${-L*k} l${-L*.1} ${-L*.1}" stroke="${d}" stroke-width="3" stroke-linecap="round" opacity=".6"/>`).join('')}</g>`;
+const LEAVES = [[-74, 120, '#3F9A22'], [74, 120, '#3F9A22'], [-50, 160, '#5DBB34'], [50, 160, '#5DBB34'], [-24, 178, '#4FAE2C'], [24, 178, '#4FAE2C'], [0, 186, '#6CC63C']].map(([a, L, c]) => LEAF(a, L, c, '#2A6F16')).join('');
+const bambooBar = (x, y, w, h) => { const hor = w > h, len = hor ? w : h; let n = ''; for (let p = 150; p < len - 40; p += 170) n += hor ? `<rect x="${x + p}" y="${y + 3}" width="6" height="${h - 6}" fill="#2C5C12"/><rect x="${x + p + 6}" y="${y + 3}" width="4" height="${h - 6}" fill="#C4EC7A"/>` : `<rect x="${x + 3}" y="${y + p}" width="${w - 6}" height="6" fill="#2C5C12"/><rect x="${x + 3}" y="${y + p + 6}" width="${w - 6}" height="4" fill="#C4EC7A"/>`;
+  return `<rect x="${x}" y="${y + 6}" width="${w}" height="${h}" rx="${Math.min(w, h)/2}" fill="#000" opacity=".3"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${Math.min(w, h)/2}" fill="url(#bam${hor ? 'H' : 'V'})" stroke="#2C5C12" stroke-width="3"/>${n}`; };
+const tieS = (x, y) => `<rect x="${x - 26}" y="${y - 26}" width="52" height="52" rx="10" fill="#7A4520" stroke="#3E220C" stroke-width="5" transform="rotate(45 ${x} ${y})"/>`;
 const TH = {
-  key: 'lauda', name: 'Lâu đài châu Âu', ic: '🏰',
-  bgs: [['#4B2C82', '#1A0F33'], ['#2C3E82', '#0E1433'], ['#7A2348', '#2A0A18'], ['#2F5D50', '#0E211C'], ['#6B4A1D', '#24170A']],
-  tbg: ['#5B3A9E', '#140A2A'], rbg: ['#7A2348', '#2A0A18'],
-  road: 'rgba(245,197,66,.6)', dot: ['#F5C542', '#4A1D63'], off: ['#B9A27A', '#6B4A1D'],
-  conf: ['#F5C542', '#C0392B', '#7B3FA8', '#FFFBF0', '#1982C4', '#2DA44E'],
-  crown: `${castle(0, -40, .78)}${star(-280, -120, 14, '#F5C542')}${star(285, -140, 12, '#F5C542')}${star(-230, -40, 9, '#fff')}`,
-  edge: ['left:-38px;top:-38px', 'right:-38px;top:-38px', 'left:-38px;bottom:-38px', 'right:-38px;bottom:-38px'].map(p => `<svg class="edg" style="${p}" width="76" height="76" viewBox="-38 -38 76 76">${gem(0, 0, .9)}</svg>`).join(''),
+  key: 'go', name: 'Gỗ tre', ic: '🌿',
+  bgs: [['#2F6E22', '#0F2E12'], ['#1F6046', '#0B2B1C'], ['#356B1C', '#11320D'], ['#1C5A50', '#0A2A24'], ['#4E5A18', '#1E2A0C']],
+  tbg: ['#2F6E22', '#0F2E12'], rbg: ['#4E5A18', '#1E2A0C'],
+  road: 'rgba(255,247,223,.5)', dot: ['#FFCF2F', '#5E3515'], off: ['#8A5A2B', '#5E3515'],
+  conf: ['#FFCF2F', '#8CC63F', '#3FC7F2', '#E8890C', '#E5392C', '#FFF7DF'],
+  crown: `<g class="sw">${LEAVES}</g>`,
+  edge: `<i class="bb t"></i><i class="bb b"></i><i class="bb l"></i><i class="bb r"></i>` + ['left:-25px;top:-25px', 'right:-25px;top:-25px', 'left:-25px;bottom:-25px', 'right:-25px;bottom:-25px'].map(p => `<i class="tie" style="${p}"></i>`).join(''),
   deco(d) {
-    for (let i = 0; i < 26; i++) { const e = mk(d, SV(30, 30, star(15, 15, 13, i % 3 ? '#F5C542' : '#fff')), `left:${rnd(0, 98)}%;top:${rnd(0, 92)}%`); e.className = 'spk'; e.style.animationDelay = -rnd(0, 2.6) + 's'; e.style.scale = rnd(.5, 1.4); }
-    mk(d, SV(110, 110, `<path d="M70 10 A46 46 0 1 0 100 80 A36 36 0 1 1 70 10Z" fill="#FFE7A0"/>`), 'right:40px;top:30px;opacity:.7');
-    mk(d, SV(520, 300, castle(260, 290, 1)), 'left:50%;bottom:-6px;translate:-50% 0;opacity:.18');
+    [['left:-60px;top:-40px', 30], ['right:-70px;top:-40px', -25], ['left:-80px;bottom:-60px', 160], ['right:-60px;bottom:-50px', 200]].forEach(([p, r], i) => {
+      const e = mk(d, `<svg width="420" height="230" viewBox="-310 -200 620 210">${LEAVES}</svg>`, p + `;transform:rotate(${r}deg)`); e.className = 'lfc'; e.style.animationDelay = -i*1.3 + 's'; });
+    for (let i = 0; i < 16; i++) { const f = mk(d, '', `left:${rnd(0, 96)}%;top:${rnd(0, 85)}%`); f.className = 'ffly'; f.style.animationDelay = -rnd(0, 3) + 's'; f.style.animationDuration = rnd(2.6, 5) + 's'; }
   },
-  acc: `<g transform="translate(100 30) scale(.9)"><path d="M-50 20 L-50 -24 L-26 -6 L0 -36 L26 -6 L50 -24 L50 20Z" fill="#F5C542" stroke="${O}" stroke-width="6" stroke-linejoin="round"/><rect x="-54" y="14" width="108" height="14" rx="6" fill="#D4A017" stroke="${O}" stroke-width="5"/><circle cx="0" cy="2" r="7" fill="#C0392B" stroke="${O}" stroke-width="3"/></g>`,
+  acc: `<g transform="translate(100 12)">${LEAF(-30, 40, '#5DBB34', '#2A6F16')}${LEAF(30, 40, '#4FAE2C', '#2A6F16')}</g>`,
   cert: {
-    fh: 'Grenze Gotisch', tw: 800, tsize: 84, ttext: 'Giấy Chứng Nhận', fb: 'Baloo 2', fn: 'Playfair Display', nw: 900,
-    ink: '#3B1F0E', name: '#5B1F7A', nstroke: '#FFF6DE', accent: '#8E1B2A', line: '#B8860B', pill: 'rgba(212,160,23,.18)', rank: '#8E1B2A', teacher: '#5B1F7A',
-    plq: null, tink: '#FFE7A0', tsh: '#5A0F1A', rib: ['#9B59B6', '#5B1F7A', '#3A0F52'],
+    fh: 'Baloo 2', tw: 800, fb: 'Baloo 2', fn: 'Baloo 2', nw: 800,
+    ink: '#4A2A0F', name: '#2D7612', nstroke: '#FFF7DF', accent: '#9C3F00', line: '#93592A', pill: 'rgba(90,50,15,.18)', rank: '#C2190E', teacher: '#2D7612',
+    plq: ['#B97F3D', '#93592A', '#5E3515'], prad: 22, tink: '#FFF7DF', tsh: '#5E3515', rib: ['#93D655', '#4C9B22', '#2D7612'],
     bg(W, H) {
-      const corner = (x, y, sx, sy) => `<g transform="translate(${x} ${y}) scale(${sx} ${sy})"><path d="M0 90 V20 Q0 0 20 0 H90" fill="none" stroke="#D4A017" stroke-width="8"/><path d="M14 70 Q14 14 70 14" fill="none" stroke="#D4A017" stroke-width="4"/><circle cx="20" cy="20" r="12" fill="#C0392B" stroke="#D4A017" stroke-width="4"/><path d="M40 40 q20 -6 26 -26 M40 40 q-6 20 -26 26" fill="none" stroke="#B8860B" stroke-width="4" stroke-linecap="round"/></g>`;
-      return `<defs><radialGradient id="cg" cx="50%" cy="40%" r="80%"><stop offset="0" stop-color="#5B3A9E"/><stop offset="1" stop-color="#140A2A"/></radialGradient>
-        <radialGradient id="pg" cx="50%" cy="50%" r="70%"><stop offset="0" stop-color="#FFF8E4"/><stop offset=".75" stop-color="#F5E2B5"/><stop offset="1" stop-color="#E5C688"/></radialGradient></defs>
-        <rect width="${W}" height="${H}" fill="url(#cg)"/>
-        ${[...Array(40)].map((_, i) => star(30 + (i*197) % (W - 60), 20 + (i*131) % (H - 40), 6 + i % 3*3, i % 4 ? '#F5C542' : '#fff')).join('')}
-        <g opacity=".5">${castle(W/2, H + 40, 2.2)}</g>
-        <rect x="78" y="92" width="${W - 156}" height="${H - 176}" rx="10" fill="#4A1D63" stroke="#D4A017" stroke-width="8"/>
-        <rect x="100" y="114" width="${W - 200}" height="${H - 220}" rx="6" fill="url(#pg)" stroke="#D4A017" stroke-width="6"/>
-        <rect x="116" y="130" width="${W - 232}" height="${H - 252}" rx="4" fill="none" stroke="#6B2D8A" stroke-width="4"/>
-        ${corner(122, 136, 1, 1)}${corner(W - 122, 136, -1, 1)}${corner(122, H - 122, 1, -1)}${corner(W - 122, H - 122, -1, -1)}
-        <path d="M${W/2 - 470} 70 H${W/2 - 380} V160 H${W/2 - 470} L${W/2 - 440} 115Z" fill="#8E1B2A" stroke="#D4A017" stroke-width="6" stroke-linejoin="round"/>
-        <path d="M${W/2 + 470} 70 H${W/2 + 380} V160 H${W/2 + 470} L${W/2 + 440} 115Z" fill="#8E1B2A" stroke="#D4A017" stroke-width="6" stroke-linejoin="round"/>
-        <path d="M${W/2 - 400} 46 H${W/2 + 400} Q${W/2 + 420} 105 ${W/2 + 400} 164 H${W/2 - 400} Q${W/2 - 420} 105 ${W/2 - 400} 46Z" fill="#C0392B" stroke="#D4A017" stroke-width="8"/>
-        <path d="M${W/2 - 380} 60 H${W/2 + 380}" stroke="#E25A4A" stroke-width="6"/>${crownI(W/2, 20, .7)}
-        ${ctower(140, H - 70, 70, 160, '#6B2D8A', '#C0392B')}${ctower(W - 140, H - 70, 70, 160, '#6B2D8A', '#F5C542')}`;
+      const lv = (x, y, r) => `<g transform="translate(${x} ${y}) rotate(${r}) scale(.9)" opacity=".55">${LEAVES}</g>`;
+      return `<defs><radialGradient id="fg" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#2F6E22"/><stop offset="1" stop-color="#0F2E12"/></radialGradient>
+        <linearGradient id="wd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E6B873"/><stop offset="1" stop-color="#CF9750"/></linearGradient>
+        <linearGradient id="bamH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C4EC7A"/><stop offset=".42" stop-color="#7FBF35"/><stop offset="1" stop-color="#3F7F1A"/></linearGradient>
+        <linearGradient id="bamV" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C4EC7A"/><stop offset=".42" stop-color="#7FBF35"/><stop offset="1" stop-color="#3F7F1A"/></linearGradient></defs>
+        <rect width="${W}" height="${H}" fill="url(#fg)"/>${lv(0, 0, 135)}${lv(W, 0, -135)}${lv(0, H, 45)}${lv(W, H, -45)}
+        <rect x="96" y="110" width="${W - 192}" height="${H - 210}" rx="30" fill="url(#wd)"/>
+        ${[...Array(30)].map((_, i) => `<rect x="${110 + i*46}" y="110" width="3" height="${H - 210}" fill="rgba(110,60,15,.10)"/>`).join('')}
+        <rect x="120" y="134" width="${W - 240}" height="${H - 258}" rx="20" fill="none" stroke="#93592A" stroke-width="6"/>
+        ${bambooBar(66, 88, W - 132, 46)}${bambooBar(66, H - 124, W - 132, 46)}${bambooBar(74, 80, 46, H - 196)}${bambooBar(W - 120, 80, 46, H - 196)}
+        ${tieS(97, 111)}${tieS(W - 97, 111)}${tieS(97, H - 101)}${tieS(W - 97, H - 101)}<g transform="translate(${W/2} 116) scale(.95)">${LEAVES}</g>`;
     },
   },
 };
@@ -540,9 +532,9 @@ const bug = (x, y, s = 1) => G(x, y, s, `${[-1, 1].map(k => [-20, 0, 20].map(d =
 
 
 /* ===== BÀI 1: LƯỢC SỬ CÔNG CỤ TÍNH TOÁN ===== */
-const META = { key: 'bai1', num: 1, theme: 'lauda', title: 'Bài 1. Lược sử công cụ tính toán', big: 'Lược sử công cụ<br>tính toán',
+const META = { key: 'bai1', num: 1, theme: 'go', title: 'Bài 1. Lược sử công cụ tính toán', big: 'Lược sử công cụ<br>tính toán',
   st2: 'Chủ đề 1 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
-  hello: 'Cùng ngược dòng lịch sử, ghé thăm các nhà phát minh châu Âu nhé!',
+  hello: 'Cùng ngược dòng lịch sử, từ que tính, bàn tính bằng gỗ đến máy tính hiện đại nhé!',
   cert: 'Tin học 8 – Bài 1. Lược sử công cụ tính toán', file: 'Tin8_Bai1', pass: 8 };
 
 const pebbles = (x, y) => [[0, 0, '#ADB5BD'], [34, 6, '#868E96'], [66, -4, '#CED4DA'], [18, 30, '#868E96'], [52, 32, '#ADB5BD'], [86, 26, '#CED4DA']].map(([dx, dy, c]) => `<ellipse cx="${x + dx}" cy="${y + dy}" rx="16" ry="12" fill="${c}" stroke="${O}" stroke-width="4"/>`).join('');

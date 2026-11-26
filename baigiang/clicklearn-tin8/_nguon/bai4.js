@@ -1,7 +1,7 @@
 /* ===== BÀI 4: ĐẠO ĐỨC VÀ VĂN HOÁ TRONG SỬ DỤNG CÔNG NGHỆ KĨ THUẬT SỐ ===== */
-const META = { key: 'bai4', num: 4, theme: 'chibi', title: 'Bài 4. Đạo đức và văn hoá trong sử dụng công nghệ kĩ thuật số', big: 'Đạo đức và<br>văn hoá số',
+const META = { key: 'bai4', num: 4, theme: 'nghinle', title: 'Bài 4. Đạo đức và văn hoá trong sử dụng công nghệ kĩ thuật số', big: 'Đạo đức và<br>văn hoá số',
   st2: 'Chủ đề 3 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
-  hello: 'Cùng các bạn thú cưng học cách cư xử thật dễ thương trên mạng nhé!',
+  hello: 'Mỗi đêm một câu chuyện: cùng học cách cư xử đẹp trên mạng nhé!',
   cert: 'Tin học 8 – Bài 4. Đạo đức và văn hoá số', file: 'Tin8_Bai4', pass: 8 };
 
 const ILL_T = {

@@ -6,88 +6,90 @@
 <title>Bài 16. Các cấu trúc điều khiển – ClickLearn Tin học 6 – Cô Thùy Tin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@700;800;900&subset=vietnamese&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lora:wght@500;600;700&family=Dancing+Script:wght@700&family=Baloo+2:wght@500;600;700;800&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#4A2A0F;--bg:#1d4a1f;--bg-deep:#0f2e12;--wood-light:#E6B873;--wood:#CF9750;--wood-mid:#B97F3D;--wood-dark:#93592A;--wood-edge:#5E3515;
-  --bamboo-hi:#C4EC7A;--bamboo:#7FBF35;--bamboo-dark:#3F7F1A;--bamboo-node:#2C5C12;--leaf:#4FAE2C;--leaf-dark:#2A6F16;
-  --btn-top:#93D655;--btn:#5CAE2E;--btn-dark:#2D7612;--red:#E5392C;--red-dark:#981A12;--gold:#FFCF2F;--gold-dark:#D98500;--cream:#FFF7DF;
-  --paper:#FFF8E4;--plq1:#B97F3D;--plq2:#93592A;--hb1:#F0CB8C;--paper2:#FFFDF3;--cell:#F5E6C4;--title:#3F8A1C;--bg0:#2F6E22;--bg1:#0F2E12;
-  --grain:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 4px,transparent 4px 74px),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 2px,transparent 2px 23px);
-  --grain-s:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 38px);
-  --barH:repeating-linear-gradient(90deg,transparent 0 220px,var(--bamboo-node) 220px 228px,var(--bamboo-hi) 228px 234px,transparent 234px 330px);
-  --barV:repeating-linear-gradient(180deg,transparent 0 220px,var(--bamboo-node) 220px 228px,var(--bamboo-hi) 228px 234px,transparent 234px 330px);
-  --barHs:repeating-linear-gradient(90deg,transparent 0 100px,var(--bamboo-node) 100px 104px,var(--bamboo-hi) 104px 107px,transparent 107px 150px);
-  --barVs:repeating-linear-gradient(180deg,transparent 0 100px,var(--bamboo-node) 100px 104px,var(--bamboo-hi) 104px 107px,transparent 107px 150px);
-  --plqgrain:repeating-linear-gradient(90deg,rgba(60,30,5,.12) 0 3px,transparent 3px 46px)}
+/* ===== PHONG CÁCH NGHÌN LẺ MỘT ĐÊM (giống Thư viện bài giảng) ===== */
+:root{--fh:'Playfair Display';--fhw:800;--fb:'Lora';--fs:34px;--ink:#3B2412;--bink:#FFE9A8;--rad:260px 260px 30px 30px/110px 110px 30px 30px;--big:104px;
+  --board:radial-gradient(circle,rgba(245,200,106,.22) 0 2px,transparent 3px) 0 0/56px 56px,radial-gradient(120% 70% at 50% 0%,#4A2470 0%,#2A1758 45%,#140F3A 100%);
+  --board-sh:inset 0 0 0 4px #F5C86A,inset 0 0 0 10px #2A1208,inset 0 0 0 13px #B9832C,0 0 0 8px #3A1C0E,0 0 0 11px #B9832C,0 0 60px 10px rgba(245,200,106,.25),0 30px 0 11px rgba(0,0,0,.4);
+  --board-sh-s:inset 0 0 0 3px #F5C86A,inset 0 0 0 7px #2A1208,inset 0 0 0 9px #B9832C,0 0 0 5px #3A1C0E,0 0 40px 6px rgba(245,200,106,.25),0 14px 0 5px rgba(0,0,0,.4);
+  --edge:#3A1C0E;--dark:#B9832C;--panel:#F8EBCB;--soft:#EED9A8;--ill:#FFF8E6;
+  --plq:linear-gradient(180deg,#8B2C5C,#4E1238);--plq-edge:#F5C86A;--plq-ink:#FFE9A8;--plq-fx:0 3px 0 #2A0618,0 0 12px rgba(245,200,106,.5);--plq-rad:60px 60px 14px 14px;
+  --medal:radial-gradient(circle at 40% 35%,#FFF3C4,#F5C86A 50%,#B9832C);--medal-ink:#3B1A00;
+  --title-c:#FFE9A8;--title-fx:0 2px 0 #B9832C,0 4px 0 #8A5A22,0 7px 0 #3B1A00,0 0 22px rgba(245,200,106,.55),0 14px 18px rgba(0,0,0,.5);
+  --title-fx-s:0 2px 0 #B9832C,0 4px 0 #3B1A00,0 0 16px rgba(245,200,106,.5);
+  --ttl-fx:0 3px 0 #2A0618,0 0 14px rgba(245,200,106,.45);
+  --btn-top:#3FC8B9;--btn:#16857A;--btn-dark:#0B4F49;--accent:#F5C86A;--acc-p:#8B2C5C;
+  --hud:linear-gradient(180deg,#3A1D5E,#1C1350);--hb:linear-gradient(180deg,#F8EBCB,#E9D2A0);--hud-ink:#FFE9A8;
+  --s0:#3A1D5E;--s1:#0B0A2A;--code-bg:#EED9A8;--code-ink:#6E3A1D;--cpanel:#F8EBCB;--wdeco:rgba(245,200,106,.05)}
+.panel,.opt,.rk,.ill{font-family:'Lora',serif}
+.board .edg{position:absolute;pointer-events:none;z-index:4}
+.lan{transform-origin:50% 0;animation:sway 3.4s ease-in-out infinite}
+.tw{position:absolute;width:4px;height:4px;border-radius:50%;background:#FFE9A8;box-shadow:0 0 8px 2px rgba(255,220,140,.9);animation:twinkle 3s ease-in-out infinite}
+.carpet{animation:drift 30s linear infinite}
+
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:100%;height:100%;overflow:hidden;font-family:'Baloo 2','Nunito',system-ui,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
-/* ===== Nền rừng ===== */
+html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fb),'Baloo 2',system-ui,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+/* ===== Nền ===== */
 .bg{position:fixed;inset:0;transition:opacity .9s}
 #bgB{opacity:0}
 .dots{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.35) 100%)}
 .deco{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-.lfc{position:absolute;opacity:.22;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
-.ffly{position:absolute;width:8px;height:8px;border-radius:50%;background:#FFF27A;box-shadow:0 0 12px 4px rgba(255,236,120,.7);animation:glow 3.2s ease-in-out infinite}
 @keyframes sway{0%,100%{rotate:-3deg}50%{rotate:3deg}}
 @keyframes glow{0%,100%{opacity:.15;transform:translate(0,0)}50%{opacity:1;transform:translate(10px,-14px)}}
+@keyframes rise{0%{transform:translateY(0);opacity:0}10%{opacity:.8}100%{transform:translateY(-110vh);opacity:0}}
+@keyframes fall{0%{transform:translate(0,-10vh) rotate(0)}100%{transform:translate(40px,115vh) rotate(360deg)}}
+@keyframes drift{0%{transform:translateX(-20vw)}100%{transform:translateX(120vw)}}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(6deg)}}
 /* ===== Thế giới zoom ===== */
 #stage{position:fixed;inset:0;overflow:hidden;cursor:grab;touch-action:none}
 #stage.drag{cursor:grabbing}
 #world{position:absolute;left:0;top:0;transform-origin:0 0}
 .frame{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;cursor:pointer}
 .frame.cur{cursor:default}
-.wdeco{position:absolute;border-radius:50%;background:rgba(196,236,122,.05);pointer-events:none}
-/* ===== Bảng gỗ + khung tre ===== */
-.wood{border-radius:30px;
-  background:var(--grain),linear-gradient(180deg,var(--wood-light),var(--wood));
-  box-shadow:inset 0 0 0 8px var(--wood-dark),inset 0 16px 0 rgba(255,255,255,.2),0 30px 0 rgba(0,0,0,.35)}
-.bb{position:absolute;border-radius:22px;z-index:3;pointer-events:none;box-shadow:0 6px 0 rgba(0,0,0,.25)}
-.bb.t,.bb.b{left:-34px;right:-34px;height:44px;
-  background:var(--barH),linear-gradient(180deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
-.bb.t{top:-18px}.bb.b{bottom:-18px}
-.bb.l,.bb.r{top:-34px;bottom:-34px;width:44px;
-  background:var(--barV),linear-gradient(90deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
-.bb.l{left:-18px}.bb.r{right:-18px}
-.tie{position:absolute;width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,#A8703A,var(--wood-edge));border:5px solid #3E220C;transform:rotate(45deg);z-index:4;pointer-events:none}
-.leaves{position:absolute;left:50%;top:-178px;width:620px;height:190px;transform:translateX(-50%);z-index:2;pointer-events:none}
-.leaves g{transform-origin:0 0;animation:sway 4s ease-in-out infinite}
-.plq{position:absolute;left:50%;top:-62px;transform:translateX(-50%);z-index:5;white-space:nowrap;padding:6px 48px 10px;border-radius:20px;border:7px solid var(--wood-edge);
-  background:var(--plqgrain),linear-gradient(180deg,var(--plq1),var(--plq2));
-  font-weight:800;font-size:50px;line-height:1.1;color:var(--cream);text-shadow:0 4px 0 var(--wood-edge);box-shadow:inset 0 6px 0 rgba(255,255,255,.22),0 10px 0 rgba(0,0,0,.3)}
+.wdeco{position:absolute;border-radius:50%;background:var(--wdeco);pointer-events:none}
+/* ===== Bảng (khung) – hình thức do phong cách quyết định ===== */
+.board{border-radius:var(--rad,30px);background:var(--board);box-shadow:var(--board-sh)}
+.crown{position:absolute;left:50%;top:-178px;width:620px;height:190px;transform:translateX(-50%);z-index:2;pointer-events:none;overflow:visible}
+.crown g.sw{transform-origin:0 0;animation:sway 4s ease-in-out infinite}
+.plq{position:absolute;left:50%;top:-62px;transform:translateX(-50%);z-index:5;white-space:nowrap;padding:6px 48px 10px;border-radius:var(--plq-rad,20px);border:7px solid var(--plq-edge);
+  background:var(--plq);font-family:var(--fh);font-weight:var(--fhw,800);font-size:50px;line-height:1.1;color:var(--plq-ink);text-shadow:var(--plq-fx);box-shadow:inset 0 6px 0 rgba(255,255,255,.22),0 10px 0 rgba(0,0,0,.3)}
 /* ===== Khung hoạt động ===== */
-.num{position:absolute;left:62px;top:56px;width:108px;height:108px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF27A,var(--gold) 55%,var(--gold-dark));border:7px solid var(--wood-edge);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:64px;color:var(--ink);box-shadow:0 8px 0 rgba(60,30,5,.4)}
-.ttl{position:absolute;left:190px;top:64px;right:70px;font-weight:800;font-size:64px;line-height:1.05;color:var(--ink);text-shadow:0 3px 0 rgba(255,247,223,.55)}
-.panel{position:absolute;left:62px;top:182px;width:866px;height:676px;background:var(--paper);border-radius:26px;border:7px solid var(--wood-dark);padding:26px 34px;box-shadow:inset 0 6px 0 rgba(147,89,42,.15),0 9px 0 var(--wood-edge);font-size:38px;font-weight:600;line-height:1.26;overflow:hidden;color:var(--ink)}
+.num{position:absolute;left:62px;top:56px;width:108px;height:108px;border-radius:50%;background:var(--medal);border:7px solid var(--edge);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:var(--fhw,800);font-size:60px;color:var(--medal-ink);box-shadow:0 8px 0 rgba(0,0,0,.3)}
+.ttl{position:absolute;left:190px;top:64px;right:70px;font-family:var(--fh);font-weight:var(--fhw,800);font-size:62px;line-height:1.08;color:var(--bink);text-shadow:var(--ttl-fx)}
+.panel{position:absolute;left:62px;top:182px;width:866px;height:676px;background:var(--panel);border-radius:26px;border:7px solid var(--dark);padding:26px 34px;box-shadow:inset 0 6px 0 rgba(0,0,0,.06),0 9px 0 var(--edge);font-size:var(--fs,37px);font-weight:600;line-height:1.26;overflow:hidden;color:var(--ink)}
 .panel b{font-weight:800}
 .panel ul{list-style:none}
 .panel li{position:relative;padding-left:52px;margin-bottom:16px}
 .panel li::before{content:"";position:absolute;left:4px;top:9px;width:30px;height:30px;border-radius:50%;background:var(--c);box-shadow:inset 0 -5px 0 rgba(0,0,0,.18)}
 .k{background:#FFE38A;color:#B4320A;border-radius:12px;padding:0 10px;font-weight:800;white-space:nowrap}
-code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-radius:12px;padding:0 12px;font-weight:800;white-space:nowrap}
+code{font-family:inherit;background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:0 12px;font-weight:800;white-space:nowrap}
 .tb{width:100%;border-collapse:separate;border-spacing:0 10px;font-size:31px}
 .tb th{background:var(--c);color:#fff;font-weight:800;padding:8px 14px;text-align:left}
 .tb th:first-child{border-radius:18px 0 0 18px}.tb th:last-child{border-radius:0 18px 18px 0}
-.tb td{background:var(--cell);padding:8px 14px}
+.tb td{background:var(--soft);padding:8px 14px}
 .tb td:first-child{border-radius:18px 0 0 18px;font-weight:800}.tb td:last-child{border-radius:0 18px 18px 0}
-.ill{position:absolute;left:960px;top:182px;width:580px;height:406px;background:var(--paper2);border-radius:26px;border:7px solid var(--wood-dark);box-shadow:0 9px 0 var(--wood-edge);overflow:hidden}
+.ill{position:absolute;left:960px;top:182px;width:580px;height:406px;background:var(--ill);border-radius:26px;border:7px solid var(--dark);box-shadow:0 9px 0 var(--edge);overflow:hidden}
 .ill svg{width:100%;height:100%;display:block}
-.qlabel{position:absolute;left:960px;top:606px;width:580px;text-align:center;color:var(--ink);font-weight:800;font-size:32px;text-shadow:0 2px 0 rgba(255,247,223,.6)}
+.qlabel{position:absolute;left:960px;top:606px;width:580px;text-align:center;color:var(--bink);font-weight:800;font-size:31px;text-shadow:var(--ttl-fx)}
 .chips{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 14px}
-.chip{border-radius:18px;padding:6px 22px;color:#fff;font-weight:800;font-size:31px;box-shadow:0 6px 0 rgba(60,30,5,.3)}
+.chip{border-radius:18px;padding:6px 22px;color:#fff;font-weight:800;font-size:31px;box-shadow:0 6px 0 rgba(0,0,0,.25)}
 /* ===== 4 bước trong mỗi hoạt động ===== */
-.panel .s4 li{padding-left:0;margin-bottom:24px}
+.panel .s4 li{padding-left:0;margin-bottom:22px}
 .panel .s4 li::before{display:none}
-.l4{display:inline-block;border-radius:14px;padding:0 16px;color:#fff;font-weight:800;font-size:28px;margin-right:6px;vertical-align:3px;border:3px solid rgba(0,0,0,.25);box-shadow:inset 0 3px 0 rgba(255,255,255,.3),0 4px 0 rgba(60,30,5,.3);white-space:nowrap}
-.l4-0{background:#E5392C}.l4-1{background:#1982C4}.l4-2{background:#E8890C}.l4-3{background:#4C9B22}
+.l4{display:inline-block;border-radius:14px;padding:0 16px;color:#fff;font-weight:800;font-size:27px;margin-right:6px;vertical-align:3px;border:3px solid rgba(0,0,0,.25);box-shadow:inset 0 3px 0 rgba(255,255,255,.3),0 4px 0 rgba(0,0,0,.25);white-space:nowrap}
+.l4-0{background:#E5392C}.l4-1{background:#1982C4}.l4-2{background:#E8890C}.l4-3{background:#2F9B4A}
 .hlink{text-decoration:none}
+.bul{font-family:'Baloo 2',sans-serif;font-style:normal}
 /* ===== Khung đố vui ===== */
-.qbadge{position:absolute;right:60px;top:52px;width:130px;height:130px;border-radius:50%;border:8px solid var(--wood-edge);color:var(--ink);background:radial-gradient(circle at 35% 30%,#FFF27A,var(--gold) 55%,var(--gold-dark));font-weight:800;font-size:90px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 0 rgba(60,30,5,.35);animation:wob 2.4s ease-in-out infinite}
+.qbadge{position:absolute;right:60px;top:52px;width:130px;height:130px;border-radius:50%;border:8px solid var(--edge);color:var(--medal-ink);background:var(--medal);font-family:var(--fh);font-weight:var(--fhw,800);font-size:86px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 0 rgba(0,0,0,.3);animation:wob 2.4s ease-in-out infinite}
 @keyframes wob{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
-.qtext{position:absolute;left:70px;right:220px;top:70px;font-weight:800;font-size:50px;line-height:1.2;color:var(--ink)}
+.qtext{position:absolute;left:70px;right:220px;top:70px;font-weight:800;font-size:49px;line-height:1.2;color:var(--bink);text-shadow:var(--ttl-fx);padding-bottom:14px}
 .opts{position:absolute;left:62px;right:62px;top:320px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.opt{display:flex;align-items:center;gap:22px;min-height:126px;background:var(--paper);border:7px solid var(--wood-dark);border-radius:26px;padding:10px 26px;font-weight:700;font-size:38px;line-height:1.15;box-shadow:inset 0 -6px 0 rgba(147,89,42,.15),0 10px 0 var(--wood-edge);cursor:pointer;transition:transform .12s,box-shadow .12s,background .2s,border-color .2s;color:var(--ink)}
-.cur .opt:hover{transform:translateY(-4px);box-shadow:0 14px 0 var(--wood-edge)}
-.opt:active{transform:translateY(6px)!important;box-shadow:0 4px 0 var(--wood-edge)!important}
+.opt{display:flex;align-items:center;gap:22px;min-height:126px;background:var(--panel);border:7px solid var(--dark);border-radius:26px;padding:10px 26px;font-weight:700;font-size:37px;line-height:1.15;box-shadow:inset 0 -6px 0 rgba(0,0,0,.06),0 10px 0 var(--edge);cursor:pointer;transition:transform .12s,box-shadow .12s,background .2s,border-color .2s;color:var(--ink)}
+.cur .opt:hover{transform:translateY(-4px);box-shadow:0 14px 0 var(--edge)}
+.opt:active{transform:translateY(6px)!important;box-shadow:0 4px 0 var(--edge)!important}
 .opt .L{flex:none;width:76px;height:76px;border-radius:18px;color:#fff;font-weight:800;font-size:44px;display:flex;align-items:center;justify-content:center;border:4px solid rgba(0,0,0,.25);box-shadow:inset 0 4px 0 rgba(255,255,255,.35),inset 0 -6px 0 rgba(0,0,0,.18)}
 .opt.ok{background:#DDF6C8;border-color:#2D7612;box-shadow:0 10px 0 #1E5A0C}
 .opt.bad{background:#FFE0DC;border-color:#E5392C;box-shadow:0 10px 0 #981A12;animation:shake .45s}
@@ -95,51 +97,49 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 .answered .opt{cursor:default}
 @keyframes shake{0%,100%{translate:0}20%{translate:-16px}40%{translate:14px}60%{translate:-10px}80%{translate:6px}}
 .fb{position:absolute;left:62px;right:62px;top:654px;min-height:96px;border-radius:24px;padding:12px 30px;font-weight:700;font-size:34px;line-height:1.22;display:none;align-items:center;gap:20px}
-.fb.ok{display:flex;background:linear-gradient(180deg,var(--btn-top),var(--btn));color:#fff;border:5px solid var(--btn-dark);box-shadow:0 9px 0 var(--btn-dark);text-shadow:0 2px 0 var(--btn-dark)}
-.fb.bad{display:flex;background:#FFF3BF;color:var(--ink);border:6px solid #E8A200;box-shadow:0 9px 0 #A86E00}
+.fb.ok{display:flex;background:linear-gradient(180deg,#93D655,#4C9B22);color:#fff;border:5px solid #2D7612;box-shadow:0 9px 0 #2D7612;text-shadow:0 2px 0 #2D7612}
+.fb.bad{display:flex;background:#FFF3BF;color:#3A2A0A;border:6px solid #E8A200;box-shadow:0 9px 0 #A86E00}
 .fb .ic{font-size:54px;flex:none}
 /* ===== Khung tiêu đề & kết quả ===== */
-.bigtitle{position:absolute;left:80px;top:150px;font-weight:800;font-size:124px;line-height:1.02;color:var(--title);text-shadow:5px 0 0 var(--cream),-5px 0 0 var(--cream),0 5px 0 var(--cream),0 -5px 0 var(--cream),4px 4px 0 var(--cream),-4px -4px 0 var(--cream),4px -4px 0 var(--cream),-4px 4px 0 var(--cream),0 14px 0 rgba(94,53,21,.45)}
-.btn{display:inline-flex;align-items:center;gap:14px;border:5px solid rgba(0,0,0,.28);border-radius:20px;padding:14px 40px;font-family:inherit;font-weight:800;font-size:44px;color:#fff;cursor:pointer;text-shadow:0 3px 0 rgba(0,0,0,.25);box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 9px 0 rgba(40,20,5,.45);transition:transform .1s,box-shadow .1s;background:var(--btn)}
-.btn:active{transform:translateY(6px);box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 3px 0 rgba(40,20,5,.45)}
+.bigtitle{position:absolute;left:80px;top:150px;font-family:var(--fh);font-weight:var(--fhw,800);font-size:var(--big,118px);line-height:1.06;color:var(--title-c);text-shadow:var(--title-fx)}
+.btn{display:inline-flex;align-items:center;gap:14px;border:5px solid rgba(0,0,0,.28);border-radius:20px;padding:14px 40px;font-family:inherit;font-weight:800;font-size:44px;color:#fff;cursor:pointer;text-shadow:0 3px 0 rgba(0,0,0,.25);box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 9px 0 rgba(0,0,0,.4);transition:transform .1s,box-shadow .1s;background:var(--btn)}
+.btn:active{transform:translateY(6px);box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 3px 0 rgba(0,0,0,.4)}
 .rgrid{position:absolute;left:60px;right:60px;top:120px;bottom:90px;display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
-.rcard{border-radius:24px;border:6px solid var(--wood-edge);padding:12px 14px;color:#fff;box-shadow:inset 0 5px 0 rgba(255,255,255,.25),0 9px 0 rgba(60,30,5,.35);cursor:pointer;position:relative;overflow:hidden;transition:transform .15s}
+.rcard{border-radius:24px;border:6px solid var(--edge);padding:12px 14px;color:#fff;box-shadow:inset 0 5px 0 rgba(255,255,255,.25),0 9px 0 rgba(0,0,0,.3);cursor:pointer;position:relative;overflow:hidden;transition:transform .15s}
 .cur .rcard:hover{transform:translateY(-6px) rotate(-1deg)}
-.rn{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF27A,var(--gold) 55%,var(--gold-dark));color:var(--ink);font-weight:800;font-size:30px;display:flex;align-items:center;justify-content:center;border:5px solid var(--wood-edge)}
-.rt{font-weight:800;font-size:30px;line-height:1.1;margin:8px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.3)}
-.rk{font-weight:600;font-size:25px;line-height:1.25;background:var(--paper);color:var(--ink);border-radius:16px;padding:10px 12px}
+.rn{width:54px;height:54px;border-radius:50%;background:var(--medal);color:var(--medal-ink);font-weight:800;font-size:30px;display:flex;align-items:center;justify-content:center;border:5px solid var(--edge)}
+.rt{font-family:var(--fh);font-weight:var(--fhw,800);font-size:30px;line-height:1.1;margin:8px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.3)}
+.rk{font-weight:600;font-size:25px;line-height:1.25;background:var(--panel);color:var(--ink);border-radius:16px;padding:10px 12px}
 .rk b{color:#B4320A;font-weight:800}
 .result .btn{font-size:34px;padding:10px 26px}
-.btn.lock{background:#9A8B78!important}
+.btn.lock{background:#8E8EA8!important}
 /* ===== Chứng nhận ===== */
-#certBox{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(10,30,10,.65);padding:14px}
+#certBox{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(5,10,30,.65);padding:14px}
 #certBox.show{display:flex}
 .cpanel{position:relative;border-radius:22px;padding:30px 30px 26px;width:min(560px,100%);max-height:100%;overflow:auto;text-align:center;user-select:text;-webkit-user-select:text;
-  background:var(--grain-s),linear-gradient(180deg,var(--wood-light),var(--wood));
-  border:12px solid var(--bamboo);outline:4px solid var(--bamboo-node);box-shadow:inset 0 0 0 4px var(--wood-dark),0 12px 0 rgba(0,0,0,.4)}
+  background:var(--cpanel);border:10px solid var(--dark);outline:4px solid var(--edge);box-shadow:0 12px 0 rgba(0,0,0,.4);color:var(--ink)}
 .cpanel.wide{width:min(980px,100%)}
-.cpanel h2{font-weight:800;font-size:clamp(24px,3.4vw,34px);color:#2D7612;margin-bottom:6px}
+.cpanel h2{font-family:var(--fh);font-weight:var(--fhw,800);font-size:clamp(24px,3.4vw,34px);color:var(--acc-p,var(--accent));margin-bottom:6px}
 .cpanel p{font-weight:600;font-size:18px;margin-bottom:14px}
 .cpanel label{display:block;text-align:left;font-weight:800;font-size:18px;margin:10px 0 6px}
-.cpanel input{width:100%;font-family:inherit;font-weight:700;font-size:22px;padding:10px 16px;border:4px solid var(--wood-dark);border-radius:16px;outline:none;color:var(--ink);background:var(--paper);box-shadow:inset 0 4px 0 rgba(147,89,42,.15)}
-.cpanel input:focus{border-color:var(--btn-dark)}
+.cpanel input{width:100%;font-family:inherit;font-weight:700;font-size:22px;padding:10px 16px;border:4px solid var(--dark);border-radius:16px;outline:none;color:var(--ink);background:#fff;box-shadow:inset 0 4px 0 rgba(0,0,0,.06)}
+.cpanel input:focus{border-color:var(--acc-p,var(--accent))}
 .cpanel .err{color:#C2190E;font-weight:800;min-height:24px;margin-top:8px}
 .cpanel .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px}
-.cpanel .btn{font-size:clamp(18px,2.4vw,24px);padding:8px 22px;border-width:4px;border-radius:14px;box-shadow:inset 0 4px 0 rgba(255,255,255,.3),0 6px 0 rgba(40,20,5,.45)}
-#certImg{width:100%;max-height:calc(100vh - 150px);object-fit:contain;border-radius:12px;box-shadow:0 6px 0 rgba(60,30,5,.35);display:block}
+.cpanel .btn{font-size:clamp(18px,2.4vw,24px);padding:8px 22px;border-width:4px;border-radius:14px;box-shadow:inset 0 4px 0 rgba(255,255,255,.3),0 6px 0 rgba(0,0,0,.4)}
+#certImg{width:100%;max-height:calc(100vh - 150px);object-fit:contain;border-radius:12px;box-shadow:0 6px 0 rgba(0,0,0,.35);display:block}
 #printArea{display:none}
 @media print{@page{size:A4 landscape;margin:0}body>*{display:none!important}#printArea{display:block!important}#printArea img{width:100%;height:auto}html,body{overflow:visible;height:auto}}
-/* ===== Thanh điều khiển gỗ ===== */
-#hud{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;border-radius:20px;padding:6px 9px;z-index:20;
-  background:var(--grain-s),linear-gradient(180deg,var(--wood-light),var(--wood));border:4px solid var(--wood-edge);box-shadow:inset 0 3px 0 rgba(255,255,255,.3),0 5px 0 rgba(0,0,0,.4)}
-.hb{width:44px;height:44px;border-radius:12px;border:3px solid var(--wood-edge);background:linear-gradient(180deg,var(--hb1),var(--wood-mid));font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--wood-edge);transition:transform .1s,box-shadow .1s;color:var(--ink);font-family:inherit;font-weight:800}
-.hb:active{transform:translateY(3px);box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 1px 0 var(--wood-edge)}
-.hb.big{width:54px;height:50px;font-size:24px;color:#fff;background:linear-gradient(180deg,var(--btn-top),var(--btn) 55%,#4C9B22);border-color:var(--btn-dark);box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--btn-dark);text-shadow:0 2px 0 var(--btn-dark)}
+/* ===== Thanh điều khiển ===== */
+#hud{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;border-radius:20px;padding:6px 9px;z-index:20;background:var(--hud);border:4px solid var(--edge);box-shadow:inset 0 3px 0 rgba(255,255,255,.3),0 5px 0 rgba(0,0,0,.4)}
+.hb{width:44px;height:44px;border-radius:12px;border:3px solid var(--edge);background:var(--hb);font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--edge);transition:transform .1s,box-shadow .1s;color:var(--ink);font-family:inherit;font-weight:800}
+.hb:active{transform:translateY(3px);box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 1px 0 var(--edge)}
+.hb.big{width:54px;height:50px;font-size:24px;color:#fff;background:linear-gradient(180deg,var(--btn-top),var(--btn) 60%);border-color:var(--btn-dark);box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--btn-dark);text-shadow:0 2px 0 var(--btn-dark)}
 .hb.off{opacity:.45}
-#step{font-weight:800;font-size:17px;min-width:52px;text-align:center;color:var(--ink)}
-#score{display:flex;align-items:center;gap:5px;font-weight:800;font-size:18px;color:#FFE38A;background:var(--wood-dark);border-radius:14px;padding:4px 12px;box-shadow:inset 0 3px 0 rgba(0,0,0,.3)}
+#step{font-weight:800;font-size:17px;min-width:52px;text-align:center;color:var(--hud-ink)}
+#score{display:flex;align-items:center;gap:5px;font-weight:800;font-size:18px;color:#FFE38A;background:var(--edge);border-radius:14px;padding:4px 12px;box-shadow:inset 0 3px 0 rgba(0,0,0,.3)}
 /* ===== Robot Bít ===== */
-#bit{position:fixed;left:10px;bottom:8px;width:84px;z-index:21;pointer-events:none;animation:bob 2.2s ease-in-out infinite}
+#bit{position:fixed;left:10px;bottom:8px;width:84px;z-index:21;pointer-events:none;animation:bob 2.2s ease-in-out infinite;overflow:visible}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
 #bit.happy{animation:jump .5s ease-in-out 3}
 @keyframes jump{0%,100%{transform:translateY(0)}50%{transform:translateY(-34px) rotate(-8deg)}}
@@ -147,70 +147,25 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 @keyframes nope{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
 .eyes{transform-origin:100px 88px;animation:blink 3.2s infinite}
 @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-#say{position:fixed;left:100px;bottom:70px;max-width:min(380px,calc(100vw - 160px));background:var(--paper);border:5px solid var(--wood-edge);border-radius:20px;padding:10px 18px;font-weight:600;font-size:19px;line-height:1.3;z-index:21;box-shadow:0 6px 0 rgba(0,0,0,.35);transform-origin:0 100%;transition:transform .35s cubic-bezier(.34,1.9,.64,1),opacity .25s}
+#say{position:fixed;left:100px;bottom:70px;max-width:min(380px,calc(100vw - 160px));background:var(--panel);color:var(--ink);border:5px solid var(--edge);border-radius:20px;padding:10px 18px;font-weight:600;font-size:19px;line-height:1.3;z-index:21;box-shadow:0 6px 0 rgba(0,0,0,.35);transform-origin:0 100%;transition:transform .35s cubic-bezier(.34,1.9,.64,1),opacity .25s}
 #say b{font-weight:800}
-#say::after{content:"";position:absolute;left:-17px;bottom:16px;border:12px solid transparent;border-right:16px solid var(--wood-edge)}
+#say::after{content:"";position:absolute;left:-17px;bottom:16px;border:12px solid transparent;border-right:16px solid var(--edge)}
 #say.hide{transform:scale(0);opacity:0}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:30}
 /* ===== Màn bắt đầu ===== */
-#start{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,var(--bg0) 0%,var(--bg1) 100%);padding:70px 16px 20px;transition:opacity .6s;overflow:auto}
-.sboard{position:relative;width:min(860px,96vw);border-radius:20px;padding:44px 26px 26px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;margin:auto;
-  background:var(--grain-s),linear-gradient(180deg,var(--wood-light),var(--wood));box-shadow:inset 0 0 0 5px var(--wood-dark),inset 0 8px 0 rgba(255,255,255,.2),0 14px 0 rgba(0,0,0,.4)}
-.sboard .bs{position:absolute;border-radius:10px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
-.sboard .bs.t,.sboard .bs.b{left:-14px;right:-14px;height:20px;background:var(--barHs),linear-gradient(180deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
-.sboard .bs.t{top:-8px}.sboard .bs.b{bottom:-8px}
-.sboard .bs.l,.sboard .bs.r{top:-14px;bottom:-14px;width:20px;background:var(--barVs),linear-gradient(90deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
-.sboard .bs.l{left:-8px}.sboard .bs.r{right:-8px}
-.sboard .lv{position:absolute;left:50%;top:-74px;width:300px;height:92px;transform:translateX(-50%)}
-.sboard .pq{position:absolute;left:50%;top:-26px;transform:translateX(-50%);white-space:nowrap;padding:2px 24px 4px;border-radius:12px;border:4px solid var(--wood-edge);background:linear-gradient(180deg,var(--plq1),var(--plq2));font-weight:800;font-size:clamp(15px,2.4vw,22px);color:var(--cream);text-shadow:0 2px 0 var(--wood-edge)}
-#start .st1{font-weight:800;color:var(--title);font-size:clamp(34px,6.4vw,74px);line-height:1.02;text-shadow:3px 0 0 var(--cream),-3px 0 0 var(--cream),0 3px 0 var(--cream),0 -3px 0 var(--cream),0 8px 0 rgba(94,53,21,.45)}
-#start .st2{font-weight:600;color:var(--ink);font-size:clamp(16px,2.4vw,24px)}
-#go{font-size:clamp(24px,4vw,38px);background:linear-gradient(180deg,var(--btn-top),var(--btn) 55%,#4C9B22);border-color:var(--btn-dark);box-shadow:inset 0 5px 0 rgba(255,255,255,.35),0 8px 0 var(--btn-dark);animation:pulse 1.4s ease-in-out infinite;padding:10px 40px}
+#start{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,var(--s0) 0%,var(--s1) 100%);padding:80px 16px 20px;transition:opacity .6s;overflow:auto}
+#startDeco{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sboard{position:relative;width:min(860px,96vw);border-radius:var(--rad,22px);padding:46px 26px 26px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;margin:auto;background:var(--board);box-shadow:var(--board-sh-s,var(--board-sh))}
+.sboard .crown{top:-86px;width:340px;height:104px}
+.sboard .pq{position:absolute;left:50%;top:-24px;transform:translateX(-50%);white-space:nowrap;padding:2px 24px 4px;border-radius:var(--plq-rad,12px);border:4px solid var(--plq-edge);background:var(--plq);font-family:var(--fh);font-weight:var(--fhw,800);font-size:clamp(15px,2.4vw,22px);color:var(--plq-ink);text-shadow:var(--plq-fx);z-index:3}
+#start .st1{font-family:var(--fh);font-weight:var(--fhw,800);color:var(--title-c);font-size:clamp(32px,6vw,70px);line-height:1.08;text-shadow:var(--title-fx-s)}
+#start .st2{font-weight:600;color:var(--bink);font-size:clamp(16px,2.4vw,24px)}
+#go{font-size:clamp(24px,4vw,38px);background:linear-gradient(180deg,var(--btn-top),var(--btn) 60%);border-color:var(--btn-dark);box-shadow:inset 0 5px 0 rgba(255,255,255,.35),0 8px 0 var(--btn-dark);animation:pulse 1.4s ease-in-out infinite;padding:10px 40px}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 .pop{animation:popin .55s cubic-bezier(.34,1.9,.64,1) both}
 @keyframes popin{0%{transform:scale(0)}100%{transform:scale(1)}}
 @media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
-/* trang trí nền theo phong cách */
-.twk{position:absolute;border-radius:50%;background:#fff;animation:twinkle 2.6s ease-in-out infinite}
-@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.6)}50%{opacity:1;transform:scale(1.2)}}
-.bub{position:absolute;border:3px solid rgba(255,255,255,.55);border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.45),transparent 45%);animation:rise linear infinite}
-@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-130vh)}}
-.fall{position:absolute;top:-6vh;color:#fff;animation:fall linear infinite;text-shadow:0 0 6px rgba(255,255,255,.8)}
-@keyframes fall{from{transform:translate(0,0) rotate(0)}to{transform:translate(40px,115vh) rotate(360deg)}}
-.flt{position:absolute;animation:rise linear infinite;opacity:.55}
-:root{--wood-light:#FFF7FB;
-  --wood:#FFE1EE;
-  --wood-mid:#F7B6D2;
-  --wood-dark:#F08CB4;
-  --wood-edge:#C94F86;
-  --ink:#5B2A4A;
-  --bamboo-hi:#FFD3E6;
-  --bamboo:#FF9EC4;
-  --bamboo-dark:#E5609A;
-  --bamboo-node:#FFFFFF;
-  --btn-top:#C9A7FF;
-  --btn:#9B6BFF;
-  --btn-dark:#6A3FD0;
-  --cream:#FFFFFF;
-  --paper:#FFFFFF;
-  --paper2:#FFFFFF;
-  --cell:#FFE8F2;
-  --title:#E5609A;
-  --bg0:#FFC7DD;
-  --bg1:#B98AE8;
-  --plq1:#C9A7FF;
-  --plq2:#8E62DE;
-  --hb1:#FFF0F6;
-  --barH:radial-gradient(circle at 50% 50%,rgba(255,255,255,.95) 0 7px,transparent 8px) 0 0/40px 100%;
-  --barV:radial-gradient(circle at 50% 50%,rgba(255,255,255,.95) 0 7px,transparent 8px) 0 0/100% 40px;
-  --barHs:radial-gradient(circle at 50% 50%,rgba(255,255,255,.95) 0 3px,transparent 4px) 0 0/18px 100%;
-  --barVs:radial-gradient(circle at 50% 50%,rgba(255,255,255,.95) 0 3px,transparent 4px) 0 0/100% 18px;
-  --grain:radial-gradient(circle,rgba(240,140,180,.16) 0 10px,transparent 11px) 0 0/64px 64px,radial-gradient(circle,rgba(155,107,255,.11) 0 10px,transparent 11px) 32px 32px/64px 64px;
-  --grain-s:radial-gradient(circle,rgba(240,140,180,.16) 0 5px,transparent 6px) 0 0/32px 32px;
-  --plqgrain:linear-gradient(180deg,rgba(255,255,255,.22) 0 40%,transparent 40%)}
-.tie{border-radius:50%;transform:none;background:radial-gradient(circle at 35% 30%,#FFE3EF,#FF9EC4 60%,#E5609A);border-color:#C94F86}
-.tie::after{content:"♥";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:30px;line-height:1}
-.plq{border-color:#5B3AA8;text-shadow:0 4px 0 #5B3AA8}.wood{border-radius:44px}
+
 </style>
 </head>
 <body>
@@ -250,14 +205,13 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 </div>
 <div id="printArea"><img id="printImg" alt=""></div>
 
-<div id="start"><div class="sboard">
-  <svg class="lv" viewBox="-310 -190 620 190" id="lvStart"></svg>
-  <i class="bs t"></i><i class="bs b"></i><i class="bs l"></i><i class="bs r"></i>
-  <div class="pq">ClickLearn Tin học 6 • Bài 16</div>
+<div id="start"><div id="startDeco"></div><div class="sboard">
+  <svg class="crown" viewBox="-310 -190 620 190" id="lvStart"></svg>
+  <div class="pq">ClickLearn Tin học 6 <i class="bul">•</i> Bài 16</div>
   <svg viewBox="0 0 200 240" style="width:min(160px,26vw)" class="pop" id="bitStart"></svg>
   <div class="st1">Các cấu trúc<br>điều khiển</div>
   <div class="st2">Chủ đề 6 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận</div>
-  <div class="st2" id="hello" style="color:#2D7612;font-weight:800"></div>
+  <div class="st2" id="hello" style="color:var(--accent);font-weight:800"></div>
   <button class="btn" id="go">▶ Bắt đầu</button>
   <div class="st2" style="font-size:clamp(13px,1.8vw,17px);opacity:.85">Bấm ▶ hoặc phím → để đi tiếp • Bấm vào bảng bất kỳ để zoom • Kéo / lăn chuột để tự khám phá</div>
 </div></div>
@@ -291,32 +245,65 @@ function robot() {
   <rect x="70" y="200" width="22" height="30" rx="9" fill="#ADB5BD" stroke="${O}" stroke-width="5"/>
   <rect x="108" y="200" width="22" height="30" rx="9" fill="#ADB5BD" stroke="${O}" stroke-width="5"/>
   <rect x="52" y="148" width="96" height="64" rx="24" fill="#FF9F1C" stroke="${O}" stroke-width="6"/>
-  <path d="M100 194 C78 180 82 162 94 166 Q100 168 100 175 Q100 168 106 166 C118 162 122 180 100 194Z" fill="#FF595E" stroke="${O}" stroke-width="3"/>`;
+  <path d="M100 194 C78 180 82 162 94 166 Q100 168 100 175 Q100 168 106 166 C118 162 122 180 100 194Z" fill="#FF595E" stroke="${O}" stroke-width="3"/>${typeof TH !== 'undefined' && TH.acc ? TH.acc : ''}`;
 }
 
 const arr = (x1, y1, x2, y2, c, w = 9) => { const a = Math.atan2(y2-y1, x2-x1), d = a*180/Math.PI; return `<line x1="${x1}" y1="${y1}" x2="${x2 - 14*Math.cos(a)}" y2="${y2 - 14*Math.sin(a)}" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>${arrowHead(x2 + 8*Math.cos(a), y2 + 8*Math.sin(a), d, c)}`; };
 const txt = (x, y, t, fs, c = O, anc = 'middle') => `<text x="${x}" y="${y}" text-anchor="${anc}" font-size="${fs}" fill="${c}" ${F}>${t}</text>`;
 const arc = (cx, cy, r, a1, a2, sw, c) => { const p = a => [cx + r*Math.cos(a*Math.PI/180), cy + r*Math.sin(a*Math.PI/180)]; const [x1, y1] = p(a1), [x2, y2] = p(a2); return `<path d="M${x1} ${y1} A${r} ${r} 0 0 ${sw} ${x2} ${y2}" fill="none" stroke="${c}" stroke-width="11" stroke-linecap="round"/>${arrowHead(x2, y2, sw ? a2 + 90 : a2 - 90, c)}`; };
 
-/* ---- phong cách của bài ---- */
-const THEME = { id: 'chibi',
-  top: (() => { const ear = (x, f) => `<g transform="translate(${x} 0) scale(${f} 1)"><path d="M-80 10 Q-62 -150 -20 -178 Q10 -160 70 10Z" fill="#FFD3E6" stroke="#C94F86" stroke-width="9" stroke-linejoin="round"/><path d="M-48 0 Q-38 -112 -18 -132 Q2 -118 38 0Z" fill="#FF8FB8"/></g>`;
-    return ear(-195, 1) + ear(195, -1) + '<path d="M0 -92 C-34 -122 -56 -150 -30 -170 C-14 -182 0 -170 0 -156 C0 -170 14 -182 30 -170 C56 -150 34 -122 0 -92Z" fill="#FF6FA8" stroke="#C94F86" stroke-width="7"/>'
-      + `${star(-90, -150, 12, '#FFFFFF')}${star(96, -160, 14, '#FFF27A')}`; })(),
-  bg: [['#FFC7DD', '#B98AE8'], ['#BDE7FF', '#9B8CF0'], ['#C9F2D8', '#7FC8E8'], ['#FFE3B3', '#F59EC0'], ['#E0C8FF', '#FF9EC4']],
-  bgTitle: ['#FFC7DD', '#B98AE8'], bgResult: ['#FFE3B3', '#F59EC0'],
-  road: ['rgba(255,255,255,.8)', '#FF9EC4', '#C94F86'], conf: ['#FF9EC4', '#C9A7FF', '#9BE7FF', '#FFE38A', '#A8F0C6', '#FFFFFF'],
-  deco: { kind: 'flt', n: 20, glyphs: ['♥', '✿', '★', '♥', '●'], colors: ['#FFFFFF', '#FF9EC4', '#C9A7FF', '#FFF27A'], corners: false },
-  cert: { bg: ['#FFC7DD', '#B98AE8'], corners: ['hearts'], board: ['#FFFFFF', '#FFE1EE'], grain: 'dots', grainC: 'rgba(240,140,180,.18)', inner: '#F08CB4',
-    bar: { grad: ['#FFD3E6', '#FF9EC4', '#E5609A'], stroke: '#C94F86', kind: 'dot', k1: 'rgba(255,255,255,.95)' },
-    tie: { grad: ['#FFD3E6', '#E5609A'], stroke: '#C94F86', shape: 'circle', glyph: '♥' },
-    plaque: ['#C9A7FF', '#8E62DE', '#5B3AA8'], plaqueTxt: '#FFFFFF', plaqueSh: '#5B3AA8', btn: ['#FFB3D1', '#E5609A', '#A8336A'],
-    ink: '#5B2A4A', name: '#E5609A', nameStroke: '#FFFFFF', accent: '#8E62DE', slot: ['rgba(240,140,180,.15)', '#F08CB4'], star: ['#FFCF2F', '#C98A00'], teacher: '#8E62DE', rank: '#E5609A' } };
-/* ---- khung + trang trí + biển tên ---- */
-const LEAF = (a, L, c, d) => `<g transform="rotate(${a})"><path d="M0 0 C${L*.2} ${-L*.25} ${L*.24} ${-L*.72} 0 ${-L} C${-L*.24} ${-L*.72} ${-L*.2} ${-L*.25} 0 0Z" fill="${c}" stroke="${d}" stroke-width="5" stroke-linejoin="round"/><path d="M0 -4 L0 ${-L*.92}" stroke="${d}" stroke-width="4" stroke-linecap="round"/>${[.3, .5, .7].map(k => `<path d="M0 ${-L*k} l${L*.1} ${-L*.1} M0 ${-L*k} l${-L*.1} ${-L*.1}" stroke="${d}" stroke-width="3" stroke-linecap="round" opacity=".6"/>`).join('')}</g>`;
-const LEAVES = THEME.top || [[-74, 120, '#3F9A22'], [74, 120, '#3F9A22'], [-50, 160, '#5DBB34'], [50, 160, '#5DBB34'], [-24, 178, '#4FAE2C'], [24, 178, '#4FAE2C'], [0, 186, '#6CC63C']].map(([a, L, c]) => LEAF(a, L, c, '#2A6F16')).join('');
-const BAM = `<i class="bb t"></i><i class="bb b"></i><i class="bb l"></i><i class="bb r"></i>` + [['-25px', '-25px', 'left', 'top'], ['-25px', '-25px', 'right', 'top'], ['-25px', '-25px', 'left', 'bottom'], ['-25px', '-25px', 'right', 'bottom']].map(([v, w, h, k]) => `<i class="tie" style="${h}:${v};${k}:${w}"></i>`).join('');
-const WOODTOP = lab => `${BAM}<svg class="leaves" viewBox="-310 -190 620 190"><g>${LEAVES}</g></svg><div class="plq">${lab}</div>`;
+/* ---- phong cách giao diện của bài ---- */
+const mk = (d, html, css) => { const e = document.createElement('div'); e.innerHTML = html; e.style.cssText = 'position:absolute;pointer-events:none;' + css; d.appendChild(e); return e; };
+const rnd = (a, b) => a + Math.random()*(b - a);
+const prng = s => () => (s = (s*16807) % 2147483647)/2147483647;   // ngẫu nhiên cố định cho giấy chứng nhận
+const SV = (w, h, inner, vb) => `<svg width="${w}" height="${h}" viewBox="${vb || `0 0 ${w} ${h}`}" style="overflow:visible">${inner}</svg>`;
+/* ===== PHONG CÁCH NGHÌN LẺ MỘT ĐÊM (giống Thư viện bài giảng) ===== */
+const crescent = (x, y, r, c = '#FFF1C2') => `<path d="M${x + r*.2} ${y - r} A${r} ${r} 0 1 0 ${x + r*.2} ${y + r} A${r*.78} ${r*.78} 0 1 1 ${x + r*.2} ${y - r}Z" fill="${c}"/>`;
+const dome = (x, y, w, h, c = '#2A8C82') => `<path d="M${x - w/2} ${y} Q${x - w/2} ${y - h*.55} ${x} ${y - h*.85} Q${x + w/2} ${y - h*.55} ${x + w/2} ${y}Z" fill="${c}" stroke="${O}" stroke-width="6" stroke-linejoin="round"/><line x1="${x}" y1="${y - h*.85}" x2="${x}" y2="${y - h}" stroke="${O}" stroke-width="5"/>${crescent(x, y - h - 10, 10, '#F5C86A')}`;
+const palace = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})">
+  ${[-150, 150].map(m => `<rect x="${m - 16}" y="-170" width="32" height="170" fill="#F3DDB0" stroke="${O}" stroke-width="6"/><rect x="${m - 24}" y="-118" width="48" height="12" fill="#B9832C" stroke="${O}" stroke-width="4"/>${dome(m, -170, 40, 60, '#B9832C')}`).join('')}
+  <rect x="-110" y="-90" width="220" height="90" fill="#F3DDB0" stroke="${O}" stroke-width="6"/>${dome(0, -90, 160, 130, '#2A8C82')}${dome(-78, -90, 54, 60, '#8B2C5C')}${dome(78, -90, 54, 60, '#8B2C5C')}
+  <path d="M-26 0 V-40 Q0 -72 26 -40 V0Z" fill="#4A2470" stroke="${O}" stroke-width="5"/>${[-70, 70].map(m => `<path d="M${m - 12} -30 V-52 Q${m} -66 ${m + 12} -52 V-30Z" fill="#4A2470" stroke="${O}" stroke-width="4"/>`).join('')}</g>`;
+const lantern = (x, y, s, c = '#F5C86A') => `<g transform="translate(${x} ${y}) scale(${s})"><line x1="0" y1="0" x2="0" y2="40" stroke="#B9832C" stroke-width="4"/><path d="M-14 40 H14 L22 56 H-22Z" fill="#B9832C" stroke="${O}" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M-22 56 Q-30 90 -14 118 H14 Q30 90 22 56Z" fill="${c}" stroke="${O}" stroke-width="5"/><path d="M-8 64 Q-12 90 -6 110 M8 64 Q12 90 6 110" stroke="#8B2C5C" stroke-width="4" fill="none"/><ellipse cx="0" cy="88" rx="8" ry="14" fill="#FFF3C4" opacity=".9"/><path d="M-14 118 L0 134 L14 118Z" fill="#B9832C" stroke="${O}" stroke-width="4"/></g>`;
+const carpetS = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-90 0 Q-45 -16 0 0 T90 0 L80 40 Q35 24 -10 40 T-100 40Z" fill="#8B2C5C" stroke="${O}" stroke-width="5" stroke-linejoin="round"/><path d="M-80 10 Q-40 -4 0 10 T80 10 L74 30 Q34 16 -6 30 T-88 30Z" fill="none" stroke="#F5C86A" stroke-width="4"/>${[-96, 94].map(m => `<path d="M${m} 4 l-12 6 M${m - 2} 20 l-12 6 M${m - 4} 34 l-12 6" stroke="#F5C86A" stroke-width="3"/>`).join('')}</g>`;
+const TH = {
+  key: 'nghinle', name: 'Nghìn lẻ một đêm', ic: '🌙',
+  bgs: [['#3A1D5E', '#0B0A2A'], ['#2A3A7A', '#0A0F2E'], ['#4E1238', '#150616'], ['#1C4E5A', '#071A20'], ['#5A3A12', '#1E1206']],
+  tbg: ['#3A1D5E', '#0B0A2A'], rbg: ['#4E1238', '#150616'],
+  road: 'rgba(245,200,106,.6)', dot: ['#F5C86A', '#3A1C0E'], off: ['#6E5A8A', '#2A1758'],
+  conf: ['#F5C86A', '#FFE9A8', '#8B2C5C', '#2A8C82', '#B06BFF', '#FFFFFF'],
+  crown: `${palace(0, -8, .78)}${crescent(-250, -130, 30)}${star(-170, -160, 12, '#F5C86A')}${star(220, -150, 14, '#FFE9A8')}${star(270, -70, 9, '#F5C86A')}`,
+  edge: `<svg class="edg lan" style="left:130px;top:-150px" width="60" height="140" viewBox="-30 0 60 140">${lantern(0, 0, 1)}</svg><svg class="edg lan" style="right:130px;top:-150px;animation-delay:-1.7s" width="60" height="140" viewBox="-30 0 60 140">${lantern(0, 0, 1, '#3FC8B9')}</svg>`,
+  deco(d) {
+    for (let i = 0; i < 44; i++) { const e = mk(d, '', `left:${rnd(0, 99)}%;top:${rnd(0, 96)}%`); e.className = 'tw'; e.style.animationDelay = -rnd(0, 3) + 's'; e.style.scale = rnd(.5, 1.4); }
+    mk(d, SV(120, 120, crescent(60, 60, 50)), 'right:50px;top:30px;filter:drop-shadow(0 0 18px rgba(255,230,150,.6))');
+    const c = mk(d, SV(230, 80, carpetS(115, 30, 1)), 'top:22%;left:0;opacity:.75'); c.className = 'carpet';
+    mk(d, SV(560, 260, palace(280, 255, 1.2)), 'left:50%;bottom:-6px;translate:-50% 0;opacity:.2');
+  },
+  acc: `<path d="M34 60 Q30 14 100 10 Q170 14 166 60 Q100 40 34 60Z" fill="#8B2C5C" stroke="${O}" stroke-width="5" stroke-linejoin="round"/><path d="M40 48 Q100 26 160 48" fill="none" stroke="#F5C86A" stroke-width="5"/>
+    <circle cx="100" cy="34" r="10" fill="#2A8C82" stroke="#F5C86A" stroke-width="4"/><path d="M104 26 Q124 -6 142 4 Q124 8 110 28Z" fill="#FFE9A8" stroke="${O}" stroke-width="3"/>`,
+  cert: {
+    fh: 'Playfair Display', tw: 800, ttext: 'Giấy Chứng Nhận', tsize: 70, fb: 'Lora', fn: 'Dancing Script', nw: 700, nsize: 104,
+    ink: '#3B2412', name: '#6E1F4E', nstroke: '#FFF6DE', accent: '#8B2C5C', line: '#B9832C', pill: 'rgba(185,131,44,.18)', rank: '#8B2C5C', teacher: '#6E1F4E',
+    plq: ['#8B2C5C', '#4E1238', '#F5C86A'], prad: 40, tink: '#FFE9A8', tsh: '#2A0618', tglow: '#F5C86A', rib: ['#3FC8B9', '#16857A', '#0B4F49'],
+    bg(W, H) {
+      const r = prng(9); let st = '';
+      for (let i = 0; i < 150; i++) { const x = r()*W, y = r()*H*.9, s = r(); st += `<circle cx="${x}" cy="${y}" r="${.8 + s*2}" fill="#FFE9A8" opacity="${.3 + s*.6}"/>`; }
+      return `<defs><radialGradient id="ng" cx="50%" cy="0%" r="110%"><stop offset="0" stop-color="#3A1D5E"/><stop offset=".45" stop-color="#1C1350"/><stop offset="1" stop-color="#0B0A2A"/></radialGradient>
+        <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF1D6"/><stop offset="1" stop-color="#E9D2A0"/></linearGradient></defs>
+        <rect width="${W}" height="${H}" fill="url(#ng)"/>${st}${crescent(W - 110, 110, 56)}
+        <g opacity=".55">${palace(W/2, H + 30, 2.4)}</g>
+        <path d="M80 ${H - 84} V300 Q80 96 ${W/2} 92 Q${W - 80} 96 ${W - 80} 300 V${H - 84}Z" fill="#3A1C0E" stroke="#B9832C" stroke-width="8"/>
+        <path d="M100 ${H - 104} V310 Q100 116 ${W/2} 112 Q${W - 100} 116 ${W - 100} 310 V${H - 104}Z" fill="url(#pg)" stroke="#F5C86A" stroke-width="5"/>
+        <path d="M122 ${H - 126} V318 Q122 138 ${W/2} 134 Q${W - 122} 138 ${W - 122} 318 V${H - 126}Z" fill="none" stroke="#B9832C" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+        ${lantern(150, 0, 1.5)}${lantern(W - 150, 0, 1.5, '#3FC8B9')}${carpetS(170, H - 50, .9)}${star(60, 500, 16, '#F5C86A')}${star(W - 60, 560, 14, '#FFE9A8')}`;
+    },
+  },
+};
+
+const BUL = s => s.replace(/ • /g, ' <i class="bul">•</i> ');
+const TOP = lab => `${TH.edge || ''}<svg class="crown" viewBox="-310 -190 620 190">${TH.crown}</svg><div class="plq">${BUL(lab)}</div>`;
 
 /* ---- 4 bước của mỗi hoạt động ---- */
 const L4 = ['Nhiệm vụ', 'Tìm hiểu', 'Trao đổi', 'Ghi nhớ'];
@@ -525,7 +512,7 @@ const winbox = (x, y, w, h, title, inner = '', c = '#1982C4') => `<rect x="${x +
 
 
 /* ===== BÀI 16: CÁC CẤU TRÚC ĐIỀU KHIỂN ===== */
-const META = { key: 'bai16', theme: 'chibi', num: 16, title: 'Bài 16. Các cấu trúc điều khiển', big: 'Các cấu trúc<br>điều khiển',
+const META = { key: 'bai16', theme: 'nghinle', num: 16, title: 'Bài 16. Các cấu trúc điều khiển', big: 'Các cấu trúc<br>điều khiển',
   st2: 'Chủ đề 6 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Tuần tự, rẽ nhánh, lặp – ba cấu trúc thần kì đây!',
   cert: 'Tin học 6 – Bài 16. Các cấu trúc điều khiển', file: 'Tin6_Bai16', pass: 8 };
@@ -597,7 +584,7 @@ const KEY = [
 ];
 
 
-TOPICS.forEach((t, i) => { const a = ACT[i % ACT.length]; t.act = a.name; t.c = t.c || a.c; t.dk = t.dk || a.dk; t.bg = (THEME.bg || [])[i % 5] || a.bg; t.title = t.title || (a.name + ': ' + t.name); t.short = t.name; });
+TOPICS.forEach((t, i) => { const a = ACT[i % ACT.length]; t.act = a.name; t.c = t.c || a.c; t.dk = t.dk || a.dk; t.bg = TH.bgs[i % TH.bgs.length]; t.title = t.title || (a.name + ': ' + t.name); t.short = t.name; });
 const ILL = Object.assign({}, ILL_T, {
   trophy: () => `<svg viewBox="0 0 300 300"><rect x="96" y="236" width="108" height="34" rx="10" fill="#8D5524" stroke="${O}" stroke-width="7"/>
     <rect x="132" y="184" width="36" height="56" fill="#FFC300" stroke="${O}" stroke-width="7"/>
@@ -659,25 +646,25 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
     const p0 = pts[Math.max(0, i-1)], p1 = pts[i], p2 = pts[i+1], p3 = pts[Math.min(pts.length-1, i+2)];
     d += ` C${p1.x + (p2.x-p0.x)/6} ${p1.y + (p2.y-p0.y)/6} ${p2.x - (p3.x-p1.x)/6} ${p2.y - (p3.y-p1.y)/6} ${p2.x} ${p2.y}`;
   }
-  const s = el('div', null, `<svg width="7000" height="5000" viewBox="-3500 -2500 7000 5000"><path id="road" d="${d}" fill="none" stroke="${(THEME.road || [])[0] || 'rgba(255,247,223,.5)'}" stroke-width="22" stroke-linecap="round" stroke-dasharray="2 48"/>
-   <circle r="34" fill="${(THEME.road || [])[1] || '#FFCF2F'}" stroke="${(THEME.road || [])[2] || '#5E3515'}" stroke-width="10"><animateMotion dur="24s" repeatCount="indefinite"><mpath href="#road"/></animateMotion></circle></svg>`);
+  const s = el('div', null, `<svg width="7000" height="5000" viewBox="-3500 -2500 7000 5000"><path id="road" d="${d}" fill="none" stroke="${TH.road}" stroke-width="22" stroke-linecap="round" stroke-dasharray="2 48"/>
+   <circle r="34" fill="${TH.dot[0]}" stroke="${TH.dot[1]}" stroke-width="10"><animateMotion dur="24s" repeatCount="indefinite"><mpath href="#road"/></animateMotion></circle></svg>`);
   Object.assign(s.style, { position: 'absolute', left: '-3500px', top: '-2500px', pointerEvents: 'none' });
 })();
 
 
 // khung tiêu đề (trung tâm)
-addFrame('title', null, 0, 0, 1.15, 0, 'titlef wood', `${WOODTOP('ClickLearn Tin học 6 • Bài 16')}
+addFrame('title', null, 0, 0, 1.15, 0, 'titlef board', `${TOP('ClickLearn Tin học 6 • Bài 16')}
   <div class="bigtitle">${META.big}</div>
   <svg viewBox="0 0 200 240" style="position:absolute;left:1150px;top:80px;width:300px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
-  <div style="position:absolute;left:830px;top:590px;width:330px;text-align:center;color:var(--ink);font-weight:800;font-size:32px">📚 Em ghi nhớ</div>
-  <div style="position:absolute;left:1180px;top:590px;width:330px;text-align:center;color:var(--ink);font-weight:800;font-size:32px">🏆 Về đích</div>
+  <div style="position:absolute;left:830px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">📚 Em ghi nhớ</div>
+  <div style="position:absolute;left:1180px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">🏆 Về đích</div>
 `);
 PATH.push('title');
 
 // các khung chủ đề + đố vui
 TOPICS.forEach((t, i) => {
   const p = POS[i];
-  addFrame(t.id, null, p.x, p.y, TK, p.r, 'topic wood', `${WOODTOP(`Hoạt động ${i+1} • ${t.act}`)}
+  addFrame(t.id, null, p.x, p.y, TK, p.r, 'topic board', `${TOP(`Hoạt động ${i+1} • ${t.act}`)}
     <div class="num">${i+1}</div><div class="ttl">${t.short}</div>
     <div class="panel" style="--c:${t.c[0]}">${t.html}</div>
     <div class="ill">${ILL[t.id]()}</div>
@@ -686,7 +673,7 @@ TOPICS.forEach((t, i) => {
   t.quiz.forEach((q, j) => {
     const id = `${t.id}q${j+1}`, cx = t.quiz.length === 1 ? 1252 : 1100 + j*300;
     QUIZ[id] = { t, q, i: j };
-    addFrame(id, t.id, cx, 742, 0.17, j ? 3 : -3, 'quiz wood', `${WOODTOP(`Đố vui ${j+1} • ${t.act}`)}
+    addFrame(id, t.id, cx, 742, 0.17, j ? 3 : -3, 'quiz board', `${TOP(`Đố vui ${j+1} • ${t.act}`)}
       <div class="qbadge">?</div>
       <div class="qtext">${q.q.replace(/</g, '&lt;')}</div>
       <div class="opts">${q.o.map((o, n) => `<div class="opt" data-n="${n}"><span class="L" style="background:${LCOL[n]}">${'ABCD'[n]}</span><span>${o.replace(/</g, '&lt;')}</span></div>`).join('')}</div>
@@ -697,27 +684,27 @@ TOPICS.forEach((t, i) => {
 
 // khung tổng kết kiến thức (lồng trong khung tiêu đề)
 // KEY (ý chính mỗi chủ đề) nằm trong phần nội dung
-addFrame('recap', 'title', 995, 770, 0.2, -2, 'recap wood', `${WOODTOP('Em ghi nhớ')}
+addFrame('recap', 'title', 995, 770, 0.2, -2, 'recap board', `${TOP('Em ghi nhớ')}
   <div class="rgrid" style="grid-template-columns:repeat(${Math.ceil(NT/2)},1fr)">${TOPICS.map((t, i) => `<div class="rcard" data-act="goto:${t.id}" style="background:linear-gradient(180deg,${t.c[0]},${t.c[1]})">
     <div class="rn">${i+1}</div><div class="rt">${t.act}</div><div class="rk">${KEY[i]}</div></div>`).join('')}</div>
-  <div style="position:absolute;left:0;right:0;bottom:34px;text-align:center;color:var(--ink);font-weight:700;font-size:30px">Bấm vào thẻ để xem lại nội dung • Bấm ▶ để xem kết quả</div>`);
+  <div style="position:absolute;left:0;right:0;bottom:34px;text-align:center;color:var(--bink);font-weight:700;font-size:30px">Bấm vào thẻ để xem lại nội dung • Bấm ▶ để xem kết quả</div>`);
 PATH.push('recap');
 
 // khung kết quả (lồng trong khung tiêu đề)
-addFrame('result', 'title', 1345, 770, 0.2, 2, 'result wood', `${WOODTOP('Về đích')}
+addFrame('result', 'title', 1345, 770, 0.2, 2, 'result board', `${TOP('Về đích')}
   <div style="position:absolute;left:70px;top:150px;width:500px;height:500px">${ILL.trophy()}</div>
   <div style="position:absolute;left:610px;top:80px;right:60px">
-    <div class="bigtitle" style="position:static;font-size:112px">Về đích!</div>
+    <div class="bigtitle" style="position:static;font-size:104px">Về đích!</div>
     <div id="rStars" style="font-size:100px;letter-spacing:8px;line-height:1.05">★★★</div>
-    <div style="font-weight:800;font-size:60px;color:var(--ink)">Đạt <span id="rScore">0</span> / ${Object.keys(QUIZ).length} ⭐</div>
-    <div id="rMsg" style="font-weight:600;font-size:36px;color:var(--ink);margin-top:8px;line-height:1.25"></div>
+    <div style="font-weight:800;font-size:60px;color:var(--bink)">Đạt <span id="rScore">0</span> / ${Object.keys(QUIZ).length} ⭐</div>
+    <div id="rMsg" style="font-weight:600;font-size:36px;color:var(--bink);margin-top:8px;line-height:1.25"></div>
   </div>
   <div style="position:absolute;left:610px;top:600px;display:flex;flex-wrap:wrap;gap:22px;width:940px">
     <button class="btn" data-act="cert" id="bCert" style="background:linear-gradient(180deg,#93D655,#5CAE2E)">🎓 Nhận chứng nhận</button>
     <button class="btn" data-act="redo" style="background:linear-gradient(180deg,#FFB547,#E8890C)">🔁 Làm lại</button>
     <button class="btn" data-act="wrong" style="background:linear-gradient(180deg,#5FD3F5,#1982C4)">🔎 Xem câu sai</button>
     <button class="btn" data-act="home" style="background:linear-gradient(180deg,#3FC9BA,#1C7C73)">🗺️ Tổng quan</button>
-    <button class="btn" data-act="app" style="background:linear-gradient(180deg,#B97F3D,#7A4520)">🏠 Về App</button></div>`);
+    <button class="btn" data-act="app" style="background:linear-gradient(180deg,#B06BFF,#6A3FC7)">🏠 Về App</button></div>`);
 PATH.push('result');
 document.getElementById('scT').textContent = Object.keys(QUIZ).length;
 document.querySelectorAll('.nQ').forEach(e => e.textContent = Object.keys(QUIZ).length);
@@ -773,8 +760,8 @@ let curId = 'overview';
 function bgFor(id) {
   const q = QUIZ[id], t = q ? q.t : TOPICS.find(x => x.id === id);
   if (t) return t.bg;
-  if (id === 'result') return THEME.bgResult || ['#4E5A18', '#1E2A0C'];
-  return THEME.bgTitle || ['#2F6E22', '#0F2E12'];
+  if (id === 'result') return TH.rbg;
+  return TH.tbg;
 }
 let bgOn = 'A';
 function setBg(c) {
@@ -824,7 +811,7 @@ function showResult() {
   const s = score(), T = Object.keys(QUIZ).length, pct = s/T, done = Object.keys(ans).length;
   const st = pct >= .8 ? 3 : pct >= .5 ? 2 : s > 0 ? 1 : 0;
   document.getElementById('rScore').textContent = s; document.getElementById('sc').textContent = s;
-  document.getElementById('rStars').innerHTML = '<span style="color:#FFCF2F;-webkit-text-stroke:4px #9C5A00">★</span>'.repeat(st) + '<span style="color:#8A5A2B;-webkit-text-stroke:4px #5E3515">★</span>'.repeat(3 - st);
+  document.getElementById('rStars').innerHTML = '<span style="color:#FFCF2F;-webkit-text-stroke:4px #9C5A00">★</span>'.repeat(st) + `<span style="color:${TH.off[0]};-webkit-text-stroke:4px ${TH.off[1]}">★</span>`.repeat(3 - st);
   const pass = s >= PASS;
   document.getElementById('rMsg').textContent = pass ? 'Chúc mừng! Em đủ điều kiện nhận giấy chứng nhận 🎓' :
     done < T ? `Em mới trả lời ${done}/${T} câu. Cần ${PASS} ⭐ để nhận chứng nhận – quay lại làm nốt nhé!` :
@@ -910,7 +897,7 @@ let parts = [], cfRun = false;
 function sizeCv() { cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; }
 sizeCv();
 function burst(n) {
-  const C = THEME.conf || ['#FFCF2F', '#8CC63F', '#3FC7F2', '#E8890C', '#E5392C', '#FFF7DF'];
+  const C = TH.conf;
   for (let i = 0; i < n; i++) parts.push({ x: innerWidth/2 + (Math.random() - .5)*200, y: innerHeight*.55, vx: (Math.random() - .5)*16, vy: -Math.random()*17 - 7, w: 8 + Math.random()*8, h: 5 + Math.random()*6, a: Math.random()*6, va: (Math.random() - .5)*.4, c: C[i % 6], life: 0 });
   if (!cfRun) { cfRun = true; requestAnimationFrame(cfTick); }
 }
@@ -925,27 +912,9 @@ function cfTick() {
 /* =========================================================
    10. TRANG TRÍ NỀN: bong bóng & lấp lánh
    ========================================================= */
-(function () {
-  const d = document.getElementById('deco'), D = THEME.deco || {}, rnd = (a, b) => a + Math.random()*(b - a);
-  if (D.corners !== false) [[-60, 'auto', 'auto', -40, 30], ['auto', -70, 'auto', -40, -25], [-80, 'auto', -60, 'auto', 160], ['auto', -60, -50, 'auto', 200]].forEach(([l, r, b, t, rot], i) => {
-    const e = document.createElement('div'); e.className = 'lfc';
-    e.innerHTML = `<svg width="420" height="230" viewBox="-310 -200 620 210"><g>${LEAVES}</g></svg>`;
-    Object.assign(e.style, { opacity: D.cornerOp || .22, left: l === 'auto' ? 'auto' : l + 'px', right: r === 'auto' ? 'auto' : r + 'px', bottom: b === 'auto' ? 'auto' : b + 'px', top: t === 'auto' ? 'auto' : t + 'px', transform: `rotate(${rot}deg)`, animationDelay: -i*1.3 + 's' });
-    d.appendChild(e); });
-  const k = D.kind || 'ffly', n = D.n || 16, cols = D.colors || ['#FFF27A'], gl = D.glyphs || ['❄'];
-  for (let i = 0; i < n; i++) { const f = document.createElement('div'), c = cols[i % cols.length];
-    if (k === 'ffly') { f.className = 'ffly'; Object.assign(f.style, { left: rnd(0, 96) + '%', top: rnd(0, 85) + '%', background: c, boxShadow: `0 0 12px 4px ${c}`, animationDelay: -rnd(0, 3) + 's', animationDuration: rnd(2.6, 5) + 's' }); }
-    else if (k === 'twk') { const z = rnd(2, 5); f.className = 'twk'; Object.assign(f.style, { width: z + 'px', height: z + 'px', left: rnd(0, 99) + '%', top: rnd(0, 99) + '%', background: c, boxShadow: `0 0 ${z*2}px ${c}`, animationDelay: -rnd(0, 3) + 's', animationDuration: rnd(1.8, 4) + 's' }); }
-    else if (k === 'bub') { const z = rnd(14, 60); f.className = 'bub'; Object.assign(f.style, { width: z + 'px', height: z + 'px', left: rnd(0, 98) + '%', top: rnd(100, 130) + '%', animationDuration: rnd(12, 26) + 's', animationDelay: -rnd(0, 26) + 's' }); }
-    else if (k === 'fall') { f.className = 'fall'; f.textContent = gl[i % gl.length]; Object.assign(f.style, { left: rnd(0, 98) + '%', fontSize: rnd(10, 30) + 'px', color: c, animationDuration: rnd(8, 18) + 's', animationDelay: -rnd(0, 18) + 's' }); }
-    else if (k === 'flt') { f.className = 'flt'; f.textContent = gl[i % gl.length]; Object.assign(f.style, { left: rnd(0, 98) + '%', top: rnd(100, 130) + '%', fontSize: rnd(18, 44) + 'px', color: c, animationDuration: rnd(14, 28) + 's', animationDelay: -rnd(0, 28) + 's' }); }
-    d.appendChild(f); }
-  if (D.bottom) [['left', '1%', 1], ['right', '1%', -1]].forEach(([sd, v, fx]) => { const e = document.createElement('div');
-    e.innerHTML = `<svg width="360" height="200" viewBox="-310 -200 620 210" style="transform:scaleX(${fx})"><g>${LEAVES}</g></svg>`;
-    Object.assign(e.style, { position: 'absolute', bottom: '-6px', [sd]: v, opacity: D.bottomOp || .3 }); d.appendChild(e); });
-  if (D.extra) d.insertAdjacentHTML('beforeend', D.extra);
-  document.getElementById('lvStart').innerHTML = `<g>${LEAVES}</g>`;
-})();
+TH.deco(document.getElementById('deco'));
+TH.deco(document.getElementById('startDeco'));
+document.getElementById('lvStart').innerHTML = TH.crown;
 
 /* =========================================================
    11. CHUỘT, CẢM ỨNG, BÀN PHÍM
@@ -1044,104 +1013,51 @@ function cStar(g, x, y, r, fill, stroke) {
   g.closePath(); g.fillStyle = fill; g.fill(); if (stroke) { g.lineWidth = 5; g.strokeStyle = stroke; g.lineJoin = 'round'; g.stroke(); }
 }
 function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
-function fitText(g, t, maxW, size, weight = 800) { let s = size; do { g.font = `${weight} ${s}px 'Baloo 2', sans-serif`; s -= 2; } while (g.measureText(t).width > maxW && s > 20); }
-/* ---- giấy chứng nhận theo phong cách (THEME.cert) ---- */
-const CERT = Object.assign({
-  bg: ['#2F6E22', '#0F2E12'], corners: ['orn'], board: ['#E6B873', '#CF9750'], grain: 'wood', grainC: 'rgba(110,60,15,.10)', inner: '#93592A',
-  bar: { grad: ['#C4EC7A', '#7FBF35', '#3F7F1A'], stroke: '#2C5C12', kind: 'node', k1: '#2C5C12', k2: '#C4EC7A' },
-  tie: { grad: ['#A8703A', '#5E3515'], stroke: '#3E220C', shape: 'diamond' },
-  plaque: ['#B97F3D', '#93592A', '#5E3515'], plaqueTxt: '#FFF7DF', plaqueSh: '#5E3515',
-  btn: ['#93D655', '#4C9B22', '#2D7612'], ink: '#4A2A0F', name: '#2D7612', nameStroke: '#FFF7DF', accent: '#9C3F00',
-  slot: ['rgba(90,50,15,.22)', '#93592A'], star: ['#FFCF2F', '#9C5A00'], teacher: '#2D7612', rank: '#C2190E', snowTop: false,
-}, THEME.cert || {});
-function cBar(g, x, y, w, h, B) {
-  const hor = w > h, th = hor ? h : w, len = hor ? w : h, P = (a, c) => hor ? [x + a, y + c] : [x + c, y + a];
-  const gr = hor ? g.createLinearGradient(0, y, 0, y + h) : g.createLinearGradient(x, 0, x + w, 0);
-  B.grad.forEach((c, i) => gr.addColorStop(i/(B.grad.length - 1), c));
-  g.save(); g.shadowColor = 'rgba(0,0,0,.3)'; g.shadowOffsetY = 6; rr(g, x, y, w, h, th/2); g.fillStyle = gr; g.fill(); g.restore();
-  g.save(); rr(g, x, y, w, h, th/2); g.clip();
-  const box = (a, c, la, lc, col) => { const [px, py] = P(a, c); g.fillStyle = col; hor ? g.fillRect(px, py, la, lc) : g.fillRect(px, py, lc, la); };
-  const dot = (a, c, r, fill, st) => { const [px, py] = P(a, c); g.beginPath(); g.arc(px, py, r, 0, 7); g.fillStyle = fill; g.fill(); if (st) { g.lineWidth = 3; g.strokeStyle = st; g.stroke(); } };
-  const line = (a1, c1, a2, c2, col, lw) => { const [x1, y1] = P(a1, c1), [x2, y2] = P(a2, c2); g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.strokeStyle = col; g.lineWidth = lw; g.stroke(); };
-  if (B.kind === 'node') for (let p = 150; p < len - 40; p += 170) { box(p, 3, 6, th - 6, B.k1); box(p + 6, 3, 4, th - 6, B.k2); }
-  if (B.kind === 'band') for (let p = 110; p < len - 40; p += 130) { box(p, 0, 14, th, B.k1); box(p + 14, 0, 4, th, B.k2); }
-  if (B.kind === 'rivet') for (let p = 45; p < len; p += 90) dot(p, th/2, 8, B.k2, B.k1);
-  if (B.kind === 'rope') for (let p = -th; p < len + th; p += 18) line(p, 0, p + th, th, B.k1, 6);
-  if (B.kind === 'dot') for (let p = 20; p < len; p += 40) dot(p, th/2, 7, B.k1);
-  if (B.kind === 'brick') { line(0, th/2, len, th/2, B.k1, 3); for (let p = 0, i = 0; p < len; p += 30, i++) line(p, i % 2 ? 0 : th/2, p, i % 2 ? th/2 : th, B.k1, 3); }
-  if (B.kind === 'ice') for (let p = 0; p < len; p += 46) line(p, th, p + th*.8, 0, B.k1, 5);
-  g.restore();
-  rr(g, x, y, w, h, th/2); g.lineWidth = 3; g.strokeStyle = B.stroke; g.stroke();
-}
-function cTie(g, x, y) {
-  const T = CERT.tie; g.save(); g.translate(x, y); if (T.shape === 'diamond') g.rotate(Math.PI/4);
-  const gr = g.createLinearGradient(-28, -28, 28, 28); gr.addColorStop(0, T.grad[0]); gr.addColorStop(1, T.grad[1]);
-  if (T.shape === 'circle') { g.beginPath(); g.arc(0, 0, 32, 0, 7); } else rr(g, -27, -27, 54, 54, T.shape === 'square' ? 6 : 10);
-  g.fillStyle = gr; g.fill(); g.lineWidth = 5; g.strokeStyle = T.stroke; g.stroke();
-  if (T.glyph) { g.fillStyle = T.glyphC || '#fff'; g.font = `800 34px 'Baloo 2', sans-serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(T.glyph, 0, 2); }
-  g.restore();
-}
-function cHeart(g, x, y, s, c) { g.save(); g.translate(x, y); g.scale(s, s); g.beginPath(); g.moveTo(0, 8); g.bezierCurveTo(-22, -8, -12, -26, 0, -14); g.bezierCurveTo(12, -26, 22, -8, 0, 8); g.fillStyle = c; g.fill(); g.restore(); }
+/* ---- giấy chứng nhận: nền + khung do phong cách vẽ (TH.cert.bg), chữ vẽ chung ---- */
+function fitText(g, t, maxW, size, weight, fam) { let s = size; do { g.font = `${weight} ${s}px ${fam}`; s -= 2; } while (g.measureText(t).width > maxW && s > 20); }
+function grad(g, y0, y1, c0, c1) { const gr = g.createLinearGradient(0, y0, 0, y1); gr.addColorStop(0, c0); gr.addColorStop(1, c1); return gr; }
 async function drawCert(name, cls, sc) {
-  try { await Promise.all(["800 40px 'Baloo 2'", "700 40px 'Baloo 2'", "600 40px 'Baloo 2'"].map(f => document.fonts.load(f, 'ĐƯỢC ẤỮ'))); } catch (e) {}
-  const C = CERT, Wd = 1600, Hd = 1130, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
-  const g = cv.getContext('2d'), INK = C.ink, FN = "'Baloo 2', sans-serif";
-  let seed = 7; const rnd = () => (seed = (seed*16807) % 2147483647)/2147483647;
-  let gr = g.createRadialGradient(Wd/2, Hd/2, 100, Wd/2, Hd/2, 950); gr.addColorStop(0, C.bg[0]); gr.addColorStop(1, C.bg[1]);
-  g.fillStyle = gr; g.fillRect(0, 0, Wd, Hd);
-  const lv = await svgImg(`<g transform="translate(310 196)">${LEAVES}</g>`, '0 0 620 200');
-  const cs = C.corners || [];
-  if (cs.includes('stars')) for (let i = 0; i < 90; i++) { g.fillStyle = `rgba(255,255,255,${.3 + rnd()*.7})`; g.beginPath(); g.arc(rnd()*Wd, rnd()*Hd, 1 + rnd()*2.6, 0, 7); g.fill(); }
-  if (cs.includes('snow')) for (let i = 0; i < 120; i++) { g.fillStyle = `rgba(255,255,255,${.4 + rnd()*.6})`; g.beginPath(); g.arc(rnd()*Wd, rnd()*Hd, 2 + rnd()*5, 0, 7); g.fill(); }
-  if (cs.includes('bubbles')) for (let i = 0; i < 40; i++) { g.strokeStyle = 'rgba(255,255,255,.5)'; g.lineWidth = 3; g.beginPath(); g.arc(rnd()*Wd, rnd()*Hd, 6 + rnd()*22, 0, 7); g.stroke(); }
-  if (cs.includes('sand')) for (let i = 0; i < 160; i++) { g.fillStyle = `rgba(255,230,170,${.2 + rnd()*.4})`; g.beginPath(); g.arc(rnd()*Wd, rnd()*Hd, 1 + rnd()*3, 0, 7); g.fill(); }
-  if (cs.includes('hearts')) for (let i = 0; i < 26; i++) cHeart(g, rnd()*Wd, rnd()*Hd, .8 + rnd()*1.4, `rgba(255,255,255,${.25 + rnd()*.35})`);
-  if (lv && cs.includes('orn')) [[0, 0, -2.4], [Wd, 0, 2.4], [0, Hd, -.8], [Wd, Hd, .8]].forEach(([x, y, r]) => { g.save(); g.translate(x, y); g.rotate(r); g.globalAlpha = .55; g.drawImage(lv, -310, -196, 620, 200); g.restore(); });
-  // bảng
-  g.save(); g.shadowColor = 'rgba(0,0,0,.4)'; g.shadowOffsetY = 14; rr(g, 96, 110, Wd - 192, Hd - 210, 30);
-  gr = g.createLinearGradient(0, 110, 0, Hd - 100); gr.addColorStop(0, C.board[0]); gr.addColorStop(1, C.board[1]); g.fillStyle = gr; g.fill(); g.restore();
-  g.save(); rr(g, 96, 110, Wd - 192, Hd - 210, 30); g.clip(); g.fillStyle = C.grainC; g.strokeStyle = C.grainC;
-  if (C.grain === 'wood') for (let x = 110; x < Wd; x += 46) g.fillRect(x, 110, 3, Hd);
-  if (C.grain === 'dots') for (let y = 130, r = 0; y < Hd; y += 44, r++) for (let x = r % 2 ? 140 : 118; x < Wd; x += 44) { g.beginPath(); g.arc(x, y, 5, 0, 7); g.fill(); }
-  if (C.grain === 'waves') { g.lineWidth = 4; for (let y = 150; y < Hd; y += 56) { g.beginPath(); for (let x = 96; x < Wd; x += 8) g.lineTo(x, y + 8*Math.sin(x/40)); g.stroke(); } }
-  if (C.grain === 'specks') for (let i = 0; i < 500; i++) { g.fillRect(96 + rnd()*1410, 110 + rnd()*920, 2 + rnd()*3, 2 + rnd()*3); }
-  if (C.grain === 'panels') { g.lineWidth = 3; for (let x = 96 + 236; x < Wd - 96; x += 236) { g.beginPath(); g.moveTo(x, 110); g.lineTo(x, Hd); g.stroke(); } for (let y = 110 + 230; y < Hd; y += 230) { g.beginPath(); g.moveTo(96, y); g.lineTo(Wd, y); g.stroke(); } }
-  g.restore();
-  rr(g, 120, 134, Wd - 240, Hd - 258, 20); g.lineWidth = 6; g.strokeStyle = C.inner; g.stroke();
-  cBar(g, 66, 88, Wd - 132, 46, C.bar); cBar(g, 66, Hd - 124, Wd - 132, 46, C.bar);
-  cBar(g, 74, 80, 46, Hd - 196, C.bar); cBar(g, Wd - 120, 80, 46, Hd - 196, C.bar);
-  if (C.snowTop) for (let x = 80; x < Wd - 80; x += 30) { g.fillStyle = '#fff'; g.beginPath(); g.arc(x, 92, 12 + (x*7 % 9), Math.PI, 0); g.fill(); }
-  [[97, 111], [Wd - 97, 111], [97, Hd - 101], [Wd - 97, Hd - 101]].forEach(([x, y]) => cTie(g, x, y));
-  // trang trí + biển tên
-  if (lv) g.drawImage(lv, Wd/2 - 300, -78, 600, 194);
-  if (lv) [290, Wd - 290].forEach(x => g.drawImage(lv, x - 140, 88 - 90, 280, 90));
-  g.save(); g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowOffsetY = 10; rr(g, Wd/2 - 360, 50, 720, 112, 22);
-  gr = g.createLinearGradient(0, 50, 0, 162); gr.addColorStop(0, C.plaque[0]); gr.addColorStop(1, C.plaque[1]); g.fillStyle = gr; g.fill(); g.restore();
-  rr(g, Wd/2 - 360, 50, 720, 112, 22); g.lineWidth = 8; g.strokeStyle = C.plaque[2]; g.stroke();
+  const C = TH.cert, FH = `'${C.fh}', 'Baloo 2', sans-serif`, FB = `'${C.fb}', 'Baloo 2', sans-serif`, FN = `'${C.fn || C.fh}', 'Baloo 2', sans-serif`;
+  try { await Promise.all([C.fh, C.fb, C.fn || C.fh].flatMap(f => ['900', '800', '700', '600'].map(w => document.fonts.load(`${w} 40px '${f}'`, 'GIẤY CHỨNG NHẬN Được ấữỹ')))); } catch (e) {}
+  const Wd = 1600, Hd = 1130, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
+  const g = cv.getContext('2d');
+  const bg = await svgImg(C.bg(Wd, Hd), `0 0 ${Wd} ${Hd}`);
+  if (bg) g.drawImage(bg, 0, 0, Wd, Hd); else { g.fillStyle = C.panel || '#fff'; g.fillRect(0, 0, Wd, Hd); }
   g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
-  g.font = `800 64px ${FN}`; g.fillStyle = C.plaqueSh; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 135); g.fillStyle = C.plaqueTxt; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 130);
-  rr(g, Wd/2 - 250, 200, 500, 72, 18); gr = g.createLinearGradient(0, 200, 0, 272); gr.addColorStop(0, C.btn[0]); gr.addColorStop(1, C.btn[1]); g.fillStyle = gr; g.fill();
-  g.lineWidth = 5; g.strokeStyle = C.btn[2]; g.stroke();
-  g.font = `800 38px ${FN}`; g.fillStyle = C.btn[2]; g.fillText('Hoàn thành bài học', Wd/2, 251); g.fillStyle = '#fff'; g.fillText('Hoàn thành bài học', Wd/2, 248);
-  g.fillStyle = INK; g.font = `600 38px ${FN}`; g.fillText('Chứng nhận học sinh', Wd/2, 340);
-  fitText(g, name, 760, 96); g.lineWidth = 14; g.strokeStyle = C.nameStroke; g.strokeText(name, Wd/2, 448); g.fillStyle = C.name; g.fillText(name, Wd/2, 448);
-  g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = C.inner; g.beginPath(); g.moveTo(Wd/2 - 420, 482); g.lineTo(Wd/2 + 420, 482); g.stroke(); g.setLineDash([]);
-  g.fillStyle = INK; g.font = `700 46px ${FN}`; g.fillText('Lớp: ' + cls, Wd/2, 550);
-  g.font = `600 34px ${FN}`; g.fillText('Đã hoàn thành bài học tương tác', Wd/2, 612);
-  g.fillStyle = C.accent; fitText(g, META.cert, 1060, 46); g.fillText(META.cert, Wd/2, 676);
+  // biển tên "GIẤY CHỨNG NHẬN"
+  if (C.plq) {
+    g.save(); g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowOffsetY = 10; rr(g, Wd/2 - 370, 46, 740, 118, C.prad ?? 22);
+    g.fillStyle = grad(g, 46, 164, C.plq[0], C.plq[1]); g.fill(); g.restore();
+    rr(g, Wd/2 - 370, 46, 740, 118, C.prad ?? 22); g.lineWidth = 8; g.strokeStyle = C.plq[2]; g.stroke();
+  }
+  const TT = C.ttext || 'GIẤY CHỨNG NHẬN';
+  fitText(g, TT, 660, C.tsize || 64, C.tw || 800, FH);
+  if (C.tglow) { g.save(); g.shadowColor = C.tglow; g.shadowBlur = 24; g.fillStyle = C.tink; g.fillText(TT, Wd/2, 132); g.restore(); }
+  g.fillStyle = C.tsh; g.fillText(TT, Wd/2, 138); g.fillStyle = C.tink; g.fillText(TT, Wd/2, 132);
+  // dải "Hoàn thành bài học"
+  rr(g, Wd/2 - 250, 196, 500, 74, 37); g.fillStyle = grad(g, 196, 270, C.rib[0], C.rib[1]); g.fill(); g.lineWidth = 5; g.strokeStyle = C.rib[2]; g.stroke();
+  g.font = `800 38px ${FB}`; g.fillStyle = C.rib[2]; g.fillText('Hoàn thành bài học', Wd/2, 250); g.fillStyle = '#fff'; g.fillText('Hoàn thành bài học', Wd/2, 247);
+  g.fillStyle = C.ink; g.font = `600 38px ${FB}`; g.fillText('Chứng nhận học sinh', Wd/2, 340);
+  fitText(g, name, 760, C.nsize || 96, C.nw || 800, FN);
+  if (C.nglow) { g.save(); g.shadowColor = C.nglow; g.shadowBlur = 26; g.fillStyle = C.name; g.fillText(name, Wd/2, 448); g.restore(); }
+  g.lineWidth = 14; g.strokeStyle = C.nstroke; g.strokeText(name, Wd/2, 448); g.fillStyle = C.name; g.fillText(name, Wd/2, 448);
+  g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = C.line; g.beginPath(); g.moveTo(Wd/2 - 420, 482); g.lineTo(Wd/2 + 420, 482); g.stroke(); g.setLineDash([]);
+  g.fillStyle = C.ink; g.font = `700 46px ${FB}`; g.fillText('Lớp: ' + cls, Wd/2, 550);
+  g.font = `600 34px ${FB}`; g.fillText('Đã hoàn thành bài học tương tác', Wd/2, 612);
+  g.fillStyle = C.accent; fitText(g, META.cert, 1060, 46, 800, FB); g.fillText(META.cert, Wd/2, 676);
   const TQ = Object.keys(QUIZ).length, rank = sc >= TQ ? 'Xuất sắc tuyệt đối' : sc >= Math.ceil(TQ*.9) ? 'Xuất sắc' : 'Hoàn thành tốt';
-  rr(g, Wd/2 - 360, 712, 720, 96, 48); g.fillStyle = C.slot[0]; g.fill(); g.lineWidth = 6; g.strokeStyle = C.slot[1]; g.stroke();
-  cStar(g, Wd/2 - 300, 760, 32, C.star[0], C.star[1]);
-  g.textAlign = 'left'; g.fillStyle = INK; g.font = `800 46px ${FN}`; g.fillText(`${sc}/${TQ} sao`, Wd/2 - 250, 776);
-  g.fillStyle = C.rank; fitText(g, rank, 340, 44); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 330, 776); g.textAlign = 'center';
+  rr(g, Wd/2 - 360, 712, 720, 96, 48); g.fillStyle = C.pill; g.fill(); g.lineWidth = 6; g.strokeStyle = C.line; g.stroke();
+  cStar(g, Wd/2 - 300, 760, 32, '#FFCF2F', '#9C5A00');
+  g.textAlign = 'left'; g.fillStyle = C.ink; g.font = `800 46px ${FB}`; g.fillText(`${sc}/${TQ} sao`, Wd/2 - 250, 776);
+  g.fillStyle = C.rank; fitText(g, rank, 340, 44, 800, FB); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 330, 776); g.textAlign = 'center';
   const d = new Date();
-  g.fillStyle = INK; g.font = `600 32px ${FN}`; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 420, 925);
-  g.font = `700 32px ${FN}`; g.fillText('Giáo viên', 1180, 880);
-  g.font = `800 52px ${FN}`; g.fillStyle = C.teacher; g.fillText('Cô Thùy Tin', 1180, 945);
+  g.fillStyle = C.ink; g.font = `600 32px ${FB}`; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 420, 925);
+  g.font = `700 32px ${FB}`; g.fillText('Giáo viên', 1180, 880);
+  g.font = `${C.nw || 800} 54px ${FN}`; g.fillStyle = C.teacher; g.fillText('Cô Thùy Tin', 1180, 948);
   const [bot, cup] = await Promise.all([svgImg(robot(), '0 0 200 240'), svgImg(ILL.trophy().replace(/^<svg[^>]*>|<\/svg>$/g, ''), '0 0 300 300')]);
   if (bot) g.drawImage(bot, 170, 300, 210, 252);
   if (cup) g.drawImage(cup, 1215, 290, 240, 240);
-  cStar(g, 430, 586, 18, C.star[0], C.star[1]); cStar(g, 1420, 600, 16, C.star[0], C.star[1]); cStar(g, 1250, 280, 14, C.star[0], C.star[1]);
+  cStar(g, 196, 790, 18, '#FFCF2F', '#9C5A00'); cStar(g, 1420, 600, 16, '#FFCF2F', '#9C5A00'); cStar(g, 1250, 280, 14, '#FFCF2F', '#9C5A00');
   return cv.toDataURL('image/png');
 }
 

@@ -1,7 +1,7 @@
 /* ===== BÀI 7: TÍNH TOÁN TỰ ĐỘNG TRÊN BẢNG TÍNH ===== */
-const META = { key: 'bai7', num: 7, theme: 'vutru', title: 'Bài 7. Tính toán tự động trên bảng tính', big: 'Tính toán tự động<br>trên bảng tính',
+const META = { key: 'bai7', num: 7, theme: 'go', title: 'Bài 7. Tính toán tự động trên bảng tính', big: 'Tính toán tự động<br>trên bảng tính',
   st2: 'Chủ đề 4 • 5 phần kiến thức cần nhớ • 10 câu đố • giấy chứng nhận',
-  hello: 'Cùng phi thuyền bảng tính tính toán siêu nhanh nào!',
+  hello: 'Cùng để bảng tính tính toán siêu nhanh nào!',
   cert: 'Tin học 7 – Bài 7. Tính toán tự động trên bảng tính', file: 'Tin7_Bai7', pass: 8 };
 
 const Y = '#FFE38A', OR = '#FFD8A8';
@@ -39,7 +39,7 @@ const TOPICS = [
     quiz: [
       { q: 'Kết thúc việc nhập công thức, em nhấn phím:', o: ['Delete', 'Enter', 'Shift', 'Esc'], a: 1, why: 'Nhấn Enter để kết thúc nhập công thức.' },
       { q: 'Vì sao nên nháy chuột vào ô khi nhập công thức?', o: ['Để chữ đẹp hơn', 'Để ô đổi màu', 'Tránh gõ nhầm địa chỉ ô', 'Để in nhanh'], a: 2, why: 'Nháy chuột vào ô giúp đưa đúng địa chỉ vào công thức.' } ] },
-  { id: 't3', name: 'Sao chép công thức', tip: 'Kéo nút điền như kéo chiếc đuôi sao chổi!',
+  { id: 't3', name: 'Sao chép công thức', tip: 'Kéo nút điền một cái là cả cột có công thức!',
     html: KT([
       'Có thể <b>sao chép công thức</b> cho các ô khác cần tính giống nhau.',
       'Cách 1: chọn ô, <b>Ctrl + C</b>, chọn ô đích, <b>Ctrl + V</b>.',

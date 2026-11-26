@@ -89,3 +89,25 @@ Khoảng 1–2 phút sau trang tự cập nhật. Gửi cô link `https://ptn109
 ## 6. Sửa bài đã có
 Sửa trực tiếp `baigiang/<tên-bài>/index.html` theo mục 2, chạy lại mục 4, rồi đăng (mục 5). Link giữ nguyên.
 Nếu cô muốn đổi tính năng chung (âm thanh, chứng nhận, điều khiển…), sửa ở khuôn `baigiang/bang-tinh-thcs/index.html` và cập nhật skill này.
+
+## 7. Phong cách giao diện (thư viện chung `baigiang/_phongcach/`)
+Các app nhiều bài (ClickLearn Tin học 6, 7, 8 và app mới) dùng chung **8 phong cách**. Mỗi bài có **một phong cách cố định** do mình chọn sẵn (học sinh không chọn).
+
+| Khoá | Phong cách | Phông chữ (đều có dấu tiếng Việt) | Bít đội | Giấy chứng nhận |
+|---|---|---|---|---|
+| `vutru` | 🚀 Vũ trụ | Chakra Petch + Exo 2, chữ phát sáng | mũ phi hành gia | nền sao, hành tinh, tên lửa |
+| `daiduong` | 🐠 Đại dương | Paytone One + Nunito, chữ trắng viền xanh | kính lặn | bong bóng, cá, san hô, cát |
+| `samac` | 🌵 Sa mạc | Rowdies + Baloo 2, chữ nổi khối | mũ thám hiểm | mặt trời, đồi cát, kim tự tháp, lạc đà |
+| `chibi` | 🐱 Thú cưng chibi | Mali + Baloo 2, chữ hồng viền trắng | tai mèo | chấm bi, mèo, thỏ, gấu, gấu trúc |
+| `lauda` | 🏰 Lâu đài châu Âu | Playfair Display, tiêu đề Grenze Gotisch | vương miện | băng rôn đỏ, viền vàng, tháp lâu đài |
+| `tuyet` | ⛄ Tuyết mùa đông | Lobster + Nunito | mũ len, khăn | tuyết rơi, thông, người tuyết |
+| `go` | 🌿 Gỗ tre | Baloo 2 | lá cây | bảng gỗ khung tre, lá xanh |
+| `nghinle` | 🌙 Nghìn lẻ một đêm (giống Thư viện bài giảng) | Playfair Display + Lora, tên học sinh Dancing Script | khăn xếp | trời đêm, trăng khuyết, cung điện mái vòm, đèn lồng, thảm bay |
+
+Cách dùng:
+- Khuôn app mới: chép `_nguon` của `clicklearn-tin8` (khuon.html, chung.css, cert.js, hinh.js, build.js), đổi chữ "Tin học 8" và khoá lưu `cl8:`. `build.js` đọc phong cách qua `require('../../_phongcach/phongcach.js')`.
+- Mỗi bài ghi `theme: '<khoá>'` trong `META`. **So le**: hai bài liền nhau không được trùng phong cách (build tự báo lỗi nếu trùng); rải đều 8 phong cách, ưu tiên phong cách hợp nội dung (VD: lịch sử máy tính → gỗ tre/lâu đài, tìm kiếm thông tin → đại dương).
+- Câu chào `hello` và mẹo `tip` có thể nói theo phong cách (VD "lặn xuống đại dương…"), nên khi đổi phong cách nhớ sửa lại cho khớp.
+- Hình minh hoạ có dùng hình của phong cách (cá `fishS`, lạc đà `camel`, mèo `chibi`, thông `pine`…) chỉ chạy khi bài đúng phong cách đó; đổi phong cách thì thay hình.
+- Thêm phong cách mới: viết `theme_<khoá>.css` (biến `--fh --fb --ink --bink --board --panel --plq --title-fx…`) + `theme_<khoá>.js` (đối tượng `TH`: `bgs, crown, edge, deco(), acc, cert{…, bg(W,H)}`), khai báo trong `INFO` và `ORDER` của `phongcach.js`.
+- Trang chủ app (`index.html`) có bảng `TL`/`THN` tên, biểu tượng, màu của từng phong cách; thêm phong cách thì thêm vào đó.

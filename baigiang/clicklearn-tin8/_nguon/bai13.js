@@ -1,7 +1,7 @@
 /* ===== BÀI 13: BIỂU DIỄN DỮ LIỆU ===== */
-const META = { key: 'bai13', num: 13, theme: 'vutru', title: 'Bài 13. Biểu diễn dữ liệu', big: 'Biểu diễn<br>dữ liệu',
+const META = { key: 'bai13', num: 13, theme: 'nghinle', title: 'Bài 13. Biểu diễn dữ liệu', big: 'Biểu diễn<br>dữ liệu',
   st2: 'Chủ đề 5 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
-  hello: 'Bay vào trạm vũ trụ xem máy tính cất giữ dữ liệu thế nào nhé!',
+  hello: 'Mở chiếc rương thần xem máy tính cất giữ dữ liệu thế nào nhé!',
   cert: 'Tin học 8 – Bài 13. Biểu diễn dữ liệu', file: 'Tin8_Bai13', pass: 8 };
 
 const SC = { ev: '#FFBF00', mo: '#4C97FF', lo: '#9966FF', ct: '#FFAB19', va: '#FF8C1A', op: '#59C059' };
@@ -44,7 +44,7 @@ const TOPICS = [
     quiz: [
       { q: '"Xin chào" thuộc kiểu dữ liệu nào?', o: ['Xâu kí tự', 'Số', 'Logic', 'Hình ảnh'], a: 0, why: 'Dãy kí tự đặt trong ngoặc kép là xâu kí tự.' },
       { q: 'Kiểu logic chỉ có hai giá trị:', o: ['0 và 100', 'Đúng và sai', 'A và B', 'Lớn và nhỏ'], a: 1, why: 'Kiểu logic: đúng (true) hoặc sai (false).' } ] },
-  { id: 't4', name: 'Biểu thức', tip: 'Biểu thức là “công thức bay” tính ra kết quả!',
+  { id: 't4', name: 'Biểu thức', tip: 'Biểu thức như câu thần chú – đọc lên là ra kết quả!',
     html: S4('Tính <b>chu vi</b> hình chữ nhật: <code>(dai + rong) * 2</code>.',
       'Biểu thức <b>số học</b> (+ − × ÷), <b>so sánh</b> (&gt;, &lt;, =), <b>logic</b> (and, or, not).',
       'Biểu thức <code>diem &gt; 8</code> cho kết quả kiểu gì?',

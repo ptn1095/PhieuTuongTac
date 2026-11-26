@@ -1,19 +1,27 @@
 // Sinh các bài ClickLearn Tin học 6 + danh sách ds.js cho trang chủ: node baigiang/clicklearn-tin6/_nguon/build.js
+// Mỗi bài chọn một phong cách (META.theme) trong thư viện chung baigiang/_phongcach (8 phong cách, so le không trùng bài liền nhau)
 const fs = require('fs'), path = require('path'), vm = require('vm');
-const TH = require('./themes.js');
-const D = __dirname, K = fs.readFileSync(path.join(D, 'khuon.html'), 'utf8'), H = fs.readFileSync(path.join(D, 'hinh.js'), 'utf8');
+const D = __dirname, rd = f => fs.readFileSync(path.join(D, f), 'utf8');
+const K = rd('khuon.html'), H = rd('hinh.js'), CHUNG = rd('chung.css'), CERT = rd('cert.js');
+const PC = require('../../_phongcach/phongcach.js');
 const DS = [];
-for (const f of fs.readdirSync(D).filter(f => /^bai\d+\.js$/.test(f)).sort((a, b) => parseInt(a.slice(3)) - parseInt(b.slice(3)))) {
-  const src = fs.readFileSync(path.join(D, f), 'utf8');
+const only = process.argv[2];
+for (const f of fs.readdirSync(D).filter(f => /^bai\d+a?\.js$/.test(f)).sort((a, b) => parseInt(a.slice(3)) - parseInt(b.slice(3)))) {
+  const src = rd(f);
   const M = vm.runInNewContext('(' + src.match(/const META = (\{[\s\S]*?\});/)[1] + ')');
-  const lab = `Bài ${M.num}`;
-  const out = K.replace('@@TITLE@@', () => M.title).split('@@LAB@@').join(lab).replace('@@LABU@@', () => lab.toLocaleUpperCase('vi'))
+  const th = M.theme, lab = `Bài ${M.num}`;
+  const fonts = PC.fonts(th);
+  const out = K.replace('@@TITLE@@', () => M.title).replace('@@FONTS@@', () => fonts)
+    .replace('/*@@THEMECSS@@*/', () => PC.css(th)).replace('/*@@CHUNGCSS@@*/', () => CHUNG)
+    .split('@@LAB@@').join(lab).replace('@@LABU@@', () => lab.toLocaleUpperCase('vi'))
     .replace('@@ST1@@', () => M.big).replace('@@ST2@@', () => M.st2)
-    .replace('/*@@HINH@@*/', () => H).replace('/*@@THEMECSS@@*/', () => TH.themeCSS(M.theme || 'rung')).replace('/*@@THEMEJS@@*/', () => TH.T[M.theme || 'rung'].js).replace('/*@@CONTENT@@*/', () => src);
+    .replace('/*@@THEME@@*/', () => PC.js(th)).replace('/*@@CERT@@*/', () => CERT)
+    .replace('/*@@HINH@@*/', () => H).replace('/*@@CONTENT@@*/', () => src);
   fs.mkdirSync(path.join(D, '..', M.key), { recursive: true });
-  fs.writeFileSync(path.join(D, '..', M.key, 'index.html'), out);
+  if (!only || only === M.key) fs.writeFileSync(path.join(D, '..', M.key, 'index.html'), out);
   const names = [...src.matchAll(/\bname: '([^']+)'/g)].map(m => m[1]);
-  DS.push({ key: M.key, num: M.num, title: M.title, theme: M.theme || 'rung', topics: names });
-  console.log('✔', M.key, M.theme || 'rung', names.length, 'hoạt động');
+  DS.push({ key: M.key, num: M.num, title: M.title, theme: th, tname: PC.INFO[th].ten, topics: names });
+  console.log('✔', M.key, th, names.length, 'hoạt động');
 }
+PC.soLe(DS.map(d => d.theme));
 fs.writeFileSync(path.join(D, '..', 'ds.js'), '// Tự sinh bởi _nguon/build.js – không sửa tay\nconst DS = ' + JSON.stringify(DS, null, 1) + ';\n');

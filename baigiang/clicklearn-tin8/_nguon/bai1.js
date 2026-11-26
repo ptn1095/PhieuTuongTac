@@ -1,7 +1,7 @@
 /* ===== BÀI 1: LƯỢC SỬ CÔNG CỤ TÍNH TOÁN ===== */
-const META = { key: 'bai1', num: 1, theme: 'lauda', title: 'Bài 1. Lược sử công cụ tính toán', big: 'Lược sử công cụ<br>tính toán',
+const META = { key: 'bai1', num: 1, theme: 'go', title: 'Bài 1. Lược sử công cụ tính toán', big: 'Lược sử công cụ<br>tính toán',
   st2: 'Chủ đề 1 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
-  hello: 'Cùng ngược dòng lịch sử, ghé thăm các nhà phát minh châu Âu nhé!',
+  hello: 'Cùng ngược dòng lịch sử, từ que tính, bàn tính bằng gỗ đến máy tính hiện đại nhé!',
   cert: 'Tin học 8 – Bài 1. Lược sử công cụ tính toán', file: 'Tin8_Bai1', pass: 8 };
 
 const pebbles = (x, y) => [[0, 0, '#ADB5BD'], [34, 6, '#868E96'], [66, -4, '#CED4DA'], [18, 30, '#868E96'], [52, 32, '#ADB5BD'], [86, 26, '#CED4DA']].map(([dx, dy, c]) => `<ellipse cx="${x + dx}" cy="${y + dy}" rx="16" ry="12" fill="${c}" stroke="${O}" stroke-width="4"/>`).join('');

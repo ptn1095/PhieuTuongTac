@@ -1,0 +1,22 @@
+/* ===== PHONG CÁCH GỖ TRE (từ Tin học 6) ===== */
+:root{--fh:'Baloo 2';--fhw:800;--fb:'Baloo 2';--fs:37px;--ink:#4A2A0F;--bink:#4A2A0F;--rad:30px;--big:116px;
+  --board:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 4px,transparent 4px 74px),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 2px,transparent 2px 23px),linear-gradient(180deg,#E6B873,#CF9750);
+  --board-sh:inset 0 0 0 8px #93592A,inset 0 16px 0 rgba(255,255,255,.2),0 30px 0 rgba(0,0,0,.35);
+  --board-sh-s:inset 0 0 0 5px #93592A,inset 0 8px 0 rgba(255,255,255,.2),0 0 0 9px #7FBF35,0 0 0 12px #2C5C12,0 14px 0 12px rgba(0,0,0,.4);
+  --edge:#5E3515;--dark:#93592A;--panel:#FFF8E4;--soft:#F5E6C4;--ill:#FFFDF3;
+  --plq:repeating-linear-gradient(90deg,rgba(60,30,5,.12) 0 3px,transparent 3px 46px),linear-gradient(180deg,#B97F3D,#93592A);--plq-edge:#5E3515;--plq-ink:#FFF7DF;--plq-fx:0 4px 0 #5E3515;--plq-rad:20px;
+  --medal:radial-gradient(circle at 35% 30%,#FFF27A,#FFCF2F 55%,#D98500);--medal-ink:#4A2A0F;
+  --title-c:#3F8A1C;--title-fx:5px 0 0 #FFF7DF,-5px 0 0 #FFF7DF,0 5px 0 #FFF7DF,0 -5px 0 #FFF7DF,4px 4px 0 #FFF7DF,-4px -4px 0 #FFF7DF,4px -4px 0 #FFF7DF,-4px 4px 0 #FFF7DF,0 14px 0 rgba(94,53,21,.45);
+  --title-fx-s:3px 0 0 #FFF7DF,-3px 0 0 #FFF7DF,0 3px 0 #FFF7DF,0 -3px 0 #FFF7DF,0 8px 0 rgba(94,53,21,.45);
+  --ttl-fx:0 3px 0 rgba(255,247,223,.55);
+  --btn-top:#93D655;--btn:#5CAE2E;--btn-dark:#2D7612;--accent:#2D7612;--acc-p:#2D7612;
+  --hud:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 30px),linear-gradient(180deg,#E6B873,#CF9750);--hb:linear-gradient(180deg,#F0CB8C,#B97F3D);--hud-ink:#4A2A0F;
+  --s0:#2F6E22;--s1:#0F2E12;--code-bg:#E3F3C8;--code-ink:#2D6012;--cpanel:#FFF8E4;--wdeco:rgba(196,236,122,.05)}
+.bb{position:absolute;border-radius:22px;z-index:3;pointer-events:none;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.bb.t,.bb.b{left:-34px;right:-34px;height:44px;background:repeating-linear-gradient(90deg,transparent 0 220px,#2C5C12 220px 228px,#C4EC7A 228px 234px,transparent 234px 330px),linear-gradient(180deg,#C4EC7A,#7FBF35 42%,#3F7F1A)}
+.bb.t{top:-18px}.bb.b{bottom:-18px}
+.bb.l,.bb.r{top:-34px;bottom:-34px;width:44px;background:repeating-linear-gradient(180deg,transparent 0 220px,#2C5C12 220px 228px,#C4EC7A 228px 234px,transparent 234px 330px),linear-gradient(90deg,#C4EC7A,#7FBF35 42%,#3F7F1A)}
+.bb.l{left:-18px}.bb.r{right:-18px}
+.tie{position:absolute;width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,#A8703A,#5E3515);border:5px solid #3E220C;transform:rotate(45deg);z-index:4;pointer-events:none}
+.lfc{position:absolute;opacity:.22;transform-origin:50% 100%;animation:sway 5s ease-in-out infinite}
+.ffly{position:absolute;width:8px;height:8px;border-radius:50%;background:#FFF27A;box-shadow:0 0 12px 4px rgba(255,236,120,.7);animation:glow 3.2s ease-in-out infinite}

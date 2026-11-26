@@ -1,7 +1,7 @@
 /* ===== BÀI 15: THUẬT TOÁN TÌM KIẾM NHỊ PHÂN ===== */
-const META = { key: 'bai15', num: 15, theme: 'samac', title: 'Bài 15. Thuật toán tìm kiếm nhị phân', big: 'Thuật toán<br>tìm kiếm nhị phân',
+const META = { key: 'bai15', num: 15, theme: 'nghinle', title: 'Bài 15. Thuật toán tìm kiếm nhị phân', big: 'Thuật toán<br>tìm kiếm nhị phân',
   st2: 'Chủ đề 5 • 5 phần kiến thức cần nhớ • 10 câu đố • giấy chứng nhận',
-  hello: 'Chia đôi sa mạc để tìm ốc đảo thật nhanh nào!',
+  hello: 'Như thần đèn đoán số: chia đôi để tìm thật nhanh nào!',
   cert: 'Tin học 7 – Bài 15. Thuật toán tìm kiếm nhị phân', file: 'Tin7_Bai15', pass: 8 };
 
 const cells = (vals, y, st = {}, x0 = 20, w = 62) => vals.map((v, i) => { const s = st[i] || ''; return `<rect x="${x0 + i*(w + 4)}" y="${y}" width="${w}" height="62" rx="10" fill="${s === 'm' ? '#FFD60A' : s === 'g' ? '#CED4DA' : s === 'ok' ? '#2DA44E' : '#fff'}" stroke="${O}" stroke-width="4" ${s === 'g' ? 'opacity=".55"' : ''}/><text x="${x0 + i*(w + 4) + w/2}" y="${y + 42}" text-anchor="middle" font-size="28" fill="${s === 'ok' ? '#fff' : O}" ${F}>${v}</text>`; }).join('');

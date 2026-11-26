@@ -1,7 +1,7 @@
 /* ===== BÀI 13: THỰC HÀNH TỔNG HỢP – HOÀN THIỆN BÀI TRÌNH CHIẾU ===== */
-const META = { key: 'bai13', num: 13, theme: 'vutru', title: 'Bài 13. Thực hành tổng hợp: Hoàn thiện bài trình chiếu', big: 'Hoàn thiện<br>bài trình chiếu',
+const META = { key: 'bai13', num: 13, theme: 'go', title: 'Bài 13. Thực hành tổng hợp: Hoàn thiện bài trình chiếu', big: 'Hoàn thiện<br>bài trình chiếu',
   st2: 'Chủ đề 4 • 5 phần kiến thức cần nhớ • 10 câu đố • giấy chứng nhận',
-  hello: 'Cùng phóng tên lửa hiệu ứng cho bài trình chiếu nhé!',
+  hello: 'Cùng thêm hiệu ứng sinh động cho bài trình chiếu nhé!',
   cert: 'Tin học 7 – Bài 13. Hoàn thiện bài trình chiếu', file: 'Tin7_Bai13', pass: 8 };
 
 const mini = (x, y, c, t) => slide(x, y, 150, 100, c, txt(x + 75, y + 60, t, 26, '#fff'));
@@ -17,7 +17,7 @@ const ILL_T = {
 };
 
 const TOPICS = [
-  { id: 't1', name: 'Hiệu ứng chuyển trang', tip: 'Chuyển trang mượt mà như phi thuyền lướt qua các hành tinh!',
+  { id: 't1', name: 'Hiệu ứng chuyển trang', tip: 'Chuyển trang mượt mà, nhẹ nhàng là đẹp nhất!',
     html: KT([
       '<b>Hiệu ứng chuyển trang</b> là cách trang chiếu xuất hiện khi chuyển sang trang mới.',
       'Chọn trang → thẻ <b>Transitions</b> → chọn hiệu ứng (Fade, Push, Wipe…).',

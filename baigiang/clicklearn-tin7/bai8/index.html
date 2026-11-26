@@ -6,26 +6,27 @@
 <title>Bài 8. Công cụ hỗ trợ tính toán – ClickLearn Tin học 7 – Cô Thùy Tin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Nunito:wght@600;700;800;900&family=Baloo+2:wght@500;600;700;800&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Lora:wght@500;600;700&family=Dancing+Script:wght@700&family=Baloo+2:wght@500;600;700;800&family=Inter:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ===== PHONG CÁCH ĐẠI DƯƠNG ===== */
-:root{--fh:'Paytone One';--fhw:400;--fb:'Nunito';--fs:36px;--ink:#0B3954;--bink:#0B3954;--rad:42px;--big:110px;
-  --board:radial-gradient(circle at 30% 30%,rgba(255,255,255,.9) 0 5px,transparent 6px) 20px 40px/150px 170px,radial-gradient(circle at 30% 30%,rgba(255,255,255,.7) 0 3px,transparent 4px) 90px 10px/110px 130px,linear-gradient(180deg,#E3F9FF 0%,#B4EBF8 55%,#86D8EE 100%);
-  --board-sh:inset 0 0 0 8px #1597BB,inset 0 -70px 70px -40px rgba(14,116,144,.3),0 0 0 10px #FFE8B8,0 0 0 17px #0E7490,0 30px 0 17px rgba(0,0,0,.3);
-  --board-sh-s:inset 0 0 0 5px #1597BB,0 0 0 6px #FFE8B8,0 0 0 11px #0E7490,0 14px 0 11px rgba(0,0,0,.3);
-  --edge:#0B5E7A;--dark:#1597BB;--panel:#F5FDFF;--soft:#DDF5FC;--ill:#fff;
-  --plq:linear-gradient(180deg,#FF9A76,#FF6F59);--plq-edge:#B23A2A;--plq-ink:#fff;--plq-fx:0 3px 0 #B23A2A;--plq-rad:44px;
-  --medal:radial-gradient(circle at 35% 30%,#fff,#FFE3B3 45%,#F7B267);--medal-ink:#0B3954;
-  --title-c:#fff;--title-fx:5px 0 0 #0B5E7A,-5px 0 0 #0B5E7A,0 5px 0 #0B5E7A,0 -5px 0 #0B5E7A,4px 4px 0 #0B5E7A,-4px -4px 0 #0B5E7A,4px -4px 0 #0B5E7A,-4px 4px 0 #0B5E7A,0 12px 0 #1597BB,0 16px 0 rgba(11,94,122,.4);
-  --title-fx-s:3px 0 0 #0B5E7A,-3px 0 0 #0B5E7A,0 3px 0 #0B5E7A,0 -3px 0 #0B5E7A,2px 2px 0 #0B5E7A,-2px -2px 0 #0B5E7A,2px -2px 0 #0B5E7A,-2px 2px 0 #0B5E7A,0 7px 0 #1597BB;
-  --ttl-fx:0 3px 0 rgba(255,255,255,.8);
-  --btn-top:#5FE0F5;--btn:#14A3C7;--btn-dark:#0B5E7A;--accent:#E8590C;--acc-p:#E8590C;
-  --hud:linear-gradient(180deg,#E3F9FF,#86D8EE);--hb:linear-gradient(180deg,#fff,#C6F1FB);--hud-ink:#0B3954;
-  --s0:#1E9BD7;--s1:#06304F;--code-bg:#D7F2FF;--code-ink:#0B5E7A;--cpanel:#F5FDFF;--wdeco:rgba(255,255,255,.06)}
+/* ===== PHONG CÁCH NGHÌN LẺ MỘT ĐÊM (giống Thư viện bài giảng) ===== */
+:root{--fh:'Playfair Display';--fhw:800;--fb:'Lora';--fs:34px;--ink:#3B2412;--bink:#FFE9A8;--rad:260px 260px 30px 30px/110px 110px 30px 30px;--big:104px;
+  --board:radial-gradient(circle,rgba(245,200,106,.22) 0 2px,transparent 3px) 0 0/56px 56px,radial-gradient(120% 70% at 50% 0%,#4A2470 0%,#2A1758 45%,#140F3A 100%);
+  --board-sh:inset 0 0 0 4px #F5C86A,inset 0 0 0 10px #2A1208,inset 0 0 0 13px #B9832C,0 0 0 8px #3A1C0E,0 0 0 11px #B9832C,0 0 60px 10px rgba(245,200,106,.25),0 30px 0 11px rgba(0,0,0,.4);
+  --board-sh-s:inset 0 0 0 3px #F5C86A,inset 0 0 0 7px #2A1208,inset 0 0 0 9px #B9832C,0 0 0 5px #3A1C0E,0 0 40px 6px rgba(245,200,106,.25),0 14px 0 5px rgba(0,0,0,.4);
+  --edge:#3A1C0E;--dark:#B9832C;--panel:#F8EBCB;--soft:#EED9A8;--ill:#FFF8E6;
+  --plq:linear-gradient(180deg,#8B2C5C,#4E1238);--plq-edge:#F5C86A;--plq-ink:#FFE9A8;--plq-fx:0 3px 0 #2A0618,0 0 12px rgba(245,200,106,.5);--plq-rad:60px 60px 14px 14px;
+  --medal:radial-gradient(circle at 40% 35%,#FFF3C4,#F5C86A 50%,#B9832C);--medal-ink:#3B1A00;
+  --title-c:#FFE9A8;--title-fx:0 2px 0 #B9832C,0 4px 0 #8A5A22,0 7px 0 #3B1A00,0 0 22px rgba(245,200,106,.55),0 14px 18px rgba(0,0,0,.5);
+  --title-fx-s:0 2px 0 #B9832C,0 4px 0 #3B1A00,0 0 16px rgba(245,200,106,.5);
+  --ttl-fx:0 3px 0 #2A0618,0 0 14px rgba(245,200,106,.45);
+  --btn-top:#3FC8B9;--btn:#16857A;--btn-dark:#0B4F49;--accent:#F5C86A;--acc-p:#8B2C5C;
+  --hud:linear-gradient(180deg,#3A1D5E,#1C1350);--hb:linear-gradient(180deg,#F8EBCB,#E9D2A0);--hud-ink:#FFE9A8;
+  --s0:#3A1D5E;--s1:#0B0A2A;--code-bg:#EED9A8;--code-ink:#6E3A1D;--cpanel:#F8EBCB;--wdeco:rgba(245,200,106,.05)}
+.panel,.opt,.rk,.ill{font-family:'Lora',serif}
 .board .edg{position:absolute;pointer-events:none;z-index:4}
-.bub{position:absolute;bottom:-40px;border-radius:50%;border:3px solid rgba(255,255,255,.7);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8) 0 18%,rgba(255,255,255,.08) 20%);animation:rise linear infinite}
-.fish{animation:drift linear infinite}
-.sway{transform-origin:50% 100%;animation:sway 3.6s ease-in-out infinite}
+.lan{transform-origin:50% 0;animation:sway 3.4s ease-in-out infinite}
+.tw{position:absolute;width:4px;height:4px;border-radius:50%;background:#FFE9A8;box-shadow:0 0 8px 2px rgba(255,220,140,.9);animation:twinkle 3s ease-in-out infinite}
+.carpet{animation:drift 30s linear infinite}
 
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fb),'Baloo 2',system-ui,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
@@ -262,51 +263,47 @@ const mk = (d, html, css) => { const e = document.createElement('div'); e.innerH
 const rnd = (a, b) => a + Math.random()*(b - a);
 const prng = s => () => (s = (s*16807) % 2147483647)/2147483647;   // ngẫu nhiên cố định cho giấy chứng nhận
 const SV = (w, h, inner, vb) => `<svg width="${w}" height="${h}" viewBox="${vb || `0 0 ${w} ${h}`}" style="overflow:visible">${inner}</svg>`;
-/* ===== PHONG CÁCH ĐẠI DƯƠNG ===== */
-const fishS = (x, y, s, c, c2, flip) => `<g transform="translate(${x} ${y}) scale(${flip ? -s : s} ${s})"><path d="M40 0 L70 -26 L66 0 L70 26Z" fill="${c2}" stroke="${O}" stroke-width="5" stroke-linejoin="round"/><ellipse cx="0" cy="0" rx="50" ry="32" fill="${c}" stroke="${O}" stroke-width="6"/><path d="M-6 -30 Q10 -50 26 -26" fill="${c2}" stroke="${O}" stroke-width="5"/><path d="M8 -26 Q20 0 8 26" stroke="${c2}" stroke-width="7" fill="none"/><circle cx="-26" cy="-6" r="9" fill="#fff" stroke="${O}" stroke-width="4"/><circle cx="-28" cy="-6" r="4" fill="${O}"/></g>`;
-const starfish = (x, y, s, c = '#FF8A5B') => `<g transform="translate(${x} ${y}) scale(${s})"><path d="${[...Array(10)].map((_, i) => { const a = -Math.PI/2 + i*Math.PI/5, r = i % 2 ? 22 : 56; return (i ? 'L' : 'M') + (r*Math.cos(a)).toFixed(1) + ' ' + (r*Math.sin(a)).toFixed(1); }).join(' ')}Z" fill="${c}" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>${[0, 1, 2, 3, 4].map(i => { const a = -Math.PI/2 + i*2*Math.PI/5; return `<circle cx="${(30*Math.cos(a)).toFixed(1)}" cy="${(30*Math.sin(a)).toFixed(1)}" r="4" fill="#fff" opacity=".8"/>`; }).join('')}</g>`;
-const shell = (x, y, s, c = '#FFC2D6') => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-60 20 Q-64 -50 0 -62 Q64 -50 60 20 Q0 34 -60 20Z" fill="${c}" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>${[-40, -20, 0, 20, 40].map(d => `<path d="M${d*.2} 24 L${d} -48" stroke="${O}" stroke-width="4" opacity=".5"/>`).join('')}<rect x="-18" y="18" width="36" height="20" rx="8" fill="${c}" stroke="${O}" stroke-width="5"/></g>`;
-const weed = (x, y, s, c = '#2DA44E') => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 C-30 -40 30 -80 0 -120 C-30 -160 20 -190 4 -220" fill="none" stroke="${O}" stroke-width="22" stroke-linecap="round"/><path d="M0 0 C-30 -40 30 -80 0 -120 C-30 -160 20 -190 4 -220" fill="none" stroke="${c}" stroke-width="12" stroke-linecap="round"/></g>`;
-const coral = (x, y, s, c = '#FF5E78') => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 V-60 M0 -40 L-30 -80 V-110 M-30 -90 L-50 -120 M0 -60 L30 -100 V-130 M30 -110 L52 -140" fill="none" stroke="${O}" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/><path d="M0 0 V-60 M0 -40 L-30 -80 V-110 M-30 -90 L-50 -120 M0 -60 L30 -100 V-130 M30 -110 L52 -140" fill="none" stroke="${c}" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/></g>`;
-const bubs = (pts) => pts.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#fff" fill-opacity=".35" stroke="#fff" stroke-width="3"/><circle cx="${x - r*.35}" cy="${y - r*.35}" r="${r*.25}" fill="#fff"/>`).join('');
+/* ===== PHONG CÁCH NGHÌN LẺ MỘT ĐÊM (giống Thư viện bài giảng) ===== */
+const crescent = (x, y, r, c = '#FFF1C2') => `<path d="M${x + r*.2} ${y - r} A${r} ${r} 0 1 0 ${x + r*.2} ${y + r} A${r*.78} ${r*.78} 0 1 1 ${x + r*.2} ${y - r}Z" fill="${c}"/>`;
+const dome = (x, y, w, h, c = '#2A8C82') => `<path d="M${x - w/2} ${y} Q${x - w/2} ${y - h*.55} ${x} ${y - h*.85} Q${x + w/2} ${y - h*.55} ${x + w/2} ${y}Z" fill="${c}" stroke="${O}" stroke-width="6" stroke-linejoin="round"/><line x1="${x}" y1="${y - h*.85}" x2="${x}" y2="${y - h}" stroke="${O}" stroke-width="5"/>${crescent(x, y - h - 10, 10, '#F5C86A')}`;
+const palace = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})">
+  ${[-150, 150].map(m => `<rect x="${m - 16}" y="-170" width="32" height="170" fill="#F3DDB0" stroke="${O}" stroke-width="6"/><rect x="${m - 24}" y="-118" width="48" height="12" fill="#B9832C" stroke="${O}" stroke-width="4"/>${dome(m, -170, 40, 60, '#B9832C')}`).join('')}
+  <rect x="-110" y="-90" width="220" height="90" fill="#F3DDB0" stroke="${O}" stroke-width="6"/>${dome(0, -90, 160, 130, '#2A8C82')}${dome(-78, -90, 54, 60, '#8B2C5C')}${dome(78, -90, 54, 60, '#8B2C5C')}
+  <path d="M-26 0 V-40 Q0 -72 26 -40 V0Z" fill="#4A2470" stroke="${O}" stroke-width="5"/>${[-70, 70].map(m => `<path d="M${m - 12} -30 V-52 Q${m} -66 ${m + 12} -52 V-30Z" fill="#4A2470" stroke="${O}" stroke-width="4"/>`).join('')}</g>`;
+const lantern = (x, y, s, c = '#F5C86A') => `<g transform="translate(${x} ${y}) scale(${s})"><line x1="0" y1="0" x2="0" y2="40" stroke="#B9832C" stroke-width="4"/><path d="M-14 40 H14 L22 56 H-22Z" fill="#B9832C" stroke="${O}" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M-22 56 Q-30 90 -14 118 H14 Q30 90 22 56Z" fill="${c}" stroke="${O}" stroke-width="5"/><path d="M-8 64 Q-12 90 -6 110 M8 64 Q12 90 6 110" stroke="#8B2C5C" stroke-width="4" fill="none"/><ellipse cx="0" cy="88" rx="8" ry="14" fill="#FFF3C4" opacity=".9"/><path d="M-14 118 L0 134 L14 118Z" fill="#B9832C" stroke="${O}" stroke-width="4"/></g>`;
+const carpetS = (x, y, s) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M-90 0 Q-45 -16 0 0 T90 0 L80 40 Q35 24 -10 40 T-100 40Z" fill="#8B2C5C" stroke="${O}" stroke-width="5" stroke-linejoin="round"/><path d="M-80 10 Q-40 -4 0 10 T80 10 L74 30 Q34 16 -6 30 T-88 30Z" fill="none" stroke="#F5C86A" stroke-width="4"/>${[-96, 94].map(m => `<path d="M${m} 4 l-12 6 M${m - 2} 20 l-12 6 M${m - 4} 34 l-12 6" stroke="#F5C86A" stroke-width="3"/>`).join('')}</g>`;
 const TH = {
-  key: 'daiduong', name: 'Đại dương', ic: '🐠',
-  bgs: [['#1E9BD7', '#06304F'], ['#14A0A0', '#04313A'], ['#3A8DFF', '#0A2A5E'], ['#22C493', '#053B33'], ['#2B6CB0', '#081B3A']],
-  tbg: ['#1E9BD7', '#06304F'], rbg: ['#22C493', '#053B33'],
-  road: 'rgba(255,255,255,.6)', dot: ['#FFD23F', '#0B5E7A'], off: ['#7FB7CC', '#0B5E7A'],
-  conf: ['#FFD23F', '#FF6F59', '#5FE0F5', '#FFFFFF', '#2EC4B6', '#FF8FAB'],
-  crown: `<g class="sw">${coral(-235, 0, 1, '#FF5E78')}</g>${weed(-150, 0, .62, '#2DA44E')}${shell(0, -110, 1.25, '#FFC2D6')}${weed(150, 0, .7, '#8AC926')}<g class="sw">${coral(240, 0, .95, '#B06BFF')}</g>
-    ${bubs([[-80, -165, 14], [-60, -130, 9], [90, -170, 12], [110, -140, 7]])}${starfish(-300, -40, .5, '#FFD23F')}`,
-  edge: `<svg class="edg" style="left:-46px;top:-46px" width="110" height="110" viewBox="-55 -55 110 110">${starfish(0, 0, .85)}</svg>
-    <svg class="edg" style="right:-40px;bottom:-40px" width="120" height="100" viewBox="-60 -70 120 100">${shell(0, 0, .8, '#FFE3B3')}</svg>`,
+  key: 'nghinle', name: 'Nghìn lẻ một đêm', ic: '🌙',
+  bgs: [['#3A1D5E', '#0B0A2A'], ['#2A3A7A', '#0A0F2E'], ['#4E1238', '#150616'], ['#1C4E5A', '#071A20'], ['#5A3A12', '#1E1206']],
+  tbg: ['#3A1D5E', '#0B0A2A'], rbg: ['#4E1238', '#150616'],
+  road: 'rgba(245,200,106,.6)', dot: ['#F5C86A', '#3A1C0E'], off: ['#6E5A8A', '#2A1758'],
+  conf: ['#F5C86A', '#FFE9A8', '#8B2C5C', '#2A8C82', '#B06BFF', '#FFFFFF'],
+  crown: `${palace(0, -8, .78)}${crescent(-250, -130, 30)}${star(-170, -160, 12, '#F5C86A')}${star(220, -150, 14, '#FFE9A8')}${star(270, -70, 9, '#F5C86A')}`,
+  edge: `<svg class="edg lan" style="left:130px;top:-150px" width="60" height="140" viewBox="-30 0 60 140">${lantern(0, 0, 1)}</svg><svg class="edg lan" style="right:130px;top:-150px;animation-delay:-1.7s" width="60" height="140" viewBox="-30 0 60 140">${lantern(0, 0, 1, '#3FC8B9')}</svg>`,
   deco(d) {
-    for (let i = 0; i < 22; i++) { const s = rnd(10, 34), e = mk(d, '', `left:${rnd(0, 98)}%;width:${s}px;height:${s}px`); e.className = 'bub'; e.style.animationDuration = rnd(7, 15) + 's'; e.style.animationDelay = -rnd(0, 15) + 's'; }
-    [['#FFB14E', '#FF7F11', 18, 1], ['#FF8FAB', '#FF006E', 52, 0], ['#7DF9FF', '#1982C4', 76, 1]].forEach(([c, c2, top, f], i) => {
-      const e = mk(d, SV(160, 100, fishS(80, 50, .9, c, c2, f), '0 0 160 100'), `top:${top}%;left:0;opacity:.75`); e.className = 'fish'; e.style.animationDuration = 26 + i*7 + 's'; e.style.animationDelay = -i*9 + 's'; if (!f) e.style.animationDirection = 'reverse'; });
-    mk(d, `<div class="sway">${SV(120, 260, weed(60, 255, 1, '#2DA44E') + weed(30, 255, .7, '#8AC926'))}</div>`, 'left:6px;bottom:-10px;opacity:.6');
-    mk(d, `<div class="sway" style="animation-delay:-1.5s">${SV(140, 200, coral(70, 196, 1, '#FF5E78'))}</div>`, 'right:12px;bottom:-6px;opacity:.6');
+    for (let i = 0; i < 44; i++) { const e = mk(d, '', `left:${rnd(0, 99)}%;top:${rnd(0, 96)}%`); e.className = 'tw'; e.style.animationDelay = -rnd(0, 3) + 's'; e.style.scale = rnd(.5, 1.4); }
+    mk(d, SV(120, 120, crescent(60, 60, 50)), 'right:50px;top:30px;filter:drop-shadow(0 0 18px rgba(255,230,150,.6))');
+    const c = mk(d, SV(230, 80, carpetS(115, 30, 1)), 'top:22%;left:0;opacity:.75'); c.className = 'carpet';
+    mk(d, SV(560, 260, palace(280, 255, 1.2)), 'left:50%;bottom:-6px;translate:-50% 0;opacity:.2');
   },
-  acc: `<path d="M30 88 H52 M148 88 H170" stroke="#FF7F11" stroke-width="9" stroke-linecap="round"/><rect x="50" y="62" width="100" height="50" rx="22" fill="#9BE7FF" fill-opacity=".35" stroke="#FF7F11" stroke-width="7"/>
-    <path d="M170 104 V30 Q170 12 186 12" fill="none" stroke="${O}" stroke-width="15" stroke-linecap="round"/><path d="M170 104 V30 Q170 12 186 12" fill="none" stroke="#FFD60A" stroke-width="8" stroke-linecap="round"/>`,
+  acc: `<path d="M34 60 Q30 14 100 10 Q170 14 166 60 Q100 40 34 60Z" fill="#8B2C5C" stroke="${O}" stroke-width="5" stroke-linejoin="round"/><path d="M40 48 Q100 26 160 48" fill="none" stroke="#F5C86A" stroke-width="5"/>
+    <circle cx="100" cy="34" r="10" fill="#2A8C82" stroke="#F5C86A" stroke-width="4"/><path d="M104 26 Q124 -6 142 4 Q124 8 110 28Z" fill="#FFE9A8" stroke="${O}" stroke-width="3"/>`,
   cert: {
-    fh: 'Paytone One', tw: 400, fb: 'Nunito', fn: 'Paytone One', nw: 400,
-    ink: '#0B3954', name: '#0E7490', nstroke: '#fff', accent: '#E8590C', line: '#1597BB', pill: 'rgba(21,151,187,.12)', rank: '#E8590C', teacher: '#0E7490',
-    plq: ['#FF9A76', '#FF6F59', '#B23A2A'], prad: 59, tink: '#fff', tsh: '#B23A2A', rib: ['#5FE0F5', '#14A3C7', '#0B5E7A'],
+    fh: 'Playfair Display', tw: 800, ttext: 'Giấy Chứng Nhận', tsize: 70, fb: 'Lora', fn: 'Dancing Script', nw: 700, nsize: 104,
+    ink: '#3B2412', name: '#6E1F4E', nstroke: '#FFF6DE', accent: '#8B2C5C', line: '#B9832C', pill: 'rgba(185,131,44,.18)', rank: '#8B2C5C', teacher: '#6E1F4E',
+    plq: ['#8B2C5C', '#4E1238', '#F5C86A'], prad: 40, tink: '#FFE9A8', tsh: '#2A0618', tglow: '#F5C86A', rib: ['#3FC8B9', '#16857A', '#0B4F49'],
     bg(W, H) {
-      const r = prng(11); let bb = '';
-      for (let i = 0; i < 40; i++) { const x = r() < .5 ? r()*110 + 6 : W - 116 + r()*110, y = 140 + r()*(H - 260), s = 5 + r()*16; bb += bubs([[x, y, s]]); }
-      return `<defs><linearGradient id="og" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9BE7FF"/><stop offset=".55" stop-color="#1E9BD7"/><stop offset="1" stop-color="#0A4F7A"/></linearGradient>
-        <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3F9FF"/></linearGradient></defs>
-        <rect width="${W}" height="${H}" fill="url(#og)"/>
-        ${[200, 520, 1000, 1320].map((x, i) => `<path d="M${x} 0 L${x + 90} 0 L${x - 80 + i*30} ${H} L${x - 220 + i*30} ${H}Z" fill="#fff" opacity=".08"/>`).join('')}${bb}
-        <rect x="88" y="102" width="${W - 176}" height="${H - 194}" rx="44" fill="none" stroke="#FFE8B8" stroke-width="14"/>
-        <rect x="88" y="102" width="${W - 176}" height="${H - 194}" rx="44" fill="none" stroke="#C9A26B" stroke-width="5" stroke-dasharray="22 14"/>
-        <rect x="104" y="118" width="${W - 208}" height="${H - 226}" rx="34" fill="url(#pg)" stroke="#1597BB" stroke-width="9"/>
-        <path d="M104 ${H - 190} Q300 ${H - 230} 500 ${H - 196} T900 ${H - 200} T1300 ${H - 196} T${W - 104} ${H - 205} V${H - 140} Q${W - 104} ${H - 108} ${W - 138} ${H - 108} H138 Q104 ${H - 108} 104 ${H - 140}Z" fill="#C6F1FB" opacity=".7"/>
-        <path d="M0 ${H - 70} Q200 ${H - 120} 400 ${H - 80} T800 ${H - 80} T1200 ${H - 85} T${W} ${H - 90} V${H} H0Z" fill="#F2D49B" stroke="${O}" stroke-width="5"/>
-        ${weed(40, H - 40, 1.1, '#2DA44E')}${weed(90, H - 30, .8, '#8AC926')}${coral(1500, H - 40, 1.2, '#FF5E78')}${coral(1420, H - 30, .8, '#B06BFF')}
-        ${starfish(300, H - 60, .7, '#FFD23F')}${shell(1240, H - 60, .6, '#FFC2D6')}${starfish(80, 70, .8, '#FF8A5B')}${shell(1520, 80, .8, '#FFE3B3')}
-        ${fishS(70, 520, .9, '#FFB14E', '#FF7F11', 1)}${fishS(1530, 420, .9, '#FF8FAB', '#FF006E', 0)}`;
+      const r = prng(9); let st = '';
+      for (let i = 0; i < 150; i++) { const x = r()*W, y = r()*H*.9, s = r(); st += `<circle cx="${x}" cy="${y}" r="${.8 + s*2}" fill="#FFE9A8" opacity="${.3 + s*.6}"/>`; }
+      return `<defs><radialGradient id="ng" cx="50%" cy="0%" r="110%"><stop offset="0" stop-color="#3A1D5E"/><stop offset=".45" stop-color="#1C1350"/><stop offset="1" stop-color="#0B0A2A"/></radialGradient>
+        <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF1D6"/><stop offset="1" stop-color="#E9D2A0"/></linearGradient></defs>
+        <rect width="${W}" height="${H}" fill="url(#ng)"/>${st}${crescent(W - 110, 110, 56)}
+        <g opacity=".55">${palace(W/2, H + 30, 2.4)}</g>
+        <path d="M80 ${H - 84} V300 Q80 96 ${W/2} 92 Q${W - 80} 96 ${W - 80} 300 V${H - 84}Z" fill="#3A1C0E" stroke="#B9832C" stroke-width="8"/>
+        <path d="M100 ${H - 104} V310 Q100 116 ${W/2} 112 Q${W - 100} 116 ${W - 100} 310 V${H - 104}Z" fill="url(#pg)" stroke="#F5C86A" stroke-width="5"/>
+        <path d="M122 ${H - 126} V318 Q122 138 ${W/2} 134 Q${W - 122} 138 ${W - 122} 318 V${H - 126}Z" fill="none" stroke="#B9832C" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+        ${lantern(150, 0, 1.5)}${lantern(W - 150, 0, 1.5, '#3FC8B9')}${carpetS(170, H - 50, .9)}${star(60, 500, 16, '#F5C86A')}${star(W - 60, 560, 14, '#FFE9A8')}`;
     },
   },
 };
@@ -557,9 +554,9 @@ const card = (x, y, w, h, c, t, fs = 22, tc = '#fff') => `<rect x="${x + 6}" y="
 
 
 /* ===== BÀI 8: CÔNG CỤ HỖ TRỢ TÍNH TOÁN ===== */
-const META = { key: 'bai8', num: 8, theme: 'daiduong', title: 'Bài 8. Công cụ hỗ trợ tính toán', big: 'Công cụ hỗ trợ<br>tính toán',
+const META = { key: 'bai8', num: 8, theme: 'nghinle', title: 'Bài 8. Công cụ hỗ trợ tính toán', big: 'Công cụ hỗ trợ<br>tính toán',
   st2: 'Chủ đề 4 • 5 phần kiến thức cần nhớ • 10 câu đố • giấy chứng nhận',
-  hello: 'Lặn sâu khám phá kho báu hàm bảng tính nhé!',
+  hello: 'Mở kho báu thần kì của các hàm bảng tính nhé!',
   cert: 'Tin học 7 – Bài 8. Công cụ hỗ trợ tính toán', file: 'Tin7_Bai8', pass: 8 };
 
 const Y = '#FFE38A';

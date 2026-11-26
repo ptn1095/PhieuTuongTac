@@ -1,7 +1,7 @@
 /* ===== BÀI 8a: LÀM VIỆC VỚI DANH SÁCH DẠNG LIỆT KÊ VÀ HÌNH ẢNH TRONG VĂN BẢN ===== */
-const META = { key: 'bai8a', num: '8a', theme: 'daiduong', title: 'Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản', big: 'Danh sách liệt kê<br>và hình ảnh',
+const META = { key: 'bai8a', num: '8a', theme: 'go', title: 'Bài 8a. Làm việc với danh sách dạng liệt kê và hình ảnh trong văn bản', big: 'Danh sách liệt kê<br>và hình ảnh',
   st2: 'Chủ đề 4 • Soạn thảo văn bản • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
-  hello: 'Cùng trang trí văn bản xinh như rạn san hô nhé!',
+  hello: 'Cùng trang trí văn bản thật gọn gàng, sinh động nhé!',
   cert: 'Tin học 8 – Bài 8a. Danh sách liệt kê và hình ảnh', file: 'Tin8_Bai8a', pass: 8 };
 
 const pic = (x, y, w, h) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="#8ECAE6" stroke="${O}" stroke-width="5"/><path d="M${x + 8} ${y + h - 8} L${x + w*.35} ${y + h*.45} L${x + w*.6} ${y + h*.75} L${x + w*.75} ${y + h*.6} L${x + w - 8} ${y + h - 8}Z" fill="#2DA44E" stroke="${O}" stroke-width="4" stroke-linejoin="round"/><circle cx="${x + w*.75}" cy="${y + h*.3}" r="${Math.min(w, h)*.12}" fill="#FFD60A" stroke="${O}" stroke-width="4"/>`;
@@ -22,7 +22,7 @@ const ILL_T = {
 };
 
 const TOPICS = [
-  { id: 't1', name: 'Văn bản dễ đọc hơn', tip: 'Văn bản gọn gàng như đàn cá bơi thẳng hàng!',
+  { id: 't1', name: 'Văn bản dễ đọc hơn', tip: 'Văn bản gọn gàng, ý nào ra ý nấy!',
     html: S4('So sánh hai bản hướng dẫn: viết liền một đoạn và viết <b>thành danh sách</b>.',
       'Danh sách giúp nội dung <b>rõ ràng, mạch lạc</b>; hình ảnh giúp <b>sinh động</b>.',
       'Bản nào em đọc nhanh và nhớ lâu hơn?',
@@ -46,7 +46,7 @@ const TOPICS = [
     quiz: [
       { q: 'Lệnh chèn ảnh từ máy tính nằm ở:', o: ['Insert → Pictures', 'Home → Bullets', 'File → Save', 'Layout → Margins'], a: 0, why: 'Thẻ Insert, nút Pictures dùng để chèn ảnh.' },
       { q: 'Để phóng to ảnh mà không bị méo, em kéo:', o: ['Nút ở giữa cạnh', 'Nút ở góc ảnh', 'Thanh cuộn', 'Chuột ra ngoài trang'], a: 1, why: 'Kéo nút góc giữ đúng tỉ lệ chiều rộng – chiều cao.' } ] },
-  { id: 't4', name: 'Bố trí ảnh với chữ', tip: 'Wrap Text giúp ảnh và chữ “bơi” cạnh nhau thật khéo!',
+  { id: 't4', name: 'Bố trí ảnh với chữ', tip: 'Wrap Text giúp ảnh và chữ nằm cạnh nhau thật khéo!',
     html: S4('Đặt ảnh cạnh đoạn văn, chữ <b>bao quanh</b> ảnh.',
       'Chọn ảnh → <code>Wrap Text</code>: In Line with Text, <b>Square</b>, Tight, Behind Text…',
       'Muốn ảnh làm <b>hình nền</b> sau chữ, chọn kiểu nào?',

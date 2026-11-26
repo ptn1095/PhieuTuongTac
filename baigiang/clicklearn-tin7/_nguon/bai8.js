@@ -1,7 +1,7 @@
 /* ===== BÀI 8: CÔNG CỤ HỖ TRỢ TÍNH TOÁN ===== */
-const META = { key: 'bai8', num: 8, theme: 'daiduong', title: 'Bài 8. Công cụ hỗ trợ tính toán', big: 'Công cụ hỗ trợ<br>tính toán',
+const META = { key: 'bai8', num: 8, theme: 'nghinle', title: 'Bài 8. Công cụ hỗ trợ tính toán', big: 'Công cụ hỗ trợ<br>tính toán',
   st2: 'Chủ đề 4 • 5 phần kiến thức cần nhớ • 10 câu đố • giấy chứng nhận',
-  hello: 'Lặn sâu khám phá kho báu hàm bảng tính nhé!',
+  hello: 'Mở kho báu thần kì của các hàm bảng tính nhé!',
   cert: 'Tin học 7 – Bài 8. Công cụ hỗ trợ tính toán', file: 'Tin7_Bai8', pass: 8 };
 
 const Y = '#FFE38A';
