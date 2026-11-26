@@ -1,4 +1,7 @@
 [
+  { "link": "congnghevui5/", "ten": "Công nghệ vui 5", "ic": "⚙️", "mon": "Công nghệ 5", "mau": "#65B843",
+    "mota": "Phần một – Công nghệ và đời sống (Kết nối tri thức). 6 bài, mỗi bài 5 hoạt động × 4 bước, 10 câu đố, giấy chứng nhận.",
+    "ds": "congnghevui5/ds.js" },
   { "link": "minecraft3d/", "ten": "Minecraft thế giới 3D", "ic": "⛏️", "mon": "Tin học – MakeCode Minecraft", "mau": "#2DA44E",
     "mota": "Tìm hiểu 15 nhóm lệnh MakeCode for Minecraft, mỗi nhóm lệnh là 1 bài: 5 nội dung, 10 câu đố, giấy chứng nhận.",
     "ds": "minecraft3d/ds.js" },
