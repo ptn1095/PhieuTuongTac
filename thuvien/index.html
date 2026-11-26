@@ -159,7 +159,8 @@ h1{margin:0;font-family:'Playfair Display',serif;font-weight:800;font-size:clamp
   .trang-sach{box-shadow:none}
   .dong{right:8px;top:8px;position:fixed}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+/* Máy bật "giảm chuyển động": bỏ hẳn bìa lật để mục lục luôn hiện */
+@media (prefers-reduced-motion:reduce){.bia{display:none}}
 </style>
 </head>
 <body>
@@ -259,6 +260,8 @@ function moSach(b){
   document.getElementById('so').classList.add('mo');document.body.style.overflow='hidden';
   document.getElementById('dong').onclick=dongSach;
   setTimeout(()=>document.getElementById('dong').focus({preventScroll:true}),50);
+  // Bìa lật xong thì gỡ hẳn, phòng khi máy không chạy hiệu ứng lật
+  const bia=cuon.querySelector('.bia');bia.addEventListener('animationend',()=>bia.remove());setTimeout(()=>bia.remove(),1600);
   buiVang(innerWidth/2,innerHeight/2,80);
 }
 function dongSach(){if(location.hash)history.pushState('',document.title,location.pathname+location.search);theoDuong();}
@@ -272,7 +275,6 @@ addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('so'
 document.getElementById('so').addEventListener('click',e=>{if(e.target.id==='so')dongSach();});
 
 // ===== Bầu trời sao lấp lánh + sao băng =====
-const giam=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const cs=document.getElementById('sao'),gs=cs.getContext('2d');let SAO=[],bang=null,W=0,H=0,dpr=1;
 function coLai(){dpr=Math.min(2,devicePixelRatio||1);W=innerWidth;H=innerHeight;
   [cs,cb].forEach(c=>{c.width=W*dpr;c.height=H*dpr;c.getContext('2d').setTransform(dpr,0,0,dpr,0,0);});
@@ -339,7 +341,7 @@ function veBut(t){
   mo+=(((dangMo&&ranh)?0:1)-mo)*.06;
   if(mo>.02){gb.globalAlpha=mo;veButLong(gb,BUT.x,BUT.y,BUT.goc);gb.globalAlpha=1;}
 }
-function vong(t){veSao(t);if(!giam)veBut(t);requestAnimationFrame(vong);}
+function vong(t){veSao(t);veBut(t);requestAnimationFrame(vong);}
 
 // ===== Khởi động =====
 coLai();addEventListener('resize',()=>{coLai();if(DS.length)veKe();});
