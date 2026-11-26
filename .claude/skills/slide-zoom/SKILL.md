@@ -39,7 +39,7 @@ Mở `baigiang/<tên-bài>/index.html`, sửa đúng các chỗ sau (tìm theo c
 |---|---|
 | `<title>` | Tên bài |
 | `#start` (`st1`, `st2`) | Tiêu đề màn bắt đầu, dòng giới thiệu |
-| `addFrame('title', …)` | Dòng nhãn hồng, `bigtitle` (2 dòng ngắn), câu giới thiệu "N nội dung • M câu đố…" |
+| `addFrame('title', …)` | Dòng nhãn hồng, `bigtitle` (2–3 dòng ngắn). Trang bìa CHỈ có tên bài: không thêm dòng chữ nhỏ giới thiệu (số nội dung, câu đố, cách bấm…) vì dễ chồng lên tên bài |
 | `const ILL = { t1: …, t2: … }` | Hình minh hoạ 2D cho từng chủ đề (xem mục 3). Giữ `trophy` |
 | `const TOPICS = [ … ]` | Nội dung chính (xem dưới) |
 | `const KEY = [ … ]` | Mỗi chủ đề 1 dòng ý chính cho khung Tổng kết (≤ 3 dòng ngắn, dùng `<b>` và `<br>`) |

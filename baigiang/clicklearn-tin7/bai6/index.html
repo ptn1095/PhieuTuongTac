@@ -706,7 +706,6 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef board', `${TOP('ClickLearn Tin học 7 • Bài 6')}
   <div class="bigtitle">${META.big}</div>
-  <div style="position:absolute;left:86px;top:432px;width:740px;color:var(--bink);font-weight:700;font-size:36px;line-height:1.3">${TOPICS.length} phần kiến thức cần nhớ • ${TOPICS.reduce((a, t) => a + t.quiz.length, 0)} câu đố vui<br>Bấm ▶ hoặc bấm vào bảng để zoom!<br>Đạt từ ${PASS} ⭐ trở lên nhận <b style="color:var(--accent)">giấy chứng nhận</b></div>
   <svg viewBox="0 0 200 240" style="position:absolute;left:1150px;top:80px;width:300px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
   <div style="position:absolute;left:830px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">📚 Em ghi nhớ</div>
   <div style="position:absolute;left:1180px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">🏆 Về đích</div>
