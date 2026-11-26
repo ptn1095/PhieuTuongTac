@@ -1,5 +1,5 @@
 /* ===== BÀI 17: CHƯƠNG TRÌNH MÁY TÍNH ===== */
-const META = { key: 'bai17', num: 17, title: 'Bài 17. Chương trình máy tính', big: 'Chương trình<br>máy tính',
+const META = { key: 'bai17', theme: 'daiduong', num: 17, title: 'Bài 17. Chương trình máy tính', big: 'Chương trình<br>máy tính',
   st2: 'Chủ đề 6 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng ra lệnh cho máy tính bằng chương trình nhé!',
   cert: 'Tin học 6 – Bài 17. Chương trình máy tính', file: 'Tin6_Bai17', pass: 8 };

@@ -32,6 +32,7 @@ body{font-family:'Baloo 2','Nunito',system-ui,sans-serif;color:var(--ink);min-he
 .board>.pq{position:absolute;left:50%;top:-24px;transform:translateX(-50%);white-space:nowrap;padding:1px 22px 3px;border-radius:12px;border:4px solid var(--wood-edge);background:linear-gradient(180deg,var(--wood-mid),var(--wood-dark));font-weight:800;font-size:20px;color:var(--cream);text-shadow:0 2px 0 var(--wood-edge);z-index:2}
 /* đầu trang */
 header{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:40px}
+header>div{flex:1;min-width:260px}
 header svg.bot{width:84px;flex:none;animation:bob 2.2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
 .logo{font-weight:800;font-size:clamp(38px,6.5vw,66px);line-height:1;color:#3F8A1C;text-shadow:3px 0 0 var(--cream),-3px 0 0 var(--cream),0 3px 0 var(--cream),0 -3px 0 var(--cream),0 8px 0 rgba(94,53,21,.45)}
@@ -62,7 +63,7 @@ header svg.bot{width:84px;flex:none;animation:bob 2.2s ease-in-out infinite}
 .it .ic{position:relative;font-size:58px;line-height:1;filter:drop-shadow(0 4px 0 rgba(60,30,5,.3))}
 .it .en{position:relative;font-weight:800;font-size:23px;line-height:1.1}
 .it .blk{position:relative;margin-top:auto}
-.it .blk span{display:inline-block;border-radius:10px;padding:2px 10px;color:#fff;font-weight:800;font-size:14px;white-space:nowrap;border:3px solid rgba(0,0,0,.2)}
+.it .blk{display:flex;flex-direction:column;gap:4px;align-items:center}.it .blk span{display:inline-block;border-radius:10px;padding:2px 10px;color:#fff;font-weight:800;font-size:14px;white-space:nowrap;border:3px solid rgba(0,0,0,.2)}
 .it .ok{position:absolute;right:-4px;top:12px;background:linear-gradient(180deg,var(--btn-top),var(--btn));color:#fff;border:3px solid var(--btn-dark);border-radius:12px 0 0 12px;padding:1px 10px;font-weight:800;font-size:13px;display:none}
 .it.pass .ok{display:block}
 .nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:14px;border:4px solid var(--wood-edge);background:linear-gradient(180deg,#F0CB8C,var(--wood-mid));color:var(--ink);font-size:24px;font-weight:800;cursor:pointer;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 6px 0 var(--wood-edge);z-index:300;display:flex;align-items:center;justify-content:center}
@@ -100,7 +101,7 @@ footer{color:var(--cream);font-weight:700;text-align:center;margin-top:28px;text
   <header>
     <svg class="bot" viewBox="0 0 200 240" id="botH"></svg>
     <div><div class="logo">ClickLearn <span>Tin học 6</span></div>
-    <div class="sub">Tin học 6 – Kết nối tri thức • 17 bài, 6 chủ đề • mỗi bài 5 hoạt động × 4 bước, 10 câu đố, một giấy chứng nhận</div></div>
+    <div class="sub">Tin học 6 – Kết nối tri thức • 17 bài, 6 chủ đề • mỗi bài 5 hoạt động × 4 bước, 10 câu đố, một giấy chứng nhận • 7 phong cách: rừng, vũ trụ, đại dương, sa mạc, chibi, lâu đài, tuyết</div></div>
   </header></div>
 
   <div class="board" id="whoCard"><i class="t"></i><i class="b"></i><i class="l"></i><i class="r"></i><svg class="lv" viewBox="-310 -190 620 190"></svg><div class="pq">Học sinh</div>
@@ -166,7 +167,10 @@ const LOOK = {
   bai16: { en: 'Cấu trúc điều khiển', ic: '🔀', cd: 6 },
   bai17: { en: 'Chương trình máy tính', ic: '💻', cd: 6 },
 };
+const THN = { rung: ['🌿', 'Tre gỗ rừng', '#7FBF35'], vutru: ['🚀', 'Vũ trụ', '#4A5680'], chibi: ['🐱', 'Thú chibi', '#FF9EC4'], daiduong: ['🌊', 'Đại dương', '#14A9A0'],
+  samac: ['🏜️', 'Sa mạc', '#D2693C'], laudai: ['🏰', 'Lâu đài', '#7B2CBF'], tuyet: ['❄️', 'Tuyết mùa đông', '#86BFE0'] };
 Object.values(LOOK).forEach(L => { const c = CD[L.cd - 1]; L.c = [c, c]; L.blk = 'Chủ đề ' + L.cd; });
+DS.forEach(d => { LOOK[d.key].th = THN[d.theme] || THN.rung; });
 const ACTN = ['Khởi động', 'Khám phá', 'Luyện tập', 'Vận dụng', 'Củng cố'], ACTC = ['#B4520A', '#145A8C', '#2D6012', '#155E57', '#9C5A00'];
 const PASS = 8, NQ = 10, $ = id => document.getElementById(id), N = DS.length;
 const tidy = v => v.replace(/\s+/g, ' ').trim();
@@ -204,8 +208,8 @@ const ITEMS = DS.map((d, i) => {
   e.className = 'it'; e.dataset.i = i;
     e.innerHTML = `<div class="ok">✅ Đạt</div>
     <div class="num">${d.num}</div><div class="ic">${L.ic}</div><div class="en">${L.en}</div>
-    <div class="blk"><span style="background:${L.c[0]}">${L.blk}</span></div>`;
-  ring.appendChild(e); return e;
+    <div class="blk"><span style="background:${L.c[0]}">${L.blk}</span> <span style="background:${L.th[2]}">${L.th[0]} ${L.th[1]}</span></div>`;
+  e.style.borderColor = L.th[2]; ring.appendChild(e); return e;
 });
 $('dots').innerHTML = DS.map((d, i) => `<b data-i="${i}" title="${LOOK[d.key].en}"></b>`).join('');
 
@@ -275,7 +279,7 @@ function detail(i) {
   const d = DS[i], L = LOOK[d.key], w = who(), p = w.name ? prog(d.key) : {}, best = p.best || 0;
   $('det').innerHTML = `<div class="det">
     <div class="big" style="background:linear-gradient(180deg,#F0CB8C,${L.c[0]})">${L.ic}</div>
-    <div><span class="lab">Tin học 6 • ${L.blk} • Bài ${d.num}</span><h3>${d.title}</h3>
+    <div><span class="lab">Tin học 6 • ${L.blk} • Bài ${d.num}</span> <span class="lab" style="background:${L.th[2]}">${L.th[0]} Giao diện ${L.th[1]}</span><h3>${d.title}</h3>
       <ol>${d.topics.map((t, k) => `<li><b style="color:${ACTC[k]}">${ACTN[k]}:</b> ${t}</li>`).join('')}</ol></div>
     <div class="side"><div class="sc">${p.done ? (best >= PASS ? `✅ Đã đạt ${best}/${NQ} ⭐` : `⭐ ${best}/${NQ} – cần ${PASS}`) : '📝 10 câu đố • cần 8 ⭐'}</div>
       <a class="btn go" href="${d.key}/" id="goBtn">Vào học ▶</a></div></div>`;

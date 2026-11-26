@@ -1,5 +1,5 @@
 /* ===== BÀI 11: ĐỊNH DẠNG VĂN BẢN ===== */
-const META = { key: 'bai11', num: 11, title: 'Bài 11. Định dạng văn bản', big: 'Định dạng<br>văn bản',
+const META = { key: 'bai11', theme: 'chibi', num: 11, title: 'Bài 11. Định dạng văn bản', big: 'Định dạng<br>văn bản',
   st2: 'Chủ đề 5 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng làm cho văn bản đẹp và dễ đọc hơn nhé!',
   cert: 'Tin học 6 – Bài 11. Định dạng văn bản', file: 'Tin6_Bai11', pass: 8 };

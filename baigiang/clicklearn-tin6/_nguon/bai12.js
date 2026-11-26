@@ -1,5 +1,5 @@
 /* ===== BÀI 12: TRÌNH BÀY THÔNG TIN Ở DẠNG BẢNG ===== */
-const META = { key: 'bai12', num: 12, title: 'Bài 12. Trình bày thông tin ở dạng bảng', big: 'Thông tin<br>dạng bảng',
+const META = { key: 'bai12', theme: 'tuyet', num: 12, title: 'Bài 12. Trình bày thông tin ở dạng bảng', big: 'Thông tin<br>dạng bảng',
   st2: 'Chủ đề 5 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng xếp thông tin vào bảng cho gọn gàng nhé!',
   cert: 'Tin học 6 – Bài 12. Trình bày thông tin ở dạng bảng', file: 'Tin6_Bai12', pass: 8 };

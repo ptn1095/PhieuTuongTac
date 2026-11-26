@@ -10,7 +10,15 @@
 <style>
 :root{--ink:#4A2A0F;--bg:#1d4a1f;--bg-deep:#0f2e12;--wood-light:#E6B873;--wood:#CF9750;--wood-mid:#B97F3D;--wood-dark:#93592A;--wood-edge:#5E3515;
   --bamboo-hi:#C4EC7A;--bamboo:#7FBF35;--bamboo-dark:#3F7F1A;--bamboo-node:#2C5C12;--leaf:#4FAE2C;--leaf-dark:#2A6F16;
-  --btn-top:#93D655;--btn:#5CAE2E;--btn-dark:#2D7612;--red:#E5392C;--red-dark:#981A12;--gold:#FFCF2F;--gold-dark:#D98500;--cream:#FFF7DF}
+  --btn-top:#93D655;--btn:#5CAE2E;--btn-dark:#2D7612;--red:#E5392C;--red-dark:#981A12;--gold:#FFCF2F;--gold-dark:#D98500;--cream:#FFF7DF;
+  --paper:#FFF8E4;--plq1:#B97F3D;--plq2:#93592A;--hb1:#F0CB8C;--paper2:#FFFDF3;--cell:#F5E6C4;--title:#3F8A1C;--bg0:#2F6E22;--bg1:#0F2E12;
+  --grain:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 4px,transparent 4px 74px),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 2px,transparent 2px 23px);
+  --grain-s:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 38px);
+  --barH:repeating-linear-gradient(90deg,transparent 0 220px,var(--bamboo-node) 220px 228px,var(--bamboo-hi) 228px 234px,transparent 234px 330px);
+  --barV:repeating-linear-gradient(180deg,transparent 0 220px,var(--bamboo-node) 220px 228px,var(--bamboo-hi) 228px 234px,transparent 234px 330px);
+  --barHs:repeating-linear-gradient(90deg,transparent 0 100px,var(--bamboo-node) 100px 104px,var(--bamboo-hi) 104px 107px,transparent 107px 150px);
+  --barVs:repeating-linear-gradient(180deg,transparent 0 100px,var(--bamboo-node) 100px 104px,var(--bamboo-hi) 104px 107px,transparent 107px 150px);
+  --plqgrain:repeating-linear-gradient(90deg,rgba(60,30,5,.12) 0 3px,transparent 3px 46px)}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden;font-family:'Baloo 2','Nunito',system-ui,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 /* ===== Nền rừng ===== */
@@ -31,25 +39,25 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:'Baloo 2','Nunito',
 .wdeco{position:absolute;border-radius:50%;background:rgba(196,236,122,.05);pointer-events:none}
 /* ===== Bảng gỗ + khung tre ===== */
 .wood{border-radius:30px;
-  background:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 4px,transparent 4px 74px),repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 2px,transparent 2px 23px),linear-gradient(180deg,var(--wood-light),var(--wood));
+  background:var(--grain),linear-gradient(180deg,var(--wood-light),var(--wood));
   box-shadow:inset 0 0 0 8px var(--wood-dark),inset 0 16px 0 rgba(255,255,255,.2),0 30px 0 rgba(0,0,0,.35)}
 .bb{position:absolute;border-radius:22px;z-index:3;pointer-events:none;box-shadow:0 6px 0 rgba(0,0,0,.25)}
 .bb.t,.bb.b{left:-34px;right:-34px;height:44px;
-  background:repeating-linear-gradient(90deg,transparent 0 220px,var(--bamboo-node) 220px 228px,var(--bamboo-hi) 228px 234px,transparent 234px 330px),linear-gradient(180deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
+  background:var(--barH),linear-gradient(180deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
 .bb.t{top:-18px}.bb.b{bottom:-18px}
 .bb.l,.bb.r{top:-34px;bottom:-34px;width:44px;
-  background:repeating-linear-gradient(180deg,transparent 0 220px,var(--bamboo-node) 220px 228px,var(--bamboo-hi) 228px 234px,transparent 234px 330px),linear-gradient(90deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
+  background:var(--barV),linear-gradient(90deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
 .bb.l{left:-18px}.bb.r{right:-18px}
 .tie{position:absolute;width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,#A8703A,var(--wood-edge));border:5px solid #3E220C;transform:rotate(45deg);z-index:4;pointer-events:none}
 .leaves{position:absolute;left:50%;top:-178px;width:620px;height:190px;transform:translateX(-50%);z-index:2;pointer-events:none}
 .leaves g{transform-origin:0 0;animation:sway 4s ease-in-out infinite}
 .plq{position:absolute;left:50%;top:-62px;transform:translateX(-50%);z-index:5;white-space:nowrap;padding:6px 48px 10px;border-radius:20px;border:7px solid var(--wood-edge);
-  background:repeating-linear-gradient(90deg,rgba(60,30,5,.12) 0 3px,transparent 3px 46px),linear-gradient(180deg,var(--wood-mid),var(--wood-dark));
+  background:var(--plqgrain),linear-gradient(180deg,var(--plq1),var(--plq2));
   font-weight:800;font-size:50px;line-height:1.1;color:var(--cream);text-shadow:0 4px 0 var(--wood-edge);box-shadow:inset 0 6px 0 rgba(255,255,255,.22),0 10px 0 rgba(0,0,0,.3)}
 /* ===== Khung hoạt động ===== */
 .num{position:absolute;left:62px;top:56px;width:108px;height:108px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF27A,var(--gold) 55%,var(--gold-dark));border:7px solid var(--wood-edge);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:64px;color:var(--ink);box-shadow:0 8px 0 rgba(60,30,5,.4)}
 .ttl{position:absolute;left:190px;top:64px;right:70px;font-weight:800;font-size:64px;line-height:1.05;color:var(--ink);text-shadow:0 3px 0 rgba(255,247,223,.55)}
-.panel{position:absolute;left:62px;top:182px;width:866px;height:676px;background:#FFF8E4;border-radius:26px;border:7px solid var(--wood-dark);padding:26px 34px;box-shadow:inset 0 6px 0 rgba(147,89,42,.15),0 9px 0 var(--wood-edge);font-size:38px;font-weight:600;line-height:1.26;overflow:hidden;color:var(--ink)}
+.panel{position:absolute;left:62px;top:182px;width:866px;height:676px;background:var(--paper);border-radius:26px;border:7px solid var(--wood-dark);padding:26px 34px;box-shadow:inset 0 6px 0 rgba(147,89,42,.15),0 9px 0 var(--wood-edge);font-size:38px;font-weight:600;line-height:1.26;overflow:hidden;color:var(--ink)}
 .panel b{font-weight:800}
 .panel ul{list-style:none}
 .panel li{position:relative;padding-left:52px;margin-bottom:16px}
@@ -59,9 +67,9 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 .tb{width:100%;border-collapse:separate;border-spacing:0 10px;font-size:31px}
 .tb th{background:var(--c);color:#fff;font-weight:800;padding:8px 14px;text-align:left}
 .tb th:first-child{border-radius:18px 0 0 18px}.tb th:last-child{border-radius:0 18px 18px 0}
-.tb td{background:#F5E6C4;padding:8px 14px}
+.tb td{background:var(--cell);padding:8px 14px}
 .tb td:first-child{border-radius:18px 0 0 18px;font-weight:800}.tb td:last-child{border-radius:0 18px 18px 0}
-.ill{position:absolute;left:960px;top:182px;width:580px;height:406px;background:#FFFDF3;border-radius:26px;border:7px solid var(--wood-dark);box-shadow:0 9px 0 var(--wood-edge);overflow:hidden}
+.ill{position:absolute;left:960px;top:182px;width:580px;height:406px;background:var(--paper2);border-radius:26px;border:7px solid var(--wood-dark);box-shadow:0 9px 0 var(--wood-edge);overflow:hidden}
 .ill svg{width:100%;height:100%;display:block}
 .qlabel{position:absolute;left:960px;top:606px;width:580px;text-align:center;color:var(--ink);font-weight:800;font-size:32px;text-shadow:0 2px 0 rgba(255,247,223,.6)}
 .chips{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 14px}
@@ -77,7 +85,7 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 @keyframes wob{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
 .qtext{position:absolute;left:70px;right:220px;top:70px;font-weight:800;font-size:50px;line-height:1.2;color:var(--ink)}
 .opts{position:absolute;left:62px;right:62px;top:320px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
-.opt{display:flex;align-items:center;gap:22px;min-height:126px;background:#FFF8E4;border:7px solid var(--wood-dark);border-radius:26px;padding:10px 26px;font-weight:700;font-size:38px;line-height:1.15;box-shadow:inset 0 -6px 0 rgba(147,89,42,.15),0 10px 0 var(--wood-edge);cursor:pointer;transition:transform .12s,box-shadow .12s,background .2s,border-color .2s;color:var(--ink)}
+.opt{display:flex;align-items:center;gap:22px;min-height:126px;background:var(--paper);border:7px solid var(--wood-dark);border-radius:26px;padding:10px 26px;font-weight:700;font-size:38px;line-height:1.15;box-shadow:inset 0 -6px 0 rgba(147,89,42,.15),0 10px 0 var(--wood-edge);cursor:pointer;transition:transform .12s,box-shadow .12s,background .2s,border-color .2s;color:var(--ink)}
 .cur .opt:hover{transform:translateY(-4px);box-shadow:0 14px 0 var(--wood-edge)}
 .opt:active{transform:translateY(6px)!important;box-shadow:0 4px 0 var(--wood-edge)!important}
 .opt .L{flex:none;width:76px;height:76px;border-radius:18px;color:#fff;font-weight:800;font-size:44px;display:flex;align-items:center;justify-content:center;border:4px solid rgba(0,0,0,.25);box-shadow:inset 0 4px 0 rgba(255,255,255,.35),inset 0 -6px 0 rgba(0,0,0,.18)}
@@ -91,7 +99,7 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 .fb.bad{display:flex;background:#FFF3BF;color:var(--ink);border:6px solid #E8A200;box-shadow:0 9px 0 #A86E00}
 .fb .ic{font-size:54px;flex:none}
 /* ===== Khung tiêu đề & kết quả ===== */
-.bigtitle{position:absolute;left:80px;top:150px;font-weight:800;font-size:124px;line-height:1.02;color:#3F8A1C;text-shadow:5px 0 0 var(--cream),-5px 0 0 var(--cream),0 5px 0 var(--cream),0 -5px 0 var(--cream),4px 4px 0 var(--cream),-4px -4px 0 var(--cream),4px -4px 0 var(--cream),-4px 4px 0 var(--cream),0 14px 0 rgba(94,53,21,.45)}
+.bigtitle{position:absolute;left:80px;top:150px;font-weight:800;font-size:124px;line-height:1.02;color:var(--title);text-shadow:5px 0 0 var(--cream),-5px 0 0 var(--cream),0 5px 0 var(--cream),0 -5px 0 var(--cream),4px 4px 0 var(--cream),-4px -4px 0 var(--cream),4px -4px 0 var(--cream),-4px 4px 0 var(--cream),0 14px 0 rgba(94,53,21,.45)}
 .btn{display:inline-flex;align-items:center;gap:14px;border:5px solid rgba(0,0,0,.28);border-radius:20px;padding:14px 40px;font-family:inherit;font-weight:800;font-size:44px;color:#fff;cursor:pointer;text-shadow:0 3px 0 rgba(0,0,0,.25);box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 9px 0 rgba(40,20,5,.45);transition:transform .1s,box-shadow .1s;background:var(--btn)}
 .btn:active{transform:translateY(6px);box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 3px 0 rgba(40,20,5,.45)}
 .rgrid{position:absolute;left:60px;right:60px;top:120px;bottom:90px;display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
@@ -99,7 +107,7 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 .cur .rcard:hover{transform:translateY(-6px) rotate(-1deg)}
 .rn{width:54px;height:54px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF27A,var(--gold) 55%,var(--gold-dark));color:var(--ink);font-weight:800;font-size:30px;display:flex;align-items:center;justify-content:center;border:5px solid var(--wood-edge)}
 .rt{font-weight:800;font-size:30px;line-height:1.1;margin:8px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.3)}
-.rk{font-weight:600;font-size:25px;line-height:1.25;background:#FFF8E4;color:var(--ink);border-radius:16px;padding:10px 12px}
+.rk{font-weight:600;font-size:25px;line-height:1.25;background:var(--paper);color:var(--ink);border-radius:16px;padding:10px 12px}
 .rk b{color:#B4320A;font-weight:800}
 .result .btn{font-size:34px;padding:10px 26px}
 .btn.lock{background:#9A8B78!important}
@@ -107,13 +115,13 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 #certBox{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(10,30,10,.65);padding:14px}
 #certBox.show{display:flex}
 .cpanel{position:relative;border-radius:22px;padding:30px 30px 26px;width:min(560px,100%);max-height:100%;overflow:auto;text-align:center;user-select:text;-webkit-user-select:text;
-  background:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 38px),linear-gradient(180deg,var(--wood-light),var(--wood));
+  background:var(--grain-s),linear-gradient(180deg,var(--wood-light),var(--wood));
   border:12px solid var(--bamboo);outline:4px solid var(--bamboo-node);box-shadow:inset 0 0 0 4px var(--wood-dark),0 12px 0 rgba(0,0,0,.4)}
 .cpanel.wide{width:min(980px,100%)}
 .cpanel h2{font-weight:800;font-size:clamp(24px,3.4vw,34px);color:#2D7612;margin-bottom:6px}
 .cpanel p{font-weight:600;font-size:18px;margin-bottom:14px}
 .cpanel label{display:block;text-align:left;font-weight:800;font-size:18px;margin:10px 0 6px}
-.cpanel input{width:100%;font-family:inherit;font-weight:700;font-size:22px;padding:10px 16px;border:4px solid var(--wood-dark);border-radius:16px;outline:none;color:var(--ink);background:#FFF8E4;box-shadow:inset 0 4px 0 rgba(147,89,42,.15)}
+.cpanel input{width:100%;font-family:inherit;font-weight:700;font-size:22px;padding:10px 16px;border:4px solid var(--wood-dark);border-radius:16px;outline:none;color:var(--ink);background:var(--paper);box-shadow:inset 0 4px 0 rgba(147,89,42,.15)}
 .cpanel input:focus{border-color:var(--btn-dark)}
 .cpanel .err{color:#C2190E;font-weight:800;min-height:24px;margin-top:8px}
 .cpanel .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px}
@@ -123,8 +131,8 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 @media print{@page{size:A4 landscape;margin:0}body>*{display:none!important}#printArea{display:block!important}#printArea img{width:100%;height:auto}html,body{overflow:visible;height:auto}}
 /* ===== Thanh điều khiển gỗ ===== */
 #hud{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;border-radius:20px;padding:6px 9px;z-index:20;
-  background:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 30px),linear-gradient(180deg,var(--wood-light),var(--wood));border:4px solid var(--wood-edge);box-shadow:inset 0 3px 0 rgba(255,255,255,.3),0 5px 0 rgba(0,0,0,.4)}
-.hb{width:44px;height:44px;border-radius:12px;border:3px solid var(--wood-edge);background:linear-gradient(180deg,#F0CB8C,var(--wood-mid));font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--wood-edge);transition:transform .1s,box-shadow .1s;color:var(--ink);font-family:inherit;font-weight:800}
+  background:var(--grain-s),linear-gradient(180deg,var(--wood-light),var(--wood));border:4px solid var(--wood-edge);box-shadow:inset 0 3px 0 rgba(255,255,255,.3),0 5px 0 rgba(0,0,0,.4)}
+.hb{width:44px;height:44px;border-radius:12px;border:3px solid var(--wood-edge);background:linear-gradient(180deg,var(--hb1),var(--wood-mid));font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--wood-edge);transition:transform .1s,box-shadow .1s;color:var(--ink);font-family:inherit;font-weight:800}
 .hb:active{transform:translateY(3px);box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 1px 0 var(--wood-edge)}
 .hb.big{width:54px;height:50px;font-size:24px;color:#fff;background:linear-gradient(180deg,var(--btn-top),var(--btn) 55%,#4C9B22);border-color:var(--btn-dark);box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--btn-dark);text-shadow:0 2px 0 var(--btn-dark)}
 .hb.off{opacity:.45}
@@ -139,29 +147,38 @@ code{font-family:'Baloo 2',sans-serif;background:#E3F3C8;color:#2D6012;border-ra
 @keyframes nope{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
 .eyes{transform-origin:100px 88px;animation:blink 3.2s infinite}
 @keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-#say{position:fixed;left:100px;bottom:70px;max-width:min(380px,calc(100vw - 160px));background:#FFF8E4;border:5px solid var(--wood-edge);border-radius:20px;padding:10px 18px;font-weight:600;font-size:19px;line-height:1.3;z-index:21;box-shadow:0 6px 0 rgba(0,0,0,.35);transform-origin:0 100%;transition:transform .35s cubic-bezier(.34,1.9,.64,1),opacity .25s}
+#say{position:fixed;left:100px;bottom:70px;max-width:min(380px,calc(100vw - 160px));background:var(--paper);border:5px solid var(--wood-edge);border-radius:20px;padding:10px 18px;font-weight:600;font-size:19px;line-height:1.3;z-index:21;box-shadow:0 6px 0 rgba(0,0,0,.35);transform-origin:0 100%;transition:transform .35s cubic-bezier(.34,1.9,.64,1),opacity .25s}
 #say b{font-weight:800}
 #say::after{content:"";position:absolute;left:-17px;bottom:16px;border:12px solid transparent;border-right:16px solid var(--wood-edge)}
 #say.hide{transform:scale(0);opacity:0}
 #confetti{position:fixed;inset:0;pointer-events:none;z-index:30}
 /* ===== Màn bắt đầu ===== */
-#start{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#2F6E22 0%,#0F2E12 100%);padding:70px 16px 20px;transition:opacity .6s;overflow:auto}
+#start{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,var(--bg0) 0%,var(--bg1) 100%);padding:70px 16px 20px;transition:opacity .6s;overflow:auto}
 .sboard{position:relative;width:min(860px,96vw);border-radius:20px;padding:44px 26px 26px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;margin:auto;
-  background:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 38px),linear-gradient(180deg,var(--wood-light),var(--wood));box-shadow:inset 0 0 0 5px var(--wood-dark),inset 0 8px 0 rgba(255,255,255,.2),0 14px 0 rgba(0,0,0,.4)}
+  background:var(--grain-s),linear-gradient(180deg,var(--wood-light),var(--wood));box-shadow:inset 0 0 0 5px var(--wood-dark),inset 0 8px 0 rgba(255,255,255,.2),0 14px 0 rgba(0,0,0,.4)}
 .sboard .bs{position:absolute;border-radius:10px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
-.sboard .bs.t,.sboard .bs.b{left:-14px;right:-14px;height:20px;background:repeating-linear-gradient(90deg,transparent 0 100px,var(--bamboo-node) 100px 104px,var(--bamboo-hi) 104px 107px,transparent 107px 150px),linear-gradient(180deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
+.sboard .bs.t,.sboard .bs.b{left:-14px;right:-14px;height:20px;background:var(--barHs),linear-gradient(180deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
 .sboard .bs.t{top:-8px}.sboard .bs.b{bottom:-8px}
-.sboard .bs.l,.sboard .bs.r{top:-14px;bottom:-14px;width:20px;background:repeating-linear-gradient(180deg,transparent 0 100px,var(--bamboo-node) 100px 104px,var(--bamboo-hi) 104px 107px,transparent 107px 150px),linear-gradient(90deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
+.sboard .bs.l,.sboard .bs.r{top:-14px;bottom:-14px;width:20px;background:var(--barVs),linear-gradient(90deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
 .sboard .bs.l{left:-8px}.sboard .bs.r{right:-8px}
 .sboard .lv{position:absolute;left:50%;top:-74px;width:300px;height:92px;transform:translateX(-50%)}
-.sboard .pq{position:absolute;left:50%;top:-26px;transform:translateX(-50%);white-space:nowrap;padding:2px 24px 4px;border-radius:12px;border:4px solid var(--wood-edge);background:linear-gradient(180deg,var(--wood-mid),var(--wood-dark));font-weight:800;font-size:clamp(15px,2.4vw,22px);color:var(--cream);text-shadow:0 2px 0 var(--wood-edge)}
-#start .st1{font-weight:800;color:#3F8A1C;font-size:clamp(34px,6.4vw,74px);line-height:1.02;text-shadow:3px 0 0 var(--cream),-3px 0 0 var(--cream),0 3px 0 var(--cream),0 -3px 0 var(--cream),0 8px 0 rgba(94,53,21,.45)}
+.sboard .pq{position:absolute;left:50%;top:-26px;transform:translateX(-50%);white-space:nowrap;padding:2px 24px 4px;border-radius:12px;border:4px solid var(--wood-edge);background:linear-gradient(180deg,var(--plq1),var(--plq2));font-weight:800;font-size:clamp(15px,2.4vw,22px);color:var(--cream);text-shadow:0 2px 0 var(--wood-edge)}
+#start .st1{font-weight:800;color:var(--title);font-size:clamp(34px,6.4vw,74px);line-height:1.02;text-shadow:3px 0 0 var(--cream),-3px 0 0 var(--cream),0 3px 0 var(--cream),0 -3px 0 var(--cream),0 8px 0 rgba(94,53,21,.45)}
 #start .st2{font-weight:600;color:var(--ink);font-size:clamp(16px,2.4vw,24px)}
 #go{font-size:clamp(24px,4vw,38px);background:linear-gradient(180deg,var(--btn-top),var(--btn) 55%,#4C9B22);border-color:var(--btn-dark);box-shadow:inset 0 5px 0 rgba(255,255,255,.35),0 8px 0 var(--btn-dark);animation:pulse 1.4s ease-in-out infinite;padding:10px 40px}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 .pop{animation:popin .55s cubic-bezier(.34,1.9,.64,1) both}
 @keyframes popin{0%{transform:scale(0)}100%{transform:scale(1)}}
 @media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
+/* trang trí nền theo phong cách */
+.twk{position:absolute;border-radius:50%;background:#fff;animation:twinkle 2.6s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.6)}50%{opacity:1;transform:scale(1.2)}}
+.bub{position:absolute;border:3px solid rgba(255,255,255,.55);border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.45),transparent 45%);animation:rise linear infinite}
+@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-130vh)}}
+.fall{position:absolute;top:-6vh;color:#fff;animation:fall linear infinite;text-shadow:0 0 6px rgba(255,255,255,.8)}
+@keyframes fall{from{transform:translate(0,0) rotate(0)}to{transform:translate(40px,115vh) rotate(360deg)}}
+.flt{position:absolute;animation:rise linear infinite;opacity:.55}
+/*@@THEMECSS@@*/
 </style>
 </head>
 <body>
@@ -249,9 +266,11 @@ const arr = (x1, y1, x2, y2, c, w = 9) => { const a = Math.atan2(y2-y1, x2-x1), 
 const txt = (x, y, t, fs, c = O, anc = 'middle') => `<text x="${x}" y="${y}" text-anchor="${anc}" font-size="${fs}" fill="${c}" ${F}>${t}</text>`;
 const arc = (cx, cy, r, a1, a2, sw, c) => { const p = a => [cx + r*Math.cos(a*Math.PI/180), cy + r*Math.sin(a*Math.PI/180)]; const [x1, y1] = p(a1), [x2, y2] = p(a2); return `<path d="M${x1} ${y1} A${r} ${r} 0 0 ${sw} ${x2} ${y2}" fill="none" stroke="${c}" stroke-width="11" stroke-linecap="round"/>${arrowHead(x2, y2, sw ? a2 + 90 : a2 - 90, c)}`; };
 
-/* ---- khung tre + lá + biển tên ---- */
+/* ---- phong cách của bài ---- */
+/*@@THEMEJS@@*/
+/* ---- khung + trang trí + biển tên ---- */
 const LEAF = (a, L, c, d) => `<g transform="rotate(${a})"><path d="M0 0 C${L*.2} ${-L*.25} ${L*.24} ${-L*.72} 0 ${-L} C${-L*.24} ${-L*.72} ${-L*.2} ${-L*.25} 0 0Z" fill="${c}" stroke="${d}" stroke-width="5" stroke-linejoin="round"/><path d="M0 -4 L0 ${-L*.92}" stroke="${d}" stroke-width="4" stroke-linecap="round"/>${[.3, .5, .7].map(k => `<path d="M0 ${-L*k} l${L*.1} ${-L*.1} M0 ${-L*k} l${-L*.1} ${-L*.1}" stroke="${d}" stroke-width="3" stroke-linecap="round" opacity=".6"/>`).join('')}</g>`;
-const LEAVES = [[-74, 120, '#3F9A22'], [74, 120, '#3F9A22'], [-50, 160, '#5DBB34'], [50, 160, '#5DBB34'], [-24, 178, '#4FAE2C'], [24, 178, '#4FAE2C'], [0, 186, '#6CC63C']].map(([a, L, c]) => LEAF(a, L, c, '#2A6F16')).join('');
+const LEAVES = THEME.top || [[-74, 120, '#3F9A22'], [74, 120, '#3F9A22'], [-50, 160, '#5DBB34'], [50, 160, '#5DBB34'], [-24, 178, '#4FAE2C'], [24, 178, '#4FAE2C'], [0, 186, '#6CC63C']].map(([a, L, c]) => LEAF(a, L, c, '#2A6F16')).join('');
 const BAM = `<i class="bb t"></i><i class="bb b"></i><i class="bb l"></i><i class="bb r"></i>` + [['-25px', '-25px', 'left', 'top'], ['-25px', '-25px', 'right', 'top'], ['-25px', '-25px', 'left', 'bottom'], ['-25px', '-25px', 'right', 'bottom']].map(([v, w, h, k]) => `<i class="tie" style="${h}:${v};${k}:${w}"></i>`).join('');
 const WOODTOP = lab => `${BAM}<svg class="leaves" viewBox="-310 -190 620 190"><g>${LEAVES}</g></svg><div class="plq">${lab}</div>`;
 
@@ -259,7 +278,7 @@ const WOODTOP = lab => `${BAM}<svg class="leaves" viewBox="-310 -190 620 190"><g
 
 /*@@CONTENT@@*/
 
-TOPICS.forEach((t, i) => { const a = ACT[i % ACT.length]; t.act = a.name; t.c = t.c || a.c; t.dk = t.dk || a.dk; t.bg = a.bg; t.title = t.title || (a.name + ': ' + t.name); t.short = t.name; });
+TOPICS.forEach((t, i) => { const a = ACT[i % ACT.length]; t.act = a.name; t.c = t.c || a.c; t.dk = t.dk || a.dk; t.bg = (THEME.bg || [])[i % 5] || a.bg; t.title = t.title || (a.name + ': ' + t.name); t.short = t.name; });
 const ILL = Object.assign({}, ILL_T, {
   trophy: () => `<svg viewBox="0 0 300 300"><rect x="96" y="236" width="108" height="34" rx="10" fill="#8D5524" stroke="${O}" stroke-width="7"/>
     <rect x="132" y="184" width="36" height="56" fill="#FFC300" stroke="${O}" stroke-width="7"/>
@@ -321,8 +340,8 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
     const p0 = pts[Math.max(0, i-1)], p1 = pts[i], p2 = pts[i+1], p3 = pts[Math.min(pts.length-1, i+2)];
     d += ` C${p1.x + (p2.x-p0.x)/6} ${p1.y + (p2.y-p0.y)/6} ${p2.x - (p3.x-p1.x)/6} ${p2.y - (p3.y-p1.y)/6} ${p2.x} ${p2.y}`;
   }
-  const s = el('div', null, `<svg width="7000" height="5000" viewBox="-3500 -2500 7000 5000"><path id="road" d="${d}" fill="none" stroke="rgba(255,247,223,.5)" stroke-width="22" stroke-linecap="round" stroke-dasharray="2 48"/>
-   <circle r="34" fill="#FFCF2F" stroke="#5E3515" stroke-width="10"><animateMotion dur="24s" repeatCount="indefinite"><mpath href="#road"/></animateMotion></circle></svg>`);
+  const s = el('div', null, `<svg width="7000" height="5000" viewBox="-3500 -2500 7000 5000"><path id="road" d="${d}" fill="none" stroke="${(THEME.road || [])[0] || 'rgba(255,247,223,.5)'}" stroke-width="22" stroke-linecap="round" stroke-dasharray="2 48"/>
+   <circle r="34" fill="${(THEME.road || [])[1] || '#FFCF2F'}" stroke="${(THEME.road || [])[2] || '#5E3515'}" stroke-width="10"><animateMotion dur="24s" repeatCount="indefinite"><mpath href="#road"/></animateMotion></circle></svg>`);
   Object.assign(s.style, { position: 'absolute', left: '-3500px', top: '-2500px', pointerEvents: 'none' });
 })();
 
@@ -436,8 +455,8 @@ let curId = 'overview';
 function bgFor(id) {
   const q = QUIZ[id], t = q ? q.t : TOPICS.find(x => x.id === id);
   if (t) return t.bg;
-  if (id === 'result') return ['#4E5A18', '#1E2A0C'];
-  return ['#2F6E22', '#0F2E12'];
+  if (id === 'result') return THEME.bgResult || ['#4E5A18', '#1E2A0C'];
+  return THEME.bgTitle || ['#2F6E22', '#0F2E12'];
 }
 let bgOn = 'A';
 function setBg(c) {
@@ -573,7 +592,7 @@ let parts = [], cfRun = false;
 function sizeCv() { cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; }
 sizeCv();
 function burst(n) {
-  const C = ['#FFCF2F', '#8CC63F', '#3FC7F2', '#E8890C', '#E5392C', '#FFF7DF'];
+  const C = THEME.conf || ['#FFCF2F', '#8CC63F', '#3FC7F2', '#E8890C', '#E5392C', '#FFF7DF'];
   for (let i = 0; i < n; i++) parts.push({ x: innerWidth/2 + (Math.random() - .5)*200, y: innerHeight*.55, vx: (Math.random() - .5)*16, vy: -Math.random()*17 - 7, w: 8 + Math.random()*8, h: 5 + Math.random()*6, a: Math.random()*6, va: (Math.random() - .5)*.4, c: C[i % 6], life: 0 });
   if (!cfRun) { cfRun = true; requestAnimationFrame(cfTick); }
 }
@@ -589,14 +608,24 @@ function cfTick() {
    10. TRANG TRÍ NỀN: bong bóng & lấp lánh
    ========================================================= */
 (function () {
-  const d = document.getElementById('deco');
-  [[-60, 'auto', 'auto', -40, 30], ['auto', -70, 'auto', -40, -25], [-80, 'auto', -60, 'auto', 160], ['auto', -60, -50, 'auto', 200]].forEach(([l, r, b, t, rot], i) => {
+  const d = document.getElementById('deco'), D = THEME.deco || {}, rnd = (a, b) => a + Math.random()*(b - a);
+  if (D.corners !== false) [[-60, 'auto', 'auto', -40, 30], ['auto', -70, 'auto', -40, -25], [-80, 'auto', -60, 'auto', 160], ['auto', -60, -50, 'auto', 200]].forEach(([l, r, b, t, rot], i) => {
     const e = document.createElement('div'); e.className = 'lfc';
     e.innerHTML = `<svg width="420" height="230" viewBox="-310 -200 620 210"><g>${LEAVES}</g></svg>`;
-    Object.assign(e.style, { left: l === 'auto' ? 'auto' : l + 'px', right: r === 'auto' ? 'auto' : r + 'px', bottom: b === 'auto' ? 'auto' : b + 'px', top: t === 'auto' ? 'auto' : t + 'px', transform: `rotate(${rot}deg)`, animationDelay: -i*1.3 + 's' });
+    Object.assign(e.style, { opacity: D.cornerOp || .22, left: l === 'auto' ? 'auto' : l + 'px', right: r === 'auto' ? 'auto' : r + 'px', bottom: b === 'auto' ? 'auto' : b + 'px', top: t === 'auto' ? 'auto' : t + 'px', transform: `rotate(${rot}deg)`, animationDelay: -i*1.3 + 's' });
     d.appendChild(e); });
-  for (let i = 0; i < 16; i++) { const f = document.createElement('div'); f.className = 'ffly';
-    Object.assign(f.style, { left: Math.random()*96 + '%', top: Math.random()*85 + '%', animationDelay: -Math.random()*3 + 's', animationDuration: 2.6 + Math.random()*2.4 + 's' }); d.appendChild(f); }
+  const k = D.kind || 'ffly', n = D.n || 16, cols = D.colors || ['#FFF27A'], gl = D.glyphs || ['❄'];
+  for (let i = 0; i < n; i++) { const f = document.createElement('div'), c = cols[i % cols.length];
+    if (k === 'ffly') { f.className = 'ffly'; Object.assign(f.style, { left: rnd(0, 96) + '%', top: rnd(0, 85) + '%', background: c, boxShadow: `0 0 12px 4px ${c}`, animationDelay: -rnd(0, 3) + 's', animationDuration: rnd(2.6, 5) + 's' }); }
+    else if (k === 'twk') { const z = rnd(2, 5); f.className = 'twk'; Object.assign(f.style, { width: z + 'px', height: z + 'px', left: rnd(0, 99) + '%', top: rnd(0, 99) + '%', background: c, boxShadow: `0 0 ${z*2}px ${c}`, animationDelay: -rnd(0, 3) + 's', animationDuration: rnd(1.8, 4) + 's' }); }
+    else if (k === 'bub') { const z = rnd(14, 60); f.className = 'bub'; Object.assign(f.style, { width: z + 'px', height: z + 'px', left: rnd(0, 98) + '%', top: rnd(100, 130) + '%', animationDuration: rnd(12, 26) + 's', animationDelay: -rnd(0, 26) + 's' }); }
+    else if (k === 'fall') { f.className = 'fall'; f.textContent = gl[i % gl.length]; Object.assign(f.style, { left: rnd(0, 98) + '%', fontSize: rnd(10, 30) + 'px', color: c, animationDuration: rnd(8, 18) + 's', animationDelay: -rnd(0, 18) + 's' }); }
+    else if (k === 'flt') { f.className = 'flt'; f.textContent = gl[i % gl.length]; Object.assign(f.style, { left: rnd(0, 98) + '%', top: rnd(100, 130) + '%', fontSize: rnd(18, 44) + 'px', color: c, animationDuration: rnd(14, 28) + 's', animationDelay: -rnd(0, 28) + 's' }); }
+    d.appendChild(f); }
+  if (D.bottom) [['left', '1%', 1], ['right', '1%', -1]].forEach(([sd, v, fx]) => { const e = document.createElement('div');
+    e.innerHTML = `<svg width="360" height="200" viewBox="-310 -200 620 210" style="transform:scaleX(${fx})"><g>${LEAVES}</g></svg>`;
+    Object.assign(e.style, { position: 'absolute', bottom: '-6px', [sd]: v, opacity: D.bottomOp || .3 }); d.appendChild(e); });
+  if (D.extra) d.insertAdjacentHTML('beforeend', D.extra);
   document.getElementById('lvStart').innerHTML = `<g>${LEAVES}</g>`;
 })();
 
@@ -698,68 +727,106 @@ function cStar(g, x, y, r, fill, stroke) {
 }
 function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
 function fitText(g, t, maxW, size, weight = 800) { let s = size; do { g.font = `${weight} ${s}px 'Baloo 2', sans-serif`; s -= 2; } while (g.measureText(t).width > maxW && s > 20); }
-function cBamboo(g, x, y, w, h) {
-  const hor = w > h, th = hor ? h : w, len = hor ? w : h;
+/* ---- giấy chứng nhận theo phong cách (THEME.cert) ---- */
+const CERT = Object.assign({
+  bg: ['#2F6E22', '#0F2E12'], corners: ['orn'], board: ['#E6B873', '#CF9750'], grain: 'wood', grainC: 'rgba(110,60,15,.10)', inner: '#93592A',
+  bar: { grad: ['#C4EC7A', '#7FBF35', '#3F7F1A'], stroke: '#2C5C12', kind: 'node', k1: '#2C5C12', k2: '#C4EC7A' },
+  tie: { grad: ['#A8703A', '#5E3515'], stroke: '#3E220C', shape: 'diamond' },
+  plaque: ['#B97F3D', '#93592A', '#5E3515'], plaqueTxt: '#FFF7DF', plaqueSh: '#5E3515',
+  btn: ['#93D655', '#4C9B22', '#2D7612'], ink: '#4A2A0F', name: '#2D7612', nameStroke: '#FFF7DF', accent: '#9C3F00',
+  slot: ['rgba(90,50,15,.22)', '#93592A'], star: ['#FFCF2F', '#9C5A00'], teacher: '#2D7612', rank: '#C2190E', snowTop: false,
+}, THEME.cert || {});
+function cBar(g, x, y, w, h, B) {
+  const hor = w > h, th = hor ? h : w, len = hor ? w : h, P = (a, c) => hor ? [x + a, y + c] : [x + c, y + a];
   const gr = hor ? g.createLinearGradient(0, y, 0, y + h) : g.createLinearGradient(x, 0, x + w, 0);
-  gr.addColorStop(0, '#C4EC7A'); gr.addColorStop(.42, '#7FBF35'); gr.addColorStop(1, '#3F7F1A');
+  B.grad.forEach((c, i) => gr.addColorStop(i/(B.grad.length - 1), c));
   g.save(); g.shadowColor = 'rgba(0,0,0,.3)'; g.shadowOffsetY = 6; rr(g, x, y, w, h, th/2); g.fillStyle = gr; g.fill(); g.restore();
-  rr(g, x, y, w, h, th/2); g.lineWidth = 3; g.strokeStyle = '#2C5C12'; g.stroke();
-  for (let p = 150; p < len - 40; p += 170) {
-    g.fillStyle = '#2C5C12'; hor ? g.fillRect(x + p, y + 3, 6, h - 6) : g.fillRect(x + 3, y + p, w - 6, 6);
-    g.fillStyle = '#C4EC7A'; hor ? g.fillRect(x + p + 6, y + 3, 4, h - 6) : g.fillRect(x + 3, y + p + 6, w - 6, 4);
-  }
+  g.save(); rr(g, x, y, w, h, th/2); g.clip();
+  const box = (a, c, la, lc, col) => { const [px, py] = P(a, c); g.fillStyle = col; hor ? g.fillRect(px, py, la, lc) : g.fillRect(px, py, lc, la); };
+  const dot = (a, c, r, fill, st) => { const [px, py] = P(a, c); g.beginPath(); g.arc(px, py, r, 0, 7); g.fillStyle = fill; g.fill(); if (st) { g.lineWidth = 3; g.strokeStyle = st; g.stroke(); } };
+  const line = (a1, c1, a2, c2, col, lw) => { const [x1, y1] = P(a1, c1), [x2, y2] = P(a2, c2); g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.strokeStyle = col; g.lineWidth = lw; g.stroke(); };
+  if (B.kind === 'node') for (let p = 150; p < len - 40; p += 170) { box(p, 3, 6, th - 6, B.k1); box(p + 6, 3, 4, th - 6, B.k2); }
+  if (B.kind === 'band') for (let p = 110; p < len - 40; p += 130) { box(p, 0, 14, th, B.k1); box(p + 14, 0, 4, th, B.k2); }
+  if (B.kind === 'rivet') for (let p = 45; p < len; p += 90) dot(p, th/2, 8, B.k2, B.k1);
+  if (B.kind === 'rope') for (let p = -th; p < len + th; p += 18) line(p, 0, p + th, th, B.k1, 6);
+  if (B.kind === 'dot') for (let p = 20; p < len; p += 40) dot(p, th/2, 7, B.k1);
+  if (B.kind === 'brick') { line(0, th/2, len, th/2, B.k1, 3); for (let p = 0, i = 0; p < len; p += 30, i++) line(p, i % 2 ? 0 : th/2, p, i % 2 ? th/2 : th, B.k1, 3); }
+  if (B.kind === 'ice') for (let p = 0; p < len; p += 46) line(p, th, p + th*.8, 0, B.k1, 5);
+  g.restore();
+  rr(g, x, y, w, h, th/2); g.lineWidth = 3; g.strokeStyle = B.stroke; g.stroke();
 }
-function cTie(g, x, y) { g.save(); g.translate(x, y); g.rotate(Math.PI/4); rr(g, -26, -26, 52, 52, 10); const gr = g.createLinearGradient(-26, -26, 26, 26); gr.addColorStop(0, '#A8703A'); gr.addColorStop(1, '#5E3515'); g.fillStyle = gr; g.fill(); g.lineWidth = 5; g.strokeStyle = '#3E220C'; g.stroke(); g.restore(); }
+function cTie(g, x, y) {
+  const T = CERT.tie; g.save(); g.translate(x, y); if (T.shape === 'diamond') g.rotate(Math.PI/4);
+  const gr = g.createLinearGradient(-28, -28, 28, 28); gr.addColorStop(0, T.grad[0]); gr.addColorStop(1, T.grad[1]);
+  if (T.shape === 'circle') { g.beginPath(); g.arc(0, 0, 32, 0, 7); } else rr(g, -27, -27, 54, 54, T.shape === 'square' ? 6 : 10);
+  g.fillStyle = gr; g.fill(); g.lineWidth = 5; g.strokeStyle = T.stroke; g.stroke();
+  if (T.glyph) { g.fillStyle = T.glyphC || '#fff'; g.font = `800 34px 'Baloo 2', sans-serif`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(T.glyph, 0, 2); }
+  g.restore();
+}
+function cHeart(g, x, y, s, c) { g.save(); g.translate(x, y); g.scale(s, s); g.beginPath(); g.moveTo(0, 8); g.bezierCurveTo(-22, -8, -12, -26, 0, -14); g.bezierCurveTo(12, -26, 22, -8, 0, 8); g.fillStyle = c; g.fill(); g.restore(); }
 async function drawCert(name, cls, sc) {
   try { await Promise.all(["800 40px 'Baloo 2'", "700 40px 'Baloo 2'", "600 40px 'Baloo 2'"].map(f => document.fonts.load(f, 'ĐƯỢC ẤỮ'))); } catch (e) {}
-  const Wd = 1600, Hd = 1130, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
-  const g = cv.getContext('2d'), INK = '#4A2A0F', FN = "'Baloo 2', sans-serif";
-  let gr = g.createRadialGradient(Wd/2, Hd/2, 100, Wd/2, Hd/2, 950); gr.addColorStop(0, '#2F6E22'); gr.addColorStop(1, '#0F2E12');
+  const C = CERT, Wd = 1600, Hd = 1130, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
+  const g = cv.getContext('2d'), INK = C.ink, FN = "'Baloo 2', sans-serif";
+  let seed = 7; const rnd = () => (seed = (seed*16807) % 2147483647)/2147483647;
+  let gr = g.createRadialGradient(Wd/2, Hd/2, 100, Wd/2, Hd/2, 950); gr.addColorStop(0, C.bg[0]); gr.addColorStop(1, C.bg[1]);
   g.fillStyle = gr; g.fillRect(0, 0, Wd, Hd);
   const lv = await svgImg(`<g transform="translate(310 196)">${LEAVES}</g>`, '0 0 620 200');
-  if (lv) [[0, 0, -2.4], [Wd, 0, 2.4], [0, Hd, -.8], [Wd, Hd, .8]].forEach(([x, y, r]) => { g.save(); g.translate(x, y); g.rotate(r); g.globalAlpha = .55; g.drawImage(lv, -310, -196, 620, 200); g.restore(); });
-  // bảng gỗ
+  const cs = C.corners || [];
+  if (cs.includes('stars')) for (let i = 0; i < 90; i++) { g.fillStyle = `rgba(255,255,255,${.3 + rnd()*.7})`; g.beginPath(); g.arc(rnd()*Wd, rnd()*Hd, 1 + rnd()*2.6, 0, 7); g.fill(); }
+  if (cs.includes('snow')) for (let i = 0; i < 120; i++) { g.fillStyle = `rgba(255,255,255,${.4 + rnd()*.6})`; g.beginPath(); g.arc(rnd()*Wd, rnd()*Hd, 2 + rnd()*5, 0, 7); g.fill(); }
+  if (cs.includes('bubbles')) for (let i = 0; i < 40; i++) { g.strokeStyle = 'rgba(255,255,255,.5)'; g.lineWidth = 3; g.beginPath(); g.arc(rnd()*Wd, rnd()*Hd, 6 + rnd()*22, 0, 7); g.stroke(); }
+  if (cs.includes('sand')) for (let i = 0; i < 160; i++) { g.fillStyle = `rgba(255,230,170,${.2 + rnd()*.4})`; g.beginPath(); g.arc(rnd()*Wd, rnd()*Hd, 1 + rnd()*3, 0, 7); g.fill(); }
+  if (cs.includes('hearts')) for (let i = 0; i < 26; i++) cHeart(g, rnd()*Wd, rnd()*Hd, .8 + rnd()*1.4, `rgba(255,255,255,${.25 + rnd()*.35})`);
+  if (lv && cs.includes('orn')) [[0, 0, -2.4], [Wd, 0, 2.4], [0, Hd, -.8], [Wd, Hd, .8]].forEach(([x, y, r]) => { g.save(); g.translate(x, y); g.rotate(r); g.globalAlpha = .55; g.drawImage(lv, -310, -196, 620, 200); g.restore(); });
+  // bảng
   g.save(); g.shadowColor = 'rgba(0,0,0,.4)'; g.shadowOffsetY = 14; rr(g, 96, 110, Wd - 192, Hd - 210, 30);
-  gr = g.createLinearGradient(0, 110, 0, Hd - 100); gr.addColorStop(0, '#E6B873'); gr.addColorStop(1, '#CF9750'); g.fillStyle = gr; g.fill(); g.restore();
-  g.save(); rr(g, 96, 110, Wd - 192, Hd - 210, 30); g.clip();
-  for (let x = 110; x < Wd; x += 46) { g.fillStyle = 'rgba(110,60,15,.10)'; g.fillRect(x, 110, 3, Hd); }
+  gr = g.createLinearGradient(0, 110, 0, Hd - 100); gr.addColorStop(0, C.board[0]); gr.addColorStop(1, C.board[1]); g.fillStyle = gr; g.fill(); g.restore();
+  g.save(); rr(g, 96, 110, Wd - 192, Hd - 210, 30); g.clip(); g.fillStyle = C.grainC; g.strokeStyle = C.grainC;
+  if (C.grain === 'wood') for (let x = 110; x < Wd; x += 46) g.fillRect(x, 110, 3, Hd);
+  if (C.grain === 'dots') for (let y = 130, r = 0; y < Hd; y += 44, r++) for (let x = r % 2 ? 140 : 118; x < Wd; x += 44) { g.beginPath(); g.arc(x, y, 5, 0, 7); g.fill(); }
+  if (C.grain === 'waves') { g.lineWidth = 4; for (let y = 150; y < Hd; y += 56) { g.beginPath(); for (let x = 96; x < Wd; x += 8) g.lineTo(x, y + 8*Math.sin(x/40)); g.stroke(); } }
+  if (C.grain === 'specks') for (let i = 0; i < 500; i++) { g.fillRect(96 + rnd()*1410, 110 + rnd()*920, 2 + rnd()*3, 2 + rnd()*3); }
+  if (C.grain === 'panels') { g.lineWidth = 3; for (let x = 96 + 236; x < Wd - 96; x += 236) { g.beginPath(); g.moveTo(x, 110); g.lineTo(x, Hd); g.stroke(); } for (let y = 110 + 230; y < Hd; y += 230) { g.beginPath(); g.moveTo(96, y); g.lineTo(Wd, y); g.stroke(); } }
   g.restore();
-  rr(g, 120, 134, Wd - 240, Hd - 258, 20); g.lineWidth = 6; g.strokeStyle = '#93592A'; g.stroke();
-  cBamboo(g, 66, 88, Wd - 132, 46); cBamboo(g, 66, Hd - 124, Wd - 132, 46);
-  cBamboo(g, 74, 80, 46, Hd - 196); cBamboo(g, Wd - 120, 80, 46, Hd - 196);
+  rr(g, 120, 134, Wd - 240, Hd - 258, 20); g.lineWidth = 6; g.strokeStyle = C.inner; g.stroke();
+  cBar(g, 66, 88, Wd - 132, 46, C.bar); cBar(g, 66, Hd - 124, Wd - 132, 46, C.bar);
+  cBar(g, 74, 80, 46, Hd - 196, C.bar); cBar(g, Wd - 120, 80, 46, Hd - 196, C.bar);
+  if (C.snowTop) for (let x = 80; x < Wd - 80; x += 30) { g.fillStyle = '#fff'; g.beginPath(); g.arc(x, 92, 12 + (x*7 % 9), Math.PI, 0); g.fill(); }
   [[97, 111], [Wd - 97, 111], [97, Hd - 101], [Wd - 97, Hd - 101]].forEach(([x, y]) => cTie(g, x, y));
-  // lá + biển tên
+  // trang trí + biển tên
   if (lv) g.drawImage(lv, Wd/2 - 300, -78, 600, 194);
+  if (lv) [290, Wd - 290].forEach(x => g.drawImage(lv, x - 140, 88 - 90, 280, 90));
   g.save(); g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowOffsetY = 10; rr(g, Wd/2 - 360, 50, 720, 112, 22);
-  gr = g.createLinearGradient(0, 50, 0, 162); gr.addColorStop(0, '#B97F3D'); gr.addColorStop(1, '#93592A'); g.fillStyle = gr; g.fill(); g.restore();
-  rr(g, Wd/2 - 360, 50, 720, 112, 22); g.lineWidth = 8; g.strokeStyle = '#5E3515'; g.stroke();
+  gr = g.createLinearGradient(0, 50, 0, 162); gr.addColorStop(0, C.plaque[0]); gr.addColorStop(1, C.plaque[1]); g.fillStyle = gr; g.fill(); g.restore();
+  rr(g, Wd/2 - 360, 50, 720, 112, 22); g.lineWidth = 8; g.strokeStyle = C.plaque[2]; g.stroke();
   g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
-  g.font = `800 64px ${FN}`; g.fillStyle = '#5E3515'; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 138); g.fillStyle = '#FFF7DF'; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 132);
-  // nút xanh
-  rr(g, Wd/2 - 250, 200, 500, 72, 18); gr = g.createLinearGradient(0, 200, 0, 272); gr.addColorStop(0, '#93D655'); gr.addColorStop(1, '#4C9B22'); g.fillStyle = gr; g.fill();
-  g.lineWidth = 5; g.strokeStyle = '#2D7612'; g.stroke();
-  g.font = `800 38px ${FN}`; g.fillStyle = '#2D7612'; g.fillText('Hoàn thành bài học', Wd/2, 251); g.fillStyle = '#fff'; g.fillText('Hoàn thành bài học', Wd/2, 248);
+  g.font = `800 64px ${FN}`; g.fillStyle = C.plaqueSh; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 135); g.fillStyle = C.plaqueTxt; g.fillText('GIẤY CHỨNG NHẬN', Wd/2, 130);
+  rr(g, Wd/2 - 250, 200, 500, 72, 18); gr = g.createLinearGradient(0, 200, 0, 272); gr.addColorStop(0, C.btn[0]); gr.addColorStop(1, C.btn[1]); g.fillStyle = gr; g.fill();
+  g.lineWidth = 5; g.strokeStyle = C.btn[2]; g.stroke();
+  g.font = `800 38px ${FN}`; g.fillStyle = C.btn[2]; g.fillText('Hoàn thành bài học', Wd/2, 251); g.fillStyle = '#fff'; g.fillText('Hoàn thành bài học', Wd/2, 248);
   g.fillStyle = INK; g.font = `600 38px ${FN}`; g.fillText('Chứng nhận học sinh', Wd/2, 340);
-  fitText(g, name, 760, 96); g.lineWidth = 14; g.strokeStyle = '#FFF7DF'; g.strokeText(name, Wd/2, 448); g.fillStyle = '#2D7612'; g.fillText(name, Wd/2, 448);
-  g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = '#93592A'; g.beginPath(); g.moveTo(Wd/2 - 420, 482); g.lineTo(Wd/2 + 420, 482); g.stroke(); g.setLineDash([]);
+  fitText(g, name, 760, 96); g.lineWidth = 14; g.strokeStyle = C.nameStroke; g.strokeText(name, Wd/2, 448); g.fillStyle = C.name; g.fillText(name, Wd/2, 448);
+  g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = C.inner; g.beginPath(); g.moveTo(Wd/2 - 420, 482); g.lineTo(Wd/2 + 420, 482); g.stroke(); g.setLineDash([]);
   g.fillStyle = INK; g.font = `700 46px ${FN}`; g.fillText('Lớp: ' + cls, Wd/2, 550);
   g.font = `600 34px ${FN}`; g.fillText('Đã hoàn thành bài học tương tác', Wd/2, 612);
-  g.fillStyle = '#9C3F00'; fitText(g, META.cert, 1060, 46); g.fillText(META.cert, Wd/2, 676);
+  g.fillStyle = C.accent; fitText(g, META.cert, 1060, 46); g.fillText(META.cert, Wd/2, 676);
   const TQ = Object.keys(QUIZ).length, rank = sc >= TQ ? 'Xuất sắc tuyệt đối' : sc >= Math.ceil(TQ*.9) ? 'Xuất sắc' : 'Hoàn thành tốt';
-  rr(g, Wd/2 - 360, 712, 720, 96, 48); g.fillStyle = 'rgba(90,50,15,.22)'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#93592A'; g.stroke();
-  cStar(g, Wd/2 - 300, 760, 32, '#FFCF2F', '#9C5A00');
+  rr(g, Wd/2 - 360, 712, 720, 96, 48); g.fillStyle = C.slot[0]; g.fill(); g.lineWidth = 6; g.strokeStyle = C.slot[1]; g.stroke();
+  cStar(g, Wd/2 - 300, 760, 32, C.star[0], C.star[1]);
   g.textAlign = 'left'; g.fillStyle = INK; g.font = `800 46px ${FN}`; g.fillText(`${sc}/${TQ} sao`, Wd/2 - 250, 776);
-  g.fillStyle = '#C2190E'; fitText(g, rank, 340, 44); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 330, 776); g.textAlign = 'center';
+  g.fillStyle = C.rank; fitText(g, rank, 340, 44); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 330, 776); g.textAlign = 'center';
   const d = new Date();
   g.fillStyle = INK; g.font = `600 32px ${FN}`; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 420, 925);
   g.font = `700 32px ${FN}`; g.fillText('Giáo viên', 1180, 880);
-  g.font = `800 52px ${FN}`; g.fillStyle = '#2D7612'; g.fillText('Cô Thùy Tin', 1180, 945);
+  g.font = `800 52px ${FN}`; g.fillStyle = C.teacher; g.fillText('Cô Thùy Tin', 1180, 945);
   const [bot, cup] = await Promise.all([svgImg(robot(), '0 0 200 240'), svgImg(ILL.trophy().replace(/^<svg[^>]*>|<\/svg>$/g, ''), '0 0 300 300')]);
   if (bot) g.drawImage(bot, 170, 300, 210, 252);
   if (cup) g.drawImage(cup, 1215, 290, 240, 240);
-  cStar(g, 300, 640, 18, '#FFCF2F', '#9C5A00'); cStar(g, 1420, 600, 16, '#FFCF2F', '#9C5A00'); cStar(g, 1250, 280, 14, '#FFCF2F', '#9C5A00');
+  cStar(g, 430, 586, 18, C.star[0], C.star[1]); cStar(g, 1420, 600, 16, C.star[0], C.star[1]); cStar(g, 1250, 280, 14, C.star[0], C.star[1]);
   return cv.toDataURL('image/png');
 }
+
 $('cMake').onclick = makeCert;
 $('cClose1').onclick = $('cClose2').onclick = closeCert;
 $('cEdit').onclick = () => { $('cForm').style.display = ''; $('cView').style.display = 'none'; $('cName').focus(); };

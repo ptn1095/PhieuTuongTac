@@ -1,5 +1,5 @@
 /* ===== BÀI 1: THÔNG TIN VÀ DỮ LIỆU ===== */
-const META = { key: 'bai1', num: 1, title: 'Bài 1. Thông tin và dữ liệu', big: 'Thông tin<br>và dữ liệu',
+const META = { key: 'bai1', theme: 'rung', num: 1, title: 'Bài 1. Thông tin và dữ liệu', big: 'Thông tin<br>và dữ liệu',
   st2: 'Chủ đề 1 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng phân biệt thông tin và dữ liệu nhé!',
   cert: 'Tin học 6 – Bài 1. Thông tin và dữ liệu', file: 'Tin6_Bai1', pass: 8 };

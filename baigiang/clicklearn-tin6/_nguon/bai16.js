@@ -1,5 +1,5 @@
 /* ===== BÀI 16: CÁC CẤU TRÚC ĐIỀU KHIỂN ===== */
-const META = { key: 'bai16', num: 16, title: 'Bài 16. Các cấu trúc điều khiển', big: 'Các cấu trúc<br>điều khiển',
+const META = { key: 'bai16', theme: 'chibi', num: 16, title: 'Bài 16. Các cấu trúc điều khiển', big: 'Các cấu trúc<br>điều khiển',
   st2: 'Chủ đề 6 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Tuần tự, rẽ nhánh, lặp – ba cấu trúc thần kì đây!',
   cert: 'Tin học 6 – Bài 16. Các cấu trúc điều khiển', file: 'Tin6_Bai16', pass: 8 };

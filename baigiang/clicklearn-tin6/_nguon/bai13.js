@@ -1,5 +1,5 @@
 /* ===== BÀI 13: THỰC HÀNH – TÌM KIẾM VÀ THAY THẾ ===== */
-const META = { key: 'bai13', num: 13, title: 'Bài 13. Thực hành: Tìm kiếm và thay thế', big: 'Tìm kiếm<br>và thay thế',
+const META = { key: 'bai13', theme: 'samac', num: 13, title: 'Bài 13. Thực hành: Tìm kiếm và thay thế', big: 'Tìm kiếm<br>và thay thế',
   st2: 'Chủ đề 5 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng tìm và sửa chữ trong văn bản thật nhanh nhé!',
   cert: 'Tin học 6 – Bài 13. Tìm kiếm và thay thế', file: 'Tin6_Bai13', pass: 8 };

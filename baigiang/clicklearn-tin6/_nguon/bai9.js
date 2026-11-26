@@ -1,5 +1,5 @@
 /* ===== BÀI 9: AN TOÀN THÔNG TIN TRÊN INTERNET ===== */
-const META = { key: 'bai9', num: 9, title: 'Bài 9. An toàn thông tin trên Internet', big: 'An toàn<br>thông tin',
+const META = { key: 'bai9', theme: 'laudai', num: 9, title: 'Bài 9. An toàn thông tin trên Internet', big: 'An toàn<br>thông tin',
   st2: 'Chủ đề 4 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng học cách tự bảo vệ mình trên Internet nhé!',
   cert: 'Tin học 6 – Bài 9. An toàn thông tin trên Internet', file: 'Tin6_Bai9', pass: 8 };

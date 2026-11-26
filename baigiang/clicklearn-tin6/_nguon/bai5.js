@@ -1,5 +1,5 @@
 /* ===== BÀI 5: INTERNET ===== */
-const META = { key: 'bai5', num: 5, title: 'Bài 5. Internet', big: 'Internet',
+const META = { key: 'bai5', theme: 'vutru', num: 5, title: 'Bài 5. Internet', big: 'Internet',
   st2: 'Chủ đề 2 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Internet nối cả thế giới lại với nhau – cùng tìm hiểu nhé!',
   cert: 'Tin học 6 – Bài 5. Internet', file: 'Tin6_Bai5', pass: 8 };

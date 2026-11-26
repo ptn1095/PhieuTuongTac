@@ -1,5 +1,5 @@
 /* ===== BÀI 7: TÌM KIẾM THÔNG TIN TRÊN INTERNET ===== */
-const META = { key: 'bai7', num: 7, title: 'Bài 7. Tìm kiếm thông tin trên Internet', big: 'Tìm kiếm<br>thông tin',
+const META = { key: 'bai7', theme: 'samac', num: 7, title: 'Bài 7. Tìm kiếm thông tin trên Internet', big: 'Tìm kiếm<br>thông tin',
   st2: 'Chủ đề 3 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng làm thám tử tìm thông tin trên Internet nhé!',
   cert: 'Tin học 6 – Bài 7. Tìm kiếm thông tin trên Internet', file: 'Tin6_Bai7', pass: 8 };

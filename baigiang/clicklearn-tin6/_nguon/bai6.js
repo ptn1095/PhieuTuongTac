@@ -1,5 +1,5 @@
 /* ===== BÀI 6: MẠNG THÔNG TIN TOÀN CẦU ===== */
-const META = { key: 'bai6', num: 6, title: 'Bài 6. Mạng thông tin toàn cầu', big: 'Mạng thông tin<br>toàn cầu',
+const META = { key: 'bai6', theme: 'tuyet', num: 6, title: 'Bài 6. Mạng thông tin toàn cầu', big: 'Mạng thông tin<br>toàn cầu',
   st2: 'Chủ đề 3 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng dạo quanh các trang web trên mạng thông tin toàn cầu nhé!',
   cert: 'Tin học 6 – Bài 6. Mạng thông tin toàn cầu', file: 'Tin6_Bai6', pass: 8 };

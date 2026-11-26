@@ -1,5 +1,5 @@
 /* ===== BÀI 2: XỬ LÍ THÔNG TIN ===== */
-const META = { key: 'bai2', num: 2, title: 'Bài 2. Xử lí thông tin', big: 'Xử lí<br>thông tin',
+const META = { key: 'bai2', theme: 'vutru', num: 2, title: 'Bài 2. Xử lí thông tin', big: 'Xử lí<br>thông tin',
   st2: 'Chủ đề 1 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng xem con người và máy tính xử lí thông tin thế nào nhé!',
   cert: 'Tin học 6 – Bài 2. Xử lí thông tin', file: 'Tin6_Bai2', pass: 8 };

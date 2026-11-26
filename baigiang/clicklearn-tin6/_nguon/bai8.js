@@ -1,5 +1,5 @@
 /* ===== BÀI 8: THƯ ĐIỆN TỬ ===== */
-const META = { key: 'bai8', num: 8, title: 'Bài 8. Thư điện tử', big: 'Thư<br>điện tử',
+const META = { key: 'bai8', theme: 'daiduong', num: 8, title: 'Bài 8. Thư điện tử', big: 'Thư<br>điện tử',
   st2: 'Chủ đề 3 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng gửi một lá thư bay qua Internet nhé!',
   cert: 'Tin học 6 – Bài 8. Thư điện tử', file: 'Tin6_Bai8', pass: 8 };

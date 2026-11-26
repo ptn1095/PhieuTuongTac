@@ -4,6 +4,7 @@ const DS = [
   "key": "bai1",
   "num": 1,
   "title": "Bài 1. Thông tin và dữ liệu",
+  "theme": "rung",
   "topics": [
    "Em nhận được gì?",
    "Thông tin và dữ liệu",
@@ -16,6 +17,7 @@ const DS = [
   "key": "bai2",
   "num": 2,
   "title": "Bài 2. Xử lí thông tin",
+  "theme": "vutru",
   "topics": [
    "Bộ não xử lí thông tin",
    "Bốn hoạt động xử lí",
@@ -28,6 +30,7 @@ const DS = [
   "key": "bai3",
   "num": 3,
   "title": "Bài 3. Thông tin trong máy tính",
+  "theme": "chibi",
   "topics": [
    "Hai trạng thái 0 và 1",
    "Dãy bit",
@@ -40,6 +43,7 @@ const DS = [
   "key": "bai4",
   "num": 4,
   "title": "Bài 4. Mạng máy tính",
+  "theme": "daiduong",
   "topics": [
    "Phòng máy của em",
    "Mạng máy tính là gì?",
@@ -52,6 +56,7 @@ const DS = [
   "key": "bai5",
   "num": 5,
   "title": "Bài 5. Internet",
+  "theme": "vutru",
   "topics": [
    "Em dùng Internet làm gì?",
    "Internet là gì?",
@@ -64,6 +69,7 @@ const DS = [
   "key": "bai6",
   "num": 6,
   "title": "Bài 6. Mạng thông tin toàn cầu",
+  "theme": "tuyet",
   "topics": [
    "Trang web quanh em",
    "Mạng thông tin toàn cầu",
@@ -76,6 +82,7 @@ const DS = [
   "key": "bai7",
   "num": 7,
   "title": "Bài 7. Tìm kiếm thông tin trên Internet",
+  "theme": "samac",
   "topics": [
    "Em muốn biết điều gì?",
    "Máy tìm kiếm",
@@ -88,6 +95,7 @@ const DS = [
   "key": "bai8",
   "num": 8,
   "title": "Bài 8. Thư điện tử",
+  "theme": "daiduong",
   "topics": [
    "Thư tay và thư điện tử",
    "Ưu và nhược điểm",
@@ -100,6 +108,7 @@ const DS = [
   "key": "bai9",
   "num": 9,
   "title": "Bài 9. An toàn thông tin trên Internet",
+  "theme": "laudai",
   "topics": [
    "Tin nhắn lạ",
    "Những nguy cơ trên mạng",
@@ -112,6 +121,7 @@ const DS = [
   "key": "bai10",
   "num": 10,
   "title": "Bài 10. Sơ đồ tư duy",
+  "theme": "rung",
   "topics": [
    "Ghi nhớ thế nào cho dễ?",
    "Cấu tạo sơ đồ tư duy",
@@ -124,6 +134,7 @@ const DS = [
   "key": "bai11",
   "num": 11,
   "title": "Bài 11. Định dạng văn bản",
+  "theme": "chibi",
   "topics": [
    "Văn bản đẹp, dễ đọc",
    "Định dạng kí tự",
@@ -136,6 +147,7 @@ const DS = [
   "key": "bai12",
   "num": 12,
   "title": "Bài 12. Trình bày thông tin ở dạng bảng",
+  "theme": "tuyet",
   "topics": [
    "Vì sao cần bảng?",
    "Tạo bảng",
@@ -148,6 +160,7 @@ const DS = [
   "key": "bai13",
   "num": 13,
   "title": "Bài 13. Thực hành: Tìm kiếm và thay thế",
+  "theme": "samac",
   "topics": [
    "Tìm một từ trong bài dài",
    "Tìm kiếm",
@@ -160,6 +173,7 @@ const DS = [
   "key": "bai14",
   "num": 14,
   "title": "Bài 14. Thực hành tổng hợp: Hoàn thiện sổ lưu niệm",
+  "theme": "laudai",
   "topics": [
    "Ý tưởng sổ lưu niệm",
    "Lập kế hoạch",
@@ -172,6 +186,7 @@ const DS = [
   "key": "bai15",
   "num": 15,
   "title": "Bài 15. Thuật toán",
+  "theme": "vutru",
   "topics": [
    "Các bước nấu mì",
    "Thuật toán là gì?",
@@ -184,6 +199,7 @@ const DS = [
   "key": "bai16",
   "num": 16,
   "title": "Bài 16. Các cấu trúc điều khiển",
+  "theme": "chibi",
   "topics": [
    "Một ngày của em",
    "Cấu trúc tuần tự",
@@ -196,6 +212,7 @@ const DS = [
   "key": "bai17",
   "num": 17,
   "title": "Bài 17. Chương trình máy tính",
+  "theme": "daiduong",
   "topics": [
    "Ra lệnh cho robot",
    "Chương trình máy tính",

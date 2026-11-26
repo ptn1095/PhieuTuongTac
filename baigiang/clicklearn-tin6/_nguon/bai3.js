@@ -1,5 +1,5 @@
 /* ===== BÀI 3: THÔNG TIN TRONG MÁY TÍNH ===== */
-const META = { key: 'bai3', num: 3, title: 'Bài 3. Thông tin trong máy tính', big: 'Thông tin<br>trong máy tính',
+const META = { key: 'bai3', theme: 'chibi', num: 3, title: 'Bài 3. Thông tin trong máy tính', big: 'Thông tin<br>trong máy tính',
   st2: 'Chủ đề 1 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Máy tính chỉ "nói" bằng 0 và 1 – cùng tìm hiểu nhé!',
   cert: 'Tin học 6 – Bài 3. Thông tin trong máy tính', file: 'Tin6_Bai3', pass: 8 };

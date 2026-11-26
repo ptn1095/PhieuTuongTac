@@ -1,5 +1,5 @@
 /* ===== BÀI 4: MẠNG MÁY TÍNH ===== */
-const META = { key: 'bai4', num: 4, title: 'Bài 4. Mạng máy tính', big: 'Mạng<br>máy tính',
+const META = { key: 'bai4', theme: 'daiduong', num: 4, title: 'Bài 4. Mạng máy tính', big: 'Mạng<br>máy tính',
   st2: 'Chủ đề 2 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Các máy tính nắm tay nhau thành mạng – cùng khám phá nhé!',
   cert: 'Tin học 6 – Bài 4. Mạng máy tính', file: 'Tin6_Bai4', pass: 8 };

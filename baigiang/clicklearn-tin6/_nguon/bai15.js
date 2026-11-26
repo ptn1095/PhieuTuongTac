@@ -1,5 +1,5 @@
 /* ===== BÀI 15: THUẬT TOÁN ===== */
-const META = { key: 'bai15', num: 15, title: 'Bài 15. Thuật toán', big: 'Thuật toán',
+const META = { key: 'bai15', theme: 'vutru', num: 15, title: 'Bài 15. Thuật toán', big: 'Thuật toán',
   st2: 'Chủ đề 6 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Thuật toán là các bước giải quyết vấn đề – cùng khám phá nhé!',
   cert: 'Tin học 6 – Bài 15. Thuật toán', file: 'Tin6_Bai15', pass: 8 };

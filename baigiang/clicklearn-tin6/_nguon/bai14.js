@@ -1,5 +1,5 @@
 /* ===== BÀI 14: THỰC HÀNH TỔNG HỢP – HOÀN THIỆN SỔ LƯU NIỆM ===== */
-const META = { key: 'bai14', num: 14, title: 'Bài 14. Thực hành tổng hợp: Hoàn thiện sổ lưu niệm', big: 'Hoàn thiện<br>sổ lưu niệm',
+const META = { key: 'bai14', theme: 'laudai', num: 14, title: 'Bài 14. Thực hành tổng hợp: Hoàn thiện sổ lưu niệm', big: 'Hoàn thiện<br>sổ lưu niệm',
   st2: 'Chủ đề 5 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng làm một cuốn sổ lưu niệm thật đẹp cho lớp nhé!',
   cert: 'Tin học 6 – Bài 14. Hoàn thiện sổ lưu niệm', file: 'Tin6_Bai14', pass: 8 };

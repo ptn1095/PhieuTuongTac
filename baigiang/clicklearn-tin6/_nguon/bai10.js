@@ -1,5 +1,5 @@
 /* ===== BÀI 10: SƠ ĐỒ TƯ DUY ===== */
-const META = { key: 'bai10', num: 10, title: 'Bài 10. Sơ đồ tư duy', big: 'Sơ đồ<br>tư duy',
+const META = { key: 'bai10', theme: 'rung', num: 10, title: 'Bài 10. Sơ đồ tư duy', big: 'Sơ đồ<br>tư duy',
   st2: 'Chủ đề 5 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
   hello: 'Cùng vẽ sơ đồ tư duy cho dễ nhớ nhé!',
   cert: 'Tin học 6 – Bài 10. Sơ đồ tư duy', file: 'Tin6_Bai10', pass: 8 };
