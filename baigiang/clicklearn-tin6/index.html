@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClickLearn Tin học 6 – Cô Thùy Tin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&subset=vietnamese&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#4A2A0F;--wood-light:#E6B873;--wood:#CF9750;--wood-mid:#B97F3D;--wood-dark:#93592A;--wood-edge:#5E3515;--bamboo-hi:#C4EC7A;--bamboo:#7FBF35;--bamboo-dark:#3F7F1A;--bamboo-node:#2C5C12;--btn-top:#93D655;--btn:#5CAE2E;--btn-dark:#2D7612;--gold:#FFCF2F;--gold-dark:#D98500;--cream:#FFF7DF}
+*{box-sizing:border-box;margin:0;padding:0}
+html{min-height:100%;background:#0F2E12 radial-gradient(ellipse at 50% 30%,#2F6E22 0%,#0F2E12 100%) fixed}
+body{font-family:'Baloo 2','Nunito',system-ui,sans-serif;color:var(--ink);min-height:100vh;-webkit-tap-highlight-color:transparent}
+.deco{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.lfc{position:absolute;opacity:.2;animation:sway 5s ease-in-out infinite}
+.ffly{position:absolute;width:7px;height:7px;border-radius:50%;background:#FFF27A;box-shadow:0 0 12px 4px rgba(255,236,120,.7);animation:glow 3.2s ease-in-out infinite}
+@keyframes sway{0%,100%{rotate:-3deg}50%{rotate:3deg}}
+@keyframes glow{0%,100%{opacity:.15;transform:translate(0,0)}50%{opacity:1;transform:translate(10px,-14px)}}
+.wrap{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:18px 16px 50px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:4px solid rgba(0,0,0,.28);border-radius:14px;padding:8px 22px;font-family:inherit;font-weight:800;font-size:19px;color:#fff;cursor:pointer;text-shadow:0 2px 0 rgba(0,0,0,.25);box-shadow:inset 0 4px 0 rgba(255,255,255,.3),0 6px 0 rgba(40,20,5,.45);transition:transform .1s,box-shadow .1s;text-decoration:none;background:linear-gradient(180deg,var(--btn-top),var(--btn) 55%,#4C9B22)}
+.btn:active{transform:translateY(4px);box-shadow:inset 0 4px 0 rgba(255,255,255,.3),0 2px 0 rgba(40,20,5,.45)}
+/* bảng gỗ khung tre */
+.board{position:relative;margin-top:34px;border-radius:16px;padding:22px 24px 18px;
+  background:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 38px),linear-gradient(180deg,var(--wood-light),var(--wood));box-shadow:inset 0 0 0 5px var(--wood-dark),inset 0 8px 0 rgba(255,255,255,.2),0 12px 0 rgba(0,0,0,.4)}
+.board>i{position:absolute;border-radius:10px;box-shadow:0 4px 0 rgba(0,0,0,.25);pointer-events:none}
+.board>i.t,.board>i.b{left:-12px;right:-12px;height:18px;background:repeating-linear-gradient(90deg,transparent 0 100px,var(--bamboo-node) 100px 104px,var(--bamboo-hi) 104px 107px,transparent 107px 150px),linear-gradient(180deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
+.board>i.t{top:-7px}.board>i.b{bottom:-7px}
+.board>i.l,.board>i.r{top:-12px;bottom:-12px;width:18px;background:repeating-linear-gradient(180deg,transparent 0 100px,var(--bamboo-node) 100px 104px,var(--bamboo-hi) 104px 107px,transparent 107px 150px),linear-gradient(90deg,var(--bamboo-hi),var(--bamboo) 42%,var(--bamboo-dark))}
+.board>i.l{left:-7px}.board>i.r{right:-7px}
+.board>svg.lv{position:absolute;left:50%;top:-66px;width:240px;height:76px;transform:translateX(-50%)}
+.board>.pq{position:absolute;left:50%;top:-24px;transform:translateX(-50%);white-space:nowrap;padding:1px 22px 3px;border-radius:12px;border:4px solid var(--wood-edge);background:linear-gradient(180deg,var(--wood-mid),var(--wood-dark));font-weight:800;font-size:20px;color:var(--cream);text-shadow:0 2px 0 var(--wood-edge);z-index:2}
+/* đầu trang */
+header{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:40px}
+header svg.bot{width:84px;flex:none;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+.logo{font-weight:800;font-size:clamp(38px,6.5vw,66px);line-height:1;color:#3F8A1C;text-shadow:3px 0 0 var(--cream),-3px 0 0 var(--cream),0 3px 0 var(--cream),0 -3px 0 var(--cream),0 8px 0 rgba(94,53,21,.45)}
+.logo span{color:#E8890C}
+.sub{color:var(--ink);font-weight:600;font-size:clamp(15px,2vw,19px);margin-top:6px}
+.board h2{font-weight:800;font-size:22px;color:#2D7612;margin-bottom:8px}
+/* học sinh */
+.who{display:grid;grid-template-columns:1.3fr 1fr auto;gap:14px;align-items:end}
+.who label{display:block;font-weight:800;font-size:17px;margin-bottom:4px}
+.who input{width:100%;font-family:inherit;font-weight:700;font-size:20px;padding:8px 16px;border:4px solid var(--wood-dark);border-radius:14px;outline:none;color:var(--ink);background:#FFF8E4;box-shadow:inset 0 4px 0 rgba(147,89,42,.15)}
+.who input:focus{border-color:var(--btn-dark)}
+.err{color:#C2190E;font-weight:800;min-height:20px;margin-top:6px}
+.hi{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hi .av{width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF27A,var(--gold) 55%,var(--gold-dark));border:5px solid var(--wood-edge);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px}
+.hi .nm{font-weight:800;font-size:clamp(20px,3vw,27px);color:#2D7612}
+.hi .cl{font-weight:700;font-size:17px}
+.hi .sp{flex:1}
+.hi .note{font-weight:600;font-size:16px;background:#FFF8E4;border:3px solid var(--wood-dark);border-radius:14px;padding:6px 12px;max-width:440px}
+/* vòng elip */
+.ringbox{position:relative;margin-top:22px}
+#ring{position:relative;width:100%;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+#ring.drag{cursor:grabbing}
+#track{position:absolute;inset:0;pointer-events:none}
+.it{position:absolute;left:0;top:0;width:220px;height:286px;border-radius:20px;color:var(--ink);padding:16px 14px 12px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;overflow:hidden;will-change:transform;
+  background:repeating-linear-gradient(90deg,rgba(110,60,15,.10) 0 2px,transparent 2px 30px),linear-gradient(180deg,var(--wood-light),var(--wood));border:9px solid var(--bamboo);outline:3px solid var(--bamboo-node);box-shadow:inset 0 0 0 3px var(--wood-dark),0 10px 0 rgba(0,0,0,.4)}
+.it.cur{outline:5px solid var(--gold);box-shadow:inset 0 0 0 3px var(--wood-dark),0 0 0 10px rgba(255,207,47,.45),0 14px 0 rgba(0,0,0,.4)}
+.it .num{position:relative;width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF27A,var(--gold) 55%,var(--gold-dark));color:var(--ink);border:4px solid var(--wood-edge);font-weight:800;font-size:23px;display:flex;align-items:center;justify-content:center}
+.it .ic{position:relative;font-size:58px;line-height:1;filter:drop-shadow(0 4px 0 rgba(60,30,5,.3))}
+.it .en{position:relative;font-weight:800;font-size:23px;line-height:1.1}
+.it .blk{position:relative;margin-top:auto}
+.it .blk span{display:inline-block;border-radius:10px;padding:2px 10px;color:#fff;font-weight:800;font-size:14px;white-space:nowrap;border:3px solid rgba(0,0,0,.2)}
+.it .ok{position:absolute;right:-4px;top:12px;background:linear-gradient(180deg,var(--btn-top),var(--btn));color:#fff;border:3px solid var(--btn-dark);border-radius:12px 0 0 12px;padding:1px 10px;font-weight:800;font-size:13px;display:none}
+.it.pass .ok{display:block}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:56px;height:56px;border-radius:14px;border:4px solid var(--wood-edge);background:linear-gradient(180deg,#F0CB8C,var(--wood-mid));color:var(--ink);font-size:24px;font-weight:800;cursor:pointer;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 6px 0 var(--wood-edge);z-index:300;display:flex;align-items:center;justify-content:center}
+.nav:active{transform:translateY(calc(-50% + 4px));box-shadow:0 2px 0 var(--wood-edge)}
+#prev{left:0}#next{right:0}
+.hint{text-align:center;color:var(--cream);font-weight:700;font-size:16px;margin-top:4px;text-shadow:0 2px 0 rgba(0,0,0,.35)}
+.dots{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:10px}
+.dots b{width:14px;height:14px;border-radius:50%;background:var(--wood-dark);border:2px solid var(--wood-edge);cursor:pointer;transition:transform .2s}
+.dots b.on{background:var(--btn-top);border-color:var(--btn-dark);transform:scale(1.35)}
+/* chi tiết */
+.det{display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center}
+.det .big{width:110px;height:110px;border-radius:22px;border:5px solid var(--wood-edge);display:flex;align-items:center;justify-content:center;font-size:58px;box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 7px 0 rgba(60,30,5,.4)}
+.det .lab{display:inline-block;background:linear-gradient(180deg,#FFB547,#E8890C);color:#fff;font-weight:800;font-size:15px;border-radius:10px;padding:1px 12px;border:3px solid rgba(0,0,0,.2)}
+.det h3{font-weight:800;font-size:clamp(23px,3vw,31px);margin:6px 0 4px;line-height:1.15}
+.det ol{display:flex;flex-wrap:wrap;gap:6px 8px;list-style:none;counter-reset:t}
+.det li{counter-increment:t;font-weight:600;font-size:15.5px;background:#FFF8E4;border:2px solid #E0BE86;border-radius:12px;padding:3px 11px}
+.det li::before{content:counter(t) ". ";color:#B4520A;font-weight:800}
+.det .side{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.det .sc{font-weight:800;font-size:17px;color:#FFE38A;background:var(--wood-dark);border-radius:14px;padding:4px 14px;box-shadow:inset 0 3px 0 rgba(0,0,0,.3)}
+.det .go{font-size:23px;padding:10px 30px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.st{background:#FFF8E4;border:3px solid var(--wood-dark);border-radius:16px;padding:8px 12px;font-weight:600;font-size:16px;line-height:1.35}
+.st b{font-weight:800}
+.st b.n{display:inline-flex;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFF27A,var(--gold) 55%,var(--gold-dark));border:3px solid var(--wood-edge);color:var(--ink);align-items:center;justify-content:center;margin-right:6px}
+footer{color:var(--cream);font-weight:700;text-align:center;margin-top:28px;text-shadow:0 2px 0 rgba(0,0,0,.35)}
+@media (max-width:760px){.who{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}header svg.bot{width:62px}.det{grid-template-columns:1fr;text-align:center}.det .big{margin:0 auto}.det ol{justify-content:center}.nav{width:44px;height:44px;font-size:20px}}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:500}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+<div class="deco" id="deco"></div>
+<div class="wrap">
+  <div class="board"><i class="t"></i><i class="b"></i><i class="l"></i><i class="r"></i><svg class="lv" viewBox="-310 -190 620 190"></svg><div class="pq">Cô Thùy Tin</div>
+  <header>
+    <svg class="bot" viewBox="0 0 200 240" id="botH"></svg>
+    <div><div class="logo">ClickLearn <span>Tin học 6</span></div>
+    <div class="sub">Tin học 6 – Kết nối tri thức • 17 bài, 6 chủ đề • mỗi bài 5 hoạt động × 4 bước, 10 câu đố, một giấy chứng nhận</div></div>
+  </header></div>
+
+  <div class="board" id="whoCard"><i class="t"></i><i class="b"></i><i class="l"></i><i class="r"></i><svg class="lv" viewBox="-310 -190 620 190"></svg><div class="pq">Học sinh</div>
+    <div id="whoForm">
+      <h2>Em điền tên và lớp để in trên giấy chứng nhận nhé</h2>
+      <div class="who">
+        <div><label for="iName">Họ và tên</label><input id="iName" maxlength="40" autocomplete="name" placeholder="VD: Nguyễn Văn An"></div>
+        <div><label for="iClass">Lớp</label><input id="iClass" maxlength="10" placeholder="VD: 6A1"></div>
+        <button class="btn" id="bSave">✔ Vào học</button>
+      </div>
+      <div class="err" id="err"></div>
+    </div>
+    <div id="whoView" style="display:none">
+      <div class="hi"><div class="av" id="av">A</div>
+        <div><div class="nm" id="vName"></div><div class="cl" id="vClass"></div></div>
+        <div class="note">🎓 Học xong bài nào, đạt <b>8/10 ⭐</b> là nhận ngay <b>giấy chứng nhận</b> của bài đó – em tải ảnh về hoặc in luôn nhé!</div>
+        <div class="sp"></div>
+        <button class="btn" id="bEdit" style="background:linear-gradient(180deg,#5FD3F5,#1982C4);font-size:16px">✏️ Đổi tên / lớp</button></div>
+    </div>
+  </div>
+
+  <div class="ringbox">
+    <div id="ring" aria-label="Các bài học xếp theo vòng elip"><svg id="track"></svg></div>
+    <button class="nav" id="prev" title="Bài trước">◀</button>
+    <button class="nav" id="next" title="Bài sau">▶</button>
+  </div>
+  <div class="hint">👆 Vuốt sang trái / phải để đổi bài • Bấm vào bài ở giữa để vào học</div>
+  <div class="dots" id="dots"></div>
+
+  <div class="board"><i class="t"></i><i class="b"></i><i class="l"></i><i class="r"></i><svg class="lv" viewBox="-310 -190 620 190"></svg><div class="pq">Bài đang chọn</div><div id="det"></div></div>
+
+  <div class="board"><i class="t"></i><i class="b"></i><i class="l"></i><i class="r"></i><svg class="lv" viewBox="-310 -190 620 190"></svg><div class="pq">Cách học</div>
+    <div class="steps">
+      <div class="st"><b class="n">1</b>Điền <b>họ tên</b> và <b>lớp</b> rồi bấm <b>Vào học</b>.</div>
+      <div class="st"><b class="n">2</b>Vuốt vòng tròn, chọn <b>bài học</b>.</div>
+      <div class="st"><b class="n">3</b>Bấm ▶ đi qua <b>5 hoạt động</b>, giải <b>10 câu đố</b>.</div>
+      <div class="st"><b class="n">4</b>Đạt <b>8/10 ⭐</b> → bấm <b>Nhận chứng nhận</b>, tải ảnh hoặc in 🎓</div>
+    </div>
+  </div>
+  <footer>Giáo viên – Cô Thùy Tin 🌿</footer>
+</div>
+
+<script src="ds.js"></script>
+<script>
+const O = '#1D3557';
+const CD = ['#E8890C', '#1982C4', '#4C9B22', '#C2190E', '#1C7C73', '#9C5A00'];
+const LOOK = {
+  bai1: { en: 'Thông tin và dữ liệu', ic: '💡', cd: 1 },
+  bai2: { en: 'Xử lí thông tin', ic: '⚙️', cd: 1 },
+  bai3: { en: 'Thông tin trong máy tính', ic: '💾', cd: 1 },
+  bai4: { en: 'Mạng máy tính', ic: '🖧', cd: 2 },
+  bai5: { en: 'Internet', ic: '🌐', cd: 2 },
+  bai6: { en: 'Mạng thông tin toàn cầu', ic: '🕸️', cd: 3 },
+  bai7: { en: 'Tìm kiếm thông tin', ic: '🔍', cd: 3 },
+  bai8: { en: 'Thư điện tử', ic: '✉️', cd: 3 },
+  bai9: { en: 'An toàn thông tin', ic: '🛡️', cd: 4 },
+  bai10: { en: 'Sơ đồ tư duy', ic: '🧠', cd: 5 },
+  bai11: { en: 'Định dạng văn bản', ic: '📝', cd: 5 },
+  bai12: { en: 'Thông tin dạng bảng', ic: '📋', cd: 5 },
+  bai13: { en: 'Tìm kiếm và thay thế', ic: '🔁', cd: 5 },
+  bai14: { en: 'Sổ lưu niệm', ic: '📔', cd: 5 },
+  bai15: { en: 'Thuật toán', ic: '🧩', cd: 6 },
+  bai16: { en: 'Cấu trúc điều khiển', ic: '🔀', cd: 6 },
+  bai17: { en: 'Chương trình máy tính', ic: '💻', cd: 6 },
+};
+Object.values(LOOK).forEach(L => { const c = CD[L.cd - 1]; L.c = [c, c]; L.blk = 'Chủ đề ' + L.cd; });
+const ACTN = ['Khởi động', 'Khám phá', 'Luyện tập', 'Vận dụng', 'Củng cố'], ACTC = ['#B4520A', '#145A8C', '#2D6012', '#155E57', '#9C5A00'];
+const PASS = 8, NQ = 10, $ = id => document.getElementById(id), N = DS.length;
+const tidy = v => v.replace(/\s+/g, ' ').trim();
+const nameCase = v => tidy(v).split(' ').map(w => w ? w[0].toLocaleUpperCase('vi') + w.slice(1).toLocaleLowerCase('vi') : w).join(' ');
+const get = k => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } };
+const set = (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} };
+const who = () => ({ name: get('btName'), cls: get('btClass') });
+const prog = key => { const w = who(); try { return JSON.parse(get('cl6:' + w.name + '|' + w.cls + ':' + key) || '{}'); } catch (e) { return {}; } };
+
+function robot() {
+  return `<line x1="100" y1="40" x2="100" y2="16" stroke="${O}" stroke-width="6" stroke-linecap="round"/><circle cx="100" cy="13" r="10" fill="#FF595E" stroke="${O}" stroke-width="4"/>
+  <rect x="20" y="70" width="20" height="44" rx="9" fill="#FF9F1C" stroke="${O}" stroke-width="5"/><rect x="160" y="70" width="20" height="44" rx="9" fill="#FF9F1C" stroke="${O}" stroke-width="5"/>
+  <rect x="30" y="36" width="140" height="112" rx="42" fill="#2EC4B6" stroke="${O}" stroke-width="6"/><rect x="47" y="54" width="106" height="74" rx="28" fill="#1B2A49"/>
+  <ellipse cx="78" cy="88" rx="11" ry="14" fill="#7DF9FF"/><ellipse cx="122" cy="88" rx="11" ry="14" fill="#7DF9FF"/><circle cx="82" cy="82" r="4" fill="#fff"/><circle cx="126" cy="82" r="4" fill="#fff"/>
+  <path d="M84 107 Q100 120 116 107" stroke="#7DF9FF" stroke-width="5" fill="none" stroke-linecap="round"/><ellipse cx="60" cy="112" rx="8" ry="5" fill="#FF8FAB"/><ellipse cx="140" cy="112" rx="8" ry="5" fill="#FF8FAB"/>
+  <rect x="28" y="152" width="22" height="52" rx="11" fill="#2EC4B6" stroke="${O}" stroke-width="5" transform="rotate(22 39 152)"/><rect x="150" y="152" width="22" height="52" rx="11" fill="#2EC4B6" stroke="${O}" stroke-width="5" transform="rotate(-22 161 152)"/>
+  <rect x="70" y="200" width="22" height="30" rx="9" fill="#ADB5BD" stroke="${O}" stroke-width="5"/><rect x="108" y="200" width="22" height="30" rx="9" fill="#ADB5BD" stroke="${O}" stroke-width="5"/>
+  <rect x="52" y="148" width="96" height="64" rx="24" fill="#FF9F1C" stroke="${O}" stroke-width="6"/><path d="M100 194 C78 180 82 162 94 166 Q100 168 100 175 Q100 168 106 166 C118 162 122 180 100 194Z" fill="#FF595E" stroke="${O}" stroke-width="3"/>`;
+}
+$('botH').innerHTML = robot();
+const LEAF = (a, L, c, d) => `<g transform="rotate(${a})"><path d="M0 0 C${L*.2} ${-L*.25} ${L*.24} ${-L*.72} 0 ${-L} C${-L*.24} ${-L*.72} ${-L*.2} ${-L*.25} 0 0Z" fill="${c}" stroke="${d}" stroke-width="5" stroke-linejoin="round"/><path d="M0 -4 L0 ${-L*.92}" stroke="${d}" stroke-width="4" stroke-linecap="round"/></g>`;
+const LEAVES = [[-74, 120, '#3F9A22'], [74, 120, '#3F9A22'], [-50, 160, '#5DBB34'], [50, 160, '#5DBB34'], [-24, 178, '#4FAE2C'], [24, 178, '#4FAE2C'], [0, 186, '#6CC63C']].map(([a, L, c]) => LEAF(a, L, c, '#2A6F16')).join('');
+document.querySelectorAll('svg.lv').forEach(v => v.innerHTML = LEAVES);
+(function () { const d = $('deco');
+  [['-60px', '', '', '-40px', 30], ['', '-70px', '', '-40px', -25], ['-80px', '', '-60px', '', 160], ['', '-60px', '-50px', '', 200]].forEach(([l, r, b, t, rot]) => {
+    const e = document.createElement('div'); e.className = 'lfc'; e.innerHTML = `<svg width="420" height="230" viewBox="-310 -200 620 210">${LEAVES}</svg>`;
+    Object.assign(e.style, { left: l, right: r, bottom: b, top: t, transform: `rotate(${rot}deg)` }); d.appendChild(e); });
+  for (let i = 0; i < 14; i++) { const f = document.createElement('div'); f.className = 'ffly'; Object.assign(f.style, { left: Math.random()*96 + '%', top: Math.random()*90 + '%', animationDelay: -Math.random()*3 + 's' }); d.appendChild(f); }
+})();
+
+/* ===== các thẻ trên vòng elip ===== */
+const ring = $('ring');
+const ITEMS = DS.map((d, i) => {
+  const L = LOOK[d.key], e = document.createElement('div');
+  e.className = 'it'; e.dataset.i = i;
+    e.innerHTML = `<div class="ok">✅ Đạt</div>
+    <div class="num">${d.num}</div><div class="ic">${L.ic}</div><div class="en">${L.en}</div>
+    <div class="blk"><span style="background:${L.c[0]}">${L.blk}</span></div>`;
+  ring.appendChild(e); return e;
+});
+$('dots').innerHTML = DS.map((d, i) => `<b data-i="${i}" title="${LOOK[d.key].en}"></b>`).join('');
+
+let pos = 0, target = 0, G = {}, raf = null;
+function geom() {
+  const W = ring.clientWidth, cs = Math.max(.62, Math.min(1, W/1000));
+  const RX = Math.min(W*.40, 470), RY = Math.max(48, RX*.30), CW = 220*cs, CH = 286*cs, FS = 1.18;
+  const H = 2*RY + CH*(.42/2 + FS/2) + 34;
+  ring.style.height = H + 'px';
+  G = { W, H, RX, RY, cs, CW, CH, FS, cx: W/2, cy: 12 + RY + CH*.42/2 };
+  $('track').setAttribute('viewBox', `0 0 ${W} ${H}`);
+  $('track').innerHTML = `<ellipse cx="${G.cx}" cy="${G.cy}" rx="${RX}" ry="${RY}" fill="rgba(196,236,122,.08)" stroke="rgba(255,247,223,.6)" stroke-width="6" stroke-dasharray="2 18" stroke-linecap="round"/>`;
+  draw();
+}
+const wrap = d => { d = ((d % N) + N) % N; return d > N/2 ? d - N : d; };
+function draw() {
+  const cur = ((Math.round(pos) % N) + N) % N;
+  ITEMS.forEach((e, i) => {
+    const d = wrap(i - pos), a = d*2*Math.PI/N, dep = (Math.cos(a) + 1)/2;
+    const x = G.cx + G.RX*Math.sin(a), y = G.cy + G.RY*Math.cos(a);
+    const s = G.cs*(.42 + (G.FS - .42)*Math.pow(dep, 2.2));
+    e.style.transform = `translate(${x - 110}px,${y - 143}px) scale(${s})`;
+    e.style.zIndex = Math.round(dep*100);
+    e.style.opacity = 1;
+    e.style.filter = dep > .97 ? 'none' : `saturate(${(.6 + .4*dep).toFixed(2)}) brightness(${(.78 + .22*dep).toFixed(2)})`;
+    e.classList.toggle('cur', i === cur && Math.abs(d) < .5);
+  });
+  document.querySelectorAll('.dots b').forEach(b => b.classList.toggle('on', +b.dataset.i === cur));
+}
+let shown = -1;
+function settle() { const cur = ((Math.round(pos) % N) + N) % N; if (cur !== shown) { shown = cur; detail(cur); } }
+function anim() {
+  const d = target - pos;
+  if (Math.abs(d) < .002) { pos = target; draw(); settle(); raf = null; return; }
+  pos += d*.16; draw(); raf = requestAnimationFrame(anim);
+}
+function goTo(i) { target = pos + wrap(i - pos); if (Math.round(target) !== Math.round(pos)) tick(); if (!raf) raf = requestAnimationFrame(anim); }
+const step = k => goTo(Math.round(target) + k);
+$('prev').onclick = () => step(-1); $('next').onclick = () => step(1);
+document.querySelectorAll('.dots b').forEach(b => b.onclick = () => goTo(+b.dataset.i));
+addEventListener('keydown', e => { if (e.target.tagName === 'INPUT') return; if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1); else if (e.key === 'Enter') openCur(); });
+
+// kéo / vuốt
+let dr = null;
+ring.addEventListener('pointerdown', e => { dr = { x: e.clientX, y: e.clientY, p: pos, moved: false, id: e.pointerId }; });
+addEventListener('pointermove', e => {
+  if (!dr || e.pointerId !== dr.id) return;
+  const dx = e.clientX - dr.x;
+  if (!dr.moved && Math.abs(dx) < 8) return;
+  if (!dr.moved) { dr.moved = true; ring.classList.add('drag'); try { ring.setPointerCapture(dr.id); } catch (er) {} }
+  const per = Math.max(70, G.RX*2*Math.PI/N*.9);
+  pos = dr.p - dx/per; target = pos; draw();
+  if (Math.round(pos) !== dr.last) { if (dr.last != null) tick(); dr.last = Math.round(pos); }
+});
+const endDrag = e => {
+  if (!dr) return; const was = dr; dr = null; ring.classList.remove('drag');
+  if (was.moved) { goTo(Math.round(pos)); return; }
+  const it = e.target.closest && e.target.closest('.it'); if (!it) return;
+  const i = +it.dataset.i; if (it.classList.contains('cur')) openCur(); else goTo(i);
+};
+addEventListener('pointerup', endDrag); addEventListener('pointercancel', () => { if (dr) { dr = null; ring.classList.remove('drag'); goTo(Math.round(pos)); } });
+// lăn chuột ngang (bàn di chuột)
+let wl = 0; ring.addEventListener('wheel', e => { if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) return; e.preventDefault(); wl += e.deltaX; if (Math.abs(wl) > 60) { step(wl > 0 ? 1 : -1); wl = 0; } }, { passive: false });
+
+/* ===== khung chi tiết ===== */
+function detail(i) {
+  const d = DS[i], L = LOOK[d.key], w = who(), p = w.name ? prog(d.key) : {}, best = p.best || 0;
+  $('det').innerHTML = `<div class="det">
+    <div class="big" style="background:linear-gradient(180deg,#F0CB8C,${L.c[0]})">${L.ic}</div>
+    <div><span class="lab">Tin học 6 • ${L.blk} • Bài ${d.num}</span><h3>${d.title}</h3>
+      <ol>${d.topics.map((t, k) => `<li><b style="color:${ACTC[k]}">${ACTN[k]}:</b> ${t}</li>`).join('')}</ol></div>
+    <div class="side"><div class="sc">${p.done ? (best >= PASS ? `✅ Đã đạt ${best}/${NQ} ⭐` : `⭐ ${best}/${NQ} – cần ${PASS}`) : '📝 10 câu đố • cần 8 ⭐'}</div>
+      <a class="btn go" href="${d.key}/" id="goBtn">Vào học ▶</a></div></div>`;
+  $('goBtn').addEventListener('click', guard);
+}
+function openCur() { const i = ((Math.round(pos) % N) + N) % N; if (guardOk()) location.href = DS[i].key + '/'; }
+function guardOk() { const w = who(); if (w.name && w.cls) return true;
+  $('err').textContent = 'Điền họ tên và lớp trước rồi vào học nhé! 👆'; $('whoCard').scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => $('iName').focus(), 400); return false; }
+function guard(e) { if (!guardOk()) e.preventDefault(); }
+
+/* ===== học sinh ===== */
+function render() {
+  const w = who(), has = w.name && w.cls;
+  $('whoForm').style.display = has ? 'none' : ''; $('whoView').style.display = has ? '' : 'none';
+  if (has) { $('vName').textContent = w.name; $('vClass').textContent = 'Lớp ' + w.cls; $('av').textContent = (w.name.split(' ').pop() || '?')[0]; }
+  DS.forEach((d, i) => ITEMS[i].classList.toggle('pass', !!has && (prog(d.key).best || 0) >= PASS));
+  shown = -1; settle();
+}
+function saveWho() {
+  const n = nameCase($('iName').value), c = tidy($('iClass').value).toUpperCase();
+  if (n.length < 2) { $('err').textContent = 'Em hãy điền họ và tên nhé!'; $('iName').focus(); return; }
+  if (!c) { $('err').textContent = 'Em hãy điền lớp nhé!'; $('iClass').focus(); return; }
+  set('btName', n); set('btClass', c); $('err').textContent = ''; render(); burst(120);
+}
+$('bSave').onclick = saveWho;
+['iName', 'iClass'].forEach(id => $(id).addEventListener('keydown', e => { if (e.key === 'Enter') saveWho(); }));
+$('bEdit').onclick = () => { const w = who(); $('iName').value = w.name; $('iClass').value = w.cls; $('whoForm').style.display = ''; $('whoView').style.display = 'none'; $('iName').focus(); };
+{ const w = who(); $('iName').value = w.name; $('iClass').value = w.cls; }
+
+/* ===== âm thanh nhỏ khi xoay ===== */
+let AC = null;
+function tick() { try { AC = AC || new (window.AudioContext || window.webkitAudioContext)(); const t = AC.currentTime, o = AC.createOscillator(), g = AC.createGain();
+  o.type = 'sine'; o.frequency.setValueAtTime(700, t); o.frequency.exponentialRampToValueAtTime(1100, t + .06); g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.12, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + .09);
+  o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t + .1); } catch (e) {} }
+
+/* ===== pháo giấy ===== */
+const cv = $('confetti'), cx = cv.getContext('2d'); let parts = [], run = false;
+function burst(n) { cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; const C = ['#FFCF2F', '#8CC63F', '#3FC7F2', '#E8890C', '#E5392C', '#FFF7DF'];
+  for (let i = 0; i < n; i++) parts.push({ x: innerWidth/2 + (Math.random() - .5)*200, y: innerHeight*.5, vx: (Math.random() - .5)*16, vy: -Math.random()*17 - 7, w: 8 + Math.random()*8, h: 5 + Math.random()*6, a: Math.random()*6, va: (Math.random() - .5)*.4, c: C[i % 6], life: 0 });
+  if (!run) { run = true; requestAnimationFrame(cf); } }
+function cf() { const d = devicePixelRatio; cx.clearRect(0, 0, cv.width, cv.height);
+  parts.forEach(p => { p.vy += .45; p.x += p.vx; p.y += p.vy; p.a += p.va; p.life++; cx.save(); cx.globalAlpha = Math.max(0, 1 - Math.max(0, p.life - 90)/60); cx.translate(p.x*d, p.y*d); cx.rotate(p.a); cx.fillStyle = p.c; cx.fillRect(-p.w*d/2, -p.h*d/2, p.w*d, p.h*d); cx.restore(); });
+  parts = parts.filter(p => p.life < 150); if (parts.length) requestAnimationFrame(cf); else { run = false; cx.clearRect(0, 0, cv.width, cv.height); } }
+
+// nhớ nhóm đang xem khi quay lại
+{ const k = DS.findIndex(d => d.key === get('cl6Last')); if (k >= 0) pos = target = k; }
+ring.addEventListener('click', e => { const it = e.target.closest('.it'); if (it) set('cl6Last', DS[+it.dataset.i].key); });
+addEventListener('beforeunload', () => set('cl6Last', DS[((Math.round(pos) % N) + N) % N].key));
+addEventListener('resize', geom);
+addEventListener('pageshow', render);
+geom(); render();
+</script>
+</body>
+</html>

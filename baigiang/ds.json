@@ -1,4 +1,7 @@
 [
+  { "link": "clicklearn-tin6/", "ten": "ClickLearn Tin học 6", "ic": "🌿", "mon": "Tin học 6", "mau": "#4C9B22",
+    "mota": "Tin học 6 (Kết nối tri thức): đủ 17 bài, 6 chủ đề, giao diện tre gỗ rừng. Mỗi bài 5 hoạt động × 4 bước, 10 câu đố, giấy chứng nhận.",
+    "ds": "clicklearn-tin6/ds.js" },
   { "link": "clicklearn-tin9/", "ten": "ClickLearn Tin học 9", "ic": "🖱️", "mon": "Tin học 9", "mau": "#3A8DFF",
     "mota": "Tin học 9 (Kết nối tri thức): Bài 1, 2, 4, 5, 7. Mỗi bài 5 hoạt động × 4 bước, 10 câu đố, giấy chứng nhận.",
     "ds": "clicklearn-tin9/ds.js" },
