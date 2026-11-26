@@ -75,8 +75,13 @@ node tools/kiem_tra_zoom.js baigiang/<tên-bài> /tmp/zoom
 Xem các ảnh: chữ không chồng lên nhau, không tràn khung, hình minh hoạ không đè chữ. Tràn thì rút gọn câu chữ (không thu nhỏ cỡ chữ dưới 28px).
 
 ## 5. Đăng lên web
+Thêm bài vào **tab Bài giảng** của trang giáo viên: mở `baigiang/ds.json`, thêm một dòng (bài mới nhất để trên cùng):
+```json
+{ "link": "<tên-bài>/", "ten": "Tên bài", "ic": "📊", "mon": "Tin học 8", "mau": "#168DCE", "mota": "1–2 câu: nội dung, số câu đố, chứng nhận." }
+```
+(App nhiều bài có `ds.js` tự sinh như `clicklearning/`, `congnghevui/` thì thêm `"ds": "<app>/ds.js"` để tab tự liệt kê các bài con.)
 ```bash
-git add baigiang/<tên-bài> && git -c user.name=ptn1095 -c user.email=ptn1095@users.noreply.github.com commit -m "Thêm bài giảng zoom: <tên bài>" && git push origin main
+git add baigiang/ds.json baigiang/<tên-bài> && git -c user.name=ptn1095 -c user.email=ptn1095@users.noreply.github.com commit -m "Thêm bài giảng zoom: <tên bài>" && git push origin main
 ```
 Khoảng 1–2 phút sau trang tự cập nhật. Gửi cô link `https://ptn1095.github.io/PhieuTuongTac/baigiang/<tên-bài>/` kèm 2–3 ảnh chụp (tổng quan, một chủ đề, giấy chứng nhận mẫu) và tóm tắt ngắn: số chủ đề, số câu đố, số sao cần để nhận chứng nhận.
 

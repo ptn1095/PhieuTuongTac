@@ -110,6 +110,23 @@ tr.hom-nay td{background:#F4FAFE}
 .nut-csv{font:inherit;font-size:14px;font-weight:bold;color:#1E7E3A;background:#fff;border:2px solid #2E9E4F;border-radius:999px;padding:6px 14px;cursor:pointer;margin-left:auto}
 .dau-bang{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
 td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
+.bg-luoi{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.bg-the{background:#fff;border:1px solid var(--vien);border-top:6px solid var(--m);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.bg-dau{display:flex;gap:12px;align-items:center}
+.bg-ic{flex:none;width:52px;height:52px;border-radius:14px;background:var(--m);display:flex;align-items:center;justify-content:center;font-size:28px}
+.bg-the h3{margin:0;font-size:18px;color:var(--dam);line-height:1.25}
+.bg-mon{display:inline-block;font-size:12.5px;font-weight:bold;color:var(--m);border:1.5px solid var(--m);border-radius:999px;padding:1px 10px;margin-top:3px}
+.bg-mota{font-size:14px;color:var(--phu);margin:0}
+.bg-nut{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+.bg-nut .nut{font-size:14px;padding:7px 13px}
+.bg-con summary{cursor:pointer;font-size:14px;font-weight:bold;color:var(--bien)}
+.bg-con ol{margin:6px 0 0;padding-left:22px;font-size:14px;display:flex;flex-direction:column;gap:4px}
+.bg-con li a{color:var(--chu)} .bg-con li .nut-nho{margin-left:6px;padding:1px 8px;font-size:12px}
+#bgQR{position:fixed;inset:0;background:rgba(20,30,45,.55);display:flex;align-items:center;justify-content:center;z-index:50;padding:16px}
+#bgQR .hop{background:#fff;border-radius:18px;padding:18px 20px;width:min(380px,100%);text-align:center}
+#bgQR h3{margin:0 0 8px;color:var(--dam);font-size:18px}
+#bgQR .ma svg{width:100%;max-width:300px;height:auto}
+#bgQR .lk{font-size:13px;color:var(--phu);word-break:break-all;margin:6px 0 12px}
 @media (max-width:760px){.so-lieu{grid-template-columns:repeat(2,minmax(0,1fr))}.hai-cot{grid-template-columns:1fr}.o-so .gia{font-size:26px}}
 </style>
 </head>
@@ -140,8 +157,8 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
       <div class="tuy-chon hidden" id="tuyChon"><label>Từ ngày<input type="date" id="tuNgay"></label><label>Đến ngày<input type="date" id="denNgay"></label></div>
       <div class="nhan-tg" id="nhanTG"></div>
     </section>
-    <div class="tabs-xem" role="tablist"><button type="button" class="tab-xem" role="tab" data-xem="phieu" aria-selected="true">📄 Theo từng phiếu</button><button type="button" class="tab-xem" role="tab" data-xem="th" aria-selected="false">📅 Tổng hợp nhiều phiếu</button><button type="button" class="tab-xem" role="tab" data-xem="lich" aria-selected="false">📋 Giao phiếu</button></div>
-    <section class="the loc">
+    <div class="tabs-xem" role="tablist"><button type="button" class="tab-xem" role="tab" data-xem="phieu" aria-selected="true">📄 Theo từng phiếu</button><button type="button" class="tab-xem" role="tab" data-xem="th" aria-selected="false">📅 Tổng hợp nhiều phiếu</button><button type="button" class="tab-xem" role="tab" data-xem="lich" aria-selected="false">📋 Giao phiếu</button><button type="button" class="tab-xem" role="tab" data-xem="bg" aria-selected="false">🎬 Bài giảng</button></div>
+    <section class="the loc" id="theLoc">
       <label id="nhanPhieu">Phiếu<select id="chonPhieu"></select></label>
       <label style="max-width:220px">Lớp<select id="chonLop"></select></label>
       <div class="nhom-nut"><button type="button" class="nut phu" id="taiLai">↻ Tải lại</button><a class="nut" id="chieuDA" target="_blank" rel="noopener">🎯 Chiếu đáp án</a></div>
@@ -187,6 +204,10 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
         <div class="bang-wrap"><table><thead><tr><th style="width:36px"><input type="checkbox" id="chonHet" aria-label="Chọn tất cả phiếu chưa giao"></th><th>Phiếu</th><th>Soạn cho</th><th>Số câu</th><th></th></tr></thead><tbody id="bangChuaGiao"></tbody></table></div></section>
       <section class="the"><h2>Đã giao <span class="phu">– học sinh thấy phiếu từ ngày mở; thay đổi hiện với học sinh sau tối đa 5 phút</span></h2>
         <div class="bang-wrap"><table><thead><tr><th>Ngày mở</th><th>Hạn nộp</th><th>Phiếu</th><th>Giao cho</th><th>Trạng thái</th><th>Đã nộp</th><th></th></tr></thead><tbody id="lichBang"></tbody></table></div></section>
+    </div>
+    <div id="xemBG" class="hidden">
+      <div class="ghi-chu" style="margin:-6px 0 12px 4px">Các bài giảng tương tác đang có trên web. Cô bấm <b>Mở</b> để chiếu trên lớp, <b>Mã QR</b> để học sinh quét bằng máy tính bảng / điện thoại, hoặc <b>Chép link</b> để gửi cho học sinh.</div>
+      <div class="bg-luoi" id="bgLuoi"><div class="ghi-chu">Đang tải danh sách bài giảng…</div></div>
     </div>
     <div id="xemTH" class="hidden">
       <div class="so-lieu" id="thSo"></div>
@@ -288,7 +309,7 @@ function hangDangXem(){const ph=DL.phieu.find(p=>p.ten===$('chonPhieu').value);i
 let KHOP={};
 function khop(ten,lop){const k=lop+'|'+ten;if(!KHOP[k])KHOP[k]=(window.khopTen&&DL.danhSach.length)?khopTen(ten,lop,DL.danhSach,DL.ghep||[]):{ten:'',muc:'',goiY:[]};return KHOP[k];}
 const docHang=h=>{const k=khop(h[1],h[2]);return {luc:h[0],ten:k.muc==='chac'?k.ten:h[1],tenGo:h[1],muc:k.muc,bo:k.muc==='bo',goiY:k.goiY,lop:h[2],diem:typeof h[3]==='number'?h[3]:parseFloat(String(h[3]).replace(',','.')),dung:h[4],ct:h[6]};};
-function ve(){veXacNhan();if(XEM==='th')return veTH();if(XEM==='lich')return veLich();veSo();veBieuDo();veSai();veChua();veBang();}
+function ve(){veXacNhan();if(XEM==='bg')return;if(XEM==='th')return veTH();if(XEM==='lich')return veLich();veSo();veBieuDo();veSai();veChua();veBang();}
 
 // ===== Cần cô xác nhận tên =====
 const lopTrong=()=>[...new Set(DL.danhSach.map(r=>r[0]))].sort((a,b)=>a.localeCompare(b,'vi',{numeric:true}));
@@ -304,7 +325,7 @@ async function doiLop(lopCu,go,lopMoi,mot){await goiLenh({action:'doilop',lopcu:
 function baoLoi(e){alert('Chưa thực hiện được: '+(e.message||'lỗi kết nối')+'. Có thể mã Apps Script chưa được cập nhật bản mới.');}
 function veXacNhan(){
   const the=$('theXacNhan');
-  if(!DL||!DL.danhSach.length||XEM==='lich'){the.classList.add('hidden');$('theDaBo').classList.add('hidden');return;}
+  if(!DL||!DL.danhSach.length||XEM==='lich'||XEM==='bg'){the.classList.add('hidden');$('theDaBo').classList.add('hidden');return;}
   const nhom=new Map(),bo=new Map();
   DL.phieu.forEach(p=>p.hang.forEach(h=>{const k=khop(h[1],h[2]);if(k.muc==='chac')return;const key=lopKey(h[2])+'|'+chuan(h[1]),M=k.muc==='bo'?bo:nhom;
     if(!M.has(key))M.set(key,{lop:h[2],go:h[1],k,n:0});M.get(key).n++;}));
@@ -383,10 +404,10 @@ datTG((()=>{try{return localStorage.getItem('coThuyTin_gvTG')||'tatca';}catch(e)
 // ===== Hai cách xem: theo từng phiếu / tổng hợp nhiều phiếu =====
 document.querySelectorAll('.tab-xem').forEach(t=>t.onclick=()=>{XEM=t.dataset.xem;
   document.querySelectorAll('.tab-xem').forEach(x=>x.setAttribute('aria-selected',x===t));
-  $('xemPhieu').classList.toggle('hidden',XEM!=='phieu');$('xemTH').classList.toggle('hidden',XEM!=='th');$('xemLich').classList.toggle('hidden',XEM!=='lich');
-  document.querySelector('.tg').classList.toggle('hidden',XEM==='lich');
+  $('xemPhieu').classList.toggle('hidden',XEM!=='phieu');$('xemTH').classList.toggle('hidden',XEM!=='th');$('xemLich').classList.toggle('hidden',XEM!=='lich');$('xemBG').classList.toggle('hidden',XEM!=='bg');
+  document.querySelector('.tg').classList.toggle('hidden',XEM==='lich'||XEM==='bg');$('theLoc').classList.toggle('hidden',XEM==='bg');$('capNhat').classList.toggle('hidden',XEM==='bg');
   $('nhanPhieu').classList.toggle('hidden',XEM!=='phieu');$('chieuDA').classList.toggle('hidden',XEM!=='phieu'||!timPhieu($('chonPhieu').value));
-  datLop();ve();});
+  if(XEM==='bg'){veXacNhan();veBG();}else{datLop();ve();}});
 function datLop(){const cu=$('chonLop').value;let ds;
   if(XEM!=='phieu')ds=new Set([...Object.values(LOP_CHUAN).flat(),...DL.danhSach.map(r=>r[0]),...DL.phieu.flatMap(p=>p.hang.map(h=>h[2]))].filter(Boolean));
   else{const ph=DL.phieu.find(p=>p.ten===$('chonPhieu').value),k=ph&&timPhieu(ph.ten);ds=new Set([...(k?k.lop:[]),...(ph?ph.hang.map(h=>h[2]):[])].filter(Boolean));}
@@ -620,6 +641,35 @@ function veBang(){
 }
 document.querySelectorAll('#xemPhieu th[data-c]').forEach(th=>th.onclick=()=>{const c=th.dataset.c;sapXep={c,tang:sapXep.c===c?!sapXep.tang:c!=='diem'};
   document.querySelectorAll('#xemPhieu th').forEach(x=>x.removeAttribute('aria-sort'));th.setAttribute('aria-sort',sapXep.tang?'ascending':'descending');veBang();});
+</script>
+<div id="bgQR" class="hidden" role="dialog" aria-modal="true" aria-labelledby="bgQRten"><div class="hop"><h3 id="bgQRten"></h3><div class="ma" id="bgQRma"></div><div class="lk" id="bgQRlk"></div>
+  <div class="bg-nut" style="justify-content:center"><button type="button" class="nut phu" id="bgQRchep">Chép link</button><button type="button" class="nut" id="bgQRdong">Đóng</button></div></div></div>
+<script src="../assets/js/qrcode.js"></script>
+<script>
+// ===== Tab Bài giảng: đọc baigiang/ds.json (+ danh sách bài con của từng app) =====
+let BG=null;const BG_GOC=new URL('../baigiang/',location.href).href;
+async function taiBG(){const ds=await (await fetch('../baigiang/ds.json?v='+Date.now())).json();
+  await Promise.all(ds.map(async b=>{if(!b.ds)return;try{const t=await (await fetch('../baigiang/'+b.ds+'?v='+Date.now())).text();
+    b.con=new Function(t.replace(/^const DS\s*=/m,'return ')).call().map(c=>({ten:c.title,link:b.link+c.key+'/'}));}catch(e){}}));
+  return ds;}
+async function veBG(){const L=$('bgLuoi');
+  if(!BG){try{BG=await taiBG();}catch(e){L.innerHTML='<div class="ghi-chu">⚠ Chưa tải được danh sách bài giảng. Cô bấm lại tab sau ít phút nhé.</div>';return;}}
+  L.innerHTML=BG.map((b,i)=>'<article class="bg-the" style="--m:'+esc(b.mau||'#168DCE')+'"><div class="bg-dau"><div class="bg-ic">'+esc(b.ic||'🎬')+'</div><div><h3>'+esc(b.ten)+'</h3><span class="bg-mon">'+esc(b.mon||'')+'</span></div></div>'+
+    '<p class="bg-mota">'+esc(b.mota||'')+'</p>'+
+    (b.con&&b.con.length?'<details class="bg-con"><summary>📚 '+b.con.length+' bài trong app</summary><ol>'+b.con.map(c=>'<li><a href="'+esc(BG_GOC+c.link)+'" target="_blank" rel="noopener">'+esc(c.ten)+'</a><button type="button" class="nut-nho" data-qr="'+esc(c.link)+'" data-ten="'+esc(c.ten)+'">QR</button></li>').join('')+'</ol></details>':'')+
+    '<div class="bg-nut"><a class="nut" href="'+esc(BG_GOC+b.link)+'" target="_blank" rel="noopener">▶ Mở</a><button type="button" class="nut phu" data-qr="'+esc(b.link)+'" data-ten="'+esc(b.ten)+'">📱 Mã QR</button><button type="button" class="nut phu" data-chep="'+esc(b.link)+'">🔗 Chép link</button></div></article>').join('');}
+async function chep(url,nut){try{await navigator.clipboard.writeText(url);}catch(e){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(er){}t.remove();}
+  const cu=nut.textContent;nut.textContent='✓ Đã chép';setTimeout(()=>nut.textContent=cu,1500);}
+let bgTruoc=null;
+$('bgLuoi').addEventListener('click',e=>{const q=e.target.closest('[data-qr]'),c=e.target.closest('[data-chep]');
+  if(c)return chep(BG_GOC+c.dataset.chep,c);
+  if(!q)return;const url=BG_GOC+q.dataset.qr;$('bgQRten').textContent=q.dataset.ten;$('bgQRlk').textContent=url;
+  if(window.qrcode){const m=qrcode(0,'M');m.addData(url);m.make();$('bgQRma').innerHTML=m.createSvgTag({cellSize:8,margin:2,scalable:true});}else $('bgQRma').textContent='Chưa tải được mã QR – cô dùng link bên dưới nhé.';
+  bgTruoc=q;$('bgQR').classList.remove('hidden');$('bgQRdong').focus();});
+const dongQR=()=>{$('bgQR').classList.add('hidden');if(bgTruoc)bgTruoc.focus();};
+$('bgQRdong').onclick=dongQR;$('bgQR').addEventListener('click',e=>{if(e.target.id==='bgQR')dongQR();});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('bgQR').classList.contains('hidden'))dongQR();});
+$('bgQRchep').onclick=e=>chep($('bgQRlk').textContent,e.currentTarget);
 </script>
 </body>
 </html>

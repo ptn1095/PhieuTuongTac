@@ -1,0 +1,12 @@
+[
+  { "link": "congnghevui/", "ten": "Công nghệ vui", "ic": "⚙️", "mon": "Công nghệ 3", "mau": "#F28C28",
+    "mota": "Phần một – Công nghệ và đời sống (Kết nối tri thức). 6 bài, mỗi bài 5 hoạt động × 4 bước, 10 câu đố, giấy chứng nhận.",
+    "ds": "congnghevui/ds.js" },
+  { "link": "clicklearning/", "ten": "ClickLearning", "ic": "🖱️", "mon": "Tin học – Scratch", "mau": "#8338EC",
+    "mota": "10 nhóm lệnh Scratch + 3 chuyên đề. Mỗi nhánh 5 nội dung, 10 câu đố, giấy chứng nhận.",
+    "ds": "clicklearning/ds.js" },
+  { "link": "scratch-nhom-lenh-motion/", "ten": "Nhóm lệnh Motion – Scratch", "ic": "🏃", "mon": "Tin học – Scratch", "mau": "#168DCE",
+    "mota": "Bài giảng zoom: các lệnh chuyển động trong Scratch, có câu đố và giấy chứng nhận." },
+  { "link": "bang-tinh-thcs/", "ten": "Tổng kết Bảng tính THCS", "ic": "📊", "mon": "Tin học THCS", "mau": "#65B843",
+    "mota": "Bài giảng zoom ôn tập phần mềm bảng tính: 10 chủ đề, 20 câu đố, giấy chứng nhận." }
+]
