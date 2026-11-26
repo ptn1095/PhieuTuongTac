@@ -1,0 +1,19 @@
+/* ===== PHONG CÁCH THÚ CƯNG CHIBI ===== */
+:root{--fh:'Mali';--fhw:700;--fb:'Baloo 2';--fs:37px;--ink:#5B3A55;--bink:#5B3A55;--rad:46px;--big:110px;
+  --board:radial-gradient(circle,#FFD1E1 0 9px,transparent 10px) 0 0/72px 72px,radial-gradient(circle,#CFF3E8 0 7px,transparent 8px) 36px 36px/72px 72px,linear-gradient(180deg,#FFF6F9,#FFE6EF);
+  --board-sh:inset 0 0 0 9px #FF8FB1,inset 0 0 0 15px #FFF6F9,0 0 0 8px #FFC2D6,0 0 0 13px #C2577F,0 28px 0 13px rgba(0,0,0,.25);
+  --board-sh-s:inset 0 0 0 6px #FF8FB1,0 0 0 5px #FFC2D6,0 0 0 9px #C2577F,0 14px 0 9px rgba(0,0,0,.25);
+  --edge:#C2577F;--dark:#FF8FB1;--panel:#FFFDF8;--soft:#FFE8F0;--ill:#fff;
+  --plq:linear-gradient(180deg,#8FE3CF,#3BB59B);--plq-edge:#1E7A68;--plq-ink:#fff;--plq-fx:0 3px 0 #1E7A68;--plq-rad:44px;
+  --medal:radial-gradient(circle at 35% 30%,#fff,#FFC2D6 50%,#FF7BA5);--medal-ink:#7A2048;
+  --title-c:#FF5C93;--title-fx:5px 0 0 #fff,-5px 0 0 #fff,0 5px 0 #fff,0 -5px 0 #fff,4px 4px 0 #fff,-4px -4px 0 #fff,4px -4px 0 #fff,-4px 4px 0 #fff,0 12px 0 #FFB3C7,0 16px 16px rgba(194,87,127,.35);
+  --title-fx-s:3px 0 0 #fff,-3px 0 0 #fff,0 3px 0 #fff,0 -3px 0 #fff,2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff,0 7px 0 #FFB3C7;
+  --ttl-fx:0 3px 0 #fff;
+  --btn-top:#FFA8C5;--btn:#FF6F9F;--btn-dark:#C2577F;--accent:#E0457B;--acc-p:#E0457B;
+  --hud:linear-gradient(180deg,#FFF6F9,#FFD1E1);--hb:linear-gradient(180deg,#fff,#FFE6EF);--hud-ink:#5B3A55;
+  --s0:#FFD9E6;--s1:#C9608F;--code-bg:#E3F8F1;--code-ink:#1E7A68;--cpanel:#FFFDF8;--wdeco:rgba(255,255,255,.12)}
+.board::before{content:"";position:absolute;inset:18px;border:5px dashed #FF8FB1;border-radius:32px;pointer-events:none}
+.sboard::before{content:"";position:absolute;inset:12px;border:3px dashed #FF8FB1;border-radius:16px;pointer-events:none}
+.board .edg{position:absolute;pointer-events:none;z-index:4}
+.heart{position:absolute;bottom:-50px;animation:rise linear infinite}
+.paw{position:absolute;opacity:.22;animation:twinkle 4s ease-in-out infinite}

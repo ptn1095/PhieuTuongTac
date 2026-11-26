@@ -1,0 +1,18 @@
+/* ===== PHONG CÁCH ĐẠI DƯƠNG ===== */
+:root{--fh:'Paytone One';--fhw:400;--fb:'Nunito';--fs:36px;--ink:#0B3954;--bink:#0B3954;--rad:42px;--big:110px;
+  --board:radial-gradient(circle at 30% 30%,rgba(255,255,255,.9) 0 5px,transparent 6px) 20px 40px/150px 170px,radial-gradient(circle at 30% 30%,rgba(255,255,255,.7) 0 3px,transparent 4px) 90px 10px/110px 130px,linear-gradient(180deg,#E3F9FF 0%,#B4EBF8 55%,#86D8EE 100%);
+  --board-sh:inset 0 0 0 8px #1597BB,inset 0 -70px 70px -40px rgba(14,116,144,.3),0 0 0 10px #FFE8B8,0 0 0 17px #0E7490,0 30px 0 17px rgba(0,0,0,.3);
+  --board-sh-s:inset 0 0 0 5px #1597BB,0 0 0 6px #FFE8B8,0 0 0 11px #0E7490,0 14px 0 11px rgba(0,0,0,.3);
+  --edge:#0B5E7A;--dark:#1597BB;--panel:#F5FDFF;--soft:#DDF5FC;--ill:#fff;
+  --plq:linear-gradient(180deg,#FF9A76,#FF6F59);--plq-edge:#B23A2A;--plq-ink:#fff;--plq-fx:0 3px 0 #B23A2A;--plq-rad:44px;
+  --medal:radial-gradient(circle at 35% 30%,#fff,#FFE3B3 45%,#F7B267);--medal-ink:#0B3954;
+  --title-c:#fff;--title-fx:5px 0 0 #0B5E7A,-5px 0 0 #0B5E7A,0 5px 0 #0B5E7A,0 -5px 0 #0B5E7A,4px 4px 0 #0B5E7A,-4px -4px 0 #0B5E7A,4px -4px 0 #0B5E7A,-4px 4px 0 #0B5E7A,0 12px 0 #1597BB,0 16px 0 rgba(11,94,122,.4);
+  --title-fx-s:3px 0 0 #0B5E7A,-3px 0 0 #0B5E7A,0 3px 0 #0B5E7A,0 -3px 0 #0B5E7A,2px 2px 0 #0B5E7A,-2px -2px 0 #0B5E7A,2px -2px 0 #0B5E7A,-2px 2px 0 #0B5E7A,0 7px 0 #1597BB;
+  --ttl-fx:0 3px 0 rgba(255,255,255,.8);
+  --btn-top:#5FE0F5;--btn:#14A3C7;--btn-dark:#0B5E7A;--accent:#E8590C;--acc-p:#E8590C;
+  --hud:linear-gradient(180deg,#E3F9FF,#86D8EE);--hb:linear-gradient(180deg,#fff,#C6F1FB);--hud-ink:#0B3954;
+  --s0:#1E9BD7;--s1:#06304F;--code-bg:#D7F2FF;--code-ink:#0B5E7A;--cpanel:#F5FDFF;--wdeco:rgba(255,255,255,.06)}
+.board .edg{position:absolute;pointer-events:none;z-index:4}
+.bub{position:absolute;bottom:-40px;border-radius:50%;border:3px solid rgba(255,255,255,.7);background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.8) 0 18%,rgba(255,255,255,.08) 20%);animation:rise linear infinite}
+.fish{animation:drift linear infinite}
+.sway{transform-origin:50% 100%;animation:sway 3.6s ease-in-out infinite}

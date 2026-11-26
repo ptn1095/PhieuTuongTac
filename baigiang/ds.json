@@ -1,4 +1,7 @@
 [
+  { "link": "clicklearn-tin7/", "ten": "ClickLearn Tin học 7", "ic": "🖱️", "mon": "Tin học 7", "mau": "#E8762B",
+    "mota": "Tin học 7 (Kết nối tri thức): đủ 16 bài, 5 chủ đề. Mỗi bài trình bày 5 phần kiến thức chính cần nhớ (có ô Ghi nhớ), 10 câu đố, giấy chứng nhận. Giao diện xen kẽ 6 thế giới: vũ trụ, đại dương, sa mạc, thú cưng chibi, lâu đài châu Âu, tuyết mùa đông.",
+    "ds": "clicklearn-tin7/ds.js" },
   { "link": "clicklearn-tin8/", "ten": "ClickLearn Tin học 8", "ic": "🚀", "mon": "Tin học 8", "mau": "#7B3FE0",
     "mota": "Tin học 8 (Kết nối tri thức): đủ 16 bài (phần soạn thảo, trình chiếu là Bài 8a–11a), 6 chủ đề. Giao diện xen kẽ 6 thế giới: vũ trụ, đại dương, sa mạc, thú cưng chibi, lâu đài châu Âu, tuyết mùa đông. Mỗi bài 5 hoạt động × 4 bước, 10 câu đố, giấy chứng nhận theo phong cách của bài.",
     "ds": "clicklearn-tin8/ds.js" },
