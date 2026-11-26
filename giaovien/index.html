@@ -207,6 +207,7 @@ td.chua{white-space:normal;min-width:180px;font-size:13px;color:var(--do)}
     </div>
     <div id="xemBG" class="hidden">
       <div class="ghi-chu" style="margin:-6px 0 12px 4px">Các bài giảng tương tác đang có trên web. Cô bấm <b>Mở</b> để chiếu trên lớp, <b>Mã QR</b> để học sinh quét bằng máy tính bảng / điện thoại, hoặc <b>Chép link</b> để gửi cho học sinh.</div>
+      <div class="bg-nut" style="margin:0 0 14px 4px"><a class="nut" href="../thuvien/" target="_blank" rel="noopener">📚 Mở Thư viện bài giảng</a><button type="button" class="nut phu" data-qr="../thuvien/" data-ten="Thư viện bài giảng">📱 Mã QR</button><button type="button" class="nut phu" data-chep="../thuvien/">🔗 Chép link</button></div>
       <div class="bg-luoi" id="bgLuoi"><div class="ghi-chu">Đang tải danh sách bài giảng…</div></div>
     </div>
     <div id="xemTH" class="hidden">
@@ -661,9 +662,9 @@ async function veBG(){const L=$('bgLuoi');
 async function chep(url,nut){try{await navigator.clipboard.writeText(url);}catch(e){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(er){}t.remove();}
   const cu=nut.textContent;nut.textContent='✓ Đã chép';setTimeout(()=>nut.textContent=cu,1500);}
 let bgTruoc=null;
-$('bgLuoi').addEventListener('click',e=>{const q=e.target.closest('[data-qr]'),c=e.target.closest('[data-chep]');
-  if(c)return chep(BG_GOC+c.dataset.chep,c);
-  if(!q)return;const url=BG_GOC+q.dataset.qr;$('bgQRten').textContent=q.dataset.ten;$('bgQRlk').textContent=url;
+$('xemBG').addEventListener('click',e=>{const q=e.target.closest('[data-qr]'),c=e.target.closest('[data-chep]');
+  if(c)return chep(new URL(c.dataset.chep,BG_GOC).href,c);
+  if(!q)return;const url=new URL(q.dataset.qr,BG_GOC).href;$('bgQRten').textContent=q.dataset.ten;$('bgQRlk').textContent=url;
   if(window.qrcode){const m=qrcode(0,'M');m.addData(url);m.make();$('bgQRma').innerHTML=m.createSvgTag({cellSize:8,margin:2,scalable:true});}else $('bgQRma').textContent='Chưa tải được mã QR – cô dùng link bên dưới nhé.';
   bgTruoc=q;$('bgQR').classList.remove('hidden');$('bgQRdong').focus();});
 const dongQR=()=>{$('bgQR').classList.add('hidden');if(bgTruoc)bgTruoc.focus();};

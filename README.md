@@ -23,6 +23,7 @@ tools/kiem_tra.js     Tự làm thử mọi phiếu trong trình duyệt ẩn
 tools/NhanDiem.gs     Apps Script nhận điểm + số liệu cho trang tổng hợp (dán vào Google Sheet)
 tools/kiem_tra_gs.js  Chạy thử NhanDiem.gs với Sheet giả lập
 giaovien/             Trang tổng hợp điểm cho cô (cần mật khẩu)
+thuvien/              Thư viện bài giảng (giá sách) – tự đọc baigiang/ds.json
 .claude/skills/       Skill hướng dẫn Claude tạo phiếu
 ```
 

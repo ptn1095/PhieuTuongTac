@@ -79,6 +79,7 @@ Thêm bài vào **tab Bài giảng** của trang giáo viên: mở `baigiang/ds.
 ```json
 { "link": "<tên-bài>/", "ten": "Tên bài", "ic": "📊", "mon": "Tin học 8", "mau": "#168DCE", "mota": "1–2 câu: nội dung, số câu đố, chứng nhận." }
 ```
+Danh sách này cũng là nguồn của trang **Thư viện bài giảng** (`thuvien/`, giá sách kiểu Nghìn lẻ một đêm): bài mới tự hiện thành một cuốn sách, không cần sửa gì thêm.
 (App nhiều bài có `ds.js` tự sinh như `clicklearning/`, `congnghevui/` thì thêm `"ds": "<app>/ds.js"` để tab tự liệt kê các bài con.)
 ```bash
 git add baigiang/ds.json baigiang/<tên-bài> && git -c user.name=ptn1095 -c user.email=ptn1095@users.noreply.github.com commit -m "Thêm bài giảng zoom: <tên bài>" && git push origin main
