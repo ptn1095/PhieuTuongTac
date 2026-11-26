@@ -806,7 +806,7 @@ async function drawCert(name, cls, sc) {
   fitText(g, name, 860, 96); g.fillStyle = '#FF006E'; g.fillText(name, Wd/2, 520);
   g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = '#B06BFF'; g.beginPath(); g.moveTo(Wd/2 - 450, 552); g.lineTo(Wd/2 + 450, 552); g.stroke(); g.setLineDash([]);
   g.fillStyle = INK; g.font = '800 46px Inter, sans-serif'; g.fillText('Lớp: ' + cls, Wd/2, 625);
-  g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành Bài 7 – chuỗi bài Bảng tính THCS', Wd/2, 700);
+  g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành Bài 7 (Tin học 8) – chuỗi Bảng tính THCS', Wd/2, 700);
   g.font = '900 46px Inter, sans-serif'; g.fillStyle = '#5A189A'; g.fillText('ĐỊA CHỈ TƯƠNG ĐỐI, TUYỆT ĐỐI', Wd/2, 760);
   const TQ = Object.keys(QUIZ).length, rank = sc >= TQ ? 'XUẤT SẮC TUYỆT ĐỐI' : sc >= Math.ceil(TQ*.9) ? 'XUẤT SẮC' : 'HOÀN THÀNH TỐT';
   rr(g, Wd/2 - 360, 800, 720, 96, 48); g.fillStyle = '#FFF3BF'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#FFB703'; g.stroke();

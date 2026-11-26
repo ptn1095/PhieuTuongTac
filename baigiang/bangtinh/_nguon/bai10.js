@@ -1,97 +1,103 @@
-const META = { key: 'b10-ham-if', num: 10, lop: 'Tin học 9', ic: '🔀', ten: 'Hàm điều kiện IF',
-  st1: 'HÀM ĐIỀU KIỆN<br>IF', big: 'HÀM ĐIỀU<br>KIỆN IF', cert: 'HÀM ĐIỀU KIỆN IF',
-  hello: 'Xin chào! Mình là Bít 🤖 Hôm nay bảng tính sẽ biết tự quyết định nhờ hàm IF!' };
-const fork = (q, yes, no) => `<polygon points="300,30 430,110 300,190 170,110" fill="#FFD60A" stroke="${O}" stroke-width="7" stroke-linejoin="round"/>${T(300, 122, q, 30)}
-  ${curve(200, 150, 150, 200, 130, 260, '#2DA44E', 8)}${curve(400, 150, 450, 200, 470, 260, '#E5383B', 8)}
-  ${T(120, 196, 'Đúng', 24, '#2B8A3E')}${T(480, 196, 'Sai', 24, '#C92A2A')}
-  ${pillS(30, 270, 220, 64, '#2DA44E', yes, 28)}${pillS(350, 270, 220, 64, '#E5383B', no, 28)}`;
+const META = { key: 'tin9-bai9-xac-thuc-du-lieu', num: 10, so: 9, lop: 'Tin học 9', ic: '🛡️', ten: 'Sử dụng công cụ xác thực dữ liệu',
+  st1: 'CÔNG CỤ XÁC THỰC<br>DỮ LIỆU', big: 'XÁC THỰC<br>DỮ LIỆU', cert: 'SỬ DỤNG CÔNG CỤ XÁC THỰC DỮ LIỆU',
+  hello: 'Xin chào! Mình là Bít 🤖 Cùng dựng “lá chắn” xác thực dữ liệu, chặn dữ liệu nhập sai nhé!' };
+const shield = (x, y, s, c = '#2EC4B6') => `<path transform="translate(${x} ${y}) scale(${s})" d="M100 0 L190 34 V110 Q190 190 100 230 Q10 190 10 110 V34Z" fill="${c}" stroke="${O}" stroke-width="${8/s}" stroke-linejoin="round"/><path transform="translate(${x} ${y}) scale(${s})" d="M60 112 L90 142 L144 82" stroke="#fff" stroke-width="${20}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+const dlg = (title) => `<rect x="30" y="30" width="540" height="300" rx="20" fill="#fff" stroke="${O}" stroke-width="6"/><rect x="30" y="30" width="540" height="56" rx="20" fill="#1982C4" stroke="${O}" stroke-width="6"/>${T(300, 68, title, 26, '#fff')}`;
 const TOPICS = [
-  { title: 'Hàm IF là gì?', tip: 'IF nghĩa là "nếu": nếu đúng thì làm thế này, sai thì làm thế kia!',
-    key: '<b>=IF(điều kiện,</b><br><b>giá trị đúng, giá trị sai)</b>',
-    ill: () => svg(`${fork('Điểm ≥ 5?', 'Đạt', 'Chưa đạt')}
-      ${T(300, 390, '=IF(B2>=5,"Đạt","Chưa đạt")', 26, '#8338EC')}`),
+  { title: 'Vì sao cần kiểm tra?', tip: 'Gõ nhầm 85 thay vì 8.5 là điểm trung bình sai bét. Kiểm tra dữ liệu sẽ chặn lại!',
+    key: 'Chặn dữ liệu <b>sai</b><br>ngay khi nhập',
+    ill: () => svg(`${shield(190, 40, 1.1)}
+      ${pillS(20, 70, 150, 56, '#E5383B', '85 ✗', 30, -8)}${pillS(20, 190, 150, 56, '#E5383B', '-3 ✗', 30, 6)}
+      ${pillS(430, 70, 150, 56, '#2DA44E', '8.5 ✓', 28, 8)}${pillS(430, 190, 150, 56, '#2DA44E', '7 ✓', 30, -6)}
+      ${pillS(110, 330, 380, 60, '#8338EC', 'Điểm: 0 → 10', 32)}`),
     html: `<ul>
-      <li><span class="k">IF</span> cho kết quả <b>tuỳ theo điều kiện</b> đúng hay sai.</li>
-      <li>Cú pháp: <code>=IF(điều_kiện, giá_trị_đúng, giá_trị_sai)</code></li>
-      <li>Điều kiện <b>đúng</b> → trả về giá trị thứ 2.</li>
-      <li>Điều kiện <b>sai</b> → trả về giá trị thứ 3.</li>
-      <li><code>=IF(B2&gt;=5,"Đạt","Chưa đạt")</code></li></ul>`,
+      <li>Nhập tay dễ <b>nhầm</b>: điểm 85, tuổi âm, sai chính tả "Nam/nam/Nan"…</li>
+      <li>Dữ liệu sai → kết quả tính toán, thống kê <b>sai</b>.</li>
+      <li><span class="k">Xác thực dữ liệu</span> (Data Validation) chỉ cho nhập dữ liệu <b>hợp lệ</b>.</li>
+      <li>Nhập sai → bảng tính <b>báo lỗi</b> và không nhận.</li></ul>`,
     quiz: [
-      { q: 'B2 = 7. Công thức =IF(B2>=5,"Đạt","Chưa đạt") cho kết quả:', o: ['Chưa đạt', '7', 'Đạt', 'TRUE'], a: 2, why: '7 ≥ 5 đúng → trả về "Đạt".' },
-      { q: 'Hàm IF có bao nhiêu đối số (tham số)?', o: ['1', '2', '4', '3'], a: 3, why: 'Điều kiện, giá trị khi đúng, giá trị khi sai.' } ] },
-  { title: 'Biểu thức điều kiện', tip: 'Dấu "khác" trong bảng tính viết là &lt;&gt; nha, không phải ≠!',
-    key: '<b>=  &lt;&gt;  &gt;  &lt;  &gt;=  &lt;=</b><br>Kết quả: TRUE / FALSE',
-    ill: () => svg(`${[['=', '#1982C4'], ['<>', '#E5383B'], ['>', '#2DA44E'], ['<', '#FF7F11'], ['>=', '#8338EC'], ['<=', '#FF006E']].map(([t, c], i) => key3d(40 + (i % 3)*180, 30 + Math.floor(i/3)*140, 150, 110, c, '#1D3557', t.replace(/</g, '&lt;').replace(/>/g, '&gt;'), 54)).join('')}
-      ${pillS(40, 320, 240, 60, '#2DA44E', 'TRUE', 32)}${pillS(320, 320, 240, 60, '#E5383B', 'FALSE', 32)}`),
-    html: `<table class="tb"><tr><th>Kí hiệu</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
-      <tr><td><code>=</code> <code>&lt;&gt;</code></td><td>bằng, khác</td><td><code>C2="Nam"</code></td></tr>
-      <tr><td><code>&gt;</code> <code>&lt;</code></td><td>lớn hơn, nhỏ hơn</td><td><code>B2&gt;100</code></td></tr>
-      <tr><td><code>&gt;=</code> <code>&lt;=</code></td><td>lớn hơn hoặc bằng…</td><td><code>D2&gt;=8</code></td></tr>
-      <tr><td colspan="3">Kết quả so sánh: <b>TRUE</b> (đúng) / <b>FALSE</b> (sai)</td></tr></table>`,
-    quiz: [
-      { q: 'Trong bảng tính, điều kiện "A1 khác 0" được viết là:', o: ['A1≠0', 'A1<>0', 'A1!=0', 'A1=/0'], a: 1, why: 'Dấu khác trong bảng tính là <>.' },
-      { q: 'A1 = 10. Công thức =A1<=10 cho kết quả gì?', o: ['TRUE', 'FALSE', '10', '#VALUE!'], a: 0, why: '10 ≤ 10 là đúng → TRUE.' } ] },
-  { title: 'Kết quả là chữ', tip: 'Chữ trong công thức phải mặc áo ngoặc kép " " mới ra ngoài được!',
-    key: 'Văn bản để trong<br>dấu <b>" "</b>',
-    ill: () => svg(`${pillS(40, 40, 520, 80, '#fff', '=IF(C2="Nam","Anh","Chị")', 32, 0, '#8338EC')}
-      ${grid(140, 150, [['Nam', 'Anh'], ['Nữ', 'Chị']], { cw: 150, rh: 60, fs: 28, head: false, fill: { '0-1': '#D0EBFF', '1-1': '#FFE3E3' } })}
-      ${pillS(110, 310, 380, 64, '#FF006E', 'Chữ → trong " "', 30)}
-      ${stars3([40, 200], [560, 200], [560, 390])}`),
+      { q: 'Công cụ xác thực dữ liệu trong Excel có tên là:', o: ['Data Validation', 'Conditional Formatting', 'Sort & Filter', 'AutoSum'], a: 0, why: 'Data Validation = xác thực (kiểm tra tính hợp lệ) của dữ liệu.' },
+      { q: 'Lợi ích chính của xác thực dữ liệu là gì?', o: ['Tính toán nhanh hơn', 'Làm bảng đẹp hơn', 'Hạn chế nhập sai dữ liệu', 'Tự vẽ biểu đồ'], a: 2, why: 'Chỉ cho nhập giá trị hợp lệ → hạn chế sai sót.' } ] },
+  { title: 'Đặt điều kiện số', tip: 'Điểm từ 0 đến 10 thì chọn Decimal và Between nha!',
+    key: 'Data → <b>Data Validation</b><br><b>Whole number</b> / <b>Decimal</b><br><b>Between</b> min – max',
+    ill: () => svg(`${dlg('Data Validation')}
+      ${T(60, 130, 'Allow:', 24, O, 'start', 800)}<rect x="210" y="104" width="300" height="40" rx="8" fill="#E7F5FF" stroke="${O}" stroke-width="3"/>${T(226, 132, 'Decimal ▾', 22, '#1864AB', 'start')}
+      ${T(60, 190, 'Data:', 24, O, 'start', 800)}<rect x="210" y="164" width="300" height="40" rx="8" fill="#E7F5FF" stroke="${O}" stroke-width="3"/>${T(226, 192, 'between ▾', 22, '#1864AB', 'start')}
+      ${T(60, 250, 'Minimum:', 24, O, 'start', 800)}<rect x="210" y="224" width="120" height="40" rx="8" fill="#D3F9D8" stroke="${O}" stroke-width="3"/>${T(270, 252, '0', 24, '#2B8A3E')}
+      ${T(60, 306, 'Maximum:', 24, O, 'start', 800)}<rect x="210" y="280" width="120" height="40" rx="8" fill="#D3F9D8" stroke="${O}" stroke-width="3"/>${T(270, 308, '10', 24, '#2B8A3E')}
+      ${shield(420, 220, 0.5)}
+      ${pillS(140, 352, 320, 52, '#2DA44E', 'Chỉ nhận 0 → 10', 26)}`),
     html: `<ul>
-      <li>Giá trị là <b>văn bản</b> phải đặt trong dấu <span class="k">" "</span> (nháy kép).</li>
-      <li>Số và địa chỉ ô <b>không</b> cần dấu nháy.</li>
-      <li><code>=IF(C2="Nam","Anh","Chị")</code></li>
-      <li>Muốn để trống: dùng <code>""</code></li>
-      <li>Quên dấu nháy → lỗi <code>#NAME?</code></li></ul>`,
+      <li>Chọn vùng ô → <b>Data</b> → <span class="k">Data Validation</span>.</li>
+      <li>Thẻ <b>Settings</b> → <b>Allow</b>:</li>
+      <li><code>Whole number</code>: số nguyên • <code>Decimal</code>: số thập phân.</li>
+      <li><b>Data</b>: <code>between</code> (trong khoảng), <code>greater than</code>…</li>
+      <li>Nhập <b>Minimum</b>, <b>Maximum</b> → OK.</li></ul>`,
     quiz: [
-      { q: 'Viết công thức nào đúng khi kết quả là chữ "Đỗ" hoặc "Trượt"?', o: ['=IF(B2>=5,Đỗ,Trượt)', `=IF(B2>=5,'Đỗ','Trượt')`, '=IF(B2>=5;Đỗ;Trượt)', '=IF(B2>=5,"Đỗ","Trượt")'], a: 3, why: 'Văn bản phải đặt trong dấu nháy kép " ".' },
-      { q: 'Quên dấu " " quanh chữ trong hàm IF thường gây lỗi gì?', o: ['#DIV/0!', '#NAME?', '#####', 'Không lỗi'], a: 1, why: 'Bảng tính tưởng chữ đó là tên hàm / tên ô lạ → #NAME?' } ] },
-  { title: 'IF lồng nhau', tip: 'Có 3 mức xếp loại thì dùng 2 hàm IF lồng vào nhau!',
-    key: '3 mức → <b>2 IF</b> lồng<br><b>=IF(…,"Giỏi",IF(…))</b>',
-    ill: () => svg(`<polygon points="150,20 260,80 150,140 40,80" fill="#FFD60A" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>${T(150, 90, '≥ 8?', 28)}
-      ${arrow(260, 80, 330, 80, '#2DA44E', 7)}${pillS(340, 52, 200, 56, '#2DA44E', 'Giỏi', 28)}
-      ${arrow(150, 142, 150, 190, '#E5383B', 7)}
-      <polygon points="150,190 260,250 150,310 40,250" fill="#FFD60A" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>${T(150, 260, '≥ 6.5?', 26)}
-      ${arrow(260, 250, 330, 250, '#2DA44E', 7)}${pillS(340, 222, 200, 56, '#1982C4', 'Khá', 28)}
-      ${arrow(150, 312, 150, 350, '#E5383B', 7)}${pillS(60, 352, 180, 52, '#FF7F11', 'Đạt', 26)}
-      ${T(204, 176, 'Sai', 22, '#C92A2A')}${T(204, 338, 'Sai', 22, '#C92A2A')}
-      ${stars3([570, 150], [570, 330], [400, 390])}`),
+      { q: 'Cột điểm cho phép nhập số lẻ như 8.5, trong Allow nên chọn:', o: ['Whole number', 'List', 'Decimal', 'Text length'], a: 2, why: 'Decimal cho phép số thập phân.' },
+      { q: 'Chỉ cho nhập số nguyên từ 1 đến 45 (số thứ tự), chọn Whole number và:', o: ['greater than', 'equal to', 'not between', 'between, Min 1, Max 45'], a: 3, why: 'between với Minimum 1, Maximum 45.' } ] },
+  { title: 'Danh sách thả xuống', tip: 'Danh sách thả xuống giúp chọn thay vì gõ, không lo sai chính tả!',
+    key: 'Allow: <b>List</b><br>Source: <b>Nam,Nữ</b><br>→ nút ▾ để chọn',
+    ill: () => svg(`${grid(40, 40, [['Tên', 'Giới tính'], ['An', 'Nam']], { cw: 170, rh: 60, fs: 26, bold: [0], sel: [1, 1] })}
+      <rect x="390" y="166" width="40" height="40" rx="6" fill="#E9ECEF" stroke="${O}" stroke-width="3"/>${T(410, 194, '▾', 24)}
+      <rect x="254" y="212" width="176" height="110" rx="10" fill="#fff" stroke="${O}" stroke-width="4"/><rect x="260" y="218" width="164" height="46" rx="8" fill="#D0EBFF"/>${T(276, 250, 'Nam', 24, '#1864AB', 'start')}${T(276, 300, 'Nữ', 24, O, 'start', 700)}
+      ${pillS(40, 340, 320, 58, '#FF006E', 'Source: Nam,Nữ', 26)}
+      ${stars3([560, 60], [560, 300], [40, 280])}`),
     html: `<ul>
-      <li>Có <b>nhiều hơn 2</b> trường hợp → đặt IF bên trong IF.</li>
-      <li><code>=IF(B2&gt;=8,"Giỏi",IF(B2&gt;=6.5,"Khá","Đạt"))</code></li>
-      <li><b>n</b> mức kết quả cần <span class="k">n − 1</span> hàm IF.</li>
-      <li>Xét điều kiện <b>từ cao xuống thấp</b> (hoặc thấp lên cao).</li>
-      <li>Đếm đủ số dấu ngoặc <code>)</code> ở cuối.</li></ul>`,
+      <li>Data Validation → Allow: <span class="k">List</span>.</li>
+      <li><b>Source</b>: gõ các lựa chọn, cách nhau dấu phẩy: <code>Nam,Nữ</code></li>
+      <li>Hoặc chọn vùng ô chứa danh sách: <code>=$E$1:$E$4</code></li>
+      <li>Ô có nút <b>▾</b> → nháy để chọn, không cần gõ.</li>
+      <li>Rất hợp cho: giới tính, lớp, xếp loại, loại thu / chi.</li></ul>`,
     quiz: [
-      { q: 'B2 = 7. =IF(B2>=8,"Giỏi",IF(B2>=6.5,"Khá","Đạt")) cho kết quả:', o: ['Khá', 'Giỏi', 'Đạt', '#VALUE!'], a: 0, why: '7 không ≥ 8, nhưng ≥ 6.5 → "Khá".' },
-      { q: 'Xếp loại có 4 mức thì cần ít nhất bao nhiêu hàm IF lồng nhau?', o: ['4', '2', '3', '1'], a: 2, why: 'n mức cần n − 1 hàm IF → 3.' } ] },
-  { title: 'IF kết hợp tính toán', tip: 'Giá trị trả về của IF cũng có thể là một phép tính đó!',
-    key: 'Giá trị đúng / sai có thể<br>là <b>công thức</b>',
-    ill: () => svg(`${fbar(30, 30, 540, 'C2', '=IF(B2>=100,B2*0.9,B2)', 22)}
-      ${grid(30, 110, [['Tiền mua', 'Phải trả'], ['150', '135'], ['80', '80']], { cw: 170, rh: 60, fs: 26, bold: [0], fill: { '1-1': '#D3F9D8' } })}
-      ${pillS(430, 130, 140, 70, '#FF006E', '-10%', 34)}
-      ${pillS(60, 340, 480, 60, '#FF7F11', 'Mua từ 100 được giảm 10%', 24)}
-      ${stars3([570, 270], [440, 260], [30, 320])}`),
+      { q: 'Muốn ô có danh sách thả xuống để chọn "Thu" hoặc "Chi", Allow chọn:', o: ['List', 'Decimal', 'Date', 'Custom'], a: 0, why: 'List tạo danh sách thả xuống.' },
+      { q: 'Trong ô Source, các lựa chọn của danh sách được ngăn cách bằng:', o: ['Dấu chấm', 'Dấu phẩy', 'Dấu cách', 'Dấu gạch ngang'], a: 1, why: 'Ví dụ: Nam,Nữ (ngăn cách bằng dấu phẩy).' } ] },
+  { title: 'Lời nhắc khi nhập', tip: 'Lời nhắc giống tờ giấy nhớ nhỏ, hiện ra mỗi khi chọn ô!',
+    key: 'Thẻ <b>Input Message</b>:<br>hiện lời nhắc<br>khi chọn ô',
+    ill: () => svg(`${grid(40, 40, [['Điểm'], ['']], { cw: 170, rh: 64, fs: 26, bold: [0], sel: [1, 0] })}
+      <path d="M280 150 L320 130 L320 110 Q320 90 340 90 H550 Q570 90 570 110 V230 Q570 250 550 250 H340 Q320 250 320 230 V170Z" fill="#FFF3BF" stroke="${O}" stroke-width="5"/>
+      ${T(345, 135, 'Nhập điểm', 26, '#E5383B', 'start')}${T(345, 180, 'Số từ 0 đến 10', 24, O, 'start', 700)}${T(345, 220, 'VD: 8.5', 24, O, 'start', 700)}
+      ${pillS(110, 320, 380, 60, '#FF7F11', 'Input Message', 30)}
+      ${stars3([40, 280], [570, 300], [570, 40])}`),
     html: `<ul>
-      <li>Giá trị đúng / sai của IF có thể là <span class="k">phép tính</span> hoặc hàm khác.</li>
-      <li>Giảm 10% khi mua từ 100 nghìn:</li>
-      <li><code>=IF(B2&gt;=100,B2*0.9,B2)</code></li>
-      <li>Điều kiện cũng có thể là hàm: <code>=IF(AVERAGE(B2:D2)&gt;=5,"Lên lớp","Ở lại")</code></li></ul>`,
+      <li>Trong Data Validation → thẻ <span class="k">Input Message</span>.</li>
+      <li>Nhập <b>Title</b> (tiêu đề) và <b>Input message</b> (nội dung nhắc).</li>
+      <li>Khi <b>chọn ô</b>, lời nhắc hiện ra như tờ giấy nhớ.</li>
+      <li>Giúp người nhập biết <b>cần nhập gì</b> trước khi gõ.</li></ul>`,
     quiz: [
-      { q: 'B2 = 200. Công thức =IF(B2>=100,B2*0.9,B2) cho kết quả:', o: ['200', '180', '20', '100'], a: 1, why: '200 ≥ 100 → 200 × 0.9 = 180.' },
-      { q: 'B2 = 50. Công thức =IF(B2>=100,B2*0.9,B2) cho kết quả:', o: ['45', '0', '90', '50'], a: 3, why: '50 < 100 nên điều kiện sai → trả về B2 = 50.' } ] },
-  { title: 'Lỗi hay gặp với IF', tip: 'Viết xong hàm IF, thử vài số ở ranh giới như đúng 5, đúng 8 để kiểm tra!',
-    key: 'Thiếu <b>" "</b> • thiếu <b>)</b><br>Sai thứ tự điều kiện',
-    ill: () => svg(`<path d="M300 30 L430 260 H170Z" fill="#FFD60A" stroke="${O}" stroke-width="11" stroke-linejoin="round"/>${T(300, 236, '!', 130)}
-      ${pillS(20, 60, 170, 52, '#E5383B', 'Thiếu " "', 24, -6)}${pillS(410, 70, 170, 52, '#8338EC', 'Thiếu )', 26, 6)}
-      ${pillS(30, 300, 250, 56, '#1982C4', 'Sai thứ tự', 26, 4)}${pillS(320, 300, 250, 56, '#FF7F11', 'Thử số biên', 26, -4)}
-      ${stars3([60, 220], [540, 220], [300, 390])}`),
+      { q: 'Muốn hiện lời hướng dẫn mỗi khi chọn ô, em dùng thẻ nào?', o: ['Settings', 'Error Alert', 'Input Message', 'Format'], a: 2, why: 'Input Message hiện lời nhắc khi chọn ô.' },
+      { q: 'Lời nhắc của Input Message hiện ra lúc nào?', o: ['Khi lưu tệp', 'Khi in', 'Khi nhập sai', 'Khi chọn ô'], a: 3, why: 'Hiện khi chọn ô, trước khi nhập.' } ] },
+  { title: 'Thông báo lỗi', tip: 'Stop là chặn hẳn, Warning là hỏi lại, Information chỉ nhắc nhẹ!',
+    key: 'Thẻ <b>Error Alert</b><br><b>Stop</b> • <b>Warning</b><br>• <b>Information</b>',
+    ill: () => svg(`<circle cx="110" cy="120" r="70" fill="#E5383B" stroke="${O}" stroke-width="7"/><path d="M80 90 L140 150 M140 90 L80 150" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+      <path d="M300 50 L380 190 H220Z" fill="#FFD60A" stroke="${O}" stroke-width="7" stroke-linejoin="round"/>${T(300, 175, '!', 80)}
+      <circle cx="490" cy="120" r="70" fill="#1982C4" stroke="${O}" stroke-width="7"/>${T(490, 150, 'i', 90, '#fff')}
+      ${pillS(30, 230, 160, 54, '#E5383B', 'Stop', 28)}${pillS(220, 230, 160, 54, '#FF7F11', 'Warning', 26)}${pillS(410, 230, 160, 54, '#1982C4', 'Info', 28)}
+      <rect x="30" y="300" width="160" height="46" rx="12" fill="#fff" stroke="${O}" stroke-width="4"/>${T(110, 332, 'Chặn hẳn', 22, '#C92A2A')}
+      <rect x="220" y="300" width="160" height="46" rx="12" fill="#fff" stroke="${O}" stroke-width="4"/>${T(300, 332, 'Hỏi lại', 22, '#D9480F')}
+      <rect x="410" y="300" width="160" height="46" rx="12" fill="#fff" stroke="${O}" stroke-width="4"/>${T(490, 332, 'Nhắc nhẹ', 22, '#1864AB')}`),
     html: `<ul>
-      <li>Quên <span class="k">" "</span> quanh văn bản → <code>#NAME?</code></li>
-      <li>Thiếu dấu <code>)</code> hoặc thiếu dấu <code>,</code> giữa các đối số.</li>
-      <li>Xét điều kiện <b>sai thứ tự</b>: <code>IF(B2&gt;=5,"Đạt",IF(B2&gt;=8,"Giỏi",…))</code> → không bao giờ ra "Giỏi".</li>
-      <li>Kiểm tra bằng các số <b>ở ranh giới</b>: 5; 6.5; 8.</li></ul>`,
+      <li>Thẻ <span class="k">Error Alert</span>: thông báo khi <b>nhập sai</b>.</li>
+      <li><b>Stop</b> ⛔: không cho nhập, buộc nhập lại.</li>
+      <li><b>Warning</b> ⚠: cảnh báo, hỏi có muốn tiếp tục không.</li>
+      <li><b>Information</b> ℹ: chỉ thông báo, vẫn nhận dữ liệu.</li>
+      <li>Tự viết <b>Title</b> và <b>Error message</b> dễ hiểu.</li></ul>`,
     quiz: [
-      { q: 'Công thức =IF(B2>=5,"Đạt",IF(B2>=8,"Giỏi","Yếu")) sai ở đâu?', o: ['Thiếu dấu " "', 'Thừa dấu )', 'Xét ≥5 trước nên không ra "Giỏi"', 'Không sai'], a: 2, why: 'Điểm ≥ 8 cũng ≥ 5 nên luôn dừng ở "Đạt". Phải xét ≥ 8 trước.' },
-      { q: 'Để kiểm tra hàm IF xếp loại "≥ 5 là Đạt", nên thử điểm nào?', o: ['Đúng 5 và 4.9', 'Chỉ điểm 10', 'Chỉ điểm 0', 'Không cần thử'], a: 0, why: 'Thử ngay ranh giới để biết dùng >= hay > đã đúng chưa.' } ] },
+      { q: 'Kiểu thông báo lỗi nào KHÔNG cho phép nhập dữ liệu sai?', o: ['Stop', 'Warning', 'Information', 'Input Message'], a: 0, why: 'Stop chặn hẳn, bắt nhập lại.' },
+      { q: 'Kiểu Information khi nhập sai sẽ:', o: ['Xoá cả cột', 'Chỉ thông báo, vẫn nhận dữ liệu', 'Khoá tệp', 'Không cho nhập'], a: 1, why: 'Information chỉ thông báo, dữ liệu vẫn được nhận.' } ] },
+  { title: 'Khoanh dữ liệu sai, xoá', tip: 'Dữ liệu cũ nhập trước khi đặt kiểm tra? Khoanh tròn để tìm ra ngay!',
+    key: '<b>Circle Invalid Data</b><br>khoanh ô sai<br><b>Clear All</b>: bỏ kiểm tra',
+    ill: () => svg(`${grid(40, 30, [['8'], ['12'], ['7.5'], ['-2'], ['9']], { cw: 150, rh: 54, fs: 26 })}
+      <ellipse cx="159" cy="145" rx="80" ry="30" fill="none" stroke="#E5383B" stroke-width="6"/><ellipse cx="159" cy="253" rx="80" ry="30" fill="none" stroke="#E5383B" stroke-width="6"/>
+      ${pillS(290, 70, 280, 64, '#E5383B', '⭕ Circle Invalid', 26)}${pillS(290, 190, 280, 64, '#868E96', 'Clear All', 30)}
+      ${pillS(40, 340, 530, 56, '#2DA44E', 'Sửa ô sai → vòng đỏ biến mất', 24)}
+      ${stars3([570, 160], [570, 290], [270, 300])}`),
+    html: `<ul>
+      <li>Kiểm tra chỉ áp dụng cho dữ liệu nhập <b>sau</b> khi đặt.</li>
+      <li>Data → Data Validation ▾ → <span class="k">Circle Invalid Data</span>: khoanh đỏ các ô sai có sẵn.</li>
+      <li>Sửa xong, vòng đỏ tự biến mất.</li>
+      <li>Bỏ kiểm tra: Data Validation → <span class="k">Clear All</span> → OK.</li></ul>`,
+    quiz: [
+      { q: 'Muốn tìm các ô sai đã nhập từ trước khi đặt kiểm tra, dùng lệnh:', o: ['Clear All', 'Sort A→Z', 'Filter', 'Circle Invalid Data'], a: 3, why: 'Circle Invalid Data khoanh tròn đỏ các ô không hợp lệ.' },
+      { q: 'Muốn bỏ kiểm tra dữ liệu khỏi các ô, chọn nút nào trong hộp thoại?', o: ['OK', 'Ignore blank', 'Clear All', 'Cancel'], a: 2, why: 'Clear All xoá mọi thiết lập kiểm tra dữ liệu.' } ] },
 ];

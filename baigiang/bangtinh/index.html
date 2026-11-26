@@ -53,7 +53,7 @@ DS.forEach(b => (nhom[b.lop] = nhom[b.lop] || []).push(b));
 document.getElementById('sub').textContent = `${DS.length} bài • ${DS.reduce((s, b) => s + b.nq, 0)} câu đố • mỗi bài có giấy chứng nhận`;
 document.getElementById('list').innerHTML = Object.keys(nhom).map(l => `<h2>${esc(l)}</h2><div class="grid">${nhom[l].map(b => {
   const m = MAU[(b.num - 1) % MAU.length], t = b.title.replace(/^Bài \d+\.\s*/, '');
-  return `<a class="card" href="${esc(b.key)}/"><div class="top" style="background:linear-gradient(135deg,${m[0]},${m[1]})"><div class="ic">${esc(b.ic)}</div><div><div class="num">BÀI ${b.num}</div><div class="ttl">${esc(t)}</div></div></div>
+  return `<a class="card" href="${esc(b.key)}/"><div class="top" style="background:linear-gradient(135deg,${m[0]},${m[1]})"><div class="ic">${esc(b.ic)}</div><div><div class="num">BÀI ${b.so || b.num}</div><div class="ttl">${esc(t)}</div></div></div>
     <ul>${b.topics.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
     <div class="foot"><span>❓ ${b.nq} câu đố • 🎓 chứng nhận</span><span class="go">▶ Học</span></div></a>`;
 }).join('')}</div>`).join('');

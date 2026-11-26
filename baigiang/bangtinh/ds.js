@@ -3,6 +3,7 @@ const DS = [
  {
   "key": "b1-lam-quen",
   "num": 1,
+  "so": 1,
   "lop": "Tin học 7",
   "title": "Bài 1. Làm quen với phần mềm bảng tính",
   "ic": "📗",
@@ -19,6 +20,7 @@ const DS = [
  {
   "key": "b2-nhap-du-lieu",
   "num": 2,
+  "so": 2,
   "lop": "Tin học 7",
   "title": "Bài 2. Nhập và chỉnh sửa dữ liệu",
   "ic": "⌨️",
@@ -35,6 +37,7 @@ const DS = [
  {
   "key": "b3-cong-thuc",
   "num": 3,
+  "so": 3,
   "lop": "Tin học 7",
   "title": "Bài 3. Tính toán với công thức",
   "ic": "➗",
@@ -51,6 +54,7 @@ const DS = [
  {
   "key": "b4-ham",
   "num": 4,
+  "so": 4,
   "lop": "Tin học 7",
   "title": "Bài 4. Sử dụng hàm để tính toán",
   "ic": "🧮",
@@ -67,6 +71,7 @@ const DS = [
  {
   "key": "b5-dinh-dang",
   "num": 5,
+  "so": 5,
   "lop": "Tin học 7",
   "title": "Bài 5. Định dạng và trình bày trang tính",
   "ic": "🎨",
@@ -83,6 +88,7 @@ const DS = [
  {
   "key": "b6-hoan-thien-in",
   "num": 6,
+  "so": 6,
   "lop": "Tin học 7",
   "title": "Bài 6. Hoàn thiện và in bảng tính",
   "ic": "🖨️",
@@ -99,6 +105,7 @@ const DS = [
  {
   "key": "b7-dia-chi-o",
   "num": 7,
+  "so": 7,
   "lop": "Tin học 8",
   "title": "Bài 7. Sao chép công thức – địa chỉ tương đối, tuyệt đối",
   "ic": "📌",
@@ -115,6 +122,7 @@ const DS = [
  {
   "key": "b8-sap-xep-loc",
   "num": 8,
+  "so": 8,
   "lop": "Tin học 8",
   "title": "Bài 8. Sắp xếp và lọc dữ liệu",
   "ic": "🔽",
@@ -131,6 +139,7 @@ const DS = [
  {
   "key": "b9-bieu-do",
   "num": 9,
+  "so": 9,
   "lop": "Tin học 8",
   "title": "Bài 9. Trình bày dữ liệu bằng biểu đồ",
   "ic": "📈",
@@ -145,42 +154,11 @@ const DS = [
   "nq": 12
  },
  {
-  "key": "b10-ham-if",
+  "key": "tin9-bai9-xac-thuc-du-lieu",
   "num": 10,
+  "so": 9,
   "lop": "Tin học 9",
-  "title": "Bài 10. Hàm điều kiện IF",
-  "ic": "🔀",
-  "topics": [
-   "Hàm IF là gì?",
-   "Biểu thức điều kiện",
-   "Kết quả là chữ",
-   "IF lồng nhau",
-   "IF kết hợp tính toán",
-   "Lỗi hay gặp với IF"
-  ],
-  "nq": 12
- },
- {
-  "key": "b11-countif-sumif",
-  "num": 11,
-  "lop": "Tin học 9",
-  "title": "Bài 11. Hàm COUNTIF và SUMIF",
-  "ic": "🔢",
-  "topics": [
-   "Hàm COUNTIF",
-   "Viết điều kiện",
-   "Hàm SUMIF",
-   "SUMIF với điều kiện số",
-   "So sánh các hàm đếm, tổng",
-   "Ứng dụng: sổ thu chi"
-  ],
-  "nq": 12
- },
- {
-  "key": "b12-kiem-tra-du-lieu",
-  "num": 12,
-  "lop": "Tin học 9",
-  "title": "Bài 12. Kiểm tra dữ liệu nhập vào",
+  "title": "Bài 9. Sử dụng công cụ xác thực dữ liệu",
   "ic": "🛡️",
   "topics": [
    "Vì sao cần kiểm tra?",
@@ -189,6 +167,57 @@ const DS = [
    "Lời nhắc khi nhập",
    "Thông báo lỗi",
    "Khoanh dữ liệu sai, xoá"
+  ],
+  "nq": 12
+ },
+ {
+  "key": "tin9-bai10-ham-countif",
+  "num": 11,
+  "so": 10,
+  "lop": "Tin học 9",
+  "title": "Bài 10. Sử dụng hàm COUNTIF",
+  "ic": "🔢",
+  "topics": [
+   "Hàm COUNTIF là gì?",
+   "Điều kiện là chữ",
+   "Điều kiện so sánh số",
+   "Điều kiện lấy từ ô",
+   "Lập bảng thống kê",
+   "COUNT hay COUNTIF?"
+  ],
+  "nq": 12
+ },
+ {
+  "key": "tin9-bai11-ham-sumif",
+  "num": 12,
+  "so": 11,
+  "lop": "Tin học 9",
+  "title": "Bài 11. Sử dụng hàm SUMIF",
+  "ic": "➕",
+  "topics": [
+   "Hàm SUMIF là gì?",
+   "Vùng điều kiện, vùng tổng",
+   "Điều kiện so sánh số",
+   "Điều kiện lấy từ ô",
+   "Bảng tổng hợp theo khoản",
+   "Ứng dụng: quản lí thu chi"
+  ],
+  "nq": 12
+ },
+ {
+  "key": "tin9-bai12-ham-if",
+  "num": 13,
+  "so": 12,
+  "lop": "Tin học 9",
+  "title": "Bài 12. Sử dụng hàm IF",
+  "ic": "🔀",
+  "topics": [
+   "Hàm IF là gì?",
+   "Biểu thức điều kiện",
+   "Kết quả là chữ",
+   "IF lồng nhau",
+   "IF kết hợp tính toán",
+   "Lỗi hay gặp với IF"
   ],
   "nq": 12
  }

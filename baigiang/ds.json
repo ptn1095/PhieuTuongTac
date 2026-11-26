@@ -1,6 +1,6 @@
 [
   { "link": "bangtinh/", "ten": "Bảng tính THCS", "ic": "📊", "mon": "Tin học 7 – 8 – 9", "mau": "#2DA44E",
-    "mota": "Chuỗi 12 bài giảng zoom về Excel THCS, mỗi kiến thức một bài: 6 chủ đề, 12 câu đố và giấy chứng nhận mỗi bài.",
+    "mota": "Chuỗi 13 bài giảng zoom về Excel THCS (Tin 7: 6 bài, Tin 8: 3 bài, Tin 9: Bài 9–12 theo SGK), mỗi bài 6 chủ đề, 12 câu đố, giấy chứng nhận.",
     "ds": "bangtinh/ds.js" },
   { "link": "congnghevui/", "ten": "Công nghệ vui", "ic": "⚙️", "mon": "Công nghệ 3", "mau": "#F28C28",
     "mota": "Phần một – Công nghệ và đời sống (Kết nối tri thức). 6 bài, mỗi bài 5 hoạt động × 4 bước, 10 câu đố, giấy chứng nhận.",

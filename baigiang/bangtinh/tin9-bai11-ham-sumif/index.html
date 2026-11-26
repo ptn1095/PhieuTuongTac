@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Bài 10. Hàm điều kiện IF – Cô Thùy Tin</title>
+<title>Bài 11. Sử dụng hàm SUMIF – Cô Thùy Tin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&subset=vietnamese&display=swap" rel="stylesheet">
@@ -173,8 +173,8 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
 
 <div id="start">
   <svg viewBox="0 0 200 240" style="width:min(200px,30vw)" class="pop" id="bitStart"></svg>
-  <div class="st1">HÀM ĐIỀU KIỆN<br>IF</div>
-  <div class="st2">Bài 10 • Tin học 9 — Zoom khám phá 6 chủ đề, giải 12 câu đố, nhận giấy chứng nhận</div>
+  <div class="st1">SỬ DỤNG<br>HÀM SUMIF</div>
+  <div class="st2">Bài 11 • Tin học 9 — Zoom khám phá 6 chủ đề, giải 12 câu đố, nhận giấy chứng nhận</div>
   <button class="btn" id="go">▶ BẮT ĐẦU</button>
   <a href="../" style="color:#fff;font-weight:800;font-size:clamp(14px,2vw,20px)">📚 Chuỗi bài Bảng tính THCS</a>
   <div class="st2" style="font-size:clamp(13px,1.8vw,18px);opacity:.9">Bấm ▶ hoặc phím → để đi tiếp • Bấm vào khung bất kỳ để zoom • Kéo / lăn chuột để tự khám phá</div>
@@ -260,102 +260,101 @@ const curve = (x1, y1, cx, cy, x2, y2, c = '#FF006E', w = 8) => { const a = Math
 const bubble = (x, y, w, h, c, t, fs = 26, tc = '#fff') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="18" fill="${c}" stroke="${O}" stroke-width="5"/>${T(x + w/2, y + h/2 + fs*.36, t, fs, tc)}`;
 const stars3 = (a, b, c) => star(a[0], a[1], 16, '#FFD60A') + star(b[0], b[1], 13, '#FF006E') + star(c[0], c[1], 11, '#8338EC');
 
-const META = { key: 'b10-ham-if', num: 10, lop: 'Tin học 9', ic: '🔀', ten: 'Hàm điều kiện IF',
-  st1: 'HÀM ĐIỀU KIỆN<br>IF', big: 'HÀM ĐIỀU<br>KIỆN IF', cert: 'HÀM ĐIỀU KIỆN IF',
-  hello: 'Xin chào! Mình là Bít 🤖 Hôm nay bảng tính sẽ biết tự quyết định nhờ hàm IF!' };
-const fork = (q, yes, no) => `<polygon points="300,30 430,110 300,190 170,110" fill="#FFD60A" stroke="${O}" stroke-width="7" stroke-linejoin="round"/>${T(300, 122, q, 30)}
-  ${curve(200, 150, 150, 200, 130, 260, '#2DA44E', 8)}${curve(400, 150, 450, 200, 470, 260, '#E5383B', 8)}
-  ${T(120, 196, 'Đúng', 24, '#2B8A3E')}${T(480, 196, 'Sai', 24, '#C92A2A')}
-  ${pillS(30, 270, 220, 64, '#2DA44E', yes, 28)}${pillS(350, 270, 220, 64, '#E5383B', no, 28)}`;
+const META = { key: 'tin9-bai11-ham-sumif', num: 12, so: 11, lop: 'Tin học 9', ic: '➕', ten: 'Sử dụng hàm SUMIF',
+  st1: 'SỬ DỤNG<br>HÀM SUMIF', big: 'HÀM<br>SUMIF', cert: 'SỬ DỤNG HÀM SUMIF',
+  hello: 'Xin chào! Mình là Bít 🤖 Cùng học cách tính tổng có điều kiện bằng hàm SUMIF nhé!' };
 const TOPICS = [
-  { title: 'Hàm IF là gì?', tip: 'IF nghĩa là "nếu": nếu đúng thì làm thế này, sai thì làm thế kia!',
-    key: '<b>=IF(điều kiện,</b><br><b>giá trị đúng, giá trị sai)</b>',
-    ill: () => svg(`${fork('Điểm ≥ 5?', 'Đạt', 'Chưa đạt')}
-      ${T(300, 390, '=IF(B2>=5,"Đạt","Chưa đạt")', 26, '#8338EC')}`),
+  { title: 'Hàm SUMIF là gì?', tip: 'SUM + IF = cộng có chọn lọc. Chỉ cộng những khoản thoả điều kiện!',
+    key: '<b>=SUMIF(range, criteria,</b><br><b>sum_range)</b>',
+    ill: () => svg(`${grid(30, 30, [['Ăn', '50'], ['Học', '30'], ['Ăn', '40'], ['Chơi', '20']], { cw: 120, rh: 54, fs: 24, fill: { '0-0': '#FFE3E3', '2-0': '#FFE3E3', '0-1': '#D3F9D8', '2-1': '#D3F9D8' } })}
+      ${T(440, 90, '50 + 40', 36, '#2B8A3E')}${pillS(330, 120, 240, 64, '#2DA44E', 'Ăn: 90', 32)}
+      ${fbar(30, 320, 540, 'E1', '=SUMIF(A1:A4,"Ăn",B1:B4)', 22)}
+      ${stars3([570, 240], [330, 260], [570, 30])}`),
     html: `<ul>
-      <li><span class="k">IF</span> cho kết quả <b>tuỳ theo điều kiện</b> đúng hay sai.</li>
-      <li>Cú pháp: <code>=IF(điều_kiện, giá_trị_đúng, giá_trị_sai)</code></li>
-      <li>Điều kiện <b>đúng</b> → trả về giá trị thứ 2.</li>
-      <li>Điều kiện <b>sai</b> → trả về giá trị thứ 3.</li>
-      <li><code>=IF(B2&gt;=5,"Đạt","Chưa đạt")</code></li></ul>`,
+      <li><span class="k">SUMIF</span>: <b>tính tổng</b> các ô thoả mãn điều kiện.</li>
+      <li><code>=SUMIF(range, criteria, sum_range)</code></li>
+      <li><b>range</b>: vùng xét điều kiện • <b>criteria</b>: điều kiện.</li>
+      <li><b>sum_range</b>: vùng chứa các số cần cộng.</li>
+      <li>Tổng tiền ăn: <code>=SUMIF(A1:A4,"Ăn",B1:B4)</code></li></ul>`,
     quiz: [
-      { q: 'B2 = 7. Công thức =IF(B2>=5,"Đạt","Chưa đạt") cho kết quả:', o: ['Chưa đạt', '7', 'Đạt', 'TRUE'], a: 2, why: '7 ≥ 5 đúng → trả về "Đạt".' },
-      { q: 'Hàm IF có bao nhiêu đối số (tham số)?', o: ['1', '2', '4', '3'], a: 3, why: 'Điều kiện, giá trị khi đúng, giá trị khi sai.' } ] },
-  { title: 'Biểu thức điều kiện', tip: 'Dấu "khác" trong bảng tính viết là &lt;&gt; nha, không phải ≠!',
-    key: '<b>=  &lt;&gt;  &gt;  &lt;  &gt;=  &lt;=</b><br>Kết quả: TRUE / FALSE',
-    ill: () => svg(`${[['=', '#1982C4'], ['<>', '#E5383B'], ['>', '#2DA44E'], ['<', '#FF7F11'], ['>=', '#8338EC'], ['<=', '#FF006E']].map(([t, c], i) => key3d(40 + (i % 3)*180, 30 + Math.floor(i/3)*140, 150, 110, c, '#1D3557', t.replace(/</g, '&lt;').replace(/>/g, '&gt;'), 54)).join('')}
-      ${pillS(40, 320, 240, 60, '#2DA44E', 'TRUE', 32)}${pillS(320, 320, 240, 60, '#E5383B', 'FALSE', 32)}`),
-    html: `<table class="tb"><tr><th>Kí hiệu</th><th>Ý nghĩa</th><th>Ví dụ</th></tr>
-      <tr><td><code>=</code> <code>&lt;&gt;</code></td><td>bằng, khác</td><td><code>C2="Nam"</code></td></tr>
-      <tr><td><code>&gt;</code> <code>&lt;</code></td><td>lớn hơn, nhỏ hơn</td><td><code>B2&gt;100</code></td></tr>
-      <tr><td><code>&gt;=</code> <code>&lt;=</code></td><td>lớn hơn hoặc bằng…</td><td><code>D2&gt;=8</code></td></tr>
-      <tr><td colspan="3">Kết quả so sánh: <b>TRUE</b> (đúng) / <b>FALSE</b> (sai)</td></tr></table>`,
-    quiz: [
-      { q: 'Trong bảng tính, điều kiện "A1 khác 0" được viết là:', o: ['A1≠0', 'A1<>0', 'A1!=0', 'A1=/0'], a: 1, why: 'Dấu khác trong bảng tính là <>.' },
-      { q: 'A1 = 10. Công thức =A1<=10 cho kết quả gì?', o: ['TRUE', 'FALSE', '10', '#VALUE!'], a: 0, why: '10 ≤ 10 là đúng → TRUE.' } ] },
-  { title: 'Kết quả là chữ', tip: 'Chữ trong công thức phải mặc áo ngoặc kép " " mới ra ngoài được!',
-    key: 'Văn bản để trong<br>dấu <b>" "</b>',
-    ill: () => svg(`${pillS(40, 40, 520, 80, '#fff', '=IF(C2="Nam","Anh","Chị")', 32, 0, '#8338EC')}
-      ${grid(140, 150, [['Nam', 'Anh'], ['Nữ', 'Chị']], { cw: 150, rh: 60, fs: 28, head: false, fill: { '0-1': '#D0EBFF', '1-1': '#FFE3E3' } })}
-      ${pillS(110, 310, 380, 64, '#FF006E', 'Chữ → trong " "', 30)}
-      ${stars3([40, 200], [560, 200], [560, 390])}`),
+      { q: 'Hàm SUMIF dùng để làm gì?', o: ['Đếm ô thoả điều kiện', 'Tìm giá trị nhỏ nhất', 'Tính tổng các ô thoả điều kiện', 'Tính trung bình'], a: 2, why: 'SUMIF cộng các giá trị thoả mãn điều kiện.' },
+      { q: 'A1:A4 = Ăn, Học, Ăn, Chơi; B1:B4 = 50, 30, 40, 20. =SUMIF(A1:A4,"Ăn",B1:B4) =', o: ['140', '50', '2', '90'], a: 3, why: 'Cộng các khoản "Ăn": 50 + 40 = 90.' } ] },
+  { title: 'Vùng điều kiện, vùng tổng', tip: 'Xét điều kiện ở cột này, cộng số ở cột kia. Hai cột phải dài bằng nhau!',
+    key: 'Xét ở <b>range</b><br>Cộng ở <b>sum_range</b><br>Hai vùng cùng số hàng',
+    ill: () => svg(`${grid(60, 30, [['Loại', 'Tiền'], ['Thu', '100'], ['Chi', '15'], ['Chi', '25']], { cw: 150, rh: 54, fs: 26, bold: [0] })}
+      <rect x="104" y="118" width="150" height="162" fill="#FF006E" opacity=".12" stroke="#FF006E" stroke-width="5"/>
+      <rect x="254" y="118" width="150" height="162" fill="#2DA44E" opacity=".12" stroke="#2DA44E" stroke-width="5"/>
+      ${pillS(40, 310, 250, 56, '#FF006E', 'range: xét', 26)}${pillS(310, 310, 260, 56, '#2DA44E', 'sum_range: cộng', 24)}
+      ${pillS(430, 140, 140, 60, '#1982C4', '= 40', 30)}
+      ${stars3([570, 40], [30, 400], [570, 400])}`),
     html: `<ul>
-      <li>Giá trị là <b>văn bản</b> phải đặt trong dấu <span class="k">" "</span> (nháy kép).</li>
-      <li>Số và địa chỉ ô <b>không</b> cần dấu nháy.</li>
-      <li><code>=IF(C2="Nam","Anh","Chị")</code></li>
-      <li>Muốn để trống: dùng <code>""</code></li>
-      <li>Quên dấu nháy → lỗi <code>#NAME?</code></li></ul>`,
+      <li><span class="k">range</span>: vùng chứa giá trị để <b>so với điều kiện</b> (thường là cột chữ).</li>
+      <li><span class="k">sum_range</span>: vùng chứa <b>số cần cộng</b>.</li>
+      <li>Hai vùng phải <b>cùng số hàng</b> và bắt đầu cùng hàng.</li>
+      <li>Hàng nào thoả điều kiện thì cộng số ở <b>cùng hàng</b> đó.</li></ul>`,
     quiz: [
-      { q: 'Viết công thức nào đúng khi kết quả là chữ "Đỗ" hoặc "Trượt"?', o: ['=IF(B2>=5,Đỗ,Trượt)', `=IF(B2>=5,'Đỗ','Trượt')`, '=IF(B2>=5;Đỗ;Trượt)', '=IF(B2>=5,"Đỗ","Trượt")'], a: 3, why: 'Văn bản phải đặt trong dấu nháy kép " ".' },
-      { q: 'Quên dấu " " quanh chữ trong hàm IF thường gây lỗi gì?', o: ['#DIV/0!', '#NAME?', '#####', 'Không lỗi'], a: 1, why: 'Bảng tính tưởng chữ đó là tên hàm / tên ô lạ → #NAME?' } ] },
-  { title: 'IF lồng nhau', tip: 'Có 3 mức xếp loại thì dùng 2 hàm IF lồng vào nhau!',
-    key: '3 mức → <b>2 IF</b> lồng<br><b>=IF(…,"Giỏi",IF(…))</b>',
-    ill: () => svg(`<polygon points="150,20 260,80 150,140 40,80" fill="#FFD60A" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>${T(150, 90, '≥ 8?', 28)}
-      ${arrow(260, 80, 330, 80, '#2DA44E', 7)}${pillS(340, 52, 200, 56, '#2DA44E', 'Giỏi', 28)}
-      ${arrow(150, 142, 150, 190, '#E5383B', 7)}
-      <polygon points="150,190 260,250 150,310 40,250" fill="#FFD60A" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>${T(150, 260, '≥ 6.5?', 26)}
-      ${arrow(260, 250, 330, 250, '#2DA44E', 7)}${pillS(340, 222, 200, 56, '#1982C4', 'Khá', 28)}
-      ${arrow(150, 312, 150, 350, '#E5383B', 7)}${pillS(60, 352, 180, 52, '#FF7F11', 'Đạt', 26)}
-      ${T(204, 176, 'Sai', 22, '#C92A2A')}${T(204, 338, 'Sai', 22, '#C92A2A')}
-      ${stars3([570, 150], [570, 330], [400, 390])}`),
+      { q: 'Trong =SUMIF(A2:A9,"Ăn",B2:B9), phần B2:B9 là gì?', o: ['Vùng điều kiện', 'Điều kiện', 'Vùng tính tổng', 'Tên hàm'], a: 2, why: 'Đối số thứ 3 (sum_range) là vùng chứa số cần cộng.' },
+      { q: 'Cột A ghi "Thu"/"Chi", cột B ghi tiền (hàng 2–20). Tổng chi là:', o: ['=SUMIF(A2:A20,"Chi",B2:B20)', '=SUMIF(B2:B20,"Chi",A2:A20)', '=SUM(A2:A20,"Chi")', '=COUNTIF(A2:A20,"Chi")'], a: 0, why: 'Xét điều kiện ở cột A, cộng tiền ở cột B.' } ] },
+  { title: 'Điều kiện so sánh số', tip: 'Nếu cộng chính các ô dùng làm điều kiện thì bỏ qua đối số thứ ba cũng được!',
+    key: '<b>"&gt;=100"</b> • <b>"&lt;50"</b><br>Không có sum_range →<br>cộng chính <b>range</b>',
+    ill: () => svg(`${grid(30, 30, [['120'], ['80'], ['200'], ['60']], { cw: 140, rh: 56, fs: 26, fill: { '0-0': '#D3F9D8', '2-0': '#D3F9D8' } })}
+      ${pillS(250, 50, 320, 64, '#FF006E', '">=100"', 34)}${arrow(410, 124, 410, 170, O, 6)}${pillS(250, 180, 320, 64, '#2DA44E', '120 + 200 = 320', 26)}
+      ${fbar(30, 330, 540, 'B1', '=SUMIF(A1:A4,">=100")', 24)}
+      ${stars3([570, 290], [240, 290], [30, 300])}`),
     html: `<ul>
-      <li>Có <b>nhiều hơn 2</b> trường hợp → đặt IF bên trong IF.</li>
-      <li><code>=IF(B2&gt;=8,"Giỏi",IF(B2&gt;=6.5,"Khá","Đạt"))</code></li>
-      <li><b>n</b> mức kết quả cần <span class="k">n − 1</span> hàm IF.</li>
-      <li>Xét điều kiện <b>từ cao xuống thấp</b> (hoặc thấp lên cao).</li>
-      <li>Đếm đủ số dấu ngoặc <code>)</code> ở cuối.</li></ul>`,
+      <li>Điều kiện so sánh đặt trong " ": <code>"&gt;=100"</code>, <code>"&lt;50"</code>, <code>"&lt;&gt;0"</code></li>
+      <li>Nếu cộng <b>chính vùng điều kiện</b> → được bỏ đối số thứ 3:</li>
+      <li><code>=SUMIF(A1:A4,"&gt;=100")</code> cộng các số ≥ 100.</li>
+      <li>Tổng tiền các đơn từ 100 nghìn: <code>=SUMIF(C2:C30,"&gt;=100")</code></li></ul>`,
     quiz: [
-      { q: 'B2 = 7. =IF(B2>=8,"Giỏi",IF(B2>=6.5,"Khá","Đạt")) cho kết quả:', o: ['Khá', 'Giỏi', 'Đạt', '#VALUE!'], a: 0, why: '7 không ≥ 8, nhưng ≥ 6.5 → "Khá".' },
-      { q: 'Xếp loại có 4 mức thì cần ít nhất bao nhiêu hàm IF lồng nhau?', o: ['4', '2', '3', '1'], a: 2, why: 'n mức cần n − 1 hàm IF → 3.' } ] },
-  { title: 'IF kết hợp tính toán', tip: 'Giá trị trả về của IF cũng có thể là một phép tính đó!',
-    key: 'Giá trị đúng / sai có thể<br>là <b>công thức</b>',
-    ill: () => svg(`${fbar(30, 30, 540, 'C2', '=IF(B2>=100,B2*0.9,B2)', 22)}
-      ${grid(30, 110, [['Tiền mua', 'Phải trả'], ['150', '135'], ['80', '80']], { cw: 170, rh: 60, fs: 26, bold: [0], fill: { '1-1': '#D3F9D8' } })}
-      ${pillS(430, 130, 140, 70, '#FF006E', '-10%', 34)}
-      ${pillS(60, 340, 480, 60, '#FF7F11', 'Mua từ 100 được giảm 10%', 24)}
-      ${stars3([570, 270], [440, 260], [30, 320])}`),
+      { q: 'A1:A4 = 120, 80, 200, 60. Công thức =SUMIF(A1:A4,">=100") bằng:', o: ['320', '460', '140', '2'], a: 0, why: 'Cộng các số ≥ 100: 120 + 200 = 320.' },
+      { q: 'Khi nào được bỏ đối số thứ ba (sum_range) của SUMIF?', o: ['Không bao giờ', 'Khi điều kiện là chữ', 'Khi cộng chính các ô của vùng điều kiện', 'Khi vùng có ô trống'], a: 2, why: 'Thiếu sum_range thì SUMIF cộng chính các ô trong range.' } ] },
+  { title: 'Điều kiện lấy từ ô', tip: 'Đổi tên khoản ở ô E2 là tổng tự tính lại. Tiện ghê!',
+    key: 'Điều kiện là ô: <b>E2</b><br>So sánh: <b>"&gt;"&amp;E1</b>',
+    ill: () => svg(`${grid(30, 30, [['Ăn', '50', '', 'Ăn'], ['Học', '30', '', ''], ['Ăn', '40', '', '']], { cw: 100, rh: 56, fs: 24, cws: [100, 90, 30, 100], fill: { '0-3': '#FFE066', '0-0': '#FFE3E3', '2-0': '#FFE3E3' } })}
+      ${pillS(420, 60, 150, 60, '#2DA44E', '= 90', 30)}
+      ${fbar(30, 250, 540, 'E2', '=SUMIF(A1:A3,D1,B1:B3)', 22)}
+      ${fbar(30, 320, 540, 'E3', '=SUMIF(B1:B3,">"&F1)', 24)}
+      ${stars3([570, 200], [30, 400], [570, 400])}`),
     html: `<ul>
-      <li>Giá trị đúng / sai của IF có thể là <span class="k">phép tính</span> hoặc hàm khác.</li>
-      <li>Giảm 10% khi mua từ 100 nghìn:</li>
-      <li><code>=IF(B2&gt;=100,B2*0.9,B2)</code></li>
-      <li>Điều kiện cũng có thể là hàm: <code>=IF(AVERAGE(B2:D2)&gt;=5,"Lên lớp","Ở lại")</code></li></ul>`,
+      <li>Điều kiện là <span class="k">địa chỉ ô</span>, không cần " ": <code>=SUMIF(A2:A30,E2,B2:B30)</code></li>
+      <li>So sánh với giá trị trong ô: nối bằng <span class="k">&amp;</span></li>
+      <li><code>=SUMIF(B2:B30,"&gt;"&amp;F1)</code></li>
+      <li>Sửa ô điều kiện → tổng <b>tự cập nhật</b>.</li></ul>`,
     quiz: [
-      { q: 'B2 = 200. Công thức =IF(B2>=100,B2*0.9,B2) cho kết quả:', o: ['200', '180', '20', '100'], a: 1, why: '200 ≥ 100 → 200 × 0.9 = 180.' },
-      { q: 'B2 = 50. Công thức =IF(B2>=100,B2*0.9,B2) cho kết quả:', o: ['45', '0', '90', '50'], a: 3, why: '50 < 100 nên điều kiện sai → trả về B2 = 50.' } ] },
-  { title: 'Lỗi hay gặp với IF', tip: 'Viết xong hàm IF, thử vài số ở ranh giới như đúng 5, đúng 8 để kiểm tra!',
-    key: 'Thiếu <b>" "</b> • thiếu <b>)</b><br>Sai thứ tự điều kiện',
-    ill: () => svg(`<path d="M300 30 L430 260 H170Z" fill="#FFD60A" stroke="${O}" stroke-width="11" stroke-linejoin="round"/>${T(300, 236, '!', 130)}
-      ${pillS(20, 60, 170, 52, '#E5383B', 'Thiếu " "', 24, -6)}${pillS(410, 70, 170, 52, '#8338EC', 'Thiếu )', 26, 6)}
-      ${pillS(30, 300, 250, 56, '#1982C4', 'Sai thứ tự', 26, 4)}${pillS(320, 300, 250, 56, '#FF7F11', 'Thử số biên', 26, -4)}
-      ${stars3([60, 220], [540, 220], [300, 390])}`),
+      { q: 'Ô F1 chứa 50. Cộng các số trong B2:B30 lớn hơn F1, viết:', o: ['=SUMIF(B2:B30,">F1")', '=SUMIF(B2:B30,">"&F1)', '=SUMIF(F1,B2:B30)', '=SUM(B2:B30>F1)'], a: 1, why: 'Dùng & nối dấu ">" với giá trị ô F1.' },
+      { q: 'Điều kiện là ô D1 chứa chữ "Ăn", công thức nào đúng?', o: ['=SUMIF(A2:A9,"D1",B2:B9)', '=SUMIF(D1,A2:A9,B2:B9)', '=SUMIF(A2:A9,&D1,B2:B9)', '=SUMIF(A2:A9,D1,B2:B9)'], a: 3, why: 'Dùng thẳng địa chỉ ô D1, không đặt trong " ".' } ] },
+  { title: 'Bảng tổng hợp theo khoản', tip: 'Viết SUMIF một lần rồi kéo xuống, nhớ ghim hai vùng bằng $!',
+    key: 'Hai vùng dùng <b>$</b><br>Điều kiện <b>E2</b> tương đối',
+    ill: () => svg(`${grid(30, 30, [['Khoản', 'Tổng'], ['Ăn', '90'], ['Học', '30'], ['Chơi', '20']], { cw: 150, rh: 54, fs: 24, bold: [0], fill: { '1-1': '#D3F9D8', '2-1': '#D3F9D8', '3-1': '#D3F9D8' }, sel: [1, 1], handle: true })}
+      ${arrow(372, 150, 372, 270, '#FF006E', 7)}
+      ${pillS(400, 60, 170, 60, '#E5383B', '$ $ $', 30)}
+      ${fbar(30, 320, 540, 'F2', '=SUMIF($A$2:$A$30,E2,$B$2:$B$30)', 18)}
+      ${stars3([570, 200], [460, 260], [30, 290])}`),
     html: `<ul>
-      <li>Quên <span class="k">" "</span> quanh văn bản → <code>#NAME?</code></li>
-      <li>Thiếu dấu <code>)</code> hoặc thiếu dấu <code>,</code> giữa các đối số.</li>
-      <li>Xét điều kiện <b>sai thứ tự</b>: <code>IF(B2&gt;=5,"Đạt",IF(B2&gt;=8,"Giỏi",…))</code> → không bao giờ ra "Giỏi".</li>
-      <li>Kiểm tra bằng các số <b>ở ranh giới</b>: 5; 6.5; 8.</li></ul>`,
+      <li>Cột E ghi các khoản, cột F tính tổng từng khoản.</li>
+      <li>F2: <code>=SUMIF($A$2:$A$30,E2,$B$2:$B$30)</code> rồi <b>kéo xuống</b>.</li>
+      <li><span class="k">range</span> và <span class="k">sum_range</span> dùng địa chỉ <b>tuyệt đối</b>.</li>
+      <li>Điều kiện <code>E2</code> tương đối → tự thành E3, E4…</li></ul>`,
     quiz: [
-      { q: 'Công thức =IF(B2>=5,"Đạt",IF(B2>=8,"Giỏi","Yếu")) sai ở đâu?', o: ['Thiếu dấu " "', 'Thừa dấu )', 'Xét ≥5 trước nên không ra "Giỏi"', 'Không sai'], a: 2, why: 'Điểm ≥ 8 cũng ≥ 5 nên luôn dừng ở "Đạt". Phải xét ≥ 8 trước.' },
-      { q: 'Để kiểm tra hàm IF xếp loại "≥ 5 là Đạt", nên thử điểm nào?', o: ['Đúng 5 và 4.9', 'Chỉ điểm 10', 'Chỉ điểm 0', 'Không cần thử'], a: 0, why: 'Thử ngay ranh giới để biết dùng >= hay > đã đúng chưa.' } ] },
+      { q: 'F2 có =SUMIF($A$2:$A$30,E2,$B$2:$B$30). Kéo xuống F3 được:', o: ['=SUMIF($A$2:$A$30,E3,$B$2:$B$30)', '=SUMIF($A$3:$A$31,E3,$B$3:$B$31)', '=SUMIF($A$2:$A$30,E2,$B$2:$B$30)', '=SUMIF(A3:A31,E3,B3:B31)'], a: 0, why: 'Hai vùng tuyệt đối giữ nguyên, E2 tương đối → E3.' },
+      { q: 'Quên dấu $ ở vùng dữ liệu rồi kéo xuống, lỗi gì xảy ra?', o: ['Báo #NAME?', 'Không có lỗi gì', 'Vùng bị trượt xuống, tổng bị sai', 'Bảng tính tự thêm $'], a: 2, why: 'Vùng tương đối trượt theo hàng → bỏ sót dữ liệu, tổng sai.' } ] },
+  { title: 'Ứng dụng: quản lí thu chi', tip: 'Dùng SUMIF quản lí tiền tiêu vặt, cuối tháng biết ngay mình tiêu vào đâu!',
+    key: 'Tổng thu, tổng chi<br>theo từng <b>khoản</b><br>bằng <b>SUMIF</b>',
+    ill: () => svg(`${grid(30, 30, [['Khoản', 'Loại', 'Tiền'], ['Mẹ cho', 'Thu', '100'], ['Bút', 'Chi', '15'], ['Truyện', 'Chi', '25']], { cw: 110, rh: 50, fs: 22, cws: [120, 90, 100], bold: [0] })}
+      <rect x="400" y="40" width="170" height="210" rx="18" fill="#fff" stroke="${O}" stroke-width="5"/>
+      ${T(485, 90, 'Thu: 100', 26, '#2B8A3E')}${T(485, 140, 'Chi: 40', 26, '#C92A2A')}<line x1="420" y1="160" x2="550" y2="160" stroke="${O}" stroke-width="4"/>${T(485, 210, 'Còn: 60', 28, '#1864AB')}
+      ${pillS(40, 300, 520, 60, '#8338EC', '=SUMIF(B2:B4,"Chi",C2:C4)', 24)}
+      ${stars3([570, 280], [30, 390], [570, 390])}`),
+    html: `<ul>
+      <li>Ghi mỗi khoản: <b>ngày, nội dung, loại (Thu / Chi), số tiền</b>.</li>
+      <li>Tổng thu: <code>=SUMIF(B2:B50,"Thu",C2:C50)</code></li>
+      <li>Tổng chi: <code>=SUMIF(B2:B50,"Chi",C2:C50)</code></li>
+      <li>Còn lại = Tổng thu − Tổng chi.</li>
+      <li>Vẽ biểu đồ tròn để xem tỉ lệ các khoản chi.</li></ul>`,
+    quiz: [
+      { q: 'Cột B ghi "Thu"/"Chi", cột C ghi tiền (hàng 2–50). Tổng thu là:', o: ['=SUM(C2:C50)', '=SUMIF(C2:C50,"Thu",B2:B50)', '=COUNTIF(B2:B50,"Thu")', '=SUMIF(B2:B50,"Thu",C2:C50)'], a: 3, why: 'Vùng điều kiện là cột B, cộng tiền ở cột C.' },
+      { q: 'Tổng thu ở F1, tổng chi ở F2. Số tiền còn lại được tính bằng:', o: ['=F1-F2', '=F1+F2', '=SUMIF(F1,F2)', '=COUNTIF(F1:F2)'], a: 0, why: 'Còn lại = tổng thu − tổng chi.' } ] },
 ];
 
 const ILL = {}, KEY = [];
@@ -423,8 +422,8 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef', `
   <div class="pat" style="position:absolute;inset:0;border-radius:58px;background-image:radial-gradient(rgba(255,255,255,.3) 3px,transparent 3.5px);background-size:48px 48px"></div>
-  <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">BÀI 10 • BẢNG TÍNH THCS • TIN HỌC 9</div>
-  <div class="bigtitle">HÀM ĐIỀU<br>KIỆN IF</div>
+  <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">BÀI 11 • BẢNG TÍNH THCS • TIN HỌC 9</div>
+  <div class="bigtitle">HÀM<br>SUMIF</div>
   <div style="position:absolute;left:76px;top:440px;width:1000px;color:#fff;font-weight:800;font-size:40px;line-height:1.35;text-shadow:0 4px 0 rgba(20,20,50,.3)">${NT} nội dung • ${NQ} câu đố vui<br>Bấm ▶ hoặc bấm vào khung để zoom!<br>Đạt từ ${PASS} ⭐ trở lên nhận <span style="color:#FFE066">giấy chứng nhận</span> 🎓</div>
   <svg viewBox="0 0 200 240" style="position:absolute;left:1130px;top:70px;width:330px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
   <div style="position:absolute;left:830px;top:612px;width:330px;text-align:center;color:#fff;font-weight:900;font-size:34px;text-shadow:0 4px 0 rgba(20,20,50,.35)">📚 Tổng kết</div>
@@ -614,7 +613,7 @@ function say(t, ms = 7000) {
 function bitMood(m) { bitEl.classList.remove('happy', 'sad'); void bitEl.offsetWidth; bitEl.classList.add(m); setTimeout(() => bitEl.classList.remove(m), 1600); }
 function sayFor(id) {
   if (id === 'overview') return say('Đây là bản đồ toàn bài! Bấm vào chủ đề nào cũng được, hoặc bấm ▶ để đi lần lượt.');
-  if (id === 'title') return say('Xin chào! Mình là Bít 🤖 Hôm nay bảng tính sẽ biết tự quyết định nhờ hàm IF!');
+  if (id === 'title') return say('Xin chào! Mình là Bít 🤖 Cùng học cách tính tổng có điều kiện bằng hàm SUMIF nhé!');
   if (id === 'result') return say(score() >= PASS ? 'Giỏi quá! Bấm “Nhận chứng nhận” rồi điền tên, lớp nha 🎓' : `Về đích rồi! 🏆 Cần ${PASS} ⭐ để nhận chứng nhận đó.`, 5000);
   if (id === 'recap') return say(`Ôn nhanh ${NT} nội dung nè! Bấm vào thẻ nào để xem lại nội dung đó.`);
   const q = QUIZ[id];
@@ -808,8 +807,8 @@ async function drawCert(name, cls, sc) {
   fitText(g, name, 860, 96); g.fillStyle = '#FF006E'; g.fillText(name, Wd/2, 520);
   g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = '#B06BFF'; g.beginPath(); g.moveTo(Wd/2 - 450, 552); g.lineTo(Wd/2 + 450, 552); g.stroke(); g.setLineDash([]);
   g.fillStyle = INK; g.font = '800 46px Inter, sans-serif'; g.fillText('Lớp: ' + cls, Wd/2, 625);
-  g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành Bài 10 – chuỗi bài Bảng tính THCS', Wd/2, 700);
-  g.font = '900 46px Inter, sans-serif'; g.fillStyle = '#5A189A'; g.fillText('HÀM ĐIỀU KIỆN IF', Wd/2, 760);
+  g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành Bài 11 (Tin học 9) – chuỗi Bảng tính THCS', Wd/2, 700);
+  g.font = '900 46px Inter, sans-serif'; g.fillStyle = '#5A189A'; g.fillText('SỬ DỤNG HÀM SUMIF', Wd/2, 760);
   const TQ = Object.keys(QUIZ).length, rank = sc >= TQ ? 'XUẤT SẮC TUYỆT ĐỐI' : sc >= Math.ceil(TQ*.9) ? 'XUẤT SẮC' : 'HOÀN THÀNH TỐT';
   rr(g, Wd/2 - 360, 800, 720, 96, 48); g.fillStyle = '#FFF3BF'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#FFB703'; g.stroke();
   cStar(g, Wd/2 - 300, 848, 30, '#FFD60A', INK);

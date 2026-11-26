@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Bài 12. Kiểm tra dữ liệu nhập vào – Cô Thùy Tin</title>
+<title>Bài 9. Sử dụng công cụ xác thực dữ liệu – Cô Thùy Tin</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&subset=vietnamese&display=swap" rel="stylesheet">
@@ -173,8 +173,8 @@ code{font-family:Inter,sans-serif;background:#EDE7FF;color:#5A189A;border-radius
 
 <div id="start">
   <svg viewBox="0 0 200 240" style="width:min(200px,30vw)" class="pop" id="bitStart"></svg>
-  <div class="st1">KIỂM TRA DỮ LIỆU<br>NHẬP VÀO</div>
-  <div class="st2">Bài 12 • Tin học 9 — Zoom khám phá 6 chủ đề, giải 12 câu đố, nhận giấy chứng nhận</div>
+  <div class="st1">CÔNG CỤ XÁC THỰC<br>DỮ LIỆU</div>
+  <div class="st2">Bài 9 • Tin học 9 — Zoom khám phá 6 chủ đề, giải 12 câu đố, nhận giấy chứng nhận</div>
   <button class="btn" id="go">▶ BẮT ĐẦU</button>
   <a href="../" style="color:#fff;font-weight:800;font-size:clamp(14px,2vw,20px)">📚 Chuỗi bài Bảng tính THCS</a>
   <div class="st2" style="font-size:clamp(13px,1.8vw,18px);opacity:.9">Bấm ▶ hoặc phím → để đi tiếp • Bấm vào khung bất kỳ để zoom • Kéo / lăn chuột để tự khám phá</div>
@@ -260,9 +260,9 @@ const curve = (x1, y1, cx, cy, x2, y2, c = '#FF006E', w = 8) => { const a = Math
 const bubble = (x, y, w, h, c, t, fs = 26, tc = '#fff') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="18" fill="${c}" stroke="${O}" stroke-width="5"/>${T(x + w/2, y + h/2 + fs*.36, t, fs, tc)}`;
 const stars3 = (a, b, c) => star(a[0], a[1], 16, '#FFD60A') + star(b[0], b[1], 13, '#FF006E') + star(c[0], c[1], 11, '#8338EC');
 
-const META = { key: 'b12-kiem-tra-du-lieu', num: 12, lop: 'Tin học 9', ic: '🛡️', ten: 'Kiểm tra dữ liệu nhập vào',
-  st1: 'KIỂM TRA DỮ LIỆU<br>NHẬP VÀO', big: 'KIỂM TRA<br>DỮ LIỆU', cert: 'KIỂM TRA DỮ LIỆU NHẬP VÀO',
-  hello: 'Xin chào! Mình là Bít 🤖 Cùng dựng “lá chắn” chặn dữ liệu nhập sai nhé!' };
+const META = { key: 'tin9-bai9-xac-thuc-du-lieu', num: 10, so: 9, lop: 'Tin học 9', ic: '🛡️', ten: 'Sử dụng công cụ xác thực dữ liệu',
+  st1: 'CÔNG CỤ XÁC THỰC<br>DỮ LIỆU', big: 'XÁC THỰC<br>DỮ LIỆU', cert: 'SỬ DỤNG CÔNG CỤ XÁC THỰC DỮ LIỆU',
+  hello: 'Xin chào! Mình là Bít 🤖 Cùng dựng “lá chắn” xác thực dữ liệu, chặn dữ liệu nhập sai nhé!' };
 const shield = (x, y, s, c = '#2EC4B6') => `<path transform="translate(${x} ${y}) scale(${s})" d="M100 0 L190 34 V110 Q190 190 100 230 Q10 190 10 110 V34Z" fill="${c}" stroke="${O}" stroke-width="${8/s}" stroke-linejoin="round"/><path transform="translate(${x} ${y}) scale(${s})" d="M60 112 L90 142 L144 82" stroke="#fff" stroke-width="${20}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
 const dlg = (title) => `<rect x="30" y="30" width="540" height="300" rx="20" fill="#fff" stroke="${O}" stroke-width="6"/><rect x="30" y="30" width="540" height="56" rx="20" fill="#1982C4" stroke="${O}" stroke-width="6"/>${T(300, 68, title, 26, '#fff')}`;
 const TOPICS = [
@@ -275,11 +275,11 @@ const TOPICS = [
     html: `<ul>
       <li>Nhập tay dễ <b>nhầm</b>: điểm 85, tuổi âm, sai chính tả "Nam/nam/Nan"…</li>
       <li>Dữ liệu sai → kết quả tính toán, thống kê <b>sai</b>.</li>
-      <li><span class="k">Kiểm tra dữ liệu</span> (Data Validation) chỉ cho nhập dữ liệu <b>hợp lệ</b>.</li>
+      <li><span class="k">Xác thực dữ liệu</span> (Data Validation) chỉ cho nhập dữ liệu <b>hợp lệ</b>.</li>
       <li>Nhập sai → bảng tính <b>báo lỗi</b> và không nhận.</li></ul>`,
     quiz: [
-      { q: 'Tính năng kiểm tra dữ liệu nhập vào trong Excel có tên là:', o: ['Data Validation', 'Conditional Formatting', 'Sort & Filter', 'AutoSum'], a: 0, why: 'Data Validation = kiểm tra tính hợp lệ của dữ liệu.' },
-      { q: 'Lợi ích chính của kiểm tra dữ liệu là gì?', o: ['Tính toán nhanh hơn', 'Làm bảng đẹp hơn', 'Hạn chế nhập sai dữ liệu', 'Tự vẽ biểu đồ'], a: 2, why: 'Chỉ cho nhập giá trị hợp lệ → hạn chế sai sót.' } ] },
+      { q: 'Công cụ xác thực dữ liệu trong Excel có tên là:', o: ['Data Validation', 'Conditional Formatting', 'Sort & Filter', 'AutoSum'], a: 0, why: 'Data Validation = xác thực (kiểm tra tính hợp lệ) của dữ liệu.' },
+      { q: 'Lợi ích chính của xác thực dữ liệu là gì?', o: ['Tính toán nhanh hơn', 'Làm bảng đẹp hơn', 'Hạn chế nhập sai dữ liệu', 'Tự vẽ biểu đồ'], a: 2, why: 'Chỉ cho nhập giá trị hợp lệ → hạn chế sai sót.' } ] },
   { title: 'Đặt điều kiện số', tip: 'Điểm từ 0 đến 10 thì chọn Decimal và Between nha!',
     key: 'Data → <b>Data Validation</b><br><b>Whole number</b> / <b>Decimal</b><br><b>Between</b> min – max',
     ill: () => svg(`${dlg('Data Validation')}
@@ -429,8 +429,8 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef', `
   <div class="pat" style="position:absolute;inset:0;border-radius:58px;background-image:radial-gradient(rgba(255,255,255,.3) 3px,transparent 3.5px);background-size:48px 48px"></div>
-  <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">BÀI 12 • BẢNG TÍNH THCS • TIN HỌC 9</div>
-  <div class="bigtitle">KIỂM TRA<br>DỮ LIỆU</div>
+  <div class="pill" style="position:absolute;left:70px;top:52px;background:#FF006E;font-size:40px">BÀI 9 • BẢNG TÍNH THCS • TIN HỌC 9</div>
+  <div class="bigtitle">XÁC THỰC<br>DỮ LIỆU</div>
   <div style="position:absolute;left:76px;top:440px;width:1000px;color:#fff;font-weight:800;font-size:40px;line-height:1.35;text-shadow:0 4px 0 rgba(20,20,50,.3)">${NT} nội dung • ${NQ} câu đố vui<br>Bấm ▶ hoặc bấm vào khung để zoom!<br>Đạt từ ${PASS} ⭐ trở lên nhận <span style="color:#FFE066">giấy chứng nhận</span> 🎓</div>
   <svg viewBox="0 0 200 240" style="position:absolute;left:1130px;top:70px;width:330px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
   <div style="position:absolute;left:830px;top:612px;width:330px;text-align:center;color:#fff;font-weight:900;font-size:34px;text-shadow:0 4px 0 rgba(20,20,50,.35)">📚 Tổng kết</div>
@@ -620,7 +620,7 @@ function say(t, ms = 7000) {
 function bitMood(m) { bitEl.classList.remove('happy', 'sad'); void bitEl.offsetWidth; bitEl.classList.add(m); setTimeout(() => bitEl.classList.remove(m), 1600); }
 function sayFor(id) {
   if (id === 'overview') return say('Đây là bản đồ toàn bài! Bấm vào chủ đề nào cũng được, hoặc bấm ▶ để đi lần lượt.');
-  if (id === 'title') return say('Xin chào! Mình là Bít 🤖 Cùng dựng “lá chắn” chặn dữ liệu nhập sai nhé!');
+  if (id === 'title') return say('Xin chào! Mình là Bít 🤖 Cùng dựng “lá chắn” xác thực dữ liệu, chặn dữ liệu nhập sai nhé!');
   if (id === 'result') return say(score() >= PASS ? 'Giỏi quá! Bấm “Nhận chứng nhận” rồi điền tên, lớp nha 🎓' : `Về đích rồi! 🏆 Cần ${PASS} ⭐ để nhận chứng nhận đó.`, 5000);
   if (id === 'recap') return say(`Ôn nhanh ${NT} nội dung nè! Bấm vào thẻ nào để xem lại nội dung đó.`);
   const q = QUIZ[id];
@@ -814,8 +814,8 @@ async function drawCert(name, cls, sc) {
   fitText(g, name, 860, 96); g.fillStyle = '#FF006E'; g.fillText(name, Wd/2, 520);
   g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = '#B06BFF'; g.beginPath(); g.moveTo(Wd/2 - 450, 552); g.lineTo(Wd/2 + 450, 552); g.stroke(); g.setLineDash([]);
   g.fillStyle = INK; g.font = '800 46px Inter, sans-serif'; g.fillText('Lớp: ' + cls, Wd/2, 625);
-  g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành Bài 12 – chuỗi bài Bảng tính THCS', Wd/2, 700);
-  g.font = '900 46px Inter, sans-serif'; g.fillStyle = '#5A189A'; g.fillText('KIỂM TRA DỮ LIỆU NHẬP VÀO', Wd/2, 760);
+  g.font = '700 36px Inter, sans-serif'; g.fillText('Đã hoàn thành Bài 9 (Tin học 9) – chuỗi Bảng tính THCS', Wd/2, 700);
+  g.font = '900 46px Inter, sans-serif'; g.fillStyle = '#5A189A'; g.fillText('SỬ DỤNG CÔNG CỤ XÁC THỰC DỮ LIỆU', Wd/2, 760);
   const TQ = Object.keys(QUIZ).length, rank = sc >= TQ ? 'XUẤT SẮC TUYỆT ĐỐI' : sc >= Math.ceil(TQ*.9) ? 'XUẤT SẮC' : 'HOÀN THÀNH TỐT';
   rr(g, Wd/2 - 360, 800, 720, 96, 48); g.fillStyle = '#FFF3BF'; g.fill(); g.lineWidth = 6; g.strokeStyle = '#FFB703'; g.stroke();
   cStar(g, Wd/2 - 300, 848, 30, '#FFD60A', INK);

@@ -1,8 +1,8 @@
-const META = { key: 'b11-countif-sumif', num: 11, lop: 'Tin học 9', ic: '🔢', ten: 'Hàm COUNTIF và SUMIF',
-  st1: 'HÀM COUNTIF<br>VÀ SUMIF', big: 'COUNTIF<br>VÀ SUMIF', cert: 'HÀM COUNTIF VÀ SUMIF',
-  hello: 'Xin chào! Mình là Bít 🤖 Cùng đếm và tính tổng có điều kiện thật nhanh nhé!' };
+const META = { key: 'tin9-bai10-ham-countif', num: 11, so: 10, lop: 'Tin học 9', ic: '🔢', ten: 'Sử dụng hàm COUNTIF',
+  st1: 'SỬ DỤNG<br>HÀM COUNTIF', big: 'HÀM<br>COUNTIF', cert: 'SỬ DỤNG HÀM COUNTIF',
+  hello: 'Xin chào! Mình là Bít 🤖 Cùng học cách đếm có điều kiện bằng hàm COUNTIF nhé!' };
 const TOPICS = [
-  { title: 'Hàm COUNTIF', tip: 'COUNT + IF = đếm có điều kiện. Đếm bao nhiêu bạn nam chỉ một hàm!',
+  { title: 'Hàm COUNTIF là gì?', tip: 'COUNT + IF = đếm có điều kiện. Đếm bao nhiêu bạn nam chỉ một hàm!',
     key: '<b>=COUNTIF(vùng,</b><br><b>điều kiện)</b>: đếm',
     ill: () => svg(`${grid(30, 30, [['An', 'Nam'], ['Bình', 'Nữ'], ['Cường', 'Nam'], ['Dung', 'Nữ'], ['Huy', 'Nam']], { cw: 120, rh: 50, fs: 24, fill: { '0-1': '#D0EBFF', '2-1': '#D0EBFF', '4-1': '#D0EBFF' } })}
       ${ball(370, 80, 28, '#1982C4', '1', 26)}${ball(440, 120, 28, '#1982C4', '2', 26)}${ball(510, 80, 28, '#1982C4', '3', 26)}
@@ -10,86 +10,89 @@ const TOPICS = [
       ${fbar(30, 330, 540, 'E1', '=COUNTIF(B1:B5,"Nam")', 24)}
       ${stars3([570, 280], [320, 280], [570, 30])}`),
     html: `<ul>
-      <li><span class="k">COUNTIF</span>: <b>đếm</b> số ô trong vùng <b>thoả điều kiện</b>.</li>
-      <li>Cú pháp: <code>=COUNTIF(vùng, điều_kiện)</code></li>
-      <li>Đếm số bạn nam: <code>=COUNTIF(B1:B5,"Nam")</code></li>
-      <li>Đếm được cả ô chứa <b>chữ</b> lẫn ô chứa <b>số</b>.</li>
-      <li>Không phân biệt chữ hoa, chữ thường.</li></ul>`,
+      <li><span class="k">COUNTIF</span>: <b>đếm</b> số ô trong vùng <b>thoả mãn điều kiện</b>.</li>
+      <li>Cú pháp: <code>=COUNTIF(range, criteria)</code></li>
+      <li><b>range</b>: vùng ô cần đếm.</li>
+      <li><b>criteria</b>: điều kiện để đếm.</li>
+      <li>Ví dụ: <code>=COUNTIF(B1:B5,"Nam")</code> → 3</li></ul>`,
     quiz: [
-      { q: 'Hàm COUNTIF dùng để làm gì?', o: ['Tính tổng có điều kiện', 'Đếm số ô thoả điều kiện', 'Tìm giá trị lớn nhất', 'Sắp xếp dữ liệu'], a: 1, why: 'COUNTIF đếm các ô thoả điều kiện.' },
-      { q: 'Cột C chứa xếp loại. Đếm số bạn "Giỏi" trong C2:C40, viết:', o: ['=COUNT(C2:C40,"Giỏi")', '=COUNTIF("Giỏi",C2:C40)', '=SUMIF(C2:C40,"Giỏi")', '=COUNTIF(C2:C40,"Giỏi")'], a: 3, why: 'Vùng trước, điều kiện sau: =COUNTIF(C2:C40,"Giỏi").' } ] },
-  { title: 'Viết điều kiện', tip: 'Điều kiện có dấu so sánh thì gói cả dấu lẫn số vào trong " " nha!',
-    key: '<b>"Nam"</b> • <b>"&gt;=8"</b> • <b>"&lt;&gt;0"</b><br>Điều kiện để trong " "',
-    ill: () => svg(`${pillS(40, 40, 240, 70, '#1982C4', '"Nam"', 36)}${pillS(320, 40, 240, 70, '#2DA44E', '">=8"', 36)}
-      ${pillS(40, 150, 240, 70, '#FF7F11', '"&lt;5"', 36)}${pillS(320, 150, 240, 70, '#8338EC', '"&lt;&gt;0"', 36)}
-      ${pillS(40, 260, 240, 70, '#FF006E', '10', 36)}${pillS(320, 260, 240, 70, '#2EC4B6', 'E1', 36)}
-      ${T(300, 380, 'Số hoặc ô: không cần " "', 26, '#8338EC')}`),
+      { q: 'Hàm COUNTIF dùng để làm gì?', o: ['Tính tổng có điều kiện', 'Đếm số ô thoả mãn điều kiện', 'Tìm giá trị lớn nhất', 'Sắp xếp dữ liệu'], a: 1, why: 'COUNTIF đếm các ô thoả mãn điều kiện.' },
+      { q: 'Hàm COUNTIF có mấy đối số?', o: ['1', '3', '4', '2'], a: 3, why: 'Hai đối số: vùng (range) và điều kiện (criteria).' } ] },
+  { title: 'Điều kiện là chữ', tip: 'Chữ trong điều kiện phải mặc áo ngoặc kép " " nha!',
+    key: 'Chữ để trong <b>" "</b><br>Không phân biệt<br>hoa / thường',
+    ill: () => svg(`${grid(30, 30, [['Giỏi'], ['Khá'], ['giỏi'], ['Đạt'], ['GIỎI']], { cw: 150, rh: 52, fs: 26, fill: { '0-0': '#D3F9D8', '2-0': '#D3F9D8', '4-0': '#D3F9D8' } })}
+      ${pillS(260, 50, 310, 64, '#2DA44E', '"Giỏi" → 3', 32)}
+      ${pillS(260, 150, 310, 56, '#1982C4', 'giỏi = GIỎI', 28)}
+      ${fbar(30, 336, 540, 'C1', '=COUNTIF(A1:A5,"Giỏi")', 24)}
+      ${stars3([570, 260], [300, 270], [570, 30])}`),
+    html: `<ul>
+      <li>Điều kiện là văn bản → đặt trong <span class="k">" "</span>: <code>"Giỏi"</code></li>
+      <li>Không phân biệt chữ <b>hoa</b>, chữ <b>thường</b>: "giỏi" = "GIỎI".</li>
+      <li>Phải gõ <b>đúng chính tả</b>, thừa dấu cách cũng không khớp.</li>
+      <li>Đếm số bạn xếp loại Giỏi: <code>=COUNTIF(D2:D40,"Giỏi")</code></li></ul>`,
+    quiz: [
+      { q: 'Đếm số bạn "Giỏi" trong C2:C40, công thức đúng là:', o: ['=COUNT(C2:C40,"Giỏi")', '=COUNTIF("Giỏi",C2:C40)', '=COUNTIF(C2:C40,Giỏi)', '=COUNTIF(C2:C40,"Giỏi")'], a: 3, why: 'Vùng trước, điều kiện sau và chữ đặt trong " ".' },
+      { q: 'A1:A3 chứa: Nam, NAM, nam. =COUNTIF(A1:A3,"Nam") bằng:', o: ['3', '1', '0', '2'], a: 0, why: 'COUNTIF không phân biệt chữ hoa, chữ thường.' } ] },
+  { title: 'Điều kiện so sánh số', tip: 'Dấu so sánh và con số đi chung một cặp " " nhé!',
+    key: '<b>"&gt;=8"</b> • <b>"&lt;5"</b> • <b>"&lt;&gt;0"</b><br>Bằng số: <b>10</b>',
+    ill: () => svg(`${pillS(40, 40, 240, 70, '#2DA44E', '">=8"', 36)}${pillS(320, 40, 240, 70, '#FF7F11', '"&lt;5"', 36)}
+      ${pillS(40, 150, 240, 70, '#8338EC', '"&lt;&gt;0"', 36)}${pillS(320, 150, 240, 70, '#FF006E', '10', 36)}
+      ${grid(120, 270, [['9', '4', '8', '10']], { cw: 90, rh: 56, fs: 28, head: false, fill: { '0-0': '#D3F9D8', '0-2': '#D3F9D8', '0-3': '#D3F9D8' } })}
+      ${T(300, 380, '">=8" → 3', 30, '#2B8A3E')}`),
     html: `<table class="tb"><tr><th>Điều kiện</th><th>Ý nghĩa</th></tr>
-      <tr><td><code>"Nam"</code></td><td>bằng chữ Nam</td></tr>
       <tr><td><code>"&gt;=8"</code></td><td>lớn hơn hoặc bằng 8</td></tr>
+      <tr><td><code>"&lt;5"</code></td><td>nhỏ hơn 5</td></tr>
       <tr><td><code>"&lt;&gt;0"</code></td><td>khác 0</td></tr>
-      <tr><td><code>10</code> hoặc <code>E1</code></td><td>bằng 10 / bằng giá trị ô E1</td></tr>
-      <tr><td><code>"&gt;="&amp;E1</code></td><td>lớn hơn hoặc bằng giá trị ô E1</td></tr></table>`,
+      <tr><td><code>10</code> hoặc <code>"10"</code></td><td>bằng 10</td></tr>
+      <tr><td colspan="2">Dấu so sánh + số đặt chung trong " "</td></tr></table>`,
     quiz: [
       { q: 'Đếm số bạn có điểm từ 8 trở lên trong B2:B30, viết:', o: ['=COUNTIF(B2:B30,>=8)', '=COUNTIF(B2:B30,">=8")', '=COUNTIF(B2:B30,"=>8")', '=COUNTIF(>=8,B2:B30)'], a: 1, why: 'Dấu so sánh và số đặt chung trong " ": ">=8".' },
-      { q: 'Điều kiện ">="&E1 có nghĩa là gì?', o: ['Lớn hơn hoặc bằng giá trị ô E1', 'Bằng chữ E1', 'Nhỏ hơn E1', 'Lỗi cú pháp'], a: 0, why: 'Dấu & nối ">=" với giá trị trong ô E1.' } ] },
-  { title: 'Hàm SUMIF', tip: 'SUM + IF = cộng có chọn lọc. Chỉ cộng những khoản thoả điều kiện!',
-    key: '<b>=SUMIF(vùng ĐK, điều kiện,</b><br><b>vùng tính tổng)</b>',
-    ill: () => svg(`${grid(30, 30, [['Ăn', '50'], ['Học', '30'], ['Ăn', '40'], ['Chơi', '20']], { cw: 120, rh: 54, fs: 24, fill: { '0-0': '#FFE3E3', '2-0': '#FFE3E3', '0-1': '#D3F9D8', '2-1': '#D3F9D8' } })}
-      ${T(440, 90, '50 + 40', 36, '#2B8A3E')}${pillS(330, 120, 240, 64, '#2DA44E', 'Ăn: 90', 32)}
-      ${fbar(30, 320, 540, 'E1', '=SUMIF(A1:A4,"Ăn",B1:B4)', 22)}
-      ${stars3([570, 240], [330, 260], [570, 30])}`),
+      { q: 'B1:B4 = 9, 4, 8, 10. =COUNTIF(B1:B4,"<8") bằng bao nhiêu?', o: ['3', '4', '1', '2'], a: 2, why: 'Chỉ có số 4 nhỏ hơn 8 → 1.' } ] },
+  { title: 'Điều kiện lấy từ ô', tip: 'Đổi điều kiện trong ô E1 là kết quả tự đổi, khỏi sửa công thức!',
+    key: 'Bằng ô: <b>E1</b><br>So sánh: <b>"&gt;="&amp;E1</b>',
+    ill: () => svg(`${grid(30, 30, [['8A', '', '8A'], ['8B', '', ''], ['8A', '', '']], { cw: 110, rh: 56, fs: 26, cws: [110, 40, 120], fill: { '0-0': '#FFE3E3', '2-0': '#FFE3E3', '0-2': '#FFE066' } })}
+      ${pillS(380, 50, 190, 60, '#FF006E', 'Kết quả: 2', 26)}
+      ${pillS(380, 140, 190, 60, '#1982C4', 'E1 → ô', 28)}
+      ${fbar(30, 250, 540, 'F1', '=COUNTIF(A1:A3,D1)', 26)}
+      ${fbar(30, 320, 540, 'F2', '=COUNTIF(B:B,">="&E1)', 24)}
+      ${stars3([570, 230], [30, 400], [570, 400])}`),
     html: `<ul>
-      <li><span class="k">SUMIF</span>: <b>tính tổng</b> các ô thoả điều kiện.</li>
-      <li><code>=SUMIF(vùng_ĐK, điều_kiện, vùng_tổng)</code></li>
-      <li>Tổng tiền ăn: <code>=SUMIF(A1:A4,"Ăn",B1:B4)</code></li>
-      <li>Hai vùng phải có <b>cùng số hàng</b>.</li></ul>`,
+      <li>Điều kiện có thể là <span class="k">địa chỉ ô</span> (không cần " "): <code>=COUNTIF(A2:A40,E1)</code></li>
+      <li>So sánh với giá trị trong ô: dùng dấu <span class="k">&amp;</span> để nối:</li>
+      <li><code>=COUNTIF(B2:B40,"&gt;="&amp;E1)</code></li>
+      <li>Đổi giá trị ô E1 → kết quả <b>tự cập nhật</b>.</li></ul>`,
     quiz: [
-      { q: 'Trong =SUMIF(A2:A9,"Ăn",B2:B9), phần B2:B9 là gì?', o: ['Vùng điều kiện', 'Điều kiện', 'Vùng tính tổng', 'Tên hàm'], a: 2, why: 'Đối số thứ 3 là vùng chứa số cần cộng.' },
-      { q: 'A1:A4 = Ăn, Học, Ăn, Chơi; B1:B4 = 50, 30, 40, 20. =SUMIF(A1:A4,"Ăn",B1:B4) =', o: ['140', '50', '2', '90'], a: 3, why: 'Cộng các khoản "Ăn": 50 + 40 = 90.' } ] },
-  { title: 'SUMIF với điều kiện số', tip: 'Nếu cộng chính các ô dùng làm điều kiện thì bỏ qua đối số thứ ba cũng được!',
-    key: 'Vùng tính tổng = vùng ĐK<br>→ bỏ đối số thứ 3',
-    ill: () => svg(`${grid(30, 30, [['120'], ['80'], ['200'], ['60']], { cw: 140, rh: 56, fs: 26, fill: { '0-0': '#D3F9D8', '2-0': '#D3F9D8' } })}
-      ${pillS(250, 50, 320, 64, '#FF006E', '">=100"', 34)}${arrow(410, 124, 410, 170, O, 6)}${pillS(250, 180, 320, 64, '#2DA44E', '120 + 200 = 320', 26)}
-      ${fbar(30, 330, 540, 'B1', '=SUMIF(A1:A4,">=100")', 24)}
-      ${stars3([570, 290], [240, 290], [30, 300])}`),
+      { q: 'Ô E1 chứa 7. Đếm số ô trong B2:B40 lớn hơn E1, viết:', o: ['=COUNTIF(B2:B40,">"&E1)', '=COUNTIF(B2:B40,">E1")', '=COUNTIF(B2:B40,>E1)', '=COUNTIF(E1,B2:B40)'], a: 0, why: 'Dùng & nối dấu ">" với giá trị của ô E1.' },
+      { q: 'Ô D1 chứa chữ 8A. =COUNTIF(A2:A40,D1) đếm gì?', o: ['Số ô trống', 'Số ô có chữ D1', 'Số ô có nội dung 8A', 'Báo lỗi'], a: 2, why: 'Điều kiện là ô D1 → đếm các ô bằng giá trị của D1 (8A).' } ] },
+  { title: 'Lập bảng thống kê', tip: 'Viết COUNTIF một lần rồi kéo xuống, nhớ ghim vùng dữ liệu bằng $!',
+    key: 'Vùng dữ liệu dùng <b>$</b><br><b>=COUNTIF($C$2:$C$40,E2)</b>',
+    ill: () => svg(`${grid(30, 30, [['Xếp loại', 'Số HS'], ['Giỏi', '12'], ['Khá', '18'], ['Đạt', '8']], { cw: 150, rh: 54, fs: 24, bold: [0], fill: { '1-1': '#D3F9D8', '2-1': '#D3F9D8', '3-1': '#D3F9D8' }, sel: [1, 1], handle: true })}
+      ${arrow(372, 150, 372, 270, '#FF006E', 7)}
+      ${pillS(400, 60, 170, 60, '#E5383B', '$C$2:$C$40', 20)}
+      ${fbar(30, 320, 540, 'F2', '=COUNTIF($C$2:$C$40,E2)', 22)}
+      ${stars3([570, 200], [460, 260], [30, 290])}`),
     html: `<ul>
-      <li>Điều kiện là số: <code>=SUMIF(B2:B20,"&gt;=100",C2:C20)</code></li>
-      <li>Nếu cộng <b>chính vùng điều kiện</b> → được bỏ đối số thứ 3:</li>
-      <li><code>=SUMIF(A1:A4,"&gt;=100")</code> cộng các số ≥ 100.</li>
-      <li>Kéo công thức xuống nhiều ô → nhớ dùng <span class="k">$</span> cho vùng: <code>$A$1:$A$4</code></li></ul>`,
+      <li>Bảng thống kê: cột E ghi các loại, cột F đếm số lượng.</li>
+      <li>Viết ở F2: <code>=COUNTIF($C$2:$C$40,E2)</code> rồi <b>kéo xuống</b>.</li>
+      <li>Vùng dữ liệu dùng <span class="k">địa chỉ tuyệt đối</span> để không bị trượt.</li>
+      <li>Điều kiện <code>E2</code> tương đối → tự đổi thành E3, E4…</li></ul>`,
     quiz: [
-      { q: 'A1:A4 = 120, 80, 200, 60. Công thức =SUMIF(A1:A4,">=100") bằng:', o: ['320', '460', '140', '2'], a: 0, why: 'Cộng các số ≥ 100: 120 + 200 = 320.' },
-      { q: 'Viết SUMIF ở E2 rồi kéo xuống E3, E4. Vùng dữ liệu nên viết dạng nào?', o: ['A2:A20', 'A$2:A20', '$A$2:$A$20', 'A2:$A20'], a: 2, why: 'Vùng dữ liệu cố định → dùng địa chỉ tuyệt đối.' } ] },
-  { title: 'So sánh các hàm đếm, tổng', tip: 'Có chữ IF ở đuôi là có điều kiện, nhớ vậy là không nhầm!',
-    key: '<b>COUNT</b> ≠ <b>COUNTIF</b><br><b>SUM</b> ≠ <b>SUMIF</b>',
+      { q: 'Viết COUNTIF ở F2 rồi kéo xuống F4. Vùng dữ liệu nên viết là:', o: ['C2:C40', 'C$2:C40', '$C$2:$C$40', 'C2:$C40'], a: 2, why: 'Vùng dữ liệu cố định → dùng địa chỉ tuyệt đối.' },
+      { q: 'F2 có =COUNTIF($C$2:$C$40,E2). Kéo xuống F3 thì được:', o: ['=COUNTIF($C$2:$C$40,E3)', '=COUNTIF($C$3:$C$41,E3)', '=COUNTIF($C$2:$C$40,E2)', '=COUNTIF(C3:C41,E3)'], a: 0, why: 'Vùng tuyệt đối giữ nguyên, E2 tương đối → E3.' } ] },
+  { title: 'COUNT hay COUNTIF?', tip: 'Có chữ IF ở đuôi là có điều kiện, nhớ vậy là không nhầm!',
+    key: '<b>COUNT</b>: đếm ô có số<br><b>COUNTIF</b>: đếm theo<br>điều kiện',
     ill: () => svg(`${key3d(40, 40, 230, 100, '#1982C4', '#0F5A8A', 'COUNT', 40)}${key3d(330, 40, 230, 100, '#FF006E', '#B0004E', 'COUNTIF', 38)}
-      ${key3d(40, 200, 230, 100, '#2DA44E', '#1B7A35', 'SUM', 44)}${key3d(330, 200, 230, 100, '#FF7F11', '#C85A00', 'SUMIF', 40)}
-      ${T(300, 102, '→', 40, '#E5383B')}${T(300, 262, '→', 40, '#E5383B')}
-      ${T(300, 380, 'IF = có điều kiện', 34, '#8338EC')}`),
-    html: `<table class="tb"><tr><th>Hàm</th><th>Công việc</th></tr>
-      <tr><td><b>COUNT</b></td><td>Đếm ô chứa <b>số</b></td></tr>
-      <tr><td><b>COUNTIF</b></td><td>Đếm ô <b>thoả điều kiện</b></td></tr>
-      <tr><td><b>SUM</b></td><td>Cộng tất cả các số</td></tr>
-      <tr><td><b>SUMIF</b></td><td>Cộng các số <b>thoả điều kiện</b></td></tr>
-      <tr><td><b>IF</b></td><td>Chọn kết quả theo điều kiện</td></tr></table>`,
+      ${T(300, 102, '→', 40, '#E5383B')}
+      ${T(155, 200, 'Ô chứa số', 28, '#1864AB')}${T(445, 200, 'Thoả điều kiện', 28, '#C2185B')}
+      ${T(155, 236, '(chữ không đếm)', 22, '#868E96', 'middle', 700)}${T(445, 236, '(cả chữ và số)', 22, '#868E96', 'middle', 700)}
+      ${pillS(100, 290, 400, 64, '#FFC300', 'IF = có điều kiện', 32, 0, O)}
+      ${stars3([30, 300], [570, 300], [300, 400])}`),
+    html: `<table class="tb"><tr><th>Hàm</th><th>Đếm gì?</th></tr>
+      <tr><td><b>COUNT</b></td><td>Các ô chứa <b>số</b></td></tr>
+      <tr><td><b>COUNTIF</b></td><td>Các ô <b>thoả mãn điều kiện</b> (số hoặc chữ)</td></tr>
+      <tr><td colspan="2">Đếm bạn vắng: <code>=COUNTIF(C2:C40,"Vắng")</code></td></tr>
+      <tr><td colspan="2">Đếm bạn có điểm: <code>=COUNT(D2:D40)</code></td></tr></table>`,
     quiz: [
-      { q: 'Muốn biết lớp có bao nhiêu bạn điểm dưới 5, dùng hàm nào?', o: ['SUM', 'COUNT', 'SUMIF', 'COUNTIF'], a: 3, why: 'Đếm có điều kiện → COUNTIF.' },
-      { q: 'Muốn tính tổng tiền đã chi cho mục "Sách vở", dùng hàm nào?', o: ['SUMIF', 'COUNTIF', 'MAX', 'AVERAGE'], a: 0, why: 'Tính tổng có điều kiện → SUMIF.' } ] },
-  { title: 'Ứng dụng: sổ thu chi', tip: 'Dùng SUMIF quản lí tiền tiêu vặt, cuối tháng biết ngay mình tiêu vào đâu!',
-    key: 'Tổng thu, tổng chi<br>theo từng <b>khoản</b><br>bằng <b>SUMIF</b>',
-    ill: () => svg(`${grid(30, 30, [['Khoản', 'Loại', 'Tiền'], ['Mẹ cho', 'Thu', '100'], ['Bút', 'Chi', '15'], ['Truyện', 'Chi', '25']], { cw: 110, rh: 50, fs: 22, cws: [120, 90, 100], bold: [0] })}
-      <rect x="400" y="40" width="170" height="210" rx="18" fill="#fff" stroke="${O}" stroke-width="5"/>
-      ${T(485, 90, 'Thu: 100', 26, '#2B8A3E')}${T(485, 140, 'Chi: 40', 26, '#C92A2A')}<line x1="420" y1="160" x2="550" y2="160" stroke="${O}" stroke-width="4"/>${T(485, 210, 'Còn: 60', 28, '#1864AB')}
-      ${pillS(40, 300, 520, 60, '#8338EC', '=SUMIF(B2:B4,"Chi",C2:C4)', 24)}
-      ${stars3([570, 280], [30, 390], [570, 390])}`),
-    html: `<ul>
-      <li>Ghi mỗi khoản: <b>ngày, nội dung, loại (Thu / Chi), số tiền</b>.</li>
-      <li>Tổng chi: <code>=SUMIF(B2:B50,"Chi",C2:C50)</code></li>
-      <li>Số lần chi: <code>=COUNTIF(B2:B50,"Chi")</code></li>
-      <li>Còn lại = Tổng thu − Tổng chi.</li>
-      <li>Vẽ biểu đồ tròn để xem tỉ lệ các khoản chi.</li></ul>`,
-    quiz: [
-      { q: 'Cột B ghi "Thu"/"Chi", cột C ghi tiền. Tổng thu (hàng 2–50) là:', o: ['=SUM(C2:C50)', '=SUMIF(B2:B50,"Thu",C2:C50)', '=COUNTIF(B2:B50,"Thu")', '=SUMIF(C2:C50,"Thu",B2:B50)'], a: 1, why: 'Vùng điều kiện là cột B, cộng tiền ở cột C.' },
-      { q: 'Công thức =COUNTIF(B2:B50,"Chi") cho biết điều gì?', o: ['Tổng số tiền đã chi', 'Số tiền còn lại', 'Số lần đã chi tiêu', 'Khoản chi lớn nhất'], a: 2, why: 'COUNTIF đếm số hàng có loại "Chi".' } ] },
+      { q: 'Muốn biết lớp có bao nhiêu bạn điểm dưới 5, dùng hàm nào?', o: ['SUM', 'COUNT', 'MAX', 'COUNTIF'], a: 3, why: 'Đếm có điều kiện (< 5) → COUNTIF.' },
+      { q: 'Cột C ghi "Có mặt"/"Vắng". Đếm số bạn vắng dùng:', o: ['=COUNT(C2:C40)', '=COUNTIF(C2:C40,"Vắng")', '=SUM(C2:C40)', '=COUNTIF("Vắng")'], a: 1, why: 'Đếm ô chứa chữ "Vắng" → COUNTIF.' } ] },
 ];
