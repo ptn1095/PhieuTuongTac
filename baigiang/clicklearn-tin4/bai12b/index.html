@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Bài 12B. Phần mềm luyện gõ bàn phím – ClickLearn Tin học 4 – Cô Thùy Tin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Exo+2:wght@500;600;700;800&family=Baloo+2:wght@500;600;700;800&family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== PHONG CÁCH VŨ TRỤ ===== */
+:root{--fh:'Chakra Petch';--fhw:700;--fb:'Exo 2';--fs:35px;--ink:#1B1F4B;--bink:#EAF2FF;--rad:36px;--big:108px;
+  --board:radial-gradient(circle at 18% 14%,rgba(176,107,255,.38),transparent 38%),radial-gradient(circle at 88% 92%,rgba(0,194,209,.32),transparent 42%),radial-gradient(circle,rgba(255,255,255,.85) 0 1.6px,transparent 2.6px) 0 0/96px 96px,radial-gradient(circle,rgba(255,255,255,.5) 0 1px,transparent 2px) 48px 30px/140px 140px,linear-gradient(160deg,#2A2E74,#0E1238);
+  --board-sh:0 0 0 8px #7DF9FF,0 0 0 15px #3A2C8F,0 0 60px 16px rgba(125,249,255,.45),0 30px 0 15px rgba(0,0,0,.35);
+  --board-sh-s:0 0 0 5px #7DF9FF,0 0 0 10px #3A2C8F,0 0 40px 10px rgba(125,249,255,.4),0 14px 0 10px rgba(0,0,0,.35);
+  --edge:#2A1F6B;--dark:#6A5FE0;--panel:#F4F6FF;--soft:#E3E8FF;--ill:#F7F8FF;
+  --plq:linear-gradient(180deg,#B06BFF,#4F7CFF);--plq-edge:#7DF9FF;--plq-ink:#fff;--plq-fx:0 0 14px rgba(125,249,255,.9),0 3px 0 #2A1F6B;--plq-rad:44px;
+  --medal:radial-gradient(circle at 35% 30%,#FFF6B0,#FFD23F 55%,#F08A00);--medal-ink:#2A1F6B;
+  --title-c:#fff;--title-fx:0 0 10px #7DF9FF,0 0 26px #7DF9FF,0 0 50px #B06BFF,0 8px 0 #3A2C8F;--title-fx-s:0 0 8px #7DF9FF,0 0 22px #B06BFF,0 5px 0 #3A2C8F;
+  --ttl-fx:0 0 14px rgba(125,249,255,.75),0 4px 0 #2A1F6B;
+  --btn-top:#7DF9FF;--btn:#3A8DFF;--btn-dark:#1F3A8F;--accent:#FFD23F;--acc-p:#5A3FC7;
+  --hud:linear-gradient(180deg,#3A3F8F,#1B1F4B);--hb:linear-gradient(180deg,#F4F6FF,#B9C2FF);--hud-ink:#EAF2FF;
+  --s0:#2B2F77;--s1:#05071A;--code-bg:#E0E7FF;--code-ink:#3A2C8F;--cpanel:#F4F6FF;--wdeco:rgba(125,249,255,.05)}
+.rk b{color:#5A3FC7}
+.board .edg{position:absolute;pointer-events:none;z-index:4}
+.tw{position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;box-shadow:0 0 8px 2px rgba(200,230,255,.9);animation:twinkle 3s ease-in-out infinite}
+.shoot{position:absolute;width:160px;height:3px;border-radius:3px;background:linear-gradient(90deg,transparent,#fff);transform:rotate(-24deg);animation:shoot 7s linear infinite;opacity:0}
+@keyframes shoot{0%{translate:0 0;opacity:0}3%{opacity:1}12%{translate:-55vw 25vw;opacity:0}100%{opacity:0;translate:-55vw 25vw}}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;font-family:var(--fb),'Baloo 2',system-ui,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+/* ===== Nền ===== */
+.bg{position:fixed;inset:0;transition:opacity .9s}
+#bgB{opacity:0}
+.dots{position:fixed;inset:0;pointer-events:none;background:radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.35) 100%)}
+.deco{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+@keyframes sway{0%,100%{rotate:-3deg}50%{rotate:3deg}}
+@keyframes glow{0%,100%{opacity:.15;transform:translate(0,0)}50%{opacity:1;transform:translate(10px,-14px)}}
+@keyframes rise{0%{transform:translateY(0);opacity:0}10%{opacity:.8}100%{transform:translateY(-110vh);opacity:0}}
+@keyframes fall{0%{transform:translate(0,-10vh) rotate(0)}100%{transform:translate(40px,115vh) rotate(360deg)}}
+@keyframes drift{0%{transform:translateX(-20vw)}100%{transform:translateX(120vw)}}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-18px) rotate(6deg)}}
+/* ===== Thế giới zoom ===== */
+#stage{position:fixed;inset:0;overflow:hidden;cursor:grab;touch-action:none}
+#stage.drag{cursor:grabbing}
+#world{position:absolute;left:0;top:0;transform-origin:0 0}
+.frame{position:absolute;left:0;top:0;width:1600px;height:900px;transform-origin:0 0;cursor:pointer}
+.frame.cur{cursor:default}
+.wdeco{position:absolute;border-radius:50%;background:var(--wdeco);pointer-events:none}
+/* ===== Bảng (khung) – hình thức do phong cách quyết định ===== */
+.board{border-radius:var(--rad,30px);background:var(--board);box-shadow:var(--board-sh)}
+.crown{position:absolute;left:50%;top:-178px;width:620px;height:190px;transform:translateX(-50%);z-index:2;pointer-events:none;overflow:visible}
+.crown g.sw{transform-origin:0 0;animation:sway 4s ease-in-out infinite}
+.plq{position:absolute;left:50%;top:-62px;transform:translateX(-50%);z-index:5;white-space:nowrap;padding:6px 48px 10px;border-radius:var(--plq-rad,20px);border:7px solid var(--plq-edge);
+  background:var(--plq);font-family:var(--fh);font-weight:var(--fhw,800);font-size:50px;line-height:1.1;color:var(--plq-ink);text-shadow:var(--plq-fx);box-shadow:inset 0 6px 0 rgba(255,255,255,.22),0 10px 0 rgba(0,0,0,.3)}
+/* ===== Khung hoạt động ===== */
+.num{position:absolute;left:62px;top:56px;width:108px;height:108px;border-radius:50%;background:var(--medal);border:7px solid var(--edge);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-weight:var(--fhw,800);font-size:60px;color:var(--medal-ink);box-shadow:0 8px 0 rgba(0,0,0,.3)}
+.ttl{position:absolute;left:190px;top:64px;right:70px;font-family:var(--fh);font-weight:var(--fhw,800);font-size:62px;line-height:1.08;color:var(--bink);text-shadow:var(--ttl-fx)}
+.panel{position:absolute;left:62px;top:182px;width:866px;height:676px;background:var(--panel);border-radius:26px;border:7px solid var(--dark);padding:26px 34px;box-shadow:inset 0 6px 0 rgba(0,0,0,.06),0 9px 0 var(--edge);font-size:var(--fs,37px);font-weight:600;line-height:1.26;overflow:hidden;color:var(--ink)}
+.panel b{font-weight:800}
+.panel ul{list-style:none}
+.panel li{position:relative;padding-left:52px;margin-bottom:16px}
+.panel li::before{content:"";position:absolute;left:4px;top:9px;width:30px;height:30px;border-radius:50%;background:var(--c);box-shadow:inset 0 -5px 0 rgba(0,0,0,.18)}
+.k{background:#FFE38A;color:#B4320A;border-radius:12px;padding:0 10px;font-weight:800;white-space:nowrap}
+code{font-family:inherit;background:var(--code-bg);color:var(--code-ink);border-radius:12px;padding:0 12px;font-weight:800;white-space:nowrap}
+.tb{width:100%;border-collapse:separate;border-spacing:0 10px;font-size:31px}
+.tb th{background:var(--c);color:#fff;font-weight:800;padding:8px 14px;text-align:left}
+.tb th:first-child{border-radius:18px 0 0 18px}.tb th:last-child{border-radius:0 18px 18px 0}
+.tb td{background:var(--soft);padding:8px 14px}
+.tb td:first-child{border-radius:18px 0 0 18px;font-weight:800}.tb td:last-child{border-radius:0 18px 18px 0}
+.ill{position:absolute;left:960px;top:182px;width:580px;height:406px;background:var(--ill);border-radius:26px;border:7px solid var(--dark);box-shadow:0 9px 0 var(--edge);overflow:hidden}
+.ill svg{width:100%;height:100%;display:block}
+.qlabel{position:absolute;left:960px;top:606px;width:580px;text-align:center;color:var(--bink);font-weight:800;font-size:31px;text-shadow:var(--ttl-fx)}
+.chips{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0 14px}
+.chip{border-radius:18px;padding:6px 22px;color:#fff;font-weight:800;font-size:31px;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+/* ===== 4 bước trong mỗi hoạt động ===== */
+.panel .s4 li{padding-left:0;margin-bottom:22px}
+.panel .s4 li::before{display:none}
+.l4{display:inline-block;border-radius:14px;padding:0 16px;color:#fff;font-weight:800;font-size:27px;margin-right:6px;vertical-align:3px;border:3px solid rgba(0,0,0,.25);box-shadow:inset 0 3px 0 rgba(255,255,255,.3),0 4px 0 rgba(0,0,0,.25);white-space:nowrap}
+.l4-0{background:#E5392C}.l4-1{background:#1982C4}.l4-2{background:#E8890C}.l4-3{background:#2F9B4A}
+.hlink{text-decoration:none}
+.bul{font-family:'Baloo 2',sans-serif;font-style:normal}
+/* ===== Khung đố vui ===== */
+.qbadge{position:absolute;right:60px;top:52px;width:130px;height:130px;border-radius:50%;border:8px solid var(--edge);color:var(--medal-ink);background:var(--medal);font-family:var(--fh);font-weight:var(--fhw,800);font-size:86px;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 0 rgba(0,0,0,.3);animation:wob 2.4s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+.qtext{position:absolute;left:70px;right:220px;top:70px;font-weight:800;font-size:49px;line-height:1.2;color:var(--bink);text-shadow:var(--ttl-fx);padding-bottom:14px}
+.opts{position:absolute;left:62px;right:62px;top:320px;display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.opt{display:flex;align-items:center;gap:22px;min-height:126px;background:var(--panel);border:7px solid var(--dark);border-radius:26px;padding:10px 26px;font-weight:700;font-size:37px;line-height:1.15;box-shadow:inset 0 -6px 0 rgba(0,0,0,.06),0 10px 0 var(--edge);cursor:pointer;transition:transform .12s,box-shadow .12s,background .2s,border-color .2s;color:var(--ink)}
+.cur .opt:hover{transform:translateY(-4px);box-shadow:0 14px 0 var(--edge)}
+.opt:active{transform:translateY(6px)!important;box-shadow:0 4px 0 var(--edge)!important}
+.opt .L{flex:none;width:76px;height:76px;border-radius:18px;color:#fff;font-weight:800;font-size:44px;display:flex;align-items:center;justify-content:center;border:4px solid rgba(0,0,0,.25);box-shadow:inset 0 4px 0 rgba(255,255,255,.35),inset 0 -6px 0 rgba(0,0,0,.18)}
+.opt.ok{background:#DDF6C8;border-color:#2D7612;box-shadow:0 10px 0 #1E5A0C}
+.opt.bad{background:#FFE0DC;border-color:#E5392C;box-shadow:0 10px 0 #981A12;animation:shake .45s}
+.opt.dim{opacity:.55}
+.answered .opt{cursor:default}
+@keyframes shake{0%,100%{translate:0}20%{translate:-16px}40%{translate:14px}60%{translate:-10px}80%{translate:6px}}
+.fb{position:absolute;left:62px;right:62px;top:654px;min-height:96px;border-radius:24px;padding:12px 30px;font-weight:700;font-size:34px;line-height:1.22;display:none;align-items:center;gap:20px}
+.fb.ok{display:flex;background:linear-gradient(180deg,#93D655,#4C9B22);color:#fff;border:5px solid #2D7612;box-shadow:0 9px 0 #2D7612;text-shadow:0 2px 0 #2D7612}
+.fb.bad{display:flex;background:#FFF3BF;color:#3A2A0A;border:6px solid #E8A200;box-shadow:0 9px 0 #A86E00}
+.fb .ic{font-size:54px;flex:none}
+/* ===== Khung tiêu đề & kết quả ===== */
+.bigtitle{position:absolute;left:80px;top:150px;font-family:var(--fh);font-weight:var(--fhw,800);font-size:var(--big,118px);line-height:1.06;color:var(--title-c);text-shadow:var(--title-fx)}
+.btn{display:inline-flex;align-items:center;gap:14px;border:5px solid rgba(0,0,0,.28);border-radius:20px;padding:14px 40px;font-family:inherit;font-weight:800;font-size:44px;color:#fff;cursor:pointer;text-shadow:0 3px 0 rgba(0,0,0,.25);box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 9px 0 rgba(0,0,0,.4);transition:transform .1s,box-shadow .1s;background:var(--btn)}
+.btn:active{transform:translateY(6px);box-shadow:inset 0 5px 0 rgba(255,255,255,.3),0 3px 0 rgba(0,0,0,.4)}
+.rgrid{position:absolute;left:60px;right:60px;top:120px;bottom:90px;display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.rcard{border-radius:24px;border:6px solid var(--edge);padding:12px 14px;color:#fff;box-shadow:inset 0 5px 0 rgba(255,255,255,.25),0 9px 0 rgba(0,0,0,.3);cursor:pointer;position:relative;overflow:hidden;transition:transform .15s}
+.cur .rcard:hover{transform:translateY(-6px) rotate(-1deg)}
+.rn{width:54px;height:54px;border-radius:50%;background:var(--medal);color:var(--medal-ink);font-weight:800;font-size:30px;display:flex;align-items:center;justify-content:center;border:5px solid var(--edge)}
+.rt{font-family:var(--fh);font-weight:var(--fhw,800);font-size:30px;line-height:1.1;margin:8px 0 8px;text-shadow:0 3px 0 rgba(0,0,0,.3)}
+.rk{font-weight:600;font-size:25px;line-height:1.25;background:var(--panel);color:var(--ink);border-radius:16px;padding:10px 12px}
+.rk b{color:#B4320A;font-weight:800}
+.result .btn{font-size:34px;padding:10px 26px}
+.btn.lock{background:#8E8EA8!important}
+/* ===== Chứng nhận ===== */
+#certBox{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;background:rgba(5,10,30,.65);padding:14px}
+#certBox.show{display:flex}
+.cpanel{position:relative;border-radius:22px;padding:30px 30px 26px;width:min(560px,100%);max-height:100%;overflow:auto;text-align:center;user-select:text;-webkit-user-select:text;
+  background:var(--cpanel);border:10px solid var(--dark);outline:4px solid var(--edge);box-shadow:0 12px 0 rgba(0,0,0,.4);color:var(--ink)}
+.cpanel.wide{width:min(980px,100%)}
+.cpanel h2{font-family:var(--fh);font-weight:var(--fhw,800);font-size:clamp(24px,3.4vw,34px);color:var(--acc-p,var(--accent));margin-bottom:6px}
+.cpanel p{font-weight:600;font-size:18px;margin-bottom:14px}
+.cpanel label{display:block;text-align:left;font-weight:800;font-size:18px;margin:10px 0 6px}
+.cpanel input{width:100%;font-family:inherit;font-weight:700;font-size:22px;padding:10px 16px;border:4px solid var(--dark);border-radius:16px;outline:none;color:var(--ink);background:#fff;box-shadow:inset 0 4px 0 rgba(0,0,0,.06)}
+.cpanel input:focus{border-color:var(--acc-p,var(--accent))}
+.cpanel .err{color:#C2190E;font-weight:800;min-height:24px;margin-top:8px}
+.cpanel .row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px}
+.cpanel .btn{font-size:clamp(18px,2.4vw,24px);padding:8px 22px;border-width:4px;border-radius:14px;box-shadow:inset 0 4px 0 rgba(255,255,255,.3),0 6px 0 rgba(0,0,0,.4)}
+#certImg{width:100%;max-height:calc(100vh - 150px);object-fit:contain;border-radius:12px;box-shadow:0 6px 0 rgba(0,0,0,.35);display:block}
+#printArea{display:none}
+@media print{@page{size:A4 landscape;margin:0}body>*{display:none!important}#printArea{display:block!important}#printArea img{width:100%;height:auto}html,body{overflow:visible;height:auto}}
+/* ===== Thanh điều khiển ===== */
+#hud{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);display:flex;align-items:center;gap:6px;border-radius:20px;padding:6px 9px;z-index:20;background:var(--hud);border:4px solid var(--edge);box-shadow:inset 0 3px 0 rgba(255,255,255,.3),0 5px 0 rgba(0,0,0,.4)}
+.hb{width:44px;height:44px;border-radius:12px;border:3px solid var(--edge);background:var(--hb);font-size:20px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--edge);transition:transform .1s,box-shadow .1s;color:var(--ink);font-family:inherit;font-weight:800}
+.hb:active{transform:translateY(3px);box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 1px 0 var(--edge)}
+.hb.big{width:54px;height:50px;font-size:24px;color:#fff;background:linear-gradient(180deg,var(--btn-top),var(--btn) 60%);border-color:var(--btn-dark);box-shadow:inset 0 3px 0 rgba(255,255,255,.35),0 4px 0 var(--btn-dark);text-shadow:0 2px 0 var(--btn-dark)}
+.hb.off{opacity:.45}
+#step{font-weight:800;font-size:17px;min-width:52px;text-align:center;color:var(--hud-ink)}
+#score{display:flex;align-items:center;gap:5px;font-weight:800;font-size:18px;color:#FFE38A;background:var(--edge);border-radius:14px;padding:4px 12px;box-shadow:inset 0 3px 0 rgba(0,0,0,.3)}
+/* ===== Robot Bít ===== */
+#bit{position:fixed;left:10px;bottom:8px;width:84px;z-index:21;pointer-events:none;animation:bob 2.2s ease-in-out infinite;overflow:visible}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+#bit.happy{animation:jump .5s ease-in-out 3}
+@keyframes jump{0%,100%{transform:translateY(0)}50%{transform:translateY(-34px) rotate(-8deg)}}
+#bit.sad{animation:nope .3s ease-in-out 4}
+@keyframes nope{0%,100%{transform:rotate(0)}25%{transform:rotate(-10deg)}75%{transform:rotate(10deg)}}
+.eyes{transform-origin:100px 88px;animation:blink 3.2s infinite}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+#say{position:fixed;left:100px;bottom:70px;max-width:min(380px,calc(100vw - 160px));background:var(--panel);color:var(--ink);border:5px solid var(--edge);border-radius:20px;padding:10px 18px;font-weight:600;font-size:19px;line-height:1.3;z-index:21;box-shadow:0 6px 0 rgba(0,0,0,.35);transform-origin:0 100%;transition:transform .35s cubic-bezier(.34,1.9,.64,1),opacity .25s}
+#say b{font-weight:800}
+#say::after{content:"";position:absolute;left:-17px;bottom:16px;border:12px solid transparent;border-right:16px solid var(--edge)}
+#say.hide{transform:scale(0);opacity:0}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:30}
+/* ===== Màn bắt đầu ===== */
+#start{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,var(--s0) 0%,var(--s1) 100%);padding:80px 16px 20px;transition:opacity .6s;overflow:auto}
+#startDeco{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sboard{position:relative;width:min(860px,96vw);border-radius:var(--rad,22px);padding:46px 26px 26px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;margin:auto;background:var(--board);box-shadow:var(--board-sh-s,var(--board-sh))}
+.sboard .crown{top:-86px;width:340px;height:104px}
+.sboard .pq{position:absolute;left:50%;top:-24px;transform:translateX(-50%);white-space:nowrap;padding:2px 24px 4px;border-radius:var(--plq-rad,12px);border:4px solid var(--plq-edge);background:var(--plq);font-family:var(--fh);font-weight:var(--fhw,800);font-size:clamp(15px,2.4vw,22px);color:var(--plq-ink);text-shadow:var(--plq-fx);z-index:3}
+#start .st1{font-family:var(--fh);font-weight:var(--fhw,800);color:var(--title-c);font-size:clamp(32px,6vw,70px);line-height:1.08;text-shadow:var(--title-fx-s)}
+#start .st2{font-weight:600;color:var(--bink);font-size:clamp(16px,2.4vw,24px)}
+#go{font-size:clamp(24px,4vw,38px);background:linear-gradient(180deg,var(--btn-top),var(--btn) 60%);border-color:var(--btn-dark);box-shadow:inset 0 5px 0 rgba(255,255,255,.35),0 8px 0 var(--btn-dark);animation:pulse 1.4s ease-in-out infinite;padding:10px 40px}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.pop{animation:popin .55s cubic-bezier(.34,1.9,.64,1) both}
+@keyframes popin{0%{transform:scale(0)}100%{transform:scale(1)}}
+@media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
+
+
+/* ===== tranh bìa (tự đặt dưới tên bài) ===== */
+.cover{position:absolute;left:96px;background:var(--ill,#fff);border-radius:26px;border:7px solid var(--dark,#1D3557);box-shadow:0 9px 0 var(--edge,rgba(0,0,0,.3));overflow:hidden;transform:rotate(-2deg);pointer-events:none}
+.cover svg{width:100%;height:100%;display:block}
+/* ===== 4 bước hiện dần (S4Q) ===== */
+.panel .s4q{font-size:30px;line-height:1.2}
+.s4q .qa{margin-bottom:10px}
+.s4q .rv{transition:opacity .45s,transform .45s}
+.s4q .rv:not(.on){opacity:0;transform:translateY(10px)}
+.s4q .an{position:relative;margin:6px 0 0;padding:5px 14px 5px 52px;border-radius:14px;background:var(--soft,#EEF2F7);border-left:8px solid #1982C4;font-weight:600}
+.s4q .an::before{content:"💡";position:absolute;left:12px;top:5px}
+.s4q .an-0{border-left-color:#E5392C}.s4q .an-0::before{content:"✨"}
+.s4q .an-2{border-left-color:#E8890C}
+.s4q .qa.on .an:not(.on){opacity:1;transform:none;color:transparent;background:repeating-linear-gradient(45deg,var(--soft,#EEF2F7) 0 14px,transparent 14px 28px);border:3px dashed var(--dark,#1D3557);border-left-width:8px;cursor:pointer}
+.s4q .qa.on .an:not(.on) *,.s4q .qa.on .an:not(.on)::before{visibility:hidden}
+.s4q .qa.on .an:not(.on)::after{content:"👆 Bấm để xem";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink,#1D3557);font-size:24px;font-weight:800;opacity:.75}
+.s4q .gn{border:4px solid #2F9B4A;background:#EAF8E6;color:#1E3A12;border-radius:18px;padding:8px 16px 6px;box-shadow:0 5px 0 rgba(47,155,74,.35)}
+.panel .s4q .gn ul{margin-top:6px;list-style:none}
+.panel .s4q .gn li{position:relative;padding-left:30px;margin-bottom:4px}
+.panel .s4q .gn li::before{content:"";position:absolute;width:16px;height:16px;top:12px;left:2px;border-radius:50%;background:#2F9B4A}
+</style>
+</head>
+<body>
+<div class="bg" id="bgA"></div><div class="bg" id="bgB"></div>
+<div class="dots"></div>
+<div class="deco" id="deco"></div>
+<div id="stage"><div id="world"></div></div>
+<canvas id="confetti"></canvas>
+
+<svg id="bit" viewBox="0 0 200 240" aria-hidden="true"></svg>
+<div id="say" class="hide"></div>
+
+<div id="hud">
+  <a class="hb hlink" href="../" title="Về trang chủ ClickLearn Tin học 4">🏠</a>
+  <button class="hb" id="bHome" title="Tổng quan (phím Esc)">🗺️</button>
+  <button class="hb" id="bPrev" title="Lùi (phím ←)">◀</button>
+  <div id="step">1/1</div>
+  <button class="hb big" id="bNext" title="Tiếp (phím → hoặc Space)">▶</button>
+  <div id="score">⭐ <span id="sc">0</span>/<span id="scT">0</span></div>
+  <button class="hb" id="bSfx" title="Âm thanh">🔊</button>
+  <button class="hb" id="bFull" title="Toàn màn hình">⛶</button>
+</div>
+
+<div id="certBox">
+  <div class="cpanel" id="cForm">
+    <h2>🎓 Nhận giấy chứng nhận</h2>
+    <p>Em đạt <b id="cScore">0</b>/<span class="nQ">20</span> ⭐. Điền họ tên và lớp để nhận giấy chứng nhận nhé!</p>
+    <label for="cName">Họ và tên</label><input id="cName" maxlength="40" autocomplete="name" placeholder="VD: Nguyễn Văn An">
+    <label for="cClass">Lớp</label><input id="cClass" maxlength="12" placeholder="VD: 8A1">
+    <div class="err" id="cErr"></div>
+    <div class="row"><button class="btn" id="cMake" style="background:#8338EC">✨ Tạo chứng nhận</button><button class="btn" id="cClose1" style="background:#8E8EA8">Đóng</button></div>
+  </div>
+  <div class="cpanel wide" id="cView" style="display:none">
+    <img id="certImg" alt="Giấy chứng nhận">
+    <div class="row"><button class="btn" id="cSave" style="background:#2DA44E">⬇️ Tải ảnh</button><button class="btn" id="cPrint" style="background:#1982C4">🖨️ In</button><button class="btn" id="cEdit" style="background:#FF7F11">✏️ Sửa tên</button><button class="btn" id="cClose2" style="background:#8E8EA8">Đóng</button></div>
+  </div>
+</div>
+<div id="printArea"><img id="printImg" alt=""></div>
+
+<div id="start"><div id="startDeco"></div><div class="sboard">
+  <svg class="crown" viewBox="-310 -190 620 190" id="lvStart"></svg>
+  <div class="pq">ClickLearn Tin học 4 <i class="bul">•</i> Bài 12B</div>
+  <svg viewBox="0 0 200 240" style="width:min(160px,26vw)" class="pop" id="bitStart"></svg>
+  <div class="st1">Phần mềm<br>luyện gõ<br>bàn phím</div>
+  <div class="st2">Chủ đề 5 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận</div>
+  <div class="st2" id="hello" style="color:var(--accent);font-weight:800"></div>
+  <button class="btn" id="go">▶ Bắt đầu</button>
+  <div class="st2" style="font-size:clamp(13px,1.8vw,17px);opacity:.85">Bấm ▶ hoặc phím → để đi tiếp • Bấm vào bảng bất kỳ để zoom • Kéo / lăn chuột để tự khám phá</div>
+</div></div>
+
+<script>
+/* =========================================================
+   1. HÌNH VẼ 2D (vẽ bằng hình khối, không dùng ảnh ngoài)
+   ========================================================= */
+const O = '#1D3557';
+const F = 'font-family="Inter,sans-serif" font-weight="900"';
+const star = (x, y, s, c) => `<path d="M${x} ${y-s} Q${x+s*.18} ${y-s*.18} ${x+s} ${y} Q${x+s*.18} ${y+s*.18} ${x} ${y+s} Q${x-s*.18} ${y+s*.18} ${x-s} ${y} Q${x-s*.18} ${y-s*.18} ${x} ${y-s}Z" fill="${c}"/>`;
+const key3d = (x, y, w, h, top, bot, txt, fs, tc = '#fff') => `<rect x="${x}" y="${y+12}" width="${w}" height="${h}" rx="${Math.min(w,h)*.22}" fill="${bot}" stroke="${O}" stroke-width="6"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${Math.min(w,h)*.22}" fill="${top}" stroke="${O}" stroke-width="6"/><rect x="${x+w*.14}" y="${y+8}" width="${w*.72}" height="${h*.16}" rx="${h*.08}" fill="#fff" opacity=".35"/><text x="${x+w/2}" y="${y+h/2+fs*.36}" text-anchor="middle" font-size="${fs}" fill="${tc}" ${F}>${txt}</text>`;
+const pillS = (x, y, w, h, fill, txt, fs, rot = 0, tc = '#fff') => `<g transform="rotate(${rot} ${x+w/2} ${y+h/2})"><rect x="${x}" y="${y+7}" width="${w}" height="${h}" rx="${h/2}" fill="#000" opacity=".2"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${h/2}" fill="${fill}" stroke="${O}" stroke-width="5"/><text x="${x+w/2}" y="${y+h/2+fs*.36}" text-anchor="middle" font-size="${fs}" fill="${tc}" ${F}>${txt}</text></g>`;
+const ball = (x, y, r, c, t, fs = 30) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="${O}" stroke-width="5"/><circle cx="${x-r*.35}" cy="${y-r*.35}" r="${r*.22}" fill="#fff" opacity=".6"/><text x="${x}" y="${y+fs*.36}" text-anchor="middle" font-size="${fs}" fill="#fff" ${F}>${t}</text>`;
+const arrowHead = (x, y, ang, c) => `<path d="M0 0 L-22 -13 L-22 13Z" fill="${c}" stroke="${c}" stroke-width="4" stroke-linejoin="round" transform="translate(${x} ${y}) rotate(${ang})"/>`;
+const svg = (inner) => `<svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+
+function robot() {
+  return `<line x1="100" y1="40" x2="100" y2="16" stroke="${O}" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="100" cy="13" r="10" fill="#FF595E" stroke="${O}" stroke-width="4"/>
+  <rect x="20" y="70" width="20" height="44" rx="9" fill="#FF9F1C" stroke="${O}" stroke-width="5"/>
+  <rect x="160" y="70" width="20" height="44" rx="9" fill="#FF9F1C" stroke="${O}" stroke-width="5"/>
+  <rect x="30" y="36" width="140" height="112" rx="42" fill="#2EC4B6" stroke="${O}" stroke-width="6"/>
+  <rect x="47" y="54" width="106" height="74" rx="28" fill="#1B2A49"/>
+  <g class="eyes"><ellipse cx="78" cy="88" rx="11" ry="14" fill="#7DF9FF"/><ellipse cx="122" cy="88" rx="11" ry="14" fill="#7DF9FF"/>
+  <circle cx="82" cy="82" r="4" fill="#fff"/><circle cx="126" cy="82" r="4" fill="#fff"/></g>
+  <path d="M84 107 Q100 120 116 107" stroke="#7DF9FF" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="60" cy="112" rx="8" ry="5" fill="#FF8FAB"/><ellipse cx="140" cy="112" rx="8" ry="5" fill="#FF8FAB"/>
+  <rect x="28" y="152" width="22" height="52" rx="11" fill="#2EC4B6" stroke="${O}" stroke-width="5" transform="rotate(22 39 152)"/>
+  <rect x="150" y="152" width="22" height="52" rx="11" fill="#2EC4B6" stroke="${O}" stroke-width="5" transform="rotate(-22 161 152)"/>
+  <rect x="70" y="200" width="22" height="30" rx="9" fill="#ADB5BD" stroke="${O}" stroke-width="5"/>
+  <rect x="108" y="200" width="22" height="30" rx="9" fill="#ADB5BD" stroke="${O}" stroke-width="5"/>
+  <rect x="52" y="148" width="96" height="64" rx="24" fill="#FF9F1C" stroke="${O}" stroke-width="6"/>
+  <path d="M100 194 C78 180 82 162 94 166 Q100 168 100 175 Q100 168 106 166 C118 162 122 180 100 194Z" fill="#FF595E" stroke="${O}" stroke-width="3"/>${typeof TH !== 'undefined' && TH.acc ? TH.acc : ''}`;
+}
+
+const arr = (x1, y1, x2, y2, c, w = 9) => { const a = Math.atan2(y2-y1, x2-x1), d = a*180/Math.PI; return `<line x1="${x1}" y1="${y1}" x2="${x2 - 14*Math.cos(a)}" y2="${y2 - 14*Math.sin(a)}" stroke="${c}" stroke-width="${w}" stroke-linecap="round"/>${arrowHead(x2 + 8*Math.cos(a), y2 + 8*Math.sin(a), d, c)}`; };
+const txt = (x, y, t, fs, c = O, anc = 'middle') => `<text x="${x}" y="${y}" text-anchor="${anc}" font-size="${fs}" fill="${c}" ${F}>${t}</text>`;
+const arc = (cx, cy, r, a1, a2, sw, c) => { const p = a => [cx + r*Math.cos(a*Math.PI/180), cy + r*Math.sin(a*Math.PI/180)]; const [x1, y1] = p(a1), [x2, y2] = p(a2); return `<path d="M${x1} ${y1} A${r} ${r} 0 0 ${sw} ${x2} ${y2}" fill="none" stroke="${c}" stroke-width="11" stroke-linecap="round"/>${arrowHead(x2, y2, sw ? a2 + 90 : a2 - 90, c)}`; };
+
+/* ---- phong cách giao diện của bài ---- */
+const mk = (d, html, css) => { const e = document.createElement('div'); e.innerHTML = html; e.style.cssText = 'position:absolute;pointer-events:none;' + css; d.appendChild(e); return e; };
+const rnd = (a, b) => a + Math.random()*(b - a);
+const prng = s => () => (s = (s*16807) % 2147483647)/2147483647;   // ngẫu nhiên cố định cho giấy chứng nhận
+const SV = (w, h, inner, vb) => `<svg width="${w}" height="${h}" viewBox="${vb || `0 0 ${w} ${h}`}" style="overflow:visible">${inner}</svg>`;
+/* ===== PHONG CÁCH VŨ TRỤ ===== */
+const planet = (x, y, r, c, c2, ring = '#FFB14E') => `<path d="M${x - r*2.1} ${y} A${r*2.1} ${r*.42} 0 0 1 ${x + r*2.1} ${y}" fill="none" stroke="${O}" stroke-width="${r*.2 + 6}" transform="rotate(-12 ${x} ${y})"/><path d="M${x - r*2.1} ${y} A${r*2.1} ${r*.42} 0 0 1 ${x + r*2.1} ${y}" fill="none" stroke="${ring}" stroke-width="${r*.2}" transform="rotate(-12 ${x} ${y})"/>
+  <circle cx="${x}" cy="${y}" r="${r}" fill="${c}" stroke="${O}" stroke-width="6"/><path d="M${x - r*.95} ${y - r*.25} Q${x} ${y - r*.05} ${x + r*.95} ${y - r*.35} L${x + r*.92} ${y - r*.05} Q${x} ${y + r*.25} ${x - r*.92} ${y + r*.05}Z" fill="${c2}"/><circle cx="${x - r*.4}" cy="${y - r*.45}" r="${r*.18}" fill="#fff" opacity=".55"/>
+  <path d="M${x - r*2.1} ${y} A${r*2.1} ${r*.42} 0 0 0 ${x + r*2.1} ${y}" fill="none" stroke="${O}" stroke-width="${r*.2 + 6}" transform="rotate(-12 ${x} ${y})"/><path d="M${x - r*2.1} ${y} A${r*2.1} ${r*.42} 0 0 0 ${x + r*2.1} ${y}" fill="none" stroke="${ring}" stroke-width="${r*.2}" transform="rotate(-12 ${x} ${y})"/>`;
+const moon = (x, y, r) => `<circle cx="${x}" cy="${y}" r="${r}" fill="#DDE3F0" stroke="${O}" stroke-width="5"/><circle cx="${x - r*.3}" cy="${y - r*.2}" r="${r*.22}" fill="#B8C2D6"/><circle cx="${x + r*.35}" cy="${y + r*.3}" r="${r*.16}" fill="#B8C2D6"/>`;
+const rocket = (x, y, s, rot = 0) => `<g transform="translate(${x} ${y}) rotate(${rot}) scale(${s})"><path d="M-14 60 Q0 110 14 60Z" fill="#FFD23F"/><path d="M-8 60 Q0 92 8 60Z" fill="#FF7F11"/>
+  <path d="M-30 30 L-48 66 L-20 56Z M30 30 L48 66 L20 56Z" fill="#FF006E" stroke="${O}" stroke-width="5" stroke-linejoin="round"/><path d="M0 -70 Q34 -30 26 58 L-26 58 Q-34 -30 0 -70Z" fill="#F1F3F5" stroke="${O}" stroke-width="6" stroke-linejoin="round"/>
+  <circle cx="0" cy="-4" r="14" fill="#7DF9FF" stroke="${O}" stroke-width="5"/><path d="M-22 -36 Q0 -48 22 -36" stroke="#FF006E" stroke-width="8" fill="none"/></g>`;
+const TH = {
+  key: 'vutru', name: 'Vũ trụ', ic: '🚀',
+  bgs: [['#2B2F77', '#0B0E2A'], ['#3A1C71', '#0D0628'], ['#123A6B', '#050F24'], ['#4B1D5E', '#120623'], ['#1D4E6B', '#06141F']],
+  tbg: ['#2B2F77', '#070A1F'], rbg: ['#4B1D5E', '#0D0628'],
+  road: 'rgba(125,249,255,.55)', dot: ['#FFD23F', '#2A1F6B'], off: ['#3A3F8F', '#1B1F4B'],
+  conf: ['#7DF9FF', '#B06BFF', '#FFD23F', '#FF5DA2', '#4F7CFF', '#FFFFFF'],
+  crown: `${planet(0, -112, 62, '#B06BFF', '#8A4FE0')}${moon(-230, -70, 30)}${star(-150, -150, 16, '#FFD23F')}${star(240, -150, 13, '#7DF9FF')}${star(170, -50, 10, '#fff')}${star(-280, -150, 9, '#fff')}
+    <g style="animation:floaty 3.4s ease-in-out infinite">${rocket(250, -95, .75, 30)}</g>`,
+  edge: `<svg class="edg" style="left:-70px;bottom:-70px" width="190" height="190" viewBox="-95 -95 190 190">${planet(0, 0, 42, '#2EC4B6', '#1C9C90', '#FFD23F')}</svg>
+    <svg class="edg" style="right:-46px;top:150px" width="90" height="90" viewBox="-45 -45 90 90">${moon(0, 0, 32)}</svg>`,
+  deco(d) {
+    for (let i = 0; i < 46; i++) mk(d, '', `left:${rnd(0, 99)}%;top:${rnd(0, 96)}%`).className = 'tw', d.lastChild.style.animationDelay = -rnd(0, 3) + 's', d.lastChild.style.scale = rnd(.5, 1.4);
+    for (let i = 0; i < 2; i++) { const s = mk(d, '', `left:${rnd(60, 100)}%;top:${rnd(0, 30)}%`); s.className = 'shoot'; s.style.animationDelay = i*3.5 + 's'; }
+    mk(d, SV(240, 240, planet(120, 120, 56, '#FF5DA2', '#E0457B', '#7DF9FF')), 'right:-60px;bottom:40px;opacity:.5;animation:floaty 6s ease-in-out infinite');
+    mk(d, SV(160, 160, moon(80, 80, 50)), 'left:-30px;top:30px;opacity:.45;animation:floaty 7s ease-in-out infinite');
+  },
+  acc: `<circle cx="100" cy="92" r="84" fill="#BDEBFF" fill-opacity=".2" stroke="#E6F7FF" stroke-width="6"/><path d="M42 62 Q58 26 98 18" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round" opacity=".85"/>
+    <rect x="44" y="160" width="112" height="16" rx="8" fill="#E9ECEF" stroke="${O}" stroke-width="5"/>`,
+  cert: {
+    fh: 'Chakra Petch', tw: 700, fb: 'Exo 2', fn: 'Chakra Petch', nw: 700,
+    ink: '#1B1F4B', name: '#3A2C8F', nstroke: '#fff', accent: '#6A3FC7', line: '#6A5FE0', pill: 'rgba(106,95,224,.12)', rank: '#D6336C', teacher: '#3A2C8F',
+    plq: ['#B06BFF', '#4F7CFF', '#7DF9FF'], prad: 59, tink: '#fff', tsh: '#2A1F6B', tglow: '#7DF9FF', rib: ['#00C2D1', '#1982C4', '#0B4F7A'],
+    bg(W, H) {
+      const r = prng(7); let st = '';
+      for (let i = 0; i < 260; i++) { const x = r()*W, y = r()*H, s = r(); st += `<circle cx="${x}" cy="${y}" r="${.8 + s*2.2}" fill="#fff" opacity="${.35 + s*.6}"/>`; }
+      return `<defs><radialGradient id="sg" cx="50%" cy="45%" r="75%"><stop offset="0" stop-color="#2B2F77"/><stop offset="1" stop-color="#05071A"/></radialGradient>
+        <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E3E8FF"/></linearGradient>
+        <filter id="bl"><feGaussianBlur stdDeviation="40"/></filter></defs>
+        <rect width="${W}" height="${H}" fill="url(#sg)"/>
+        <circle cx="260" cy="200" r="220" fill="#B06BFF" opacity=".45" filter="url(#bl)"/><circle cx="1380" cy="930" r="240" fill="#00C2D1" opacity=".35" filter="url(#bl)"/>${st}
+        <rect x="88" y="102" width="${W - 176}" height="${H - 194}" rx="42" fill="none" stroke="#B06BFF" stroke-width="6" opacity=".9"/>
+        <rect x="100" y="114" width="${W - 200}" height="${H - 218}" rx="34" fill="url(#pg)" stroke="#7DF9FF" stroke-width="10"/>
+        <rect x="126" y="140" width="${W - 252}" height="${H - 270}" rx="24" fill="none" stroke="#6A5FE0" stroke-width="4" stroke-dasharray="14 12"/>
+        ${planet(70, 1060, 70, '#2EC4B6', '#1C9C90', '#FFD23F')}${planet(1520, 120, 48, '#FF5DA2', '#E0457B', '#7DF9FF')}${moon(80, 90, 40)}
+        ${rocket(1540, 1000, .9, -20)}${star(1450, 260, 18, '#FFD23F')}${star(150, 600, 16, '#7DF9FF')}${star(1500, 700, 14, '#fff')}`;
+    },
+  },
+};
+
+const BUL = s => s.replace(/ • /g, ' <i class="bul">•</i> ');
+const TOP = lab => `${TH.edge || ''}<svg class="crown" viewBox="-310 -190 620 190">${TH.crown}</svg><div class="plq">${BUL(lab)}</div>`;
+
+/* ---- 4 bước của mỗi hoạt động ---- */
+const L4 = ['Nhiệm vụ', 'Tìm hiểu', 'Trao đổi', 'Ghi nhớ'];
+const S4 = (...x) => `<ul class="s4">${x.map((t, i) => `<li><span class="l4 l4-${i}">${L4[i]}</span> ${t}</li>`).join('')}</ul>`;
+/* ---- 5 hoạt động: tên + màu ---- */
+const ACT = [
+  { name: 'Khởi động', c: ['#F9A51B', '#E8590C'], dk: '#B4520A', bg: ['#2F6E22', '#0F2E12'] },
+  { name: 'Khám phá', c: ['#3FC7F2', '#1982C4'], dk: '#145A8C', bg: ['#1F6046', '#0B2B1C'] },
+  { name: 'Luyện tập', c: ['#8CC63F', '#3F7F1A'], dk: '#2D6012', bg: ['#356B1C', '#11320D'] },
+  { name: 'Vận dụng', c: ['#28B4A6', '#1C7C73'], dk: '#155E57', bg: ['#1C5A50', '#0A2A24'] },
+  { name: 'Củng cố', c: ['#FFCF2F', '#D98500'], dk: '#9C5A00', bg: ['#4E5A18', '#1E2A0C'] },
+];
+
+/* ---- hình vẽ đồ vật (khung 600×420) ---- */
+const G = (x, y, s, inner) => `<g transform="translate(${x} ${y}) scale(${s})">${inner}</g>`;
+const ST = `stroke="${O}" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"`;
+// nhãn có đường chỉ: chỉ vào (px,py), viên nhãn đặt ở (x,y)
+const lab = (px, py, x, y, w, c, t, fs = 22) => `<line x1="${px}" y1="${py}" x2="${x + w/2}" y2="${y + 20}" stroke="${O}" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/><circle cx="${px}" cy="${py}" r="7" fill="#fff" stroke="${O}" stroke-width="4"/>${pillS(x, y, w, 40, c, t, fs)}`;
+const tick = (x, y, s = 1) => G(x, y, s, `<circle r="30" fill="#2DA44E" stroke="${O}" stroke-width="5"/><path d="M-14 0 L-4 11 L15 -11" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>`);
+const cross = (x, y, s = 1) => G(x, y, s, `<circle r="30" fill="#E5383B" stroke="${O}" stroke-width="5"/><path d="M-11 -11 L11 11 M11 -11 L-11 11" stroke="#fff" stroke-width="8" stroke-linecap="round"/>`);
+const sun = (x, y, r = 40) => G(x, y, 1, `${[0, 45, 90, 135, 180, 225, 270, 315].map(a => `<line x1="0" y1="${-r - 10}" x2="0" y2="${-r - 26}" stroke="#FFB703" stroke-width="8" stroke-linecap="round" transform="rotate(${a})"/>`).join('')}<circle r="${r}" fill="#FFD60A" stroke="${O}" stroke-width="6"/><circle cx="${-r*.3}" cy="${-r*.1}" r="4" fill="${O}"/><circle cx="${r*.3}" cy="${-r*.1}" r="4" fill="${O}"/><path d="M${-r*.3} ${r*.25} Q0 ${r*.5} ${r*.3} ${r*.25}" stroke="${O}" stroke-width="4" fill="none" stroke-linecap="round"/>`);
+const tree = (x, y, s = 1) => G(x, y, s, `<rect x="-14" y="10" width="28" height="70" rx="8" fill="#8D5524" ${ST}/><circle cx="0" cy="-30" r="52" fill="#2DA44E" ${ST}/><circle cx="-34" cy="0" r="34" fill="#8AC926" ${ST}/><circle cx="34" cy="0" r="34" fill="#8AC926" ${ST}/><circle cx="-14" cy="-44" r="9" fill="#FF595E"/><circle cx="22" cy="-20" r="9" fill="#FF595E"/><circle cx="-26" cy="4" r="8" fill="#FF595E"/>`);
+const mountain = (x, y, s = 1) => G(x, y, s, `<path d="M-90 50 L-20 -60 L20 0 L45 -30 L100 50Z" fill="#6A994E" ${ST}/><path d="M-36 -34 L-20 -60 L-4 -34 L-14 -40 L-22 -32Z" fill="#fff"/>`);
+const cat = (x, y, s = 1) => G(x, y, s, `<path d="M38 30 Q78 20 66 -20" stroke="${O}" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M38 30 Q78 20 66 -20" stroke="#FF9F1C" stroke-width="7" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="30" rx="44" ry="34" fill="#FF9F1C" ${ST}/><path d="M-36 -44 L-30 -78 L-8 -54 L8 -54 L30 -78 L36 -44 Q42 -6 0 -4 Q-42 -6 -36 -44Z" fill="#FF9F1C" ${ST}/><circle cx="-14" cy="-36" r="5" fill="${O}"/><circle cx="14" cy="-36" r="5" fill="${O}"/><path d="M-6 -24 L6 -24 L0 -18Z" fill="#FF595E"/>`);
+const flower = (x, y, s = 1, c = '#FF006E') => G(x, y, s, `<line x1="0" y1="0" x2="0" y2="60" stroke="#2DA44E" stroke-width="8"/>${[0, 72, 144, 216, 288].map(a => `<ellipse cx="0" cy="-20" rx="13" ry="20" fill="${c}" stroke="${O}" stroke-width="4" transform="rotate(${a})"/>`).join('')}<circle r="12" fill="#FFD60A" stroke="${O}" stroke-width="4"/>`);
+// đèn học: gốc là tâm đế (x,y)
+const lamp = (x, y, s = 1, on = true) => G(x, y, s, `${on ? `<path d="M118 -150 L40 60 L250 60 L190 -150Z" fill="#FFE066" opacity=".45"/>` : ''}
+  <ellipse cx="0" cy="0" rx="80" ry="24" fill="#FF006E" ${ST}/><rect x="-80" y="-14" width="160" height="14" fill="#FF006E"/><ellipse cx="0" cy="-14" rx="80" ry="24" fill="#FF5DA2" ${ST}/>
+  <rect x="34" y="-30" width="30" height="18" rx="6" fill="#FFD60A" ${ST}/>
+  <path d="M-10 -20 L-30 -150 L110 -200" fill="none" stroke="${O}" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/><path d="M-10 -20 L-30 -150 L110 -200" fill="none" stroke="#1982C4" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="-30" cy="-150" r="14" fill="#FFD60A" ${ST}/>
+  <circle cx="150" cy="-150" r="${on ? 24 : 20}" fill="${on ? '#FFF3BF' : '#E9ECEF'}" ${ST}/>
+  <path d="M70 -232 L180 -244 L214 -150 L96 -136Z" fill="#8338EC" ${ST}/>`);
+// quạt cây: gốc là tâm lồng quạt (x,y)
+const fan = (x, y, s = 1, spin = true) => G(x, y, s, `<rect x="-14" y="80" width="28" height="150" rx="10" fill="#ADB5BD" ${ST}/>
+  <ellipse cx="0" cy="236" rx="96" ry="24" fill="#1982C4" ${ST}/><rect x="-56" y="212" width="20" height="14" rx="4" fill="#FFD60A" stroke="${O}" stroke-width="4"/><rect x="-28" y="212" width="20" height="14" rx="4" fill="#FF7F11" stroke="${O}" stroke-width="4"/><rect x="0" y="212" width="20" height="14" rx="4" fill="#FF006E" stroke="${O}" stroke-width="4"/><rect x="28" y="212" width="20" height="14" rx="4" fill="#2DA44E" stroke="${O}" stroke-width="4"/>
+  <circle r="96" fill="#E7F5FF" ${ST}/>
+  <g>${[0, 120, 240].map(a => `<path d="M0 0 C 20 -30 56 -62 30 -80 C 6 -92 -10 -50 0 0Z" fill="#3A8DFF" stroke="${O}" stroke-width="5" transform="rotate(${a})"/>`).join('')}${spin ? `<animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="1.6s" repeatCount="indefinite"/>` : ''}</g>
+  <circle r="18" fill="#FFD60A" stroke="${O}" stroke-width="5"/>
+  ${[-60, -30, 0, 30, 60].map(d => `<line x1="${d}" y1="${-Math.sqrt(96*96 - d*d) + 4}" x2="${d}" y2="${Math.sqrt(96*96 - d*d) - 4}" stroke="${O}" stroke-width="3" opacity=".55"/>`).join('')}
+  <circle r="96" fill="none" stroke="${O}" stroke-width="7"/><rect x="-38" y="76" width="76" height="52" rx="20" fill="#2EC4B6" ${ST}/>`);
+// máy thu thanh: gốc là góc trên trái thân máy, thân 300×170
+const radio = (x, y, s = 1) => G(x, y, s, `<line x1="250" y1="0" x2="320" y2="-120" stroke="${O}" stroke-width="7" stroke-linecap="round"/><circle cx="320" cy="-120" r="9" fill="#FF006E" stroke="${O}" stroke-width="4"/>
+  <path d="M60 0 Q150 -60 240 0" fill="none" stroke="${O}" stroke-width="12" stroke-linecap="round"/>
+  <rect x="0" y="0" width="300" height="170" rx="30" fill="#FF7F11" ${ST}/>
+  <circle cx="86" cy="92" r="56" fill="#FFE8CC" ${ST}/>${[[-24, -24], [0, -30], [24, -24], [-30, 0], [0, 0], [30, 0], [-24, 24], [0, 30], [24, 24]].map(([a, b]) => `<circle cx="${86 + a}" cy="${92 + b}" r="6" fill="${O}"/>`).join('')}
+  <rect x="160" y="30" width="118" height="46" rx="10" fill="#1B2A49" stroke="${O}" stroke-width="5"/><text x="219" y="62" text-anchor="middle" font-size="22" fill="#7DF9FF" ${F}>FM 91</text>
+  <circle cx="186" cy="122" r="22" fill="#FFD60A" ${ST}/><line x1="186" y1="122" x2="186" y2="104" stroke="${O}" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="252" cy="122" r="22" fill="#2EC4B6" ${ST}/><line x1="252" y1="122" x2="266" y2="110" stroke="${O}" stroke-width="5" stroke-linecap="round"/>
+  <rect x="136" y="-14" width="34" height="18" rx="6" fill="#E5383B" stroke="${O}" stroke-width="4"/>`);
+// máy thu hình: gốc là góc trên trái màn hình 300×190
+const tv = (x, y, s = 1, pic = 'cartoon') => G(x, y, s, `<path d="M110 190 L80 236 M190 190 L220 236" stroke="${O}" stroke-width="10" stroke-linecap="round"/><rect x="60" y="230" width="180" height="16" rx="8" fill="#ADB5BD" stroke="${O}" stroke-width="5"/>
+  <rect x="-14" y="-14" width="328" height="218" rx="26" fill="#3D405B" ${ST}/>
+  <rect x="0" y="0" width="300" height="190" rx="14" fill="#8ECAE6" stroke="${O}" stroke-width="4"/>
+  ${pic === 'cartoon' ? `<rect x="0" y="130" width="300" height="60" fill="#8AC926"/><circle cx="240" cy="50" r="24" fill="#FFD60A"/><path d="M40 130 L90 60 L140 130Z" fill="#6A994E"/><circle cx="170" cy="112" r="24" fill="#FF006E" stroke="${O}" stroke-width="4"/><circle cx="162" cy="106" r="4" fill="${O}"/><circle cx="178" cy="106" r="4" fill="${O}"/>` : pic}
+  <circle cx="290" cy="196" r="5" fill="#2DA44E"/>`);
+// điều khiển ti vi: gốc là góc trên trái 120×300
+const remote = (x, y, s = 1) => G(x, y, s, `<rect x="0" y="0" width="120" height="300" rx="40" fill="#3D405B" ${ST}/>
+  <circle cx="60" cy="38" r="18" fill="#E5383B" stroke="${O}" stroke-width="4"/><path d="M60 28 V40 M52 32 A11 11 0 1 0 68 32" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>
+  ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map((n, i) => `<rect x="${16 + (i % 3)*32}" y="${70 + Math.floor(i/3)*30}" width="26" height="24" rx="7" fill="#fff"/><text x="${29 + (i % 3)*32}" y="${89 + Math.floor(i/3)*30}" text-anchor="middle" font-size="17" fill="${O}" ${F}>${n}</text>`).join('')}
+  <rect x="14" y="170" width="40" height="96" rx="18" fill="#FFD60A" stroke="${O}" stroke-width="4"/><text x="34" y="196" text-anchor="middle" font-size="22" fill="${O}" ${F}>+</text><text x="34" y="222" text-anchor="middle" font-size="13" fill="${O}" ${F}>VOL</text><text x="34" y="256" text-anchor="middle" font-size="24" fill="${O}" ${F}>−</text>
+  <rect x="66" y="170" width="40" height="96" rx="18" fill="#2EC4B6" stroke="${O}" stroke-width="4"/><text x="86" y="196" text-anchor="middle" font-size="22" fill="${O}" ${F}>+</text><text x="86" y="222" text-anchor="middle" font-size="14" fill="${O}" ${F}>CH</text><text x="86" y="256" text-anchor="middle" font-size="24" fill="${O}" ${F}>−</text>`);
+const fridge = (x, y, s = 1) => G(x, y, s, `<rect x="0" y="0" width="130" height="230" rx="20" fill="#E7F5FF" ${ST}/><line x1="0" y1="80" x2="130" y2="80" stroke="${O}" stroke-width="6"/><rect x="104" y="24" width="10" height="36" rx="5" fill="${O}"/><rect x="104" y="100" width="10" height="50" rx="5" fill="${O}"/><path d="M30 30 l8 8 m-8 0 l8 -8" stroke="#3A8DFF" stroke-width="4"/>`);
+const socket = (x, y, s = 1) => G(x, y, s, `<rect x="-60" y="-60" width="120" height="120" rx="24" fill="#fff" ${ST}/><circle r="38" fill="#F1F3F5" stroke="${O}" stroke-width="4"/><rect x="-20" y="-16" width="10" height="26" rx="4" fill="${O}"/><rect x="10" y="-16" width="10" height="26" rx="4" fill="${O}"/>`);
+const bolt = (x, y, s = 1) => G(x, y, s, `<path d="M8 -50 L-26 6 L-2 6 L-12 50 L26 -8 L2 -8Z" fill="#FFD60A" ${ST}/>`);
+const iron = (x, y, s = 1) => G(x, y, s, `<path d="M-90 40 Q-90 -20 -20 -40 L90 -40 L90 40Z" fill="#FF006E" ${ST}/><path d="M-30 -40 Q-20 -90 40 -90 L80 -90 L80 -40" fill="none" stroke="${O}" stroke-width="16" stroke-linecap="round"/><path d="M-30 -40 Q-20 -90 40 -90 L80 -90 L80 -40" fill="none" stroke="#FFD60A" stroke-width="7" stroke-linecap="round"/><rect x="-92" y="40" width="184" height="14" rx="6" fill="#ADB5BD" ${ST}/>`);
+const steam = (x, y, c = '#ADB5BD') => `<path d="M${x} ${y} q-14 -18 0 -36 q14 -18 0 -36 M${x + 26} ${y + 6} q-14 -18 0 -36 q14 -18 0 -36" stroke="${c}" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+const cooker = (x, y, s = 1) => G(x, y, s, `<ellipse cx="0" cy="-60" rx="80" ry="26" fill="#2EC4B6" ${ST}/><path d="M-80 -60 L-80 40 Q0 70 80 40 L80 -60" fill="#fff" ${ST}/><rect x="-20" y="-96" width="40" height="18" rx="8" fill="#FFD60A" stroke="${O}" stroke-width="5"/><rect x="-28" y="0" width="56" height="22" rx="8" fill="#FF7F11" stroke="${O}" stroke-width="4"/>`);
+const scissors = (x, y, s = 1) => G(x, y, s, `<path d="M0 0 L90 -40 M0 0 L90 40" stroke="#ADB5BD" stroke-width="16" stroke-linecap="round"/><path d="M0 0 L90 -40 M0 0 L90 40" stroke="${O}" stroke-width="4" stroke-linecap="round" opacity=".6"/><circle cx="-26" cy="-26" r="22" fill="none" stroke="#FF006E" stroke-width="12"/><circle cx="-26" cy="26" r="22" fill="none" stroke="#FF006E" stroke-width="12"/>`);
+const tower = (x, y, s = 1, c = '#FF006E') => G(x, y, s, `<path d="M-50 120 L0 -100 L50 120" fill="none" stroke="${O}" stroke-width="10" stroke-linejoin="round"/><path d="M-32 40 L32 40 M-20 -10 L20 -10 M-42 90 L42 90 M-32 40 L20 -10 M32 40 L-20 -10 M-42 90 L32 40 M42 90 L-32 40" stroke="${O}" stroke-width="5"/><circle cx="0" cy="-104" r="14" fill="${c}" stroke="${O}" stroke-width="5"/>`);
+const waves = (x, y, c = '#FF006E', n = 3) => [...Array(n)].map((_, i) => `<path d="M${x + i*28} ${y - 26 - i*14} Q${x + 18 + i*28} ${y} ${x + i*28} ${y + 26 + i*14}" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/>`).join('');
+const ear = (x, y, s = 1) => G(x, y, s, `<path d="M-20 -50 Q40 -70 40 -10 Q40 20 10 30 Q0 50 -20 50" fill="#FFD6A5" ${ST}/><path d="M-4 -24 Q20 -30 18 -6 Q16 8 2 10" fill="none" stroke="${O}" stroke-width="5" stroke-linecap="round"/>`);
+const eye = (x, y, s = 1) => G(x, y, s, `<path d="M-50 0 Q0 -44 50 0 Q0 44 -50 0Z" fill="#fff" ${ST}/><circle r="18" fill="#1982C4" stroke="${O}" stroke-width="4"/><circle r="8" fill="${O}"/><circle cx="6" cy="-6" r="4" fill="#fff"/>`);
+const basket = (x, y, w, c, t) => `<path d="M${x} ${y} L${x + w} ${y} L${x + w - 22} ${y + 110} L${x + 22} ${y + 110}Z" fill="${c}" ${ST}/>${[1, 2, 3].map(i => `<line x1="${x + i*w/4}" y1="${y + 4}" x2="${x + i*w/4 + (i - 2)*-6}" y2="${y + 106}" stroke="${O}" stroke-width="4" opacity=".5"/>`).join('')}${pillS(x + 10, y + 118, w - 20, 42, '#fff', t, 22, 0, O)}`;
+const bike = (x, y, s = 1) => G(x, y, s, `<circle cx="-60" cy="0" r="40" fill="none" ${ST}/><circle cx="60" cy="0" r="40" fill="none" ${ST}/><path d="M-60 0 L-20 -50 L40 -50 L60 0 M-20 -50 L0 0 L40 -50 M40 -50 L34 -72 L54 -74" fill="none" stroke="#FF006E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><rect x="-34" y="-62" width="28" height="10" rx="5" fill="${O}"/>`);
+const hand = (x, y, s = 1, r = 0) => G(x, y, s, `<g transform="rotate(${r})"><rect x="-96" y="-22" width="62" height="44" rx="12" fill="#FF006E" ${ST}/><path d="M-38 -24 L10 -24 L10 -14 L54 -14 Q64 -14 64 -4 Q64 6 54 6 L22 6 Q26 10 24 16 Q22 26 12 26 L-38 26Z" fill="#FFD6A5" ${ST}/><path d="M-6 6 L20 6 M-6 16 L16 16" stroke="${O}" stroke-width="3" stroke-linecap="round" opacity=".5"/></g>`);
+const note = (x, y, c = '#8338EC', s = 1) => G(x, y, s, `<line x1="12" y1="0" x2="12" y2="-46" stroke="${O}" stroke-width="6" stroke-linecap="round"/><path d="M12 -46 Q30 -40 32 -22" stroke="${O}" stroke-width="6" fill="none" stroke-linecap="round"/><ellipse cx="0" cy="0" rx="15" ry="11" fill="${c}" stroke="${O}" stroke-width="5" transform="rotate(-20)"/>`);
+const warn = (x, y, s = 1) => G(x, y, s, `<path d="M0 -34 L34 26 L-34 26Z" fill="#FFD60A" ${ST}/><text x="0" y="18" text-anchor="middle" font-size="40" fill="${O}" ${F}>!</text>`);
+const kid = (x, y, s = 1, c = '#FF006E') => G(x, y, s, `<rect x="-32" y="10" width="64" height="80" rx="24" fill="${c}" ${ST}/><rect x="-26" y="86" width="20" height="44" rx="8" fill="#1982C4" ${ST}/><rect x="6" y="86" width="20" height="44" rx="8" fill="#1982C4" ${ST}/><circle cx="0" cy="-24" r="38" fill="#FFD6A5" ${ST}/><path d="M-38 -30 Q-36 -66 0 -64 Q36 -66 38 -30 Q20 -46 -4 -42 Q-24 -40 -38 -30Z" fill="#3D2B1F" stroke="${O}" stroke-width="5"/><circle cx="-13" cy="-20" r="5" fill="${O}"/><circle cx="13" cy="-20" r="5" fill="${O}"/><path d="M-10 -4 Q0 6 10 -4" stroke="${O}" stroke-width="4" fill="none" stroke-linecap="round"/><ellipse cx="-24" cy="-8" rx="7" ry="4" fill="#FF8FAB"/><ellipse cx="24" cy="-8" rx="7" ry="4" fill="#FF8FAB"/>`);
+const clock = (x, y, s = 1) => G(x, y, s, `<circle r="44" fill="#fff" ${ST}/><circle r="44" fill="none" stroke="#FF006E" stroke-width="5" stroke-dasharray="3 20"/><line x1="0" y1="0" x2="0" y2="-28" stroke="${O}" stroke-width="6" stroke-linecap="round"/><line x1="0" y1="0" x2="20" y2="8" stroke="#FF006E" stroke-width="6" stroke-linecap="round"/><circle r="6" fill="${O}"/>`);
+const house = (x, y, s = 1) => G(x, y, s, `<rect x="-120" y="-20" width="240" height="170" rx="10" fill="#FFF3BF" ${ST}/><path d="M-150 -10 L0 -130 L150 -10Z" fill="#FF595E" ${ST}/><rect x="-30" y="60" width="60" height="90" rx="8" fill="#8D5524" ${ST}/><rect x="-100" y="20" width="56" height="50" rx="8" fill="#8ECAE6" ${ST}/><rect x="44" y="20" width="56" height="50" rx="8" fill="#8ECAE6" ${ST}/><circle cx="18" cy="108" r="5" fill="#FFD60A"/>`);
+const mic = (x, y, s = 1, r = 0) => G(x, y, s, `<g transform="rotate(${r})"><rect x="-10" y="20" width="20" height="70" rx="8" fill="#3D405B" ${ST}/><rect x="-26" y="-40" width="52" height="66" rx="26" fill="#ADB5BD" ${ST}/>${[-20, -6, 8].map(v => `<line x1="-20" y1="${v}" x2="20" y2="${v}" stroke="${O}" stroke-width="3"/>`).join('')}</g>`);
+const phone = (x, y, s = 1, t = '115') => G(x, y, s, `<rect x="-40" y="-70" width="80" height="140" rx="16" fill="#3D405B" ${ST}/><rect x="-30" y="-56" width="60" height="96" rx="8" fill="#8ECAE6"/><text x="0" y="0" text-anchor="middle" font-size="26" fill="#E5383B" ${F}>${t}</text><circle cx="0" cy="54" r="7" fill="#fff"/>`);
+const book = (x, y, s = 1) => G(x, y, s, `<path d="M0 0 Q-50 -16 -100 0 L-100 60 Q-50 44 0 60Z" fill="#fff" ${ST}/><path d="M0 0 Q50 -16 100 0 L100 60 Q50 44 0 60Z" fill="#fff" ${ST}/>${[14, 28, 42].map(v => `<line x1="-80" y1="${v - 4}" x2="-20" y2="${v - 8}" stroke="#8ECAE6" stroke-width="4"/><line x1="20" y1="${v - 8}" x2="80" y2="${v - 4}" stroke="#8ECAE6" stroke-width="4"/>`).join('')}`);
+const breaker = (x, y, s = 1) => G(x, y, s, `<rect x="-40" y="-56" width="80" height="112" rx="12" fill="#fff" ${ST}/><rect x="-14" y="-30" width="28" height="60" rx="8" fill="#ADB5BD" stroke="${O}" stroke-width="4"/><rect x="-12" y="4" width="24" height="24" rx="6" fill="#E5383B" stroke="${O}" stroke-width="4"/><text x="0" y="-36" text-anchor="middle" font-size="14" fill="${O}" ${F}>OFF</text>`);
+const stick = (x, y, s = 1) => G(x, y, s, `<rect x="-110" y="-12" width="220" height="24" rx="12" fill="#C68B59" ${ST} transform="rotate(-20)"/>`);
+const knife = (x, y, s = 1) => G(x, y, s, `<path d="M0 -12 L110 -12 Q130 -12 140 8 L0 12Z" fill="#E9ECEF" ${ST}/><rect x="-80" y="-14" width="84" height="28" rx="12" fill="#8D5524" ${ST}/>`);
+const kettle = (x, y, s = 1) => G(x, y, s, `<path d="M-50 60 L-60 -40 Q0 -64 60 -40 L50 60Z" fill="#FF7F11" ${ST}/><path d="M60 -30 Q100 -20 92 30" fill="none" stroke="${O}" stroke-width="14" stroke-linecap="round"/><path d="M-60 -20 L-96 -46" stroke="${O}" stroke-width="12" stroke-linecap="round"/><ellipse cx="0" cy="68" rx="64" ry="14" fill="#3D405B" ${ST}/>`);
+
+/* ---- hình thêm cho Công nghệ 5 ---- */
+// bóng đèn sợi đốt: gốc là tâm bóng (x,y)
+const bulb = (x, y, s = 1, on = true) => G(x, y, s, `${on ? [0, 45, 90, 135, 225, 270, 315].map(a => `<line x1="0" y1="-78" x2="0" y2="-100" stroke="#FFB703" stroke-width="8" stroke-linecap="round" transform="rotate(${a})"/>`).join('') : ''}
+  <path d="M-26 40 Q-62 10 -60 -22 Q-56 -70 0 -70 Q56 -70 60 -22 Q62 10 26 40Z" fill="${on ? '#FFE066' : '#F1F3F5'}" ${ST}/>
+  <path d="M-14 40 L-14 4 Q-8 -14 0 4 Q8 -14 14 4 L14 40" fill="none" stroke="#FF7F11" stroke-width="5" stroke-linejoin="round"/>
+  <rect x="-28" y="40" width="56" height="16" rx="5" fill="#ADB5BD" ${ST}/><rect x="-24" y="56" width="48" height="14" rx="5" fill="#868E96" ${ST}/><path d="M-12 70 L12 70 L4 84 L-4 84Z" fill="${O}"/>
+  <path d="M-36 -34 Q-34 -52 -16 -56" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>`);
+// điện thoại thông minh: gốc là tâm (x,y), thân 120×220
+const smart = (x, y, s = 1, scr = '') => G(x, y, s, `<rect x="-60" y="-110" width="120" height="220" rx="22" fill="#3D405B" ${ST}/><rect x="-48" y="-90" width="96" height="172" rx="10" fill="#8ECAE6"/>
+  <circle cx="0" cy="-100" r="4" fill="#fff"/><rect x="-14" y="94" width="28" height="7" rx="3" fill="#fff"/>${scr}`);
+// màn hình chính: 6 ô ứng dụng
+const apps = () => [['#2DA44E', 0], ['#FF7F11', 1], ['#FF006E', 2], ['#1982C4', 3], ['#8338EC', 4], ['#FFD60A', 5]].map(([c, i]) => `<rect x="${-38 + (i % 3)*28}" y="${-60 + Math.floor(i/3)*30}" width="20" height="20" rx="6" fill="${c}" stroke="${O}" stroke-width="3"/>`).join('');
+// ô tô: gốc là giữa đáy (x,y)
+const car = (x, y, s = 1, c = '#E5383B') => G(x, y, s, `<path d="M-120 -10 L-120 -50 Q-118 -60 -100 -62 L-70 -64 L-40 -104 L50 -104 L86 -64 L110 -60 Q124 -56 124 -40 L124 -10Z" fill="${c}" ${ST}/>
+  <path d="M-30 -92 L-4 -92 L-4 -66 L-52 -66Z M8 -92 L44 -92 L66 -66 L8 -66Z" fill="#8ECAE6" stroke="${O}" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="-72" cy="-8" r="26" fill="#3D405B" ${ST}/><circle cx="-72" cy="-8" r="9" fill="#ADB5BD"/><circle cx="74" cy="-8" r="26" fill="#3D405B" ${ST}/><circle cx="74" cy="-8" r="9" fill="#ADB5BD"/><rect x="108" y="-54" width="14" height="12" rx="4" fill="#FFD60A"/>`);
+// bánh răng: tâm (x,y), bán kính r
+const gear = (x, y, r = 50, c = '#1982C4') => G(x, y, 1, `${[...Array(8)].map((_, i) => `<rect x="${-r*.2}" y="${-r - 16}" width="${r*.4}" height="34" rx="6" fill="${c}" ${ST} transform="rotate(${i*45})"/>`).join('')}<circle r="${r}" fill="${c}" ${ST}/><circle r="${r*.38}" fill="#fff" ${ST}/>`);
+// máy hơi nước (đầu tàu): gốc là giữa đáy (x,y)
+const engine = (x, y, s = 1) => G(x, y, s, `<rect x="-110" y="-90" width="150" height="70" rx="16" fill="#2DA44E" ${ST}/><rect x="30" y="-140" width="90" height="120" rx="12" fill="#1982C4" ${ST}/><rect x="48" y="-124" width="54" height="40" rx="6" fill="#8ECAE6" stroke="${O}" stroke-width="4"/>
+  <path d="M-90 -90 L-96 -136 L-60 -136 L-66 -90Z" fill="#3D405B" ${ST}/><rect x="-124" y="-30" width="258" height="14" rx="6" fill="#3D405B" ${ST}/>
+  <circle cx="-70" cy="-4" r="26" fill="#FF006E" ${ST}/><circle cx="0" cy="-4" r="26" fill="#FF006E" ${ST}/><circle cx="80" cy="-4" r="26" fill="#FF006E" ${ST}/>
+  <circle cx="-86" cy="-160" r="16" fill="#E9ECEF" stroke="${O}" stroke-width="4"/><circle cx="-60" cy="-182" r="20" fill="#E9ECEF" stroke="${O}" stroke-width="4"/><circle cx="-24" cy="-196" r="14" fill="#E9ECEF" stroke="${O}" stroke-width="4"/>`);
+// chong chóng 4 cánh: tâm (x,y)
+const pinwheel = (x, y, s = 1) => G(x, y, s, `<rect x="-7" y="0" width="14" height="190" rx="6" fill="#C68B59" ${ST}/>
+  ${[['#FF006E', 0], ['#FFD60A', 90], ['#1982C4', 180], ['#2DA44E', 270]].map(([c, a]) => `<path d="M0 0 L0 -90 Q50 -90 64 -64Z" fill="${c}" ${ST} transform="rotate(${a})"/>`).join('')}<circle r="10" fill="#fff" ${ST}/>`);
+// bút chì nằm: gốc là đầu ngòi (x,y), quay r độ
+const pencil = (x, y, s = 1, r = 0, c = '#FFC300') => G(x, y, s, `<g transform="rotate(${r})"><path d="M0 0 L40 -18 L40 18Z" fill="#FFD6A5" ${ST}/><path d="M0 0 L14 -6 L14 6Z" fill="${O}"/><rect x="40" y="-18" width="170" height="36" fill="${c}" ${ST}/><rect x="210" y="-18" width="30" height="36" rx="8" fill="#FF8FAB" ${ST}/></g>`);
+// tờ giấy phác thảo: góc trên trái (x,y), w×h
+const paper = (x, y, w, h, inner = '') => `<rect x="${x + 8}" y="${y + 8}" width="${w}" height="${h}" rx="14" fill="#000" opacity=".15"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#fff" ${ST}/>${[...Array(Math.floor(h/36))].map((_, i) => `<line x1="${x + 16}" y1="${y + 36 + i*36}" x2="${x + w - 16}" y2="${y + 36 + i*36}" stroke="#D0EBFF" stroke-width="3"/>`).join('')}${inner}`;
+// máy gặt / máy cày: gốc là giữa đáy (x,y)
+const tractor = (x, y, s = 1) => G(x, y, s, `<rect x="-100" y="-80" width="130" height="50" rx="10" fill="#FF7F11" ${ST}/><path d="M10 -80 L10 -150 L80 -150 L90 -80Z" fill="#FFD60A" ${ST}/><rect x="24" y="-138" width="50" height="42" rx="6" fill="#8ECAE6" stroke="${O}" stroke-width="4"/>
+  <rect x="-80" y="-112" width="16" height="32" rx="4" fill="#3D405B" ${ST}/><circle cx="-70" cy="-20" r="28" fill="#3D405B" ${ST}/><circle cx="-70" cy="-20" r="10" fill="#FFD60A"/><circle cx="60" cy="-40" r="48" fill="#3D405B" ${ST}/><circle cx="60" cy="-40" r="16" fill="#FFD60A"/>`);
+// nhà máy có ống khói xả khói đen: gốc là giữa đáy (x,y)
+const factory = (x, y, s = 1, dirty = true) => G(x, y, s, `<path d="M-120 0 L-120 -80 L-70 -110 L-70 -80 L-20 -110 L-20 -80 L30 -110 L30 -80 L120 -80 L120 0Z" fill="#ADB5BD" ${ST}/><rect x="70" y="-180" width="30" height="100" fill="#868E96" ${ST}/>
+  <rect x="-96" y="-56" width="28" height="28" rx="4" fill="#FFD60A" stroke="${O}" stroke-width="4"/><rect x="-46" y="-56" width="28" height="28" rx="4" fill="#FFD60A" stroke="${O}" stroke-width="4"/><rect x="4" y="-56" width="28" height="28" rx="4" fill="#FFD60A" stroke="${O}" stroke-width="4"/>
+  ${dirty ? `<circle cx="96" cy="-206" r="22" fill="#495057"/><circle cx="126" cy="-232" r="28" fill="#495057"/><circle cx="166" cy="-250" r="22" fill="#495057"/>` : ''}`);
+// đồng hồ đeo tay bằng bìa: tâm (x,y)
+const watch = (x, y, s = 1, c = '#FF006E') => G(x, y, s, `<rect x="-30" y="-140" width="60" height="280" rx="18" fill="${c}" ${ST}/>${[-110, -84, 84, 110].map(t => `<circle cx="0" cy="${t}" r="6" fill="#fff"/>`).join('')}
+  <circle r="62" fill="#FFD60A" ${ST}/><circle r="48" fill="#fff" stroke="${O}" stroke-width="4"/>${[0, 90, 180, 270].map(a => `<line x1="0" y1="-40" x2="0" y2="-32" stroke="${O}" stroke-width="5" transform="rotate(${a})"/>`).join('')}
+  <line x1="0" y1="0" x2="0" y2="-30" stroke="${O}" stroke-width="6" stroke-linecap="round"/><line x1="0" y1="0" x2="22" y2="8" stroke="#E5383B" stroke-width="6" stroke-linecap="round"/><circle r="5" fill="${O}"/>`);
+// quả táo, củ cà rốt, cây kem, khối đá
+const apple = (x, y, s = 1) => G(x, y, s, `<path d="M0 -24 Q-30 -40 -36 -6 Q-38 30 -10 34 Q0 30 10 34 Q38 30 36 -6 Q30 -40 0 -24Z" fill="#E5383B" ${ST}/><path d="M0 -24 L4 -42" stroke="${O}" stroke-width="5" stroke-linecap="round"/><path d="M4 -38 Q20 -50 26 -36 Q12 -30 4 -38Z" fill="#2DA44E" stroke="${O}" stroke-width="3"/>`);
+const carrot = (x, y, s = 1) => G(x, y, s, `<path d="M-14 -30 L14 -30 L0 46Z" fill="#FF7F11" ${ST}/><path d="M-6 -30 L-14 -56 M0 -30 L0 -60 M6 -30 L14 -56" stroke="#2DA44E" stroke-width="7" stroke-linecap="round"/>`);
+const icecream = (x, y, s = 1) => G(x, y, s, `<path d="M-24 0 L24 0 L0 60Z" fill="#E9C46A" ${ST}/><circle cx="0" cy="-14" r="26" fill="#FF8FAB" ${ST}/><circle cx="-8" cy="-22" r="5" fill="#fff"/>`);
+const cube = (x, y, s = 1) => G(x, y, s, `<path d="M-26 -10 L0 -24 L26 -10 L26 20 L0 34 L-26 20Z" fill="#D0EBFF" ${ST}/><path d="M-26 -10 L0 4 L26 -10 M0 4 L0 34" fill="none" stroke="${O}" stroke-width="4"/>`);
+const milk = (x, y, s = 1) => G(x, y, s, `<path d="M-22 -30 L0 -50 L22 -30 L22 40 L-22 40Z" fill="#fff" ${ST}/><rect x="-22" y="0" width="44" height="22" fill="#3A8DFF"/><path d="M-22 -30 L0 -50 L22 -30 L22 40 L-22 40Z" fill="none" ${ST}/>`);
+// nhiệt kế nhỏ ghi chữ
+const thermo = (x, y, s = 1, c = '#3A8DFF') => G(x, y, s, `<rect x="-12" y="-70" width="24" height="100" rx="12" fill="#fff" ${ST}/><rect x="-5" y="-20" width="10" height="50" fill="${c}"/><circle cx="0" cy="40" r="20" fill="${c}" ${ST}/>`);
+// cái kéo nhỏ + lọ keo
+const glue = (x, y, s = 1) => G(x, y, s, `<rect x="-24" y="-40" width="48" height="80" rx="10" fill="#fff" ${ST}/><rect x="-14" y="-62" width="28" height="24" rx="6" fill="#FF7F11" ${ST}/><rect x="-24" y="-6" width="48" height="24" fill="#8338EC"/><rect x="-24" y="-40" width="48" height="80" rx="10" fill="none" ${ST}/>`);
+
+/* ---- hình thêm cho ClickLearn Tin học 9 ---- */
+// máy tính xách tay: gốc là góc trên trái màn hình 240×150
+const laptop = (x, y, s = 1, scr = '') => G(x, y, s, `<rect x="-10" y="-10" width="260" height="170" rx="18" fill="#3D405B" ${ST}/><rect x="0" y="0" width="240" height="150" rx="8" fill="#8ECAE6"/>${scr}
+  <path d="M-40 168 H280 L300 196 H-60Z" fill="#ADB5BD" ${ST}/><rect x="90" y="176" width="60" height="10" rx="5" fill="#6C757D"/>`);
+// bộ xử lí (con chip): tâm (x,y)
+const chip = (x, y, s = 1, c = '#2EC4B6', t = 'CPU') => G(x, y, s, `${[-36, -12, 12, 36].map(d => `<rect x="${d - 5}" y="-82" width="10" height="24" rx="3" fill="#ADB5BD" stroke="${O}" stroke-width="3"/><rect x="${d - 5}" y="58" width="10" height="24" rx="3" fill="#ADB5BD" stroke="${O}" stroke-width="3"/><rect x="-82" y="${d - 5}" width="24" height="10" rx="3" fill="#ADB5BD" stroke="${O}" stroke-width="3"/><rect x="58" y="${d - 5}" width="24" height="10" rx="3" fill="#ADB5BD" stroke="${O}" stroke-width="3"/>`).join('')}
+  <rect x="-62" y="-62" width="124" height="124" rx="16" fill="${c}" ${ST}/><rect x="-40" y="-40" width="80" height="80" rx="8" fill="#1B2A49"/><text x="0" y="11" text-anchor="middle" font-size="28" fill="#7DF9FF" ${F}>${t}</text>`);
+// quả địa cầu: tâm (x,y), bán kính r
+const globe = (x, y, r = 60) => G(x, y, 1, `<circle r="${r}" fill="#3A8DFF" ${ST}/>
+  <path d="M${-r*.62} ${-r*.5} Q${-r*.2} ${-r*.75} ${-r*.08} ${-r*.32} Q${-r*.38} ${-r*.1} ${-r*.46} ${r*.32} Q${-r*.82} 0 ${-r*.62} ${-r*.5}Z" fill="#8AC926" stroke="${O}" stroke-width="4"/>
+  <path d="M${r*.2} ${-r*.2} Q${r*.72} ${-r*.42} ${r*.62} ${r*.2} Q${r*.32} ${r*.72} ${r*.1} ${r*.42}Z" fill="#8AC926" stroke="${O}" stroke-width="4"/>
+  <ellipse rx="${r}" ry="${r*.35}" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/><ellipse rx="${r*.42}" ry="${r}" fill="none" stroke="#fff" stroke-width="3" opacity=".6"/><circle r="${r}" fill="none" stroke="${O}" stroke-width="6"/>`);
+// đám mây: tâm (x,y)
+const cloud = (x, y, s = 1, c = '#fff') => G(x, y, s, `<path d="M-70 30 Q-100 30 -100 0 Q-100 -30 -66 -30 Q-60 -70 -16 -70 Q24 -70 34 -36 Q80 -44 90 -6 Q100 30 64 30Z" fill="${c}" ${ST}/>`);
+// ổ khoá: tâm thân khoá (x,y)
+const lock = (x, y, s = 1, c = '#FFC300') => G(x, y, s, `<path d="M-34 -10 V-40 Q-34 -76 0 -76 Q34 -76 34 -40 V-10" fill="none" stroke="${O}" stroke-width="18" stroke-linecap="round"/><path d="M-34 -10 V-40 Q-34 -76 0 -76 Q34 -76 34 -40 V-10" fill="none" stroke="#ADB5BD" stroke-width="8" stroke-linecap="round"/>
+  <rect x="-56" y="-14" width="112" height="90" rx="16" fill="${c}" ${ST}/><circle cx="0" cy="22" r="12" fill="${O}"/><rect x="-5" y="24" width="10" height="28" rx="4" fill="${O}"/>`);
+// kính lúp: tâm mắt kính (x,y)
+const mag = (x, y, s = 1) => G(x, y, s, `<line x1="40" y1="40" x2="92" y2="92" stroke="${O}" stroke-width="26" stroke-linecap="round"/><line x1="40" y1="40" x2="92" y2="92" stroke="#FF7F11" stroke-width="14" stroke-linecap="round"/>
+  <circle r="56" fill="#D0EBFF" fill-opacity=".85" stroke="${O}" stroke-width="10"/><path d="M-30 -20 Q-24 -36 -8 -40" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>`);
+// cân công lí: tâm (x,y)
+const scales = (x, y, s = 1) => G(x, y, s, `<path d="M-100 -90 L-130 -10 M-100 -90 L-70 -10 M100 -90 L70 -10 M100 -90 L130 -10" stroke="${O}" stroke-width="4"/>
+  <rect x="-8" y="-110" width="16" height="190" rx="6" fill="#FFC300" ${ST}/><rect x="-60" y="76" width="120" height="22" rx="10" fill="#FFC300" ${ST}/><rect x="-110" y="-104" width="220" height="14" rx="7" fill="#FFC300" ${ST}/><circle cy="-118" r="14" fill="#FF006E" ${ST}/>
+  <path d="M-140 -10 H-60 Q-100 30 -140 -10Z" fill="#1982C4" ${ST}/><path d="M60 -10 H140 Q100 30 60 -10Z" fill="#1982C4" ${ST}/>`);
+// khiên bảo vệ: tâm (x,y)
+const shieldI = (x, y, s = 1, c = '#2EC4B6') => G(x, y, s, `<path d="M0 -80 L70 -54 V0 Q70 60 0 90 Q-70 60 -70 0 V-54Z" fill="${c}" ${ST}/><path d="M-28 4 L-6 26 L32 -18" stroke="#fff" stroke-width="14" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`);
+// biểu đồ cột: (x,y) là gốc trục
+const bars = (x, y, vals, bw = 44, gap = 18, cs = ['#FF006E', '#1982C4', '#2DA44E', '#FF7F11', '#8338EC']) => `<line x1="${x - 10}" y1="${y}" x2="${x + vals.length*(bw + gap) + 4}" y2="${y}" stroke="${O}" stroke-width="6" stroke-linecap="round"/><line x1="${x - 10}" y1="${y}" x2="${x - 10}" y2="${y - Math.max(...vals) - 24}" stroke="${O}" stroke-width="6" stroke-linecap="round"/>` + vals.map((v, i) => `<rect x="${x + i*(bw + gap)}" y="${y - v}" width="${bw}" height="${v}" rx="6" fill="${cs[i % cs.length]}" stroke="${O}" stroke-width="5"/>`).join('');
+// biểu đồ tròn: tâm (x,y)
+const pie = (x, y, r = 70) => [[0, .4, '#FF006E'], [.4, .7, '#FFD60A'], [.7, .9, '#1982C4'], [.9, 1, '#2DA44E']].map(([a, b, c]) => { const p = t => [x + r*Math.cos(2*Math.PI*t - Math.PI/2), y + r*Math.sin(2*Math.PI*t - Math.PI/2)]; const [x1, y1] = p(a), [x2, y2] = p(b);
+  return `<path d="M${x} ${y} L${x1} ${y1} A${r} ${r} 0 ${b - a > .5 ? 1 : 0} 1 ${x2} ${y2}Z" fill="${c}" stroke="${O}" stroke-width="5" stroke-linejoin="round"/>`; }).join('');
+// biểu đồ đường: (x,y) là gốc trục
+const lineC = (x, y, pts, c = '#FF006E') => `<line x1="${x}" y1="${y}" x2="${x + (pts.length - 1)*50 + 30}" y2="${y}" stroke="${O}" stroke-width="6" stroke-linecap="round"/><line x1="${x}" y1="${y}" x2="${x}" y2="${y - Math.max(...pts) - 24}" stroke="${O}" stroke-width="6" stroke-linecap="round"/>
+  <polyline points="${pts.map((v, i) => `${x + 15 + i*50},${y - v}`).join(' ')}" fill="none" stroke="${c}" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>${pts.map((v, i) => `<circle cx="${x + 15 + i*50}" cy="${y - v}" r="9" fill="#FFD60A" stroke="${O}" stroke-width="4"/>`).join('')}`;
+// sơ đồ tư duy: tâm (x,y)
+const mindmap = (x, y, s = 1, t = 'Ý chính') => G(x, y, s, `${[[-170, -90, '#FF006E'], [170, -90, '#1982C4'], [-170, 90, '#2DA44E'], [170, 90, '#FF7F11']].map(([a, b, c]) => `<path d="M0 0 Q${a*.5} ${b*.1} ${a} ${b}" stroke="${c}" stroke-width="10" fill="none" stroke-linecap="round"/><rect x="${a - 60}" y="${b - 24}" width="120" height="48" rx="24" fill="${c}" ${ST}/><rect x="${a - 36}" y="${b - 5}" width="72" height="10" rx="5" fill="#fff" opacity=".8"/>`).join('')}
+  <ellipse rx="96" ry="50" fill="#FFD60A" ${ST}/><text x="0" y="10" text-anchor="middle" font-size="28" fill="${O}" ${F}>${t}</text>`);
+// trang văn bản: tâm (x,y)
+const doc = (x, y, s = 1, c = '#fff') => G(x, y, s, `<path d="M-50 -66 H26 L50 -42 V66 H-50Z" fill="${c}" ${ST}/><path d="M26 -66 V-42 H50" fill="none" ${ST}/>${[-36, -18, 0, 18, 36].map(d => `<rect x="-34" y="${d}" width="${d === 36 ? 40 : 68}" height="8" rx="4" fill="#ADB5BD"/>`).join('')}`);
+// nguyên tử: tâm (x,y)
+const atom = (x, y, s = 1) => G(x, y, s, `${[0, 60, 120].map(a => `<ellipse rx="90" ry="32" fill="none" stroke="#1982C4" stroke-width="7" transform="rotate(${a})"/>`).join('')}<circle r="22" fill="#FF006E" ${ST}/>
+  <g><circle cx="90" cy="0" r="11" fill="#FFD60A" stroke="${O}" stroke-width="4"/><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="3s" repeatCount="indefinite"/></g>`);
+// máy bay: tâm (x,y)
+const plane = (x, y, s = 1) => G(x, y, s, `<path d="M-10 -14 L30 -80 L52 -80 L38 -14Z M-10 14 L30 80 L52 80 L38 14Z" fill="#1982C4" ${ST}/><path d="M-90 -12 L-102 -52 L-80 -52 L-62 -14Z" fill="#FF006E" ${ST}/>
+  <path d="M-104 0 Q-104 -16 -84 -16 H70 Q100 -16 112 0 Q100 16 70 16 H-84 Q-104 16 -104 0Z" fill="#fff" ${ST}/>${[-50, -26, -2, 22].map(d => `<circle cx="${d}" cy="-2" r="5" fill="#8ECAE6" stroke="${O}" stroke-width="2"/>`).join('')}<path d="M80 -10 Q96 -8 102 0 H80Z" fill="#8ECAE6" stroke="${O}" stroke-width="3"/>`);
+// máy giặt: tâm (x,y)
+const washer = (x, y, s = 1) => G(x, y, s, `<rect x="-80" y="-100" width="160" height="200" rx="18" fill="#E7F5FF" ${ST}/><line x1="-80" y1="-56" x2="80" y2="-56" stroke="${O}" stroke-width="5"/>
+  <rect x="-62" y="-88" width="52" height="22" rx="6" fill="#1B2A49"/><text x="-36" y="-71" text-anchor="middle" font-size="16" fill="#7DF9FF" ${F}>30'</text><circle cx="20" cy="-77" r="9" fill="#FF006E" stroke="${O}" stroke-width="3"/><circle cx="48" cy="-77" r="9" fill="#2DA44E" stroke="${O}" stroke-width="3"/>
+  <circle cx="0" cy="20" r="58" fill="#ADB5BD" ${ST}/><circle cx="0" cy="20" r="42" fill="#8ECAE6" stroke="${O}" stroke-width="5"/><path d="M-30 30 Q-10 10 10 30 T40 26" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round"/>`);
+// đồng hồ thông minh: tâm (x,y)
+const swatch = (x, y, s = 1) => G(x, y, s, `<rect x="-28" y="-90" width="56" height="180" rx="18" fill="#FF006E" ${ST}/><rect x="-50" y="-52" width="100" height="104" rx="24" fill="#3D405B" ${ST}/><rect x="-38" y="-40" width="76" height="80" rx="14" fill="#1B2A49"/>
+  <path d="M-22 -14 Q-22 -26 -12 -26 Q-4 -26 0 -18 Q4 -26 12 -26 Q22 -26 22 -14 Q22 0 0 14 Q-22 0 -22 -14Z" fill="#FF5DA2"/><text x="0" y="34" text-anchor="middle" font-size="18" fill="#7DF9FF" ${F}>82</text>`);
+// robot hút bụi: tâm (x,y)
+const vacbot = (x, y, s = 1) => G(x, y, s, `<ellipse cx="0" cy="24" rx="100" ry="34" fill="#3D405B" ${ST}/><ellipse cx="0" cy="0" rx="100" ry="34" fill="#2EC4B6" ${ST}/><ellipse cx="0" cy="-4" rx="34" ry="12" fill="#1B2A49"/><circle cx="0" cy="-4" r="6" fill="#7DF9FF"/>
+  <path d="M74 -44 q14 -10 0 -22 M88 -54 q24 -18 0 -40" stroke="#FF006E" stroke-width="5" fill="none" stroke-linecap="round"/>`);
+// đường chấm nối
+const dline = (x1, y1, x2, y2, c = O) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="5" stroke-dasharray="2 10" stroke-linecap="round"/>`;
+// danh sách đúng/sai: [[đúng?, màu, chữ], …]
+const tlist = (rows, y0 = 70, dy = 92, fs = 24) => rows.map(([ok, c, t], i) => `${ok ? tick(80, y0 + i*dy) : cross(80, y0 + i*dy)}${pillS(130, y0 + i*dy - 26, 430, 52, c, t, fs)}`).join('');
+/* ---- thêm cho Tin học 6 ---- */
+const vflow = (items, x = 150, y0 = 30, w = 300, dy = 92, fs = 24) => items.map(([c, t], i) => pillS(x, y0 + i*dy, w, 54, c, t, fs) + (i < items.length - 1 ? arr(x + w/2, y0 + i*dy + 62, x + w/2, y0 + (i + 1)*dy - 4, O, 6) : '')).join('');
+const hflow = (items, y = 180, fs = 22) => { const n = items.length, gap = 40, w = (560 - gap*(n - 1))/n; return items.map(([c, t], i) => pillS(20 + i*(w + gap), y, w, 56, c, t, fs) + (i < n - 1 ? arr(20 + i*(w + gap) + w + 6, y + 28, 20 + (i + 1)*(w + gap) - 2, y + 28, O, 6) : '')).join(''); };
+const bits = (x, y, s, size = 46) => [...s].map((b, i) => `<rect x="${x + i*(size + 8)}" y="${y}" width="${size}" height="${size + 10}" rx="10" fill="${b === '1' ? '#FFD60A' : '#1D3557'}" stroke="${O}" stroke-width="4"/><text x="${x + i*(size + 8) + size/2}" y="${y + size*.78}" text-anchor="middle" font-size="${size*.7}" fill="${b === '1' ? O : '#fff'}" ${F}>${b}</text>`).join('');
+const winbox = (x, y, w, h, title, inner = '', c = '#1982C4') => `<rect x="${x + 7}" y="${y + 7}" width="${w}" height="${h}" rx="14" fill="#000" opacity=".15"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#fff" ${ST}/><path d="M${x} ${y + 14} Q${x} ${y} ${x + 14} ${y} H${x + w - 14} Q${x + w} ${y} ${x + w} ${y + 14} V${y + 40} H${x}Z" fill="${c}" ${ST}/><circle cx="${x + 20}" cy="${y + 20}" r="6" fill="#FF595E"/><circle cx="${x + 38}" cy="${y + 20}" r="6" fill="#FFD60A"/><text x="${x + 56}" y="${y + 28}" font-size="20" fill="#fff" ${F}>${title}</text>${inner}`;
+/* ---- thêm cho Tin học 8 ---- */
+// bảng tính mini: rows = [[ô, ô…], …]; hàng 0 là tiêu đề cột (A, B…) nếu head=true; hl = {"r,c": màu}
+const grid = (x, y, rows, cw = 110, rh = 50, fs = 22, hl = {}) => rows.map((row, r) => row.map((v, c) => { const w = Array.isArray(cw) ? cw[c] : cw, xx = x + (Array.isArray(cw) ? cw.slice(0, c).reduce((a, b) => a + b, 0) : c*cw), head = r === 0 || (c === 0 && String(v).match(/^\d+$/));
+  return `<rect x="${xx}" y="${y + r*rh}" width="${w}" height="${rh}" fill="${hl[r + ',' + c] || (head ? '#DDE7F0' : '#fff')}" stroke="${O}" stroke-width="3"/><text x="${xx + w/2}" y="${y + r*rh + rh/2 + fs*.36}" text-anchor="middle" font-size="${fs}" fill="${O}" ${F}>${v}</text>`; }).join('')).join('');
+// trang chiếu
+const slide = (x, y, w, h, bgc, inner = '') => `<rect x="${x + 8}" y="${y + 8}" width="${w}" height="${h}" rx="12" fill="#000" opacity=".15"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="${bgc}" ${ST}/>${inner}`;
+// khối lệnh Scratch
+const sblock = (x, y, w, c, t, fs = 22, h = 50) => `<path d="M${x} ${y} h20 l8 8 h22 l8 -8 H${x + w} v${h} H${x + 58} l-8 8 h-22 l-8 -8 H${x}Z" fill="${c}" stroke="${O}" stroke-width="4" stroke-linejoin="round"/><text x="${x + 16}" y="${y + h/2 + fs*.36}" font-size="${fs}" fill="#fff" ${F}>${t}</text>`;
+// khối bao (if / repeat) cao h, phần trong rỗng
+const scwrap = (x, y, w, h, c, t, fs = 22) => `<path d="M${x} ${y} h20 l8 8 h22 l8 -8 H${x + w} v50 H${x + 88} l-8 8 h-22 l-8 -8 H${x + 30} V${y + h - 40} H${x + w} v40 H${x}Z" fill="${c}" stroke="${O}" stroke-width="4" stroke-linejoin="round"/><text x="${x + 16}" y="${y + 25 + fs*.36}" font-size="${fs}" fill="#fff" ${F}>${t}</text>`;
+// bàn tính
+const abacus = (x, y, s = 1) => G(x, y, s, `<rect x="-130" y="-90" width="260" height="180" rx="16" fill="#C68B59" ${ST}/><rect x="-112" y="-72" width="224" height="144" rx="6" fill="#FFF3BF" ${ST}/><line x1="-112" y1="-26" x2="112" y2="-26" stroke="${O}" stroke-width="7"/>
+  ${[-80, -40, 0, 40, 80].map((cx, i) => `<line x1="${cx}" y1="-72" x2="${cx}" y2="72" stroke="${O}" stroke-width="4"/>${[0, 1, 2, 3].map(k => `<ellipse cx="${cx}" cy="${(k < 1 ? -50 : -4 + k*22) + (i % 2 ? 4 : 0)}" rx="16" ry="10" fill="${['#FF006E', '#1982C4', '#2DA44E', '#FF7F11', '#8338EC'][i]}" stroke="${O}" stroke-width="3"/>`).join('')}`).join('')}`);
+// máy tính cơ học (bánh răng + mặt số)
+const mech = (x, y, s = 1) => G(x, y, s, `<rect x="-140" y="-60" width="280" height="130" rx="14" fill="#E9C46A" ${ST}/>${[-90, -30, 30, 90].map((cx, i) => `<circle cx="${cx}" cy="0" r="24" fill="#fff" stroke="${O}" stroke-width="5"/><text x="${cx}" y="10" text-anchor="middle" font-size="26" fill="${O}" ${F}>${[1, 6, 4, 2][i]}</text>`).join('')}
+  <rect x="-110" y="34" width="220" height="20" rx="8" fill="#8D5524" stroke="${O}" stroke-width="4"/>`);
+// linh kiện: đèn điện tử, bóng bán dẫn, vi mạch
+const tube = (x, y, s = 1) => G(x, y, s, `<path d="M-30 50 V-30 Q-30 -70 0 -70 Q30 -70 30 -30 V50Z" fill="#E7F5FF" ${ST}/><path d="M-12 -30 V30 M12 -30 V30 M-12 -30 H12" stroke="#FF7F11" stroke-width="5"/><circle cx="0" cy="-34" r="10" fill="#FFD60A" opacity=".8"/><rect x="-36" y="50" width="72" height="24" rx="6" fill="#3D405B" ${ST}/>${[-20, 0, 20].map(d => `<line x1="${d}" y1="74" x2="${d}" y2="96" stroke="${O}" stroke-width="5"/>`).join('')}`);
+const trans = (x, y, s = 1) => G(x, y, s, `<path d="M-30 20 V-20 Q-30 -40 0 -40 Q30 -40 30 -20 V20Z" fill="#3D405B" ${ST}/>${[-16, 0, 16].map(d => `<line x1="${d}" y1="20" x2="${d}" y2="74" stroke="#ADB5BD" stroke-width="6"/>`).join('')}`);
+const person = (x, y, s = 1, c = '#1982C4', hair = '#3D2B1F') => G(x, y, s, `<rect x="-34" y="20" width="68" height="84" rx="26" fill="${c}" ${ST}/><circle cx="0" cy="-16" r="36" fill="#FFD6A5" ${ST}/><path d="M-36 -22 Q-34 -58 0 -56 Q34 -58 36 -22 Q18 -38 -4 -34 Q-22 -32 -36 -22Z" fill="${hair}" stroke="${O}" stroke-width="5"/><circle cx="-12" cy="-12" r="5" fill="${O}"/><circle cx="12" cy="-12" r="5" fill="${O}"/><path d="M-10 4 Q0 13 10 4" stroke="${O}" stroke-width="4" fill="none" stroke-linecap="round"/>`);
+const bubble = (x, y, w, h, c, t, fs = 22) => `<path d="M${x} ${y + 14} Q${x} ${y} ${x + 14} ${y} H${x + w - 14} Q${x + w} ${y} ${x + w} ${y + 14} V${y + h - 14} Q${x + w} ${y + h} ${x + w - 14} ${y + h} H${x + 40} L${x + 18} ${y + h + 22} L${x + 24} ${y + h} H${x + 14} Q${x} ${y + h} ${x} ${y + h - 14}Z" fill="${c}" ${ST}/><text x="${x + w/2}" y="${y + h/2 + fs*.36}" text-anchor="middle" font-size="${fs}" fill="${O}" ${F}>${t}</text>`;
+const bug = (x, y, s = 1) => G(x, y, s, `${[-1, 1].map(k => [-20, 0, 20].map(d => `<line x1="${k*20}" y1="${d}" x2="${k*52}" y2="${d + 6}" stroke="${O}" stroke-width="6" stroke-linecap="round"/>`).join('')).join('')}<ellipse cx="0" cy="6" rx="34" ry="42" fill="#E5383B" ${ST}/><line x1="0" y1="-30" x2="0" y2="46" stroke="${O}" stroke-width="5"/><circle cx="0" cy="-40" r="20" fill="#3D405B" ${ST}/><circle cx="-14" cy="0" r="7" fill="${O}"/><circle cx="14" cy="24" r="7" fill="${O}"/><path d="M-8 -56 L-18 -76 M8 -56 L18 -76" stroke="${O}" stroke-width="5" stroke-linecap="round"/>`);
+/* ---- 4 bước hiện dần: câu hỏi hiện trước, đáp án hiện sau (bấm ▶ hoặc bấm vào bảng) ----
+   S4Q([nhiệm vụ, gợi ý], [câu hỏi tìm hiểu, đáp án], [câu hỏi trao đổi, đáp án], [ý ghi nhớ 1, ý 2, ý 3]) */
+const S4Q = (nv, th, td, gn) => `<div class="s4q">${[nv, th, td].map(([q, a], i) => `<div class="qa rv"><span class="l4 l4-${i}">${L4[i]}</span> ${q}${a ? `<div class="an an-${i} rv">${a}</div>` : ''}</div>`).join('')}
+  <div class="gn rv"><span class="l4 l4-3">Ghi nhớ</span><ul>${gn.map(t => `<li>${t}</li>`).join('')}</ul></div></div>`;
+
+/* ---- thêm cho Tin học 3, 4 (tiểu học) ---- */
+// màn hình: gốc góc trên trái vùng hiển thị w×h
+const monitor = (x, y, w = 220, h = 140, scr = '', c = '#8ECAE6') => `<rect x="${x - 12}" y="${y - 12}" width="${w + 24}" height="${h + 24}" rx="16" fill="#3D405B" ${ST}/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="${c}"/>${scr}
+  <rect x="${x + w/2 - 18}" y="${y + h + 12}" width="36" height="30" fill="#ADB5BD" ${ST}/><rect x="${x + w/2 - 70}" y="${y + h + 40}" width="140" height="18" rx="9" fill="#ADB5BD" ${ST}/>`;
+// thân máy: góc trên trái
+const casePC = (x, y, s = 1) => G(x, y, s, `<rect x="0" y="0" width="80" height="170" rx="12" fill="#5C677D" ${ST}/>${[24, 44, 64].map(d => `<rect x="14" y="${d}" width="52" height="8" rx="4" fill="#ADB5BD"/>`).join('')}<circle cx="40" cy="130" r="13" fill="#2DA44E" stroke="${O}" stroke-width="4"/>`);
+// chuột: tâm (x,y); hl = 'L' | 'R' tô sáng nút
+const mouseI = (x, y, s = 1, hl = '', c = '#E9ECEF') => G(x, y, s, `<path d="M0 -80 Q-14 -110 -40 -116" fill="none" stroke="${O}" stroke-width="7" stroke-linecap="round"/>
+  <path d="M-46 -20 Q-46 -76 0 -76 Q46 -76 46 -20 V30 Q46 82 0 82 Q-46 82 -46 30Z" fill="${c}" ${ST}/>
+  <path d="M-46 -14 Q-46 -76 -2 -76 V-14Z" fill="${hl === 'L' ? '#FF006E' : c}" ${ST}/><path d="M46 -14 Q46 -76 2 -76 V-14Z" fill="${hl === 'R' ? '#FF006E' : c}" ${ST}/>
+  <rect x="-8" y="-60" width="16" height="30" rx="8" fill="#3D405B" stroke="${O}" stroke-width="3"/>`);
+// bàn phím: góc trên trái, hl = {chữ: màu}
+const kbd = (x, y, s = 1, hl = {}) => { const rows = ['QWERTYUIOP', 'ASDFGHJKL', 'ZXCVBNM']; let k = `<rect x="-14" y="-14" width="${10*44 + 28}" height="${4*46 + 20}" rx="16" fill="#5C677D" ${ST}/>`;
+  rows.forEach((r, i) => [...r].map((ch, j) => { const xx = i*16 + j*44, yy = i*46; k += `<rect x="${xx}" y="${yy}" width="38" height="38" rx="8" fill="${hl[ch] || '#F1F3F5'}" stroke="${O}" stroke-width="3"/><text x="${xx + 19}" y="${yy + 27}" text-anchor="middle" font-size="20" fill="${O}" ${F}>${ch}</text>${(ch === 'F' || ch === 'J') ? `<rect x="${xx + 12}" y="${yy + 31}" width="14" height="4" rx="2" fill="${O}"/>` : ''}`; }));
+  k += `<rect x="${3*16 + 2*44}" y="${3*46}" width="${5*44 - 6}" height="34" rx="8" fill="${hl[' '] || '#F1F3F5'}" stroke="${O}" stroke-width="3"/>`;
+  return G(x, y, s, k); };
+// máy tính để bàn đủ bộ: gốc góc trên trái
+const desk = (x, y, s = 1, scr = '') => G(x, y, s, `${monitor(0, 0, 220, 140, scr)}${casePC(260, 30, 1)}${G(-10, 230, .5, kbd(0, 0))}${mouseI(300, 270, .45)}`);
+// thư mục: tâm (x,y)
+const folder = (x, y, s = 1, c = '#FFC300', t = '') => G(x, y, s, `<path d="M-70 -46 H-20 L-6 -32 H70 V50 H-70Z" fill="${c}" ${ST}/><path d="M-70 -20 H70 V50 H-70Z" fill="#FFE066" ${ST}/>${t ? `<text x="0" y="${30}" text-anchor="middle" font-size="22" fill="${O}" ${F}>${t}</text>` : ''}`);
+// tệp: tâm (x,y)
+const fileI = (x, y, s = 1, c = '#1982C4', t = '') => G(x, y, s, `<path d="M-40 -54 H18 L40 -32 V54 H-40Z" fill="#fff" ${ST}/><path d="M18 -54 V-32 H40" fill="none" ${ST}/><rect x="-40" y="14" width="80" height="40" fill="${c}" ${ST}/>${t ? `<text x="0" y="43" text-anchor="middle" font-size="20" fill="#fff" ${F}>${t}</text>` : ''}`);
+// sơ đồ hình cây: gốc (x,y) ở trên, kids = [[màu, chữ], …]
+const treeD = (x, y, root, kids, w = 150, fs = 22, dy = 150) => { const n = kids.length, gap = Math.min(190, 540/n), x0 = x - gap*(n - 1)/2;
+  return kids.map((k, i) => `<path d="M${x} ${y + 50} V${y + 80} H${x0 + i*gap} V${y + dy}" fill="none" stroke="${O}" stroke-width="5" stroke-linejoin="round"/>`).join('')
+    + pillS(x - w/2, y, w, 52, root[0], root[1], fs) + kids.map((k, i) => pillS(x0 + i*gap - (gap - 14)/2, y + dy, gap - 14, 50, k[0], k[1], fs - 2)).join(''); };
+// trình duyệt web: góc trên trái
+const browser = (x, y, w, h, inner = '', url = 'www…') => `<rect x="${x + 7}" y="${y + 7}" width="${w}" height="${h}" rx="14" fill="#000" opacity=".15"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#fff" ${ST}/>
+  <path d="M${x} ${y + 14} Q${x} ${y} ${x + 14} ${y} H${x + w - 14} Q${x + w} ${y} ${x + w} ${y + 14} V${y + 50} H${x}Z" fill="#DDE7F0" ${ST}/>${['#FF5E78', '#FFC300', '#2DA44E'].map((c, i) => `<circle cx="${x + 22 + i*22}" cy="${y + 25}" r="7" fill="${c}"/>`).join('')}
+  <rect x="${x + 96}" y="${y + 12}" width="${w - 112}" height="26" rx="13" fill="#fff" stroke="${O}" stroke-width="3"/><text x="${x + 110}" y="${y + 32}" font-size="17" fill="${O}" ${F}>${url}</text>${inner}`;
+// đèn giao thông: tâm (x,y); on = 0 đỏ / 1 vàng / 2 xanh
+const traffic = (x, y, s = 1, on = 0) => G(x, y, s, `<rect x="-10" y="90" width="20" height="90" fill="#5C677D" ${ST}/><rect x="-42" y="-110" width="84" height="210" rx="22" fill="#3D405B" ${ST}/>
+  ${['#E5383B', '#FFC300', '#2DA44E'].map((c, i) => `<circle cx="0" cy="${-70 + i*64}" r="24" fill="${i === on ? c : '#6C757D'}" stroke="${O}" stroke-width="4"/>${i === on ? `<circle cx="0" cy="${-70 + i*64}" r="34" fill="${c}" opacity=".25"/>` : ''}`).join('')}`);
+// ô dù: tâm (x,y)
+const umbrella = (x, y, s = 1, c = '#FF006E') => G(x, y, s, `<path d="M0 -10 V70 Q0 90 -20 90" fill="none" stroke="${O}" stroke-width="8" stroke-linecap="round"/><path d="M-90 -10 Q-90 -90 0 -90 Q90 -90 90 -10 Q68 -26 45 -10 Q22 -26 0 -10 Q-22 -26 -45 -10 Q-68 -26 -90 -10Z" fill="${c}" ${ST}/>`);
+// hạt mưa
+const rain = (x, y, n = 5) => [...Array(n)].map((_, i) => `<path d="M${x + i*26} ${y + (i % 2)*18} q-6 14 0 18 q6 -4 0 -18Z" fill="#3A8DFF" stroke="${O}" stroke-width="3"/>`).join('');
+// loa: tâm (x,y)
+const speaker = (x, y, s = 1) => G(x, y, s, `<rect x="-44" y="-70" width="88" height="140" rx="16" fill="#3D405B" ${ST}/><circle cy="-30" r="18" fill="#ADB5BD" stroke="${O}" stroke-width="4"/><circle cy="24" r="30" fill="#ADB5BD" stroke="${O}" stroke-width="4"/><circle cy="24" r="10" fill="${O}"/>`);
+// máy in: tâm (x,y)
+const printer = (x, y, s = 1) => G(x, y, s, `<rect x="-50" y="-80" width="100" height="60" fill="#fff" ${ST}/><rect x="-90" y="-30" width="180" height="90" rx="16" fill="#ADB5BD" ${ST}/><circle cx="60" cy="0" r="8" fill="#2DA44E"/><rect x="-60" y="40" width="120" height="60" fill="#fff" ${ST}/>${[56, 72].map(d => `<rect x="-44" y="${d}" width="88" height="6" rx="3" fill="#ADB5BD"/>`).join('')}`);
+// tai nghe: tâm (x,y)
+const headset = (x, y, s = 1, c = '#FF006E') => G(x, y, s, `<path d="M-60 20 V-10 Q-60 -70 0 -70 Q60 -70 60 -10 V20" fill="none" stroke="${O}" stroke-width="16" stroke-linecap="round"/><path d="M-60 20 V-10 Q-60 -70 0 -70 Q60 -70 60 -10 V20" fill="none" stroke="#3D405B" stroke-width="7" stroke-linecap="round"/><rect x="-80" y="0" width="34" height="60" rx="14" fill="${c}" ${ST}/><rect x="46" y="0" width="34" height="60" rx="14" fill="${c}" ${ST}/>`);
+// trang chiếu có tiêu đề: góc trên trái
+const slideT = (x, y, w, h, bgc, t, fs = 22, lines = 2) => slide(x, y, w, h, bgc, `<rect x="${x + 14}" y="${y + 12}" width="${w - 28}" height="${fs + 16}" rx="8" fill="#fff" opacity=".9"/><text x="${x + w/2}" y="${y + 20 + fs*.85}" text-anchor="middle" font-size="${fs}" fill="${O}" ${F}>${t}</text>${[...Array(lines)].map((_, i) => `<rect x="${x + 20}" y="${y + fs + 44 + i*20}" width="${(w - 40)*(i % 2 ? .6 : .85)}" height="10" rx="5" fill="#fff" opacity=".85"/>`).join('')}`);
+// con trỏ chuột (mũi tên): đầu mũi ở (x,y)
+const cursor = (x, y, s = 1) => G(x, y, s, `<path d="M0 0 V58 L14 44 L26 70 L38 64 L26 39 H46Z" fill="#fff" stroke="${O}" stroke-width="5" stroke-linejoin="round"/>`);
+// nhân vật lập trình (bạn mèo cam tự vẽ): tâm (x,y)
+const sprite = (x, y, s = 1) => cat(x, y, s);
+// sân khấu: góc trên trái
+const stageB = (x, y, w, h, inner = '') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" fill="#E7F5FF" ${ST}/><rect x="${x}" y="${y + h*.72}" width="${w}" height="${h*.28}" fill="#B5E48C" stroke="${O}" stroke-width="5"/>${inner}`;
+// ngón tay đặt lên phím: chấm tròn màu
+const finger = (x, y, c = '#FF006E') => `<circle cx="${x}" cy="${y}" r="14" fill="${c}" stroke="${O}" stroke-width="4" opacity=".9"/>`;
+// bản đồ / chỉ đường đơn giản
+const pinI = (x, y, s = 1, c = '#E5383B') => G(x, y, s, `<path d="M0 40 Q-34 0 -34 -20 A34 34 0 1 1 34 -20 Q34 0 0 40Z" fill="${c}" ${ST}/><circle cx="0" cy="-20" r="12" fill="#fff" stroke="${O}" stroke-width="4"/>`);
+
+
+/* ===== BÀI 12B: PHẦN MỀM LUYỆN GÕ BÀN PHÍM ===== */
+const META = { key: 'bai12b', num: '12B', theme: 'vutru', ic: '🚀', cd: 5, en: 'Phần mềm luyện gõ bàn phím',
+  title: 'Bài 12B. Phần mềm luyện gõ bàn phím', big: 'Phần mềm<br>luyện gõ<br>bàn phím',
+  st2: 'Chủ đề 5 • 5 hoạt động × 4 bước • 10 câu đố • giấy chứng nhận',
+  hello: 'Tàu vũ trụ chỉ bay khi em gõ đúng phím! Sẵn sàng chưa, phi hành gia?',
+  cert: 'Tin học 4 – Bài 12B. Phần mềm luyện gõ bàn phím', file: 'Tin4_Bai12B', pass: 8 };
+
+const gauge = (x, y, r, v, c, t) => `<path d="M${x - r} ${y} A${r} ${r} 0 0 1 ${x + r} ${y}" fill="none" stroke="#E9ECEF" stroke-width="18" stroke-linecap="round"/><path d="M${x - r} ${y} A${r} ${r} 0 0 1 ${x + r*Math.cos(Math.PI*(1 - v))} ${y - r*Math.sin(Math.PI*(1 - v))}" fill="none" stroke="${c}" stroke-width="18" stroke-linecap="round"/>${txt(x, y - 10, t, 30)}`;
+const COVER = () => svgC(`${kbd(60, 120, .9)}${G(470, 90, .8, `<path d="M0 -70 Q34 -30 26 40 H-26 Q-34 -30 0 -70Z" fill="#fff" ${ST}/><circle cy="-10" r="12" fill="#8ECAE6" stroke="${O}" stroke-width="5"/><path d="M-14 40 L0 80 L14 40Z" fill="#FF7F11" ${ST}/>`)}${star(560, 320, 14, '#FFD60A')}${star(60, 50, 12, '#FF006E')}`);
+const ILL_T = {
+  t1: () => svg(`${monitor(60, 40, 300, 180, `${txt(210, 110, 'f j f j', 44, '#fff')}${pillS(110, 140, 200, 40, '#FFC300', 'Bài 1', 20, 0, O)}`, '#1B2A49')}${kbd(390, 120, .4, { F: '#FF7F11', J: '#FF7F11' })}
+    ${pillS(40, 320, 520, 54, '#8338EC', 'Phần mềm luyện gõ', 26)}`),
+  t2: () => svg(`${[['Bài 1', 'Hàng cơ sở', '#FFD60A'], ['Bài 2', 'Hàng trên', '#8ECAE6'], ['Bài 3', 'Hàng dưới', '#B5E48C'], ['Bài 4', 'Cả bàn phím', '#FFC2D6']].map(([a, b, c], i) => `${pillS(60, 30 + i*68, 130, 52, '#1982C4', a, 22)}${pillS(210, 30 + i*68, 330, 52, c, b, 22, 0, O)}`).join('')}
+    ${pillS(60, 320, 480, 54, '#FF7F11', 'Luyện từ dễ đến khó', 26)}`),
+  t3: () => svg(`${gauge(160, 200, 100, .7, '#2DA44E', '95%')}${gauge(440, 200, 100, .45, '#1982C4', '20 từ')}
+    ${pillS(60, 230, 200, 46, '#2DA44E', 'Chính xác', 22)}${pillS(340, 230, 200, 46, '#1982C4', 'Tốc độ', 22)}${pillS(60, 320, 480, 54, '#8338EC', 'Xem kết quả sau mỗi bài', 24)}`),
+  t4: () => svg(`${person(140, 190, 1.1, '#FF006E')}${laptop(270, 70, .9, `${txt(120, 85, 'Đúng trước,', 26)}${txt(120, 120, 'nhanh sau!', 26)}`)}
+    ${pillS(40, 330, 520, 54, '#2DA44E', 'Luyện đều 10–15 phút mỗi ngày', 22)}`),
+  t5: () => svg(`${vflow([['#8338EC', 'Chọn bài luyện'], ['#FF7F11', 'Gõ đúng ngón'], ['#2DA44E', 'Xem kết quả, cố gắng']], 140, 40, 320, 110, 24)}${star(60, 60, 14, '#FFD60A')}`),
+};
+
+const TOPICS = [
+  { id: 't1', name: 'Làm quen phần mềm luyện gõ', tip: 'Phần mềm luyện gõ như huấn luyện viên riêng của em!',
+    html: S4Q(['Mở <b>phần mềm luyện gõ</b> theo hướng dẫn của thầy cô.', 'Gợi ý: ví dụ RapidTyping.'],
+      ['Phần mềm luyện gõ giúp gì?', 'Giúp em luyện gõ <b>10 ngón</b>, <b>đúng phím</b>, nhanh dần.'],
+      ['Trên màn hình luyện tập có gì?', 'Dòng <b>chữ mẫu</b> cần gõ và hình <b>bàn phím</b> chỉ ngón tay.'],
+      ['Phần mềm <span class="k">luyện gõ</span> 10 ngón.', 'Có <b>chữ mẫu</b> để gõ theo.', 'Hình bàn phím <b>chỉ ngón</b>.']),
+    quiz: [
+      { q: 'Phần mềm luyện gõ bàn phím giúp em:', o: ['Vẽ tranh', 'Gõ phím đúng, nhanh', 'Xem phim', 'Tìm kiếm'], a: 1, why: 'Phần mềm giúp luyện gõ đúng, nhanh.' },
+      { q: 'Khi luyện gõ, em gõ theo:', o: ['Dòng chữ mẫu', 'Ý thích', 'Bạn bên cạnh', 'Bất kì phím nào'], a: 0, why: 'Phần mềm đưa ra chữ mẫu để em gõ theo.' } ] },
+  { id: 't2', name: 'Các bài luyện tập', tip: 'Bắt đầu từ hàng cơ sở, rồi lên dần nhé!',
+    html: S4Q(['Chọn <b>bài luyện</b> phù hợp với em.', ''],
+      ['Các bài luyện được sắp xếp thế nào?', 'Từ <b>dễ đến khó</b>: hàng cơ sở → hàng trên → hàng dưới → cả bàn phím.'],
+      ['Em nên bắt đầu từ bài nào?', 'Bài <b>hàng cơ sở</b>, gõ đúng rồi mới sang bài khó hơn.'],
+      ['Bài luyện <span class="k">từ dễ đến khó</span>.', 'Bắt đầu <b>hàng cơ sở</b>.', 'Đạt yêu cầu rồi <b>lên bài mới</b>.']),
+    quiz: [
+      { q: 'Bài luyện đầu tiên thường là:', o: ['Gõ cả câu dài', 'Hàng phím số', 'Hàng phím cơ sở', 'Hàng phím dưới'], a: 2, why: 'Bắt đầu từ hàng cơ sở – nơi đặt tay.' },
+      { q: 'Các bài luyện gõ được sắp xếp:', o: ['Ngẫu nhiên', 'Từ khó đến dễ', 'Chỉ có 1 bài', 'Từ dễ đến khó'], a: 3, why: 'Luyện từ dễ đến khó giúp tiến bộ dần.' } ] },
+  { id: 't3', name: 'Tốc độ và độ chính xác', tip: 'Chính xác cao mới là giỏi thật sự!',
+    html: S4Q(['Gõ xong một bài, đọc <b>kết quả</b> phần mềm báo.', ''],
+      ['Độ chính xác cho biết gì?', 'Tỉ lệ phím gõ <b>đúng</b> (ví dụ 95%).'],
+      ['Tốc độ gõ cho biết gì?', 'Số <b>từ</b> em gõ được trong <b>một phút</b>.'],
+      ['<span class="k">Chính xác</span>: tỉ lệ gõ đúng.', '<b>Tốc độ</b>: số từ mỗi phút.', 'Ưu tiên <b>chính xác</b> trước.']),
+    quiz: [
+      { q: 'Độ chính xác 95% nghĩa là:', o: ['Gõ đúng 95 phần trăm số phím', 'Gõ được 95 từ', 'Gõ sai 95 phím', 'Gõ trong 95 phút'], a: 0, why: 'Độ chính xác là tỉ lệ phím gõ đúng.' },
+      { q: 'Khi mới luyện gõ, em nên ưu tiên:', o: ['Gõ thật nhanh dù sai', 'Gõ chính xác', 'Nhìn bàn phím', 'Gõ một ngón'], a: 1, why: 'Gõ đúng trước, nhanh dần sau.' } ] },
+  { id: 't4', name: 'Luyện tập đều đặn', tip: 'Mỗi ngày một chút – ngón tay sẽ nhớ phím!',
+    html: S4Q(['Lập <b>kế hoạch</b> luyện gõ trong một tuần.', ''],
+      ['Mỗi lần luyện bao lâu là hợp lí?', 'Khoảng <b>10 – 15 phút</b>, nghỉ mắt giữa giờ.'],
+      ['Làm sao để tiến bộ nhanh?', 'Luyện <b>đều đặn</b>, gõ đúng ngón, <b>không nhìn</b> bàn phím.'],
+      ['Luyện <span class="k">đều đặn</span> mỗi ngày.', 'Mỗi lần <b>10 – 15 phút</b>.', '<b>Không nhìn</b> bàn phím.']),
+    quiz: [
+      { q: 'Cách luyện gõ tốt nhất là:', o: ['Luyện 3 giờ liền một lần', 'Luyện đều đặn mỗi ngày', 'Chỉ luyện trước khi kiểm tra', 'Không cần luyện'], a: 1, why: 'Luyện đều đặn giúp tiến bộ bền vững.' },
+      { q: 'Khi luyện gõ, em nên:', o: ['Nhìn bàn phím liên tục', 'Gõ bằng một ngón', 'Gõ đúng ngón, nhìn màn hình', 'Gõ thật mạnh'], a: 2, why: 'Đúng ngón, nhìn màn hình là cách gõ đúng.' } ] },
+  { id: 't5', name: 'Phi hành gia gõ phím', tip: 'Ôn lại: chọn bài – gõ đúng – xem kết quả!',
+    html: S4Q(['Hoàn thành <b>bài luyện hàng cơ sở</b> với độ chính xác trên 90%.', ''],
+      ['Gõ xong, phần mềm cho em biết gì?', '<b>Độ chính xác</b> và <b>tốc độ</b> gõ.'],
+      ['Chưa đạt yêu cầu thì làm sao?', '<b>Luyện lại</b> bài đó, gõ chậm mà chắc.'],
+      ['Chọn bài <b>phù hợp</b>.', 'Gõ <span class="k">đúng ngón</span>.', 'Xem kết quả, <b>cố gắng</b> hơn.']),
+    quiz: [
+      { q: 'Chưa đạt yêu cầu bài luyện, em nên:', o: ['Bỏ cuộc', 'Xoá phần mềm', 'Nhờ bạn gõ hộ', 'Luyện lại bài đó'], a: 3, why: 'Luyện lại giúp em tiến bộ.' },
+      { q: 'Tốc độ gõ được đo bằng:', o: ['Số từ gõ trong một phút', 'Số ngón tay', 'Số phím trên bàn phím', 'Số bài đã học'], a: 0, why: 'Tốc độ là số từ gõ được mỗi phút.' } ] },
+];
+
+const KEY = [
+  'Phần mềm<br><b>luyện gõ</b>.',
+  'Bài luyện<br><b>dễ → khó</b>.',
+  '<b>Chính xác</b><br>và tốc độ.',
+  'Luyện<br><b>đều đặn</b>.',
+  'Gõ đúng,<br><b>cố gắng</b>.',
+];
+
+META.path = META.path || 'zigzag';
+
+TOPICS.forEach((t, i) => { const a = ACT[i % ACT.length]; t.act = a.name; t.c = t.c || a.c; t.dk = t.dk || a.dk; t.bg = TH.bgs[i % TH.bgs.length]; t.title = t.title || (a.name + ': ' + t.name); t.short = t.name; });
+const ILL = Object.assign({}, ILL_T, {
+  trophy: () => `<svg viewBox="0 0 300 300"><rect x="96" y="236" width="108" height="34" rx="10" fill="#8D5524" stroke="${O}" stroke-width="7"/>
+    <rect x="132" y="184" width="36" height="56" fill="#FFC300" stroke="${O}" stroke-width="7"/>
+    <path d="M60 70 Q20 70 28 112 Q36 150 90 150" stroke="${O}" stroke-width="20" fill="none" stroke-linecap="round"/><path d="M60 70 Q20 70 28 112 Q36 150 90 150" stroke="#FFC300" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M240 70 Q280 70 272 112 Q264 150 210 150" stroke="${O}" stroke-width="20" fill="none" stroke-linecap="round"/><path d="M240 70 Q280 70 272 112 Q264 150 210 150" stroke="#FFC300" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path d="M64 40 H236 V96 Q236 196 150 196 Q64 196 64 96Z" fill="#FFD60A" stroke="${O}" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M90 56 H120 V110 Q120 150 96 160 Q88 130 90 56Z" fill="#fff" opacity=".45"/>
+    ${star(150, 108, 32, '#FF7F11')}${star(40, 30, 16, '#fff')}${star(270, 210, 14, '#fff')}</svg>`,
+});
+const LCOL = ['#E5392C', '#1982C4', '#4C9B22', '#E8890C'];
+const PASS = META.pass || 8;
+const PRAISE = ['Giỏi quá! 🎉', 'Chính xác luôn! ⭐', 'Siêu đỉnh! 🚀', 'Tuyệt vời! 💯', 'Đúng rồi, quá xịn! ✨'];
+/* ---- học sinh & tiến độ ClickLearn Tin học 4 ---- */
+const who = () => { try { return { name: localStorage.getItem('btName') || '', cls: localStorage.getItem('btClass') || '' }; } catch (e) { return { name: '', cls: '' }; } };
+function saveBest(sc, done) {
+  try { const w = who(), k = 'cl4:' + w.name + '|' + w.cls + ':' + META.key, old = JSON.parse(localStorage.getItem(k) || '{}');
+    if (sc > (old.best || 0) || (sc === (old.best || 0) && done > (old.done || 0))) localStorage.setItem(k, JSON.stringify({ best: sc, done, at: Date.now() })); } catch (e) {}
+}
+
+/* =========================================================
+   3. DỰNG THẾ GIỚI ZOOM
+   ========================================================= */
+const world = document.getElementById('world');
+const FR = {};            // id -> {el, parent, x, y, k, r}
+const PATH = ['overview'];
+const QUIZ = {};          // id -> {topic, q, i}
+const ans = {};           // id -> chosen index
+const el = (tag, cls, html, parent) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; (parent || world).appendChild(e); return e; };
+
+function addFrame(id, parent, x, y, k, r, cls, html, style) {
+  const e = el('div', 'frame ' + cls, html, parent ? FR[parent].el : world);
+  e.dataset.id = id;
+  e.style.transform = `translate(${x}px,${y}px) rotate(${r}deg) scale(${k}) translate(-800px,-450px)`;
+  if (style) for (const k in style) e.style.setProperty(k, style[k]);
+  FR[id] = { el: e, parent, x, y, k, r };
+  return e;
+}
+function W(id) {        // vị trí khung trong thế giới
+  const f = FR[id];
+  if (!f.parent) return { cx: f.x, cy: f.y, k: f.k, r: f.r };
+  const p = W(f.parent), a = p.r*Math.PI/180, dx = f.x - 800, dy = f.y - 450;
+  return { cx: p.cx + p.k*(dx*Math.cos(a) - dy*Math.sin(a)), cy: p.cy + p.k*(dx*Math.sin(a) + dy*Math.cos(a)), k: p.k*f.k, r: p.r + f.r };
+}
+
+// trang trí nền thế giới
+[[-2600, -1500, 900], [2500, 1300, 1100], [2300, -1700, 600], [-2300, 1500, 700], [0, 0, 2600]].forEach(([x, y, s]) => {
+  const d = el('div', 'wdeco'); Object.assign(d.style, { left: x - s/2 + 'px', top: y - s/2 + 'px', width: s + 'px', height: s + 'px' });
+});
+
+// LỐI ĐI ZOOM: vị trí các hoạt động quanh khung tiêu đề – META.path: 'elip' | 'zigzag' | 'xoanoc' | 'cauvong'
+const NT = TOPICS.length, TK = 0.6, LAY = META.path || 'elip', TILT = i => [-4, 3, -3, 4][i % 4];
+const POS = (function () {
+  const n = NT, R = [...Array(n)].map((_, i) => i);
+  if (LAY === 'zigzag') { const dx = 1250, x0 = -(n - 1)*dx/2; return R.map(i => ({ x: x0 + i*dx, y: (i % 2 ? 1 : -1)*1120, r: i % 2 ? 4 : -4 })); }
+  if (LAY === 'xoanoc') { const st = Math.min(80, 300/Math.max(1, n - 1)); return R.map(i => { const a = (-90 + i*st)*Math.PI/180, k = 1 + i*.16; return { x: 1720*k*Math.cos(a), y: 1180*k*Math.sin(a), r: TILT(i) }; }); }
+  if (LAY === 'cauvong') { const RX = Math.max(2300, n*440), RY = 1650; return R.map(i => { const a = (180 + (i + .5)*180/n)*Math.PI/180; return { x: RX*Math.cos(a), y: RY*Math.sin(a) + 330, r: TILT(i) }; }); }
+  const STEP = 360/n, RX = Math.max(2150, n*215), RY = RX*0.64;
+  return R.map(i => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180; return { x: RX*Math.cos(a), y: RY*Math.sin(a), r: TILT(i) }; });
+})();
+
+// đường đi nối các chủ đề
+(function () {
+  const pts = [LAY === 'xoanoc' ? { x: 0, y: 0 } : LAY === 'cauvong' ? { x: 0, y: -300 } : { x: 0, y: -380 }, ...POS];
+  let d = `M${pts[0].x} ${pts[0].y}`;
+  for (let i = 0; i < pts.length - 1; i++) {
+    const p0 = pts[Math.max(0, i-1)], p1 = pts[i], p2 = pts[i+1], p3 = pts[Math.min(pts.length-1, i+2)];
+    d += ` C${p1.x + (p2.x-p0.x)/6} ${p1.y + (p2.y-p0.y)/6} ${p2.x - (p3.x-p1.x)/6} ${p2.y - (p3.y-p1.y)/6} ${p2.x} ${p2.y}`;
+  }
+  const s = el('div', null, `<svg width="10000" height="7000" viewBox="-5000 -3500 10000 7000"><path id="road" d="${d}" fill="none" stroke="${TH.road}" stroke-width="22" stroke-linecap="round" stroke-dasharray="2 48"/>
+   <circle r="34" fill="${TH.dot[0]}" stroke="${TH.dot[1]}" stroke-width="10"><animateMotion dur="24s" repeatCount="indefinite"><mpath href="#road"/></animateMotion></circle></svg>`);
+  Object.assign(s.style, { position: 'absolute', left: '-5000px', top: '-3500px', pointerEvents: 'none' });
+})();
+
+
+// khung tiêu đề (trung tâm)
+const GV = c => c ? { '--g0': c[0], '--g1': c[1] } : null;
+addFrame('title', null, 0, 0, 1.15, 0, 'titlef board', `${TOP('ClickLearn Tin học 4 • Bài 12B')}
+  <div class="bigtitle">${META.big}</div>
+  <svg viewBox="0 0 200 240" style="position:absolute;left:1150px;top:80px;width:300px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
+  <div style="position:absolute;left:830px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">📚 Em ghi nhớ</div>
+  <div style="position:absolute;left:1180px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">🏆 Về đích</div>
+`, GV(TH.gt));
+PATH.push('title');
+// tranh bìa: hình đặc trưng của bài (COVER riêng của bài, nếu không có thì lấy hình minh hoạ chủ đề 1), tự đặt vào khoảng trống dưới tên bài
+function svgC(inner) { return `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`; }
+(function () {
+  const fr = FR.title && FR.title.el; if (!fr) return;
+  let src = ''; try { src = typeof COVER === 'function' ? COVER() : (typeof ILL !== 'undefined' && ILL.t1 ? ILL.t1() : ''); } catch (e) {}
+  if (!src) return;
+  const vb = src.match(/viewBox="0 0 (\d+) (\d+)"/) || [0, 600, 420], R = vb[2]/vb[1];
+  const c = document.createElement('div'); c.className = 'cover'; c.innerHTML = src; fr.insertBefore(c, fr.querySelector('.frame'));
+  const place = () => { const t = fr.querySelector('.bigtitle'); if (!t) return; let y = t.offsetTop + t.offsetHeight + 30;
+    const room = 824 - y, w = Math.min(570, room/R); if (w < 300) { c.style.display = 'none'; return; }
+    Object.assign(c.style, { display: '', top: y + 'px', width: w + 'px', height: w*R + 'px' }); };
+  place(); if (document.fonts) document.fonts.ready.then(place);
+})();
+
+
+// các khung chủ đề + đố vui
+TOPICS.forEach((t, i) => {
+  const p = POS[i];
+  addFrame(t.id, null, p.x, p.y, TK, p.r, 'topic board', `${TOP(`Hoạt động ${i+1} • ${t.act}`)}
+    <div class="num">${i+1}</div><div class="ttl">${t.short}</div>
+    <div class="panel" style="--c:${t.c[0]}">${t.html}</div>
+    <div class="ill">${ILL[t.id]()}</div>
+    <div class="qlabel">Đố vui – bấm vào bảng nhỏ để zoom</div>`, GV(t.c));
+  PATH.push(t.id);
+  t.quiz.forEach((q, j) => {
+    const id = `${t.id}q${j+1}`, cx = t.quiz.length === 1 ? 1252 : 1100 + j*300;
+    QUIZ[id] = { t, q, i: j };
+    addFrame(id, t.id, cx, 742, 0.17, j ? 3 : -3, 'quiz board', `${TOP(`Đố vui ${j+1} • ${t.act}`)}
+      <div class="qbadge">?</div>
+      <div class="qtext">${q.q.replace(/</g, '&lt;')}</div>
+      <div class="opts">${q.o.map((o, n) => `<div class="opt" data-n="${n}"><span class="L" style="background:${LCOL[n]}">${'ABCD'[n]}</span><span>${o.replace(/</g, '&lt;')}</span></div>`).join('')}</div>
+      <div class="fb"></div>`, GV(t.c));
+    PATH.push(id);
+  });
+});
+
+// khung tổng kết kiến thức (lồng trong khung tiêu đề)
+// KEY (ý chính mỗi chủ đề) nằm trong phần nội dung
+addFrame('recap', 'title', 995, 770, 0.2, -2, 'recap board', `${TOP('Em ghi nhớ')}
+  <div class="rgrid" style="grid-template-columns:repeat(${Math.ceil(NT/2)},1fr)">${TOPICS.map((t, i) => `<div class="rcard" data-act="goto:${t.id}" style="background:linear-gradient(180deg,${t.c[0]},${t.c[1]})">
+    <div class="rn">${i+1}</div><div class="rt">${t.act}</div><div class="rk">${KEY[i]}</div></div>`).join('')}</div>
+  <div style="position:absolute;left:0;right:0;bottom:34px;text-align:center;color:var(--bink);font-weight:700;font-size:30px">Bấm vào thẻ để xem lại nội dung • Bấm ▶ để xem kết quả</div>`, GV(TH.gk));
+PATH.push('recap');
+
+// khung kết quả (lồng trong khung tiêu đề)
+addFrame('result', 'title', 1345, 770, 0.2, 2, 'result board', `${TOP('Về đích')}
+  <div style="position:absolute;left:70px;top:150px;width:500px;height:500px">${ILL.trophy()}</div>
+  <div style="position:absolute;left:610px;top:80px;right:60px">
+    <div class="bigtitle" style="position:static;font-size:104px">Về đích!</div>
+    <div id="rStars" style="font-size:100px;letter-spacing:8px;line-height:1.05">★★★</div>
+    <div style="font-weight:800;font-size:60px;color:var(--bink)">Đạt <span id="rScore">0</span> / ${Object.keys(QUIZ).length} ⭐</div>
+    <div id="rMsg" style="font-weight:600;font-size:36px;color:var(--bink);margin-top:8px;line-height:1.25"></div>
+  </div>
+  <div style="position:absolute;left:610px;top:600px;display:flex;flex-wrap:wrap;gap:22px;width:940px">
+    <button class="btn" data-act="cert" id="bCert" style="background:linear-gradient(180deg,#93D655,#5CAE2E)">🎓 Nhận chứng nhận</button>
+    <button class="btn" data-act="redo" style="background:linear-gradient(180deg,#FFB547,#E8890C)">🔁 Làm lại</button>
+    <button class="btn" data-act="wrong" style="background:linear-gradient(180deg,#5FD3F5,#1982C4)">🔎 Xem câu sai</button>
+    <button class="btn" data-act="home" style="background:linear-gradient(180deg,#3FC9BA,#1C7C73)">🗺️ Tổng quan</button>
+    <button class="btn" data-act="app" style="background:linear-gradient(180deg,#B06BFF,#6A3FC7)">🏠 Về App</button></div>`, GV(TH.gr));
+PATH.push('result');
+document.getElementById('scT').textContent = Object.keys(QUIZ).length;
+document.querySelectorAll('.nQ').forEach(e => e.textContent = Object.keys(QUIZ).length);
+
+/* =========================================================
+   4. CAMERA – BAY & ZOOM KIỂU PREZI
+   ========================================================= */
+let cam = { cx: 0, cy: 0, S: 0.2, r: 0 }, step = 0, anim = null;
+const HUD_H = 78;
+function view() { return { w: innerWidth, h: innerHeight - HUD_H, ox: innerWidth/2, oy: (innerHeight - HUD_H)/2 }; }
+function overviewBox() {
+  let x0 = -940, y0 = -740, x1 = 940, y1 = 540;   // khung tiêu đề (kể cả trang trí phía trên)
+  POS.forEach(p => { x0 = Math.min(x0, p.x - 520); x1 = Math.max(x1, p.x + 520); y0 = Math.min(y0, p.y - 320); y1 = Math.max(y1, p.y + 320); });
+  return { cx: (x0+x1)/2, cy: (y0+y1)/2, w: x1-x0 + 200, h: y1-y0 + 200, r: 0 };
+}
+function target(id) {
+  if (id === 'overview') return overviewBox();
+  const w = W(id), a = w.r*Math.PI/180, sh = 50*w.k; return { cx: w.cx + sh*Math.sin(a), cy: w.cy - sh*Math.cos(a), w: 1690*w.k, h: 1040*w.k, r: w.r };
+}
+function camFor(id) {
+  const t = target(id), v = view(), pad = id === 'overview' ? 0.98 : 0.94;
+  return { cx: t.cx, cy: t.cy, r: t.r, S: Math.min(v.w/t.w, v.h/t.h)*pad };
+}
+function apply() {
+  const v = view();
+  world.style.transform = `translate(${v.ox}px,${v.oy}px) scale(${cam.S}) rotate(${-cam.r}deg) translate(${-cam.cx}px,${-cam.cy}px)`;
+}
+const ease = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2;
+function fly(id, instant) {
+  const a = { ...cam }, b = camFor(id);
+  let dr = b.r - a.r; while (dr > 180) dr -= 360; while (dr < -180) dr += 360;
+  if (instant) { cam = b; apply(); return; }
+  const v = view(), D = Math.hypot(b.cx - a.cx, b.cy - a.cy);
+  const Sboth = Math.min(v.w, v.h)/(1.25*D + 1e-6);
+  const dip = Math.max(0, Math.log(Math.min(a.S, b.S)) - Math.log(Sboth))*0.8;
+  const dur = 1000 + Math.min(700, dip*260);
+  const la = Math.log(a.S), lb = Math.log(b.S), t0 = performance.now();
+  if (anim) cancelAnimationFrame(anim);
+  sfx.whoosh(dur/1000);
+  const tick = now => {
+    const u = Math.min(1, (now - t0)/dur), e = ease(u);
+    cam = { cx: a.cx + (b.cx - a.cx)*e, cy: a.cy + (b.cy - a.cy)*e, r: a.r + dr*e, S: Math.exp(la + (lb - la)*e - dip*Math.sin(Math.PI*e)) };
+    apply();
+    anim = u < 1 ? requestAnimationFrame(tick) : null;
+  };
+  anim = requestAnimationFrame(tick);
+}
+
+/* =========================================================
+   5. ĐIỀU HƯỚNG
+   ========================================================= */
+let curId = 'overview';
+function bgFor(id) {
+  const q = QUIZ[id], t = q ? q.t : TOPICS.find(x => x.id === id);
+  if (t) return t.bg;
+  if (id === 'result') return TH.rbg;
+  return TH.tbg;
+}
+let bgOn = 'A';
+function setBg(c) {
+  const next = bgOn === 'A' ? 'B' : 'A', n = document.getElementById('bg' + next), o = document.getElementById('bg' + bgOn);
+  n.style.background = `radial-gradient(ellipse at center,${c[0]} 0%,${c[1]} 100%)`; n.style.opacity = 1; o.style.opacity = 0; bgOn = next;
+}
+function go(i, instant) {
+  step = (i + PATH.length) % PATH.length;
+  curId = PATH[step];
+  document.querySelectorAll('.frame.cur').forEach(e => e.classList.remove('cur'));
+  if (FR[curId]) FR[curId].el.classList.add('cur');
+  setBg(bgFor(curId));
+  fly(curId, instant);
+  document.getElementById('step').textContent = `${step + 1}/${PATH.length}`;
+  if (curId === 'result') showResult();
+  sayFor(curId);
+}
+const goId = id => { const i = PATH.indexOf(id); if (i >= 0) go(i); };
+
+/* =========================================================
+   6. ĐỐ VUI
+   ========================================================= */
+function score() { return Object.keys(ans).filter(id => ans[id] === QUIZ[id].q.a).length; }
+function renderQuiz(id) {
+  const box = FR[id].el, q = QUIZ[id].q, c = ans[id];
+  box.classList.toggle('answered', c != null);
+  box.querySelectorAll('.opt').forEach(o => {
+    const n = +o.dataset.n; o.className = 'opt';
+    if (c != null) { if (n === q.a) o.classList.add('ok'); else if (n === c) o.classList.add('bad'); else o.classList.add('dim'); }
+  });
+  const fb = box.querySelector('.fb');
+  if (c == null) { fb.className = 'fb'; fb.innerHTML = ''; return; }
+  const ok = c === q.a;
+  fb.className = 'fb ' + (ok ? 'ok' : 'bad');
+  fb.innerHTML = `<span class="ic">${ok ? '✅' : '💡'}</span><span>${ok ? '' : `Đáp án đúng: <b>${'ABCD'[q.a]}</b>. `}${q.why}</span>`;
+}
+function choose(id, n) {
+  if (ans[id] != null) return;
+  ans[id] = n; renderQuiz(id);
+  const ok = n === QUIZ[id].q.a;
+  document.getElementById('sc').textContent = score();
+  saveBest(score(), Object.keys(ans).length);
+  if (ok) { sfx.correct(); burst(80); bitMood('happy'); say(PRAISE[Math.floor(Math.random()*PRAISE.length)] + ' Bấm ▶ để đi tiếp nhé!', 3500); }
+  else { sfx.buzz(); bitMood('sad'); say('Ối, chưa đúng rồi! Đọc lời giải màu vàng nha 💡', 3500); }
+}
+function showResult() {
+  const s = score(), T = Object.keys(QUIZ).length, pct = s/T, done = Object.keys(ans).length;
+  const st = pct >= .8 ? 3 : pct >= .5 ? 2 : s > 0 ? 1 : 0;
+  document.getElementById('rScore').textContent = s; document.getElementById('sc').textContent = s;
+  document.getElementById('rStars').innerHTML = '<span style="color:#FFCF2F;-webkit-text-stroke:4px #9C5A00">★</span>'.repeat(st) + `<span style="color:${TH.off[0]};-webkit-text-stroke:4px ${TH.off[1]}">★</span>`.repeat(3 - st);
+  const pass = s >= PASS;
+  document.getElementById('rMsg').textContent = pass ? 'Chúc mừng! Em đủ điều kiện nhận giấy chứng nhận 🎓' :
+    done < T ? `Em mới trả lời ${done}/${T} câu. Cần ${PASS} ⭐ để nhận chứng nhận – quay lại làm nốt nhé!` :
+    `Cần ít nhất ${PASS} ⭐ để nhận chứng nhận (em còn thiếu ${PASS - s}). Bấm “Làm lại” để thử lần nữa nhé!`;
+  document.getElementById('bCert').classList.toggle('lock', !pass);
+  document.getElementById('bCert').innerHTML = pass ? '🎓 Nhận chứng nhận' : `🔒 Cần ${PASS} ⭐`;
+  saveBest(s, done);
+  setTimeout(() => { sfx.tada(); burst(180); }, 900);
+}
+function reset() {
+  Object.keys(ans).forEach(k => delete ans[k]);
+  Object.keys(QUIZ).forEach(renderQuiz);
+  document.getElementById('sc').textContent = 0;
+  go(1);
+}
+
+/* =========================================================
+   7. ROBOT BÍT
+   ========================================================= */
+document.getElementById('bit').innerHTML = robot();
+document.getElementById('bitStart').innerHTML = robot();
+const sayEl = document.getElementById('say'), bitEl = document.getElementById('bit');
+let sayT;
+function say(t, ms = 5000) {
+  sayEl.classList.add('hide');
+  clearTimeout(sayT);
+  setTimeout(() => { sayEl.innerHTML = t; sayEl.classList.remove('hide'); }, 180);
+  sayT = setTimeout(() => sayEl.classList.add('hide'), ms);
+}
+function bitMood(m) { bitEl.classList.remove('happy', 'sad'); void bitEl.offsetWidth; bitEl.classList.add(m); setTimeout(() => bitEl.classList.remove(m), 1600); }
+function sayFor(id) {
+  if (id === 'overview') return say('Đây là bản đồ toàn bài! Bấm vào chủ đề nào cũng được, hoặc bấm ▶ để đi lần lượt.');
+  if (id === 'title') return say('Xin chào! Mình là Bít 🤖 ' + META.hello + '');
+  if (id === 'result') return say(score() >= PASS ? 'Giỏi quá! Bấm “Nhận chứng nhận” rồi điền tên, lớp nha 🎓' : `Về đích rồi! 🏆 Cần ${PASS} ⭐ để nhận chứng nhận đó.`, 5000);
+  if (id === 'recap') return say('Ôn nhanh ' + NT + ' hoạt động nè! Bấm vào thẻ nào để xem lại nội dung đó.');
+  const q = QUIZ[id];
+  if (q) return ans[id] == null ? say(`Đố vui ${q.i + 1}: chọn A, B, C hoặc D nhé!`) : say('Câu này em làm rồi. Bấm ▶ để đi tiếp nha!');
+  const t = TOPICS.find(x => x.id === id); if (t) say(`<b>Hoạt động ${TOPICS.indexOf(t) + 1} – ${t.act}.</b> ` + t.tip);
+}
+
+/* =========================================================
+   8. ÂM THANH (tự tạo bằng WebAudio)
+   ========================================================= */
+let AC = null, sfxOn = true, sfxBus, noiseBuf;
+function initAudio() {
+  if (AC) return;
+  AC = new (window.AudioContext || window.webkitAudioContext)();
+  const comp = AC.createDynamicsCompressor(); comp.connect(AC.destination);
+  sfxBus = AC.createGain(); sfxBus.gain.value = 0.55; sfxBus.connect(comp);
+  noiseBuf = AC.createBuffer(1, AC.sampleRate, AC.sampleRate);
+  const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random()*2 - 1;
+}
+function tone(f, t, dur, type = 'sine', g = 0.3, bus = sfxBus, f2) {
+  const o = AC.createOscillator(), a = AC.createGain();
+  o.type = type; o.frequency.setValueAtTime(f, t); if (f2) o.frequency.exponentialRampToValueAtTime(f2, t + dur);
+  a.gain.setValueAtTime(0.0001, t); a.gain.exponentialRampToValueAtTime(g, t + 0.008); a.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  o.connect(a); a.connect(bus); o.start(t); o.stop(t + dur + 0.05);
+}
+function noise(t, dur, f0, f1, g, bus = sfxBus, q = 1.2) {
+  const s = AC.createBufferSource(), bp = AC.createBiquadFilter(), a = AC.createGain();
+  s.buffer = noiseBuf; bp.type = 'bandpass'; bp.Q.value = q;
+  bp.frequency.setValueAtTime(f0, t); bp.frequency.exponentialRampToValueAtTime(f1, t + dur*.5); bp.frequency.exponentialRampToValueAtTime(f0*1.2, t + dur);
+  a.gain.setValueAtTime(0.0001, t); a.gain.exponentialRampToValueAtTime(g, t + dur*.4); a.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  s.connect(bp); bp.connect(a); a.connect(bus); s.start(t); s.stop(t + dur + .05);
+}
+const bell = (f, t, g = .25, d = .9) => { tone(f, t, d, 'sine', g); tone(f*2, t, d*.5, 'sine', g*.35); tone(f*3.01, t, d*.25, 'sine', g*.12); };
+const sfx = {
+  ok: () => AC && sfxOn,
+  click() { if (!this.ok()) return; const t = AC.currentTime; tone(1800, t, .04, 'square', .08); tone(600, t, .05, 'sine', .2, sfxBus, 300); },
+  pop() { if (!this.ok()) return; tone(320, AC.currentTime, .12, 'sine', .35, sfxBus, 1100); },
+  whoosh(d = 1) { if (!this.ok()) return; noise(AC.currentTime, Math.max(.5, d*.85), 350, 2200, .32); },
+  correct() { if (!this.ok()) return; const t = AC.currentTime; [1047, 1319, 1568, 2093].forEach((f, i) => bell(f, t + i*.09, .22)); },
+  buzz() { if (!this.ok()) return; const t = AC.currentTime; tone(110, t, .38, 'square', .12); tone(116, t, .38, 'square', .1); tone(90, t + .18, .3, 'sawtooth', .08); },
+  tada() { if (!this.ok()) return; const t = AC.currentTime;
+    [[523, 659, 784], [523, 659, 784, 1047]].forEach((ch, k) => ch.forEach(f => { tone(f, t + k*.22, k ? 1.4 : .2, 'sawtooth', .07); tone(f, t + k*.22, k ? 1.4 : .2, 'triangle', .12); }));
+    [1568, 2093, 2637, 3136].forEach((f, i) => bell(f, t + .5 + i*.07, .12, .6)); },
+};
+/* =========================================================
+   9. PHÁO GIẤY
+   ========================================================= */
+const cv = document.getElementById('confetti'), cx2 = cv.getContext('2d');
+let parts = [], cfRun = false;
+function sizeCv() { cv.width = innerWidth*devicePixelRatio; cv.height = innerHeight*devicePixelRatio; }
+sizeCv();
+function burst(n) {
+  const C = TH.conf;
+  for (let i = 0; i < n; i++) parts.push({ x: innerWidth/2 + (Math.random() - .5)*200, y: innerHeight*.55, vx: (Math.random() - .5)*16, vy: -Math.random()*17 - 7, w: 8 + Math.random()*8, h: 5 + Math.random()*6, a: Math.random()*6, va: (Math.random() - .5)*.4, c: C[i % 6], life: 0 });
+  if (!cfRun) { cfRun = true; requestAnimationFrame(cfTick); }
+}
+function cfTick() {
+  const d = devicePixelRatio; cx2.clearRect(0, 0, cv.width, cv.height);
+  parts.forEach(p => { p.vy += .45; p.vx *= .99; p.x += p.vx; p.y += p.vy; p.a += p.va; p.life++;
+    cx2.save(); cx2.globalAlpha = Math.max(0, 1 - Math.max(0, p.life - 90)/60); cx2.translate(p.x*d, p.y*d); cx2.rotate(p.a); cx2.fillStyle = p.c; cx2.fillRect(-p.w*d/2, -p.h*d/2, p.w*d, p.h*d); cx2.restore(); });
+  parts = parts.filter(p => p.life < 150 && p.y < innerHeight + 40);
+  if (parts.length) requestAnimationFrame(cfTick); else { cfRun = false; cx2.clearRect(0, 0, cv.width, cv.height); }
+}
+
+/* =========================================================
+   10. TRANG TRÍ NỀN: bong bóng & lấp lánh
+   ========================================================= */
+TH.deco(document.getElementById('deco'));
+TH.deco(document.getElementById('startDeco'));
+document.getElementById('lvStart').innerHTML = TH.crown;
+
+/* =========================================================
+   11. CHUỘT, CẢM ỨNG, BÀN PHÍM
+   ========================================================= */
+const stage = document.getElementById('stage');
+let drag = null, moved = false;
+const toWorldVec = (dx, dy) => { const a = cam.r*Math.PI/180; return [(dx*Math.cos(a) - dy*Math.sin(a))/cam.S, (dx*Math.sin(a) + dy*Math.cos(a))/cam.S]; };
+stage.addEventListener('pointerdown', e => { drag = { x: e.clientX, y: e.clientY, id: e.pointerId }; moved = false; });
+stage.addEventListener('pointermove', e => {
+  if (!drag || e.pointerId !== drag.id) return;
+  const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+  if (!moved && Math.hypot(dx, dy) < 8) return;
+  if (!moved) { moved = true; stage.classList.add('drag'); if (anim) { cancelAnimationFrame(anim); anim = null; } }
+  const [wx, wy] = toWorldVec(dx, dy); cam.cx -= wx; cam.cy -= wy; apply(); drag.x = e.clientX; drag.y = e.clientY;
+});
+const endDrag = () => { drag = null; stage.classList.remove('drag'); };
+stage.addEventListener('pointerup', endDrag); stage.addEventListener('pointercancel', endDrag);
+stage.addEventListener('wheel', e => {
+  e.preventDefault(); if (anim) { cancelAnimationFrame(anim); anim = null; }
+  const v = view(), f = Math.exp(-e.deltaY*0.0015);
+  const [px, py] = toWorldVec(e.clientX - v.ox, e.clientY - v.oy), wx = cam.cx + px, wy = cam.cy + py;
+  cam.S = Math.min(40, Math.max(0.03, cam.S*f));
+  const [qx, qy] = toWorldVec(e.clientX - v.ox, e.clientY - v.oy); cam.cx = wx - qx; cam.cy = wy - qy; apply();
+}, { passive: false });
+stage.addEventListener('click', e => {
+  if (moved) { moved = false; return; }
+  const f = e.target.closest('.frame'); if (!f) return;
+  const id = f.dataset.id;
+  if (id !== curId) { sfx.click(); goId(id); return; }
+  const o = e.target.closest('.opt'); if (o && QUIZ[id]) { sfx.click(); choose(id, +o.dataset.n); return; }
+  if (e.target.closest('.panel') && revealNext(id)) return;
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  sfx.click();
+  if (b.dataset.act === 'redo') reset();
+  else if (b.dataset.act === 'home') go(0);
+  else if (b.dataset.act === 'app') location.href = '../';
+  else if (b.dataset.act.startsWith('goto:')) goId(b.dataset.act.slice(5));
+  else if (b.dataset.act === 'cert') { if (score() >= PASS) openCert(); else { sfx.buzz(); bitMood('sad'); say(`Em cần ít nhất ${PASS} ⭐ mới nhận được chứng nhận. Làm lại các câu sai nhé!`); } }
+  else if (b.dataset.act === 'wrong') { const w = PATH.find(id => QUIZ[id] && ans[id] !== QUIZ[id].q.a); if (w) goId(w); else say('Em không có câu sai nào! Giỏi quá 🎉'); }
+});
+// hiện dần câu hỏi / đáp án trong bảng 4 bước (S4Q) trước khi bay sang khung kế
+function revealNext(id) { const f = FR[id]; if (!f || QUIZ[id]) return false; const r = f.el.querySelector('.s4q .rv:not(.on)'); if (!r) return false; r.classList.add('on'); sfx.pop(); if (!f.el.querySelector('.s4q .rv:not(.on)')) say('Xong rồi! Bấm ▶ để sang phần tiếp theo nhé.', 3000); return true; }
+const forward = () => { if (revealNext(curId)) return; sfx.pop(); go(step + 1); };
+document.querySelectorAll('.s4q').forEach(p => p.querySelector('.rv').classList.add('on'));
+{ const base = sayFor; sayFor = id => { base(id); const f = FR[id]; if (f && !QUIZ[id] && f.el.querySelector('.s4q .rv:not(.on)')) setTimeout(() => { if (!sayEl.innerHTML.includes('👉')) say(sayEl.innerHTML + '<br>👉 Đọc câu hỏi, suy nghĩ rồi bấm ▶ để xem đáp án.', 7000); }, 260); }; }
+document.getElementById('bNext').onclick = forward;
+document.getElementById('bPrev').onclick = () => { sfx.pop(); go(step - 1); };
+document.getElementById('bHome').onclick = () => { sfx.pop(); go(0); };
+document.getElementById('bSfx').onclick = e => { sfxOn = !sfxOn; e.currentTarget.classList.toggle('off', !sfxOn); e.currentTarget.textContent = sfxOn ? '🔊' : '🔈'; };
+document.getElementById('bFull').onclick = () => { const d = document; if (!d.fullscreenElement) (d.documentElement.requestFullscreen || d.documentElement.webkitRequestFullscreen || (() => {})).call(d.documentElement); else d.exitFullscreen(); };
+addEventListener('keydown', e => {
+  if (document.getElementById('certBox').classList.contains('show')) { if (e.key === 'Escape') closeCert(); else if (e.key === 'Enter' && document.getElementById('cForm').style.display !== 'none') makeCert(); return; }
+  if (document.getElementById('start').style.display !== 'none') { if (e.key === 'Enter' || e.key === ' ') begin(); return; }
+  if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); forward(); }
+  else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); sfx.pop(); go(step - 1); }
+  else if (e.key === 'Escape' || e.key === 'Home') go(0);
+  else if (QUIZ[curId] && /^[a-dA-D1-4]$/.test(e.key)) { const n = isNaN(e.key) ? 'abcd'.indexOf(e.key.toLowerCase()) : +e.key - 1; sfx.click(); choose(curId, n); }
+});
+// vuốt trái/phải trên điện thoại khi đang xem khung
+let tStart = null;
+stage.addEventListener('touchstart', e => { if (e.touches.length === 1) tStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() }; }, { passive: true });
+stage.addEventListener('touchend', e => {
+  if (!tStart) return; const t = e.changedTouches[0], dx = t.clientX - tStart.x, dy = t.clientY - tStart.y;
+  if (Date.now() - tStart.t < 700 && Math.abs(dx) > 45 && Math.abs(dx) > 2*Math.abs(dy)) { dx < 0 ? forward() : go(step - 1); }
+  tStart = null;
+});
+addEventListener('resize', () => { sizeCv(); fly(curId, true); });
+
+/* =========================================================
+   11b. GIẤY CHỨNG NHẬN (vẽ bằng canvas, tải về PNG / in)
+   ========================================================= */
+const cBox = document.getElementById('certBox'), $ = id => document.getElementById(id);
+let certURL = '';
+function openCert() {
+  try { $('cName').value = localStorage.getItem('btName') || ''; $('cClass').value = localStorage.getItem('btClass') || ''; } catch (e) {}
+  $('cScore').textContent = score(); $('cErr').textContent = '';
+  $('cForm').style.display = ''; $('cView').style.display = 'none';
+  cBox.classList.add('show'); sfx.pop(); setTimeout(() => $('cName').focus(), 100);
+}
+function closeCert() { cBox.classList.remove('show'); }
+const tidy = v => v.replace(/\s+/g, ' ').trim();
+function nameCase(v) { return tidy(v).split(' ').map(w => w ? w[0].toLocaleUpperCase('vi') + w.slice(1).toLocaleLowerCase('vi') : w).join(' '); }
+async function makeCert() {
+  const name = nameCase($('cName').value), cls = tidy($('cClass').value).toUpperCase();
+  if (name.length < 2) { $('cErr').textContent = 'Em hãy điền họ và tên nhé!'; $('cName').focus(); sfx.buzz(); return; }
+  if (!cls) { $('cErr').textContent = 'Em hãy điền lớp nhé!'; $('cClass').focus(); sfx.buzz(); return; }
+  if (score() < PASS) { $('cErr').textContent = `Cần ít nhất ${PASS} ⭐ để nhận chứng nhận.`; return; }
+  try { localStorage.setItem('btName', name); localStorage.setItem('btClass', cls); } catch (e) {}
+  $('cErr').textContent = 'Đang tạo…';
+  certURL = await drawCert(name, cls, score());
+  $('certImg').src = certURL; $('printImg').src = certURL;
+  $('cForm').style.display = 'none'; $('cView').style.display = '';
+  $('cErr').textContent = '';
+  sfx.tada(); burst(200); bitMood('happy');
+}
+function svgImg(inner, vb) {
+  return new Promise(res => { const im = new Image(); im.onload = () => res(im); im.onerror = () => res(null);
+    im.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}">${inner}</svg>`); });
+}
+function cStar(g, x, y, r, fill, stroke) {
+  g.beginPath(); for (let i = 0; i < 10; i++) { const a = -Math.PI/2 + i*Math.PI/5, q = i % 2 ? r*.46 : r; g.lineTo(x + q*Math.cos(a), y + q*Math.sin(a)); }
+  g.closePath(); g.fillStyle = fill; g.fill(); if (stroke) { g.lineWidth = 5; g.strokeStyle = stroke; g.lineJoin = 'round'; g.stroke(); }
+}
+function rr(g, x, y, w, h, r) { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+/* ---- giấy chứng nhận: nền + khung do phong cách vẽ (TH.cert.bg), chữ vẽ chung ---- */
+function fitText(g, t, maxW, size, weight, fam) { let s = size; do { g.font = `${weight} ${s}px ${fam}`; s -= 2; } while (g.measureText(t).width > maxW && s > 20); }
+function grad(g, y0, y1, c0, c1) { const gr = g.createLinearGradient(0, y0, 0, y1); gr.addColorStop(0, c0); gr.addColorStop(1, c1); return gr; }
+async function drawCert(name, cls, sc) {
+  const C = TH.cert, FH = `'${C.fh}', 'Baloo 2', sans-serif`, FB = `'${C.fb}', 'Baloo 2', sans-serif`, FN = `'${C.fn || C.fh}', 'Baloo 2', sans-serif`;
+  try { await Promise.all([C.fh, C.fb, C.fn || C.fh].flatMap(f => ['900', '800', '700', '600'].map(w => document.fonts.load(`${w} 40px '${f}'`, 'GIẤY CHỨNG NHẬN Được ấữỹ')))); } catch (e) {}
+  const Wd = 1600, Hd = 1130, cv = document.createElement('canvas'); cv.width = Wd; cv.height = Hd;
+  const g = cv.getContext('2d');
+  const bg = await svgImg(C.bg(Wd, Hd), `0 0 ${Wd} ${Hd}`);
+  if (bg) g.drawImage(bg, 0, 0, Wd, Hd); else { g.fillStyle = C.panel || '#fff'; g.fillRect(0, 0, Wd, Hd); }
+  g.textAlign = 'center'; g.textBaseline = 'alphabetic'; g.lineJoin = 'round';
+  // biển tên "GIẤY CHỨNG NHẬN"
+  if (C.plq) {
+    g.save(); g.shadowColor = 'rgba(0,0,0,.35)'; g.shadowOffsetY = 10; rr(g, Wd/2 - 370, 46, 740, 118, C.prad ?? 22);
+    g.fillStyle = grad(g, 46, 164, C.plq[0], C.plq[1]); g.fill(); g.restore();
+    rr(g, Wd/2 - 370, 46, 740, 118, C.prad ?? 22); g.lineWidth = 8; g.strokeStyle = C.plq[2]; g.stroke();
+  }
+  const TT = C.ttext || 'GIẤY CHỨNG NHẬN';
+  fitText(g, TT, 660, C.tsize || 64, C.tw || 800, FH);
+  if (C.tglow) { g.save(); g.shadowColor = C.tglow; g.shadowBlur = 24; g.fillStyle = C.tink; g.fillText(TT, Wd/2, 132); g.restore(); }
+  g.fillStyle = C.tsh; g.fillText(TT, Wd/2, 138); g.fillStyle = C.tink; g.fillText(TT, Wd/2, 132);
+  // dải "Hoàn thành bài học"
+  rr(g, Wd/2 - 250, 196, 500, 74, 37); g.fillStyle = grad(g, 196, 270, C.rib[0], C.rib[1]); g.fill(); g.lineWidth = 5; g.strokeStyle = C.rib[2]; g.stroke();
+  g.font = `800 38px ${FB}`; g.fillStyle = C.rib[2]; g.fillText('Hoàn thành bài học', Wd/2, 250); g.fillStyle = '#fff'; g.fillText('Hoàn thành bài học', Wd/2, 247);
+  g.fillStyle = C.ink; g.font = `600 38px ${FB}`; g.fillText('Chứng nhận học sinh', Wd/2, 340);
+  fitText(g, name, 760, C.nsize || 96, C.nw || 800, FN);
+  if (C.nglow) { g.save(); g.shadowColor = C.nglow; g.shadowBlur = 26; g.fillStyle = C.name; g.fillText(name, Wd/2, 448); g.restore(); }
+  g.lineWidth = 14; g.strokeStyle = C.nstroke; g.strokeText(name, Wd/2, 448); g.fillStyle = C.name; g.fillText(name, Wd/2, 448);
+  g.setLineDash([4, 14]); g.lineCap = 'round'; g.lineWidth = 6; g.strokeStyle = C.line; g.beginPath(); g.moveTo(Wd/2 - 420, 482); g.lineTo(Wd/2 + 420, 482); g.stroke(); g.setLineDash([]);
+  g.fillStyle = C.ink; g.font = `700 46px ${FB}`; g.fillText('Lớp: ' + cls, Wd/2, 550);
+  g.font = `600 34px ${FB}`; g.fillText('Đã hoàn thành bài học tương tác', Wd/2, 612);
+  g.fillStyle = C.accent; fitText(g, META.cert, 1060, 46, 800, FB); g.fillText(META.cert, Wd/2, 676);
+  const TQ = Object.keys(QUIZ).length, rank = sc >= TQ ? 'Xuất sắc tuyệt đối' : sc >= Math.ceil(TQ*.9) ? 'Xuất sắc' : 'Hoàn thành tốt';
+  rr(g, Wd/2 - 360, 712, 720, 96, 48); g.fillStyle = C.pill; g.fill(); g.lineWidth = 6; g.strokeStyle = C.line; g.stroke();
+  cStar(g, Wd/2 - 300, 760, 32, '#FFCF2F', '#9C5A00');
+  g.textAlign = 'left'; g.fillStyle = C.ink; g.font = `800 46px ${FB}`; g.fillText(`${sc}/${TQ} sao`, Wd/2 - 250, 776);
+  g.fillStyle = C.rank; fitText(g, rank, 340, 44, 800, FB); g.textAlign = 'right'; g.fillText(rank, Wd/2 + 330, 776); g.textAlign = 'center';
+  const d = new Date();
+  g.fillStyle = C.ink; g.font = `600 32px ${FB}`; g.fillText(`Ngày ${d.getDate()} tháng ${d.getMonth() + 1} năm ${d.getFullYear()}`, 420, 925);
+  g.font = `700 32px ${FB}`; g.fillText('Giáo viên', 1180, 880);
+  g.font = `${C.nw || 800} 54px ${FN}`; g.fillStyle = C.teacher; g.fillText('Cô Thùy Tin', 1180, 948);
+  const [bot, cup] = await Promise.all([svgImg(robot(), '0 0 200 240'), svgImg(ILL.trophy().replace(/^<svg[^>]*>|<\/svg>$/g, ''), '0 0 300 300')]);
+  if (bot) g.drawImage(bot, 170, 300, 210, 252);
+  if (cup) g.drawImage(cup, 1215, 290, 240, 240);
+  cStar(g, 196, 790, 18, '#FFCF2F', '#9C5A00'); cStar(g, 1420, 600, 16, '#FFCF2F', '#9C5A00'); cStar(g, 1250, 280, 14, '#FFCF2F', '#9C5A00');
+  return cv.toDataURL('image/png');
+}
+
+$('cMake').onclick = makeCert;
+$('cClose1').onclick = $('cClose2').onclick = closeCert;
+$('cEdit').onclick = () => { $('cForm').style.display = ''; $('cView').style.display = 'none'; $('cName').focus(); };
+$('cSave').onclick = () => { const a = document.createElement('a'); a.href = certURL; a.download = 'ChungNhan_' + META.file + '_' + tidy($('cName').value).replace(/\s+/g, '_') + '.png'; document.body.appendChild(a); a.click(); a.remove(); };
+$('cPrint').onclick = () => window.print();
+cBox.addEventListener('click', e => { if (e.target === cBox) closeCert(); });
+
+/* =========================================================
+   12. BẮT ĐẦU
+   ========================================================= */
+function begin() {
+  const s = document.getElementById('start'); if (s.style.display === 'none') return;
+  try { initAudio(); } catch (e) {}
+  sfx.pop(); s.style.opacity = 0; setTimeout(() => s.style.display = 'none', 600);
+  setTimeout(() => go(1), 1400);
+}
+document.getElementById('go').onclick = begin;
+{ const w = who(); if (w.name) document.getElementById('hello').textContent = `Xin chào ${w.name}${w.cls ? ' – lớp ' + w.cls : ''}! 👋`; }
+go(0, true);
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 // Kiểm tra bài giảng zoom: node tools/kiem_tra_zoom.js baigiang/<tên> [thư-mục-ảnh]
 // Chụp tổng quan, khung tiêu đề, mọi chủ đề, một câu đố đã trả lời, khung Tổng kết, Về đích, giấy chứng nhận.
-// Báo chữ tràn khung và lỗi trang.
+// Báo chữ tràn khung và lỗi trang. Thêm HIENHET=1 phía trước để chụp bảng 4 bước đã hiện hết đáp án.
 const path = require('path'), fs = require('fs');
 const { chromium } = require('playwright');
 const dir = path.resolve(process.argv[2] || 'baigiang/bang-tinh-thcs');
@@ -15,6 +15,8 @@ fs.mkdirSync(OUT, { recursive: true });
   await p.click('#go', { force: true }); await p.waitForTimeout(3000);
   const shot = async (id, ten) => { await p.evaluate(i => goId(i), id); await p.waitForTimeout(2300); await p.screenshot({ path: `${OUT}/${ten}.png` }); };
   await shot('title', '01_tieude');
+  // HIENHET=1: hiện sẵn mọi câu hỏi, đáp án, Ghi nhớ (kiểu 4 bước hiện dần) để xem bảng đầy đủ
+  if (process.env.HIENHET) await p.evaluate(() => document.querySelectorAll('.rv').forEach(e => e.classList.add('on')));
   const ids = await p.evaluate(() => PATH.filter(id => !QUIZ[id] && !['overview', 'title', 'recap', 'result'].includes(id)));
   for (const [i, id] of ids.entries()) await shot(id, `02_chude_${String(i + 1).padStart(2, '0')}`);
   const q = await p.evaluate(() => Object.keys(QUIZ));

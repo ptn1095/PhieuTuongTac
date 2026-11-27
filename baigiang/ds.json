@@ -1,4 +1,10 @@
 [
+  { "link": "clicklearn-tin3/", "ten": "ClickLearn Tin học 3", "ic": "🧠", "mon": "Tin học 3", "mau": "#1E9BD7",
+    "mota": "Tin học 3 (Kết nối tri thức): đủ 16 bài, 6 chủ đề. Mỗi bài 5 hoạt động × 4 bước hiện dần, 10 câu đố, tranh bìa, giấy chứng nhận. Giao diện xen kẽ 9 phong cách (thêm Màu sắc), lối đi zoom đổi lần lượt: zigzag, xoắn ốc, cầu vồng, vòng elip.",
+    "ds": "clicklearn-tin3/ds.js" },
+  { "link": "clicklearn-tin4/", "ten": "ClickLearn Tin học 4", "ic": "⌨️", "mon": "Tin học 4", "mau": "#E8A200",
+    "mota": "Tin học 4 (Kết nối tri thức): đủ 17 bài (có 12A, 12B), 6 chủ đề. Mỗi bài 5 hoạt động × 4 bước hiện dần, 10 câu đố, tranh bìa, giấy chứng nhận. Giao diện xen kẽ 9 phong cách, lối đi zoom zigzag, xoắn ốc, cầu vồng, vòng elip.",
+    "ds": "clicklearn-tin4/ds.js" },
   { "link": "clicklearn-tin7/", "ten": "ClickLearn Tin học 7", "ic": "🖱️", "mon": "Tin học 7", "mau": "#E8762B",
     "mota": "Tin học 7 (Kết nối tri thức): đủ 16 bài, 5 chủ đề. Mỗi bài trình bày 5 phần kiến thức chính cần nhớ (có ô Ghi nhớ), 10 câu đố, giấy chứng nhận. Giao diện xen kẽ 8 phong cách: vũ trụ, đại dương, sa mạc, thú cưng chibi, lâu đài châu Âu, tuyết mùa đông, gỗ tre, nghìn lẻ một đêm.",
     "ds": "clicklearn-tin7/ds.js" },

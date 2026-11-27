@@ -108,7 +108,7 @@ Sửa trực tiếp `baigiang/<tên-bài>/index.html` theo mục 2, chạy lại
 Nếu cô muốn đổi tính năng chung (âm thanh, chứng nhận, điều khiển…), sửa ở khuôn `baigiang/bang-tinh-thcs/index.html` và cập nhật skill này.
 
 ## 7. Phong cách giao diện (thư viện chung `baigiang/_phongcach/`)
-Các app nhiều bài (ClickLearn Tin học 6, 7, 8 và app mới) dùng chung **8 phong cách**. Mỗi bài có **một phong cách cố định** do mình chọn sẵn (học sinh không chọn).
+Các app nhiều bài (ClickLearn Tin học 6, 7, 8 và app mới) dùng chung **9 phong cách**. Mỗi bài có **một phong cách cố định** do mình chọn sẵn (học sinh không chọn).
 
 | Khoá | Phong cách | Phông chữ (đều có dấu tiếng Việt) | Bít đội | Giấy chứng nhận |
 |---|---|---|---|---|
@@ -120,11 +120,23 @@ Các app nhiều bài (ClickLearn Tin học 6, 7, 8 và app mới) dùng chung *
 | `tuyet` | ⛄ Tuyết mùa đông | Lobster + Nunito | mũ len, khăn | tuyết rơi, thông, người tuyết |
 | `go` | 🌿 Gỗ tre | Baloo 2 | lá cây | bảng gỗ khung tre, lá xanh |
 | `nghinle` | 🌙 Nghìn lẻ một đêm (giống Thư viện bài giảng) | Playfair Display + Lora, tên học sinh Dancing Script | khăn xếp | trời đêm, trăng khuyết, cung điện mái vòm, đèn lồng, thảm bay |
+| `mausac` | 🎨 Màu sắc (giống ClickLearn Tin học 9) | Inter đậm, chữ trắng viền tím | mũ tiệc | nền xanh–tím–hồng chấm bi, thẻ kem viền vàng nét đứt, sao 4 góc |
 
 Cách dùng:
 - Khuôn app mới: chép `_nguon` của `clicklearn-tin8` (khuon.html, chung.css, cert.js, hinh.js, build.js), đổi chữ "Tin học 8" và khoá lưu `cl8:`. `build.js` đọc phong cách qua `require('../../_phongcach/phongcach.js')`.
 - Mỗi bài ghi `theme: '<khoá>'` trong `META`. **So le**: hai bài liền nhau không được trùng phong cách (build tự báo lỗi nếu trùng); rải đều 8 phong cách, ưu tiên phong cách hợp nội dung (VD: lịch sử máy tính → gỗ tre/lâu đài, tìm kiếm thông tin → đại dương).
 - Câu chào `hello` và mẹo `tip` có thể nói theo phong cách (VD "lặn xuống đại dương…"), nên khi đổi phong cách nhớ sửa lại cho khớp.
 - Hình minh hoạ có dùng hình của phong cách (cá `fishS`, lạc đà `camel`, mèo `chibi`, thông `pine`…) chỉ chạy khi bài đúng phong cách đó; đổi phong cách thì thay hình.
+- Phong cách `mausac` tô **mỗi bảng một màu gradient riêng** (màu của hoạt động; tiêu đề xanh–tím, Em ghi nhớ xanh ngọc, Về đích vàng cam) qua biến `--g0/--g1` mà khuôn gán cho từng khung (`GV(...)` trong `_khuonzoom/khuon.html`). Khuôn cũ của Tin 6, 7, 8 chưa gán biến này nên `mausac` ở đó chỉ ra một màu xanh–tím.
 - Thêm phong cách mới: viết `theme_<khoá>.css` (biến `--fh --fb --ink --bink --board --panel --plq --title-fx…`) + `theme_<khoá>.js` (đối tượng `TH`: `bgs, crown, edge, deco(), acc, cert{…, bg(W,H)}`), khai báo trong `INFO` và `ORDER` của `phongcach.js`.
 - Trang chủ app (`index.html`) có bảng `TL`/`THN` tên, biểu tượng, màu của từng phong cách; thêm phong cách thì thêm vào đó.
+
+## 8. Khuôn chung tiểu học `_khuonzoom` (ClickLearn Tin học 3, 4) và lối đi zoom
+- Khuôn dùng chung: `baigiang/_khuonzoom/` (khuon.html, chung.css, cert.js, hinh.js, trangchu.html, taotrang.js). Mỗi app chỉ có `_nguon/build.js` gọi
+  `require('../../_khuonzoom/taotrang.js')({ dir: __dirname, app: 'Tin học 3', skey: 'cl3', lop: '3A1', sub: '…', cds: [tên 6 chủ đề] })`
+  và các tệp `baiN.js` (hoặc `bai12a.js`, `bai12b.js`). Build sinh luôn `ds.js` và **trang chủ app** (`index.html`) – không sửa tay.
+- `META` mỗi bài: `key, num ('12A' được), theme, path?, ic (biểu tượng ở trang chủ), cd (số chủ đề), en (tên ngắn), title, big, st2, hello, cert, file, pass`.
+- **Lối đi zoom** (`META.path`): `zigzag` (các bảng so le trên–dưới), `xoanoc` (xoắn ốc toả ra từ trang bìa), `cauvong` (vòng cung phía trên trang bìa), `elip` (vòng elip cũ). Bỏ trống thì build tự xoay vòng zigzag → xoắn ốc → cầu vồng → elip theo thứ tự bài, nên các bài liền nhau khác lối đi.
+- Hình thêm cho tiểu học trong `hinh.js`: `monitor, casePC, desk` (máy tính để bàn), `mouseI` (chuột, tô nút trái/phải), `kbd` (bàn phím, tô phím), `finger`, `folder, fileI, treeD` (cây thư mục), `browser`, `traffic, umbrella, rain, speaker, printer, headset, slideT, cursor, sprite, stageB, pinI`.
+- Không đặt tên hằng trùng tên có sẵn trong khuôn (`TOP`, `target`, `star`, `svg`, `go`…): trang sẽ báo lỗi. Chạy `HIENHET=1 node tools/kiem_tra_zoom.js baigiang/<app>/<bài> <thư-mục-ảnh>` để chụp bảng 4 bước đã hiện hết đáp án.
+

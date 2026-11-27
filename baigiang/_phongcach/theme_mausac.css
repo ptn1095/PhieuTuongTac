@@ -1,0 +1,42 @@
+/* ===== PHONG CÁCH MÀU SẮC (giống ClickLearn Tin học 9): bảng màu gradient theo từng hoạt động, viền trắng dày, chữ trắng viền tím ===== */
+:root{--fh:'Inter';--fhw:900;--fb:'Inter';--fs:34px;--ink:#1D3557;--bink:#fff;--rad:64px;--big:120px;
+  --board:linear-gradient(135deg,#4F7CFF,#B06BFF);
+  --board-sh:inset 0 0 0 12px #fff,0 26px 0 rgba(20,20,50,.28);
+  --board-sh-s:inset 0 0 0 7px #fff,0 14px 0 rgba(20,20,50,.3);
+  --edge:#3D1A78;--dark:#3D1A78;--panel:#fff;--soft:#F1F4FB;--ill:#fff;
+  --plq:#FF006E;--plq-edge:#fff;--plq-ink:#fff;--plq-fx:0 3px 0 rgba(120,0,50,.45);--plq-rad:60px;
+  --medal:#FFD60A;--medal-ink:#1D3557;
+  --title-c:#fff;--title-fx:6px 0 0 #3D1A78,-6px 0 0 #3D1A78,0 6px 0 #3D1A78,0 -6px 0 #3D1A78,5px 5px 0 #3D1A78,-5px -5px 0 #3D1A78,5px -5px 0 #3D1A78,-5px 5px 0 #3D1A78,0 16px 0 rgba(20,20,50,.3);
+  --title-fx-s:3px 0 0 #3D1A78,-3px 0 0 #3D1A78,0 3px 0 #3D1A78,0 -3px 0 #3D1A78,2px 2px 0 #3D1A78,-2px -2px 0 #3D1A78,2px -2px 0 #3D1A78,-2px 2px 0 #3D1A78,0 8px 0 rgba(20,20,50,.3);
+  --ttl-fx:4px 0 0 #3D1A78,-4px 0 0 #3D1A78,0 4px 0 #3D1A78,0 -4px 0 #3D1A78,3px 3px 0 #3D1A78,-3px -3px 0 #3D1A78,3px -3px 0 #3D1A78,-3px 3px 0 #3D1A78,0 10px 0 rgba(20,20,50,.3);
+  --btn-top:#FF5DA2;--btn:#FF006E;--btn-dark:#B0004C;--accent:#FFE066;--acc-p:#8338EC;
+  --hud:rgba(255,255,255,.97);--hb:#EEF2FF;--hud-ink:#1D3557;
+  --s0:#4F7CFF;--s1:#B06BFF;--code-bg:#EDE7FF;--code-ink:#5A189A;--cpanel:#FFFDF5;--wdeco:rgba(255,255,255,.13)}
+/* mỗi bảng tô theo màu riêng của nó (--g0, --g1 do khuôn gán) */
+.frame.board{background:radial-gradient(rgba(255,255,255,.28) 3px,transparent 3.5px) 0 0/48px 48px,linear-gradient(135deg,var(--g0,#4F7CFF),var(--g1,#B06BFF))}
+.sboard{background:radial-gradient(rgba(255,255,255,.28) 3px,transparent 3.5px) 0 0/40px 40px,linear-gradient(135deg,#4F7CFF,#B06BFF)!important}
+.frame .panel,.frame .ill,.frame .opt{border-color:#fff;box-shadow:0 12px 0 rgba(20,20,50,.22)}
+.frame .panel{border-width:0;border-radius:42px}
+.frame .ill{border-width:0;border-radius:42px}
+.num,.qbadge,.rn,.rcard{border-color:#fff!important}
+.frame .num{box-shadow:0 9px 0 rgba(20,20,50,.3)}
+.frame .qbadge{background:#FF006E;color:#fff}
+.frame .qtext{color:#fff}
+.frame .opt{border-radius:34px}
+.frame .opt .L{border-radius:50%;border:none}
+.frame .plq{border-width:6px;box-shadow:0 8px 0 rgba(20,20,50,.25)}
+.frame .rk{background:rgba(255,255,255,.95)}
+.frame .rk b{color:#D62828}
+.frame .btn,#go{border:none;border-radius:60px}
+body #hud{border:3px solid #1D3557;border-radius:36px;box-shadow:0 5px 0 rgba(20,20,50,.3)}
+#hud .hb{border:none;border-radius:50%;box-shadow:0 4px 0 #C7D2FE}
+#hud .hb:active{box-shadow:0 1px 0 #C7D2FE}
+#hud .hb.big{background:#FF006E;border:none;box-shadow:0 6px 0 #B0004C;text-shadow:none}
+#hud #score{background:#FFF3BF;color:#1D3557;border:3px solid #FFB703;box-shadow:none;border-radius:30px}
+body #say{border-color:#1D3557;border-radius:26px}
+body #say::after{border-right-color:#1D3557}
+#certBox .cpanel{border:6px solid #1D3557;outline:none;border-radius:30px}
+body #start .st2{color:#fff}
+.bubm{position:absolute;bottom:-60px;border:4px solid rgba(255,255,255,.55);border-radius:50%;animation:rise linear infinite}
+.spkm{position:absolute;animation:twinkle 2.6s ease-in-out infinite}
+body .dots{background:radial-gradient(rgba(255,255,255,.28) 2.5px,transparent 3px) 0 0/64px 64px,radial-gradient(rgba(255,255,255,.18) 2px,transparent 2.5px) 32px 32px/64px 64px}
