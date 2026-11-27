@@ -135,3 +135,5 @@ code{font-family:inherit;background:var(--code-bg);color:var(--code-ink);border-
 .pop{animation:popin .55s cubic-bezier(.34,1.9,.64,1) both}
 @keyframes popin{0%{transform:scale(0)}100%{transform:scale(1)}}
 @media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
+.cover{position:absolute;left:96px;background:var(--ill);border-radius:26px;border:7px solid var(--dark);box-shadow:0 9px 0 var(--edge);overflow:hidden;transform:rotate(-2deg)}
+.cover svg{width:100%;height:100%;display:block}

@@ -168,6 +168,8 @@ code{font-family:inherit;background:var(--code-bg);color:var(--code-ink);border-
 .pop{animation:popin .55s cubic-bezier(.34,1.9,.64,1) both}
 @keyframes popin{0%{transform:scale(0)}100%{transform:scale(1)}}
 @media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
+.cover{position:absolute;left:96px;background:var(--ill);border-radius:26px;border:7px solid var(--dark);box-shadow:0 9px 0 var(--edge);overflow:hidden;transform:rotate(-2deg)}
+.cover svg{width:100%;height:100%;display:block}
 
 </style>
 </head>
@@ -650,9 +652,16 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 })();
 
 
+// tranh bìa: hình đặc trưng của bài ở khoảng trống góc dưới trái (bài khai báo const COVER = () => svgC(`…`))
+const svgC = inner => `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+function coverHTML() {
+  if (typeof COVER !== 'function') return '';
+  const n = (META.big.match(/<br>/g) || []).length, w = n >= 2 ? 470 : 600, top = n >= 2 ? 548 : n ? 446 : 380;
+  return `<div class="cover" style="width:${w}px;height:${w*.6}px;top:${top}px">${COVER()}</div>`;
+}
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef board', `${TOP('ClickLearn Tin học 6 • Bài 1')}
-  <div class="bigtitle">${META.big}</div>
+  <div class="bigtitle">${META.big}</div>${coverHTML()}
   <svg viewBox="0 0 200 240" style="position:absolute;left:1150px;top:80px;width:300px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
   <div style="position:absolute;left:830px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">📚 Em ghi nhớ</div>
   <div style="position:absolute;left:1180px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">🏆 Về đích</div>

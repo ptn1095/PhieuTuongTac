@@ -69,3 +69,8 @@ const KEY = [
   'Người nhận –<br>chủ đề – <b>nội dung</b>.',
   'Không mở<br><b>thư lạ</b>.',
 ];
+
+// tranh bìa
+const COVER = () => svgC(`${[0, 1, 2].map(i => `<line x1="${40 + i*14}" y1="${100 + i*36}" x2="${100 + i*14}" y2="${100 + i*36}" stroke="#8ECAE6" stroke-width="9" stroke-linecap="round"/>`).join('')}
+  <g transform="rotate(-8 200 135)">${env(200, 135, 1.15, '#FFF3BF')}</g>${arr(320, 135, 400, 135, '#FF7F11')}${laptop(410, 60, .62)}${ball(480, 105, 30, '#FF006E', '@', 34)}
+  ${pillS(60, 270, 480, 56, '#1982C4', 'Gửi thư đi khắp nơi trong vài giây', 24)}${star(560, 40, 14, '#FFD60A')}${star(50, 40, 12, '#2DA44E')}`);

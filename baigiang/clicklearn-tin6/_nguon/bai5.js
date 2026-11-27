@@ -65,3 +65,8 @@ const KEY = [
   '<b>Có ích</b> nhưng<br>có nguy cơ.',
   'Dùng Internet<br><b>an toàn</b>.',
 ];
+
+// tranh bìa
+const COVER = () => svgC(`${[[95, 120], [500, 95], [470, 250], [130, 250]].map(([x, y]) => dline(300, 150, x, y)).join('')}${globe(300, 150, 82)}
+  ${smart(95, 125, .5)}${laptop(440, 50, .45)}${G(470, 250, .6, `<rect x="-60" y="-40" width="120" height="80" rx="10" fill="#3D405B" ${ST}/><rect x="-48" y="-30" width="96" height="58" rx="6" fill="#8ECAE6"/>`)}${cloud(130, 255, .55, '#E7F5FF')}
+  ${pillS(40, 290, 250, 52, '#1982C4', 'Mạng toàn cầu', 26)}${pillS(310, 290, 250, 52, '#2DA44E', 'Kết nối mọi nơi', 26)}${star(40, 40, 14, '#FFD60A')}${star(560, 200, 12, '#FF006E')}`);

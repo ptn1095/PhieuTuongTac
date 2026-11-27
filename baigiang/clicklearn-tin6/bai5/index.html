@@ -165,6 +165,8 @@ code{font-family:inherit;background:var(--code-bg);color:var(--code-ink);border-
 .pop{animation:popin .55s cubic-bezier(.34,1.9,.64,1) both}
 @keyframes popin{0%{transform:scale(0)}100%{transform:scale(1)}}
 @media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
+.cover{position:absolute;left:96px;background:var(--ill);border-radius:26px;border:7px solid var(--dark);box-shadow:0 9px 0 var(--edge);overflow:hidden;transform:rotate(-2deg)}
+.cover svg{width:100%;height:100%;display:block}
 
 </style>
 </head>
@@ -579,6 +581,11 @@ const KEY = [
   'Dùng Internet<br><b>an toàn</b>.',
 ];
 
+// tranh bìa
+const COVER = () => svgC(`${[[95, 120], [500, 95], [470, 250], [130, 250]].map(([x, y]) => dline(300, 150, x, y)).join('')}${globe(300, 150, 82)}
+  ${smart(95, 125, .5)}${laptop(440, 50, .45)}${G(470, 250, .6, `<rect x="-60" y="-40" width="120" height="80" rx="10" fill="#3D405B" ${ST}/><rect x="-48" y="-30" width="96" height="58" rx="6" fill="#8ECAE6"/>`)}${cloud(130, 255, .55, '#E7F5FF')}
+  ${pillS(40, 290, 250, 52, '#1982C4', 'Mạng toàn cầu', 26)}${pillS(310, 290, 250, 52, '#2DA44E', 'Kết nối mọi nơi', 26)}${star(40, 40, 14, '#FFD60A')}${star(560, 200, 12, '#FF006E')}`);
+
 
 TOPICS.forEach((t, i) => { const a = ACT[i % ACT.length]; t.act = a.name; t.c = t.c || a.c; t.dk = t.dk || a.dk; t.bg = TH.bgs[i % TH.bgs.length]; t.title = t.title || (a.name + ': ' + t.name); t.short = t.name; });
 const ILL = Object.assign({}, ILL_T, {
@@ -648,9 +655,16 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 })();
 
 
+// tranh bìa: hình đặc trưng của bài ở khoảng trống góc dưới trái (bài khai báo const COVER = () => svgC(`…`))
+const svgC = inner => `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+function coverHTML() {
+  if (typeof COVER !== 'function') return '';
+  const n = (META.big.match(/<br>/g) || []).length, w = n >= 2 ? 470 : 600, top = n >= 2 ? 548 : n ? 446 : 380;
+  return `<div class="cover" style="width:${w}px;height:${w*.6}px;top:${top}px">${COVER()}</div>`;
+}
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef board', `${TOP('ClickLearn Tin học 6 • Bài 5')}
-  <div class="bigtitle">${META.big}</div>
+  <div class="bigtitle">${META.big}</div>${coverHTML()}
   <svg viewBox="0 0 200 240" style="position:absolute;left:1150px;top:80px;width:300px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
   <div style="position:absolute;left:830px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">📚 Em ghi nhớ</div>
   <div style="position:absolute;left:1180px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">🏆 Về đích</div>

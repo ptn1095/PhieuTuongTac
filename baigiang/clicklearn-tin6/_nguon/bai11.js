@@ -70,3 +70,8 @@ const KEY = [
   '<b>Trang</b>: hướng,<br>lề, khổ giấy.',
   'In: <b>Ctrl + P</b>.',
 ];
+
+// tranh bìa
+const COVER = () => svgC(`${key3d(40, 40, 96, 80, '#1982C4', '#145A8C', 'B', 50)}${key3d(150, 40, 96, 80, '#2DA44E', '#1E7B38', '<tspan font-style="italic">I</tspan>', 50)}${key3d(260, 40, 96, 80, '#FF7F11', '#C25E00', '<tspan text-decoration="underline">U</tspan>', 50)}
+  ${paper(390, 24, 180, 220)}${txt(480, 76, 'Bài văn', 28, '#E5383B')}${G(400, 110, .8, lines(0, 0, 'c'))}${pencil(300, 200, .55, -30)}
+  ${pillS(40, 270, 520, 56, '#8338EC', 'Văn bản đẹp, rõ ràng, dễ đọc', 26)}${star(560, 330, 12, '#FFD60A')}`);

@@ -177,9 +177,16 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 })();
 
 
+// tranh bìa: hình đặc trưng của bài ở khoảng trống góc dưới trái (bài khai báo const COVER = () => svgC(`…`))
+const svgC = inner => `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+function coverHTML() {
+  if (typeof COVER !== 'function') return '';
+  const n = (META.big.match(/<br>/g) || []).length, w = n >= 2 ? 470 : 600, top = n >= 2 ? 548 : n ? 446 : 380;
+  return `<div class="cover" style="width:${w}px;height:${w*.6}px;top:${top}px">${COVER()}</div>`;
+}
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef board', `${TOP('ClickLearn Tin học 6 • @@LAB@@')}
-  <div class="bigtitle">${META.big}</div>
+  <div class="bigtitle">${META.big}</div>${coverHTML()}
   <svg viewBox="0 0 200 240" style="position:absolute;left:1150px;top:80px;width:300px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
   <div style="position:absolute;left:830px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">📚 Em ghi nhớ</div>
   <div style="position:absolute;left:1180px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">🏆 Về đích</div>
