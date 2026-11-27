@@ -166,6 +166,22 @@ code{font-family:inherit;background:var(--code-bg);color:var(--code-ink);border-
 @media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
 .cover{position:absolute;left:96px;background:var(--ill);border-radius:26px;border:7px solid var(--dark);box-shadow:0 9px 0 var(--edge);overflow:hidden;transform:rotate(-2deg)}
 .cover svg{width:100%;height:100%;display:block}
+/* ===== 4 bước hiện dần (S4Q) ===== */
+.panel .s4q{font-size:30px;line-height:1.2}
+.s4q .qa{margin-bottom:10px}
+.s4q .rv{transition:opacity .45s,transform .45s}
+.s4q .rv:not(.on){opacity:0;transform:translateY(10px)}
+.s4q .an{position:relative;margin:6px 0 0;padding:5px 14px 5px 52px;border-radius:14px;background:var(--soft);border-left:8px solid #1982C4;font-weight:600}
+.s4q .an::before{content:"💡";position:absolute;left:12px;top:5px}
+.s4q .an-0{border-left-color:#E5392C}.s4q .an-0::before{content:"✨"}
+.s4q .an-2{border-left-color:#E8890C}
+.s4q .qa.on .an:not(.on){opacity:1;transform:none;color:transparent;background:repeating-linear-gradient(45deg,var(--soft) 0 14px,transparent 14px 28px);border:3px dashed var(--dark);border-left-width:8px;cursor:pointer}
+.s4q .qa.on .an:not(.on) *,.s4q .qa.on .an:not(.on)::before{visibility:hidden}
+.s4q .qa.on .an:not(.on)::after{content:"👆 Bấm để xem";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:24px;font-weight:800;opacity:.75}
+.s4q .gn{border:4px solid #2F9B4A;background:#EAF8E6;color:#1E3A12;border-radius:18px;padding:8px 16px 6px;box-shadow:0 5px 0 rgba(47,155,74,.35)}
+.panel .s4q .gn ul{margin-top:6px}
+.panel .s4q .gn li{padding-left:30px;margin-bottom:4px}
+.panel .s4q .gn li::before{width:16px;height:16px;top:12px;left:2px;background:#2F9B4A}
 
 </style>
 </head>
@@ -512,6 +528,10 @@ const vflow = (items, x = 150, y0 = 30, w = 300, dy = 92, fs = 24) => items.map(
 const hflow = (items, y = 180, fs = 22) => { const n = items.length, gap = 40, w = (560 - gap*(n - 1))/n; return items.map(([c, t], i) => pillS(20 + i*(w + gap), y, w, 56, c, t, fs) + (i < n - 1 ? arr(20 + i*(w + gap) + w + 6, y + 28, 20 + (i + 1)*(w + gap) - 2, y + 28, O, 6) : '')).join(''); };
 const bits = (x, y, s, size = 46) => [...s].map((b, i) => `<rect x="${x + i*(size + 8)}" y="${y}" width="${size}" height="${size + 10}" rx="10" fill="${b === '1' ? '#FFD60A' : '#1D3557'}" stroke="${O}" stroke-width="4"/><text x="${x + i*(size + 8) + size/2}" y="${y + size*.78}" text-anchor="middle" font-size="${size*.7}" fill="${b === '1' ? O : '#fff'}" ${F}>${b}</text>`).join('');
 const winbox = (x, y, w, h, title, inner = '', c = '#1982C4') => `<rect x="${x + 7}" y="${y + 7}" width="${w}" height="${h}" rx="14" fill="#000" opacity=".15"/><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" fill="#fff" ${ST}/><path d="M${x} ${y + 14} Q${x} ${y} ${x + 14} ${y} H${x + w - 14} Q${x + w} ${y} ${x + w} ${y + 14} V${y + 40} H${x}Z" fill="${c}" ${ST}/><circle cx="${x + 20}" cy="${y + 20}" r="6" fill="#FF595E"/><circle cx="${x + 38}" cy="${y + 20}" r="6" fill="#FFD60A"/><text x="${x + 56}" y="${y + 28}" font-size="20" fill="#fff" ${F}>${title}</text>${inner}`;
+/* ---- 4 bước hiện dần: câu hỏi hiện trước, đáp án hiện sau (bấm ▶ hoặc bấm vào bảng) ----
+   S4Q([nhiệm vụ, gợi ý], [câu hỏi tìm hiểu, đáp án], [câu hỏi trao đổi, đáp án], [ý ghi nhớ 1, ý 2, ý 3]) */
+const S4Q = (nv, th, td, gn) => `<div class="s4q">${[nv, th, td].map(([q, a], i) => `<div class="qa rv"><span class="l4 l4-${i}">${L4[i]}</span> ${q}${a ? `<div class="an an-${i} rv">${a}</div>` : ''}</div>`).join('')}
+  <div class="gn rv"><span class="l4 l4-3">Ghi nhớ</span><ul>${gn.map(t => `<li>${t}</li>`).join('')}</ul></div></div>`;
 
 
 /* ===== BÀI 2: XỬ LÍ THÔNG TIN ===== */
@@ -858,7 +878,7 @@ function sayFor(id) {
   if (id === 'recap') return say('Ôn nhanh ' + NT + ' hoạt động nè! Bấm vào thẻ nào để xem lại nội dung đó.');
   const q = QUIZ[id];
   if (q) return ans[id] == null ? say(`Đố vui ${q.i + 1}: chọn A, B, C hoặc D nhé!`) : say('Câu này em làm rồi. Bấm ▶ để đi tiếp nha!');
-  const t = TOPICS.find(x => x.id === id); if (t) say(`<b>Hoạt động ${TOPICS.indexOf(t) + 1} – ${t.act}.</b> ` + t.tip);
+  const t = TOPICS.find(x => x.id === id); if (t) say(`<b>Hoạt động ${TOPICS.indexOf(t) + 1} – ${t.act}.</b> ` + t.tip + (FR[id].el.querySelector('.rv:not(.on)') ? '<br>👉 Đọc câu hỏi, suy nghĩ rồi bấm ▶ để xem đáp án.' : ''), 7000);
 }
 
 /* =========================================================
@@ -954,6 +974,7 @@ stage.addEventListener('click', e => {
   const id = f.dataset.id;
   if (id !== curId) { sfx.click(); goId(id); return; }
   const o = e.target.closest('.opt'); if (o && QUIZ[id]) { sfx.click(); choose(id, +o.dataset.n); return; }
+  if (e.target.closest('.panel') && revealNext(id)) return;
   const b = e.target.closest('[data-act]'); if (!b) return;
   sfx.click();
   if (b.dataset.act === 'redo') reset();
@@ -963,7 +984,11 @@ stage.addEventListener('click', e => {
   else if (b.dataset.act === 'cert') { if (score() >= PASS) openCert(); else { sfx.buzz(); bitMood('sad'); say(`Em cần ít nhất ${PASS} ⭐ mới nhận được chứng nhận. Làm lại các câu sai nhé!`); } }
   else if (b.dataset.act === 'wrong') { const w = PATH.find(id => QUIZ[id] && ans[id] !== QUIZ[id].q.a); if (w) goId(w); else say('Em không có câu sai nào! Giỏi quá 🎉'); }
 });
-document.getElementById('bNext').onclick = () => { sfx.pop(); go(step + 1); };
+// hiện dần câu hỏi / đáp án trong bảng 4 bước trước khi bay sang khung kế
+function revealNext(id) { const f = FR[id]; if (!f || QUIZ[id]) return false; const r = f.el.querySelector('.rv:not(.on)'); if (!r) return false; r.classList.add('on'); sfx.pop(); if (!f.el.querySelector('.rv:not(.on)')) say('Xong rồi! Bấm ▶ để sang phần tiếp theo nhé.', 3000); return true; }
+const forward = () => { if (revealNext(curId)) return; sfx.pop(); go(step + 1); };
+document.querySelectorAll('.s4q').forEach(p => p.querySelector('.rv').classList.add('on'));
+document.getElementById('bNext').onclick = forward;
 document.getElementById('bPrev').onclick = () => { sfx.pop(); go(step - 1); };
 document.getElementById('bHome').onclick = () => { sfx.pop(); go(0); };
 document.getElementById('bSfx').onclick = e => { sfxOn = !sfxOn; e.currentTarget.classList.toggle('off', !sfxOn); e.currentTarget.textContent = sfxOn ? '🔊' : '🔈'; };
@@ -971,7 +996,7 @@ document.getElementById('bFull').onclick = () => { const d = document; if (!d.fu
 addEventListener('keydown', e => {
   if (document.getElementById('certBox').classList.contains('show')) { if (e.key === 'Escape') closeCert(); else if (e.key === 'Enter' && document.getElementById('cForm').style.display !== 'none') makeCert(); return; }
   if (document.getElementById('start').style.display !== 'none') { if (e.key === 'Enter' || e.key === ' ') begin(); return; }
-  if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); sfx.pop(); go(step + 1); }
+  if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); forward(); }
   else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); sfx.pop(); go(step - 1); }
   else if (e.key === 'Escape' || e.key === 'Home') go(0);
   else if (QUIZ[curId] && /^[a-dA-D1-4]$/.test(e.key)) { const n = isNaN(e.key) ? 'abcd'.indexOf(e.key.toLowerCase()) : +e.key - 1; sfx.click(); choose(curId, n); }
@@ -981,7 +1006,7 @@ let tStart = null;
 stage.addEventListener('touchstart', e => { if (e.touches.length === 1) tStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() }; }, { passive: true });
 stage.addEventListener('touchend', e => {
   if (!tStart) return; const t = e.changedTouches[0], dx = t.clientX - tStart.x, dy = t.clientY - tStart.y;
-  if (Date.now() - tStart.t < 700 && Math.abs(dx) > 45 && Math.abs(dx) > 2*Math.abs(dy)) { go(step + (dx < 0 ? 1 : -1)); }
+  if (Date.now() - tStart.t < 700 && Math.abs(dx) > 45 && Math.abs(dx) > 2*Math.abs(dy)) { dx < 0 ? forward() : go(step - 1); }
   tStart = null;
 });
 addEventListener('resize', () => { sizeCv(); fly(curId, true); });

@@ -17,10 +17,10 @@ const ILL_T = {
 
 const TOPICS = [
   { id: 't1', name: 'Em dùng Internet làm gì?', tip: 'Học bài, xem video, gọi cho ông bà… đều nhờ Internet!',
-    html: S4('Kể những việc em và gia đình làm <b>trên Internet</b>.',
-      'Học trực tuyến, tra cứu, xem video, gọi điện video, mua sắm…',
-      'Muốn vào Internet cần có gì? (thiết bị + kết nối mạng)',
-      'Internet có mặt trong <span class="k">học tập và đời sống</span>.'),
+    html: S4Q(['Kể những việc gia đình em làm <b>trên Internet</b>.', 'Gợi ý: đọc tin tức, học bài, gọi video…'],
+      ['Internet giúp con người làm <b>những việc gì</b>?', 'Học trực tuyến, tra cứu, xem video, mua sắm…'],
+      ['Muốn vào Internet cần có <b>những gì</b>?', '<b>Thiết bị</b> (máy tính, điện thoại) và <b>kết nối mạng</b> (wifi, 4G).'],
+      ['Internet có mặt trong <b>học tập, liên lạc, giải trí, mua sắm</b>.', 'Cần <b>thiết bị</b> và <b>kết nối mạng</b> để vào Internet.', 'Internet <span class="k">kết nối mọi người</span> khắp nơi.']),
     quiz: [
       { q: 'Việc nào cần dùng Internet?', o: ['Đọc sách giấy', 'Gọi video cho ông bà ở xa', 'Đá bóng', 'Viết bằng bút chì'], a: 1, why: 'Gọi video qua mạng cần kết nối Internet.' },
       { q: 'Muốn truy cập Internet, máy tính cần:', o: ['Được kết nối mạng', 'Có loa to', 'Có máy in', 'Có bàn phím màu'], a: 0, why: 'Máy tính phải kết nối mạng mới vào được Internet.' } ] },
