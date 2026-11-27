@@ -62,6 +62,23 @@ Mỗi phần tử `TOPICS`:
 - Câu hỏi ≤ 2 dòng (~90 ký tự), mỗi lựa chọn ≤ 40 ký tự, `why` ≤ 1 câu. Có dấu `<` trong câu hỏi cứ gõ bình thường (khuôn tự xử lý); trong `html` thì viết `&lt;` `&gt;`.
 - Nội dung bám sát SGK GDPT 2018 của bài cô nêu; không chia theo khối lớp trừ khi cô yêu cầu.
 
+## 2b. Tranh bìa và kiểu "4 bước hiện dần"
+**Tranh bìa** (có sẵn trong mọi khuôn): khoảng trống dưới tên bài ở trang bìa tự có một tấm tranh nghiêng như bưu thiếp, tự co lại theo số dòng của tên bài nên không che chữ.
+- Mặc định lấy hình minh hoạ của chủ đề 1 (`ILL.t1`).
+- Muốn tranh riêng: trong tệp bài khai báo `const COVER = () => svgC(\`…\`);` (khung vẽ 600×360): 1 hình đặc trưng + 1–2 viên chữ ngắn (`pillS`), vài ngôi sao. Không vẽ quá dày.
+
+**Kiểu 4 bước hiện dần** (bắt buộc cho các app "5 hoạt động × 4 bước": ClickLearn Tin 6, 8, 9, Công nghệ vui…). Không dùng `S4(…)` hiện hết một lần nữa, mà dùng:
+```js
+html: S4Q(['Nhiệm vụ (câu hỏi/việc cần làm)', 'Gợi ý: … (có thể để \'\')'],
+  ['Câu hỏi Tìm hiểu?', 'Đáp án'],
+  ['Câu hỏi Trao đổi?', 'Đáp án'],
+  ['Ý ghi nhớ 1', 'Ý ghi nhớ 2', 'Ý ghi nhớ 3']),
+```
+- Vào bảng chỉ thấy câu Nhiệm vụ; mỗi lần bấm ▶ (hoặc bấm vào bảng, phím →, vuốt) hiện thêm 1 phần: gợi ý → câu hỏi → đáp án … → khung **Ghi nhớ** xanh. Hết mới bay sang đố vui. Bít nhắc "Đọc câu hỏi, suy nghĩ rồi bấm ▶ để xem đáp án".
+- Câu hỏi PHẢI là câu hỏi thật (có dấu ?), đáp án nằm riêng – không viết đáp án trong ngoặc ngay sau câu hỏi.
+- **Ghi nhớ 3 ý**, mỗi ý ≤ 1 dòng (~50 kí tự), dùng `<b>` và 1 `<span class="k">` cho từ khoá chính.
+- Độ dài (chữ 30px): câu Nhiệm vụ ≤ 2 dòng, gợi ý ≤ 1 dòng, mỗi câu hỏi 1 dòng (~45 kí tự), mỗi đáp án ≤ 2 dòng (~85 kí tự). Tổng ≤ 13 dòng, chạy mục 4 để chắc không tràn.
+
 ## 3. Hình minh hoạ 2D
 - Mỗi hình là hàm trả về `svg(…)`, khung vẽ 600×420, vẽ bằng hình khối: nét viền `#1D3557` dày 5–7, bo tròn, màu tươi (hồng #FF006E, vàng #FFD60A/#FFC300, cam #FF7F11, xanh dương #1982C4, xanh lá #2DA44E/#8AC926, tím #8338EC, ngọc #2EC4B6).
 - Dùng sẵn các hàm trợ giúp trong khuôn: `ball(x,y,r,màu,chữ)` bóng tròn có chữ, `pillS(x,y,w,h,màu,chữ,cỡ,góc)` viên thuốc có chữ, `key3d(…)` phím 3D, `arrowHead(x,y,góc,màu)`, `star(x,y,cỡ,màu)` ngôi sao lấp lánh, `robot()` robot Bít.
