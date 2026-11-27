@@ -189,3 +189,7 @@ const heart = (x, y, s = 1, c = '#FF006E') => G(x, y, s, `<path d="M0 22 C-44 -8
 const wilted = (x, y, s = 1) => G(x, y, s, `<path d="M0 0 Q0 -100 44 -86" stroke="${O}" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M0 0 Q0 -100 44 -86" stroke="#A3B18A" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M0 -44 Q-36 -44 -42 -6 Q-14 -20 0 -44Z" fill="#C9B458" stroke="${O}" stroke-width="4"/><path d="M2 -60 Q36 -50 34 -14 Q14 -30 2 -60Z" fill="#C9B458" stroke="${O}" stroke-width="4"/>${G(50, -66, .8, [0, 72, 144, 216, 288].map(a => `<ellipse cx="0" cy="-18" rx="10" ry="18" fill="#C9ADA7" stroke="${O}" stroke-width="3" transform="rotate(${a})"/>`).join('') + `<circle r="10" fill="#B08968" stroke="${O}" stroke-width="3"/>`)}`);
 // một bước có số thứ tự: bóng số trên, nhãn dưới
 const stepN = (x, n, c, t, inner) => `${inner}${ball(x, 70, 28, c, n, 32)}${pillS(x - 66, 330, 132, 44, c, t, 21)}`;
+/* ---- 4 bước hiện dần: câu hỏi hiện trước, đáp án hiện sau (bấm ▶ hoặc bấm vào bảng) ----
+   S4Q([nhiệm vụ, gợi ý], [câu hỏi tìm hiểu, đáp án], [câu hỏi trao đổi, đáp án], [ý ghi nhớ 1, ý 2, ý 3]) */
+const S4Q = (nv, th, td, gn) => `<div class="s4q">${[nv, th, td].map(([q, a], i) => `<div class="qa rv"><span class="l4 l4-${i}">${L4[i]}</span> ${q}${a ? `<div class="an an-${i} rv">${a}</div>` : ''}</div>`).join('')}
+  <div class="gn rv"><span class="l4 l4-3">Ghi nhớ</span><ul>${gn.map(t => `<li>${t}</li>`).join('')}</ul></div></div>`;

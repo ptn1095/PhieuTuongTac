@@ -137,3 +137,7 @@ const milk = (x, y, s = 1) => G(x, y, s, `<path d="M-22 -30 L0 -50 L22 -30 L22 4
 const thermo = (x, y, s = 1, c = '#3A8DFF') => G(x, y, s, `<rect x="-12" y="-70" width="24" height="100" rx="12" fill="#fff" ${ST}/><rect x="-5" y="-20" width="10" height="50" fill="${c}"/><circle cx="0" cy="40" r="20" fill="${c}" ${ST}/>`);
 // cái kéo nhỏ + lọ keo
 const glue = (x, y, s = 1) => G(x, y, s, `<rect x="-24" y="-40" width="48" height="80" rx="10" fill="#fff" ${ST}/><rect x="-14" y="-62" width="28" height="24" rx="6" fill="#FF7F11" ${ST}/><rect x="-24" y="-6" width="48" height="24" fill="#8338EC"/><rect x="-24" y="-40" width="48" height="80" rx="10" fill="none" ${ST}/>`);
+/* ---- 4 bước hiện dần: câu hỏi hiện trước, đáp án hiện sau (bấm ▶ hoặc bấm vào bảng) ----
+   S4Q([nhiệm vụ, gợi ý], [câu hỏi tìm hiểu, đáp án], [câu hỏi trao đổi, đáp án], [ý ghi nhớ 1, ý 2, ý 3]) */
+const S4Q = (nv, th, td, gn) => `<div class="s4q">${[nv, th, td].map(([q, a], i) => `<div class="qa rv"><span class="l4 l4-${i}">${L4[i]}</span> ${q}${a ? `<div class="an an-${i} rv">${a}</div>` : ''}</div>`).join('')}
+  <div class="gn rv"><span class="l4 l4-3">Ghi nhớ</span><ul>${gn.map(t => `<li>${t}</li>`).join('')}</ul></div></div>`;

@@ -85,3 +85,7 @@ const breaker = (x, y, s = 1) => G(x, y, s, `<rect x="-40" y="-56" width="80" he
 const stick = (x, y, s = 1) => G(x, y, s, `<rect x="-110" y="-12" width="220" height="24" rx="12" fill="#C68B59" ${ST} transform="rotate(-20)"/>`);
 const knife = (x, y, s = 1) => G(x, y, s, `<path d="M0 -12 L110 -12 Q130 -12 140 8 L0 12Z" fill="#E9ECEF" ${ST}/><rect x="-80" y="-14" width="84" height="28" rx="12" fill="#8D5524" ${ST}/>`);
 const kettle = (x, y, s = 1) => G(x, y, s, `<path d="M-50 60 L-60 -40 Q0 -64 60 -40 L50 60Z" fill="#FF7F11" ${ST}/><path d="M60 -30 Q100 -20 92 30" fill="none" stroke="${O}" stroke-width="14" stroke-linecap="round"/><path d="M-60 -20 L-96 -46" stroke="${O}" stroke-width="12" stroke-linecap="round"/><ellipse cx="0" cy="68" rx="64" ry="14" fill="#3D405B" ${ST}/>`);
+/* ---- 4 bước hiện dần: câu hỏi hiện trước, đáp án hiện sau (bấm ▶ hoặc bấm vào bảng) ----
+   S4Q([nhiệm vụ, gợi ý], [câu hỏi tìm hiểu, đáp án], [câu hỏi trao đổi, đáp án], [ý ghi nhớ 1, ý 2, ý 3]) */
+const S4Q = (nv, th, td, gn) => `<div class="s4q">${[nv, th, td].map(([q, a], i) => `<div class="qa rv"><span class="l4 l4-${i}">${L4[i]}</span> ${q}${a ? `<div class="an an-${i} rv">${a}</div>` : ''}</div>`).join('')}
+  <div class="gn rv"><span class="l4 l4-3">Ghi nhớ</span><ul>${gn.map(t => `<li>${t}</li>`).join('')}</ul></div></div>`;

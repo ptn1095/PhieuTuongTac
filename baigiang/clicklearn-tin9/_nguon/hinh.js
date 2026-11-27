@@ -197,3 +197,7 @@ const vacbot = (x, y, s = 1) => G(x, y, s, `<ellipse cx="0" cy="24" rx="100" ry=
 const dline = (x1, y1, x2, y2, c = O) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${c}" stroke-width="5" stroke-dasharray="2 10" stroke-linecap="round"/>`;
 // danh sách đúng/sai: [[đúng?, màu, chữ], …]
 const tlist = (rows, y0 = 70, dy = 92, fs = 24) => rows.map(([ok, c, t], i) => `${ok ? tick(80, y0 + i*dy) : cross(80, y0 + i*dy)}${pillS(130, y0 + i*dy - 26, 430, 52, c, t, fs)}`).join('');
+/* ---- 4 bước hiện dần: câu hỏi hiện trước, đáp án hiện sau (bấm ▶ hoặc bấm vào bảng) ----
+   S4Q([nhiệm vụ, gợi ý], [câu hỏi tìm hiểu, đáp án], [câu hỏi trao đổi, đáp án], [ý ghi nhớ 1, ý 2, ý 3]) */
+const S4Q = (nv, th, td, gn) => `<div class="s4q">${[nv, th, td].map(([q, a], i) => `<div class="qa rv"><span class="l4 l4-${i}">${L4[i]}</span> ${q}${a ? `<div class="an an-${i} rv">${a}</div>` : ''}</div>`).join('')}
+  <div class="gn rv"><span class="l4 l4-3">Ghi nhớ</span><ul>${gn.map(t => `<li>${t}</li>`).join('')}</ul></div></div>`;

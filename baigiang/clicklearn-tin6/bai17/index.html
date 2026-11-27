@@ -164,25 +164,27 @@ code{font-family:inherit;background:var(--code-bg);color:var(--code-ink);border-
 .pop{animation:popin .55s cubic-bezier(.34,1.9,.64,1) both}
 @keyframes popin{0%{transform:scale(0)}100%{transform:scale(1)}}
 @media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
-.cover{position:absolute;left:96px;background:var(--ill);border-radius:26px;border:7px solid var(--dark);box-shadow:0 9px 0 var(--edge);overflow:hidden;transform:rotate(-2deg)}
+
+
+/* ===== tranh bìa (tự đặt dưới tên bài) ===== */
+.cover{position:absolute;left:96px;background:var(--ill,#fff);border-radius:26px;border:7px solid var(--dark,#1D3557);box-shadow:0 9px 0 var(--edge,rgba(0,0,0,.3));overflow:hidden;transform:rotate(-2deg);pointer-events:none}
 .cover svg{width:100%;height:100%;display:block}
 /* ===== 4 bước hiện dần (S4Q) ===== */
 .panel .s4q{font-size:30px;line-height:1.2}
 .s4q .qa{margin-bottom:10px}
 .s4q .rv{transition:opacity .45s,transform .45s}
 .s4q .rv:not(.on){opacity:0;transform:translateY(10px)}
-.s4q .an{position:relative;margin:6px 0 0;padding:5px 14px 5px 52px;border-radius:14px;background:var(--soft);border-left:8px solid #1982C4;font-weight:600}
+.s4q .an{position:relative;margin:6px 0 0;padding:5px 14px 5px 52px;border-radius:14px;background:var(--soft,#EEF2F7);border-left:8px solid #1982C4;font-weight:600}
 .s4q .an::before{content:"💡";position:absolute;left:12px;top:5px}
 .s4q .an-0{border-left-color:#E5392C}.s4q .an-0::before{content:"✨"}
 .s4q .an-2{border-left-color:#E8890C}
-.s4q .qa.on .an:not(.on){opacity:1;transform:none;color:transparent;background:repeating-linear-gradient(45deg,var(--soft) 0 14px,transparent 14px 28px);border:3px dashed var(--dark);border-left-width:8px;cursor:pointer}
+.s4q .qa.on .an:not(.on){opacity:1;transform:none;color:transparent;background:repeating-linear-gradient(45deg,var(--soft,#EEF2F7) 0 14px,transparent 14px 28px);border:3px dashed var(--dark,#1D3557);border-left-width:8px;cursor:pointer}
 .s4q .qa.on .an:not(.on) *,.s4q .qa.on .an:not(.on)::before{visibility:hidden}
-.s4q .qa.on .an:not(.on)::after{content:"👆 Bấm để xem";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:24px;font-weight:800;opacity:.75}
+.s4q .qa.on .an:not(.on)::after{content:"👆 Bấm để xem";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink,#1D3557);font-size:24px;font-weight:800;opacity:.75}
 .s4q .gn{border:4px solid #2F9B4A;background:#EAF8E6;color:#1E3A12;border-radius:18px;padding:8px 16px 6px;box-shadow:0 5px 0 rgba(47,155,74,.35)}
-.panel .s4q .gn ul{margin-top:6px}
-.panel .s4q .gn li{padding-left:30px;margin-bottom:4px}
-.panel .s4q .gn li::before{width:16px;height:16px;top:12px;left:2px;background:#2F9B4A}
-
+.panel .s4q .gn ul{margin-top:6px;list-style:none}
+.panel .s4q .gn li{position:relative;padding-left:30px;margin-bottom:4px}
+.panel .s4q .gn li::before{content:"";position:absolute;width:16px;height:16px;top:12px;left:2px;border-radius:50%;background:#2F9B4A}
 </style>
 </head>
 <body>
@@ -673,21 +675,28 @@ const POS = TOPICS.map((t, i) => { const a = (-90 + STEP/2 + i*STEP)*Math.PI/180
 })();
 
 
-// tranh bìa: hình đặc trưng của bài ở khoảng trống góc dưới trái (bài khai báo const COVER = () => svgC(`…`))
-const svgC = inner => `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
-function coverHTML() {
-  if (typeof COVER !== 'function') return '';
-  const n = (META.big.match(/<br>/g) || []).length, w = n >= 2 ? 470 : 600, top = n >= 2 ? 548 : n ? 446 : 380;
-  return `<div class="cover" style="width:${w}px;height:${w*.6}px;top:${top}px">${COVER()}</div>`;
-}
 // khung tiêu đề (trung tâm)
 addFrame('title', null, 0, 0, 1.15, 0, 'titlef board', `${TOP('ClickLearn Tin học 6 • Bài 17')}
-  <div class="bigtitle">${META.big}</div>${coverHTML()}
+  <div class="bigtitle">${META.big}</div>
   <svg viewBox="0 0 200 240" style="position:absolute;left:1150px;top:80px;width:300px;animation:bob 2.2s ease-in-out infinite">${robot()}</svg>
   <div style="position:absolute;left:830px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">📚 Em ghi nhớ</div>
   <div style="position:absolute;left:1180px;top:590px;width:330px;text-align:center;color:var(--bink);font-weight:800;font-size:32px">🏆 Về đích</div>
 `);
 PATH.push('title');
+// tranh bìa: hình đặc trưng của bài (COVER riêng của bài, nếu không có thì lấy hình minh hoạ chủ đề 1), tự đặt vào khoảng trống dưới tên bài
+function svgC(inner) { return `<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`; }
+(function () {
+  const fr = FR.title && FR.title.el; if (!fr) return;
+  let src = ''; try { src = typeof COVER === 'function' ? COVER() : (typeof ILL !== 'undefined' && ILL.t1 ? ILL.t1() : ''); } catch (e) {}
+  if (!src) return;
+  const vb = src.match(/viewBox="0 0 (\d+) (\d+)"/) || [0, 600, 420], R = vb[2]/vb[1];
+  const c = document.createElement('div'); c.className = 'cover'; c.innerHTML = src; fr.insertBefore(c, fr.querySelector('.frame'));
+  const place = () => { const t = fr.querySelector('.bigtitle'); if (!t) return; let y = t.offsetTop + t.offsetHeight + 30;
+    const room = 824 - y, w = Math.min(570, room/R); if (w < 300) { c.style.display = 'none'; return; }
+    Object.assign(c.style, { display: '', top: y + 'px', width: w + 'px', height: w*R + 'px' }); };
+  place(); if (document.fonts) document.fonts.ready.then(place);
+})();
+
 
 // các khung chủ đề + đố vui
 TOPICS.forEach((t, i) => {
@@ -877,7 +886,7 @@ function sayFor(id) {
   if (id === 'recap') return say('Ôn nhanh ' + NT + ' hoạt động nè! Bấm vào thẻ nào để xem lại nội dung đó.');
   const q = QUIZ[id];
   if (q) return ans[id] == null ? say(`Đố vui ${q.i + 1}: chọn A, B, C hoặc D nhé!`) : say('Câu này em làm rồi. Bấm ▶ để đi tiếp nha!');
-  const t = TOPICS.find(x => x.id === id); if (t) say(`<b>Hoạt động ${TOPICS.indexOf(t) + 1} – ${t.act}.</b> ` + t.tip + (FR[id].el.querySelector('.rv:not(.on)') ? '<br>👉 Đọc câu hỏi, suy nghĩ rồi bấm ▶ để xem đáp án.' : ''), 7000);
+  const t = TOPICS.find(x => x.id === id); if (t) say(`<b>Hoạt động ${TOPICS.indexOf(t) + 1} – ${t.act}.</b> ` + t.tip);
 }
 
 /* =========================================================
@@ -983,10 +992,11 @@ stage.addEventListener('click', e => {
   else if (b.dataset.act === 'cert') { if (score() >= PASS) openCert(); else { sfx.buzz(); bitMood('sad'); say(`Em cần ít nhất ${PASS} ⭐ mới nhận được chứng nhận. Làm lại các câu sai nhé!`); } }
   else if (b.dataset.act === 'wrong') { const w = PATH.find(id => QUIZ[id] && ans[id] !== QUIZ[id].q.a); if (w) goId(w); else say('Em không có câu sai nào! Giỏi quá 🎉'); }
 });
-// hiện dần câu hỏi / đáp án trong bảng 4 bước trước khi bay sang khung kế
-function revealNext(id) { const f = FR[id]; if (!f || QUIZ[id]) return false; const r = f.el.querySelector('.rv:not(.on)'); if (!r) return false; r.classList.add('on'); sfx.pop(); if (!f.el.querySelector('.rv:not(.on)')) say('Xong rồi! Bấm ▶ để sang phần tiếp theo nhé.', 3000); return true; }
+// hiện dần câu hỏi / đáp án trong bảng 4 bước (S4Q) trước khi bay sang khung kế
+function revealNext(id) { const f = FR[id]; if (!f || QUIZ[id]) return false; const r = f.el.querySelector('.s4q .rv:not(.on)'); if (!r) return false; r.classList.add('on'); sfx.pop(); if (!f.el.querySelector('.s4q .rv:not(.on)')) say('Xong rồi! Bấm ▶ để sang phần tiếp theo nhé.', 3000); return true; }
 const forward = () => { if (revealNext(curId)) return; sfx.pop(); go(step + 1); };
 document.querySelectorAll('.s4q').forEach(p => p.querySelector('.rv').classList.add('on'));
+{ const base = sayFor; sayFor = id => { base(id); const f = FR[id]; if (f && !QUIZ[id] && f.el.querySelector('.s4q .rv:not(.on)')) setTimeout(() => { if (!sayEl.innerHTML.includes('👉')) say(sayEl.innerHTML + '<br>👉 Đọc câu hỏi, suy nghĩ rồi bấm ▶ để xem đáp án.', 7000); }, 260); }; }
 document.getElementById('bNext').onclick = forward;
 document.getElementById('bPrev').onclick = () => { sfx.pop(); go(step - 1); };
 document.getElementById('bHome').onclick = () => { sfx.pop(); go(0); };

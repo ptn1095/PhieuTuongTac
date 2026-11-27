@@ -135,21 +135,3 @@ code{font-family:inherit;background:var(--code-bg);color:var(--code-ink);border-
 .pop{animation:popin .55s cubic-bezier(.34,1.9,.64,1) both}
 @keyframes popin{0%{transform:scale(0)}100%{transform:scale(1)}}
 @media (max-width:640px){#bit{width:70px;bottom:86px}#say{left:84px;bottom:150px;font-size:15px}.hb{width:38px;height:38px;font-size:17px}.hb.big{width:46px;height:44px}#bFull{display:none}#hud{gap:5px;padding:5px 6px}#step{min-width:40px;font-size:14px}#score{font-size:15px;padding:4px 8px}}
-.cover{position:absolute;left:96px;background:var(--ill);border-radius:26px;border:7px solid var(--dark);box-shadow:0 9px 0 var(--edge);overflow:hidden;transform:rotate(-2deg)}
-.cover svg{width:100%;height:100%;display:block}
-/* ===== 4 bước hiện dần (S4Q) ===== */
-.panel .s4q{font-size:30px;line-height:1.2}
-.s4q .qa{margin-bottom:10px}
-.s4q .rv{transition:opacity .45s,transform .45s}
-.s4q .rv:not(.on){opacity:0;transform:translateY(10px)}
-.s4q .an{position:relative;margin:6px 0 0;padding:5px 14px 5px 52px;border-radius:14px;background:var(--soft);border-left:8px solid #1982C4;font-weight:600}
-.s4q .an::before{content:"💡";position:absolute;left:12px;top:5px}
-.s4q .an-0{border-left-color:#E5392C}.s4q .an-0::before{content:"✨"}
-.s4q .an-2{border-left-color:#E8890C}
-.s4q .qa.on .an:not(.on){opacity:1;transform:none;color:transparent;background:repeating-linear-gradient(45deg,var(--soft) 0 14px,transparent 14px 28px);border:3px dashed var(--dark);border-left-width:8px;cursor:pointer}
-.s4q .qa.on .an:not(.on) *,.s4q .qa.on .an:not(.on)::before{visibility:hidden}
-.s4q .qa.on .an:not(.on)::after{content:"👆 Bấm để xem";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:24px;font-weight:800;opacity:.75}
-.s4q .gn{border:4px solid #2F9B4A;background:#EAF8E6;color:#1E3A12;border-radius:18px;padding:8px 16px 6px;box-shadow:0 5px 0 rgba(47,155,74,.35)}
-.panel .s4q .gn ul{margin-top:6px}
-.panel .s4q .gn li{padding-left:30px;margin-bottom:4px}
-.panel .s4q .gn li::before{width:16px;height:16px;top:12px;left:2px;background:#2F9B4A}
