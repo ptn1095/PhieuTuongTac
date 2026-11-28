@@ -47,12 +47,12 @@ const TOPICS = [
       { q: 'Lệnh nào xoá sạch các nét đã vẽ?', o: ['hide', 'pen up', 'clear graphic effects', 'erase all'], a: 3, why: 'erase all xoá hết nét bút trên sân khấu.' } ] },
   { id: 't3', c: ['#3A8DFF', '#00C2D1'], dk: '#1864AB', title: 'Màu và độ dày nét',
     tip: 'Đổi màu bút trong vòng lặp là vẽ được cầu vồng đó!',
-    html: `<div class="blocks">${B('set pen color to <span style="display:inline-block;width:34px;height:34px;border-radius:50%;background:#FF006E;border:3px solid #fff"></span>', 'pen')}${B(`change pen ${D('color')} by ${N(10)}`, 'pen')}${B(`set pen size to ${N(5)}`, 'pen')}</div><ul>
-      <li><b>set pen color</b>: chọn <span class="k">màu bút</span>.</li>
-      <li><b>change pen color by</b>: đổi dần màu.</li>
-      <li><b>pen size</b>: <span class="k">độ dày</span> nét, số càng lớn nét càng to.</li></ul>`,
+    html: `<div class="blocks">${B('set pen color to <span style="display:inline-block;width:34px;height:34px;border-radius:50%;background:#FF006E;border:3px solid #fff"></span>', 'pen')}${B(`change pen ${D('color')} by ${N(10)}`, 'pen')}${B(`set pen size to ${N(5)}`, 'pen')}${B(`change pen size by ${N(1)}`, 'pen')}</div><ul>
+      <li><b>set pen color</b>: chọn <span class="k">màu bút</span>; <b>change pen color</b>: đổi dần màu.</li>
+      <li><b>set pen size to</b>: <span class="k">đặt cố định</span> độ dày nét.</li>
+      <li><b>change pen size by</b>: <span class="k">tăng / giảm</span> độ dày (số âm: mảnh đi).</li></ul>`,
     quiz: [
-      { q: 'Muốn nét vẽ TO hơn, em dùng:', o: ['set pen color to', 'set pen size to (10)', 'change size by (10)', 'pen up'], a: 1, why: 'pen size là độ dày nét bút.' },
+      { q: 'Lệnh nào giúp CỐ ĐỊNH độ dày nét bút là 10?', o: ['change pen size by (10)', 'set pen size to (10)', 'change size by (10)', 'set size to (10) %'], a: 1, why: 'set pen size to đặt đúng độ dày 10; change pen size by chỉ cộng thêm vào độ dày cũ.' },
       { q: 'Đặt change pen color by (10) trong vòng lặp vẽ sẽ tạo ra:', o: ['Nét một màu', 'Nét bị xoá', 'Nét đổi màu dần như cầu vồng', 'Nét to dần'], a: 2, why: 'Mỗi vòng màu bút thay đổi một chút.' } ] },
   { id: 't4', c: ['#7AD86F', '#14A0A0'], dk: '#087F5B', title: 'Vẽ hình vuông, tam giác',
     tip: 'Mẹo: số lần lặp × số độ xoay = 360!',
@@ -72,5 +72,5 @@ const TOPICS = [
       { q: 'Lệnh stamp dùng để:', o: ['Xoá nét vẽ', 'In hình nhân vật lên sân khấu', 'Nhấc bút', 'Đổi màu bút'], a: 1, why: 'stamp in lại hình dáng nhân vật như con dấu.' } ] },
 ];
 
-const KEY = ['<b>Add Extension</b><br>→ chọn <b>Pen</b>', '<b>pen down</b>: vẽ<br><b>pen up</b>: không vẽ<br><b>erase all</b>', '<b>pen color</b>: màu<br><b>pen size</b>: độ dày',
+const KEY = ['<b>Add Extension</b><br>→ chọn <b>Pen</b>', '<b>pen down</b>: vẽ<br><b>pen up</b>: không vẽ<br><b>erase all</b>', '<b>pen color</b>: màu<br><b>set pen size</b>: đặt độ dày<br><b>change pen size</b>: tăng/giảm',
   'Số cạnh × góc<br>= <b>360°</b>', '<b>stamp</b>: in hình<br>lục giác: 6 × 60°'];
